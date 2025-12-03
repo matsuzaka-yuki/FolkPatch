@@ -303,6 +303,7 @@
     <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
     <string name="launcher_icon_kitsune">Kitsune Mask</string>
     <string name="launcher_icon_magisk">Magisk</string>
+    <string name="launcher_icon_superroot">SuperRoot</string>
     
     <!-- KPM AutoLoad Strings -->
     <string name="kpm_autoload_title">KPM Auto-Load</string>

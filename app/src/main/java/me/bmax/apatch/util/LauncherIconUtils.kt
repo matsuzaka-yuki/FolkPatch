@@ -11,7 +11,8 @@ enum class LauncherIconVariant(val aliasName: String) {
     KERNELSU(".ui.MainActivityAliasKernelSU"),
     KERNELSUNEXT(".ui.MainActivityAliasKernelSUNext"),
     KITSUNE(".ui.MainActivityAliasKitsune"),
-    MAGISK(".ui.MainActivityAliasMagisk")
+    MAGISK(".ui.MainActivityAliasMagisk"),
+    SUPERROOT(".ui.MainActivityAliasSuperRoot")
 }
 
 object LauncherIconUtils {
@@ -22,7 +23,8 @@ object LauncherIconUtils {
         LauncherIconVariant.KERNELSU,
         LauncherIconVariant.KERNELSUNEXT,
         LauncherIconVariant.KITSUNE,
-        LauncherIconVariant.MAGISK
+        LauncherIconVariant.MAGISK,
+        LauncherIconVariant.SUPERROOT
     )
 
     fun applyVariant(context: Context, variant: LauncherIconVariant) {
@@ -43,6 +45,7 @@ object LauncherIconUtils {
             "kernelsunext" -> LauncherIconVariant.KERNELSUNEXT
             "kitsune" -> LauncherIconVariant.KITSUNE
             "magisk" -> LauncherIconVariant.MAGISK
+            "superroot" -> LauncherIconVariant.SUPERROOT
             else -> LauncherIconVariant.DEFAULT
         }
         applyVariant(context, variant)

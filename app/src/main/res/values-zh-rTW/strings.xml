@@ -292,6 +292,7 @@
     <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
     <string name="launcher_icon_kitsune">Kitsune Mask</string>
     <string name="launcher_icon_magisk">Magisk</string>
+    <string name="launcher_icon_superroot">SuperRoot</string>
     <string name="su_exclude_all_title">批次排除</string>
     <string name="su_exclude_all_confirm">確定要將所有未授權 Root 的應用程式設為排除嗎？</string>
     <!-- KPM AutoLoad Strings -->

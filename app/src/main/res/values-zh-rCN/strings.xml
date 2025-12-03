@@ -296,6 +296,7 @@
     <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
     <string name="launcher_icon_kitsune">Kitsune Mask</string>
     <string name="launcher_icon_magisk">Magisk</string>
+    <string name="launcher_icon_superroot">SuperRoot</string>
     
     <string name="su_exclude_all_title">批量排除</string>
     <string name="su_exclude_all_confirm">确定要将所有未授权Root的应用设为排除吗？</string>

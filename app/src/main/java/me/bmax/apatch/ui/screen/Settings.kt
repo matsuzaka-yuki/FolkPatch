@@ -1227,6 +1227,7 @@ private fun iconPresetList(): List<IconPreset> {
         IconPreset("kernelsunext", R.string.launcher_icon_kernelsu_next),
         IconPreset("kitsune", R.string.launcher_icon_kitsune),
         IconPreset("magisk", R.string.launcher_icon_magisk),
+        IconPreset("superroot", R.string.launcher_icon_superroot),
     )
 }
 

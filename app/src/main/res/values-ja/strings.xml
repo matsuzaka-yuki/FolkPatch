@@ -259,6 +259,7 @@
     <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
     <string name="launcher_icon_kitsune">Kitsune Mask</string>
     <string name="launcher_icon_magisk">Magisk</string>
+    <string name="launcher_icon_superroot">SuperRoot</string>
     <string name="su_exclude_all_title">すべて除外</string>
     <string name="su_exclude_all_confirm">ルート権限のないすべてのアプリを除外してもよろしいですか？</string>
     <!-- KPM AutoLoad Strings -->
