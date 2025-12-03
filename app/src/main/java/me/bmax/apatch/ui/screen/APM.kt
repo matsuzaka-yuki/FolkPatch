@@ -3,6 +3,7 @@ package me.bmax.apatch.ui.screen
 import android.app.Activity.RESULT_OK
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
 import android.util.Patterns
@@ -45,6 +46,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -96,6 +98,7 @@ import me.bmax.apatch.util.uninstallModule
 
 import com.ramcosta.composedestinations.generated.destinations.OnlineModuleScreenDestination
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.DeleteSweep
 import androidx.compose.material.icons.filled.Download
 
 @Destination<RootGraph>
@@ -157,7 +160,7 @@ fun APModuleScreen(navigator: DestinationsNavigator) {
 
     Scaffold(
         topBar = {
-        TopBar(navigator)
+        TopBar(navigator, viewModel)
     }, floatingActionButton = if (hideInstallButton) {
         { /* Empty */ }
     } else {
@@ -483,10 +486,53 @@ private fun ModuleList(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun TopBar(navigator: DestinationsNavigator) {
+private fun TopBar(navigator: DestinationsNavigator, viewModel: APModuleViewModel) {
+    val confirmDialog = rememberConfirmDialog()
+    val scope = rememberCoroutineScope()
+    val disableAllTitle = stringResource(R.string.apm_disable_all_title)
+    val disableAllConfirm = stringResource(R.string.apm_disable_all_confirm)
+    val confirm = stringResource(android.R.string.ok)
+    val cancel = stringResource(android.R.string.cancel)
+
+    var showDisableAllButton by remember {
+        mutableStateOf(APApplication.sharedPreferences.getBoolean("show_disable_all_modules", false))
+    }
+
+    DisposableEffect(Unit) {
+        val listener = SharedPreferences.OnSharedPreferenceChangeListener { prefs, key ->
+            if (key == "show_disable_all_modules") {
+                showDisableAllButton = prefs.getBoolean("show_disable_all_modules", false)
+            }
+        }
+        APApplication.sharedPreferences.registerOnSharedPreferenceChangeListener(listener)
+        onDispose {
+            APApplication.sharedPreferences.unregisterOnSharedPreferenceChangeListener(listener)
+        }
+    }
+
     TopAppBar(
         title = { Text(stringResource(R.string.apm)) },
         actions = {
+            if (showDisableAllButton) {
+                androidx.compose.material3.IconButton(onClick = {
+                    scope.launch {
+                        val result = confirmDialog.awaitConfirm(
+                            title = disableAllTitle,
+                            content = disableAllConfirm,
+                            confirm = confirm,
+                            dismiss = cancel
+                        )
+                        if (result == ConfirmResult.Confirmed) {
+                            viewModel.disableAllModules()
+                        }
+                    }
+                }) {
+                    Icon(
+                        imageVector = Icons.Filled.DeleteSweep,
+                        contentDescription = disableAllTitle
+                    )
+                }
+            }
             androidx.compose.material3.IconButton(onClick = {
                 navigator.navigate(OnlineModuleScreenDestination)
             }) {

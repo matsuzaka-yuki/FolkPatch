@@ -12,6 +12,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import me.bmax.apatch.apApp
 import me.bmax.apatch.util.listModules
+import me.bmax.apatch.util.toggleModule
 import org.json.JSONArray
 import org.json.JSONObject
 import java.text.Collator
@@ -60,6 +61,18 @@ class APModuleViewModel : ViewModel() {
 
     fun markNeedRefresh() {
         isNeedRefresh = true
+    }
+
+    fun disableAllModules() {
+        viewModelScope.launch(Dispatchers.IO) {
+            isRefreshing = true
+            modules.forEach { 
+                if (it.enabled) {
+                    toggleModule(it.id, false)
+                }
+            }
+            fetchModuleList()
+        }
     }
 
     fun fetchModuleList() {

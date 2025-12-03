@@ -154,8 +154,13 @@
     <string name="enable_web_debugging_summary">Web UI のデバッグに使用できます。必要な場合のみ有効にしてください。</string>
     <string name="settings_apm_install_confirm">インストール前に確認</string>
     <string name="settings_apm_install_confirm_summary">モジュールをインストールする前に確認ダイアログを表示する</string>
+    <string name="settings_show_disable_all_modules">「すべてのモジュールを無効化」ボタンを表示</string>
+    <string name="settings_show_disable_all_modules_summary">モジュールページにすべてのモジュールを一度に無効化するボタンを表示します</string>
     <string name="apm_install_confirm_title">モジュールをインストール</string>
     <string name="apm_install_confirm_content">%s をインストールしますか？</string>
+
+    <string name="apm_disable_all_title">すべてのモジュールを無効化</string>
+    <string name="apm_disable_all_confirm">すべてのモジュールを無効化しますか？一般的には OTA 更新の前に行う操作です。</string>
 
     <string name="settings_donot_store_superkey">ローカルにスーパーキーを保存しない</string>
     <string name="settings_donot_store_superkey_summary">マネージャーの起動時に SuperKey を認証します</string>

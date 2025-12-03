@@ -180,8 +180,13 @@
     <string name="enable_web_debugging_summary">Może być używane do debugowania WebUI. Włącz tylko w razie potrzeby.</string>
     <string name="settings_apm_install_confirm">Potwierdź przed instalacją</string>
     <string name="settings_apm_install_confirm_summary">Pokaż okno dialogowe potwierdzenia przed instalacją modułów</string>
+    <string name="settings_show_disable_all_modules">Pokaż przycisk \'Wyłącz wszystkie moduły\'</string>
+    <string name="settings_show_disable_all_modules_summary">Wyświetl przycisk na stronie modułów, aby wyłączyć wszystkie moduły naraz</string>
     <string name="apm_install_confirm_title">Instalacja modułu</string>
     <string name="apm_install_confirm_content">Czy na pewno chcesz zainstalować %s?</string>
+
+    <string name="apm_disable_all_title">Wyłącz wszystkie moduły</string>
+    <string name="apm_disable_all_confirm">Czy na pewno chcesz wyłączyć wszystkie moduły? Zazwyczaj robi się to przed aktualizacją OTA.</string>
 
     <string name="settings_donot_store_superkey">Nie przechowuj SuperKlucza lokalnie</string>
     <string name="settings_donot_store_superkey_summary">Uwierzytelniaj SuperKlucz za każdym razem, gdy menedżer się uruchamia</string>

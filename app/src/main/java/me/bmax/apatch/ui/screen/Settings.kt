@@ -47,6 +47,7 @@ import androidx.compose.material.icons.filled.Label
 import androidx.compose.material.icons.filled.Translate
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
+import androidx.compose.material.icons.filled.DeleteSweep
 
 import androidx.compose.ui.res.painterResource
 import androidx.compose.material3.AlertDialogDefaults
@@ -344,6 +345,22 @@ fun SettingScreen() {
                 ) {
                     prefs.edit { putBoolean("apm_install_confirm_enabled", it) }
                     installConfirm = it
+                }
+
+                // Show Disable All Modules Button
+                var showDisableAllModules by rememberSaveable {
+                    mutableStateOf(
+                        prefs.getBoolean("show_disable_all_modules", false)
+                    )
+                }
+                SwitchItem(
+                    icon = Icons.Filled.DeleteSweep,
+                    title = stringResource(id = R.string.settings_show_disable_all_modules),
+                    summary = stringResource(id = R.string.settings_show_disable_all_modules_summary),
+                    checked = showDisableAllModules
+                ) {
+                    prefs.edit { putBoolean("show_disable_all_modules", it) }
+                    showDisableAllModules = it
                 }
             }
 

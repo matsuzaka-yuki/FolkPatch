@@ -177,10 +177,14 @@
     <string name="apm_action">操作</string>
     <string name="enable_web_debugging">启用 WebView 调试</string>
     <string name="enable_web_debugging_summary">可用于调试 WebUI。请仅在需要时启用。</string>
-    <string name="settings_apm_install_confirm">安装前确认</string>
-    <string name="settings_apm_install_confirm_summary">安装模块前显示确认弹窗</string>
+    <string name="settings_apm_install_confirm">安装模块确认</string>
+    <string name="settings_apm_install_confirm_summary">安装模块前显示确认对话框</string>
+    <string name="settings_show_disable_all_modules">显示“禁用全部模块”按钮</string>
+    <string name="settings_show_disable_all_modules_summary">在模块页面显示一键禁用所有模块的按钮</string>
     <string name="apm_install_confirm_title">安装模块</string>
     <string name="apm_install_confirm_content">确定要安装 %s 吗？</string>
+    <string name="apm_disable_all_title">禁用所有模块</string>
+    <string name="apm_disable_all_confirm">确定禁用全部模块吗？一般来说在 OTA 更新前才这么做。</string>
 
     <string name="settings_donot_store_superkey">不在本地存储超级密钥</string>
     <string name="settings_donot_store_superkey_summary">每次启动管理器时验证超级密钥</string>

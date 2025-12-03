@@ -184,8 +184,12 @@
     <string name="enable_web_debugging_summary">Can be used to debug WebUI. Please enable only when needed.</string>
     <string name="settings_apm_install_confirm">Confirm before install</string>
     <string name="settings_apm_install_confirm_summary">Show a confirmation dialog before installing modules</string>
+    <string name="settings_show_disable_all_modules">Show \'Disable All Modules\' button</string>
+    <string name="settings_show_disable_all_modules_summary">Display a button in the modules page to disable all modules at once</string>
     <string name="apm_install_confirm_title">Install Module</string>
     <string name="apm_install_confirm_content">Are you sure you want to install %s?</string>
+    <string name="apm_disable_all_title">Disable All Modules</string>
+    <string name="apm_disable_all_confirm">Are you sure you want to disable all modules? Generally, this is done before an OTA update.</string>
 
     <string name="settings_donot_store_superkey">Don\'t store SuperKey in local</string>
     <string name="settings_donot_store_superkey_summary">Authenticate the SuperKey every time the manager starts</string>
