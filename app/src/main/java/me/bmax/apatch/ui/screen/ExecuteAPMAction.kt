@@ -37,6 +37,7 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import me.bmax.apatch.APApplication
 import me.bmax.apatch.R
 import me.bmax.apatch.ui.component.KeyEventBlocker
 import me.bmax.apatch.util.runAPModuleAction
@@ -81,7 +82,9 @@ fun ExecuteAPMActionScreen(navigator: DestinationsNavigator, moduleId: String) {
             }
         }
         if (actionResult) {
-            navigator.popBackStack()
+            if (!APApplication.sharedPreferences.getBoolean("apm_action_stay_on_page", true)) {
+                navigator.popBackStack()
+            }
         }
     }
 

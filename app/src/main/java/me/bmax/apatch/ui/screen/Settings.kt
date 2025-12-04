@@ -362,6 +362,22 @@ fun SettingScreen() {
                     prefs.edit { putBoolean("show_disable_all_modules", it) }
                     showDisableAllModules = it
                 }
+
+                // Stay on execution page
+                var stayOnPage by rememberSaveable {
+                    mutableStateOf(
+                        prefs.getBoolean("apm_action_stay_on_page", true)
+                    )
+                }
+                SwitchItem(
+                    icon = Icons.Filled.AspectRatio,
+                    title = stringResource(id = R.string.settings_apm_stay_on_page),
+                    summary = stringResource(id = R.string.settings_apm_stay_on_page_summary),
+                    checked = stayOnPage
+                ) {
+                    prefs.edit { putBoolean("apm_action_stay_on_page", it) }
+                    stayOnPage = it
+                }
             }
 
             // Hide Learn APatch card
