@@ -295,8 +295,8 @@
     <string name="settings_clear_background">清除背景</string>
     <string name="settings_clear_background_confirm">确定要清除背景图片吗？</string>
     <string name="settings_launcher_icon">桌面图标</string>
-    <string name="launcher_icon_default">FolkPatch Anime</string>
-    <string name="launcher_icon_classic">FolkPatch</string>
+    <string name="launcher_icon_default">FolkPatch</string>
+    <string name="launcher_icon_classic">FolkPatch Anime</string>
     <string name="launcher_icon_apatch">APatch</string>
     <string name="launcher_icon_kernelsu">KernelSU</string>
     <string name="launcher_icon_kernelsu_next">KernelSU Next</string>

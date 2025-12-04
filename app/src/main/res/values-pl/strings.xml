@@ -298,8 +298,8 @@
     <string name="settings_clear_background">Wyczyść tło</string>
     <string name="settings_clear_background_confirm">Czy na pewno chcesz wyczyścić obraz tła?</string>
     <string name="settings_launcher_icon">Ikona launchera</string>
-    <string name="launcher_icon_default">FolkPatch Anime</string>
-    <string name="launcher_icon_classic">FolkPatch</string>
+    <string name="launcher_icon_default">FolkPatch</string>
+    <string name="launcher_icon_classic">FolkPatch Anime</string>
     <string name="launcher_icon_apatch">APatch</string>
     <string name="launcher_icon_kernelsu">KernelSU</string>
     <string name="launcher_icon_kernelsu_next">KernelSU Next</string>

@@ -260,8 +260,8 @@
     <string name="settings_background_image_cleared">背景画像がクリアされました</string>
     <string name="settings_clear_background">背景をクリア</string>
     <string name="settings_clear_background_confirm">背景画像をクリアしてもよろしいですか？</string>
-    <string name="launcher_icon_default">FolkPatch Anime</string>
-    <string name="launcher_icon_classic">FolkPatch</string>
+    <string name="launcher_icon_default">FolkPatch</string>
+    <string name="launcher_icon_classic">FolkPatch Anime</string>
     <string name="launcher_icon_apatch">APatch</string>
     <string name="launcher_icon_kernelsu">KernelSU</string>
     <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
