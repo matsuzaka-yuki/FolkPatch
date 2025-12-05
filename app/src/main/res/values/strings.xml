@@ -290,6 +290,7 @@
     <string name="app_title_folksu">FolkSU</string>
     <string name="app_title_superuser">Superuser</string>
     <string name="app_title_superpatch">SuperPatch</string>
+    <string name="app_title_magicpatch">MagicPatch</string>
 
     <string name="settings_app_dpi">App DPI</string>
     <string name="settings_lite_mode">Lite Mode</string>

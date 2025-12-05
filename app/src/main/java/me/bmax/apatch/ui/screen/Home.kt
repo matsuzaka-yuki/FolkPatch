@@ -396,6 +396,7 @@ private fun TopBar(
         "folksu" -> R.string.app_title_folksu
         "superuser" -> R.string.app_title_superuser
         "superpatch" -> R.string.app_title_superpatch
+        "magicpatch" -> R.string.app_title_magicpatch
         else -> R.string.app_title_folkpatch
     }
 

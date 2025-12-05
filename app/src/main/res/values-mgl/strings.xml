@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">FolkPatch</string>
+
+    <string name="home">魔法大厅</string>
+
+    <string name="success">变身成功</string>
+    <string name="failure">变身失败</string>
+
+    <string name="patch_warnning">施展魔法有风险，请确保已保存珍贵的回忆。</string>
+    <string name="patch">施展魔法</string>
+
+    <string name="kernel_patch">心之契约</string>
+    <string name="android_patch">星之守护</string>
+
+    <string name="reboot">重新觉醒</string>
+    <string name="settings">魔法设定</string>
+    <string name="reboot_recovery">进入治愈法阵</string>
+    <string name="reboot_bootloader">前往召唤阵</string>
+    <string name="reboot_download">进入星之回廊</string>
+    <string name="reboot_edl">进入梦境之门</string>
+    <string name="about">我来自哪?</string>
+    <string name="settings_app_language">魔法语言</string>
+    <string name="system_default">默认魔法</string>
+    <string name="settings_global_namespace_mode">全域魔法领域</string>
+    <string name="settings_global_namespace_mode_summary">所有变身仪式共享同一个魔法空间</string>
+    <string name="settings_clear_super_key_dialog">确定要继续施展这个魔法吗？</string>
+
+    <string name="home_learn_apatch">了解心之契约</string>
+    <string name="home_click_to_learn_apatch">了解心之契约的魔力及使用方法</string>
+    <string name="settings_hide_apatch_card">隐藏"了解心之契约"魔法阵</string>
+    <string name="settings_hide_apatch_card_summary">隐藏魔法大厅的"了解心之契约"魔法阵</string>
+
+    <string name="about_source_code"><![CDATA[<p>在 %1$s 查看魔法书<p/>加入我们的 %2$s 魔法学院<p/>加入我们的 %3$s 魔法少女公会]]></string>
+    <string name="send_log">发送魔法记录</string>
+    <string name="save_log">保存魔法记录</string>
+    <string name="log_saved">魔法记录已保存</string>
+    <string name="safe_mode">安全变身模式</string>
+
+    <string name="super_key">心之密钥</string>
+    <string name="clear_super_key">清除心之密钥</string>
+    <string name="patch_set_superkey">设定心之密钥</string>
+    <string name="home_patch_set_key_desc">心之契约的唯一认证咒语</string>
+    <string name="home_patch_next_step">下一步咒语</string>
+
+    <string name="home_not_installed">尚未觉醒</string>
+    <string name="home_install_unknown">未觉醒或未认证</string>
+    <string name="home_install_unknown_summary">点击觉醒魔法</string>
+    <string name="home_click_to_install">点击觉醒</string>
+    <string name="home_working">神域展开</string>
+    <string name="home_kp_need_update">发现新的魔法咒语</string>
+    <string name="home_kp_cando_update">更新咒语</string>
+
+    <string name="home_installing">正在觉醒中</string>
+
+    <string name="kpatch_version">魔法等级: %s</string>
+    <string name="apatch_version">契约等级: %s</string>
+
+    <string name="kpatch_version_update" formatted="false">魔法等级: %s -> %s</string>
+    <string name="kpatch_shadow_path_title">心之契约</string>
+    <string name="home_auth_key_title">吟唱心之密钥</string>
+    <string name="home_auth_key_desc">认证通过后开始使用魔法</string>
+    <string name="home_kpatch_info_title">魔法情报</string>
+
+    <string name="home_ap_cando_install">觉醒</string>
+
+    <string name="home_ap_cando_uninstall">解除契约</string>
+    <string name="home_ap_cando_reboot">重新觉醒</string>
+
+    <string name="patch_title">施展魔法</string>
+
+    <string name="patch_config_title">魔法阵</string>
+    <string name="patch_mode_bootimg_patch">模式：魔法附魔</string>
+    <string name="patch_mode_patch_and_install">模式：附魔并觉醒</string>
+    <string name="patch_mode_install_to_next_slot">模式：转移到备用星之容器 (OTA仪式后)</string>
+    <string name="patch_mode_uninstall_patch">模式：解除心之契约</string>
+    <string name="patch_select_bootimg_btn">选择魔法容器</string>
+    <string name="patch_embed_kpm_btn">镶嵌星之结晶</string>
+    <string name="patch_start_patch_btn">开始施法</string>
+    <string name="patch_start_unpatch_btn">解除附魔</string>
+    <string name="patch_item_error">!!魔法反噬!!</string>
+    <string name="patch_item_bootimg">魔法容器</string>
+    <string name="patch_item_bootimg_slot">星之位置:</string>
+    <string name="patch_item_bootimg_dev">魔法道具:</string>
+    <string name="patch_item_kernel">心之核心</string>
+    <string name="patch_item_kpimg">契约印记</string>
+    <string name="patch_item_kpimg_version">魔法等级:</string>
+    <string name="patch_item_kpimg_comile_time">施法时间:</string>
+    <string name="patch_item_kpimg_config">魔法配置:</string>
+    <string name="patch_item_new_extra_kpm">镶嵌新星之结晶</string>
+    <string name="patch_item_existed_extra_kpm">已存在</string>
+    <string name="patch_item_extra_name">魔法名称:</string>
+    <string name="patch_item_extra_version">魔法等级:</string>
+    <string name="patch_item_extra_author">创造者:</string>
+    <string name="patch_item_extra_kpm_license">魔法契约:</string>
+    <string name="patch_item_extra_kpm_desciption">魔法描述:</string>
+    <string name="patch_item_extra_args">咒语参数:</string>
+    <string name="patch_item_extra_event">触发事件:</string>
+    <string name="patch_item_skey">心之密钥</string>
+    <string name="patch_item_set_skey_label">心之密钥长度应为8-63个字符，包含星光和月辉，不能含有混沌之力。</string>
+
+    <string name="home_kernel">心之核心等级</string>
+    <string name="home_manager_version">契约管理器等级</string>
+    <string name="home_fingerprint">魔法指纹</string>
+
+    <string name="home_selinux_status">魔法结界状态</string>
+    <string name="home_selinux_status_disabled">结界已解除</string>
+    <string name="home_selinux_status_enforcing">结界强制执行中</string>
+    <string name="home_selinux_status_permissive">结界宽容模式</string>
+    <string name="home_selinux_status_unknown">结界状态未知</string>
+
+    <string name="home_device_info">魔法道具</string>
+    <string name="home_system_version">星界系统等级</string>
+    <string name="home_kpatch_version">心之契约等级</string>
+    <string name="home_su_path">魔法使路径</string>
+    <string name="home_apatch_version">魔法少女工坊版本</string>
+
+    <string name="kpm">心之结晶</string>
+    <string name="kpm_kp_not_installed">心之契约尚未觉醒</string>
+    <string name="kpm_add_kpm">添加心之结晶</string>
+    <string name="kpm_load">激活</string>
+    <string name="kpm_install">契约</string>
+    <string name="kpm_embed">融合</string>
+    <string name="kpm_load_toast_succ">激活成功</string>
+    <string name="kpm_load_toast_failed">激活失败</string>
+    <string name="kpm_unload_confirm">卸载%s心之结晶？</string>
+    <string name="kpm_unload">解除契约</string>
+    <string name="kpm_control">操控</string>
+    <string name="kpm_apm_empty">未激活心之结晶</string>
+    <string name="kpm_version">魔法等级</string>
+    <string name="kpm_license">魔法契约</string>
+    <string name="kpm_author">创造者</string>
+    <string name="kpm_desc">魔法描述</string>
+    <string name="kpm_args">咒语参数</string>
+
+    <string name="su_title">魔法使</string>
+    <string name="su_selinux_via_hook">通过魔法阵绕过结界</string>
+    <string name="su_pkg_excluded_label">魔法免疫</string>
+    <string name="su_batch_exclude_title">批量免疫</string>
+    <string name="su_batch_exclude_content">为全部非魔法使施加免疫咒语,请选择一个魔法</string>
+    <string name="su_exclude_btn">施加免疫</string>
+    <string name="su_exclude_reverse_btn">解除免疫</string>
+    <string name="su_pkg_excluded_setting_title">免疫设置</string>
+    <string name="su_pkg_excluded_setting_summary">启用此选项将允许魔法工坊恢复此应用所受的魔法影响。</string>
+    <string name="su_show_system_apps">显示系统魔法使</string>
+    <string name="su_hide_system_apps">隐藏系统魔法使</string>
+    <string name="su_refresh">刷新魔法阵</string>
+
+    <string name="apm">星之魔法阵</string>
+    <string name="apm_not_installed">星之守护尚未觉醒</string>
+    <string name="apm_failed_to_enable">激活魔法阵失败: %s</string>
+    <string name="apm_failed_to_disable">解除魔法阵失败: %s</string>
+    <string name="apm_empty">未契约魔法阵</string>
+    <string name="apm_remove">移除</string>
+    <string name="apm_install">契约</string>
+    <string name="apm_uninstall_confirm">解除%s魔法阵契约？</string>
+    <string name="apm_uninstall_success">%s已解除契约</string>
+    <string name="apm_uninstall_failed">解除契约失败: %s</string>
+    <string name="apm_version">魔法等级</string>
+    <string name="apm_author">创造者</string>
+    <string name="apm_desc">魔法描述</string>
+    <string name="apm_overlay_fs_not_available">星之回廊被心之核心封印，魔法阵不可用！</string>
+    <string name="apm_magisk_conflict">由于与Magisk魔法阵冲突，此魔法阵不可用！</string>
+    <string name="apm_reboot_to_apply">重新觉醒后生效</string>
+    <string name="apm_changelog">魔法更新记录</string>
+    <string name="apm_update">更新魔法</string>
+    <string name="apm_downloading">正在下载魔法阵: %s</string>
+    <string name="apm_start_downloading">开始下载: %s</string>
+    <string name="apm_new_version_available">发现新版本%s魔法阵，点击升级。</string>
+
+    <string name="hide_apatch_manager">隐藏魔法工坊</string>
+    <string name="hide_apatch_manager_summary">安装一个随机包名和自定义魔法名的代理魔法使</string>
+    <string name="hide_apatch_dialog_new_manager_name">新魔法使名称</string>
+    <string name="hide_apatch_dialog_summary">这将作为显示在星界中的新魔法使名称</string>
+    <string name="hide_apatch_manager_failure">隐藏失败。请报告此魔法错误！</string>
+
+    <string name="setting_reset_su_path">重置魔法使路径</string>
+    <string name="setting_reset_su_new_path">新完整魔法路径</string>
+
+    <string name="apm_webui_open">开启</string>
+    <string name="apm_action">魔法操作</string>
+    <string name="enable_web_debugging">启用魔法阵调试</string>
+    <string name="enable_web_debugging_summary">可用于调试星界魔法阵。请仅在需要时启用。</string>
+    <string name="settings_apm_install_confirm">安装魔法阵确认</string>
+    <string name="settings_apm_install_confirm_summary">安装魔法阵前显示确认魔法阵</string>
+    <string name="settings_apm_stay_on_page">留在魔法阵页面</string>
+    <string name="settings_apm_stay_on_page_summary">星之魔法阵执行完魔法后不自动返回</string>
+    <string name="settings_show_disable_all_modules">显示"禁用全部魔法阵"按钮</string>
+    <string name="settings_show_disable_all_modules_summary">在魔法阵页面显示一键禁用所有魔法阵的按钮</string>
+    <string name="apm_install_confirm_title">安装魔法阵</string>
+    <string name="apm_install_confirm_content">确定要契约%s魔法阵吗？</string>
+    <string name="apm_disable_all_title">禁用所有魔法阵</string>
+    <string name="apm_disable_all_confirm">确定禁用全部魔法阵吗？一般来说在星界更新前才这么做。</string>
+
+    <string name="settings_donot_store_superkey">不在本地存储心之密钥</string>
+    <string name="settings_donot_store_superkey_summary">每次启动魔法工坊时验证心之密钥</string>
+
+    <string name="mode_select_page_title">觉醒</string>
+    <string name="mode_select_page_patch_and_install">附魔并觉醒</string>
+    <string name="mode_select_page_select_file">选择要附魔的魔法容器</string>
+    <string name="mode_select_page_install_inactive_slot">契约到备用星之容器 (OTA仪式后)</string>
+    <string name="mode_select_page_install_inactive_slot_warning">你的魔法道具将在重新觉醒后**强制**启动到当前未激活的星之位置！\n仅在OTA仪式完成后使用此选项。\n继续吗？</string>
+
+    <string name="home_dialog_auth_fail_title">认证失败</string>
+    <string name="home_dialog_auth_fail_content">无法认证心之密钥，因此魔法工坊无法正常工作。\n以下是认证失败的一些可能原因：\n1. 你没有使用心之契约附魔魔法容器。\n2. 附魔后的魔法容器未激活。\n3. 心之密钥错误或含有混沌之力。\n4. 你的魔法道具不支持此魔法。\n\n请检查并重试。如果仍有问题，你可以在官方魔法塔的issue页面提问。</string>
+
+    <string name="home_more_menu_feedback_or_suggestion">反馈或建议</string>
+    <string name="home_more_menu_about">关于</string>
+
+    <string name="home_dialog_uninstall_title">解除契约</string>
+    
+    <string name="home_dialog_uninstall_ap_only">仅解除魔法契约</string>
+    <string name="home_dialog_uninstall_all">完全解除契约</string>
+
+    <string name="kpm_control_dialog_title">操控心之结晶</string>
+    <string name="kpm_control_dialog_content">请输入操控咒语：</string>
+    <string name="kpm_control_paramters">咒语参数</string>
+    <string name="kpm_control_outMsg">魔法输出</string>
+    <string name="kpm_control_ok">魔法成功！</string>
+    <string name="kpm_control_failed">魔法失败！</string>
+    
+    <string name="settings_night_mode_follow_sys">星夜模式跟随星界</string>
+    <string name="settings_night_mode_follow_sys_summary">根据星界设置自动切换星夜模式</string>
+    <string name="settings_night_theme_enabled">星夜模式</string>
+    
+    <string name="settings_use_system_color_theme">星界颜色主题</string>
+    <string name="settings_use_system_color_theme_summary">使用星界根据魔法阵生成的颜色主题</string>
+    <string name="settings_custom_color_theme">颜色魔法主题</string>
+
+    <string name="amber_theme">琥珀之光</string>
+    <string name="blue_theme">星空之蓝</string>
+    <string name="blue_grey_theme">月影之灰</string>
+    <string name="brown_theme">大地之棕</string>
+    <string name="cyan_theme">水之青</string>
+    <string name="deep_orange_theme">夕阳之橙</string>
+    <string name="deep_purple_theme">神秘之紫</string>
+    <string name="green_theme">森林之绿</string>
+    <string name="indigo_theme">靛蓝之夜</string>
+    <string name="light_blue_theme">天空之蓝</string>
+    <string name="light_green_theme">嫩芽之绿</string>
+    <string name="lime_theme">酸橙之光</string>
+    <string name="orange_theme">晨光之橙</string>
+    <string name="pink_theme">樱花之粉</string>
+    <string name="purple_theme">紫罗兰之紫</string>
+    <string name="red_theme">火焰之红</string>
+    <string name="sakura_theme">樱花飞舞</string>
+    <string name="teal_theme">蓝绿之韵</string>
+    <string name="yellow_theme">阳光之黄</string>
+
+    <string name="about_app_desc">一个基于心之核心的魔法变身解决方案，支持心之结晶和心之函数hook，无需重新锻造心之核心。</string>
+    <string name="about_powered_by">由%1$s提供魔力</string>
+    <string name="about_telegram_group">魔法少女通讯群组</string>
+    
+    <!-- Online Module Strings -->
+    <string name="online_module_title">在线星之魔法阵</string>
+    <string name="online_module_download_start">开始召唤: %s</string>
+    <string name="online_module_download_complete">召唤完成: %s</string>
+    <string name="online_module_download_notification">正在召唤%s。请查看魔法水晶球了解进度，召唤完成后请查看魔法仓库。</string>
+
+    <!-- Online KPM Strings -->
+    <string name="online_kpm_title">在线心之结晶</string>
+    <string name="online_kpm_download_start">开始召唤: %s</string>
+    <string name="online_kpm_download_complete">召唤完成: %s</string>
+    <string name="online_kpm_download_notification">正在召唤%s。请查看魔法水晶球了解进度，召唤完成后请查看魔法仓库。</string>
+
+    <!-- Crash Handle Strings -->
+    <string name="crash_handle_title">魔法事故报告</string>
+    <string name="crash_handle_copy">复制</string>
+
+    <!-- About Screen Strings -->
+    <string name="about_app_version">应用魔法等级</string>
+    <string name="about_github">魔法书仓库</string>
+    <string name="about_telegram_channel">魔法少女通讯频道</string>
+
+    <!-- App Title Strings -->
+    <!-- App Title Strings -->
+    <string name="app_title_fpatch">FPatch</string>
+    <string name="app_title_apatch_folk">APatch Folk</string>
+    <string name="app_title_apatchx">APatch X</string>
+    <string name="app_title_apatch">APatch</string>
+    <string name="app_title_folkpatch">FolkPatch</string>
+    <string name="app_title_kernelpatch">KernelPatch</string>
+    <string name="app_title_supersu">SuperSU</string>
+    <string name="app_title_folksu">FolkSU</string>
+    <string name="app_title_superuser">Superuser</string>
+    <string name="app_title_superpatch">SuperPatch</string>
+    <string name="app_title_magicpatch">MagicPatch</string>
+
+    <string name="settings_app_dpi">魔法使清晰度</string>
+    <string name="settings_lite_mode">简约魔法模式</string>
+    <string name="settings_lite_mode_mode_summary">启用简约魔法模式以获得更好的施法体验</string>
+    <string name="settings_force_overlayfs_mode">强制星之回廊模式</string>
+    <string name="settings_force_overlayfs_mode_summary">强制使用星之回廊加载魔法阵</string>
+    <string name="settings_app_title">魔法使名称</string>
+    <string name="settings_custom_background">自定义魔法背景</string>
+    <string name="settings_custom_background_enabled">已启用自定义魔法背景</string>
+    <string name="settings_custom_background_opacity">魔法阵透明度</string>
+    <string name="settings_custom_background_dim">背景暗度</string>
+    <string name="settings_select_background_image">选择魔法背景图片</string>
+    <string name="settings_custom_background_summary">设置自定义魔法背景图片</string>
+    <string name="settings_custom_background_saved">魔法背景保存成功</string>
+    <string name="settings_custom_background_error">保存魔法背景失败</string>
+    <string name="settings_background_selected">已选择魔法背景</string>
+    <string name="settings_background_image_cleared">魔法背景已清除</string>
+    <string name="settings_clear_background">清除魔法背景</string>
+    <string name="settings_clear_background_confirm">确定要清除魔法背景图片吗？</string>
+    <string name="settings_launcher_icon">魔法使徽章</string>
+    <string name="launcher_icon_default">魔法少女工坊</string>
+    <string name="launcher_icon_classic">魔法少女工坊·动漫风</string>
+    <string name="launcher_icon_apatch">心之契约</string>
+    <string name="launcher_icon_kernelsu">心之核心SU</string>
+    <string name="launcher_icon_kernelsu_next">心之核心SU·次世代</string>
+    <string name="launcher_icon_kitsune">狐火魔法使</string>
+    <string name="launcher_icon_magisk">面具魔法使</string>
+    <string name="launcher_icon_superroot">超级魔法使</string>
+    
+    <string name="su_exclude_all_title">批量免疫</string>
+    <string name="su_exclude_all_confirm">确定要将所有未觉醒的魔法使施加免疫咒语吗？</string>
+
+    <!-- 隐藏设定字符串 -->
+    <string name="home_hide_su_path">隐藏魔法使路径</string>
+    <string name="home_hide_kpatch_version">隐藏心之核心契约等级</string>
+    <string name="home_hide_fingerprint">隐藏魔法指纹</string>
+    <string name="home_hide_su_path_summary">在魔法情报卡片中隐藏魔法使路径</string>
+    <string name="home_hide_kpatch_version_summary">在魔法情报卡片中隐藏心之核心契约等级信息</string>
+    <string name="home_hide_fingerprint_summary">在魔法情报卡片中隐藏魔法指纹信息</string>
+    <!-- KPM AutoLoad Strings -->
+    <string name="kpm_autoload_title">心之结晶自动激活</string>
+    <string name="kpm_autoload_enabled">启用自动激活</string>
+    <string name="kpm_autoload_enabled_summary">应用启动时自动激活心之结晶</string>
+    <string name="kpm_autoload_json_config">星界咒语配置</string>
+    <string name="kpm_autoload_json_label">星界咒语</string>
+    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/crystal1.kpm",\n    "/path/to/crystal2.kpm"\n  ]\n}</string>
+    <string name="kpm_autoload_json_error">无效的星界咒语格式</string>
+    <string name="kpm_autoload_json_helper">输入有效的星界咒语，包含心之结晶文件路径数组</string>
+    <string name="kpm_autoload_save">保存咒语配置</string>
+    <string name="kpm_autoload_save_confirm">保存自动激活咒语配置？</string>
+    <string name="kpm_autoload_save_success">咒语配置保存成功</string>
+    <string name="kpm_autoload_save_failed">咒语配置保存失败</string>
+    <string name="kpm_autoload_visual_mode">可视化咒语模式</string>
+    <string name="kpm_autoload_json_mode">星界咒语模式</string>
+
+    <!-- APM Bulk Install Strings -->
+    <string name="apm_bulk_install_title">星之魔法阵批量契约</string>
+    <string name="apm_bulk_install_list_title">魔法阵列表</string>
+    <string name="apm_bulk_install_add">添加魔法阵</string>
+    <string name="apm_bulk_install_empty">未添加魔法阵</string>
+    <string name="apm_bulk_install_action">批量施法</string>
+    <string name="apm_bulk_install_log_title">批量施法记录</string>
+    <string name="apm_bulk_install_log_start">开始批量施法...</string>
+    <string name="apm_bulk_install_log_installing">正在施法 %s</string>
+    <string name="apm_bulk_install_log_installed">魔法阵 %s 施法完成。</string>
+    <string name="apm_bulk_install_log_done">所有魔法仪式已完成。</string>
+    <string name="apm_bulk_install_first_use_text">这个功能允许你一次性施展多个魔法阵，属于快速施法，适合施展一些过程中没有涉及咒语咏唱的魔法阵，涉及咏唱古代咒语的请使用普通施法</string>
+    <string name="apm_bulk_install_remove">移除</string>
+    <string name="kpm_autoload_add_kpm">添加心之结晶</string>
+    <string name="kpm_autoload_remove_kpm">解除</string>
+    <string name="kpm_autoload_kpm_list_title">心之结晶列表</string>
+    <string name="kpm_autoload_no_kpm_added">未添加心之结晶</string>
+    <string name="kpm_autoload_kpm_path">心之结晶路径</string>
+    <string name="kpm_autoload_file_not_found">未找到魔法文件</string>
+    <string name="kpm_autoload_select_kpm_file">选择心之结晶文件</string>
+    <string name="kpm_autoload_first_time_title">关于心之结晶自动激活</string>
+    <string name="kpm_autoload_first_time_message">这个功能可以让你觉醒时自动临时激活咒语配置文件的全部心之结晶，这种方案相比于直接融合到心之核心更加方便。\n\n例如，功能为防止魔法容器被修改的心之结晶，这种心之结晶只能临时激活使用，但是融合会导致无法觉醒。或者你不想破坏心之核心就可以使用这个咒语配置快速激活结晶。\n\n需要确保魔法工坊完全退出进入才会执行咒语，一般来说觉醒进入也是会激活的，工坊黑屏一段时间属于正常现象，使用的是纯后台的咒语激活方案，记得手动刷新看看是否正确激活！</string>
+    <string name="kpm_autoload_first_time_confirm">了解了</string>
+    <string name="kpm_autoload_do_not_show_again">不再显示</string>
+
+    <string name="kpm_page_first_time_title">魔法警告</string>
+    <string name="kpm_page_first_time_message">心之结晶是直接修改心之核心的实现，它不像星之魔法阵一样有很好的恢复机制，出问题只能进入召唤阵去修复。建议先激活结晶没有问题再融合到心之核心。如果是只能激活使用的结晶，可以尝试使用自动心之结晶激活功能。如果你不了解心之结晶，请不要使用本功能！</string>
+</resources>

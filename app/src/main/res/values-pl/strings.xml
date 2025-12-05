@@ -274,7 +274,7 @@
     <string name="about_app_version">Wersja aplikacji</string>
     <string name="about_github">GitHub</string>
     <string name="about_telegram_channel">Kanał Telegram</string>
-
+    
     <!-- App Title Strings -->
     <string name="app_title_fpatch">FPatch</string>
     <string name="app_title_apatch_folk">APatch Folk</string>
@@ -286,6 +286,7 @@
     <string name="app_title_folksu">FolkSU</string>
     <string name="app_title_superuser">Superuser</string>
     <string name="app_title_superpatch">SuperPatch</string>
+    <string name="app_title_magicpatch">MagicPatch</string>
 
     <string name="settings_app_dpi">DPI aplikacji</string>
     <string name="settings_lite_mode">Tryb uproszczony</string>
