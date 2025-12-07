@@ -400,4 +400,9 @@
     <string name="backup_dir_open_failed">Nie udało się otworzyć katalogu kopii zapasowych</string>
     <string name="auto_backup_failed">Automatyczna kopia zapasowa nie powiodła się: %s</string>
     <string name="auto_backup_success">Automatyczna kopia zapasowa zakończona sukcesem: %s</string>
+
+    <!-- Auto-added missing strings -->
+    <string name="settings_simple_kernel_version_mode_summary">Ukryj informacje o wersji na karcie roboczej, gdy włączone</string>
+    <string name="app_name" translatable="false">FolkPatch</string>
+    <string name="settings_simple_kernel_version_mode">Zwięzły tryb wersji jądra</string>
 </resources>

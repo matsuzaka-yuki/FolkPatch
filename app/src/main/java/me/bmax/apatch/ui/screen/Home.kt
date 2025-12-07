@@ -33,6 +33,7 @@ import androidx.compose.material.icons.outlined.Block
 import androidx.compose.material.icons.outlined.Cached
 import androidx.compose.material.icons.outlined.CheckCircle
 import androidx.compose.material.icons.outlined.Clear
+import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.material.icons.outlined.InstallMobile
 import androidx.compose.material.icons.outlined.SystemUpdate
 import androidx.compose.material3.AlertDialogDefaults
@@ -522,6 +523,7 @@ private fun KStatusCard(
     }
 
     val prefs = APApplication.sharedPreferences
+    val simpleKernelVersionMode = remember { mutableStateOf(prefs.getBoolean("simple_kernel_version_mode", false)) }
     val darkThemeFollowSys = prefs.getBoolean("night_mode_follow_sys", true)
     val nightModeEnabled = prefs.getBoolean("night_mode_enabled", false)
     val isDarkTheme = if (darkThemeFollowSys) {
@@ -575,7 +577,7 @@ private fun KStatusCard(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(12.dp),
+                .padding(if (simpleKernelVersionMode.value) 0.dp else 12.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             if (kpState == APApplication.State.KERNELPATCH_NEED_UPDATE) {
@@ -589,7 +591,7 @@ private fun KStatusCard(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(10.dp),
+                    .padding(if (simpleKernelVersionMode.value) 12.dp else 10.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 when (kpState) {
@@ -650,7 +652,7 @@ private fun KStatusCard(
                             )
                         }
                     }
-                    if (kpState != APApplication.State.UNKNOWN_STATE && kpState != APApplication.State.KERNELPATCH_NEED_UPDATE && kpState != APApplication.State.KERNELPATCH_NEED_REBOOT) {
+                    if (kpState != APApplication.State.UNKNOWN_STATE && kpState != APApplication.State.KERNELPATCH_NEED_UPDATE && kpState != APApplication.State.KERNELPATCH_NEED_REBOOT && !simpleKernelVersionMode.value) {
                         Spacer(Modifier.height(4.dp))
                         Text(
                             text = "${Version.installedKPVString()} (${managerVersion.second}) - " + if (apState != APApplication.State.ANDROIDPATCH_NOT_INSTALLED) "Full" else "KernelPatch",
@@ -662,7 +664,7 @@ private fun KStatusCard(
                 Column(
                     modifier = Modifier.align(Alignment.CenterVertically)
                 ) {
-                    Button(onClick = {
+                    val onAction = {
                         when (kpState) {
                             APApplication.State.UNKNOWN_STATE -> {
                                 showAuthKeyDialog.value = true
@@ -693,42 +695,70 @@ private fun KStatusCard(
                                 }
                             }
                         }
-                    }, colors = if (BackgroundConfig.isCustomBackgroundEnabled && kpState == APApplication.State.KERNELPATCH_INSTALLED) {
-                        val opacity = BackgroundConfig.customBackgroundOpacity
-                        val contentColor = if (opacity <= 0.1f) {
-                            if (isDarkTheme) Color.White else Color.Black
-                        } else {
-                            MaterialTheme.colorScheme.onPrimary
+                    }
+
+                    if (simpleKernelVersionMode.value) {
+                        IconButton(onClick = { onAction() }) {
+                            when (kpState) {
+                                APApplication.State.UNKNOWN_STATE -> {
+                                    Icon(Icons.Filled.Warning, contentDescription = stringResource(id = R.string.super_key))
+                                }
+
+                                APApplication.State.KERNELPATCH_NEED_UPDATE -> {
+                                    Icon(Icons.Outlined.SystemUpdate, contentDescription = stringResource(id = R.string.home_kp_cando_update))
+                                }
+
+                                APApplication.State.KERNELPATCH_NEED_REBOOT -> {
+                                    Icon(Icons.Filled.Refresh, contentDescription = stringResource(id = R.string.home_ap_cando_reboot))
+                                }
+
+                                APApplication.State.KERNELPATCH_UNINSTALLING -> {
+                                    Icon(Icons.Outlined.Cached, contentDescription = "busy")
+                                }
+
+                                else -> {
+                                    Icon(Icons.Outlined.Delete, contentDescription = stringResource(id = R.string.home_ap_cando_uninstall))
+                                }
+                            }
                         }
-                        ButtonDefaults.buttonColors(
-                            containerColor = MaterialTheme.colorScheme.primary.copy(alpha = opacity),
-                            contentColor = contentColor
-                        )
                     } else {
-                        ButtonDefaults.buttonColors()
-                    }, content = {
-                        when (kpState) {
-                            APApplication.State.UNKNOWN_STATE -> {
-                                Text(text = stringResource(id = R.string.super_key))
+                        Button(onClick = { onAction() }, colors = if (BackgroundConfig.isCustomBackgroundEnabled && kpState == APApplication.State.KERNELPATCH_INSTALLED) {
+                            val opacity = BackgroundConfig.customBackgroundOpacity
+                            val contentColor = if (opacity <= 0.1f) {
+                                if (isDarkTheme) Color.White else Color.Black
+                            } else {
+                                MaterialTheme.colorScheme.onPrimary
                             }
+                            ButtonDefaults.buttonColors(
+                                containerColor = MaterialTheme.colorScheme.primary.copy(alpha = opacity),
+                                contentColor = contentColor
+                            )
+                        } else {
+                            ButtonDefaults.buttonColors()
+                        }, content = {
+                            when (kpState) {
+                                APApplication.State.UNKNOWN_STATE -> {
+                                    Text(text = stringResource(id = R.string.super_key))
+                                }
 
-                            APApplication.State.KERNELPATCH_NEED_UPDATE -> {
-                                Text(text = stringResource(id = R.string.home_kp_cando_update))
-                            }
+                                APApplication.State.KERNELPATCH_NEED_UPDATE -> {
+                                    Text(text = stringResource(id = R.string.home_kp_cando_update))
+                                }
 
-                            APApplication.State.KERNELPATCH_NEED_REBOOT -> {
-                                Text(text = stringResource(id = R.string.home_ap_cando_reboot))
-                            }
+                                APApplication.State.KERNELPATCH_NEED_REBOOT -> {
+                                    Text(text = stringResource(id = R.string.home_ap_cando_reboot))
+                                }
 
-                            APApplication.State.KERNELPATCH_UNINSTALLING -> {
-                                Icon(Icons.Outlined.Cached, contentDescription = "busy")
-                            }
+                                APApplication.State.KERNELPATCH_UNINSTALLING -> {
+                                    Icon(Icons.Outlined.Cached, contentDescription = "busy")
+                                }
 
-                            else -> {
-                                Text(text = stringResource(id = R.string.home_ap_cando_uninstall))
+                                else -> {
+                                    Text(text = stringResource(id = R.string.home_ap_cando_uninstall))
+                                }
                             }
-                        }
-                    })
+                        })
+                    }
                 }
             }
         }

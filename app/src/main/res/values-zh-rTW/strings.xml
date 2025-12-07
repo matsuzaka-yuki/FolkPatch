@@ -386,4 +386,16 @@
     <string name="backup_dir_open_failed">打開備份目錄失敗</string>
     <string name="auto_backup_failed">自動備份失敗: %s</string>
     <string name="auto_backup_success">自動備份成功: %s</string>
+
+    <!-- Auto-added missing strings -->
+    <string name="home_hide_kpatch_version_summary">在資訊卡中隱藏核心修補程式版本</string>
+    <string name="settings_simple_kernel_version_mode_summary">啟用後在運作卡片中隱藏詳細版本資訊</string>
+    <string name="home_hide_su_path_summary">在資訊卡中隱藏 su 執行檔路徑</string>
+    <string name="home_hide_fingerprint_summary">在資訊卡中隱藏指紋資訊</string>
+    <string name="home_hide_fingerprint">隱藏指紋</string>
+    <string name="settings_simple_kernel_version_mode">簡潔核心版本模式</string>
+    <string name="about_source_code"><![CDATA[<p>查看原始碼於 %1$s<p/>加入我們的 %2$s 頻道<p/>加入我們的 %3$s 群組]]></string>
+    <string name="home_hide_kpatch_version">隱藏核心修補程式版本</string>
+    <string name="home_hide_su_path">隱藏 su 執行檔路徑</string>
+    <string name="app_title_magicpatch">MagicPatch</string>
 </resources>

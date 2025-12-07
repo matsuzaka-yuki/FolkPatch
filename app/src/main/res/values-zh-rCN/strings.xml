@@ -391,6 +391,9 @@
     <string name="apm_backup_failed_msg">备份失败：%s</string>
     <string name="apm_restore_failed_msg">恢复失败：%s</string>
     
+    <string name="settings_simple_kernel_version_mode">内核版本简洁模式</string>
+    <string name="settings_simple_kernel_version_mode_summary">开启后不显示工作中卡片工作者文字底部的版本信息</string>
+
     <!-- Auto Backup Strings -->
     <string name="settings_auto_backup_module">自动备份系统模块</string>
     <string name="settings_auto_backup_module_summary">安装模块时自动备份文件到私有目录</string>

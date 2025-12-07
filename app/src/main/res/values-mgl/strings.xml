@@ -398,4 +398,8 @@
     <string name="backup_dir_open_failed">无法打开魔法宝箱</string>
     <string name="auto_backup_failed">星之魔法阵保存失败: %s</string>
     <string name="auto_backup_success">星之魔法阵保存成功: %s</string>
+
+    <!-- Auto-added missing strings -->
+    <string name="settings_simple_kernel_version_mode_summary">隐藏魔法卡片中的星之版本信息</string>
+    <string name="settings_simple_kernel_version_mode">简约星之版本模式</string>
 </resources>

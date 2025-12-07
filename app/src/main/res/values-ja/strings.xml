@@ -355,4 +355,15 @@
     <string name="backup_dir_open_failed">バックアップディレクトリを開けませんでした</string>
     <string name="auto_backup_failed">自動バックアップに失敗しました: %s</string>
     <string name="auto_backup_success">自動バックアップに成功しました: %s</string>
+
+    <!-- Auto-added missing strings -->
+    <string name="home_hide_kpatch_version_summary">情報カードでカーネルパッチのバージョンを隠す</string>
+    <string name="settings_simple_kernel_version_mode_summary">有効にすると、動作カードのバージョン情報を隠します</string>
+    <string name="home_hide_su_path_summary">情報カードで su のパスを隠す</string>
+    <string name="home_hide_fingerprint_summary">情報カードで指紋情報を隠す</string>
+    <string name="settings_launcher_icon">ランチャーアイコン</string>
+    <string name="settings_simple_kernel_version_mode">簡潔なカーネルバージョンモード</string>
+    <string name="home_hide_fingerprint">指紋情報を隠す</string>
+    <string name="home_hide_kpatch_version">カーネルパッチのバージョンを隠す</string>
+    <string name="home_hide_su_path">su のパスを隠す</string>
 </resources>

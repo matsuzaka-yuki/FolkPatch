@@ -396,4 +396,9 @@
     <string name="backup_dir_open_failed">观乾坤戒受阻</string>
     <string name="auto_backup_failed">自动拓印受阻: %s</string>
     <string name="auto_backup_success">自动拓印圆满: %s</string>
+
+    <!-- Auto-added missing strings -->
+    <string name="settings_simple_kernel_version_mode_summary">启此式，隐仙门事宜仙笺之详述</string>
+    <string name="settings_simple_kernel_version_mode">简约道核篇次之式</string>
+    <string name="app_title_magicpatch">MagicPatch</string>
 </resources>

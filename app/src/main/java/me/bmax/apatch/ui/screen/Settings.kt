@@ -509,6 +509,23 @@ fun SettingScreen() {
                 hideFingerprint = it
             }
 
+            var simpleKernelVersionMode by rememberSaveable {
+                mutableStateOf(
+                    prefs.getBoolean("simple_kernel_version_mode", false)
+                )
+            }
+            SwitchItem(
+                icon = if (simpleKernelVersionMode) Icons.Filled.VisibilityOff else Icons.Filled.Visibility,
+                title = stringResource(id = R.string.settings_simple_kernel_version_mode),
+                summary = stringResource(id = R.string.settings_simple_kernel_version_mode_summary),
+                checked = simpleKernelVersionMode
+            ) {
+                APApplication.sharedPreferences.edit {
+                    putBoolean("simple_kernel_version_mode", it)
+                }
+                simpleKernelVersionMode = it
+            }
+
 
 
             // Night Mode Follow System

@@ -405,4 +405,8 @@
     <string name="backup_dir_open_failed">Не удалось открыть каталог резервных копий</string>
     <string name="auto_backup_failed">Ошибка резервного копирования: %s</string>
     <string name="auto_backup_success">Резервная копия создана: %s</string>
+
+    <!-- Auto-added missing strings -->
+    <string name="settings_simple_kernel_version_mode_summary">Скрыть информацию о версии в рабочей карточке, когда включено</string>
+    <string name="settings_simple_kernel_version_mode">Лаконичный режим версии ядра</string>
 </resources>
