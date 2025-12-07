@@ -90,6 +90,7 @@ import me.bmax.apatch.ui.component.ConfirmResult
 import me.bmax.apatch.ui.component.ModuleRemoveButton
 import me.bmax.apatch.ui.component.ModuleStateIndicator
 import me.bmax.apatch.ui.component.ModuleUpdateButton
+import me.bmax.apatch.ui.component.SearchAppBar
 import me.bmax.apatch.ui.component.rememberConfirmDialog
 import me.bmax.apatch.ui.component.rememberLoadingDialog
 import me.bmax.apatch.ui.viewmodel.APModuleViewModel
@@ -180,9 +181,22 @@ fun APModuleScreen(navigator: DestinationsNavigator) {
 
     val moduleListState = rememberLazyListState()
 
+    var searchQuery by remember { mutableStateOf("") }
+    val filteredModuleList = remember(viewModel.moduleList, searchQuery) {
+        if (searchQuery.isEmpty()) {
+            viewModel.moduleList
+        } else {
+            viewModel.moduleList.filter {
+                it.name.contains(searchQuery, ignoreCase = true) ||
+                        it.description.contains(searchQuery, ignoreCase = true) ||
+                        it.author.contains(searchQuery, ignoreCase = true)
+            }
+        }
+    }
+
     Scaffold(
         topBar = {
-        TopBar(navigator, viewModel, snackBarHost)
+        TopBar(navigator, viewModel, snackBarHost, searchQuery) { searchQuery = it }
     }, floatingActionButton = if (hideInstallButton) {
         { /* Empty */ }
     } else {
@@ -259,6 +273,7 @@ fun APModuleScreen(navigator: DestinationsNavigator) {
                 ModuleList(
                     navigator,
                     viewModel = viewModel,
+                    modules = filteredModuleList,
                     modifier = Modifier
                         .padding(innerPadding)
                         .fillMaxSize(),
@@ -359,6 +374,7 @@ fun APModuleScreen(navigator: DestinationsNavigator) {
 private fun ModuleList(
     navigator: DestinationsNavigator,
     viewModel: APModuleViewModel,
+    modules: List<APModuleViewModel.ModuleInfo>,
     modifier: Modifier = Modifier,
     state: LazyListState,
     onInstallModule: (Uri) -> Unit,
@@ -496,7 +512,7 @@ private fun ModuleList(
             },
         ) {
             when {
-                viewModel.moduleList.isEmpty() -> {
+                modules.isEmpty() -> {
                     item {
                         Box(
                             modifier = Modifier.fillParentMaxSize(),
@@ -510,7 +526,7 @@ private fun ModuleList(
                 }
 
                 else -> {
-                    items(viewModel.moduleList) { module ->
+                    items(modules) { module ->
                         var isChecked by rememberSaveable(module) { mutableStateOf(module.enabled) }
                         val scope = rememberCoroutineScope()
                         val updatedModule by produceState(initialValue = Triple("", "", "")) {
@@ -578,7 +594,13 @@ private fun ModuleList(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun TopBar(navigator: DestinationsNavigator, viewModel: APModuleViewModel, snackBarHost: SnackbarHostState) {
+private fun TopBar(
+    navigator: DestinationsNavigator,
+    viewModel: APModuleViewModel,
+    snackBarHost: SnackbarHostState,
+    searchQuery: String,
+    onSearchQueryChange: (String) -> Unit
+) {
     val confirmDialog = rememberConfirmDialog()
     val scope = rememberCoroutineScope()
     val disableAllTitle = stringResource(R.string.apm_disable_all_title)
@@ -620,9 +642,12 @@ private fun TopBar(navigator: DestinationsNavigator, viewModel: APModuleViewMode
         }
     }
 
-    TopAppBar(
+    SearchAppBar(
         title = { Text(stringResource(R.string.apm)) },
-        actions = {
+        searchText = searchQuery,
+        onSearchTextChange = onSearchQueryChange,
+        onClearClick = { onSearchQueryChange("") },
+        leadingActions = {
             if (showDisableAllButton) {
                 androidx.compose.material3.IconButton(onClick = {
                     scope.launch {
@@ -659,7 +684,8 @@ private fun TopBar(navigator: DestinationsNavigator, viewModel: APModuleViewMode
                     contentDescription = "Bulk Install"
                 )
             }
-            
+        },
+        dropdownContent = {
             androidx.compose.material3.IconButton(onClick = { showMenu = true }) {
                 Icon(Icons.Filled.MoreVert, contentDescription = "More")
                 WallpaperAwareDropdownMenu(
