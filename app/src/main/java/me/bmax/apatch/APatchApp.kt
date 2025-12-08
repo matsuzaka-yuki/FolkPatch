@@ -266,7 +266,7 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler {
         }
 
         Log.d(TAG, "Checking app signature...")
-        if (!BuildConfig.DEBUG && false && !verifyAppSignature("1x2twMoHvfWUODv7KkRRNKBzOfEqJwRKGzJpgaz18xk=")) {
+        if (!BuildConfig.DEBUG && !verifyAppSignature("yhcoLqqRhsVoBPhTlUSWKLlKYxx+98SwnH0sf48AI5w=")) {
             Log.e(TAG, "App signature verification failed!")
             while (true) {
                 val intent = Intent(Intent.ACTION_DELETE)
