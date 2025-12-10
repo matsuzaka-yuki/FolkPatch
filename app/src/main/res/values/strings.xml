@@ -455,4 +455,14 @@
     <string name="msg_biometric">Please verify your biometric identity</string>
     <string name="settings_biometric_login">Biometric Authentication</string>
     <string name="settings_biometric_login_summary">Require biometric authentication when opening the app</string>
+
+    <!-- Theme Store Strings -->
+    <string name="theme_store_title">Theme Store</string>
+    <string name="theme_source_official">Official</string>
+    <string name="theme_source_third_party">Third Party</string>
+    <string name="theme_store_author">Author: %s</string>
+    <string name="theme_store_version">Version: %s</string>
+    <string name="theme_source">Source</string>
+    <string name="theme_store_download_failed">Download failed</string>
+    <string name="theme_store_download">Download</string>
 </resources>

@@ -411,4 +411,14 @@
     <string name="msg_biometric">生体認証を確認してください</string>
     <string name="settings_biometric_login">生体認証</string>
     <string name="settings_biometric_login_summary">アプリを開く際に生体認証を要求する</string>
+
+    <!-- Theme Store Strings -->
+    <string name="theme_store_title">テーマストア</string>
+    <string name="theme_source_official">公式</string>
+    <string name="theme_source_third_party">サードパーティ</string>
+    <string name="theme_store_author">作者: %s</string>
+    <string name="theme_store_version">バージョン: %s</string>
+    <string name="theme_source">出典</string>
+    <string name="theme_store_download_failed">ダウンロードに失敗しました</string>
+    <string name="theme_store_download">ダウンロード</string>
 </resources>

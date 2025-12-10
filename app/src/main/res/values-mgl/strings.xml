@@ -450,4 +450,14 @@
     <string name="msg_biometric">请验证您的魔法印鉴</string>
     <string name="settings_biometric_login">魔法印鉴认证</string>
     <string name="settings_biometric_login_summary">开启魔法工坊时需要进行魔法印鉴认证</string>
+
+    <!-- Theme Store Strings -->
+    <string name="theme_store_title">绮幻衣装魔盒</string>
+    <string name="theme_source_official">魔女工坊直供</string>
+    <string name="theme_source_third_party">同好魔法分享</string>
+    <string name="theme_store_author">编织师: %s</string>
+    <string name="theme_store_version">咒语版本: %s</string>
+    <string name="theme_source">魔力源流</string>
+    <string name="theme_store_download_failed">呜哇！魔力传输失败啦</string>
+<string name="theme_store_download">点亮魔法下载</string>
 </resources>

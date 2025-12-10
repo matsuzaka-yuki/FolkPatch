@@ -448,4 +448,17 @@
     <string name="msg_biometric">Vui lòng xác minh danh tính sinh trắc học của bạn</string>
     <string name="settings_biometric_login">Xác thực sinh trắc học</string>
     <string name="settings_biometric_login_summary">Yêu cầu xác thực sinh trắc học khi mở ứng dụng</string>
+
+    <!-- Theme Store Strings -->
+    <string name="theme_store_title">Cửa hàng chủ đề</string>
+    <string name="theme_source_official">Chính thức</string>
+    <string name="theme_source_third_party">Bên thứ ba</string>
+    <string name="theme_source_local">Cục bộ</string>
+    <string name="theme_source">Nguồn</string>
+    <string name="theme_install">Cài đặt</string>
+    <string name="theme_install_success">Cài đặt thành công</string>
+    <string name="theme_install_failed">Cài đặt thất bại</string>
+    <string name="theme_download">Tải xuống</string>
+    <string name="theme_store_author">Tác giả</string>
+    <string name="theme_store_version">Phiên bản</string>
 </resources>

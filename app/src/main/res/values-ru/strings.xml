@@ -454,4 +454,14 @@
     <string name="msg_biometric">Пожалуйста, подтвердите свою биометрическую личность</string>
     <string name="settings_biometric_login">Биометрическая аутентификация</string>
     <string name="settings_biometric_login_summary">Требовать биометрическую аутентификацию при открытии приложения</string>
+
+    <!-- Theme Store Strings -->
+    <string name="theme_store_title">Магазин тем</string>
+    <string name="theme_source_official">Официальные</string>
+    <string name="theme_source_third_party">Третьи лица</string>
+    <string name="theme_store_author">Автор: %s</string>
+    <string name="theme_store_version">Версия: %s</string>
+    <string name="theme_source">Источник</string>
+    <string name="theme_store_download_failed">Загрузка не удалась</string>
+    <string name="theme_store_download">Загрузить</string>
 </resources>

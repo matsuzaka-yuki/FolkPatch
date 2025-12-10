@@ -448,4 +448,14 @@
     <string name="msg_biometric">请验证您的生物识别身份</string>
     <string name="settings_biometric_login">生物识别认证</string>
     <string name="settings_biometric_login_summary">打开应用时要求生物识别认证</string>
+
+    <!-- Theme Store Strings -->
+    <string name="theme_store_title">主题商店</string>
+    <string name="theme_source_official">官方</string>
+    <string name="theme_source_third_party">第三方</string>
+    <string name="theme_store_author">作者: %s</string>
+    <string name="theme_store_version">版本: %s</string>
+    <string name="theme_source">来源</string>
+    <string name="theme_store_download_failed">下载失败</string>
+    <string name="theme_store_download">下载</string>
 </resources>

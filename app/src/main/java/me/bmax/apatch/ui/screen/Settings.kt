@@ -53,6 +53,9 @@ import androidx.compose.material.icons.filled.DeleteSweep
 import androidx.compose.material.icons.filled.Folder
 import androidx.compose.material.icons.filled.Dashboard
 import androidx.compose.material.icons.filled.Fingerprint
+import androidx.compose.material.icons.filled.ShoppingCart
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import com.ramcosta.composedestinations.generated.destinations.ThemeStoreScreenDestination
 
 import androidx.compose.ui.res.painterResource
 import androidx.compose.material3.AlertDialogDefaults
@@ -136,7 +139,7 @@ import java.util.Locale
 @Destination<RootGraph>
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
-fun SettingScreen() {
+fun SettingScreen(navigator: DestinationsNavigator) {
     val state by APApplication.apStateLiveData.observeAsState(APApplication.State.UNKNOWN_STATE)
     val kPatchReady = state != APApplication.State.UNKNOWN_STATE
     val aPatchReady =
@@ -1248,6 +1251,14 @@ fun SettingScreen() {
                     }
                 },
                 leadingContent = { Icon(Icons.Filled.Folder, null) }
+            )
+
+            ListItem(
+                headlineContent = { Text(text = stringResource(id = R.string.theme_store_title)) },
+                modifier = Modifier.clickable {
+                    navigator.navigate(ThemeStoreScreenDestination)
+                },
+                leadingContent = { Icon(Icons.Filled.ShoppingCart, null) }
             )
 
             // log

@@ -452,4 +452,14 @@
     <string name="msg_biometric">Proszę zweryfikować swoją tożsamość biometryczną</string>
     <string name="settings_biometric_login">Uwierzytelnianie biometryczne</string>
     <string name="settings_biometric_login_summary">Wymagaj uwierzytelniania biometrycznego przy otwieraniu aplikacji</string>
+
+    <!-- Theme Store Strings -->
+    <string name="theme_store_title">Sklep motywów</string>
+    <string name="theme_source_official">Oficjalne</string>
+    <string name="theme_source_third_party">Trzecie strony</string>
+    <string name="theme_store_author">Autor: %s</string>
+    <string name="theme_store_version">Wersja: %s</string>
+    <string name="theme_source">Źródło</string>
+    <string name="theme_store_download_failed">Pobieranie nie powiodło się</string>
+<string name="theme_store_download">Pobierz</string>
 </resources>

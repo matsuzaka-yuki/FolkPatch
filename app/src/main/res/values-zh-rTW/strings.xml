@@ -444,4 +444,14 @@
     <string name="msg_biometric">請驗證您的生物識別身分</string>
     <string name="settings_biometric_login">生物識別認證</string>
     <string name="settings_biometric_login_summary">開啟應用程式時要求生物識別認證</string>
+
+    <!-- Theme Store Strings -->
+    <string name="theme_store_title">主題商店</string>
+    <string name="theme_source_official">官方</string>
+    <string name="theme_source_third_party">第三方</string>
+    <string name="theme_store_author">作者: %s</string>
+    <string name="theme_store_version">版本: %s</string>
+    <string name="theme_source">來源</string>
+    <string name="theme_store_download_failed">下載失敗</string>
+    <string name="theme_store_download">下載</string>
 </resources>

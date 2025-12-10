@@ -447,4 +447,14 @@
     <string name="msg_biometric">请核验本命仙纹</string>
     <string name="settings_biometric_login">仙纹核验</string>
     <string name="settings_biometric_login_summary">启府需验本命仙纹</string>
+
+    <!-- Theme Store Strings -->
+    <string name="theme_store_title">仙府色章阁</string>
+    <string name="theme_source_official">仙府制</string>
+    <string name="theme_source_third_party">散修炼制</string>
+    <string name="theme_store_author">炼制者：%s</string>
+    <string name="theme_store_version">色章篇次：%s</string>
+    <string name="theme_source">出处</string>
+    <string name="theme_store_download_failed">纳符败陨</string>
+    <string name="theme_store_download">纳符</string>
 </resources>
