@@ -465,4 +465,15 @@
     <string name="theme_source">Source</string>
     <string name="theme_store_download_failed">Download failed</string>
     <string name="theme_store_download">Download</string>
+
+    <!-- Update Check Strings -->
+    <string name="settings_auto_update_check">Automatic Update Check</string>
+    <string name="settings_auto_update_check_summary">Automatically check for updates on app startup</string>
+    <string name="settings_check_update">Check for Updates</string>
+    <string name="update_available_title">Update Available</string>
+    <string name="update_available_message">Detected that your version is too low, do you want to download the new version?</string>
+    <string name="update_action">Update</string>
+    <string name="update_close">Close</string>
+    <string name="update_latest">You are on the latest version</string>
+    <string name="update_error">Error checking for updates</string>
 </resources>

@@ -460,4 +460,15 @@
     <string name="theme_source">魔力源流</string>
     <string name="theme_store_download_failed">呜哇！魔力传输失败啦</string>
 <string name="theme_store_download">点亮魔法下载</string>
+
+    <!-- Update Check Strings -->
+    <string name="settings_auto_update_check">自动魔法升级检查</string>
+    <string name="settings_auto_update_check_summary">魔法工坊启动时自动检查新魔法咒语</string>
+    <string name="settings_check_update">检查魔法升级</string>
+    <string name="update_available_title">发现新魔法</string>
+    <string name="update_available_message">检测到您的魔法等级过低，是否要下载新版本的魔法？</string>
+    <string name="update_action">升级魔法</string>
+    <string name="update_close">关闭</string>
+    <string name="update_latest">您已掌握最新的魔法</string>
+    <string name="update_error">检查魔法升级时出错</string>
 </resources>

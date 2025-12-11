@@ -136,6 +136,11 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.Locale
 
+import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material.icons.filled.Update
+import me.bmax.apatch.util.UpdateChecker
+import me.bmax.apatch.ui.component.UpdateDialog
+
 @Destination<RootGraph>
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
@@ -306,6 +311,52 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                         biometricLogin = it
                     })
             }
+
+            // Auto Update Check
+            var autoUpdateCheck by rememberSaveable {
+                mutableStateOf(
+                    prefs.getBoolean("auto_update_check", false)
+                )
+            }
+            SwitchItem(
+                icon = Icons.Filled.Update,
+                title = stringResource(id = R.string.settings_auto_update_check),
+                summary = stringResource(id = R.string.settings_auto_update_check_summary),
+                checked = autoUpdateCheck,
+                onCheckedChange = {
+                    prefs.edit { putBoolean("auto_update_check", it) }
+                    autoUpdateCheck = it
+                })
+
+            // Check Update Button
+            val showUpdateDialog = remember { mutableStateOf(false) }
+
+            if (showUpdateDialog.value) {
+                UpdateDialog(
+                    onDismiss = { showUpdateDialog.value = false },
+                    onUpdate = {
+                        showUpdateDialog.value = false
+                        UpdateChecker.openUpdateUrl(context)
+                    }
+                )
+            }
+
+            ListItem(
+                headlineContent = { Text(stringResource(id = R.string.settings_check_update)) },
+                modifier = Modifier.clickable {
+                    scope.launch {
+                        loadingDialog.show()
+                        val hasUpdate = UpdateChecker.checkUpdate()
+                        loadingDialog.hide()
+                        if (hasUpdate) {
+                            showUpdateDialog.value = true
+                        } else {
+                            Toast.makeText(context, R.string.update_latest, Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                },
+                leadingContent = { Icon(Icons.Filled.Refresh, null) }
+            )
 
             // Global mount
             if (kPatchReady && aPatchReady) {

@@ -462,4 +462,15 @@
     <string name="theme_source">Źródło</string>
     <string name="theme_store_download_failed">Pobieranie nie powiodło się</string>
 <string name="theme_store_download">Pobierz</string>
+
+    <!-- Update Check Strings -->
+    <string name="settings_auto_update_check">Automatyczne sprawdzanie aktualizacji</string>
+    <string name="settings_auto_update_check_summary">Automatycznie sprawdzaj aktualizacje przy uruchomieniu aplikacji</string>
+    <string name="settings_check_update">Sprawdź aktualizacje</string>
+    <string name="update_available_title">Dostępna aktualizacja</string>
+    <string name="update_available_message">Wykryto, że Twoja wersja jest zbyt niska. Czy chcesz pobrać nową wersję?</string>
+    <string name="update_action">Aktualizuj</string>
+    <string name="update_close">Zamknij</string>
+    <string name="update_latest">Masz najnowszą wersję</string>
+    <string name="update_error">Błąd sprawdzania aktualizacji</string>
 </resources>

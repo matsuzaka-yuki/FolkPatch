@@ -456,5 +456,16 @@
     <string name="theme_store_version">色章篇次：%s</string>
     <string name="theme_source">出处</string>
     <string name="theme_store_download_failed">纳符败陨</string>
-    <string name="theme_store_download">纳符</string>
+<string name="theme_store_download">纳符</string>
+
+    <!-- Update Check Strings -->
+    <string name="settings_auto_update_check">自动检查仙法更新</string>
+    <string name="settings_auto_update_check_summary">仙府启动时自动检查新仙法符箓</string>
+    <string name="settings_check_update">检查仙法更新</string>
+    <string name="update_available_title">发现新仙法</string>
+    <string name="update_available_message">检测到道友的仙法篇次过低，是否要下载新篇次的仙法？</string>
+    <string name="update_action">渡劫升仙</string>
+    <string name="update_close">关闭</string>
+    <string name="update_latest">道友已掌握最新仙法</string>
+    <string name="update_error">检查仙法更新时出错</string>
 </resources>

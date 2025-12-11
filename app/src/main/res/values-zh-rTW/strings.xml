@@ -454,4 +454,15 @@
     <string name="theme_source">來源</string>
     <string name="theme_store_download_failed">下載失敗</string>
     <string name="theme_store_download">下載</string>
+
+    <!-- Update Check Strings -->
+    <string name="settings_auto_update_check">自動檢查更新</string>
+    <string name="settings_auto_update_check_summary">應用程式啟動時自動檢查更新</string>
+    <string name="settings_check_update">檢查更新</string>
+    <string name="update_available_title">有可用更新</string>
+    <string name="update_available_message">檢測到您的版本過低，是否要下載新版本？</string>
+    <string name="update_action">更新</string>
+    <string name="update_close">關閉</string>
+    <string name="update_latest">您已是最新版本</string>
+    <string name="update_error">檢查更新時出錯</string>
 </resources>

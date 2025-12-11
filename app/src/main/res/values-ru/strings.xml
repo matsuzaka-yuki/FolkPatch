@@ -464,4 +464,15 @@
     <string name="theme_source">Источник</string>
     <string name="theme_store_download_failed">Загрузка не удалась</string>
     <string name="theme_store_download">Загрузить</string>
+
+    <!-- Update Check Strings -->
+    <string name="settings_auto_update_check">Автоматическая проверка обновлений</string>
+    <string name="settings_auto_update_check_summary">Автоматически проверять обновления при запуске приложения</string>
+    <string name="settings_check_update">Проверить обновления</string>
+    <string name="update_available_title">Доступно обновление</string>
+    <string name="update_available_message">Обнаружено, что ваша версия устарела. Хотите скачать новую версию?</string>
+    <string name="update_action">Обновить</string>
+    <string name="update_close">Закрыть</string>
+    <string name="update_latest">У вас последняя версия</string>
+    <string name="update_error">Ошибка при проверке обновлений</string>
 </resources>

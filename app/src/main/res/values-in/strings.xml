@@ -444,4 +444,15 @@
     <string name="theme_source">Sumber</string>
     <string name="theme_store_download_failed">Gagal Mengunduh</string>
     <string name="theme_store_download">Unduh</string>
+
+    <!-- Update Check Strings -->
+    <string name="settings_auto_update_check">Pemeriksaan Pembaruan Otomatis</string>
+    <string name="settings_auto_update_check_summary">Secara otomatis memeriksa pembaruan saat aplikasi dimulai</string>
+    <string name="settings_check_update">Periksa Pembaruan</string>
+    <string name="update_available_title">Pembaruan Tersedia</string>
+    <string name="update_available_message">Terdeteksi bahwa versi Anda terlalu rendah, apakah Anda ingin mengunduh versi baru?</string>
+    <string name="update_action">Perbarui</string>
+    <string name="update_close">Tutup</string>
+    <string name="update_latest">Anda sudah menggunakan versi terbaru</string>
+    <string name="update_error">Kesalahan saat memeriksa pembaruan</string>
 </resources>

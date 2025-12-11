@@ -421,4 +421,15 @@
     <string name="theme_source">出典</string>
     <string name="theme_store_download_failed">ダウンロードに失敗しました</string>
     <string name="theme_store_download">ダウンロード</string>
+
+    <!-- Update Check Strings -->
+    <string name="settings_auto_update_check">自動更新チェック</string>
+    <string name="settings_auto_update_check_summary">アプリ起動時に自動的に更新を確認する</string>
+    <string name="settings_check_update">更新を確認</string>
+    <string name="update_available_title">更新が利用可能です</string>
+    <string name="update_available_message">お使いのバージョンが古いことが検出されました。新しいバージョンをダウンロードしますか？</string>
+    <string name="update_action">更新</string>
+    <string name="update_close">閉じる</string>
+    <string name="update_latest">最新バージョンです</string>
+    <string name="update_error">更新の確認でエラーが発生しました</string>
 </resources>

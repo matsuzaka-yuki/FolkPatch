@@ -76,6 +76,11 @@ import androidx.compose.runtime.LaunchedEffect
 import kotlinx.coroutines.delay
 import kotlin.system.exitProcess
 import me.zhanghai.android.appiconloader.coil.AppIconKeyer
+import me.bmax.apatch.util.UpdateChecker
+import me.bmax.apatch.ui.component.UpdateDialog
+
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.platform.LocalContext
 
 class MainActivity : AppCompatActivity() {
 
@@ -163,6 +168,29 @@ class MainActivity : AppCompatActivity() {
             }
 
             APatchThemeWithBackground(navController = navController) {
+                
+                val showUpdateDialog = remember { mutableStateOf(false) }
+                val context = LocalContext.current
+                
+                LaunchedEffect(Unit) {
+                    val prefs = APApplication.sharedPreferences
+                    if (prefs.getBoolean("auto_update_check", false)) {
+                         val hasUpdate = UpdateChecker.checkUpdate()
+                         if (hasUpdate) {
+                             showUpdateDialog.value = true
+                         }
+                    }
+                }
+
+                if (showUpdateDialog.value) {
+                    UpdateDialog(
+                        onDismiss = { showUpdateDialog.value = false },
+                        onUpdate = {
+                            showUpdateDialog.value = false
+                            UpdateChecker.openUpdateUrl(context)
+                        }
+                    )
+                }
 
                 Scaffold(
                     bottomBar = { BottomBar(navController) }
