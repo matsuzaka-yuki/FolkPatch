@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
@@ -16,6 +17,8 @@ import androidx.compose.material.icons.filled.Download
 import androidx.compose.material.icons.filled.FilterList
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.window.DialogProperties
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -47,7 +50,6 @@ fun ThemeStoreScreen(
     
     var selectedTheme by remember { mutableStateOf<ThemeStoreViewModel.RemoteTheme?>(null) }
     var isSearchActive by remember { mutableStateOf(false) }
-    val sheetState = rememberModalBottomSheetState()
     var showFilterSheet by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
@@ -112,27 +114,34 @@ fun ThemeStoreScreen(
     }
 
     if (showFilterSheet) {
-        ModalBottomSheet(
+        BasicAlertDialog(
             onDismissRequest = { showFilterSheet = false },
-            sheetState = sheetState
-        ) {
-            ThemeFilterSheetContent(
-                currentAuthor = viewModel.filterAuthor,
-                currentSource = viewModel.filterSource,
-                currentTypePhone = viewModel.filterTypePhone,
-                currentTypeTablet = viewModel.filterTypeTablet,
-                onApply = { author, source, phone, tablet ->
-                    viewModel.updateFilters(author, source, phone, tablet)
-                    scope.launch { sheetState.hide() }.invokeOnCompletion {
-                        if (!sheetState.isVisible) {
-                            showFilterSheet = false
-                        }
-                    }
-                },
-                onReset = {
-                    viewModel.updateFilters("", "all", phone = true, tablet = true)
-                }
+            properties = DialogProperties(
+                usePlatformDefaultWidth = false
             )
+        ) {
+            Surface(
+                modifier = Modifier
+                    .width(320.dp)
+                    .wrapContentHeight(),
+                shape = RoundedCornerShape(28.dp),
+                color = AlertDialogDefaults.containerColor,
+                tonalElevation = AlertDialogDefaults.TonalElevation
+            ) {
+                ThemeFilterSheetContent(
+                    currentAuthor = viewModel.filterAuthor,
+                    currentSource = viewModel.filterSource,
+                    currentTypePhone = viewModel.filterTypePhone,
+                    currentTypeTablet = viewModel.filterTypeTablet,
+                    onApply = { author, source, phone, tablet ->
+                        viewModel.updateFilters(author, source, phone, tablet)
+                        showFilterSheet = false
+                    },
+                    onReset = {
+                        viewModel.updateFilters("", "all", phone = true, tablet = true)
+                    }
+                )
+            }
         }
     }
 
@@ -252,8 +261,8 @@ fun ThemeFilterSheetContent(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp)
-            .navigationBarsPadding()
+            .verticalScroll(rememberScrollState())
+            .padding(24.dp)
     ) {
         Text(
             text = stringResource(R.string.theme_store_filter_title),
