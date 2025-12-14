@@ -133,12 +133,12 @@ fun HomeScreenV3(
             icon = Icons.Outlined.Android,
             actionText = if (apState == APApplication.State.ANDROIDPATCH_INSTALLED) stringResource(R.string.home_ap_cando_uninstall) else stringResource(R.string.kpm_install),
             showAction = true,
-            actionEnabled = kpState == APApplication.State.KERNELPATCH_INSTALLED || apState == APApplication.State.ANDROIDPATCH_INSTALLED,
+            actionEnabled = kpState == APApplication.State.KERNELPATCH_INSTALLED || kpState == APApplication.State.KERNELPATCH_NEED_UPDATE || apState == APApplication.State.ANDROIDPATCH_INSTALLED,
             isWallpaperMode = isWallpaperMode,
             onActionClick = {
                 if (apState == APApplication.State.ANDROIDPATCH_INSTALLED) {
                     showUninstallDialog.value = true
-                } else if (kpState == APApplication.State.KERNELPATCH_INSTALLED) {
+                } else if (kpState == APApplication.State.KERNELPATCH_INSTALLED || kpState == APApplication.State.KERNELPATCH_NEED_UPDATE) {
                     APApplication.installApatch()
                 }
             }
@@ -157,7 +157,7 @@ fun HomeScreenV3(
             )
             InfoRow(
                 label = stringResource(R.string.home_info_running_mode),
-                value = if (apState == APApplication.State.ANDROIDPATCH_INSTALLED) stringResource(R.string.home_info_mode_full) else if (kpState == APApplication.State.KERNELPATCH_INSTALLED) stringResource(R.string.home_info_mode_half) else stringResource(R.string.home_info_auth_na)
+                value = if (apState == APApplication.State.ANDROIDPATCH_INSTALLED) stringResource(R.string.home_info_mode_full) else if (kpState == APApplication.State.KERNELPATCH_INSTALLED || kpState == APApplication.State.KERNELPATCH_NEED_UPDATE) stringResource(R.string.home_info_mode_half) else stringResource(R.string.home_info_auth_na)
             )
             InfoRow(
                 label = stringResource(R.string.home_su_path),
