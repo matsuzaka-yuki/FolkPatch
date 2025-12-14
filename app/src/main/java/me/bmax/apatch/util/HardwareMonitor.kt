@@ -174,15 +174,47 @@ object HardwareMonitor {
             var zramUsed = 0L
 
             try {
-                // Use 'free -b' for bytes
-                val result = rootShellForResult("free -b")
-                if (result.isSuccess) {
-                    result.out.forEach { line ->
-                        val parts = line.trim().split(Regex("\\s+"))
-                        if (line.startsWith("Mem:") && parts.size >= 3) {
-                            ramTotal = parts[1].toLongOrNull() ?: 0L
-                            ramUsed = parts[2].toLongOrNull() ?: 0L
+                // Use /proc/meminfo for more reliable parsing
+                val memInfoResult = rootShellForResult("cat /proc/meminfo")
+                if (memInfoResult.isSuccess) {
+                    var memTotal = 0L
+                    var memFree = 0L
+                    var memAvailable = 0L
+                    var buffers = 0L
+                    var cached = 0L
+                    
+                    memInfoResult.out.forEach { line ->
+                        val parts = line.split(Regex(":\\s+"))
+                        if (parts.size >= 2) {
+                            val key = parts[0].trim()
+                            val valueStr = parts[1].trim().split(Regex("\\s+"))[0]
+                            val valueKb = valueStr.toLongOrNull() ?: 0L
+                            val valueBytes = valueKb * 1024
+                            
+                            when (key) {
+                                "MemTotal" -> memTotal = valueBytes
+                                "MemFree" -> memFree = valueBytes
+                                "MemAvailable" -> memAvailable = valueBytes
+                                "Buffers" -> buffers = valueBytes
+                                "Cached" -> cached = valueBytes
+                            }
                         }
+                    }
+                    
+                    ramTotal = memTotal
+                    
+                    // Calculate Available if MemAvailable is missing (older kernels)
+                    if (memAvailable == 0L && memFree > 0) {
+                         // Rough estimation: Free + Cached + Buffers
+                         // Note: This is an over-estimation as not all cached is reclaimable,
+                         // but better than nothing for old kernels.
+                         memAvailable = memFree + cached + buffers
+                    }
+                    
+                    // Calculate Used
+                    // Used = Total - Available
+                    if (ramTotal > 0) {
+                        ramUsed = (ramTotal - memAvailable).coerceAtLeast(0)
                     }
                 }
                 

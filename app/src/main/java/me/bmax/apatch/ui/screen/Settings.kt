@@ -2072,7 +2072,7 @@ fun HomeLayoutChooseDialog(showDialog: MutableState<Boolean>) {
                     modifier = Modifier.padding(bottom = 16.dp)
                 )
                 
-                val currentStyle = prefs.getString("home_layout_style", "kernelsu")
+                val currentStyle = prefs.getString("home_layout_style", "focus")
                 
                 Surface(
                     shape = RoundedCornerShape(12.dp),
