@@ -180,6 +180,9 @@
     <string name="setting_auto_backup_boot">自動備份 Boot</string>
     <string name="setting_auto_backup_boot_summary">修補時自動備份 Boot 鏡像到 /storage/emulated/0/Download/FolkPatch/BootBackups/</string>
 
+    <string name="settings_folkx_engine_title">FolkX 動畫引擎</string>
+    <string name="settings_folkx_engine_summary">在頂層頁面切換時使用絲滑的物理彈簧動畫</string>
+
     <string name="apm_webui_open">打開網頁介面</string>
     <string name="apm_action">操作</string>
     <string name="enable_web_debugging">啟用 WebView 偵錯</string>

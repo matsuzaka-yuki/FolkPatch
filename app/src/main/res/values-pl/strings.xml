@@ -184,6 +184,9 @@
     <string name="setting_auto_backup_boot">Automatyczna kopia zapasowa Boot</string>
     <string name="setting_auto_backup_boot_summary">Automatycznie twórz kopię zapasową obrazu Boot do /storage/emulated/0/Download/FolkPatch/BootBackups/ podczas łatania</string>
 
+    <string name="settings_folkx_engine_title">Silnik animacji FolkX</string>
+    <string name="settings_folkx_engine_summary">Używaj płynnych fizycznych animacji sprężynowych przy przełączaniu stron najwyższego poziomu</string>
+
     <string name="apm_webui_open">Otwórz</string>
     <string name="apm_action">Akcja</string>
     <string name="enable_web_debugging">Włącz debugowanie WebView</string>

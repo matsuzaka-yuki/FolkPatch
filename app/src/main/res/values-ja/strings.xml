@@ -158,6 +158,9 @@
 
     <string name="setting_auto_backup_boot">Boot の自動バックアップ</string>
     <string name="setting_auto_backup_boot_summary">パッチ適用時に Boot イメージを /storage/emulated/0/Download/FolkPatch/BootBackups/ に自動的にバックアップ</string>
+
+    <string name="settings_folkx_engine_title">FolkX アニメーションエンジン</string>
+    <string name="settings_folkx_engine_summary">トップレベルページの切り替え時に滑らかな物理スプリングアニメーションを使用</string>
     <string name="apm_webui_open">開く</string>
     <string name="apm_action">アクション</string>
     <string name="enable_web_debugging">WebView デバッグを有効</string>
@@ -182,7 +185,7 @@
     <string name="home_dialog_auth_fail_title">認証失敗</string>
     <string name="home_dialog_auth_fail_content">SuperKey の認証に失敗したため、APatchは正しく動作しません。 \n以下の理由が考えられます: \n1. KernelPatch で\\"boot.img\\"をパッチしていない。 \n2. パッチを適用した\\"boot.img\\"をフラッシュしていない。 \n3. SuperKey が間違っている。 \n4. デバイスが APatch と KernelPatch に対応していない。 \n \n再度確認して、もう一度お試しください。問題が解決しない場合は、公式リポジトリの Issue ページで質問をして下さい。</string>
     <string name="home_more_menu_feedback_or_suggestion">フィードバック / 提案</string>
-    <string name="home_more_menu_about">APatch について</string>
+    <string name="home_more_menu_about">FolkPatch について</string>
     <string name="home_dialog_uninstall_title">アンインストール</string>
     <string name="home_dialog_uninstall_ap_only">パッチをアンインストール</string>
     <string name="home_dialog_uninstall_ap_only_desc">AndroidPatchのみを削除し、マネージャーを保持します。</string>

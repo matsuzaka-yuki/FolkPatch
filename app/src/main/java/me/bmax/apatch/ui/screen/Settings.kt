@@ -59,6 +59,7 @@ import androidx.compose.material.icons.filled.Folder
 import androidx.compose.material.icons.filled.Dashboard
 import androidx.compose.material.icons.filled.Fingerprint
 import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material.icons.filled.AutoAwesome
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.ramcosta.composedestinations.generated.destinations.ThemeStoreScreenDestination
 
@@ -485,6 +486,7 @@ fun SettingScreen(navigator: DestinationsNavigator) {
         var hideSuPath by rememberSaveable { mutableStateOf(prefs.getBoolean("hide_su_path", false)) }
         var hideKpatchVersion by rememberSaveable { mutableStateOf(prefs.getBoolean("hide_kpatch_version", false)) }
         var hideFingerprint by rememberSaveable { mutableStateOf(prefs.getBoolean("hide_fingerprint", false)) }
+        var folkXEngineEnabled by rememberSaveable { mutableStateOf(prefs.getBoolean("folkx_engine_enabled", true)) }
 
         // Module
         var autoBackupModule by rememberSaveable { mutableStateOf(prefs.getBoolean("auto_backup_module", false)) }
@@ -551,7 +553,11 @@ fun SettingScreen(navigator: DestinationsNavigator) {
             val logTitle = stringResource(id = R.string.send_log)
             val showLog = matchGeneral || shouldShow(logTitle)
 
-            val showGeneralCategory = showLanguage || showUpdate || showAutoUpdate || showGlobalNamespace || showLiteMode || showOverlayFS || showAutoBackupBoot || showResetSuPath || showAppTitle || showLauncherIcon || showDpi || showLog
+            val folkXEngineTitle = stringResource(id = R.string.settings_folkx_engine_title)
+            val folkXEngineSummary = stringResource(id = R.string.settings_folkx_engine_summary)
+            val showFolkXEngine = matchGeneral || shouldShow(folkXEngineTitle, folkXEngineSummary)
+
+            val showGeneralCategory = showLanguage || showUpdate || showAutoUpdate || showGlobalNamespace || showLiteMode || showOverlayFS || showAutoBackupBoot || showResetSuPath || showAppTitle || showLauncherIcon || showDpi || showLog || showFolkXEngine
 
             if (showGeneralCategory) {
                 SettingsCategory(icon = Icons.Filled.Tune, title = generalTitle, isSearching = searchText.isNotEmpty()) {
@@ -567,6 +573,8 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                                 color = MaterialTheme.colorScheme.outline)
                         }, leadingContent = { Icon(Icons.Filled.Translate, null) })
                     }
+
+                  
 
                     // Check Update
                     if (showUpdate) {
@@ -600,6 +608,19 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                                 prefs.edit { putBoolean("auto_update_check", it) }
                                 autoUpdateCheck = it
                             })
+                    }
+
+                      // FolkX Engine
+                    if (showFolkXEngine) {
+                        SwitchItem(
+                            icon = Icons.Filled.AutoAwesome,
+                            title = folkXEngineTitle,
+                            summary = folkXEngineSummary,
+                            checked = folkXEngineEnabled
+                        ) {
+                            prefs.edit { putBoolean("folkx_engine_enabled", it) }
+                            folkXEngineEnabled = it
+                        }
                     }
 
                     // Global Namespace

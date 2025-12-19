@@ -180,6 +180,9 @@
     <string name="setting_auto_backup_boot">自动备份魔法容器</string>
     <string name="setting_auto_backup_boot_summary">施法时自动备份魔法容器到 /storage/emulated/0/Download/FolkPatch/BootBackups/</string>
 
+    <string name="settings_folkx_engine_title">FolkX魔法动画引擎</string>
+    <string name="settings_folkx_engine_summary">在顶层魔法页面切换时使用流畅的物理弹簧动画</string>
+
     <string name="apm_webui_open">开启</string>
     <string name="apm_action">魔法操作</string>
     <string name="enable_web_debugging">启用魔法阵调试</string>

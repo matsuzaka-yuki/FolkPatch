@@ -33,6 +33,9 @@
     <string name="settings_grid_working_card_hide_mode_summary">Hide the \'Full\' or \'Half\' text on the working card</string>
 
 
+    <string name="settings_folkx_engine_title">FolkX Animation Engine</string>
+    <string name="settings_folkx_engine_summary">Use smooth physics-based spring animation when switching between top-level pages</string>
+
     <string name="su_exclude_all_title">Exclude All</string>
     <string name="su_exclude_all_confirm">Are you sure you want to exclude all non-root apps?</string>
     <string name="su_batch_exclude_title">Batch Exclude</string>
@@ -586,5 +589,6 @@
     <!-- Install Mode Select -->
     <string name="kp_install_methods">KernelPatch Patching/Installing</string>
     <string name="restore_boot_methods">Select a boot to restore to boot partition</string>
+
 
 </resources>

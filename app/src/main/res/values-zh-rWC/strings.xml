@@ -178,6 +178,9 @@
     <string name="setting_auto_backup_boot">自动备份仙躯</string>
     <string name="setting_auto_backup_boot_summary">炼符时自动备份仙躯镜像至 /storage/emulated/0/Download/FolkPatch/BootBackups/</string>
 
+    <string name="settings_folkx_engine_title">FolkX仙法动画引擎</string>
+    <string name="settings_folkx_engine_summary">在天阶仙页转换时使用仙域灵动的物理符箓动画</string>
+
     <string name="apm_webui_open">启仙法玄窗</string>
     <string name="apm_action">渡劫措置</string>
     <string name="enable_web_debugging">启WebView勘符之术</string>

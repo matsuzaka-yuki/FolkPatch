@@ -180,6 +180,9 @@
     <string name="setting_auto_backup_boot">Tự động sao lưu Boot</string>
     <string name="setting_auto_backup_boot_summary">Tự động sao lưu ảnh Boot vào /storage/emulated/0/Download/FolkPatch/BootBackups/ khi vá</string>
 
+    <string name="settings_folkx_engine_title">Động cơ hoạt hình FolkX</string>
+    <string name="settings_folkx_engine_summary">Sử dụng hoạt hình lò xo vật lý mượt mà khi chuyển đổi các trang cấp cao nhất</string>
+
     <string name="apm_webui_open">Mở</string>
     <string name="apm_action">Hành động</string>
     <string name="enable_web_debugging">Bật gỡ lỗi WebView</string>

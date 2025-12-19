@@ -11,6 +11,7 @@ import androidx.compose.animation.Crossfade
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.core.spring
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.scaleOut
@@ -26,8 +27,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.remember
+import android.content.SharedPreferences
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -163,6 +167,23 @@ class MainActivity : AppCompatActivity() {
         }
 
         setContent {
+            val prefs = APApplication.sharedPreferences
+            var folkXEngineEnabled by remember {
+                mutableStateOf(prefs.getBoolean("folkx_engine_enabled", true))
+            }
+
+            DisposableEffect(Unit) {
+                val listener = SharedPreferences.OnSharedPreferenceChangeListener { sharedPreferences, key ->
+                    if (key == "folkx_engine_enabled") {
+                        folkXEngineEnabled = sharedPreferences.getBoolean("folkx_engine_enabled", true)
+                    }
+                }
+                prefs.registerOnSharedPreferenceChangeListener(listener)
+                onDispose {
+                    prefs.unregisterOnSharedPreferenceChangeListener(listener)
+                }
+            }
+
             val navController = rememberNavController()
             val snackBarHostState = remember { SnackbarHostState() }
             val bottomBarRoutes = remember {
@@ -175,7 +196,6 @@ class MainActivity : AppCompatActivity() {
                 val context = LocalContext.current
                 
                 LaunchedEffect(Unit) {
-                    val prefs = APApplication.sharedPreferences
                     if (prefs.getBoolean("auto_update_check", true)) {
                         withContext(Dispatchers.IO) {
                              // Delay a bit to wait for network connection
@@ -216,8 +236,25 @@ class MainActivity : AppCompatActivity() {
                                         if (targetState.destination.route !in bottomBarRoutes) {
                                             slideInHorizontally(initialOffsetX = { it })
                                         } else {
-                                            // Otherwise (switching between bottom navigation pages), use fade in
-                                            fadeIn(animationSpec = tween(340))
+                                            // Otherwise (switching between bottom navigation pages)
+                                            if (folkXEngineEnabled) {
+                                                val initialRoute = initialState.destination.route
+                                                val targetRoute = targetState.destination.route
+                                                val initialIndex = BottomBarDestination.entries.indexOfFirst { it.direction.route == initialRoute }
+                                                val targetIndex = BottomBarDestination.entries.indexOfFirst { it.direction.route == targetRoute }
+
+                                                if (initialIndex != -1 && targetIndex != -1) {
+                                                    if (targetIndex > initialIndex) {
+                                                        slideInHorizontally(animationSpec = spring(dampingRatio = 0.8f, stiffness = 300f), initialOffsetX = { it })
+                                                    } else {
+                                                        slideInHorizontally(animationSpec = spring(dampingRatio = 0.8f, stiffness = 300f), initialOffsetX = { -it })
+                                                    }
+                                                } else {
+                                                    fadeIn(animationSpec = tween(340))
+                                                }
+                                            } else {
+                                                fadeIn(animationSpec = tween(340))
+                                            }
                                         }
                                     }
 
@@ -227,8 +264,25 @@ class MainActivity : AppCompatActivity() {
                                         if (initialState.destination.route in bottomBarRoutes && targetState.destination.route !in bottomBarRoutes) {
                                             slideOutHorizontally(targetOffsetX = { -it / 4 }) + fadeOut()
                                         } else {
-                                            // Otherwise (switching between bottom navigation pages), use fade out
-                                            fadeOut(animationSpec = tween(340))
+                                            // Otherwise (switching between bottom navigation pages)
+                                            if (folkXEngineEnabled && initialState.destination.route in bottomBarRoutes && targetState.destination.route in bottomBarRoutes) {
+                                                val initialRoute = initialState.destination.route
+                                                val targetRoute = targetState.destination.route
+                                                val initialIndex = BottomBarDestination.entries.indexOfFirst { it.direction.route == initialRoute }
+                                                val targetIndex = BottomBarDestination.entries.indexOfFirst { it.direction.route == targetRoute }
+
+                                                if (initialIndex != -1 && targetIndex != -1) {
+                                                    if (targetIndex > initialIndex) {
+                                                        slideOutHorizontally(animationSpec = spring(dampingRatio = 0.8f, stiffness = 300f), targetOffsetX = { -it })
+                                                    } else {
+                                                        slideOutHorizontally(animationSpec = spring(dampingRatio = 0.8f, stiffness = 300f), targetOffsetX = { it })
+                                                    }
+                                                } else {
+                                                    fadeOut(animationSpec = tween(340))
+                                                }
+                                            } else {
+                                                fadeOut(animationSpec = tween(340))
+                                            }
                                         }
                                     }
 

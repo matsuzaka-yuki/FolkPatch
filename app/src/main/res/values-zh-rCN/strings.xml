@@ -37,6 +37,9 @@
     <string name="settings_grid_working_card_hide_mode">隐藏工作模式</string>
     <string name="settings_grid_working_card_hide_mode_summary">隐藏工作卡片上的"Full"或"Half"文字</string>
 
+    <string name="settings_folkx_engine_title">FolkX动画引擎</string>
+    <string name="settings_folkx_engine_summary">在顶层页面切换时使用丝滑的物理弹簧动画</string>
+
     <string name="about_source_code"><![CDATA[<p>在 %1$s 查看源代码<p/>加入我们的 %2$s 频道<p/>加入我们的 %3$s 群组]]></string>
     <string name="send_log">发送日志</string>
     <string name="save_log">保存日志</string>
@@ -443,7 +446,7 @@
     <string name="settings_home_layout_default">ListUI</string>
     <string name="settings_home_layout_grid">GridUI</string>
     <string name="unofficial_version_title">非官方版本</string>
-    <string name="unofficial_version_message">您正在使用的 FolkPatch 管理器為第三方版本，可能會造成財產損失，請下載正版APP使用！</string>
+    <string name="unofficial_version_message">您正在使用的 FolkPatch 管理器为第三方版本，可能会造成财产损失，请下载正版APP使用！</string>
     <string name="go_to_github">前往 Github</string>
     <string name="settings_save_theme">保存主题</string>
     <string name="settings_import_theme">导入主题</string>
@@ -580,4 +583,5 @@
     <!-- Install Mode Select -->
     <string name="kp_install_methods">KernelPatch 修补/安装</string>
     <string name="restore_boot_methods">选择一个启动来恢复到引导分区</string>
+
 </resources>
