@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.ServiceConnection
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageInfo
+import android.content.pm.PackageManager
 import android.os.IBinder
 import android.os.Parcelable
 import android.util.Log
@@ -16,6 +17,7 @@ import androidx.lifecycle.ViewModel
 import com.topjohnwu.superuser.Shell
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.withTimeoutOrNull
 import kotlinx.parcelize.Parcelize
 import me.bmax.apatch.APApplication
 import me.bmax.apatch.IAPRootService
@@ -149,20 +151,60 @@ class SuperUserViewModel : ViewModel() {
         RootServices.stop(intent)
     }
 
+    /**
+     * Fallback method to get packages using PackageManager when RootService fails.
+     * This is needed for devices where LibSU's RootServerMain can't initialize
+     * (e.g., ONYX e-readers with modified frameworks).
+     *
+     * Note: This only gets packages for the current user, not all users.
+     */
+    private fun getPackagesViaPackageManager(): List<PackageInfo> {
+        return try {
+            val pm = apApp.packageManager
+            pm.getInstalledPackages(PackageManager.GET_META_DATA)
+        } catch (e: Exception) {
+            Log.e(TAG, "getPackagesViaPackageManager failed", e)
+            emptyList()
+        }
+    }
+
     suspend fun fetchAppList() {
         isRefreshing = true
 
-        val result = connectRootService {
-            Log.w(TAG, "RootService disconnected")
+        // Try RootService with timeout, fallback to PackageManager if it fails
+        val allPackages: List<PackageInfo> = withContext(Dispatchers.IO) {
+            try {
+                // Use withTimeoutOrNull to avoid hanging forever if RootService fails to connect
+                val result = withTimeoutOrNull(10000L) {
+                    connectRootService {
+                        Log.w(TAG, "RootService disconnected")
+                    }
+                }
+
+                if (result != null) {
+                    val binder = result.first
+                    val packages = IAPRootService.Stub.asInterface(binder).getPackages(0)
+                    withContext(Dispatchers.Main) {
+                        stopRootService()
+                    }
+                    packages.list
+                } else {
+                    Log.w(TAG, "RootService connection timed out, using PackageManager fallback")
+                    getPackagesViaPackageManager()
+                }
+            } catch (e: Exception) {
+                Log.w(TAG, "RootService failed, using PackageManager fallback", e)
+                getPackagesViaPackageManager()
+            }
+        }
+
+        if (allPackages.isEmpty()) {
+            Log.e(TAG, "Failed to get package list")
+            isRefreshing = false
+            return
         }
 
         withContext(Dispatchers.IO) {
-            val binder = result.first
-            val allPackages = IAPRootService.Stub.asInterface(binder).getPackages(0)
-
-            withContext(Dispatchers.Main) {
-                stopRootService()
-            }
             val uids = Natives.suUids().toList()
             Log.d(TAG, "all allows: $uids")
 
@@ -174,7 +216,7 @@ class SuperUserViewModel : ViewModel() {
 
             Log.d(TAG, "all configs: $configs")
 
-            apps = allPackages.list.map {
+            apps = allPackages.map {
                 val appInfo = it.applicationInfo
                 val uid = appInfo!!.uid
                 val actProfile = if (uids.contains(uid)) Natives.suProfile(uid) else null
