@@ -585,4 +585,10 @@
     <string name="kp_install_methods">仙道符箓修补/安装</string>
     <string name="restore_boot_methods">选择一仙法镜像恢复至仙籍分区</string>
     <string name="restore_select_file">选择一仙籍引导文件以还原</string>
+    
+    <string name="settings_app_list_loading_scheme">仙器召唤方案</string>
+    <string name="settings_app_list_loading_scheme_summary">选择如何召唤仙器列表</string>
+    <string name="app_list_loading_scheme_root_service">仙阵召唤 (默认)</string>
+    <string name="app_list_loading_scheme_package_manager">天道召唤 (天道 API)</string>
+    <string name="app_list_loading_scheme_dialog_title">召唤方案</string>
 </resources>

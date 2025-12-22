@@ -590,4 +590,10 @@
     <string name="home_info_mode_full">Pełny</string>
     <string name="home_info_mode_half">Częściowy</string>
     <string name="home_zygisk_implement">Implementacja Zygisk</string>
+
+    <string name="settings_app_list_loading_scheme">Schemat wczytywania listy aplikacji</string>
+    <string name="settings_app_list_loading_scheme_summary">Wybierz sposób wczytywania listy aplikacji</string>
+    <string name="app_list_loading_scheme_root_service">RootService (Domyślnie)</string>
+    <string name="app_list_loading_scheme_package_manager">PackageManager (API systemowe)</string>
+    <string name="app_list_loading_scheme_dialog_title">Schemat wczytywania</string>
 </resources>

@@ -589,4 +589,10 @@
     <string name="home_info_mode_full">Đầy đủ</string>
     <string name="home_info_mode_half">Một phần</string>
     <string name="home_zygisk_implement">Triển khai Zygisk</string>
+
+    <string name="settings_app_list_loading_scheme">Sơ đồ tải danh sách ứng dụng</string>
+    <string name="settings_app_list_loading_scheme_summary">Chọn cách tải danh sách ứng dụng</string>
+    <string name="app_list_loading_scheme_root_service">RootService (Mặc định)</string>
+    <string name="app_list_loading_scheme_package_manager">PackageManager (API hệ thống)</string>
+    <string name="app_list_loading_scheme_dialog_title">Sơ đồ tải</string>
 </resources>

@@ -592,4 +592,10 @@
     <string name="home_info_mode_full">Полный</string>
     <string name="home_info_mode_half">Частичный</string>
     <string name="home_zygisk_implement">Реализация Zygisk</string>
+
+    <string name="settings_app_list_loading_scheme">Схема загрузки списка приложений</string>
+    <string name="settings_app_list_loading_scheme_summary">Выберите способ загрузки списка приложений</string>
+    <string name="app_list_loading_scheme_root_service">RootService (По умолчанию)</string>
+    <string name="app_list_loading_scheme_package_manager">PackageManager (Системное API)</string>
+    <string name="app_list_loading_scheme_dialog_title">Схема загрузки</string>
 </resources>

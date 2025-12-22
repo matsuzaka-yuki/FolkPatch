@@ -44,7 +44,7 @@ apksign {
 }
 
 android {
-    namespace = "me.bmax.apatch"
+    namespace = "me.yuki.folk"
 
     signingConfigs {
         create("release") {

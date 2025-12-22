@@ -162,6 +162,11 @@
         </provider>
 
         <service
+            android:name=".services.RootServices"
+            android:exported="false"
+            android:process=":root" />
+
+        <service
             android:name="androidx.appcompat.app.AppLocalesMetadataHolderService"
             android:enabled="false"
             android:exported="false">

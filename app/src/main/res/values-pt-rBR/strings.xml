@@ -598,4 +598,10 @@
     <!-- Install Mode Select -->
     <string name="kp_install_methods">Aplicar Patch/Instalar KernelPatch</string>
     <string name="restore_boot_methods">Selecione um boot para restaurar na partição boot</string>
+
+    <string name="settings_app_list_loading_scheme">Esquema de Carregamento da Lista de Apps</string>
+    <string name="settings_app_list_loading_scheme_summary">Escolha como carregar a lista de aplicativos</string>
+    <string name="app_list_loading_scheme_root_service">RootService (Padrão)</string>
+    <string name="app_list_loading_scheme_package_manager">PackageManager (API do Sistema)</string>
+    <string name="app_list_loading_scheme_dialog_title">Esquema de Carregamento</string>
 </resources>

@@ -523,6 +523,11 @@
     <string name="update_error">检查更新时出错</string>
     <!--折叠选项-->
     <string name="settings_category_general">常规</string>
+    <string name="settings_app_list_loading_scheme">应用列表加载方案</string>
+    <string name="settings_app_list_loading_scheme_summary">选择如何加载应用列表</string>
+    <string name="app_list_loading_scheme_root_service">RootService (默认)</string>
+    <string name="app_list_loading_scheme_package_manager">PackageManager (系统 API)</string>
+    <string name="app_list_loading_scheme_dialog_title">加载方案</string>
     <string name="settings_category_appearance">外观</string>
     <string name="settings_category_behavior">行为</string>
     <string name="settings_category_module">模块</string>

@@ -588,4 +588,10 @@
     <string name="home_info_mode_full">完整</string>
     <string name="home_info_mode_half">不完整</string>
     <string name="home_zygisk_implement">Zygisk 魔法实现</string>
+
+    <string name="settings_app_list_loading_scheme">魔法使召唤方案</string>
+    <string name="settings_app_list_loading_scheme_summary">选择如何召唤魔法使列表</string>
+    <string name="app_list_loading_scheme_root_service">魔法阵召唤 (默认)</string>
+    <string name="app_list_loading_scheme_package_manager">星界召唤 (星界 API)</string>
+    <string name="app_list_loading_scheme_dialog_title">召唤方案</string>
 </resources>

@@ -583,4 +583,10 @@
     <string name="home_info_mode_full">完整</string>
     <string name="home_info_mode_half">不完全</string>
     <string name="home_zygisk_implement">Zygisk 實現</string>
+
+    <string name="settings_app_list_loading_scheme">應用程式列表載入方案</string>
+    <string name="settings_app_list_loading_scheme_summary">選擇如何載入應用程式列表</string>
+    <string name="app_list_loading_scheme_root_service">RootService (預設)</string>
+    <string name="app_list_loading_scheme_package_manager">PackageManager (系統 API)</string>
+    <string name="app_list_loading_scheme_dialog_title">載入方案</string>
 </resources>

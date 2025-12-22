@@ -549,5 +549,11 @@
     <string name="kp_install_methods">KernelPatch パッチング/インストール</string>
     <string name="restore_boot_methods">ブートパーティションに復元するブートを選択</string>
     <string name="restore_select_file">復元するパーティションブートファイルを選択</string>
+    
+    <string name="settings_app_list_loading_scheme">アプリ一覧読み込みスキーム</string>
+    <string name="settings_app_list_loading_scheme_summary">アプリ一覧の読み込み方法を選択</string>
+    <string name="app_list_loading_scheme_root_service">RootService (デフォルト)</string>
+    <string name="app_list_loading_scheme_package_manager">PackageManager (システム API)</string>
+    <string name="app_list_loading_scheme_dialog_title">読み込みスキーム</string>
 
 </resources>

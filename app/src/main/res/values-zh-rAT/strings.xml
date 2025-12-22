@@ -591,4 +591,10 @@
     <string name="home_info_mode_full">完整</string>
     <string name="home_info_mode_half">不完整</string>
     <string name="home_zygisk_implement">Zygisk 圣化</string>
+
+    <string name="settings_app_list_loading_scheme">圣光使召唤方案</string>
+    <string name="settings_app_list_loading_scheme_summary">选择如何召唤圣光使列表</string>
+    <string name="app_list_loading_scheme_root_service">圣光阵召唤 (默认)</string>
+    <string name="app_list_loading_scheme_package_manager">天界召唤 (天界 API)</string>
+    <string name="app_list_loading_scheme_dialog_title">召唤方案</string>
 </resources>

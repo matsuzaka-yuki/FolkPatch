@@ -572,4 +572,10 @@
     <string name="home_info_mode_full">Penuh</string>
     <string name="home_info_mode_half">Setengah</string>
     <string name="home_zygisk_implement">Implementasi Zygisk</string>
+
+    <string name="settings_app_list_loading_scheme">Skema Pemuatan Daftar Aplikasi</string>
+    <string name="settings_app_list_loading_scheme_summary">Pilih cara memuat daftar aplikasi</string>
+    <string name="app_list_loading_scheme_root_service">RootService (Default)</string>
+    <string name="app_list_loading_scheme_package_manager">PackageManager (API Sistem)</string>
+    <string name="app_list_loading_scheme_dialog_title">Skema Pemuatan</string>
 </resources>

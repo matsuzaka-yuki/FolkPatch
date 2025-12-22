@@ -529,6 +529,11 @@
     <string name="update_latest">You are on the latest version</string>
     <string name="update_error">Error checking for updates</string>
     <string name="settings_category_general">General</string>
+    <string name="settings_app_list_loading_scheme">App List Loading Scheme</string>
+    <string name="settings_app_list_loading_scheme_summary">Choose how to load the application list</string>
+    <string name="app_list_loading_scheme_root_service">RootService (Default)</string>
+    <string name="app_list_loading_scheme_package_manager">PackageManager (System API)</string>
+    <string name="app_list_loading_scheme_dialog_title">Loading Scheme</string>
     <string name="settings_category_appearance">Appearance</string>
     <string name="settings_category_behavior">Behavior</string>
     <string name="settings_category_module">Modules</string>

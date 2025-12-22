@@ -15,7 +15,7 @@
 -keep,allowobfuscation,allowoptimization public class org.ini4j.spi.*
 
 # Keep native methods and JNI classes
--keep class me.bmax.apatch.Natives {
+-keep class me.yuki.folk.Natives {
     *;
 }
 
@@ -23,8 +23,16 @@
     native <methods>;
 }
 
--keep class me.bmax.apatch.Natives$Profile { *; }
--keep class me.bmax.apatch.Natives$KPMCtlRes { *; }
+-keep class me.yuki.folk.Natives$Profile { *; }
+-keep class me.yuki.folk.Natives$KPMCtlRes { *; }
+
+# Keep RootServices
+-keep class me.yuki.folk.services.RootServices { *; }
+
+# Keep AIDL interfaces
+-keep class me.yuki.folk.IAPRootService { *; }
+-keep class me.yuki.folk.IAPRootService$Stub { *; }
+-keep class rikka.parcelablelist.ParcelableListSlice { *; }
 
 # Kotlin
 -assumenosideeffects class kotlin.jvm.internal.Intrinsics {
