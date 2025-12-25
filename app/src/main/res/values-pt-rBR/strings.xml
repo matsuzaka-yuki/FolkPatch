@@ -604,4 +604,9 @@
     <string name="app_list_loading_scheme_root_service">RootService (Padrão)</string>
     <string name="app_list_loading_scheme_package_manager">PackageManager (API do Sistema)</string>
     <string name="app_list_loading_scheme_dialog_title">Esquema de Carregamento</string>
+    <string name="su_backup_list">Lista de backup</string>
+    <string name="su_restore_list">Lista de restauração</string>
+    <string name="backup_success">Backup bem-sucedido</string>
+    <string name="restore_success">Restauração bem-sucedida</string>
+
 </resources>

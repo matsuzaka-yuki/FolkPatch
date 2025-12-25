@@ -591,4 +591,8 @@
     <string name="app_list_loading_scheme_root_service">仙阵召唤 (默认)</string>
     <string name="app_list_loading_scheme_package_manager">天道召唤 (天道 API)</string>
     <string name="app_list_loading_scheme_dialog_title">召唤方案</string>
+    <string name="su_backup_list">备份至尊密钥</string>
+    <string name="su_restore_list">还原至尊密钥</string>
+    <string name="backup_success">备份成功</string>
+    <string name="restore_success">还原成功</string>
 </resources>

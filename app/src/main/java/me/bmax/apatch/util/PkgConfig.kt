@@ -91,25 +91,45 @@ object PkgConfig {
 
     fun batchChangeConfigs(newConfigs: List<Config>) {
         thread {
-            synchronized(PkgConfig.javaClass) {
-                Natives.su()
-                val configs = readConfigs()
+            updateConfigs(newConfigs)
+        }
+    }
 
-                newConfigs.forEach { config ->
-                    val uid = config.profile.uid
-                    // Root App should not be excluded
-                    if (config.allow == 1) {
-                        config.exclude = 0
-                    }
+    fun updateConfigs(newConfigs: List<Config>) {
+        synchronized(PkgConfig.javaClass) {
+            Natives.su()
+            val configs = readConfigs()
 
-                    if (config.isDefault() && configs[uid] != null) {
-                        configs.remove(uid)
-                    } else {
-                        configs[uid] = config
-                    }
+            newConfigs.forEach { config ->
+                val uid = config.profile.uid
+                // Root App should not be excluded
+                if (config.allow == 1) {
+                    config.exclude = 0
                 }
-                writeConfigs(configs)
+
+                if (config.isDefault() && configs[uid] != null) {
+                    configs.remove(uid)
+                } else {
+                    configs[uid] = config
+                }
             }
+            writeConfigs(configs)
+        }
+    }
+
+    fun overwriteConfigs(newConfigs: List<Config>) {
+        synchronized(PkgConfig.javaClass) {
+            val configMap = HashMap<Int, Config>()
+            newConfigs.forEach { config ->
+                // Root App should not be excluded
+                if (config.allow == 1) {
+                    config.exclude = 0
+                }
+                if (!config.isDefault()) {
+                    configMap[config.profile.uid] = config
+                }
+            }
+            writeConfigs(configMap)
         }
     }
 }

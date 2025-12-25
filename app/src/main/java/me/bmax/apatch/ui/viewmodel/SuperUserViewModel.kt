@@ -37,6 +37,12 @@ import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
 
+import android.net.Uri
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
+import org.json.JSONArray
+import org.json.JSONObject
+
 class SuperUserViewModel : ViewModel() {
     companion object {
         private const val TAG = "SuperUserViewModel"
@@ -203,6 +209,141 @@ class SuperUserViewModel : ViewModel() {
         } catch (e: Exception) {
             Log.e(TAG, "getPackagesViaPackageManager failed", e)
             emptyList()
+        }
+    }
+
+    fun backupAppList(context: Context, uri: Uri) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                // Ensure we have the latest configs
+                var configs: HashMap<Int, PkgConfig.Config> = HashMap()
+                thread {
+                    Natives.su()
+                    configs = PkgConfig.readConfigs()
+                }.join()
+                
+                val jsonArray = JSONArray()
+
+                configs.values.forEach { config ->
+                    val jsonObj = JSONObject()
+                    jsonObj.put("pkg", config.pkg)
+                    jsonObj.put("allow", config.allow)
+                    jsonObj.put("exclude", config.exclude)
+                    jsonObj.put("scontext", config.profile.scontext)
+                    jsonArray.put(jsonObj)
+                }
+
+                context.contentResolver.openOutputStream(uri)?.use { outputStream ->
+                    outputStream.write(jsonArray.toString(4).toByteArray())
+                }
+                withContext(Dispatchers.Main) {
+                    android.widget.Toast.makeText(context, me.bmax.apatch.R.string.backup_success, android.widget.Toast.LENGTH_SHORT).show()
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "Backup failed", e)
+                withContext(Dispatchers.Main) {
+                    android.widget.Toast.makeText(context, "Backup failed: ${e.message}", android.widget.Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    fun restoreAppList(context: Context, uri: Uri) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val jsonStr = context.contentResolver.openInputStream(uri)?.use { inputStream ->
+                    inputStream.bufferedReader().use { it.readText() }
+                } ?: return@launch
+
+                val jsonArray = JSONArray(jsonStr)
+                val newConfigs = mutableListOf<PkgConfig.Config>()
+                val pm = context.packageManager
+
+                for (i in 0 until jsonArray.length()) {
+                    val jsonObj = jsonArray.getJSONObject(i)
+                    val pkgName = jsonObj.optString("pkg")
+
+                    if (pkgName.isEmpty()) continue
+
+                    try {
+                        val pkgInfo = pm.getPackageInfo(pkgName, 0)
+                        val uid = pkgInfo.applicationInfo!!.uid
+
+                        val allow = jsonObj.optInt("allow", 0)
+                        val exclude = jsonObj.optInt("exclude", 0)
+                        val scontext = jsonObj.optString("scontext", APApplication.DEFAULT_SCONTEXT)
+
+                        val profile = Natives.Profile(uid = uid, toUid = 0, scontext = scontext)
+                        val config = PkgConfig.Config(pkg = pkgName, exclude = exclude, allow = allow, profile = profile)
+
+                        newConfigs.add(config)
+
+                        // Apply to kernel immediately
+                        if (allow == 1) {
+                            Natives.grantSu(uid, 0, scontext)
+                            Natives.setUidExclude(uid, 0)
+                        } else {
+                            Natives.revokeSu(uid)
+                            if (exclude == 1) {
+                                Natives.setUidExclude(uid, 1)
+                            } else {
+                                Natives.setUidExclude(uid, 0)
+                            }
+                        }
+
+                    } catch (e: PackageManager.NameNotFoundException) {
+                        Log.w(TAG, "Package $pkgName not found during restore")
+                    }
+                }
+
+                if (newConfigs.isNotEmpty()) {
+                    // Start a thread to perform root operations
+                    thread {
+                        Natives.su()
+
+                        // 1. Clear ALL existing configurations in Kernel
+                        val oldConfigs = PkgConfig.readConfigs()
+                        oldConfigs.values.forEach { config ->
+                            val uid = config.profile.uid
+                            Natives.revokeSu(uid)
+                            Natives.setUidExclude(uid, 0)
+                        }
+                        
+                        // 2. Apply to kernel
+                        newConfigs.forEach { config ->
+                            val uid = config.profile.uid
+                            val allow = config.allow
+                            val exclude = config.exclude
+                            val scontext = config.profile.scontext
+                            
+                            if (allow == 1) {
+                                Natives.grantSu(uid, 0, scontext)
+                                Natives.setUidExclude(uid, 0)
+                            } else {
+                                Natives.revokeSu(uid)
+                                if (exclude == 1) {
+                                    Natives.setUidExclude(uid, 1)
+                                } else {
+                                    Natives.setUidExclude(uid, 0)
+                                }
+                            }
+                        }
+
+                        // 3. Overwrite config file
+                        PkgConfig.overwriteConfigs(newConfigs)
+                    }.join()
+
+                    fetchAppList()
+                    withContext(Dispatchers.Main) {
+                        android.widget.Toast.makeText(context, me.bmax.apatch.R.string.restore_success, android.widget.Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "Restore failed", e)
+                withContext(Dispatchers.Main) {
+                    android.widget.Toast.makeText(context, "Restore failed: ${e.message}", android.widget.Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 

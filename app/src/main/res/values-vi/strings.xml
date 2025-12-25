@@ -595,4 +595,9 @@
     <string name="app_list_loading_scheme_root_service">RootService (Mặc định)</string>
     <string name="app_list_loading_scheme_package_manager">PackageManager (API hệ thống)</string>
     <string name="app_list_loading_scheme_dialog_title">Sơ đồ tải</string>
+    <string name="su_backup_list">Danh sách sao lưu</string>
+    <string name="su_restore_list">Danh sách khôi phục</string>
+    <string name="backup_success">Sao lưu thành công</string>
+    <string name="restore_success">Khôi phục thành công</string>
+
 </resources>

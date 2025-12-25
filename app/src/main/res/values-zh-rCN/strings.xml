@@ -599,4 +599,8 @@
     <string name="kp_install_methods">KernelPatch 修补/安装</string>
     <string name="restore_boot_methods">选择一个启动来恢复到引导分区</string>
 
+    <string name="su_backup_list">备份列表</string>
+    <string name="su_restore_list">还原列表</string>
+    <string name="backup_success">备份成功</string>
+    <string name="restore_success">还原成功</string>
 </resources>

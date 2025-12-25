@@ -596,4 +596,9 @@
     <string name="app_list_loading_scheme_root_service">RootService (Domyślnie)</string>
     <string name="app_list_loading_scheme_package_manager">PackageManager (API systemowe)</string>
     <string name="app_list_loading_scheme_dialog_title">Schemat wczytywania</string>
+    <string name="su_backup_list">Lista kopii zapasowych</string>
+    <string name="su_restore_list">Lista przywracania zapasowych</string>
+    <string name="backup_success">Kopia zapasowana pomyślnie</string>
+    <string name="restore_success">Przywracanie pomyślnie</string>
+
 </resources>

@@ -605,4 +605,9 @@
     <string name="restore_boot_methods">حدد boot لاستعادته إلى قسم boot</string>
 
 
+    <string name="su_backup_list">قائمة النسخ الاحتياطي</string>
+    <string name="su_restore_list">قائمة الاستعادة</string>
+    <string name="backup_success">تم النسخ الاحتياطي بنجاح</string>
+    <string name="restore_success">تمت الاستعادة بنجاح</string>
+
 </resources>

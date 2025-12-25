@@ -606,4 +606,8 @@
     <string name="restore_boot_methods">Select a boot to restore to boot partition</string>
 
 
+    <string name="su_backup_list">Backup List</string>
+    <string name="su_restore_list">Restore List</string>
+    <string name="backup_success">Backup successful</string>
+    <string name="restore_success">Restore successful</string>
 </resources>

@@ -578,4 +578,9 @@
     <string name="app_list_loading_scheme_root_service">RootService (Default)</string>
     <string name="app_list_loading_scheme_package_manager">PackageManager (API Sistem)</string>
     <string name="app_list_loading_scheme_dialog_title">Skema Pemuatan</string>
+    <string name="su_backup_list">Daftar Cadangan</string>
+    <string name="su_restore_list">Daftar Pemulihan</string>
+    <string name="backup_success">Pencadangan Berhasil</string>
+    <string name="restore_success">Pemulihan Berhasil</string>
+
 </resources>

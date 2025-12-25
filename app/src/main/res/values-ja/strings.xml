@@ -556,4 +556,9 @@
     <string name="app_list_loading_scheme_package_manager">PackageManager (システム API)</string>
     <string name="app_list_loading_scheme_dialog_title">読み込みスキーム</string>
 
+    <string name="su_backup_list">バックアップリスト</string>
+    <string name="su_restore_list">復元リスト</string>
+    <string name="backup_success">バックアップ成功</string>
+    <string name="restore_success">復元成功</string>
+
 </resources>

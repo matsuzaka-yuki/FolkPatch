@@ -597,4 +597,9 @@
     <string name="app_list_loading_scheme_root_service">圣光阵召唤 (默认)</string>
     <string name="app_list_loading_scheme_package_manager">天界召唤 (天界 API)</string>
     <string name="app_list_loading_scheme_dialog_title">召唤方案</string>
+    <string name="su_backup_list">封存圣光记忆</string>
+    <string name="su_restore_list">取出圣光记忆</string>
+    <string name="backup_success">圣光记忆封存成功</string>
+    <string name="restore_success">圣光记忆取出成功</string>
+
 </resources>

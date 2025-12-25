@@ -598,4 +598,9 @@
     <string name="app_list_loading_scheme_root_service">RootService (По умолчанию)</string>
     <string name="app_list_loading_scheme_package_manager">PackageManager (Системное API)</string>
     <string name="app_list_loading_scheme_dialog_title">Схема загрузки</string>
+    <string name="su_backup_list">Список резервных копий</string>
+    <string name="su_restore_list">Список восстановлений</string>
+    <string name="backup_success">Резервное копирование успешно</string>
+    <string name="restore_success">Восстановление успешно</string>
+
 </resources>

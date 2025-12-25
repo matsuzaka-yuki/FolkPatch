@@ -589,4 +589,8 @@
     <string name="app_list_loading_scheme_root_service">RootService (預設)</string>
     <string name="app_list_loading_scheme_package_manager">PackageManager (系統 API)</string>
     <string name="app_list_loading_scheme_dialog_title">載入方案</string>
+    <string name="su_backup_list">備份列表</string>
+    <string name="su_restore_list">還原列表</string>
+    <string name="backup_success">備份成功</string>
+    <string name="restore_success">還原成功</string>
 </resources>

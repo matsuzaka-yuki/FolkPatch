@@ -1,6 +1,8 @@
 package me.bmax.apatch.ui.screen
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -85,6 +87,19 @@ import me.bmax.apatch.util.ui.APDialogBlurBehindUtils.Companion.setupWindowBlurL
 fun SuperUserScreen() {
     val viewModel = viewModel<SuperUserViewModel>()
     val scope = rememberCoroutineScope()
+    val context = LocalContext.current
+
+    val backupLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.CreateDocument("application/json")
+    ) { uri ->
+        uri?.let { viewModel.backupAppList(context, it) }
+    }
+
+    val restoreLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.OpenDocument()
+    ) { uri ->
+        uri?.let { viewModel.restoreAppList(context, it) }
+    }
 
     var showBatchExcludeDialog by remember { mutableStateOf(false) }
 
@@ -163,6 +178,22 @@ fun SuperUserScreen() {
                                     showDropdown = false
                                 }
                             )
+
+                            WallpaperAwareDropdownMenuItem(
+                                text = { Text(stringResource(R.string.su_backup_list)) },
+                                onClick = {
+                                    backupLauncher.launch("FolkPatch_list_backup.json")
+                                    showDropdown = false
+                                }
+                            )
+
+                            WallpaperAwareDropdownMenuItem(
+                                text = { Text(stringResource(R.string.su_restore_list)) },
+                                onClick = {
+                                    restoreLauncher.launch(arrayOf("application/json", "*/*"))
+                                    showDropdown = false
+                                }
+                            )
                         }
                     }
                 },
@@ -191,8 +222,8 @@ private fun AppItem(
 ) {
     val config = app.config
     var showEditProfile by remember { mutableStateOf(false) }
-    var rootGranted by remember { mutableStateOf(config.allow != 0) }
-    var excludeApp by remember { mutableIntStateOf(config.exclude) }
+    var rootGranted by remember(app.config) { mutableStateOf(config.allow != 0) }
+    var excludeApp by remember(app.config) { mutableIntStateOf(config.exclude) }
 
     ListItem(
         modifier = Modifier.clickable(onClick = {
