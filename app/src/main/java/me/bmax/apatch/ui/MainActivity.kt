@@ -92,6 +92,7 @@ import androidx.compose.runtime.LaunchedEffect
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.launch
 import kotlin.system.exitProcess
 import me.zhanghai.android.appiconloader.coil.AppIconKeyer
 import me.bmax.apatch.util.UpdateChecker
@@ -99,6 +100,12 @@ import me.bmax.apatch.ui.component.UpdateDialog
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.platform.LocalContext
+import android.provider.OpenableColumns
+import me.bmax.apatch.ui.theme.ThemeManager
+import me.bmax.apatch.ui.component.rememberLoadingDialog
+import android.widget.Toast
+
+import me.bmax.apatch.ui.screen.ThemeImportDialog
 
 class MainActivity : AppCompatActivity() {
 
@@ -106,6 +113,33 @@ class MainActivity : AppCompatActivity() {
     private var installUri: Uri? = null
     private lateinit var permissionHandler: PermissionRequestHandler
     private val isLocked = mutableStateOf(false)
+
+    private fun getFileName(context: android.content.Context, uri: Uri): String {
+        var result: String? = null
+        if (uri.scheme == "content") {
+            val cursor = context.contentResolver.query(uri, null, null, null, null)
+            try {
+                if (cursor != null && cursor.moveToFirst()) {
+                    val index = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+                    if (index >= 0) {
+                        result = cursor.getString(index)
+                    }
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            } finally {
+                cursor?.close()
+            }
+        }
+        if (result == null) {
+            result = uri.path
+            val cut = result?.lastIndexOf('/')
+            if (cut != null && cut != -1) {
+                result = result?.substring(cut + 1)
+            }
+        }
+        return result ?: "unknown"
+    }
 
     override fun attachBaseContext(newBase: android.content.Context) {
         super.attachBaseContext(me.bmax.apatch.util.DPIUtils.updateContext(newBase))
@@ -244,18 +278,61 @@ class MainActivity : AppCompatActivity() {
                     SuperUserViewModel().fetchAppList()
                 }
             }
-            
-            val uri = installUri
-            LaunchedEffect(Unit) {
-                if (uri != null) {
-                    navigator.navigate(InstallScreenDestination(uri, MODULE_TYPE.APM))
-                }
-            }
 
             APatchThemeWithBackground(navController = navController) {
                 
                 val showUpdateDialog = remember { mutableStateOf(false) }
                 val context = LocalContext.current
+
+                val loadingDialog = rememberLoadingDialog()
+                val showThemeImportDialog = remember { mutableStateOf(false) }
+                val themeImportUri = remember { mutableStateOf<Uri?>(null) }
+                val themeImportMetadata = remember { mutableStateOf<ThemeManager.ThemeMetadata?>(null) }
+                val scope = androidx.compose.runtime.rememberCoroutineScope()
+                
+                val uri = installUri
+                LaunchedEffect(Unit) {
+                    if (uri != null) {
+                         val fileName = withContext(Dispatchers.IO) {
+                            getFileName(context, uri)
+                        }
+                        if (fileName.endsWith(".fpt", ignoreCase = true)) {
+                            themeImportUri.value = uri
+                            scope.launch {
+                                loadingDialog.show()
+                                val metadata = ThemeManager.readThemeMetadata(context, uri)
+                                loadingDialog.hide()
+                                if (metadata != null) {
+                                    themeImportMetadata.value = metadata
+                                    showThemeImportDialog.value = true
+                                } else {
+                                    Toast.makeText(context, context.getString(R.string.settings_theme_import_failed), Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        } else {
+                            navigator.navigate(InstallScreenDestination(uri, MODULE_TYPE.APM))
+                        }
+                    }
+                }
+
+                if (showThemeImportDialog.value && themeImportMetadata.value != null) {
+                    ThemeImportDialog(
+                        showDialog = showThemeImportDialog,
+                        metadata = themeImportMetadata.value!!,
+                        onConfirm = {
+                            scope.launch {
+                                val success = loadingDialog.withLoading {
+                                    ThemeManager.importTheme(context, themeImportUri.value!!)
+                                }
+                                if (success) {
+                                    Toast.makeText(context, context.getString(R.string.settings_theme_imported), Toast.LENGTH_LONG).show()
+                                } else {
+                                    Toast.makeText(context, context.getString(R.string.settings_theme_import_failed), Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        }
+                    )
+                }
                 
                 LaunchedEffect(Unit) {
                     if (prefs.getBoolean("auto_update_check", true)) {
