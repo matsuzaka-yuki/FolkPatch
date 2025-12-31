@@ -152,7 +152,7 @@ fun HomeScreen(navigator: DestinationsNavigator) {
         showPatchFloatAction = false
     }
 
-    val homeLayout = APApplication.sharedPreferences.getString("home_layout_style", "kernelsu")
+    val homeLayout = APApplication.sharedPreferences.getString("home_layout_style", "focus")
 
     Scaffold(topBar = {
         TopBar(onInstallClick = dropUnlessResumed {

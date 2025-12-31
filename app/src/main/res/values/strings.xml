@@ -645,6 +645,12 @@
     <string name="acefs_save_config">Save Configuration</string>
     <string name="acefs_save_success">Configuration saved successfully</string>
     <string name="acefs_save_failed">Failed to save configuration</string>
+    <string name="acefs_import_config">Import Configuration</string>
+    <string name="acefs_export_config">Export Configuration</string>
+    <string name="acefs_import_success">Import successful</string>
+    <string name="acefs_import_failed">Import failed</string>
+    <string name="acefs_export_success">Export successful</string>
+    <string name="acefs_export_failed">Export failed</string>
 
     <!-- Badge Count Settings -->
     <string name="enable_badge_count">Enable Badge Count</string>

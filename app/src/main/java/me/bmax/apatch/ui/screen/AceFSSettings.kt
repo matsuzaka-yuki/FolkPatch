@@ -1,5 +1,7 @@
 package me.bmax.apatch.ui.screen
 
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
@@ -15,6 +17,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Security
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
@@ -53,8 +56,11 @@ import com.topjohnwu.superuser.Shell
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import me.bmax.apatch.Natives
 import me.bmax.apatch.R
 import me.bmax.apatch.ui.component.SwitchItem
+import me.bmax.apatch.ui.component.WallpaperAwareDropdownMenu
+import me.bmax.apatch.ui.component.WallpaperAwareDropdownMenuItem
 import me.bmax.apatch.util.APatchCli
 import me.bmax.apatch.util.AceFSConfig
 
@@ -88,6 +94,75 @@ fun AceFSSettingsScreen(navigator: DestinationsNavigator) {
     val context = LocalContext.current
     var config by remember { mutableStateOf(AceFSConfig.Config()) }
     val scope = rememberCoroutineScope()
+    var showMenu by remember { mutableStateOf(false) }
+
+    val exportLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.CreateDocument("application/json")
+    ) { uri ->
+        uri?.let {
+            scope.launch {
+                withContext(Dispatchers.IO) {
+                    Natives.su()
+                    try {
+                        val source = java.io.File(AceFSConfig.CONFIG_PATH)
+                        if (source.exists()) {
+                            context.contentResolver.openOutputStream(it)?.use { output ->
+                                source.inputStream().use { input ->
+                                    input.copyTo(output)
+                                }
+                            }
+                            withContext(Dispatchers.Main) {
+                                Toast.makeText(context, R.string.acefs_export_success, Toast.LENGTH_SHORT).show()
+                            }
+                        } else {
+                            withContext(Dispatchers.Main) {
+                                Toast.makeText(context, R.string.acefs_export_failed, Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                        withContext(Dispatchers.Main) {
+                            Toast.makeText(context, R.string.acefs_export_failed, Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    val importLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.OpenDocument()
+    ) { uri ->
+        uri?.let {
+            scope.launch {
+                withContext(Dispatchers.IO) {
+                    Natives.su()
+                    try {
+                        context.contentResolver.openInputStream(it)?.use { input ->
+                            val content = input.readBytes()
+                            val dest = java.io.File(AceFSConfig.CONFIG_PATH)
+                            dest.parentFile?.let { parent ->
+                                if (!parent.exists()) {
+                                    parent.mkdirs()
+                                }
+                            }
+                            dest.writeBytes(content)
+                        }
+                        val newConfig = AceFSConfig.readConfig()
+                        withContext(Dispatchers.Main) {
+                            config = newConfig
+                            Toast.makeText(context, R.string.acefs_import_success, Toast.LENGTH_LONG).show()
+                        }
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                        withContext(Dispatchers.Main) {
+                            Toast.makeText(context, R.string.acefs_import_failed, Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     // Load initial state
     LaunchedEffect(Unit) {
@@ -141,6 +216,30 @@ fun AceFSSettingsScreen(navigator: DestinationsNavigator) {
                 navigationIcon = {
                     IconButton(onClick = { navigator.navigateUp() }) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+                    }
+                },
+                actions = {
+                    IconButton(onClick = { showMenu = true }) {
+                        Icon(Icons.Filled.MoreVert, contentDescription = "Menu")
+                        WallpaperAwareDropdownMenu(
+                            expanded = showMenu,
+                            onDismissRequest = { showMenu = false }
+                        ) {
+                            WallpaperAwareDropdownMenuItem(
+                                text = { Text(stringResource(R.string.acefs_import_config)) },
+                                onClick = {
+                                    showMenu = false
+                                    importLauncher.launch(arrayOf("*/*"))
+                                }
+                            )
+                            WallpaperAwareDropdownMenuItem(
+                                text = { Text(stringResource(R.string.acefs_export_config)) },
+                                onClick = {
+                                    showMenu = false
+                                    exportLauncher.launch("AceFS_Config.json")
+                                }
+                            )
+                        }
                     }
                 }
             )

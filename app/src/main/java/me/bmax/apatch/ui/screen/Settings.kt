@@ -878,7 +878,7 @@ fun SettingScreen(navigator: DestinationsNavigator) {
 
             // Home Layout
             val homeLayoutTitle = stringResource(id = R.string.settings_home_layout_style)
-            val currentStyle = prefs.getString("home_layout_style", "kernelsu")
+            val currentStyle = prefs.getString("home_layout_style", "focus")
             val homeLayoutValue = stringResource(homeLayoutStyleToString(currentStyle.toString()))
             val showHomeLayout = matchAppearance || shouldShow(homeLayoutTitle, homeLayoutValue)
 
@@ -896,7 +896,7 @@ fun SettingScreen(navigator: DestinationsNavigator) {
             var showNavSuperUser by rememberSaveable { mutableStateOf(prefs.getBoolean("show_nav_superuser", true)) }
 
             // Grid Layout Background
-            val isKernelSuStyle = prefs.getString("home_layout_style", "kernelsu") == "kernelsu"
+            val isKernelSuStyle = prefs.getString("home_layout_style", "focus") == "kernelsu"
             val gridBackgroundTitle = stringResource(id = R.string.settings_grid_working_card_background)
             val gridBackgroundSummary = stringResource(id = R.string.settings_grid_working_card_background_summary)
             val gridBackgroundEnabledText = stringResource(id = R.string.settings_grid_working_card_background_enabled)
@@ -3267,7 +3267,7 @@ fun HomeLayoutChooseDialog(showDialog: MutableState<Boolean>) {
                     modifier = Modifier.padding(bottom = 16.dp)
                 )
                 
-                val currentStyle = prefs.getString("home_layout_style", "kernelsu")
+                val currentStyle = prefs.getString("home_layout_style", "focus")
                 
                 Surface(
                     shape = RoundedCornerShape(12.dp),

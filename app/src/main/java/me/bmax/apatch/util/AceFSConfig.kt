@@ -10,7 +10,7 @@ import java.io.File
 
 object AceFSConfig {
     private const val TAG = "AceFSConfig"
-    private const val CONFIG_PATH = "/data/adb/fp/AceFS.json"
+    const val CONFIG_PATH = "/data/adb/fp/AceFS.json"
 
     data class ZygiskGroup(
         val pkgNames: List<String> = emptyList(),

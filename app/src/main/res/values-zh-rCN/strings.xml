@@ -639,6 +639,12 @@
     <string name="acefs_save_success">配置保存成功</string>
     <string name="acefs_save_failed">配置保存失败</string>
     <string name="acefs_save_config">保存配置</string>
+    <string name="acefs_import_config">导入配置</string>
+    <string name="acefs_export_config">导出配置</string>
+    <string name="acefs_import_success">导入成功</string>
+    <string name="acefs_import_failed">导入失败</string>
+    <string name="acefs_export_success">导出成功</string>
+    <string name="acefs_export_failed">导出失败</string>
 
     <!-- Badge Count Settings -->
     <string name="enable_badge_count">启用角标统计</string>
