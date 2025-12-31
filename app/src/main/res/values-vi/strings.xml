@@ -416,10 +416,13 @@
     <string name="apm_bulk_install_action">Flash hàng loạt</string>
     <string name="apm_bulk_install_log_title">Nhật ký flash hàng loạt</string>
     <string name="apm_bulk_install_log_start">Bắt đầu flash hàng loạt...</string>
-    <string name="apm_bulk_install_log_installing">Đang flash %s</string>
+    <string name="apm_bulk_install_log_installing">Đang flash %1$s</string>
+    <string name="apm_batch_install_full_process">Complete batch install process</string>
+    <string name="apm_batch_install_full_process_summary">System module batch installation is performed using the complete process</string>
+    <string name="next_module">Next module</string>
     <string name="apm_bulk_install_log_installed">Module %s flash hoàn tất.</string>
     <string name="apm_bulk_install_log_done">Tất cả hành động đã hoàn tất.</string>
-    <string name="apm_bulk_install_first_use_text">Tính năng này cho phép bạn flash nhiều module một lần, thuộc loại flash nhanh, phù hợp để flash các module không liên quan đến thao tác nút trong quá trình, vui lòng sử dụng flash thông thường cho các thao tác liên quan đến nhấn nút âm lượng v.v.</string>
+    <string name="apm_bulk_install_first_use_text">Tính năng này cho phép bạn flash nhiều module một lần, thuộc loại flash nhanh, phù hợp để flash các module không liên quan đến thao tác nút trong quá trình, vui lòng bật chế độ flash quy trình hoàn chỉnh trong cài đặt cho các thao tác liên quan đến nhấn nút âm lượng v.v.</string>
     <string name="apm_bulk_install_remove">Xóa</string>
     <string name="apm_first_use_title">Chào mừng bạn sử dụng module hệ thống</string>
     <string name="apm_first_use_text">Chào mừng bạn sử dụng module hệ thống, nơi này sử dụng module tương thích với hệ sinh thái Magisk, trong tương lai có thể sẽ thêm hỗ trợ module Lua, nhấn nút góc dưới bên phải để cài đặt module, bạn cũng có thể sử dụng trình cài đặt ở đầu trang để cài đặt module hàng loạt, cũng cung cấp một chức năng sao lưu tất cả module một nút, nhưng lưu ý phương án này có thể không áp dụng cho tất cả module, vẫn hãy tự sao lưu thêm</string>

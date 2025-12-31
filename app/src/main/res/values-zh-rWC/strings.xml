@@ -406,10 +406,13 @@
     <string name="apm_bulk_install_action">批量引符</string>
     <string name="apm_bulk_install_log_title">批量引符录</string>
     <string name="apm_bulk_install_log_start">始批量引符渡劫...</string>
-    <string name="apm_bulk_install_log_installing">正在引符 %s</string>
+    <string name="apm_bulk_install_log_installing">正在引符 %1$s</string>
+    <string name="apm_batch_install_full_process">完整批量引符渡劫</string>
+    <string name="apm_batch_install_full_process_summary">使用完整渡劫流程进行天道仙符批量引符</string>
+    <string name="next_module">下一道仙符</string>
     <string name="apm_bulk_install_log_installed">仙符 %s 引符毕。</string>
     <string name="apm_bulk_install_log_done">诸渡劫事了。</string>
-    <string name="apm_bulk_install_first_use_text">此仙能可令汝一次性引多枚仙符，此乃速引之法，宜用引符时不涉音量仙键之仙符。若涉音量仙键之操作，请用常引之法。</string>
+    <string name="apm_bulk_install_first_use_text">此仙能可令汝一次性引多枚仙符，此乃速引之法，宜用引符时不涉音量仙键之仙符。若涉音量仙键之操作，请去设置启用完整流程引符之法。</string>
     <string name="apm_bulk_install_remove">除</string>
     <string name="apm_first_use_title">欢迎使用天道仙符</string>
     <string name="apm_first_use_text">欢迎使用天道仙符，此地所用乃Magisk仙阵兼容之仙符，将来或加Lua仙符之容，右下之钮可引仙符，亦可引顶部之仙器批量引符，又有一键备份所有仙符之能，然此法未必适所有仙符，汝当多加备份</string>

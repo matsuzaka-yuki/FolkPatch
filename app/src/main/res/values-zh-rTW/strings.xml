@@ -404,10 +404,13 @@
     <string name="apm_bulk_install_action">批量刷入</string>
     <string name="apm_bulk_install_log_title">批量刷入日誌</string>
     <string name="apm_bulk_install_log_start">開始批量刷入...</string>
-    <string name="apm_bulk_install_log_installing">正在刷入 %s</string>
-    <string name="apm_bulk_install_log_installed">模組 %s 刷入完成。</string>
+    <string name="apm_bulk_install_log_installing">正在安裝 %1$s</string>
+    <string name="apm_batch_install_full_process">完整批量安裝流程</string>
+    <string name="apm_batch_install_full_process_summary">使用完整流程進行系統模組批量安裝</string>
+    <string name="next_module">下一個模組</string>
+    <string name="apm_bulk_install_log_installed">模組 %s 安裝完成。</string>
     <string name="apm_bulk_install_log_done">所有操作已完成。</string>
-    <string name="apm_bulk_install_first_use_text">這個功能允許你一次性刷入多個模組,屬於快速刷入,適合刷一些過程中沒有涉及按鍵操作的模組,涉及點按音量鍵等操作的請使用普通刷入</string>
+    <string name="apm_bulk_install_first_use_text">這個功能允許你一次性刷入多個模組,屬於快速刷入,適合刷一些過程中沒有涉及按鍵操作的模組,涉及點按音量鍵等操作的請去設定啟用完整流程刷入模式</string>
     <string name="apm_bulk_install_remove">移除</string>
     <string name="apm_first_use_title">歡迎使用系統模組</string>
     <string name="apm_first_use_text">歡迎使用系統模組，這裡使用的是相容Magisk生態的模組，未來可能會加入對Lua模組的支援，點擊右下角的按鈕可以安裝模組，你也可以使用頂部的安裝器批量安裝模組，還提供了一個功能一鍵備份全部模組，但是注意這種方案不一定適用全部模組，還是自己多加備份</string>

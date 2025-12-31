@@ -412,10 +412,13 @@
     <string name="apm_bulk_install_action">Массовая установка</string>
     <string name="apm_bulk_install_log_title">Журнал массовой установки</string>
     <string name="apm_bulk_install_log_start">Начало массовой установки...</string>
-    <string name="apm_bulk_install_log_installing">Установка %s</string>
+    <string name="apm_bulk_install_log_installing">Установка %1$s</string>
+    <string name="apm_batch_install_full_process">Complete batch install process</string>
+    <string name="apm_batch_install_full_process_summary">System module batch installation is performed using the complete process</string>
+    <string name="next_module">Next module</string>
     <string name="apm_bulk_install_log_installed">Модуль %s установлен.</string>
     <string name="apm_bulk_install_log_done">Все операции завершены.</string>
-    <string name="apm_bulk_install_first_use_text">Эта функция позволяет устанавливать несколько модулей одновременно. Это быстрый метод установки, подходящий для модулей, которые не требуют операций с кнопками во время установки. Для модулей, требующих взаимодействия с кнопками громкости, пожалуйста, используйте стандартную установку.</string>
+    <string name="apm_bulk_install_first_use_text">Эта функция позволяет устанавливать несколько модулей одновременно. Это быстрый метод установки, подходящий для модулей, которые не требуют операций с кнопками во время установки. Для модулей, требующих взаимодействия с кнопками громкости, пожалуйста, включите режим полной установки в настройках.</string>
     <string name="apm_bulk_install_remove">Удалить</string>
     <string name="apm_first_use_title">Добро пожаловать в системные модули</string>
     <string name="apm_first_use_text">Добро пожаловать в системные модули, здесь используются модули, совместимые с экосистемой Magisk. В будущем может быть добавлена поддержка модулей Lua. Нажмите кнопку в правом нижнем углу, чтобы установить модули. Вы также можете использовать установщик вверху для массовой установки модулей. Также предоставляется функция резервного копирования всех модулей одним нажатием, но обратите внимание, что это решение может не подходить для всех модулей, поэтому делайте свои резервные копии.</string>

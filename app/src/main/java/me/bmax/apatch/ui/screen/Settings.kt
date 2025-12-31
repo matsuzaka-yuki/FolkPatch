@@ -176,6 +176,7 @@ import me.bmax.apatch.util.UpdateChecker
 import me.bmax.apatch.ui.component.UpdateDialog
 import androidx.compose.material.icons.filled.MusicNote
 import androidx.compose.material.icons.filled.VisibilityOff
+import androidx.compose.material.icons.filled.ViewList
 import me.bmax.apatch.ui.component.SearchAppBar
 
 @Composable
@@ -2029,7 +2030,12 @@ fun SettingScreen(navigator: DestinationsNavigator) {
             var foldSystemModule by rememberSaveable { mutableStateOf(prefs.getBoolean("fold_system_module", false)) }
             val showFoldSystemModule = aPatchReady && (matchModule || shouldShow(foldSystemModuleTitle, foldSystemModuleSummary))
 
-            val showModuleCategory = showAutoBackup || showOpenBackupDir || showMoreInfo || showModuleSortOptimization || showDisableModuleUpdateCheck || showFoldSystemModule
+            val apmBatchInstallFullProcessTitle = stringResource(id = R.string.apm_batch_install_full_process)
+            val apmBatchInstallFullProcessSummary = stringResource(id = R.string.apm_batch_install_full_process_summary)
+            var apmBatchInstallFullProcess by rememberSaveable { mutableStateOf(prefs.getBoolean("apm_batch_install_full_process", false)) }
+            val showApmBatchInstallFullProcess = aPatchReady && (matchModule || shouldShow(apmBatchInstallFullProcessTitle, apmBatchInstallFullProcessSummary))
+
+            val showModuleCategory = showAutoBackup || showOpenBackupDir || showMoreInfo || showModuleSortOptimization || showDisableModuleUpdateCheck || showFoldSystemModule || showApmBatchInstallFullProcess
 
             if (showModuleCategory) {
                 SettingsCategory(icon = Icons.Filled.Extension, title = moduleTitle, isSearching = searchText.isNotEmpty()) {
@@ -2054,6 +2060,18 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                         ) {
                             prefs.edit { putBoolean("fold_system_module", it) }
                             foldSystemModule = it
+                        }
+                    }
+
+                    if (showApmBatchInstallFullProcess) {
+                        SwitchItem(
+                            icon = Icons.Filled.ViewList,
+                            title = apmBatchInstallFullProcessTitle,
+                            summary = apmBatchInstallFullProcessSummary,
+                            checked = apmBatchInstallFullProcess
+                        ) {
+                            prefs.edit { putBoolean("apm_batch_install_full_process", it) }
+                            apmBatchInstallFullProcess = it
                         }
                     }
 

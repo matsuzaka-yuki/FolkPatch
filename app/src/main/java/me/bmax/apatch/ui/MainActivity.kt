@@ -49,6 +49,7 @@ import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.ramcosta.composedestinations.generated.destinations.InstallScreenDestination
+import com.ramcosta.composedestinations.generated.destinations.ApmBulkInstallScreenDestination
 import coil.Coil
 import coil.ImageLoader
 import com.ramcosta.composedestinations.DestinationsNavHost
@@ -111,6 +112,7 @@ class MainActivity : AppCompatActivity() {
 
     private var isLoading = true
     private var installUri: Uri? = null
+    private var installUris: ArrayList<Uri>? = null
     private lateinit var permissionHandler: PermissionRequestHandler
     private val isLocked = mutableStateOf(false)
 
@@ -172,6 +174,15 @@ class MainActivity : AppCompatActivity() {
                     @Suppress("DEPRECATION")
                     intent.getParcelableArrayListExtra<Uri>("uris")?.firstOrNull()
                 }
+            }
+        }
+
+        if (intent.action == Intent.ACTION_SEND_MULTIPLE) {
+            installUris = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM, Uri::class.java)
+            } else {
+                @Suppress("DEPRECATION")
+                intent.getParcelableArrayListExtra<Uri>(Intent.EXTRA_STREAM)
             }
         }
 
@@ -291,8 +302,11 @@ class MainActivity : AppCompatActivity() {
                 val scope = androidx.compose.runtime.rememberCoroutineScope()
                 
                 val uri = installUri
+                val uris = installUris
                 LaunchedEffect(Unit) {
-                    if (uri != null) {
+                    if (uris != null && uris.isNotEmpty()) {
+                        navigator.navigate(ApmBulkInstallScreenDestination(initialUris = uris))
+                    } else if (uri != null) {
                          val fileName = withContext(Dispatchers.IO) {
                             getFileName(context, uri)
                         }

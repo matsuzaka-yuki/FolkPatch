@@ -731,7 +731,7 @@ private fun TopBar(
                 )
             }
             androidx.compose.material3.IconButton(onClick = {
-                navigator.navigate(ApmBulkInstallScreenDestination)
+                navigator.navigate(ApmBulkInstallScreenDestination())
             }) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.PlaylistAdd,

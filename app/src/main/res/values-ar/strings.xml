@@ -427,10 +427,13 @@
     <string name="apm_bulk_install_action">تثبيت مجمع</string>
     <string name="apm_bulk_install_log_title">سجل التثبيت المجمع</string>
     <string name="apm_bulk_install_log_start">بدء التثبيت المجمع...</string>
-    <string name="apm_bulk_install_log_installing">جارٍ تثبيت %s</string>
+    <string name="apm_bulk_install_log_installing">جارٍ تثبيت %1$s</string>
+    <string name="apm_batch_install_full_process">Complete batch install process</string>
+    <string name="apm_batch_install_full_process_summary">System module batch installation is performed using the complete process</string>
+    <string name="next_module">Next module</string>
     <string name="apm_bulk_install_log_installed">تم تثبيت الوحدة %s.</string>
     <string name="apm_bulk_install_log_done">اكتملت جميع العمليات.</string>
-    <string name="apm_bulk_install_first_use_text">تتيح لك هذه الميزة تثبيت وحدات متعددة في وقت واحد. إنها طريقة تثبيت سريعة مناسبة للوحدات التي لا تتضمن عمليات مفتاحية أثناء التثبيت. بالنسبة للوحدات التي تتطلب تفاعلات مفاتيح الصوت، يرجى استخدام التثبيت القياسي.</string>
+    <string name="apm_bulk_install_first_use_text">تتيح لك هذه الميزة تثبيت وحدات متعددة في وقت واحد. إنها طريقة تثبيت سريعة مناسبة للوحدات التي لا تتضمن عمليات مفتاحية أثناء التثبيت. بالنسبة للوحدات التي تتطلب تفاعلات مفاتيح الصوت، يرجى تفعيل وضع التثبيت الكامل في الإعدادات.</string>
     <string name="apm_bulk_install_remove">إزالة</string>
     <string name="apm_first_use_title">مرحبًا بك في وحدات النظام</string>
     <string name="apm_first_use_text">مرحبًا بك في وحدات النظام، يستخدم هذا وحدات متوافقة مع نظام Magisk البيئي. في المستقبل، قد تتم إضافة دعم لوحدات Lua. انقر فوق الزر في الزاوية اليمنى السفلية لتثبيت الوحدات. يمكنك أيضًا استخدام المثبت في الأعلى لتثبيت الوحدات بشكل مجمع. يتم توفير ميزة لنسخ احتياطي لجميع الوحدات بنقرة واحدة أيضًا، ولكن لاحظ أن هذا الحل قد لا يكون مناسبًا لجميع الوحدات، لذلك يجب عليك عمل نسخ احتياطية خاصة بك.</string>

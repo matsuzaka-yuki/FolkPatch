@@ -12,6 +12,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Save
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -42,12 +43,14 @@ import androidx.lifecycle.compose.dropUnlessResumed
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import com.ramcosta.composedestinations.generated.destinations.InstallScreenDestination
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import me.bmax.apatch.R
 import me.bmax.apatch.ui.component.KeyEventBlocker
 import me.bmax.apatch.util.installModule
+import me.bmax.apatch.util.BulkInstallManager
 import me.bmax.apatch.util.reboot
 import me.bmax.apatch.util.ui.LocalSnackbarHost
 import java.io.File
@@ -114,6 +117,7 @@ fun InstallScreen(navigator: DestinationsNavigator, uri: Uri, type: MODULE_TYPE)
             if (isExternalInstall) {
                 activity?.finish()
             } else {
+                BulkInstallManager.clear()
                 navigator.popBackStack()
             }
         }, onSave = {
@@ -130,20 +134,37 @@ fun InstallScreen(navigator: DestinationsNavigator, uri: Uri, type: MODULE_TYPE)
         })
     }, floatingActionButton = {
         if (showFloatAction) {
-            val reboot = stringResource(id = R.string.reboot)
-            ExtendedFloatingActionButton(
-                onClick = {
-                    scope.launch {
-                        withContext(Dispatchers.IO) {
-                            reboot()
+            if (BulkInstallManager.hasNext()) {
+                val nextText = stringResource(id = R.string.next_module)
+                ExtendedFloatingActionButton(
+                    onClick = {
+                        val nextUri = BulkInstallManager.popNext()
+                        if (nextUri != null) {
+                            navigator.popBackStack()
+                            navigator.navigate(InstallScreenDestination(nextUri, type))
                         }
-                    }
-                },
-                icon = { Icon(Icons.Filled.Refresh, reboot) },
-                text = { Text(text = reboot) },
-                containerColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f),
-                contentColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 1f),
-            )
+                    },
+                    icon = { Icon(Icons.AutoMirrored.Filled.ArrowForward, nextText) },
+                    text = { Text(text = nextText) },
+                    containerColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f),
+                    contentColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 1f),
+                )
+            } else {
+                val reboot = stringResource(id = R.string.reboot)
+                ExtendedFloatingActionButton(
+                    onClick = {
+                        scope.launch {
+                            withContext(Dispatchers.IO) {
+                                reboot()
+                            }
+                        }
+                    },
+                    icon = { Icon(Icons.Filled.Refresh, reboot) },
+                    text = { Text(text = reboot) },
+                    containerColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f),
+                    contentColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 1f),
+                )
+            }
         }
 
     }, snackbarHost = { SnackbarHost(snackBarHost) }) { innerPadding ->

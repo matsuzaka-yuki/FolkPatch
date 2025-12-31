@@ -428,10 +428,13 @@
     <string name="apm_bulk_install_action">Instalación Masiva</string>
     <string name="apm_bulk_install_log_title">Registro de Instalación Masiva</string>
     <string name="apm_bulk_install_log_start">Iniciando instalación masiva...</string>
-    <string name="apm_bulk_install_log_installing">Instalando %s</string>
+    <string name="apm_bulk_install_log_installing">Instalando %1$s</string>
+    <string name="apm_batch_install_full_process">Complete batch install process</string>
+    <string name="apm_batch_install_full_process_summary">System module batch installation is performed using the complete process</string>
+    <string name="next_module">Next module</string>
     <string name="apm_bulk_install_log_installed">Módulo %s instalado.</string>
     <string name="apm_bulk_install_log_done">Todas las operaciones completadas.</string>
-    <string name="apm_bulk_install_first_use_text">Esta función te permite instalar múltiples módulos a la vez. Es un método rápido adecuado para módulos que no requieren operaciones de teclas durante la instalación. Para módulos que requieren interacciones con teclas de volumen, por favor usa la instalación estándar.</string>
+    <string name="apm_bulk_install_first_use_text">Esta función te permite instalar múltiples módulos a la vez. Es un método rápido adecuado para módulos que no requieren operaciones de teclas durante la instalación. Para módulos que requieren interacciones con teclas de volumen, por favor activa el modo de instalación completa en la configuración.</string>
     <string name="apm_bulk_install_remove">Eliminar</string>
     <string name="apm_first_use_title">Bienvenido a Módulos del Sistema</string>
     <string name="apm_first_use_text">Bienvenido a Módulos del Sistema, esto usa módulos compatibles con el ecosistema Magisk. En el futuro, podría añadirse soporte para módulos Lua. Pulsa el botón en la esquina inferior derecha para instalar módulos. También puedes usar el instalador en la parte superior para instalar módulos por lotes. Se proporciona una función para respaldar todos los módulos con un clic, pero ten en cuenta que esta solución puede no ser adecuada para todos los módulos, así que deberías hacer tus propios respaldos.</string>

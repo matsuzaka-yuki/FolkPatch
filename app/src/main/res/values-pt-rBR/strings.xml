@@ -427,10 +427,13 @@
     <string name="apm_bulk_install_action">Instalar em Lote</string>
     <string name="apm_bulk_install_log_title">Log da Instalação em Lote</string>
     <string name="apm_bulk_install_log_start">Iniciando instalação em lote...</string>
-    <string name="apm_bulk_install_log_installing">Instalando %s</string>
+    <string name="apm_bulk_install_log_installing">Instalando %1$s</string>
+    <string name="apm_batch_install_full_process">Complete batch install process</string>
+    <string name="apm_batch_install_full_process_summary">System module batch installation is performed using the complete process</string>
+    <string name="next_module">Next module</string>
     <string name="apm_bulk_install_log_installed">Módulo %s instalado.</string>
     <string name="apm_bulk_install_log_done">Todas as operações concluídas.</string>
-    <string name="apm_bulk_install_first_use_text">Este recurso permite instalar vários módulos de uma vez. É um método rápido adequado para módulos que não envolvem operações de tecla durante a instalação. Para módulos que exigem interações com as teclas de volume, use a instalação padrão.</string>
+    <string name="apm_bulk_install_first_use_text">Este recurso permite instalar vários módulos de uma vez. É um método rápido adequado para módulos que não envolvem operações de tecla durante a instalação. Para módulos que exigem interações com as teclas de volume, ative o modo de instalação completa nas configurações.</string>
     <string name="apm_bulk_install_remove">Remover</string>
     <string name="apm_first_use_title">Bem-vindo aos Módulos de Sistema</string>
     <string name="apm_first_use_text">Bem-vindo aos Módulos de Sistema. Aqui são usados módulos compatíveis com o ecossistema Magisk. Futuramente, suporte para módulos Lua poderá ser adicionado. Clique no botão no canto inferior direito para instalar módulos. Você também pode usar o instalador no topo para instalação em lote. Um recurso para backup de todos os módulos com um clique também é fornecido, mas note que esta solução pode não ser adequada para todos os módulos, então faça seus próprios backups.</string>

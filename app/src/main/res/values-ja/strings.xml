@@ -355,10 +355,13 @@
     <string name="apm_bulk_install_action">一括インストール</string>
     <string name="apm_bulk_install_log_title">一括インストールログ</string>
     <string name="apm_bulk_install_log_start">一括インストールを開始...</string>
-    <string name="apm_bulk_install_log_installing">%sをインストール中</string>
+    <string name="apm_bulk_install_log_installing">%1$sをインストール中</string>
+    <string name="apm_batch_install_full_process">Complete batch install process</string>
+    <string name="apm_batch_install_full_process_summary">System module batch installation is performed using the complete process</string>
+    <string name="next_module">Next module</string>
     <string name="apm_bulk_install_log_installed">モジュール%sがインストールされました。</string>
     <string name="apm_bulk_install_log_done">すべての操作が完了しました。</string>
-    <string name="apm_bulk_install_first_use_text">この機能では、複数のモジュールを一度にインストールできます。これはクイックインストール方法で、インストール中にキー操作を伴わないモジュールに適しています。音量キー操作が必要なモジュールは、標準インストールを使用してください。</string>
+    <string name="apm_bulk_install_first_use_text">この機能では、複数のモジュールを一度にインストールできます。これはクイックインストール方法で、インストール中にキー操作を伴わないモジュールに適しています。音量キー操作が必要なモジュールは、設定で完全プロセスインストールモードを有効にしてください。</string>
     <string name="settings_grid_working_card_hide_check">ステータスアイコンを非表示</string>
     <string name="settings_grid_working_card_hide_check_summary">ワーキングカードのチェックマークまたは警告アイコンを非表示</string>
     <string name="settings_grid_working_card_hide_text">ステータステキストを非表示</string>
