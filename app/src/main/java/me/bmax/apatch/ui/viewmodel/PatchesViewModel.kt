@@ -140,6 +140,7 @@ class PatchesViewModel : ViewModel() {
     }
 
     private fun parseBootimg(bootimg: String) {
+        patchAceFSS = false
         val result = shellForResult(
             shell,
             "cd $patchDir",
@@ -183,6 +184,10 @@ class PatchesViewModel : ViewModel() {
                             event = KPModel.TriggerEvent.PRE_KERNEL_INIT.event
                         }
                         if (type == KPModel.ExtraType.KPM) {
+                            if (name == "AceFS") {
+                                patchAceFSS = true
+                                continue
+                            }
                             val kpmInfo = KPModel.KPMInfo(
                                 type, name, event, args,
                                 extra["version"].toString(),

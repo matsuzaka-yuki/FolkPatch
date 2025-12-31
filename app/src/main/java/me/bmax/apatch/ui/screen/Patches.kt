@@ -188,11 +188,9 @@ fun Patches(mode: PatchesViewModel.PatchMode) {
             // existed extras
             if (mode == PatchesViewModel.PatchMode.PATCH_AND_INSTALL || mode == PatchesViewModel.PatchMode.INSTALL_TO_NEXT_SLOT) {
                 viewModel.existedExtras.forEach(action = {
-                    if (it.name != "AceFS") {
-                        ExtraItem(extra = it, true, onDelete = {
-                            viewModel.existedExtras.remove(it)
-                        })
-                    }
+                    ExtraItem(extra = it, true, onDelete = {
+                        viewModel.existedExtras.remove(it)
+                    })
                 })
             }
 
