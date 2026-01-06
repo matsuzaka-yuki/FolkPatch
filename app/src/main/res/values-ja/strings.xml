@@ -45,6 +45,7 @@
     <string name="home_kernel">カーネル</string>
     <string name="home_fingerprint">Fingerprint</string>
     <string name="home_selinux_status">SELinux の状態</string>
+    <string name="home_zygisk_implement">Zygisk実装</string>
     <string name="home_selinux_status_unknown">Unknown</string>
     <string name="kpm_load_toast_succ">ロード成功</string>
     <string name="kpm_load_toast_failed">ロード失敗</string>
@@ -81,6 +82,11 @@
     <string name="dpi_preset_medium">中 (400 DPI)</string>
     <string name="dpi_preset_large">大 (480 DPI)</string>
     <string name="dpi_preset_xlarge">特大 (560 DPI)</string>
+    <string name="settings_nav_layout_title">ナビゲーションレイアウト</string>
+    <string name="settings_nav_layout_summary">ナビゲーションバーボタンをカスタマイズ</string>
+    <string name="settings_show_apm">APMを表示</string>
+    <string name="settings_show_kpm">KPMを表示</string>
+    <string name="settings_show_superuser">スーパーユーザーを表示</string>
     <string name="settings_global_namespace_mode">グローバル名前空間モード</string>
     <string name="settings_global_namespace_mode_summary">すべての root セッションはグローバルマウント名前空間を使用します</string>
     <string name="settings_apm_sorting">スマートAPMソート</string>

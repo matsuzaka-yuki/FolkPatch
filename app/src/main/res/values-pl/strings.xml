@@ -21,6 +21,7 @@
     <string name="apatch_version">Wersja: %s</string>
     <string name="home_ap_cando_install">Instaluj</string>
     <string name="home_selinux_status">Status SELinux</string>
+    <string name="home_zygisk_implement">Implementacja Zygisk</string>
     <string name="home_su_path">Plik wykonywalny su</string>
     <string name="apatch_version_update">Wersja: %1$s -&gt; %2$s</string>
     <string name="home_kernel">Wersja jądra</string>
@@ -92,6 +93,11 @@
     <string name="dpi_preset_medium">Średni (400 DPI)</string>
     <string name="dpi_preset_large">Duży (480 DPI)</string>
     <string name="dpi_preset_xlarge">Bardzo duży (560 DPI)</string>
+    <string name="settings_nav_layout_title">Układ nawigacji</string>
+    <string name="settings_nav_layout_summary">Dostosuj przyciski paska nawigacji</string>
+    <string name="settings_show_apm">Pokaż APM</string>
+    <string name="settings_show_kpm">Pokaż KPM</string>
+    <string name="settings_show_superuser">Pokaż SuperUżytkownika</string>
     <string name="apm_not_installed">AndroidPatch jest niezainstalowany</string>
     <string name="home_patch_set_key_desc">Tylko dane uwierzytelniające dla KernelPatch</string>
     <string name="home_auth_key_desc">Rozpocznij po uzyskaniu certyfikatu</string>

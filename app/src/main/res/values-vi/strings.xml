@@ -31,6 +31,7 @@
     <string name="home_manager_version">Phiên bản trình quản lý</string>
     <string name="home_fingerprint">Vân tay</string>
     <string name="home_selinux_status">Trạng thái SELinux</string>
+    <string name="home_zygisk_implement">Triển khai Zygisk</string>
     <string name="home_selinux_status_disabled">Tắt</string>
     <string name="home_selinux_status_enforcing">Đang thực thi (Enforcing)</string>
     <string name="home_selinux_status_permissive">Cho phép (Permissive)</string>
@@ -95,6 +96,11 @@
     <string name="dpi_preset_medium">Trung bình (400 DPI)</string>
     <string name="dpi_preset_large">Lớn (480 DPI)</string>
     <string name="dpi_preset_xlarge">Rất lớn (560 DPI)</string>
+    <string name="settings_nav_layout_title">Bố cục điều hướng</string>
+    <string name="settings_nav_layout_summary">Tùy chỉnh các nút thanh điều hướng</string>
+    <string name="settings_show_apm">Hiển thị APM</string>
+    <string name="settings_show_kpm">Hiển thị KPM</string>
+    <string name="settings_show_superuser">Hiển thị SuperUser</string>
     <string name="home_apatch_version">Phiên bản FolkPatch</string>
     <string name="patch">Bản vá</string>
     <string name="settings_global_namespace_mode">Chế độ Global Namespace</string>

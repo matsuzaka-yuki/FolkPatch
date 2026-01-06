@@ -43,6 +43,7 @@
     <string name="kpm_unload">إلغاء التحميل</string>
     <string name="kpm_apm_empty">لم يتم تحميل أي إضافة</string>
     <string name="home_selinux_status_unknown">غير معروف</string>
+    <string name="home_zygisk_implement">تنفيذ Zygisk</string>
     <string name="su_title">المستخدم الخارق</string>
     <string name="su_pkg_excluded_label">استثني</string>
     <string name="kpm_load">تحميل</string>
@@ -53,10 +54,6 @@
     <string name="home_selinux_status_disabled">ملغى</string>
     <string name="home_selinux_status_enforcing">إجبار</string>
     <string name="home_selinux_status_permissive">تساهل</string>
-    <string name="kpm_kp_not_installed">KernelPatch غير مثبت</string>
-    <string name="kpm_load_toast_succ">تم التحميل بنجاح</string>
-    <string name="kpm_load_toast_failed">فشل التحميل</string>
-    <string name="kpm_unload_confirm">إلغاء تحميل \"%s\" الإضافة?</string>
     <string name="kpm_version">الاصدار</string>
     <string name="kpm_license">الترخيص</string>
     <string name="kpm_author">المؤلِّف</string>
@@ -83,6 +80,11 @@
     <string name="dpi_preset_medium">متوسط (400 DPI)</string>
     <string name="dpi_preset_large">كبير (480 DPI)</string>
     <string name="dpi_preset_xlarge">كبير جداً (560 DPI)</string>
+    <string name="settings_nav_layout_title">تنسيق التنقل</string>
+    <string name="settings_nav_layout_summary">تخصيص أزرار شريط التنقل</string>
+    <string name="settings_show_apm">إظهار APM</string>
+    <string name="settings_show_kpm">إظهار KPM</string>
+    <string name="settings_show_superuser">إظهار SuperUser</string>
     <string name="apm">إضافة AP</string>
     <string name="apm_failed_to_enable">غير قادر على تشغيل الإضافة \"%s\"</string>
     <string name="apm_author">المؤلف</string>

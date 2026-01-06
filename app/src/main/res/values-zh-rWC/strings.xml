@@ -26,6 +26,11 @@
     <string name="dpi_preset_medium">中庸视界 (400 DPI)</string>
     <string name="dpi_preset_large">须弥视界 (480 DPI)</string>
     <string name="dpi_preset_xlarge">无极视界 (560 DPI)</string>
+    <string name="settings_nav_layout_title">仙域导航</string>
+    <string name="settings_nav_layout_summary">定制仙域导航阵法</string>
+    <string name="settings_show_apm">显示天道符箓</string>
+    <string name="settings_show_kpm">显示道核符箓</string>
+    <string name="settings_show_superuser">显示登仙法会</string>
     <string name="settings_global_namespace_mode">全域仙域结界</string>
     <string name="settings_global_namespace_mode_summary">凡登仙法会，皆启全域洞天挂载结界</string>
     <string name="settings_apm_sorting">天道仙符智慧排序</string>
@@ -103,6 +108,7 @@
     <string name="home_fingerprint">仙门印玺</string>
 
     <string name="home_selinux_status">SELinux禁守令</string>
+    <string name="home_zygisk_implement">仙界Zygisk</string>
     <string name="home_selinux_status_disabled">仙禁已破</string>
     <string name="home_selinux_status_enforcing">闭关</string>
     <string name="home_selinux_status_permissive">仙禁宽宥之境</string>

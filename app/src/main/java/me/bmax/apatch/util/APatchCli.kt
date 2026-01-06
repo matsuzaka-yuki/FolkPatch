@@ -389,3 +389,47 @@ fun verifyAppSignature(validSignature: String): Boolean {
         validSignature
     )
 }
+
+fun getZygiskImplement(): String {
+    val zygiskModuleIds = listOf(
+        "zygisksu",
+        "zygisknext",
+        "rezygisk",
+        "neozygisk",
+        "shirokozygisk"
+    )
+
+    for (moduleId in zygiskModuleIds) {
+        val shell = getRootShell()
+
+        // 检查是否存在
+        if (!ShellUtils.fastCmdResult(shell, "test -d /data/adb/modules/$moduleId")) continue
+
+        // 忽略禁用/即将删除
+        if (ShellUtils.fastCmdResult(shell, "test -f /data/adb/modules/$moduleId/disable") ||
+            ShellUtils.fastCmdResult(shell, "test -f /data/adb/modules/$moduleId/remove")) continue
+
+        // 读取prop
+        val propContent = shell.newJob().add("cat /data/adb/modules/$moduleId/module.prop").to(ArrayList(), null).exec().out
+        if (propContent.isEmpty()) continue
+
+        try {
+            val prop = java.util.Properties()
+            // 将List<String>转换为String Reader，或者手动解析
+            // 为简单起见，这里假设内容不多，合并成字符串处理
+            val propString = propContent.joinToString("\n")
+            prop.load(java.io.StringReader(propString))
+
+            val name = prop.getProperty("name")
+            if (!name.isNullOrEmpty()) {
+                Log.i(TAG, "Zygisk implement: $name")
+                return name
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to parse module.prop for $moduleId", e)
+        }
+    }
+
+    Log.i(TAG, "Zygisk implement: None")
+    return "None"
+}

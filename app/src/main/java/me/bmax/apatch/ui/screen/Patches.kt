@@ -253,13 +253,13 @@ fun Patches(mode: PatchesViewModel.PatchMode) {
                     if (viewModel.running) {
                         Box(
                             modifier = Modifier
-                                .padding(innerPadding)
+                                .fillMaxWidth(),
+                            contentAlignment = Alignment.Center
                         ) {
                             CircularProgressIndicator(
                                 modifier = Modifier
                                     .size(50.dp)
                                     .padding(16.dp)
-                                    .align(Alignment.BottomCenter)
                             )
                         }
                     }

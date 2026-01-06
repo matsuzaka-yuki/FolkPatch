@@ -20,6 +20,7 @@
     <string name="home_manager_version">Версия менеджера</string>
     <string name="home_fingerprint">Отпечаток</string>
     <string name="home_selinux_status">Состояние SELinux</string>
+    <string name="home_zygisk_implement">Реализация Zygisk</string>
     <string name="home_selinux_status_disabled">Отключено</string>
     <string name="home_selinux_status_enforcing">Принудительный</string>
     <string name="home_selinux_status_permissive">Разрешающий</string>
@@ -96,6 +97,11 @@
     <string name="dpi_preset_medium">Средний (400 DPI)</string>
     <string name="dpi_preset_large">Большой (480 DPI)</string>
     <string name="dpi_preset_xlarge">Очень большой (560 DPI)</string>
+    <string name="settings_nav_layout_title">Навигация</string>
+    <string name="settings_nav_layout_summary">Настройка кнопок навигации</string>
+    <string name="settings_show_apm">Показать APM</string>
+    <string name="settings_show_kpm">Показать KPM</string>
+    <string name="settings_show_superuser">Показать SuperUser</string>
     <string name="patch">Патч</string>
     <string name="settings_global_namespace_mode">Режим глобального пространства имён</string>
     <string name="settings_global_namespace_mode_summary">Все сеансы суперпользователя root используют монтирование глобального пространства имён</string>

@@ -150,7 +150,7 @@ fun ListHomeScreen(navigator: DestinationsNavigator) {
                     if (!hideAboutCard) {
                         LearnMoreCardList()
                     }
-                    Spacer(Modifier)
+                    Spacer(Modifier.height(100.dp))
                 }
             }
         }

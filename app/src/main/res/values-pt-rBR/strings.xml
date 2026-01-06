@@ -48,6 +48,7 @@
     <string name="home_manager_version">Versão do gerenciador</string>
     <string name="home_fingerprint">Impressão digital</string>
     <string name="home_selinux_status">Status do SELinux</string>
+    <string name="home_zygisk_implement">Implementação Zygisk</string>
     <string name="home_selinux_status_disabled">Desativado</string>
     <string name="home_selinux_status_enforcing">Impondo</string>
     <string name="home_selinux_status_permissive">Permissivo</string>
@@ -96,6 +97,11 @@
     <string name="dpi_preset_medium">Médio (400 DPI)</string>
     <string name="dpi_preset_large">Grande (480 DPI)</string>
     <string name="dpi_preset_xlarge">Muito grande (560 DPI)</string>
+    <string name="settings_nav_layout_title">Layout de Navegação</string>
+    <string name="settings_nav_layout_summary">Personalizar botões da barra de navegação</string>
+    <string name="settings_show_apm">Mostrar APM</string>
+    <string name="settings_show_kpm">Mostrar KPM</string>
+    <string name="settings_show_superuser">Mostrar SuperUsuário</string>
     <string name="patch">Patch</string>
     <string name="settings_global_namespace_mode">Modo de namespace global</string>
     <string name="settings_global_namespace_mode_summary">Todas as sessões root usam o namespace de montagem global</string>

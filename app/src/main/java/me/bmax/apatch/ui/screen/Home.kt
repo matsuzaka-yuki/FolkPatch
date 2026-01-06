@@ -48,6 +48,7 @@ import androidx.compose.material.icons.outlined.SystemUpdate
 import androidx.compose.material.icons.rounded.CheckCircleOutline
 import androidx.compose.material.icons.rounded.ErrorOutline
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -192,7 +193,7 @@ fun MainHomeScreen(navigator: DestinationsNavigator) {
                         LearnMoreCard()
                     }
 
-                    Spacer(Modifier)
+                    Spacer(Modifier.height(100.dp))
                 }
             }
         }
@@ -551,7 +552,7 @@ private fun StatusCard(
                         modifier = Modifier.fillMaxWidth(),
                         text = when (kpState) {
                             APApplication.State.KERNELPATCH_INSTALLED ->
-                                "Version: " + Version.installedKPVString()
+                                "Version: " + managerVersion.first
                             APApplication.State.KERNELPATCH_NEED_UPDATE ->
                                 "${Version.installedKPVString()} → ${Version.buildKPVString()}"
                             else -> stringResource(R.string.home_click_to_install)
@@ -897,6 +898,23 @@ private fun InfoCard(kpState: APApplication.State, apState: APApplication.State)
             InfoCardItem(stringResource(R.string.home_fingerprint), Build.FINGERPRINT)
 
             Spacer(Modifier.height(16.dp))
+
+            // Zygisk 检测
+            var zygiskImplement by remember { mutableStateOf("None") }
+            LaunchedEffect(Unit) {
+                withContext(Dispatchers.IO) {
+                    try {
+                        zygiskImplement = me.bmax.apatch.util.getZygiskImplement()
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                }
+            }
+            if (kpState != APApplication.State.UNKNOWN_STATE && zygiskImplement != "None") {
+                InfoCardItem(stringResource(R.string.home_zygisk_implement), zygiskImplement)
+                Spacer(Modifier.height(16.dp))
+            }
+
             InfoCardItem(stringResource(R.string.home_selinux_status), getSELinuxStatus())
 
         }

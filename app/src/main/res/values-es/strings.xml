@@ -36,6 +36,7 @@
     <string name="kpm_kp_not_installed">KernelPatch no está instalado</string>
     <string name="home_fingerprint">Huella del dispositivo</string>
     <string name="home_selinux_status_unknown">Desconocido</string>
+    <string name="home_zygisk_implement">Implementación de Zygisk</string>
     <string name="home_selinux_status_permissive">Permisivo</string>
     <string name="home_selinux_status">Estado de SELinux</string>
     <string name="home_selinux_status_disabled">Desactivado</string>
@@ -96,6 +97,11 @@
     <string name="dpi_preset_medium">Mediano (400 DPI)</string>
     <string name="dpi_preset_large">Grande (480 DPI)</string>
     <string name="dpi_preset_xlarge">Muy grande (560 DPI)</string>
+    <string name="settings_nav_layout_title">Diseño de navegación</string>
+    <string name="settings_nav_layout_summary">Personalizar botones de la barra de navegación</string>
+    <string name="settings_show_apm">Mostrar APM</string>
+    <string name="settings_show_kpm">Mostrar KPM</string>
+    <string name="settings_show_superuser">Mostrar SuperUsuario</string>
     <string name="patch">Parchear</string>
     <string name="settings_global_namespace_mode">Modo de espacio de nombres global</string>
     <string name="settings_global_namespace_mode_summary">Todas las sesiones «root» utilizan el espacio de nombres de montaje global</string>

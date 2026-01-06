@@ -10,6 +10,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -39,6 +40,8 @@ import androidx.core.content.edit
 import androidx.core.os.LocaleListCompat
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootGraph
+import com.ramcosta.composedestinations.generated.destinations.NavigationLayoutScreenDestination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -79,7 +82,7 @@ import top.yukonga.miuix.kmp.utils.overScrollVertical
 
 @Destination<RootGraph>
 @Composable
-fun SettingScreen() {
+fun SettingScreen(navigator: DestinationsNavigator) {
     val scrollBehavior = MiuixScrollBehavior()
 
     val state by APApplication.apStateLiveData.observeAsState(APApplication.State.UNKNOWN_STATE)
@@ -434,6 +437,15 @@ fun SettingScreen() {
                                     )
                                 )
                             }
+                        }
+                    )
+
+                    // Navigation Layout Settings
+                    SuperArrow(
+                        title = stringResource(id = R.string.settings_nav_layout_title),
+                        summary = stringResource(id = R.string.settings_nav_layout_summary),
+                        onClick = {
+                            navigator.navigate(NavigationLayoutScreenDestination)
                         }
                     )
 

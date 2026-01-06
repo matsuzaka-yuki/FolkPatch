@@ -31,6 +31,11 @@
     <string name="dpi_preset_medium">Medium (400 DPI)</string>
     <string name="dpi_preset_large">Large (480 DPI)</string>
     <string name="dpi_preset_xlarge">XLarge (560 DPI)</string>
+    <string name="settings_nav_layout_title">Navigation Layout</string>
+    <string name="settings_nav_layout_summary">Customize navigation bar buttons</string>
+    <string name="settings_show_apm">Show APM</string>
+    <string name="settings_show_kpm">Show KPM</string>
+    <string name="settings_show_superuser">Show SuperUser</string>
     <string name="settings_global_namespace_mode">Global namespace mode</string>
     <string name="settings_global_namespace_mode_summary">All root sessions use the global mount namespace</string>
     <string name="settings_apm_sorting">Smart APM sorting</string>
@@ -124,6 +129,7 @@
     <string name="home_selinux_status_enforcing">Enforcing</string>
     <string name="home_selinux_status_permissive">Permissive</string>
     <string name="home_selinux_status_unknown">Unknown</string>
+    <string name="home_zygisk_implement">Zygisk Implement</string>
 
     <string name="home_device_info">Device</string>
     <string name="home_system_version">System version</string>

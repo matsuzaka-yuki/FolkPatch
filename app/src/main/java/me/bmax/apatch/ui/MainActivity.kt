@@ -344,6 +344,27 @@ private fun BottomBar(navController: NavHostController) {
     val currentBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = currentBackStackEntry?.destination?.route
 
+    // 读取导航布局配置
+    val prefs = APApplication.sharedPreferences
+    var showNavApm by remember { mutableStateOf(prefs.getBoolean("show_nav_apm", true)) }
+    var showNavKpm by remember { mutableStateOf(prefs.getBoolean("show_nav_kpm", true)) }
+    var showNavSuperUser by remember { mutableStateOf(prefs.getBoolean("show_nav_superuser", true)) }
+
+    // 监听 SharedPreferences 变化
+    DisposableEffect(Unit) {
+        val listener = SharedPreferences.OnSharedPreferenceChangeListener { sharedPrefs, key ->
+            when (key) {
+                "show_nav_apm" -> showNavApm = sharedPrefs.getBoolean(key, true)
+                "show_nav_kpm" -> showNavKpm = sharedPrefs.getBoolean(key, true)
+                "show_nav_superuser" -> showNavSuperUser = sharedPrefs.getBoolean(key, true)
+            }
+        }
+        prefs.registerOnSharedPreferenceChangeListener(listener)
+        onDispose {
+            prefs.unregisterOnSharedPreferenceChangeListener(listener)
+        }
+    }
+
     Crossfade(
         targetState = state,
         label = "BottomBarStateCrossfade"
@@ -354,8 +375,16 @@ private fun BottomBar(navController: NavHostController) {
 
         val navItems = BottomBarDestination.entries
             .filter { d ->
+                // 补丁状态检查
                 !(d.kPatchRequired && !kPatchReady) &&
-                        !(d.aPatchRequired && !aPatchReady)
+                        !(d.aPatchRequired && !aPatchReady) &&
+                // 用户自定义显示设置
+                when (d) {
+                    BottomBarDestination.AModule -> showNavApm
+                    BottomBarDestination.KModule -> showNavKpm
+                    BottomBarDestination.SuperUser -> showNavSuperUser
+                    else -> true  // Home 和 Settings 始终显示
+                }
             }
             .map { d ->
                 d to NavigationItem(

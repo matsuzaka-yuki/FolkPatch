@@ -99,7 +99,7 @@ android {
         buildConfigField("String", "buildKPV", "\"$kernelPatchVersion\"")
         buildConfigField("boolean", "DEBUG_FAKE_ROOT", localProperties.getProperty("debug.fake_root", "false"))
 
-        base.archivesName = "FolkPatch_${managerVersionCode}_${managerVersionName}_${branchName}"
+        base.archivesName = "FolkLite_${managerVersionCode}_${managerVersionName}_${branchName}"
     }
 
     compileOptions {
