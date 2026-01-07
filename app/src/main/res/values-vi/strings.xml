@@ -236,6 +236,9 @@
     <string name="update_available_message">Có phiên bản mới của FolkPatch. Cập nhật ngay?</string>
     <string name="update_close">Để sau</string>
     <string name="update_action">Cập nhật ngay</string>
+    <string name="unofficial_version_title">Phiên bản không chính thức</string>
+    <string name="unofficial_version_message">Bạn đang sử dụng trình quản lý FolkPatch phiên bản của bên thứ ba, có thể gây thiệt hại tài sản, hãy tải ứng dụng chính thức!</string>
+    <string name="go_to_github">Đi đến Github</string>
     <string name="online_apm_module_title">Online APM Modules</string>
     <string name="online_kpm_module_title">Online KPM Modules</string>
     <string name="online_module_search_hint">Search modules...</string>
@@ -246,4 +249,30 @@
     <string name="online_module_empty">No modules available</string>
     <string name="settings_apm_stay_on_page">Ở lại trang</string>
     <string name="settings_apm_stay_on_page_summary">Không tự động quay lại sau khi mô-đun hệ thống thực hiện thao tác</string>
+
+
+
+
+    <!-- KPM Auto Load -->
+    <string name="kpm_autoload_title">Tải tự động KPM</string>
+    <string name="kpm_autoload_enabled">Bật tải tự động</string>
+    <string name="kpm_autoload_enabled_summary">Tự động tải module KPM khi ứng dụng khởi chạy</string>
+    <string name="kpm_autoload_json_config">Cấu hình JSON</string>
+    <string name="kpm_autoload_json_label">Cấu hình JSON</string>
+    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
+    <string name="kpm_autoload_json_error">Định dạng JSON không hợp lệ</string>
+    <string name="kpm_autoload_json_helper">Nhập JSON hợp lệ, bao gồm mảng đường dẫn tệp KPM</string>
+    <string name="kpm_autoload_save">Lưu cấu hình</string>
+    <string name="kpm_autoload_save_confirm">Lưu cấu hình tải tự động?</string>
+    <string name="kpm_autoload_save_success">Lưu cấu hình thành công</string>
+    <string name="kpm_autoload_save_failed">Lưu cấu hình thất bại</string>
+    <string name="kpm_autoload_visual_mode">Chế độ trực quan</string>
+    <string name="kpm_autoload_json_mode">Chế độ JSON</string>
+    <string name="kpm_autoload_add_kpm">Thêm KPM</string>
+    <string name="kpm_autoload_remove_kpm">Xóa</string>
+    <string name="kpm_autoload_kpm_list_title">Danh sách module KPM</string>
+    <string name="kpm_autoload_no_kpm_added">Chưa thêm module KPM</string>
+    <string name="kpm_autoload_kpm_path">Đường dẫn KPM</string>
+    <string name="kpm_autoload_file_not_found">Không tìm thấy tệp</string>
+    <string name="kpm_autoload_select_kpm_file">Chọn tệp KPM</string>
 </resources>

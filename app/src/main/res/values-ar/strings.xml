@@ -233,6 +233,9 @@
     <string name="update_available_message">إصدار جديد من FolkPatch متاح. هل تريد التحديث الآن؟</string>
     <string name="update_close">لاحقاً</string>
     <string name="update_action">تحديث الآن</string>
+    <string name="unofficial_version_title">نسخة غير رسمية</string>
+    <string name="unofficial_version_message">أنت تستخدم مدير FolkPatch من طرف ثالث، وهذا قد يسبب خسائر مالية، يرجى تحميل التطبيق الرسمي!</string>
+    <string name="go_to_github">الذهاب إلى Github</string>
     <string name="online_apm_module_title">وحدات APM عبر الإنترنت</string>
     <string name="online_kpm_module_title">وحدات KPM عبر الإنترنت</string>
     <string name="online_module_search_hint">بحث الوحدات...</string>
@@ -243,4 +246,31 @@
     <string name="online_module_empty">لا توجد وحدات متاحة</string>
     <string name="settings_apm_stay_on_page">البقاء على الصفحة</string>
     <string name="settings_apm_stay_on_page_summary">لا تعود تلقائياً بعد تنفيذ وحدة النظام للعملية</string>
+<!-- KPM Auto Load -->
+
+
+
+
+    <!-- KPM Auto Load -->
+    <string name="kpm_autoload_title">التحميل التلقائي لـ KPM</string>
+    <string name="kpm_autoload_enabled">تمكين التحميل التلقائي</string>
+    <string name="kpm_autoload_enabled_summary">تحميل وحدات KPM تلقائيًا عند بدء تشغيل التطبيق</string>
+    <string name="kpm_autoload_json_config">تكوين JSON</string>
+    <string name="kpm_autoload_json_label">تكوين JSON</string>
+    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
+    <string name="kpm_autoload_json_error">تنسيق JSON غير صالح</string>
+    <string name="kpm_autoload_json_helper">أدخل JSON صالح مع مصفوفة من مسارات ملفات KPM</string>
+    <string name="kpm_autoload_save">حفظ التكوين</string>
+    <string name="kpm_autoload_save_confirm">حفظ تكوين التحميل التلقائي؟</string>
+    <string name="kpm_autoload_save_success">تم حفظ التكوين بنجاح</string>
+    <string name="kpm_autoload_save_failed">فشل حفظ التكوين</string>
+    <string name="kpm_autoload_visual_mode">الوضع المرئي</string>
+    <string name="kpm_autoload_json_mode">وضع JSON</string>
+    <string name="kpm_autoload_add_kpm">إضافة KPM</string>
+    <string name="kpm_autoload_remove_kpm">إزالة</string>
+    <string name="kpm_autoload_kpm_list_title">وحدات KPM</string>
+    <string name="kpm_autoload_no_kpm_added">لم تتم إضافة أي وحدات KPM</string>
+    <string name="kpm_autoload_kpm_path">مسار KPM</string>
+    <string name="kpm_autoload_file_not_found">لم يتم العثور على الملف</string>
+    <string name="kpm_autoload_select_kpm_file">تحديد ملف KPM</string>
 </resources>

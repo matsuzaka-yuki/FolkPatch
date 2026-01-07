@@ -193,7 +193,7 @@ fun MainHomeScreen(navigator: DestinationsNavigator) {
 
                     // About card - can be hidden in settings
                     val hideAboutCard =
-                        APApplication.sharedPreferences.getBoolean("hide_about_card", true)
+                        APApplication.sharedPreferences.getBoolean("hide_about_card", false)
                     if (!hideAboutCard) {
                         LearnMoreCard()
                     }
@@ -391,7 +391,7 @@ private fun TopBar(
                                     optionSize = moreItems.size,
                                     onSelectedIndexChange = {
                                         when (index) {
-                                            0 -> uriHandler.openUri("https://github.com/bmax121/APatch/issues/new/choose")
+                                            0 -> uriHandler.openUri("https://github.com/matsuzaka-yuki/FolkPatch/issues/new/choose")
                                             1 -> navigator.navigate(AboutScreenDestination)
                                         }
                                         showDropdownMoreOptions.value = false
@@ -805,7 +805,7 @@ fun BackupWarningCard() {
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Icon(Icons.Filled.Warning, contentDescription = "warning")
+                    Icon(Icons.Filled.Warning, contentDescription = "warning", tint = Color.White)
                 }
                 Column(
                     modifier = Modifier.padding(12.dp),
@@ -820,6 +820,7 @@ fun BackupWarningCard() {
                         Text(
                             modifier = Modifier.weight(1f),
                             text = stringResource(id = R.string.patch_warnning),
+                            color = Color.White
                         )
 
                         Spacer(Modifier.width(12.dp))
@@ -831,6 +832,7 @@ fun BackupWarningCard() {
                                 apApp.updateBackupWarningState(false)
                                 show.value = false
                             },
+                            tint = Color.White
                         )
                     }
                 }
@@ -935,7 +937,7 @@ fun WarningCard(
             modifier = Modifier
                 .fillMaxWidth()
                 .then(onClick?.let { Modifier.clickable { it() } } ?: Modifier)
-                .padding(24.dp)) {
+                .padding(32.dp)) {
             Text(
                 text = message, style = MiuixTheme.textStyles.body1
             )
@@ -990,7 +992,7 @@ fun LearnMoreCard() {
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable {
-                    uriHandler.openUri("https://apatch.dev")
+                    uriHandler.openUri("https://fp.mysqil.com/")
                 }
                 .padding(24.dp), verticalAlignment = Alignment.CenterVertically) {
             Column {

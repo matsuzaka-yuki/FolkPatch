@@ -336,7 +336,7 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                     // Hide About Card
                     var hideAboutCard by rememberSaveable {
                         mutableStateOf(
-                            prefs.getBoolean("hide_about_card", true)
+                            prefs.getBoolean("hide_about_card", false)
                         )
                     }
                     SuperSwitch(

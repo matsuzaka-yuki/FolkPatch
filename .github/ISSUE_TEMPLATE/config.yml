@@ -1,7 +1,7 @@
 blank_issues_enabled: false
 contact_links:
   - name: Ask a question | 提问
-    url: https://github.com/bmax121/APatch/discussions/new?category=Q-A
+    url: https://github.com/matsuzaka-yuki/FolkPatch/discussions/new?category=Q-A
     about: If you've any questions, ask them here | 如果有任何疑问请在这里提问
   - name: Official Telegram channel | 官方 Telegram 频道
     url: https://t.me/APatchChannel

@@ -48,6 +48,7 @@ import com.ramcosta.composedestinations.annotation.RootGraph
 import com.ramcosta.composedestinations.generated.destinations.InstallScreenDestination
 import com.ramcosta.composedestinations.generated.destinations.PatchesDestination
 import com.ramcosta.composedestinations.generated.destinations.OnlineKPMModuleScreenDestination
+import com.ramcosta.composedestinations.generated.destinations.KpmAutoLoadConfigScreenDestination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.topjohnwu.superuser.nio.ExtendedFile
 import com.topjohnwu.superuser.nio.FileSystemManager
@@ -139,6 +140,7 @@ fun KPModuleScreen(navigator: DestinationsNavigator) {
             val moduleLoad = stringResource(id = R.string.kpm_load)
             val moduleInstall = stringResource(id = R.string.kpm_install)
             val moduleEmbed = stringResource(id = R.string.kpm_embed)
+            val moduleAutoLoadConfig = stringResource(id = R.string.kpm_autoload_fab_title)
             val successToastText = stringResource(id = R.string.kpm_load_toast_succ)
             val failToastText = stringResource(id = R.string.kpm_load_toast_failed)
             val loadingDialog = rememberLoadingDialog()
@@ -172,7 +174,7 @@ fun KPModuleScreen(navigator: DestinationsNavigator) {
             }
 
             val expanded = remember { mutableStateOf(false) }
-            val options = listOf(moduleEmbed, moduleInstall, moduleLoad)
+            val options = listOf(moduleEmbed, moduleInstall, moduleLoad, moduleAutoLoadConfig)
 
             Column {
                 FloatingActionButton(
@@ -220,6 +222,10 @@ fun KPModuleScreen(navigator: DestinationsNavigator) {
                                             val intent = Intent(Intent.ACTION_GET_CONTENT)
                                             intent.type = "*/*"
                                             selectKpmLauncher.launch(intent)
+                                        }
+
+                                        moduleAutoLoadConfig -> {
+                                            navigator.navigate(KpmAutoLoadConfigScreenDestination)
                                         }
                                     }
                                     expanded.value = false

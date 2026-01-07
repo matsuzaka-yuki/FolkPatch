@@ -278,6 +278,34 @@
     <string name="update_available_message">检测到您的魔法等级过低，是否要下载新版本的魔法？</string>
     <string name="update_action">升级魔法</string>
     <string name="update_close">关闭</string>
+    <string name="unofficial_version_title">禁忌魔法书</string>
+    <string name="unofficial_version_message">您手中的魔法书乃是被封印的禁术，使用它可能会导致心之契约破碎，星之守护失效。请前往真理图书馆获取正统魔法书！</string>
+    <string name="go_to_github">前往真理图书馆</string>
     <string name="settings_apm_stay_on_page">留在魔法操作页面</string>
     <string name="settings_apm_stay_on_page_summary">星之魔法阵执行完操作后不自动返回</string>
+
+
+
+    <!-- KPM Auto Load -->
+    <string name="kpm_autoload_title">心之结晶自动觉醒</string>
+    <string name="kpm_autoload_enabled">启用结晶自主觉醒</string>
+    <string name="kpm_autoload_enabled_summary">应用启动时自动激活心之结晶</string>
+    <string name="kpm_autoload_json_config">星界咒语配置</string>
+    <string name="kpm_autoload_json_label">星界咒语</string>
+    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/crystal1.kpm",\n    "/path/to/crystal2.kpm"\n  ]\n}</string>
+    <string name="kpm_autoload_json_error">无效的星界咒语格式</string>
+    <string name="kpm_autoload_json_helper">输入有效的星界咒语，包含心之结晶文件路径数组</string>
+    <string name="kpm_autoload_save">保存咒语配置</string>
+    <string name="kpm_autoload_save_confirm">保存自动激活咒语配置？</string>
+    <string name="kpm_autoload_save_success">咒语配置保存成功</string>
+    <string name="kpm_autoload_save_failed">咒语配置保存失败</string>
+    <string name="kpm_autoload_visual_mode">可视化咒语模式</string>
+    <string name="kpm_autoload_json_mode">星界咒语模式</string>
+    <string name="kpm_autoload_add_kpm">添加心之结晶</string>
+    <string name="kpm_autoload_remove_kpm">解除</string>
+    <string name="kpm_autoload_kpm_list_title">心之结晶列表</string>
+    <string name="kpm_autoload_no_kpm_added">未添加心之结晶</string>
+    <string name="kpm_autoload_kpm_path">心之结晶路径</string>
+    <string name="kpm_autoload_file_not_found">未找到魔法文件</string>
+    <string name="kpm_autoload_select_kpm_file">选择心之结晶文件</string>
 </resources>

@@ -234,6 +234,9 @@
     <string name="update_available_message">Доступна новая версия FolkPatch. Обновить сейчас?</string>
     <string name="update_close">Позже</string>
     <string name="update_action">Обновить сейчас</string>
+    <string name="unofficial_version_title">Неофициальная версия</string>
+    <string name="unofficial_version_message">Вы используете менеджер FolkPatch от третьих лиц, это может привести к финансовым потерям, пожалуйста, загрузите официальное приложение!</string>
+    <string name="go_to_github">Перейти на Github</string>
     <string name="online_apm_module_title">Online APM Modules</string>
     <string name="online_kpm_module_title">Online KPM Modules</string>
     <string name="online_module_search_hint">Search modules...</string>
@@ -244,4 +247,30 @@
     <string name="online_module_empty">No modules available</string>
     <string name="settings_apm_stay_on_page">Оставаться на странице</string>
     <string name="settings_apm_stay_on_page_summary">Не возвращаться автоматически после выполнения операции системным модулем</string>
+
+
+
+
+    <!-- KPM Auto Load -->
+    <string name="kpm_autoload_title">Автозагрузка KPM</string>
+    <string name="kpm_autoload_enabled">Включить автозагрузку</string>
+    <string name="kpm_autoload_enabled_summary">Автоматически загружать модули KPM при запуске приложения</string>
+    <string name="kpm_autoload_json_config">Конфигурация JSON</string>
+    <string name="kpm_autoload_json_label">Конфигурация JSON</string>
+    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
+    <string name="kpm_autoload_json_error">Неверный формат JSON</string>
+    <string name="kpm_autoload_json_helper">Введите валидный JSON с массивом путей к KPM файлам</string>
+    <string name="kpm_autoload_save">Сохранить конфигурацию</string>
+    <string name="kpm_autoload_save_confirm">Сохранить конфигурацию автозагрузки?</string>
+    <string name="kpm_autoload_save_success">Конфигурация успешно сохранена</string>
+    <string name="kpm_autoload_save_failed">Не удалось сохранить конфигурацию</string>
+    <string name="kpm_autoload_visual_mode">Визуальный режим</string>
+    <string name="kpm_autoload_json_mode">Режим JSON</string>
+    <string name="kpm_autoload_add_kpm">Добавить KPM</string>
+    <string name="kpm_autoload_remove_kpm">Удалить</string>
+    <string name="kpm_autoload_kpm_list_title">Модули KPM</string>
+    <string name="kpm_autoload_no_kpm_added">Нет добавленных модулей KPM</string>
+    <string name="kpm_autoload_kpm_path">Путь к KPM</string>
+    <string name="kpm_autoload_file_not_found">Файл не найден</string>
+    <string name="kpm_autoload_select_kpm_file">Выбрать файл KPM</string>
 </resources>

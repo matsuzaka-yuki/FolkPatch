@@ -41,7 +41,8 @@ fun UpdateDialog(
         content = {
             Text(
                 text = stringResource(R.string.update_available_message),
-                style = MiuixTheme.textStyles.body2
+                style = MiuixTheme.textStyles.body2,
+                modifier = Modifier.padding(vertical = 24.dp)
             )
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,

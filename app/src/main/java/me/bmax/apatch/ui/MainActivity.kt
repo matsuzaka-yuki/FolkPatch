@@ -58,6 +58,7 @@ import me.bmax.apatch.R
 import me.bmax.apatch.ui.component.rememberConfirmCallback
 import me.bmax.apatch.ui.component.rememberConfirmDialog
 import me.bmax.apatch.ui.component.rememberLoadingDialog
+import me.bmax.apatch.ui.component.SignatureVerifyDialog
 import me.bmax.apatch.ui.component.UpdateDialog
 import me.bmax.apatch.ui.screen.BottomBarDestination
 import me.bmax.apatch.ui.screen.MODULE_TYPE
@@ -307,6 +308,11 @@ class MainActivity : AppCompatActivity() {
                             }
                         )
                     }
+                }
+
+                // Signature verify dialog
+                if (!APApplication.isSignatureValid) {
+                    SignatureVerifyDialog()
                 }
 
                 // Update dialog

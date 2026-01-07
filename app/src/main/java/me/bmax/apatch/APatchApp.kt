@@ -14,6 +14,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.topjohnwu.superuser.CallbackList
 import me.bmax.apatch.ui.CrashHandleActivity
+import me.bmax.apatch.ui.component.KpmAutoLoadManager
 import me.bmax.apatch.util.APatchCli
 import me.bmax.apatch.util.APatchKeyHelper
 import me.bmax.apatch.util.Version
@@ -81,6 +82,7 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler {
         const val SP_NAME = "config"
         private const val SHOW_BACKUP_WARN = "show_backup_warning"
         lateinit var sharedPreferences: SharedPreferences
+        var isSignatureValid = true
 
         private val logCallback: CallbackList<String?> = object : CallbackList<String?>() {
             override fun onAddElement(s: String?) {
@@ -189,6 +191,9 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler {
 
                 APatchKeyHelper.writeSPSuperKey(value)
 
+                // Load KPM auto-load configuration
+                KpmAutoLoadManager.loadConfig(apApp)
+
                 thread {
                     val rc = Natives.su(0, null)
                     if (!rc) {
@@ -198,6 +203,9 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler {
 
                     // Refresh shell after becoming root
                     APatchCli.refresh()
+
+                    // Auto-load KPM modules if enabled
+                    KpmAutoLoadManager.autoLoadKpmModules()
 
                     // KernelPatch version
                     //val buildV = Version.buildKPVUInt()
@@ -267,17 +275,12 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler {
             exitProcess(0)
         }
 
-        // Signature verification disabled
-        // if (BuildConfig.DEBUG && !verifyAppSignature("C67dtxnWxownwYNkFumlVnhGz5uM7AxWg6TRR0zuU+k=")) {
-        //     while (true) {
-        //         val intent = Intent(Intent.ACTION_DELETE)
-        //         intent.data = "package:$packageName".toUri()
-        //         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        //         intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS)
-        //         startActivity(intent)
-        //         exitProcess(0)
-        //     }
-        // }
+        Log.d(TAG, "Checking app signature...")
+        if (!BuildConfig.DEBUG && !verifyAppSignature("a9eba5b702eb55fb5f4b1a672a7133a16a7bcaea949cde43c812ef26c77de812")) {
+            Log.e(TAG, "App signature verification failed!")
+            isSignatureValid = false
+        }
+        Log.d(TAG, "App signature verification passed")
 
         // TODO: We can't totally protect superkey from be stolen by root or LSPosed-like injection tools in user space, the only way is don't use superkey,
         // TODO: 1. make me root by kernel

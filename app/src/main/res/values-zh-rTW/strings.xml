@@ -233,6 +233,9 @@
     <string name="update_available_message">FolkPatch 有新版本可用，是否立即更新？</string>
     <string name="update_close">稍後</string>
     <string name="update_action">立即更新</string>
+    <string name="unofficial_version_title">非官方版本</string>
+    <string name="unofficial_version_message">您正在使用的 FolkPatch 管理器为第三方版本，可能会造成财产损失，请下载正版APP使用！</string>
+    <string name="go_to_github">前往 Github</string>
     <string name="online_apm_module_title">線上 APM 模組</string>
     <string name="online_kpm_module_title">線上 KPM 模組</string>
     <string name="online_module_search_hint">搜尋模組...</string>
@@ -243,4 +246,30 @@
     <string name="online_module_empty">暫無可用模組</string>
     <string name="settings_apm_stay_on_page">留在操作頁面</string>
     <string name="settings_apm_stay_on_page_summary">系統模組執行完操作後不自動返回</string>
+
+
+
+
+    <!-- KPM Auto Load -->
+    <string name="kpm_autoload_title">KPM自動載入</string>
+    <string name="kpm_autoload_enabled">啟用自動載入</string>
+    <string name="kpm_autoload_enabled_summary">應用程式啟動時自動載入KPM模組</string>
+    <string name="kpm_autoload_json_config">JSON配置</string>
+    <string name="kpm_autoload_json_label">JSON配置</string>
+    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
+    <string name="kpm_autoload_json_error">無效的JSON格式</string>
+    <string name="kpm_autoload_json_helper">輸入有效的JSON，包含KPM檔案路徑陣列</string>
+    <string name="kpm_autoload_save">保存配置</string>
+    <string name="kpm_autoload_save_confirm">保存自動載入配置？</string>
+    <string name="kpm_autoload_save_success">配置保存成功</string>
+    <string name="kpm_autoload_save_failed">配置保存失敗</string>
+    <string name="kpm_autoload_visual_mode">可視化模式</string>
+    <string name="kpm_autoload_json_mode">JSON模式</string>
+    <string name="kpm_autoload_add_kpm">新增KPM</string>
+    <string name="kpm_autoload_remove_kpm">移除</string>
+    <string name="kpm_autoload_kpm_list_title">KPM模組列表</string>
+    <string name="kpm_autoload_no_kpm_added">未新增KPM模組</string>
+    <string name="kpm_autoload_kpm_path">KPM路徑</string>
+    <string name="kpm_autoload_file_not_found">檔案未找到</string>
+    <string name="kpm_autoload_select_kpm_file">選擇KPM檔案</string>
 </resources>

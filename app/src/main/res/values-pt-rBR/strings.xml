@@ -236,6 +236,9 @@
     <string name="update_available_message">Uma nova versão do FolkPatch está disponível. Atualizar agora?</string>
     <string name="update_close">Mais tarde</string>
     <string name="update_action">Atualizar agora</string>
+    <string name="unofficial_version_title">Versão não oficial</string>
+    <string name="unofficial_version_message">Você está usando o gerenciador FolkPatch de terceiros, isso pode causar perdas financeiras, por favor baixe o aplicativo oficial!</string>
+    <string name="go_to_github">Ir para Github</string>
     <string name="online_apm_module_title">Online APM Modules</string>
     <string name="online_kpm_module_title">Online KPM Modules</string>
     <string name="online_module_search_hint">Search modules...</string>
@@ -246,4 +249,30 @@
     <string name="online_module_empty">No modules available</string>
     <string name="settings_apm_stay_on_page">Permanecer na página</string>
     <string name="settings_apm_stay_on_page_summary">Não retornar automaticamente após o módulo do sistema executar a operação</string>
+
+
+
+
+    <!-- KPM Auto Load -->
+    <string name="kpm_autoload_title">Auto-Carregamento KPM</string>
+    <string name="kpm_autoload_enabled">Ativar auto-carregamento</string>
+    <string name="kpm_autoload_enabled_summary">Carregar módulos KPM automaticamente ao iniciar o aplicativo</string>
+    <string name="kpm_autoload_json_config">Configuração JSON</string>
+    <string name="kpm_autoload_json_label">JSON de Configuração</string>
+    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
+    <string name="kpm_autoload_json_error">Formato JSON inválido</string>
+    <string name="kpm_autoload_json_helper">Insira um JSON válido com array de caminhos de arquivos KPM</string>
+    <string name="kpm_autoload_save">Salvar Configuração</string>
+    <string name="kpm_autoload_save_confirm">Salvar configuração de auto-carregamento?</string>
+    <string name="kpm_autoload_save_success">Configuração salva com sucesso</string>
+    <string name="kpm_autoload_save_failed">Falha ao salvar configuração</string>
+    <string name="kpm_autoload_visual_mode">Modo Visual</string>
+    <string name="kpm_autoload_json_mode">Modo JSON</string>
+    <string name="kpm_autoload_add_kpm">Adicionar KPM</string>
+    <string name="kpm_autoload_remove_kpm">Remover</string>
+    <string name="kpm_autoload_kpm_list_title">Módulos KPM</string>
+    <string name="kpm_autoload_no_kpm_added">Nenhum módulo KPM adicionado</string>
+    <string name="kpm_autoload_kpm_path">Caminho KPM</string>
+    <string name="kpm_autoload_file_not_found">Arquivo não encontrado</string>
+    <string name="kpm_autoload_select_kpm_file">Selecionar Arquivo KPM</string>
 </resources>

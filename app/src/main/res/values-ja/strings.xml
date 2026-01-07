@@ -236,6 +236,9 @@
     <string name="update_available_message">FolkPatchの新しいバージョンが利用可能です。今すぐ更新しますか？</string>
     <string name="update_close">後で</string>
     <string name="update_action">今すぐ更新</string>
+    <string name="unofficial_version_title">非公式版</string>
+    <string name="unofficial_version_message">使用しているFolkPatchマネージャーはサードパーティ版であり、財産的損害の恐れがあります。正規版アプリをダウンロードしてください！</string>
+    <string name="go_to_github">Githubへ移動</string>
     <string name="online_apm_module_title">オンライン APM モジュール</string>
     <string name="online_kpm_module_title">オンライン KPM モジュール</string>
     <string name="online_module_search_hint">モジュールを検索...</string>
@@ -246,4 +249,29 @@
     <string name="online_module_empty">利用可能なモジュールがありません</string>
     <string name="settings_apm_stay_on_page">ページに留まる</string>
     <string name="settings_apm_stay_on_page_summary">システムモジュールが操作を実行した後に自動的に戻らない</string>
+
+
+
+    <!-- KPM Auto Load -->
+    <string name="kpm_autoload_title">KPM自動読み込み</string>
+    <string name="kpm_autoload_enabled">自動読み込みを有効にする</string>
+    <string name="kpm_autoload_enabled_summary">アプリケーション起動時にKPMモジュールを自動的に読み込む</string>
+    <string name="kpm_autoload_json_config">JSON設定</string>
+    <string name="kpm_autoload_json_label">JSON設定</string>
+    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
+    <string name="kpm_autoload_json_error">無効なJSON形式です</string>
+    <string name="kpm_autoload_json_helper">KPMファイルパスの配列を含む有効なJSONを入力してください</string>
+    <string name="kpm_autoload_save">設定を保存</string>
+    <string name="kpm_autoload_save_confirm">自動読み込み設定を保存しますか？</string>
+    <string name="kpm_autoload_save_success">設定が正常に保存されました</string>
+    <string name="kpm_autoload_save_failed">設定の保存に失敗しました</string>
+    <string name="kpm_autoload_visual_mode">ビジュアルモード</string>
+    <string name="kpm_autoload_json_mode">JSONモード</string>
+    <string name="kpm_autoload_add_kpm">KPMを追加</string>
+    <string name="kpm_autoload_remove_kpm">削除</string>
+    <string name="kpm_autoload_kpm_list_title">KPMモジュールリスト</string>
+    <string name="kpm_autoload_no_kpm_added">KPMモジュールが追加されていません</string>
+    <string name="kpm_autoload_kpm_path">KPMパス</string>
+    <string name="kpm_autoload_file_not_found">ファイルが見つかりません</string>
+    <string name="kpm_autoload_select_kpm_file">KPMファイルを選択</string>
 </resources>

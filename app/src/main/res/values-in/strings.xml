@@ -234,6 +234,9 @@
     <string name="update_available_message">Versi baru FolkPatch tersedia. Perbarui sekarang?</string>
     <string name="update_close">Nanti</string>
     <string name="update_action">Perbarui Sekarang</string>
+    <string name="unofficial_version_title">Versi Tidak Resmi</string>
+    <string name="unofficial_version_message">Anda menggunakan pengelola FolkPatch pihak ketiga, ini dapat menyebabkan kerugian finansial, silakan unduh aplikasi resmi!</string>
+    <string name="go_to_github">Pergi ke Github</string>
     <string name="online_apm_module_title">Online APM Modules</string>
     <string name="online_kpm_module_title">Online KPM Modules</string>
     <string name="online_module_search_hint">Search modules...</string>
@@ -244,4 +247,30 @@
     <string name="online_module_empty">No modules available</string>
     <string name="settings_apm_stay_on_page">Tetap di halaman</string>
     <string name="settings_apm_stay_on_page_summary">Jangan kembali secara otomatis setelah modul sistem melakukan operasi</string>
+
+
+
+
+    <!-- KPM Auto Load -->
+    <string name="kpm_autoload_title">Muat Otomatis KPM</string>
+    <string name="kpm_autoload_enabled">Aktifkan muat otomatis</string>
+    <string name="kpm_autoload_enabled_summary">Muat modul KPM secara otomatis saat aplikasi dimulai</string>
+    <string name="kpm_autoload_json_config">Konfigurasi JSON</string>
+    <string name="kpm_autoload_json_label">Konfigurasi JSON</string>
+    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
+    <string name="kpm_autoload_json_error">Format JSON tidak valid</string>
+    <string name="kpm_autoload_json_helper">Masukkan JSON yang valid dengan array jalur file KPM</string>
+    <string name="kpm_autoload_save">Simpan konfigurasi</string>
+    <string name="kpm_autoload_save_confirm">Simpan konfigurasi muat otomatis?</string>
+    <string name="kpm_autoload_save_success">Konfigurasi berhasil disimpan</string>
+    <string name="kpm_autoload_save_failed">Gagal menyimpan konfigurasi</string>
+    <string name="kpm_autoload_visual_mode">Mode Visual</string>
+    <string name="kpm_autoload_json_mode">Mode JSON</string>
+    <string name="kpm_autoload_add_kpm">Tambahkan KPM</string>
+    <string name="kpm_autoload_remove_kpm">Hapus</string>
+    <string name="kpm_autoload_kpm_list_title">Modul KPM</string>
+    <string name="kpm_autoload_no_kpm_added">Tidak ada modul KPM yang ditambahkan</string>
+    <string name="kpm_autoload_kpm_path">Jalur KPM</string>
+    <string name="kpm_autoload_file_not_found">File tidak ditemukan</string>
+    <string name="kpm_autoload_select_kpm_file">Pilih file KPM</string>
 </resources>

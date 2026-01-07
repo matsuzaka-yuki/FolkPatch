@@ -274,6 +274,35 @@
     <string name="update_available_message">检测到道友的仙法篇次过低，是否要下载新篇次的仙法？</string>
     <string name="update_action">渡劫升仙</string>
     <string name="update_close">关闭</string>
+    <string name="unofficial_version_title">非正统仙府</string>
+    <string name="unofficial_version_message">道友当前所用的仙府乃是旁门左道之仿品，恐有走火入魔之险，还请速速前往正统仙坛获取真经！</string>
+    <string name="go_to_github">前往仙坛</string>
     <string name="settings_apm_stay_on_page">留于仙法操作页面</string>
     <string name="settings_apm_stay_on_page_summary">天道仙符执行完操作后不自动返回</string>
+
+
+
+
+    <!-- KPM Auto Load -->
+    <string name="kpm_autoload_title">道核仙符自动引符</string>
+    <string name="kpm_autoload_enabled">启自动引符</string>
+    <string name="kpm_autoload_enabled_summary">仙器启时，自动引道核仙符入道</string>
+    <string name="kpm_autoload_json_config">JSON天机典式</string>
+    <string name="kpm_autoload_json_label">JSON天机典式</string>
+    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
+    <string name="kpm_autoload_json_error">JSON天机典式非正</string>
+    <string name="kpm_autoload_json_helper">输正之JSON天机典式，含道核仙符文卷路之数组</string>
+    <string name="kpm_autoload_save">存天机典式</string>
+    <string name="kpm_autoload_save_confirm">存自动引符之天机典式？</string>
+    <string name="kpm_autoload_save_success">天机典式已存</string>
+    <string name="kpm_autoload_save_failed">存天机典式败陨</string>
+    <string name="kpm_autoload_visual_mode">可视渡劫之式</string>
+    <string name="kpm_autoload_json_mode">JSON天机之式</string>
+    <string name="kpm_autoload_add_kpm">纳新道核仙符</string>
+    <string name="kpm_autoload_remove_kpm">祛符出典</string>
+    <string name="kpm_autoload_kpm_list_title">道核仙符列</string>
+    <string name="kpm_autoload_no_kpm_added">未纳道核仙符</string>
+    <string name="kpm_autoload_kpm_path">道核仙符之路</string>
+    <string name="kpm_autoload_file_not_found">仙符文卷未觅</string>
+    <string name="kpm_autoload_select_kpm_file">择道核仙符文卷</string>
 </resources>

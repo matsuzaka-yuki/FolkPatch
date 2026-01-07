@@ -375,8 +375,23 @@ private fun signatureFromAPK(context: Context): ByteArray? {
 private fun validateSignature(signatureBytes: ByteArray?, validSignature: String): Boolean {
     signatureBytes ?: return false
     val digest = MessageDigest.getInstance("SHA-256")
-    val signatureHash = Base64.encodeToString(digest.digest(signatureBytes), Base64.NO_WRAP)
-    return signatureHash == validSignature
+    val signatureHash = digest.digest(signatureBytes)
+    
+    // 检查签名格式：如果是Base64格式，使用Base64比较；如果是十六进制格式，使用十六进制比较
+    return if (validSignature.matches("[a-fA-F0-9]+".toRegex()) && validSignature.length == 64) {
+        // 十六进制格式
+        bytesToHex(signatureHash) == validSignature.lowercase()
+    } else if (validSignature.matches("[a-zA-Z0-9+/]+={0,2}".toRegex()) && validSignature.length % 4 == 0) {
+        // Base64格式
+        Base64.encodeToString(signatureHash, Base64.NO_WRAP) == validSignature
+    } else {
+        // 无效格式
+        false
+    }
+}
+
+private fun bytesToHex(bytes: ByteArray): String {
+    return bytes.joinToString("") { "%02x".format(it) }
 }
 
 fun verifyAppSignature(validSignature: String): Boolean {

@@ -50,6 +50,9 @@
     <string name="update_available_message">A new version of FolkPatch is available. Update now?</string>
     <string name="update_close">Later</string>
     <string name="update_action">Update Now</string>
+    <string name="unofficial_version_title">Unofficial Version</string>
+    <string name="unofficial_version_message">You are using a third-party FolkPatch manager, which may cause financial loss. Please download the official app!</string>
+    <string name="go_to_github">Go to Github</string>
 
     <string name="home_learn_apatch">Learn FolkPatch</string>
     <string name="home_click_to_learn_apatch">Learn about the features of FolkPatch and how to use</string>
@@ -314,4 +317,28 @@
     <string name="online_module_download_complete">Download complete: %s</string>
     <string name="online_module_download_notification">Downloading %s. Please check notification panel for progress and Download folder for completed file.</string>
     <string name="online_module_empty">No modules available</string>
+
+    <!-- KPM Auto Load -->
+    <string name="kpm_autoload_title">KPM Auto-Load</string>
+    <string name="kpm_autoload_fab_title">Auto Load Config</string>
+    <string name="kpm_autoload_enabled">Enable auto-load</string>
+    <string name="kpm_autoload_enabled_summary">Automatically load KPM modules on application startup</string>
+    <string name="kpm_autoload_json_config">JSON Configuration</string>
+    <string name="kpm_autoload_json_label">Configuration JSON</string>
+    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
+    <string name="kpm_autoload_json_error">Invalid JSON format</string>
+    <string name="kpm_autoload_json_helper">Enter valid JSON with array of KPM file paths</string>
+    <string name="kpm_autoload_save">Save Configuration</string>
+    <string name="kpm_autoload_save_confirm">Save auto-load configuration?</string>
+    <string name="kpm_autoload_save_success">Configuration saved successfully</string>
+    <string name="kpm_autoload_save_failed">Failed to save configuration</string>
+    <string name="kpm_autoload_visual_mode">Visual Mode</string>
+    <string name="kpm_autoload_json_mode">JSON Mode</string>
+    <string name="kpm_autoload_add_kpm">Add KPM</string>
+    <string name="kpm_autoload_remove_kpm">Remove</string>
+    <string name="kpm_autoload_kpm_list_title">KPM Modules</string>
+    <string name="kpm_autoload_no_kpm_added">No KPM modules added</string>
+    <string name="kpm_autoload_kpm_path">KPM Path</string>
+    <string name="kpm_autoload_file_not_found">File not found</string>
+    <string name="kpm_autoload_select_kpm_file">Select KPM File</string>
 </resources>

@@ -40,7 +40,7 @@ fun getGitDescribe(): String {
 }
 
 fun getVersionCode(): Int {
-    return 113009
+    return 113010
 }
 
 fun getBranch(): String {

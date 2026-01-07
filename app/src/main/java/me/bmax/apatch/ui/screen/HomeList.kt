@@ -153,7 +153,7 @@ fun ListHomeScreen(navigator: DestinationsNavigator) {
                     }
                     InfoCardList(kpState, apState)
                     val hideAboutCard =
-                        APApplication.sharedPreferences.getBoolean("hide_about_card", true)
+                        APApplication.sharedPreferences.getBoolean("hide_about_card", false)
                     if (!hideAboutCard) {
                         LearnMoreCardList()
                     }
@@ -306,7 +306,7 @@ private fun TopBarList(
 
                     ListPopup(
                         show = howDropdownReboot,
-                        alignment = PopupPositionProvider.Align.Left,
+                        alignment = PopupPositionProvider.Align.Right,
                         onDismissRequest = { howDropdownReboot.value = false }
                     ) {
                         ListPopupColumn {
@@ -341,7 +341,7 @@ private fun TopBarList(
 
                     ListPopup(
                         show = showDropdownMoreOptions,
-                        alignment = PopupPositionProvider.Align.Left,
+                        alignment = PopupPositionProvider.Align.Right,
                         onDismissRequest = { showDropdownMoreOptions.value = false }
                     ) {
                         ListPopupColumn {
@@ -351,7 +351,7 @@ private fun TopBarList(
                                     optionSize = moreItems.size,
                                     onSelectedIndexChange = {
                                         when (index) {
-                                            0 -> uriHandler.openUri("https://github.com/bmax121/APatch/issues/new/choose")
+                                            0 -> uriHandler.openUri("https://github.com/matsuzaka-yuki/FolkPatch/issues/new/choose")
                                             1 -> navigator.navigate(AboutScreenDestination)
                                         }
                                         showDropdownMoreOptions.value = false
@@ -811,7 +811,7 @@ private fun WarningCardList(
             modifier = Modifier
                 .fillMaxWidth()
                 .then(onClick?.let { Modifier.clickable { it() } } ?: Modifier)
-                .padding(24.dp)) {
+                .padding(32.dp)) {
             Text(
                 text = message, style = MiuixTheme.textStyles.body1
             )
@@ -866,7 +866,7 @@ private fun LearnMoreCardList() {
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable {
-                    uriHandler.openUri("https://apatch.dev")
+                    uriHandler.openUri("https://fp.mysqil.com/")
                 }
                 .padding(24.dp), verticalAlignment = Alignment.CenterVertically) {
             Column {
