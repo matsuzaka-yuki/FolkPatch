@@ -110,7 +110,7 @@ pub fn root_shell() -> Result<()> {
     }
 
     if matches.opt_present("v") {
-        println!("{}:FolkPatch", defs::VERSION_NAME);
+        println!("{}:FolkPatch/APatch", defs::VERSION_NAME);
         return Ok(());
     }
 
