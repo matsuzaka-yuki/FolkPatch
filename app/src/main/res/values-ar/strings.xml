@@ -236,6 +236,10 @@
     <string name="unofficial_version_title">نسخة غير رسمية</string>
     <string name="unofficial_version_message">أنت تستخدم مدير FolkPatch من طرف ثالث، وهذا قد يسبب خسائر مالية، يرجى تحميل التطبيق الرسمي!</string>
     <string name="go_to_github">الذهاب إلى Github</string>
+    <string name="settings_apm_install_confirm">تأكيد قبل التثبيت</string>
+    <string name="settings_apm_install_confirm_summary">إظهار مربع حوار تأكيد قبل تثبيت الوحدات</string>
+    <string name="apm_install_confirm_title">تثبيت الوحدة</string>
+    <string name="apm_install_confirm_content">هل أنت متأكد أنك تريد تثبيت %s؟</string>
     <string name="online_apm_module_title">وحدات APM عبر الإنترنت</string>
     <string name="online_kpm_module_title">وحدات KPM عبر الإنترنت</string>
     <string name="online_module_search_hint">بحث الوحدات...</string>

@@ -253,6 +253,10 @@
     <string name="apm_action">执行</string>
     <string name="settings_apm_stay_on_page">留在操作页面</string>
     <string name="settings_apm_stay_on_page_summary">系统模块执行完操作后不自动返回</string>
+    <string name="settings_apm_install_confirm">安装前确认</string>
+    <string name="settings_apm_install_confirm_summary">在安装模块前显示确认对话框</string>
+    <string name="apm_install_confirm_title">安装模块</string>
+    <string name="apm_install_confirm_content">确定要安装 %s 吗？</string>
     <string name="crash_handle_title">应用崩溃了…</string>
     <string name="crash_handle_copy">复制崩溃日志</string>
     <string name="crash_handle_copied">崩溃日志已复制到剪贴板。</string>

@@ -247,6 +247,10 @@
     <string name="online_module_empty">No hay módulos disponibles</string>
     <string name="settings_apm_stay_on_page">Permanecer en la página</string>
     <string name="settings_apm_stay_on_page_summary">No volver automáticamente después de que el módulo del sistema realice la operación</string>
+    <string name="settings_apm_install_confirm">Confirmar antes de instalar</string>
+    <string name="settings_apm_install_confirm_summary">Mostrar un diálogo de confirmación antes de instalar módulos</string>
+    <string name="apm_install_confirm_title">Instalar módulo</string>
+    <string name="apm_install_confirm_content">¿Estás seguro de que quieres instalar %s?</string>
 <!-- KPM Auto Load -->
 
 

@@ -249,6 +249,10 @@
     <string name="online_module_empty">利用可能なモジュールがありません</string>
     <string name="settings_apm_stay_on_page">ページに留まる</string>
     <string name="settings_apm_stay_on_page_summary">システムモジュールが操作を実行した後に自動的に戻らない</string>
+    <string name="settings_apm_install_confirm">インストール前に確認</string>
+    <string name="settings_apm_install_confirm_summary">モジュールをインストールする前に確認ダイアログを表示する</string>
+    <string name="apm_install_confirm_title">モジュールをインストール</string>
+    <string name="apm_install_confirm_content">%s をインストールしてもよろしいですか？</string>
 
 
 

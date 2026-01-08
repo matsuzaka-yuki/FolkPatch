@@ -247,6 +247,10 @@
     <string name="online_module_empty">No modules available</string>
     <string name="settings_apm_stay_on_page">Tetap di halaman</string>
     <string name="settings_apm_stay_on_page_summary">Jangan kembali secara otomatis setelah modul sistem melakukan operasi</string>
+    <string name="settings_apm_install_confirm">Konfirmasi sebelum menginstal</string>
+    <string name="settings_apm_install_confirm_summary">Tampilkan dialog konfirmasi sebelum menginstal modul</string>
+    <string name="apm_install_confirm_title">Instal Modul</string>
+    <string name="apm_install_confirm_content">Apakah Anda yakin ingin menginstal %s?</string>
 
 
 

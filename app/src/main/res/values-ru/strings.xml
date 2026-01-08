@@ -247,6 +247,10 @@
     <string name="online_module_empty">No modules available</string>
     <string name="settings_apm_stay_on_page">Оставаться на странице</string>
     <string name="settings_apm_stay_on_page_summary">Не возвращаться автоматически после выполнения операции системным модулем</string>
+    <string name="settings_apm_install_confirm">Подтвердить перед установкой</string>
+    <string name="settings_apm_install_confirm_summary">Показывать диалог подтверждения перед установкой модулей</string>
+    <string name="apm_install_confirm_title">Установить модуль</string>
+    <string name="apm_install_confirm_content">Вы уверены, что хотите установить %s?</string>
 
 
 

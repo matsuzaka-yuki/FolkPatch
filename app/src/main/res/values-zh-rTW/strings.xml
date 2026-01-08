@@ -246,6 +246,10 @@
     <string name="online_module_empty">暫無可用模組</string>
     <string name="settings_apm_stay_on_page">留在操作頁面</string>
     <string name="settings_apm_stay_on_page_summary">系統模組執行完操作後不自動返回</string>
+    <string name="settings_apm_install_confirm">安裝前確認</string>
+    <string name="settings_apm_install_confirm_summary">在安裝模組前顯示確認對話框</string>
+    <string name="apm_install_confirm_title">安裝模組</string>
+    <string name="apm_install_confirm_content">確定要安裝 %s 嗎？</string>
 
 
 

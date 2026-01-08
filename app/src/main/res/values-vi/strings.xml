@@ -249,6 +249,10 @@
     <string name="online_module_empty">No modules available</string>
     <string name="settings_apm_stay_on_page">Ở lại trang</string>
     <string name="settings_apm_stay_on_page_summary">Không tự động quay lại sau khi mô-đun hệ thống thực hiện thao tác</string>
+    <string name="settings_apm_install_confirm">Xác nhận trước khi cài đặt</string>
+    <string name="settings_apm_install_confirm_summary">Hiển thị hộp thoại xác nhận trước khi cài đặt mô-đun</string>
+    <string name="apm_install_confirm_title">Cài đặt mô-đun</string>
+    <string name="apm_install_confirm_content">Bạn có chắc chắn muốn cài đặt %s không?</string>
 
 
 

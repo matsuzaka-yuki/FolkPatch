@@ -283,6 +283,10 @@
     <string name="go_to_github">前往真理图书馆</string>
     <string name="settings_apm_stay_on_page">留在魔法操作页面</string>
     <string name="settings_apm_stay_on_page_summary">星之魔法阵执行完操作后不自动返回</string>
+    <string name="settings_apm_install_confirm">安装前确认</string>
+    <string name="settings_apm_install_confirm_summary">在安装魔法模块前显示确认对话框</string>
+    <string name="apm_install_confirm_title">安装魔法模块</string>
+    <string name="apm_install_confirm_content">确定要召唤安装 %s 吗？</string>
 
 
 
