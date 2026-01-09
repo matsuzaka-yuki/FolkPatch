@@ -3,7 +3,9 @@ use std::{env, fs::File, io::Write, path::Path, process::Command};
 fn get_git_version() -> Result<(u32, String), std::io::Error> {
     // Try to get version code from environment variable first
     let version_code: u32 = if let Ok(env_version_code) = env::var("APATCH_VERSION_CODE") {
-        env_version_code.parse().unwrap_or(0)
+        env_version_code.parse().map_err(|_| {
+            std::io::Error::new(std::io::ErrorKind::Other, "Failed to parse {version_code}")
+        })?
     } else {
         // Fallback to git-based calculation
         let output = Command::new("git")
@@ -18,25 +20,11 @@ fn get_git_version() -> Result<(u32, String), std::io::Error> {
         std::cmp::max(11000 + 200 + git_count, 10762) // For historical reasons and ensure minimum version
     };
 
-    let version_name = String::from_utf8(
-        Command::new("git")
-            .args(["describe", "--tags", "--always"])
-            .output()?
-            .stdout,
-    )
-    .map_err(|_| {
-        std::io::Error::new(
-            std::io::ErrorKind::Other,
-            "Failed to read git describe stdout",
-        )
-    })?;
-    let mut version_name = version_name.trim_start_matches('v').to_string();
-
-    if let Ok(env_version_name) = env::var("APATCH_VERSION_NAME") {
-        version_name = env_version_name;
+    let version_name = if let Ok(env_version_name) = env::var("APATCH_VERSION_NAME") {
+        env_version_name
     } else {
-        version_name = "113005-Matsuzaka-yuki".to_string();
-    }
+        "113005-Matsuzaka-yuki".to_string()
+    };
 
     Ok((version_code, version_name))
 }
