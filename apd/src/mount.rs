@@ -1,25 +1,26 @@
 #[cfg(any(target_os = "linux", target_os = "android"))]
+use std::os::unix::fs::PermissionsExt;
+use std::{
+    fs,
+    fs::create_dir,
+    path::{Path, PathBuf},
+};
+
+#[cfg(any(target_os = "linux", target_os = "android"))]
 use anyhow::Context;
 use anyhow::{Ok, Result, anyhow, bail};
-#[cfg(any(target_os = "linux", target_os = "android"))]
-#[allow(unused_imports)]
-use retry::delay::NoDelay;
-#[cfg(any(target_os = "linux", target_os = "android"))]
-//use sys_mount::{unmount, FilesystemType, Mount, MountFlags, Unmount, UnmountFlags};
-#[cfg(any(target_os = "linux", target_os = "android"))]
-use rustix::{fd::AsFd, fs::CWD, mount::*};
-use std::fs::create_dir;
-#[cfg(any(target_os = "linux", target_os = "android"))]
-use std::os::unix::fs::PermissionsExt;
-
-use crate::defs::AP_OVERLAY_SOURCE;
-use crate::defs::PTS_NAME;
 use log::{info, warn};
 #[cfg(any(target_os = "linux", target_os = "android"))]
 use procfs::process::Process;
-use std::fs;
-use std::path::Path;
-use std::path::PathBuf;
+#[cfg(any(target_os = "linux", target_os = "android"))]
+#[allow(unused_imports)]
+use retry::delay::NoDelay;
+
+//use sys_mount::{unmount, FilesystemType, Mount, MountFlags, Unmount, UnmountFlags};
+#[cfg(any(target_os = "linux", target_os = "android"))]
+use rustix::{fd::AsFd, fs::CWD, mount::*};
+
+use crate::defs::{AP_OVERLAY_SOURCE, PTS_NAME};
 
 pub struct AutoMountExt4 {
     target: String,

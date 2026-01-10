@@ -1,3 +1,5 @@
+use std::{ffi, path::Path, vec};
+
 use anyhow::{Result, bail};
 use derive_new::new;
 use nom::{
@@ -7,7 +9,6 @@ use nom::{
     character::complete::{space0, space1},
     combinator::map,
 };
-use std::{ffi, path::Path, vec};
 
 type SeObject<'a> = Vec<&'a str>;
 
@@ -406,13 +407,20 @@ impl TryFrom<&str> for PolicyObject {
 struct AtomicStatement {
     cmd: u32,
     subcmd: u32,
-    sepol1: PolicyObject,
-    sepol2: PolicyObject,
-    sepol3: PolicyObject,
-    sepol4: PolicyObject,
-    sepol5: PolicyObject,
-    sepol6: PolicyObject,
-    sepol7: PolicyObject,
+    #[allow(dead_code)]
+    sepol1: PolicyObject, // Used in FfiPolicy conversion
+    #[allow(dead_code)]
+    sepol2: PolicyObject, // Used in FfiPolicy conversion
+    #[allow(dead_code)]
+    sepol3: PolicyObject, // Used in FfiPolicy conversion
+    #[allow(dead_code)]
+    sepol4: PolicyObject, // Used in FfiPolicy conversion
+    #[allow(dead_code)]
+    sepol5: PolicyObject, // Used in FfiPolicy conversion
+    #[allow(dead_code)]
+    sepol6: PolicyObject, // Used in FfiPolicy conversion
+    #[allow(dead_code)]
+    sepol7: PolicyObject, // Used in FfiPolicy conversion
 }
 
 impl<'a> TryFrom<&'a NormalPerm<'a>> for Vec<AtomicStatement> {

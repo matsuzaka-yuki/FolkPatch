@@ -1,32 +1,39 @@
-use crate::magic_mount;
-use crate::module;
-use crate::supercall::fork_for_result;
-use crate::utils::{ensure_dir_exists, ensure_file_exists, get_work_dir, switch_cgroups};
-use crate::{
-    assets, defs, mount, restorecon, supercall,
-    supercall::{init_load_package_uid_config, init_load_su_path, refresh_ap_package_list},
-    utils::{self, ensure_clean_dir},
+use std::{
+    collections::HashMap,
+    env,
+    ffi::CStr,
+    fs,
+    fs::{remove_dir_all, rename},
+    io,
+    os::unix::{fs::PermissionsExt, process::CommandExt},
+    path::{Path, PathBuf},
+    process::Command,
+    sync::{Arc, Mutex},
+    thread,
+    time::Duration,
 };
+
 use anyhow::{Context, Result, bail, ensure};
 use extattr::{Flags as XattrFlags, lgetxattr, lsetxattr};
 use libc::SIGPWR;
 use log::{info, warn};
-use notify::event::{ModifyKind, RenameMode};
-use notify::{Config, Event, EventKind, INotifyWatcher, RecursiveMode, Watcher};
+use notify::{
+    Config, Event, EventKind, INotifyWatcher, RecursiveMode, Watcher,
+    event::{ModifyKind, RenameMode},
+};
 use rustix::mount::*;
-use signal_hook::consts::signal::*;
-use signal_hook::iterator::Signals;
-use std::ffi::CStr;
-use std::fs::{remove_dir_all, rename};
-use std::os::unix::fs::PermissionsExt;
-use std::os::unix::process::CommandExt;
-use std::path::{Path, PathBuf};
-use std::process::Command;
-use std::sync::{Arc, Mutex};
-use std::time::Duration;
-use std::{collections::HashMap, thread};
-use std::{env, fs, io};
+use signal_hook::{consts::signal::*, iterator::Signals};
 use walkdir::WalkDir;
+
+use crate::{
+    assets, defs, magic_mount, module, mount, restorecon, supercall,
+    supercall::{
+        fork_for_result, init_load_package_uid_config, init_load_su_path, refresh_ap_package_list,
+    },
+    utils::{
+        self, ensure_clean_dir, ensure_dir_exists, ensure_file_exists, get_work_dir, switch_cgroups,
+    },
+};
 
 fn copy_with_xattr(src: &Path, dest: &Path) -> io::Result<()> {
     fs::copy(src, dest)?;
@@ -407,7 +414,8 @@ pub fn on_post_data_fs(superkey: Option<String>) -> Result<()> {
     if let Err(e) = module::exec_stage_script("post-fs-data", true) {
         warn!("exec post-fs-data scripts failed: {}", e);
     }
-    if let Err(e) = module::exec_stage_lua("post-fs-data",true, superkey.as_deref().unwrap_or("")) {
+    if let Err(e) = module::exec_stage_lua("post-fs-data", true, superkey.as_deref().unwrap_or(""))
+    {
         warn!("Failed to exec post-fs-data lua: {}", e);
     }
     // load system.prop
@@ -501,7 +509,7 @@ fn run_stage(stage: &str, superkey: Option<String>, block: bool) {
     if let Err(e) = module::exec_stage_script(stage, block) {
         warn!("Failed to exec {stage} scripts: {e}");
     }
-    if let Err(e) = module::exec_stage_lua(stage,block,superkey.as_deref().unwrap_or("")) {
+    if let Err(e) = module::exec_stage_lua(stage, block, superkey.as_deref().unwrap_or("")) {
         warn!("Failed to exec {stage} lua: {e}");
     }
 }

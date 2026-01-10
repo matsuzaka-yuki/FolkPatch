@@ -1,12 +1,5 @@
-#[allow(clippy::wildcard_imports)]
-use crate::utils::*;
-use crate::{assets, defs, restorecon};
-use anyhow::{Context, Result, anyhow, bail, ensure};
-use const_format::concatcp;
-use is_executable::is_executable;
-use java_properties::PropertiesIter;
-use log::{info, warn};
-use mlua::{Function, Lua, Result as LuaResult, Table, Value};
+#[cfg(unix)]
+use std::os::unix::{prelude::PermissionsExt, process::CommandExt};
 use std::{
     collections::HashMap,
     env::var as env_var,
@@ -16,10 +9,18 @@ use std::{
     process::{Command, Stdio},
     str::FromStr,
 };
+
+use anyhow::{Context, Result, anyhow, bail, ensure};
+use const_format::concatcp;
+use is_executable::is_executable;
+use java_properties::PropertiesIter;
+use log::{info, warn};
+use mlua::{Function, Lua, Result as LuaResult, Table};
 use zip_extensions::zip_extract_file_to_memory;
 
-#[cfg(unix)]
-use std::os::unix::{prelude::PermissionsExt, process::CommandExt};
+#[allow(clippy::wildcard_imports)]
+use crate::utils::*;
+use crate::{assets, defs, restorecon};
 
 const INSTALLER_CONTENT: &str = include_str!("./installer.sh");
 const INSTALLER_CONTENT_: &str = include_str!("./installer_bind.sh");
@@ -223,7 +224,7 @@ pub fn exec_stage_script(stage: &str, block: bool) -> Result<()> {
     Ok(())
 }
 
-pub fn exec_stage_lua(stage: &str,wait: bool,superkey: &str) -> Result<()> {
+pub fn exec_stage_lua(stage: &str, wait: bool, superkey: &str) -> Result<()> {
     let stage_safe = stage.replace('-', "_");
     run_lua(&superkey, &stage_safe, true, wait).map_err(|e| anyhow::anyhow!("{}", e))?;
     Ok(())

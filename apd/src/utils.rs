@@ -1,22 +1,19 @@
-use anyhow::{Context, Error, Ok, Result, bail};
-use log::{info, warn};
-use std::ffi::CString;
-use std::{
-    fs::{File, OpenOptions, create_dir_all},
-    io::{BufRead, BufReader, ErrorKind::AlreadyExists, Write},
-    path::Path,
-    process::Stdio,
-};
-
-use crate::defs;
-use std::fs::metadata;
 #[allow(unused_imports)]
 use std::fs::{Permissions, set_permissions};
 #[cfg(unix)]
 use std::os::unix::prelude::PermissionsExt;
-use std::process::Command;
+use std::{
+    ffi::CString,
+    fs::{File, OpenOptions, create_dir_all, metadata},
+    io::{BufRead, BufReader, ErrorKind::AlreadyExists, Write},
+    path::Path,
+    process::{Command, Stdio},
+};
 
-use crate::supercall::sc_su_get_safemode;
+use anyhow::{Context, Error, Ok, Result, bail};
+use log::{info, warn};
+
+use crate::{defs, supercall::sc_su_get_safemode};
 
 pub fn ensure_clean_dir(dir: &str) -> Result<()> {
     let path = Path::new(dir);

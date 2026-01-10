@@ -1,23 +1,29 @@
-use crate::defs::{AP_OVERLAY_SOURCE, DISABLE_FILE_NAME, MODULE_DIR, SKIP_MOUNT_FILE_NAME};
-use crate::magic_mount::NodeFileType::{Directory, RegularFile, Symlink, Whiteout};
-use crate::restorecon::{lgetfilecon, lsetfilecon};
-use crate::utils::ensure_dir_exists;
-use crate::utils::get_work_dir;
+use std::{
+    cmp::PartialEq,
+    collections::{HashMap, hash_map::Entry},
+    fs,
+    fs::{DirEntry, FileType, create_dir, create_dir_all, read_dir, read_link},
+    os::unix::fs::{FileTypeExt, symlink},
+    path::{Path, PathBuf},
+};
+
 use anyhow::{Context, Result, bail};
 use extattr::lgetxattr;
-use rustix::fs::{
-    Gid, MetadataExt, Mode, MountFlags, MountPropagationFlags, Uid, UnmountFlags, bind_mount,
-    chmod, chown, mount, move_mount, unmount,
+use rustix::{
+    fs::{
+        Gid, MetadataExt, Mode, MountFlags, MountPropagationFlags, Uid, UnmountFlags, bind_mount,
+        chmod, chown, mount, move_mount, unmount,
+    },
+    mount::mount_change,
+    path::Arg,
 };
-use rustix::mount::mount_change;
-use rustix::path::Arg;
-use std::cmp::PartialEq;
-use std::collections::HashMap;
-use std::collections::hash_map::Entry;
-use std::fs;
-use std::fs::{DirEntry, FileType, create_dir, create_dir_all, read_dir, read_link};
-use std::os::unix::fs::{FileTypeExt, symlink};
-use std::path::{Path, PathBuf};
+
+use crate::{
+    defs::{AP_OVERLAY_SOURCE, DISABLE_FILE_NAME, MODULE_DIR, SKIP_MOUNT_FILE_NAME},
+    magic_mount::NodeFileType::{Directory, RegularFile, Symlink, Whiteout},
+    restorecon::{lgetfilecon, lsetfilecon},
+    utils::{ensure_dir_exists, get_work_dir},
+};
 
 const REPLACE_DIR_XATTR: &str = "trusted.overlay.opaque";
 

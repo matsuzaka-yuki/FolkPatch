@@ -1,12 +1,11 @@
-use anyhow::{Ok, Result};
-
-#[cfg(unix)]
-use getopts::Options;
-use std::env;
 #[cfg(unix)]
 use std::os::unix::process::CommandExt;
-use std::path::PathBuf;
-use std::{ffi::CStr, process::Command};
+use std::{env, ffi::CStr, path::PathBuf, process::Command};
+
+use anyhow::{Ok, Result};
+#[cfg(unix)]
+use getopts::Options;
+use rustix::thread::{Gid, Uid, set_thread_res_gid, set_thread_res_uid};
 
 #[cfg(any(target_os = "linux", target_os = "android"))]
 use crate::pty::prepare_pty;
@@ -14,7 +13,6 @@ use crate::{
     defs,
     utils::{self, umask},
 };
-use rustix::thread::{Gid, Uid, set_thread_res_gid, set_thread_res_uid};
 
 fn print_usage(opts: Options) {
     let brief = "APatch\n\nUsage: <command> [options] [-] [user [argument...]]".to_string();
@@ -110,7 +108,7 @@ pub fn root_shell() -> Result<()> {
     }
 
     if matches.opt_present("v") {
-        println!("{}:FolkPatch/APatch", defs::VERSION_NAME);
+        println!("{}:APatch(FolkLite)", defs::VERSION_NAME);
         return Ok(());
     }
 
@@ -141,11 +139,11 @@ pub fn root_shell() -> Result<()> {
     let gid = unsafe { libc::getgid() };
     if free_idx < matches.free.len() {
         let name = &matches.free[free_idx];
-        uid = unsafe {
+        uid = {
             #[cfg(target_arch = "aarch64")]
-            let pw = libc::getpwnam(name.as_ptr()).as_ref();
+            let pw = unsafe { libc::getpwnam(name.as_ptr()).as_ref() };
             #[cfg(target_arch = "x86_64")]
-            let pw = libc::getpwnam(name.as_ptr() as *const i8).as_ref();
+            let pw = unsafe { libc::getpwnam(name.as_ptr() as *const i8).as_ref() };
 
             match pw {
                 Some(pw) => pw.pw_uid,
