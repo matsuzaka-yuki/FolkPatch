@@ -1,23 +1,26 @@
 use std::{
     cmp::PartialEq,
-    collections::{hash_map::Entry, HashMap},
+    collections::{HashMap, hash_map::Entry},
     fs,
-    fs::{create_dir, create_dir_all, read_dir, read_link, DirEntry, FileType},
-    os::unix::fs::{symlink, FileTypeExt},
+    fs::{DirEntry, FileType, create_dir, create_dir_all, read_dir, read_link},
+    os::unix::fs::{FileTypeExt, symlink},
     path::{Path, PathBuf},
 };
 
-use anyhow::{bail, Context, Result};
+use anyhow::{Context, Result, bail};
 use rustix::{
     fs::{
-        bind_mount, chmod, chown, mount, move_mount, unmount, Gid, MetadataExt, Mode, MountFlags,
-        MountPropagationFlags, Uid, UnmountFlags,
+        Gid, MetadataExt, Mode, MountFlags, MountPropagationFlags, Uid, UnmountFlags, bind_mount,
+        chmod, chown, mount, move_mount, unmount,
     },
     mount::mount_change,
 };
 
 use crate::{
-    defs::{AP_MAGIC_MOUNT_SOURCE, DISABLE_FILE_NAME, MODULE_DIR, SKIP_MOUNT_FILE_NAME},
+    defs::{
+        AP_MAGIC_MOUNT_SOURCE, DISABLE_FILE_NAME, MODULE_DIR, REMOVE_FILE_NAME,
+        SKIP_MOUNT_FILE_NAME,
+    },
     magic_mount::NodeFileType::{Directory, RegularFile, Symlink, Whiteout},
     restorecon::{lgetfilecon, lsetfilecon},
     utils::{ensure_dir_exists, get_work_dir},
@@ -123,98 +126,65 @@ impl Node {
     }
 }
 
-fn should_mount_partition(partition: &str, require_symlink: bool) -> bool {
-    let path_of_root = Path::new("/").join(partition);
-    let path_of_system = Path::new("/system").join(partition);
-
-    // Partition must exist as a directory
-    if !path_of_root.is_dir() {
-        log::debug!("partition /{partition} does not exist or is not a directory");
-        return false;
-    }
-
-    // Special handling for system partition - always mount if exists
-    if partition == "system" {
-        return true;
-    }
-
-    if require_symlink {
-        if !path_of_system.is_symlink() {
-            log::debug!(
-                "partition /{partition} is not a symlink from /system/{partition}, skipping"
-            );
-            return false;
-        }
-    } else {
-        // For non-required symlink partitions, skip if /system/xxx exists as a symlink
-        // This means it's already part of system partition
-        if path_of_system.is_symlink() {
-            log::debug!(
-                "partition /{partition} is a symlink to /system/{partition}, skipping separate mount"
-            );
-            return false;
-        }
-    }
-
-    true
-}
-
 fn collect_module_files() -> Result<Option<Node>> {
     let mut root = Node::new_root("");
     let mut system = Node::new_root("system");
     let module_root = Path::new(MODULE_DIR);
     let mut has_file = false;
+
+    log::debug!("begin collect module files: {}", module_root.display());
+
     for entry in module_root.read_dir()?.flatten() {
         if !entry.file_type()?.is_dir() {
             continue;
         }
 
-        if entry.path().join(DISABLE_FILE_NAME).exists()
-            || entry.path().join(SKIP_MOUNT_FILE_NAME).exists()
-        {
+        let id = entry.file_name().to_str().unwrap().to_string();
+        log::debug!("processing new module: {id}");
+
+        let prop = entry.path().join("module.prop");
+        if !prop.exists() {
+            log::debug!("skipped module {id}, because not found module.prop");
             continue;
         }
 
-        let mod_system = entry.path().join("system");
-        if !mod_system.is_dir() {
+        if entry.path().join(DISABLE_FILE_NAME).exists()
+            || entry.path().join(REMOVE_FILE_NAME).exists()
+            || entry.path().join(SKIP_MOUNT_FILE_NAME).exists()
+        {
+            log::debug!("skipped module {id}, due to disable/remove/skip_mount");
+            continue;
+        }
+
+        if !entry.path().join("/system").is_dir() {
             continue;
         }
 
         log::debug!("collecting {}", entry.path().display());
 
-        has_file |= system.collect_module_files(&mod_system)?;
+        has_file = system.collect_module_files(entry.path())?;
     }
 
     if has_file {
-        let partitions = [
+        const BUILTIN_PARTITIONS: [(&str, bool); 4] = [
             ("vendor", true),
             ("system_ext", true),
             ("product", true),
             ("odm", false),
-            ("oem", false),
-            ("my_product", false),
-            ("my_preload", false),
         ];
 
-        // Move partition nodes from system to root before system is moved
-        for (partition, require_symlink) in partitions {
-            if should_mount_partition(partition, require_symlink) {
+        for (partition, require_symlink) in BUILTIN_PARTITIONS {
+            let path_of_root = Path::new("/").join(partition);
+            let path_of_system = Path::new("/system").join(partition);
+            if path_of_root.is_dir() && (!require_symlink || path_of_system.is_symlink()) {
                 let name = partition.to_string();
                 if let Some(node) = system.children.remove(&name) {
                     root.children.insert(name, node);
-                    log::debug!(
-                        "partition /{partition} will be mounted separately (require_symlink={})",
-                        require_symlink
-                    );
                 }
             }
         }
 
-        // Now insert system partition (always requires symlink check=false)
-        if should_mount_partition("system", false) {
-            root.children.insert("system".to_string(), system);
-        }
-
+        root.children.insert("system".to_string(), system);
         Ok(Some(root))
     } else {
         Ok(None)
@@ -465,30 +435,27 @@ fn do_magic_mount<P: AsRef<Path>, WP: AsRef<Path>>(
 }
 
 pub fn magic_mount() -> Result<()> {
-    match collect_module_files()? {
-        Some(root) => {
-            log::debug!("collected: {:#?}", root);
-            let tmp_dir = PathBuf::from(get_work_dir());
-            ensure_dir_exists(&tmp_dir)?;
-            mount(
-                AP_MAGIC_MOUNT_SOURCE,
-                &tmp_dir,
-                "tmpfs",
-                MountFlags::empty(),
-                "",
-            )
-            .context("mount tmp")?;
-            mount_change(&tmp_dir, MountPropagationFlags::PRIVATE).context("make tmp private")?;
-            let result = do_magic_mount("/", &tmp_dir, root, false);
-            if let Err(e) = unmount(&tmp_dir, UnmountFlags::DETACH) {
-                log::error!("failed to unmount tmp {}", e);
-            }
-            fs::remove_dir(tmp_dir).ok();
-            result
+    if let Some(root) = collect_module_files()? {
+        log::debug!("collected: {:#?}", root);
+        let tmp_dir = PathBuf::from(get_work_dir());
+        ensure_dir_exists(&tmp_dir)?;
+        mount(
+            AP_MAGIC_MOUNT_SOURCE,
+            &tmp_dir,
+            "tmpfs",
+            MountFlags::empty(),
+            "",
+        )
+        .context("mount tmp")?;
+        mount_change(&tmp_dir, MountPropagationFlags::PRIVATE).context("make tmp private")?;
+        let result = do_magic_mount("/", &tmp_dir, root, false);
+        if let Err(e) = unmount(&tmp_dir, UnmountFlags::DETACH) {
+            log::error!("failed to unmount tmp {}", e);
         }
-        _ => {
-            log::info!("no modules to mount, skipping!");
-            Ok(())
-        }
+        fs::remove_dir(tmp_dir).ok();
+        result
+    } else {
+        log::info!("no modules to mount, skipping!");
+        Ok(())
     }
 }
