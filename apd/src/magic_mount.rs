@@ -23,6 +23,8 @@ use crate::{
     utils::{ensure_dir_exists, get_work_dir},
 };
 
+const REPLACE_MARKER_FILE: &str = ".replace";
+
 #[derive(PartialEq, Eq, Hash, Clone, Debug)]
 enum NodeFileType {
     RegularFile,
@@ -100,12 +102,18 @@ impl Node {
                 NodeFileType::from_file_type(metadata.file_type())
             };
             if let Some(file_type) = file_type {
+                let replace = if file_type == Directory {
+                    path.join(REPLACE_MARKER_FILE).exists()
+                } else {
+                    false
+                };
+
                 return Some(Node {
                     name: name.to_string(),
                     file_type,
                     children: Default::default(),
                     module_path: Some(path),
-                    replace: false,
+                    replace,
                     skip: false,
                 });
             }
