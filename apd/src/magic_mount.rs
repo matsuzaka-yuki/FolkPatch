@@ -8,6 +8,7 @@ use std::{
 };
 
 use anyhow::{Context, Result, bail};
+use extattr::lgetxattr;
 use rustix::{
     fs::{
         Gid, MetadataExt, Mode, MountFlags, MountPropagationFlags, Uid, UnmountFlags, bind_mount,
@@ -26,7 +27,8 @@ use crate::{
     utils::{ensure_dir_exists, get_work_dir},
 };
 
-const REPLACE_MARKER_FILE: &str = ".replace";
+const REPLACE_DIR_FILE_NAME: &str = ".replace";
+const REPLACE_DIR_XATTR: &str = "trusted.overlay.opaque";
 
 #[derive(PartialEq, Eq, Hash, Clone, Debug)]
 enum NodeFileType {
@@ -37,15 +39,15 @@ enum NodeFileType {
 }
 
 impl NodeFileType {
-    fn from_file_type(file_type: FileType) -> Option<Self> {
+    fn from_file_type(file_type: FileType) -> Self {
         if file_type.is_file() {
-            Some(RegularFile)
+            RegularFile
         } else if file_type.is_dir() {
-            Some(Directory)
+            Directory
         } else if file_type.is_symlink() {
-            Some(Symlink)
+            Symlink
         } else {
-            None
+            Whiteout
         }
     }
 }
@@ -62,7 +64,10 @@ struct Node {
 }
 
 impl Node {
-    fn collect_module_files<T: AsRef<Path>>(&mut self, module_dir: T) -> Result<bool> {
+    fn collect_module_files<P>(&mut self, module_dir: P) -> Result<bool>
+    where
+        P: AsRef<Path>,
+    {
         let dir = module_dir.as_ref();
         let mut has_file = false;
         for entry in dir.read_dir()?.flatten() {
@@ -74,7 +79,7 @@ impl Node {
             };
 
             if let Some(node) = node {
-                has_file |= if node.file_type == Directory {
+                has_file |= if node.file_type == NodeFileType::Directory {
                     node.collect_module_files(dir.join(&node.name))? || node.replace
                 } else {
                     true
@@ -83,6 +88,19 @@ impl Node {
         }
 
         Ok(has_file)
+    }
+
+    fn dir_is_replace<P>(path: P) -> bool
+    where
+        P: AsRef<Path>,
+    {
+        if let Ok(v) = lgetxattr(&path, REPLACE_DIR_XATTR)
+            && String::from_utf8_lossy(&v) == "y"
+        {
+            return true;
+        }
+
+        path.as_ref().join(REPLACE_DIR_FILE_NAME).exists()
     }
 
     fn new_root<T: ToString>(name: T) -> Self {
@@ -96,30 +114,29 @@ impl Node {
         }
     }
 
-    fn new_module<T: ToString>(name: T, entry: &DirEntry) -> Option<Self> {
+    fn new_module<S>(name: &S, entry: &DirEntry) -> Option<Self>
+    where
+        S: ToString,
+    {
         if let Ok(metadata) = entry.metadata() {
             let path = entry.path();
             let file_type = if metadata.file_type().is_char_device() && metadata.rdev() == 0 {
-                Some(Whiteout)
+                NodeFileType::Whiteout
             } else {
                 NodeFileType::from_file_type(metadata.file_type())
             };
-            if let Some(file_type) = file_type {
-                let replace = if file_type == Directory {
-                    path.join(REPLACE_MARKER_FILE).exists()
-                } else {
-                    false
-                };
-
-                return Some(Node {
-                    name: name.to_string(),
-                    file_type,
-                    children: Default::default(),
-                    module_path: Some(path),
-                    replace,
-                    skip: false,
-                });
+            let replace = file_type == NodeFileType::Directory && Self::dir_is_replace(&path);
+            if replace {
+                log::debug!("{} need replace", path.display());
             }
+            return Some(Self {
+                name: name.to_string(),
+                file_type,
+                children: HashMap::default(),
+                module_path: Some(path),
+                replace,
+                skip: false,
+            });
         }
 
         None
@@ -162,15 +179,16 @@ fn collect_module_files() -> Result<Option<Node>> {
 
         log::debug!("collecting {}", entry.path().display());
 
-        has_file = system.collect_module_files(entry.path())?;
+        has_file |= system.collect_module_files(entry.path().join("system"))?;
     }
 
     if has_file {
-        const BUILTIN_PARTITIONS: [(&str, bool); 4] = [
+        const BUILTIN_PARTITIONS: [(&str, bool); 5] = [
             ("vendor", true),
             ("system_ext", true),
             ("product", true),
             ("odm", false),
+            ("oem", false),
         ];
 
         for (partition, require_symlink) in BUILTIN_PARTITIONS {
@@ -304,8 +322,7 @@ fn do_magic_mount<P: AsRef<Path>, WP: AsRef<Path>>(
                         Whiteout => real_path.exists(),
                         _ => {
                             if let Ok(metadata) = real_path.symlink_metadata() {
-                                let file_type = NodeFileType::from_file_type(metadata.file_type())
-                                    .unwrap_or(Whiteout);
+                                let file_type = NodeFileType::from_file_type(metadata.file_type());
                                 file_type != node.file_type || file_type == Symlink
                             } else {
                                 // real path not exists
