@@ -14,8 +14,8 @@ use anyhow::{Context, Result};
 use libc::SIGPWR;
 use log::{info, warn};
 use notify::{
-    event::{ModifyKind, RenameMode},
     Config, Event, EventKind, INotifyWatcher, RecursiveMode, Watcher,
+    event::{ModifyKind, RenameMode},
 };
 use signal_hook::{consts::signal::*, iterator::Signals};
 
@@ -44,15 +44,6 @@ pub fn on_post_data_fs(superkey: Option<String>) -> Result<()> {
     if utils::has_magisk() {
         warn!("Magisk detected, skip post-fs-data!");
         return Ok(());
-    }
-
-    if Path::new(defs::MAGIC_MOUNT_FILE).exists() {
-        info!("Magic Mount mode enabled");
-        if let Err(e) = crate::magic_mount::magic_mount() {
-            log::error!("Magic Mount failed: {}", e);
-        }
-    } else {
-        info!("Magic Mount disabled");
     }
 
     // Create log environment
@@ -170,9 +161,16 @@ pub fn on_post_data_fs(superkey: Option<String>) -> Result<()> {
     if module::load_sepolicy_rule().is_err() {
         warn!("load sepolicy.rule failed");
     }
-
-    if let Err(e) = metamodule::exec_mount_script(module_dir) {
-        warn!("execute metamodule mount failed: {e}");
+    if Path::new(defs::MAGIC_MOUNT_FILE).exists() {
+        info!("Magic Mount mode enabled");
+        if let Err(e) = crate::magic_mount::magic_mount() {
+            log::error!("Magic Mount failed: {}", e);
+        }
+    } else {
+        info!("Magic Mount disabled");
+        if let Err(e) = metamodule::exec_mount_script(module_dir) {
+            warn!("execute metamodule mount failed: {e}");
+        }
     }
 
     // exec modules post-fs-data scripts
