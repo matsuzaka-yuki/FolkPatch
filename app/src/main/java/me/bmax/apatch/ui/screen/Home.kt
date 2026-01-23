@@ -199,7 +199,7 @@ fun HomeScreenV1(
             AStatusCard(apState)
         }
         InfoCard(kpState, apState)
-        val hideApatchCard = APApplication.sharedPreferences.getBoolean("hide_apatch_card", true)
+        val hideApatchCard = APApplication.sharedPreferences.getBoolean("hide_apatch_card", false)
         if (!hideApatchCard) {
             LearnMoreCard()
         }
@@ -227,7 +227,7 @@ fun HomeScreenSign(
             AStatusCard(apState)
         }
         SignInfoCard(kpState, apState)
-        val hideApatchCard = APApplication.sharedPreferences.getBoolean("hide_apatch_card", true)
+        val hideApatchCard = APApplication.sharedPreferences.getBoolean("hide_apatch_card", false)
         if (!hideApatchCard) {
             LearnMoreCard()
         }
@@ -1387,7 +1387,7 @@ fun LearnMoreCard() {
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable {
-                    uriHandler.openUri("https://apatch.dev")
+                    uriHandler.openUri("https://fp.mysqil.com/")
                 }
                 .padding(24.dp), verticalAlignment = Alignment.CenterVertically) {
             Column {

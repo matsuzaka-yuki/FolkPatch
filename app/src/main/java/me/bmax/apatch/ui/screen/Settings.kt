@@ -559,7 +559,7 @@ fun SettingScreen(navigator: DestinationsNavigator) {
         var installConfirm by rememberSaveable { mutableStateOf(prefs.getBoolean("apm_install_confirm_enabled", true)) }
         var showDisableAllModules by rememberSaveable { mutableStateOf(prefs.getBoolean("show_disable_all_modules", false)) }
         var stayOnPage by rememberSaveable { mutableStateOf(prefs.getBoolean("apm_action_stay_on_page", true)) }
-        var hideApatchCard by rememberSaveable { mutableStateOf(prefs.getBoolean("hide_apatch_card", true)) }
+        var hideApatchCard by rememberSaveable { mutableStateOf(prefs.getBoolean("hide_apatch_card", false)) }
         var hideSuPath by rememberSaveable { mutableStateOf(prefs.getBoolean("hide_su_path", false)) }
         var hideKpatchVersion by rememberSaveable { mutableStateOf(prefs.getBoolean("hide_kpatch_version", false)) }
         var hideFingerprint by rememberSaveable { mutableStateOf(prefs.getBoolean("hide_fingerprint", false)) }

@@ -35,10 +35,10 @@
     <string name="settings_global_namespace_mode">グローバル名前空間モード</string>
     <string name="settings_global_namespace_mode_summary">すべての root セッションはグローバルマウント名前空間を使用します</string>
     <string name="settings_clear_super_key_dialog">本当に続行しますか？</string>
-    <string name="home_learn_apatch"> について</string>
-    <string name="home_click_to_learn_apatch">APatch の機能と使い方はこちら</string>
-    <string name="settings_hide_apatch_card">「APatchについて」カードを非表示</string>
-    <string name="settings_hide_apatch_card_summary">ホーム画面に「APatchについて」カードを表示するかどうかを制御します</string>
+    <string name="home_learn_apatch">FolkPatch について</string>
+    <string name="home_click_to_learn_apatch">FolkPatch の機能と使い方はこちら</string>
+    <string name="settings_hide_apatch_card">「FolkPatchについて」カードを非表示</string>
+    <string name="settings_hide_apatch_card_summary">ホーム画面に「FolkPatchについて」カードを表示するかどうかを制御します</string>
     <string name="about_source_code"><![CDATA[<p>%1$s でソースコードを表示<p>%2$s チャンネルに参加する<p/>%3$s グループに参加する]]></string>
     <string name="send_log">ログを送信</string>
     <string name="save_log">ログを保存</string>

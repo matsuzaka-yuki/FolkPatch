@@ -60,10 +60,10 @@
     <string name="su_exclude_btn">Excluir</string>
     <string name="su_exclude_reverse_btn">Reverter</string>
 
-    <string name="home_learn_apatch">Aprenda APatch</string>
-    <string name="home_click_to_learn_apatch">Saiba mais sobre os recursos do APatch e como usar</string>
-    <string name="settings_hide_apatch_card">Ocultar cartão Aprenda APatch</string>
-    <string name="settings_hide_apatch_card_summary">Ocultar o cartão informativo do APatch na tela inicial</string>
+    <string name="home_learn_apatch">Aprenda FolkPatch</string>
+    <string name="home_click_to_learn_apatch">Saiba mais sobre os recursos do FolkPatch e como usar</string>
+    <string name="settings_hide_apatch_card">Ocultar cartão Aprenda FolkPatch</string>
+    <string name="settings_hide_apatch_card_summary">Ocultar o cartão informativo do FolkPatch na tela inicial</string>
 
     <string name="about_source_code"><![CDATA[<p>Veja o código fonte em %1$s<p/>Entre no nosso canal %2$s<p/>Entre no nosso grupo %3$s]]></string>
     <string name="send_log">Enviar logs</string>

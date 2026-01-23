@@ -37,10 +37,10 @@
     <string name="settings_global_namespace_mode_summary">Tất cả phiên làm việc root sử dụng không gian tên gắn kết toàn cục</string>
     <string name="settings_clear_super_key_dialog">Bạn có chắc chắn muốn tiếp tục?</string>
 
-    <string name="home_learn_apatch">Tìm hiểu về APatch</string>
-    <string name="home_click_to_learn_apatch">Tìm hiểu về chức năng và cách sử dụng APatch</string>
-    <string name="settings_hide_apatch_card">Ẩn thẻ "Tìm hiểu về APatch"</string>
-    <string name="settings_hide_apatch_card_summary">Ẩn thẻ "Tìm hiểu về APatch" trên trang chủ</string>
+    <string name="home_learn_apatch">Tìm hiểu về FolkPatch</string>
+    <string name="home_click_to_learn_apatch">Tìm hiểu về chức năng và cách sử dụng FolkPatch</string>
+    <string name="settings_hide_apatch_card">Ẩn thẻ "Tìm hiểu về FolkPatch"</string>
+    <string name="settings_hide_apatch_card_summary">Ẩn thẻ "Tìm hiểu về FolkPatch" trên trang chủ</string>
 
     <string name="about_source_code"><![CDATA[<p>Xem mã nguồn tại %1$s<p/>Tham gia kênh %2$s của chúng tôi<p/>Tham gia nhóm %3$s của chúng tôi]]></string>
     <string name="send_log">Gửi nhật ký</string>

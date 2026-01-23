@@ -59,10 +59,10 @@
     <string name="su_exclude_btn">Exclude</string>
     <string name="su_exclude_reverse_btn">Reverse</string>
 
-    <string name="home_learn_apatch">Learn APatch</string>
-    <string name="home_click_to_learn_apatch">Learn about the features of APatch and how to use</string>
-    <string name="settings_hide_apatch_card">Hide Learn APatch card</string>
-    <string name="settings_hide_apatch_card_summary">Hide the Learn APatch card on the home screen</string>
+    <string name="home_learn_apatch">Learn FolkPatch</string>
+    <string name="home_click_to_learn_apatch">Learn about the features of FolkPatch and how to use</string>
+    <string name="settings_hide_apatch_card">Hide Learn FolkPatch card</string>
+    <string name="settings_hide_apatch_card_summary">Hide the Learn FolkPatch card on the home screen</string>
 
     <string name="about_source_code"><![CDATA[<p>View source code at %1$s<p/>Join our %2$s channel<p/>Join our %3$s group]]></string>
     <string name="send_log">Send logs</string>

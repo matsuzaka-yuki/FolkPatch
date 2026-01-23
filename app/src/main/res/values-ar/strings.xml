@@ -61,10 +61,10 @@
     <string name="su_exclude_btn">استثناء</string>
     <string name="su_exclude_reverse_btn">عكس</string>
 
-    <string name="home_learn_apatch">تعلم APatch</string>
-    <string name="home_click_to_learn_apatch">تعرف على ميزات APatch وكيفية استخدامه</string>
-    <string name="settings_hide_apatch_card">إخفاء بطاقة تعلم APatch</string>
-    <string name="settings_hide_apatch_card_summary">إخفاء بطاقة تعلم APatch في الشاشة الرئيسية</string>
+    <string name="home_learn_apatch">تعلم FolkPatch</string>
+    <string name="home_click_to_learn_apatch">تعرف على ميزات FolkPatch وكيفية استخدامه</string>
+    <string name="settings_hide_apatch_card">إخفاء بطاقة تعلم FolkPatch</string>
+    <string name="settings_hide_apatch_card_summary">إخفاء بطاقة تعلم FolkPatch في الشاشة الرئيسية</string>
 
     <string name="about_source_code"><![CDATA[<p>عرض الكود المصدري على %1$s<p/>انضم إلى قناتنا على %2$s<p/>انضم إلى مجموعتنا على %3$s]]></string>
     <string name="send_log">إرسال السجلات</string>

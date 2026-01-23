@@ -43,10 +43,10 @@
     <string name="su_exclude_all_title">Исключить все</string>
     <string name="su_exclude_all_confirm">Вы уверены, что хотите исключить все приложения без root-прав?</string>
 
-    <string name="home_learn_apatch">Изучить APatch</string>
-    <string name="home_click_to_learn_apatch">Узнайте о функциях APatch и как их использовать</string>
-    <string name="settings_hide_apatch_card">Скрыть карту "Изучить APatch"</string>
-    <string name="settings_hide_apatch_card_summary">Скрыть карту "Изучить APatch" на главном экране</string>
+    <string name="home_learn_apatch">Изучить FolkPatch</string>
+    <string name="home_click_to_learn_apatch">Узнайте о функциях FolkPatch и как их использовать</string>
+    <string name="settings_hide_apatch_card">Скрыть карту "Изучить FolkPatch"</string>
+    <string name="settings_hide_apatch_card_summary">Скрыть карту "Изучить FolkPatch" на главном экране</string>
 
     <string name="about_source_code"><![CDATA[<p>Просмотреть исходный код на %1$s<p/>Присоединяйтесь к нашему %2$s каналу<p/>Присоединяйтесь к нашей %3$s группе]]></string>
     <string name="send_log">Отправить логи</string>

@@ -43,10 +43,10 @@
     <string name="su_exclude_all_title">Kecualikan semua</string>
     <string name="su_exclude_all_confirm">Apakah Anda yakin ingin mengecualikan semua aplikasi tanpa hak root?</string>
 
-    <string name="home_learn_apatch">Pelajari APatch</string>
-    <string name="home_click_to_learn_apatch">Pelajari tentang fitur APatch dan cara menggunakannya</string>
-    <string name="settings_hide_apatch_card">Sembunyikan kartu "Pelajari APatch"</string>
-    <string name="settings_hide_apatch_card_summary">Sembunyikan kartu "Pelajari APatch" di layar utama</string>
+    <string name="home_learn_apatch">Pelajari FolkPatch</string>
+    <string name="home_click_to_learn_apatch">Pelajari tentang fitur FolkPatch dan cara menggunakannya</string>
+    <string name="settings_hide_apatch_card">Sembunyikan kartu "Pelajari FolkPatch"</string>
+    <string name="settings_hide_apatch_card_summary">Sembunyikan kartu "Pelajari FolkPatch" di layar utama</string>
 
     <string name="about_source_code"><![CDATA[<p>Lihat kode sumber di %1$s<p/>Bergabunglah dengan saluran %2$s kami<p/>Bergabunglah dengan grup %3$s kami]]></string>
     <string name="send_log">Kirim Log</string>

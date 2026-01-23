@@ -35,10 +35,10 @@
     <string name="settings_global_namespace_mode_summary">所有 root 会话使用全局挂载命名空间</string>
     <string name="settings_clear_super_key_dialog">确定要继续吗？</string>
 
-    <string name="home_learn_apatch">了解 APatch</string>
-    <string name="home_click_to_learn_apatch">了解 APatch 的功能及使用方法</string>
-    <string name="settings_hide_apatch_card">隐藏"了解 APatch"卡片</string>
-    <string name="settings_hide_apatch_card_summary">隐藏首页的"了解 APatch"卡片</string>
+    <string name="home_learn_apatch">了解 FolkPatch</string>
+    <string name="home_click_to_learn_apatch">了解 FolkPatch 的功能及使用方法</string>
+    <string name="settings_hide_apatch_card">隐藏"了解 FolkPatch"卡片</string>
+    <string name="settings_hide_apatch_card_summary">隐藏首页的"了解 FolkPatch"卡片</string>
     <string name="settings_grid_working_card_hide_check">隐藏状态图标</string>
     <string name="settings_grid_working_card_hide_check_summary">隐藏工作卡片上的对号或警告图标</string>
     <string name="settings_grid_working_card_hide_text">隐藏状态文字</string>

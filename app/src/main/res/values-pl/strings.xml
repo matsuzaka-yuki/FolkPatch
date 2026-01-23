@@ -42,10 +42,10 @@
     <string name="su_exclude_all_title">Wyklucz wszystkie</string>
     <string name="su_exclude_all_confirm">Czy na pewno chcesz wykluczyć wszystkie aplikacje bez uprawnień root?</string>
 
-    <string name="home_learn_apatch">Dowiedz się o APatch</string>
-    <string name="home_click_to_learn_apatch">Poznaj funkcje APatch i sposób ich używania</string>
-    <string name="settings_hide_apatch_card">Ukryj kartę "Dowiedz się o APatch"</string>
-    <string name="settings_hide_apatch_card_summary">Ukryj kartę "Dowiedz się o APatch" na stronie głównej</string>
+    <string name="home_learn_apatch">Dowiedz się o FolkPatch</string>
+    <string name="home_click_to_learn_apatch">Poznaj funkcje FolkPatch i sposób ich używania</string>
+    <string name="settings_hide_apatch_card">Ukryj kartę "Dowiedz się o FolkPatch"</string>
+    <string name="settings_hide_apatch_card_summary">Ukryj kartę "Dowiedz się o FolkPatch" na stronie głównej</string>
 
     <string name="about_source_code"><![CDATA[<p>Zobacz kod źródłowy na %1$s<p/>Dołącz do naszego %2$s kanału<p/>Dołącz do naszej %3$s grupy]]></string>
     <string name="send_log">Wyślij logi</string>

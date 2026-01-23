@@ -40,10 +40,10 @@
     <string name="settings_global_namespace_mode_summary">所有 Root 工作階段將會全域掛載命名空間</string>
     <string name="settings_clear_super_key_dialog">確定要繼續嗎？</string>
 
-    <string name="home_learn_apatch">深入了解 APatch</string>
-    <string name="home_click_to_learn_apatch">學習有關 APatch 的功能及使用方式</string>
-    <string name="settings_hide_apatch_card">隱藏「了解 APatch」卡片</string>
-    <string name="settings_hide_apatch_card_summary">控制首頁是否顯示「了解 APatch」卡片</string>
+    <string name="home_learn_apatch">深入了解 FolkPatch</string>
+    <string name="home_click_to_learn_apatch">學習有關 FolkPatch 的功能及使用方式</string>
+    <string name="settings_hide_apatch_card">隱藏「了解 FolkPatch」卡片</string>
+    <string name="settings_hide_apatch_card_summary">控制首頁是否顯示「了解 FolkPatch」卡片</string>
 
     <string name="send_log">傳送日誌</string>
     <string name="save_log">儲存日誌</string>

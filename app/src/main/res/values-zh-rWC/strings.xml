@@ -36,10 +36,10 @@
     <string name="settings_global_namespace_mode_summary">凡登仙法会，皆启全域洞天挂载结界</string>
     <string name="settings_clear_super_key_dialog">道友确欲破除此秘钥乎？</string>
 
-    <string name="home_learn_apatch">参悟APatch仙法</string>
-    <string name="home_click_to_learn_apatch">探APatch仙法之玄妙，明渡劫登仙之术</string>
-    <string name="settings_hide_apatch_card">隐去「参悟APatch仙法」仙笺</string>
-    <string name="settings_hide_apatch_card_summary">藏起仙府主殿之「参悟APatch仙法」仙笺</string>
+    <string name="home_learn_apatch">参悟FolkPatch仙法</string>
+    <string name="home_click_to_learn_apatch">探FolkPatch仙法之玄妙，明渡劫登仙之术</string>
+    <string name="settings_hide_apatch_card">隐去「参悟FolkPatch仙法」仙笺</string>
+    <string name="settings_hide_apatch_card_summary">藏起仙府主殿之「参悟FolkPatch仙法」仙笺</string>
 
     <string name="about_source_code"><![CDATA[<p>于%1$s观仙法源典<p/>入吾%2$s仙音频道<p/>赴吾%3$s仙友寮阁]]></string>
     <string name="send_log">呈渡劫日志</string>

@@ -35,10 +35,10 @@
     <string name="settings_global_namespace_mode_summary">所有root会话都用全局挂载哒，不要乱改哦喵！</string>
     <string name="settings_clear_super_key_dialog">真的要继续嘛？不要后悔哦喵！</string>
 
-    <string name="home_learn_apatch">了解一下APatch呗喵</string>
-    <string name="home_click_to_learn_apatch">快戳人家喵！看看APatch能干什么喵~</string>
+    <string name="home_learn_apatch">了解一下FolkPatch呗喵</string>
+    <string name="home_click_to_learn_apatch">快戳人家喵！看看FolkPatch能干什么喵~</string>
     <string name="settings_hide_apatch_card">藏起这张卡片喵</string>
-    <string name="settings_hide_apatch_card_summary">把首页那个“了解APatch”的卡片藏起来啦喵</string>
+    <string name="settings_hide_apatch_card_summary">把首页那个"了解FolkPatch"的卡片藏起来啦喵</string>
     <string name="settings_grid_working_card_hide_check">把状态图标藏起来喵</string>
     <string name="settings_grid_working_card_hide_check_summary">把工作卡片上的勾勾或者警告标标藏起来哦喵</string>
     <string name="settings_grid_working_card_hide_text">把状态文字藏起来喵</string>
