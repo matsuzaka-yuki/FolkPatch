@@ -13,10 +13,11 @@ import java.io.FileOutputStream
 /**
  * 背景配置管理类
  */
-object BackgroundConfig {// State
-    var customBackgroundUri: String? by mutableStateOf("background.png")
+object BackgroundConfig {
+    // State
+    var customBackgroundUri: String? by mutableStateOf(null)
         private set
-    var isCustomBackgroundEnabled: Boolean by mutableStateOf(true)
+    var isCustomBackgroundEnabled: Boolean by mutableStateOf(false)
         private set
     var customBackgroundOpacity: Float by mutableStateOf(0.05f)
         private set
@@ -342,8 +343,8 @@ object BackgroundConfig {// State
      */
     fun load(context: Context) {
         val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        val uri = prefs.getString(KEY_CUSTOM_BACKGROUND_URI, "background.png")
-        val enabled = prefs.getBoolean(KEY_CUSTOM_BACKGROUND_ENABLED, true)
+        val uri = prefs.getString(KEY_CUSTOM_BACKGROUND_URI, null)
+        val enabled = prefs.getBoolean(KEY_CUSTOM_BACKGROUND_ENABLED, false)
         val opacity = prefs.getFloat(KEY_CUSTOM_BACKGROUND_OPACITY, 0.05f)
         val blur = prefs.getFloat(KEY_CUSTOM_BACKGROUND_BLUR, 0f)
         val dim = prefs.getFloat(KEY_CUSTOM_BACKGROUND_DIM, 0.0f)
@@ -415,9 +416,9 @@ object BackgroundConfig {// State
      * 重置配置
      */
     fun reset() {
-        // Default to custom background enabled with "background.png"
-        customBackgroundUri = "background.png"
-        isCustomBackgroundEnabled = true
+        // Default to custom background disabled
+        customBackgroundUri = null
+        isCustomBackgroundEnabled = false
         customBackgroundOpacity = 0.05f
         customBackgroundBlur = 0f
         customBackgroundDim = 0.0f

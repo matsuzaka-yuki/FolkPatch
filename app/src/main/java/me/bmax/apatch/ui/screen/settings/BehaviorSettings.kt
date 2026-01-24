@@ -48,9 +48,23 @@ fun BehaviorSettings(
     val stayOnPageSummary = stringResource(id = R.string.settings_apm_stay_on_page_summary)
     val showStayOnPage = aPatchReady && (matchBehavior || shouldShow(searchText, stayOnPageTitle, stayOnPageSummary))
 
+    var currentStyle by remember { mutableStateOf(prefs.getString("home_layout_style", "focus")) }
+    
+    DisposableEffect(Unit) {
+        val listener = android.content.SharedPreferences.OnSharedPreferenceChangeListener { sharedPreferences, key ->
+            if (key == "home_layout_style") {
+                currentStyle = sharedPreferences.getString("home_layout_style", "focus")
+            }
+        }
+        prefs.registerOnSharedPreferenceChangeListener(listener)
+        onDispose {
+            prefs.unregisterOnSharedPreferenceChangeListener(listener)
+        }
+    }
+
     val hideApatchTitle = stringResource(id = R.string.settings_hide_apatch_card)
     val hideApatchSummary = stringResource(id = R.string.settings_hide_apatch_card_summary)
-    val showHideApatch = matchBehavior || shouldShow(searchText, hideApatchTitle, hideApatchSummary)
+    val showHideApatch = currentStyle != "focus" && (matchBehavior || shouldShow(searchText, hideApatchTitle, hideApatchSummary))
 
     val hideSuTitle = stringResource(id = R.string.home_hide_su_path)
     val hideSuSummary = stringResource(id = R.string.home_hide_su_path_summary)

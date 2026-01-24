@@ -3,6 +3,8 @@ package me.bmax.apatch.ui.screen.settings
 import android.content.Intent
 import android.net.Uri
 import android.widget.Toast
+import androidx.core.content.FileProvider
+import me.bmax.apatch.BuildConfig
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.clickable
@@ -106,27 +108,32 @@ fun BackupSettings(
                     colors = ListItemDefaults.colors(containerColor = Color.Transparent),
                     headlineContent = { Text(text = openBackupDirTitle) },
                     modifier = Modifier.clickable {
-                        val backupDir = java.io.File("/storage/emulated/0/Download/FolkPatch/Backups/")
-                        if (!backupDir.exists()) {
-                            backupDir.mkdirs()
-                        }
-                        val uri = Uri.parse(backupDir.toString())
-                        val intent = Intent(Intent.ACTION_VIEW)
+                        val backupDir = java.io.File(android.os.Environment.getExternalStoragePublicDirectory(android.os.Environment.DIRECTORY_DOWNLOADS), "FolkPatch/ModuleBackups")
+                        if (!backupDir.exists()) backupDir.mkdirs()
+
                         try {
-                            intent.setDataAndType(uri, "resource/folder")
-                            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                            val intent = Intent(android.app.DownloadManager.ACTION_VIEW_DOWNLOADS)
                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            context.startActivity(intent)
+                        } catch (e: Exception) {
                             try {
-                                context.startActivity(intent)
-                            } catch (e2: Exception) {
-                                val intent2 = Intent(Intent.ACTION_VIEW)
-                                intent2.setDataAndType(uri, "*/*")
-                                intent2.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-                                intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                                context.startActivity(Intent.createChooser(intent2, context.getString(R.string.settings_open_backup_dir)))
+                                val uri = FileProvider.getUriForFile(context, "${BuildConfig.APPLICATION_ID}.fileprovider", backupDir)
+                                val intent = Intent(Intent.ACTION_VIEW)
+                                intent.setDataAndType(uri, "resource/folder")
+                                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                try {
+                                    context.startActivity(intent)
+                                } catch (e2: Exception) {
+                                    val intent2 = Intent(Intent.ACTION_VIEW)
+                                    intent2.setDataAndType(uri, "*/*")
+                                    intent2.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                                    intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                    context.startActivity(Intent.createChooser(intent2, context.getString(R.string.settings_open_backup_dir)))
+                                }
+                            } catch (e3: Exception) {
+                                Toast.makeText(context, R.string.backup_dir_open_failed, Toast.LENGTH_SHORT).show()
                             }
-                        } catch (e3: Exception) {
-                            Toast.makeText(context, R.string.backup_dir_open_failed, Toast.LENGTH_SHORT).show()
                         }
                     },
                     leadingContent = { Icon(Icons.Filled.Folder, null) }

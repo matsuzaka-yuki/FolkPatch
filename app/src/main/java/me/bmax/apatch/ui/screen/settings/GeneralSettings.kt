@@ -223,12 +223,21 @@ fun GeneralSettings(
                     val currentType = prefs.getString("folkx_animation_type", "linear")
                     val currentSpeed = prefs.getFloat("folkx_animation_speed", 1.0f)
                     
+                    val animationTypeLabel = when(currentType) {
+                        "linear" -> R.string.settings_folkx_animation_linear
+                        "spatial" -> R.string.settings_folkx_animation_spatial
+                        "fade" -> R.string.settings_folkx_animation_fade
+                        "vertical" -> R.string.settings_folkx_animation_vertical
+                        "diagonal" -> R.string.settings_folkx_animation_diagonal
+                        else -> R.string.settings_folkx_animation_linear
+                    }
+                    
                     ListItem(
                         colors = ListItemDefaults.colors(containerColor = Color.Transparent),
                         headlineContent = { Text(stringResource(R.string.settings_folkx_animation_type)) },
                         supportingContent = {
                             Text(
-                                text = currentType ?: "linear",
+                                text = stringResource(animationTypeLabel),
                                 style = MaterialTheme.typography.bodyMedium,
                                 color = MaterialTheme.colorScheme.outline
                             )

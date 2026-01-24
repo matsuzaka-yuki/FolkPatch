@@ -224,12 +224,7 @@ fun BackgroundLayer(currentRoute: String? = null) {
 
 @Composable
 private fun RenderBackgroundImage(rawTargetUri: String?, isDarkTheme: Boolean) {
-    // Resolve "background.png" to asset path
-    val targetModel = if (rawTargetUri == "background.png") {
-        "file:///android_asset/background.png"
-    } else {
-        rawTargetUri
-    }
+    val targetModel = rawTargetUri
 
     if (targetModel != null && (targetModel !is String || targetModel.isNotEmpty())) {
         val painter = rememberAsyncImagePainter(

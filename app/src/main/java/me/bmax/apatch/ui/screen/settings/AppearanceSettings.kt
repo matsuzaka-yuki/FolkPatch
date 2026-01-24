@@ -255,8 +255,25 @@ fun AppearanceSettings(
     val showGridDualOpacitySwitch = isKernelSuStyle && BackgroundConfig.isGridWorkingCardBackgroundEnabled && (matchAppearance || shouldShow(searchText, gridDualOpacityTitle))
     
     val gridDayOpacityTitle = stringResource(id = R.string.settings_grid_working_card_day_opacity)
+    val showGridDayOpacity = isKernelSuStyle && BackgroundConfig.isGridWorkingCardBackgroundEnabled && BackgroundConfig.isGridDualOpacityEnabled && (matchAppearance || shouldShow(searchText, gridDayOpacityTitle))
+    
     val gridNightOpacityTitle = stringResource(id = R.string.settings_grid_working_card_night_opacity)
+    val showGridNightOpacity = isKernelSuStyle && BackgroundConfig.isGridWorkingCardBackgroundEnabled && BackgroundConfig.isGridDualOpacityEnabled && (matchAppearance || shouldShow(searchText, gridNightOpacityTitle))
 
+    val gridDimTitle = stringResource(id = R.string.settings_custom_background_dim)
+    val showGridDim = isKernelSuStyle && BackgroundConfig.isGridWorkingCardBackgroundEnabled && (matchAppearance || shouldShow(searchText, gridDimTitle))
+
+    val gridSelectTitle = stringResource(id = R.string.settings_select_background_image)
+    val gridSelectedText = stringResource(id = R.string.settings_grid_working_card_background_selected)
+    val showGridPicker = isKernelSuStyle && BackgroundConfig.isGridWorkingCardBackgroundEnabled && (matchAppearance || shouldShow(searchText, gridSelectTitle, gridSelectedText))
+    
+    val gridClearTitle = stringResource(id = R.string.settings_clear_grid_working_card_background)
+    val showGridClear = isKernelSuStyle && BackgroundConfig.isGridWorkingCardBackgroundEnabled && (matchAppearance || shouldShow(searchText, gridClearTitle))
+
+    val gridCheckHiddenTitle = stringResource(id = R.string.settings_grid_working_card_hide_check)
+    val gridCheckHiddenSummary = stringResource(id = R.string.settings_grid_working_card_hide_check_summary)
+    val showGridCheckHidden = isKernelSuStyle && (matchAppearance || shouldShow(searchText, gridCheckHiddenTitle, gridCheckHiddenSummary))
+    
     val gridTextHiddenTitle = stringResource(id = R.string.settings_grid_working_card_hide_text)
     val gridTextHiddenSummary = stringResource(id = R.string.settings_grid_working_card_hide_text_summary)
     val showGridTextHidden = isKernelSuStyle && (matchAppearance || shouldShow(searchText, gridTextHiddenTitle, gridTextHiddenSummary))
@@ -277,6 +294,27 @@ fun AppearanceSettings(
     val customBackgroundEnabledText = stringResource(id = R.string.settings_custom_background_enabled)
     
     val showCustomBackgroundSwitch = matchAppearance || shouldShow(searchText, customBackgroundTitle, customBackgroundSummary, customBackgroundEnabledText)
+
+    val customDualDimTitle = stringResource(id = R.string.settings_custom_background_dual_dim)
+    val showCustomDualDimSwitch = BackgroundConfig.isCustomBackgroundEnabled && (matchAppearance || shouldShow(searchText, customDualDimTitle))
+
+    val customOpacityTitle = stringResource(id = R.string.settings_custom_background_opacity)
+    val showCustomOpacity = BackgroundConfig.isCustomBackgroundEnabled && (matchAppearance || shouldShow(searchText, customOpacityTitle))
+
+    val customBlurTitle = stringResource(id = R.string.settings_custom_background_blur)
+    val showCustomBlur = BackgroundConfig.isCustomBackgroundEnabled && (matchAppearance || shouldShow(searchText, customBlurTitle))
+
+    val customDimTitle = stringResource(id = R.string.settings_custom_background_dim)
+    val showCustomDim = BackgroundConfig.isCustomBackgroundEnabled && (matchAppearance || shouldShow(searchText, customDimTitle))
+
+    val customDayDimTitle = stringResource(id = R.string.settings_custom_background_day_dim)
+    val showCustomDayDim = BackgroundConfig.isCustomBackgroundEnabled && BackgroundConfig.isDualBackgroundDimEnabled && (matchAppearance || shouldShow(searchText, customDayDimTitle))
+
+    val customNightDimTitle = stringResource(id = R.string.settings_custom_background_night_dim)
+    val showCustomNightDim = BackgroundConfig.isCustomBackgroundEnabled && BackgroundConfig.isDualBackgroundDimEnabled && (matchAppearance || shouldShow(searchText, customNightDimTitle))
+    
+    val videoVolumeTitle = stringResource(id = R.string.settings_video_volume)
+    val showVideoVolume = BackgroundConfig.isCustomBackgroundEnabled && BackgroundConfig.isVideoBackgroundEnabled && (matchAppearance || shouldShow(searchText, videoVolumeTitle))
     
     // Video Background
     val videoBackgroundTitle = stringResource(id = R.string.settings_video_background)
@@ -504,21 +542,195 @@ fun AppearanceSettings(
                     BackgroundConfig.setGridWorkingCardBackgroundEnabledState(it)
                     BackgroundConfig.save(context)
                 }
-                
-                if (BackgroundConfig.isGridWorkingCardBackgroundEnabled) {
+            }
+
+            if (BackgroundConfig.isGridWorkingCardBackgroundEnabled && isKernelSuStyle) {
+                 if (showGridDualOpacitySwitch) {
+                    SwitchItem(
+                        icon = Icons.Filled.DarkMode,
+                        title = gridDualOpacityTitle,
+                        summary = null,
+                        checked = BackgroundConfig.isGridDualOpacityEnabled,
+                        onCheckedChange = {
+                            BackgroundConfig.setGridDualOpacityEnabledState(it)
+                            BackgroundConfig.save(context)
+                        }
+                    )
+                }
+
+                // Opacity
+                if (!BackgroundConfig.isGridDualOpacityEnabled && showGridOpacity) {
+                    ListItem(
+                        colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+                        headlineContent = { Text(gridOpacityTitle) },
+                        supportingContent = {
+                            androidx.compose.material3.Slider(
+                                value = BackgroundConfig.gridWorkingCardBackgroundOpacity,
+                                onValueChange = { BackgroundConfig.setGridWorkingCardBackgroundOpacityValue(it) },
+                                onValueChangeFinished = { BackgroundConfig.save(context) },
+                                valueRange = 0f..1f,
+                                colors = androidx.compose.material3.SliderDefaults.colors(
+                                    thumbColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f),
+                                    activeTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f)
+                                )
+                            )
+                        }
+                    )
+                } else {
+                    if (BackgroundConfig.isGridDualOpacityEnabled && showGridDayOpacity) {
+                        ListItem(
+                            colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+                            headlineContent = { Text(gridDayOpacityTitle) },
+                            supportingContent = {
+                                androidx.compose.material3.Slider(
+                                    value = BackgroundConfig.gridWorkingCardBackgroundDayOpacity,
+                                    onValueChange = { BackgroundConfig.setGridWorkingCardBackgroundDayOpacityValue(it) },
+                                    onValueChangeFinished = { BackgroundConfig.save(context) },
+                                    valueRange = 0f..1f,
+                                    colors = androidx.compose.material3.SliderDefaults.colors(
+                                        thumbColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f),
+                                        activeTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f)
+                                    )
+                                )
+                            }
+                        )
+                    }
+                    if (BackgroundConfig.isGridDualOpacityEnabled && showGridNightOpacity) {
+                        ListItem(
+                            colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+                            headlineContent = { Text(gridNightOpacityTitle) },
+                            supportingContent = {
+                                androidx.compose.material3.Slider(
+                                    value = BackgroundConfig.gridWorkingCardBackgroundNightOpacity,
+                                    onValueChange = { BackgroundConfig.setGridWorkingCardBackgroundNightOpacityValue(it) },
+                                    onValueChangeFinished = { BackgroundConfig.save(context) },
+                                    valueRange = 0f..1f,
+                                    colors = androidx.compose.material3.SliderDefaults.colors(
+                                        thumbColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f),
+                                        activeTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f)
+                                    )
+                                )
+                            }
+                        )
+                    }
+                }
+
+                // Dim
+                if (showGridDim) {
+                    ListItem(
+                        colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+                        headlineContent = { Text(gridDimTitle) },
+                        supportingContent = {
+                            androidx.compose.material3.Slider(
+                                value = BackgroundConfig.gridWorkingCardBackgroundDim,
+                                onValueChange = { BackgroundConfig.setGridWorkingCardBackgroundDimValue(it) },
+                                onValueChangeFinished = { BackgroundConfig.save(context) },
+                                valueRange = 0f..1f,
+                                colors = androidx.compose.material3.SliderDefaults.colors(
+                                    thumbColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f),
+                                    activeTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f)
+                                )
+                            )
+                        }
+                    )
+                }
+
+                 // Picker
+                 if (showGridPicker) {
                      ListItem(
                         colors = ListItemDefaults.colors(containerColor = Color.Transparent),
-                        headlineContent = { Text(text = gridSelectImageText) },
-                        leadingContent = { Icon(Icons.Filled.Image, null) },
+                        headlineContent = { Text(text = gridSelectTitle) },
+                        supportingContent = {
+                            if (!BackgroundConfig.gridWorkingCardBackgroundUri.isNullOrEmpty()) {
+                                Text(
+                                    text = gridSelectedText,
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = MaterialTheme.colorScheme.outline
+                                )
+                            }
+                        },
+                        leadingContent = { Icon(painterResource(id = R.drawable.ic_custom_background), null) },
                         modifier = Modifier.clickable {
-                            try {
-                                pickGridImageLauncher.launch("image/*")
-                            } catch (e: ActivityNotFoundException) {
-                                Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
+                            if (PermissionUtils.hasExternalStoragePermission(context)) {
+                                try {
+                                    pickGridImageLauncher.launch("image/*")
+                                } catch (e: ActivityNotFoundException) {
+                                    Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
+                                }
+                            } else {
+                                Toast.makeText(context, "请先授予存储权限才能选择背景图片", Toast.LENGTH_SHORT).show()
                             }
                         }
                     )
                 }
+
+                // Clear
+                val clearGridBackgroundDialog = rememberConfirmDialog(
+                    onConfirm = {
+                        scope.launch {
+                            loadingDialog.show()
+                            BackgroundManager.clearGridWorkingCardBackground(context)
+                            loadingDialog.hide()
+                            snackBarHost.showSnackbar(message = context.getString(R.string.settings_grid_working_card_background_cleared))
+                        }
+                    }
+                )
+                if (showGridClear) {
+                    ListItem(
+                        colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+                        headlineContent = { Text(text = gridClearTitle) },
+                        leadingContent = { Icon(painterResource(id = R.drawable.ic_clear_background), null) },
+                        modifier = Modifier.clickable {
+                            clearGridBackgroundDialog.showConfirm(
+                                title = context.getString(R.string.settings_clear_grid_working_card_background),
+                                content = context.getString(R.string.settings_clear_grid_working_card_background_confirm),
+                                markdown = false
+                            )
+                        }
+                    )
+                }
+            }
+
+            // Hide Checkmark
+             if (showGridCheckHidden) {
+                 SwitchItem(
+                    icon = Icons.Filled.VisibilityOff,
+                    title = gridCheckHiddenTitle,
+                    summary = gridCheckHiddenSummary,
+                    checked = BackgroundConfig.isGridWorkingCardCheckHidden,
+                    onCheckedChange = {
+                        BackgroundConfig.setGridWorkingCardCheckHiddenState(it)
+                        BackgroundConfig.save(context)
+                    }
+                )
+            }
+
+            // Hide Text
+             if (showGridTextHidden) {
+                 SwitchItem(
+                    icon = Icons.Filled.VisibilityOff,
+                    title = gridTextHiddenTitle,
+                    summary = gridTextHiddenSummary,
+                    checked = BackgroundConfig.isGridWorkingCardTextHidden,
+                    onCheckedChange = {
+                        BackgroundConfig.setGridWorkingCardTextHiddenState(it)
+                        BackgroundConfig.save(context)
+                    }
+                )
+            }
+
+            // Hide Mode
+             if (showGridModeHidden) {
+                 SwitchItem(
+                    icon = Icons.Filled.VisibilityOff,
+                    title = gridModeHiddenTitle,
+                    summary = gridModeHiddenSummary,
+                    checked = BackgroundConfig.isGridWorkingCardModeHidden,
+                    onCheckedChange = {
+                        BackgroundConfig.setGridWorkingCardModeHiddenState(it)
+                        BackgroundConfig.save(context)
+                    }
+                )
             }
 
             // Custom Background
@@ -536,6 +748,168 @@ fun AppearanceSettings(
             }
             
             if (BackgroundConfig.isCustomBackgroundEnabled) {
+                 // Single Background Selector (Moved from bottom)
+                 if (!BackgroundConfig.isVideoBackgroundEnabled && !BackgroundConfig.isMultiBackgroundEnabled) {
+                     if (showSinglePicker) {
+                         ListItem(
+                            colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+                            headlineContent = { Text(text = singleSelectTitle) },
+                            supportingContent = {
+                                if (!BackgroundConfig.customBackgroundUri.isNullOrEmpty()) {
+                                    Text(text = singleSelectedText, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.outline)
+                                }
+                            },
+                            leadingContent = { Icon(painterResource(id = R.drawable.ic_custom_background), null) },
+                            modifier = Modifier.clickable {
+                                if (PermissionUtils.hasExternalStoragePermission(context) && 
+                                    PermissionUtils.hasWriteExternalStoragePermission(context)) {
+                                    pickingType = "default"
+                                    try {
+                                        pickImageLauncher.launch("image/*")
+                                    } catch (e: ActivityNotFoundException) {
+                                        Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
+                                    }
+                                } else {
+                                    Toast.makeText(context, "请先授予存储权限才能选择背景图片", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        )
+                     }
+                     
+                     // Clear button (Single mode only)
+                     if (!BackgroundConfig.customBackgroundUri.isNullOrEmpty()) {
+                        val clearBackgroundDialog = rememberConfirmDialog(
+                            onConfirm = {
+                                scope.launch {
+                                    loadingDialog.show()
+                                    BackgroundManager.clearCustomBackground(context)
+                                    loadingDialog.hide()
+                                    snackBarHost.showSnackbar(message = context.getString(R.string.settings_background_image_cleared))
+                                    refreshTheme.value = true
+                                }
+                            }
+                        )
+                        if (showSingleClear) {
+                            ListItem(
+                                colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+                                headlineContent = { Text(text = singleClearTitle) },
+                                leadingContent = { Icon(painterResource(id = R.drawable.ic_clear_background), null) },
+                                modifier = Modifier.clickable {
+                                    clearBackgroundDialog.showConfirm(title = singleClearTitle, content = context.getString(R.string.settings_clear_background_confirm), markdown = false)
+                                }
+                            )
+                        }
+                     }
+                 }
+
+                 if (showCustomDualDimSwitch) {
+                    SwitchItem(
+                        icon = Icons.Filled.DarkMode,
+                        title = customDualDimTitle,
+                        summary = null,
+                        checked = BackgroundConfig.isDualBackgroundDimEnabled
+                    ) {
+                        BackgroundConfig.setDualBackgroundDimEnabledState(it)
+                        BackgroundConfig.save(context)
+                        refreshTheme.value = true
+                    }
+                 }
+
+                 // Sliders
+                 if (showCustomOpacity) {
+                    ListItem(
+                        colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+                        headlineContent = { Text(customOpacityTitle) },
+                        supportingContent = {
+                            androidx.compose.material3.Slider(
+                                value = BackgroundConfig.customBackgroundOpacity,
+                                onValueChange = { BackgroundConfig.setCustomBackgroundOpacityValue(it) },
+                                onValueChangeFinished = { BackgroundConfig.save(context) },
+                                valueRange = 0f..1f,
+                                colors = androidx.compose.material3.SliderDefaults.colors(
+                                    thumbColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f),
+                                    activeTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f)
+                                )
+                            )
+                        }
+                    )
+                 }
+                 
+                 if (showCustomBlur) {
+                    ListItem(
+                        colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+                        headlineContent = { Text(customBlurTitle) },
+                        supportingContent = {
+                            androidx.compose.material3.Slider(
+                                value = BackgroundConfig.customBackgroundBlur,
+                                onValueChange = { BackgroundConfig.setCustomBackgroundBlurValue(it) },
+                                onValueChangeFinished = { BackgroundConfig.save(context) },
+                                valueRange = 0f..50f,
+                                colors = androidx.compose.material3.SliderDefaults.colors(
+                                    thumbColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f),
+                                    activeTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f)
+                                )
+                            )
+                        }
+                    )
+                 }
+
+                 if (!BackgroundConfig.isDualBackgroundDimEnabled && showCustomDim) {
+                    ListItem(
+                        colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+                        headlineContent = { Text(customDimTitle) },
+                        supportingContent = {
+                            androidx.compose.material3.Slider(
+                                value = BackgroundConfig.customBackgroundDim,
+                                onValueChange = { BackgroundConfig.setCustomBackgroundDimValue(it) },
+                                onValueChangeFinished = { BackgroundConfig.save(context) },
+                                valueRange = 0f..1f,
+                                colors = androidx.compose.material3.SliderDefaults.colors(
+                                    thumbColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f),
+                                    activeTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f)
+                                )
+                            )
+                        }
+                    )
+                 } else {
+                    if (BackgroundConfig.isDualBackgroundDimEnabled && showCustomDayDim) {
+                        ListItem(
+                            colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+                            headlineContent = { Text(customDayDimTitle) },
+                            supportingContent = {
+                                androidx.compose.material3.Slider(
+                                    value = BackgroundConfig.customBackgroundDayDim,
+                                    onValueChange = { BackgroundConfig.setCustomBackgroundDayDimValue(it) },
+                                    onValueChangeFinished = { BackgroundConfig.save(context) },
+                                    valueRange = 0f..1f,
+                                    colors = androidx.compose.material3.SliderDefaults.colors(
+                                        thumbColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f),
+                                        activeTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f)
+                                    )
+                                )
+                            }
+                        )
+                    }
+                    if (BackgroundConfig.isDualBackgroundDimEnabled && showCustomNightDim) {
+                        ListItem(
+                            colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+                            headlineContent = { Text(customNightDimTitle) },
+                            supportingContent = {
+                                androidx.compose.material3.Slider(
+                                    value = BackgroundConfig.customBackgroundNightDim,
+                                    onValueChange = { BackgroundConfig.setCustomBackgroundNightDimValue(it) },
+                                    onValueChangeFinished = { BackgroundConfig.save(context) },
+                                    valueRange = 0f..1f,
+                                    colors = androidx.compose.material3.SliderDefaults.colors(
+                                        thumbColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f),
+                                        activeTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f)
+                                    )
+                                )
+                            }
+                        )
+                    }
+                 }
+
                  if (showVideoBackgroundSwitch) {
                      SwitchItem(
                         icon = Icons.Filled.PlayArrow,
@@ -570,6 +944,53 @@ fun AppearanceSettings(
                             }
                         )
                      }
+
+                    val clearVideoDialog = rememberConfirmDialog(
+                        onConfirm = {
+                            scope.launch {
+                                loadingDialog.show()
+                                BackgroundManager.clearVideoBackground(context)
+                                loadingDialog.hide()
+                                snackBarHost.showSnackbar(message = context.getString(R.string.settings_background_image_cleared))
+                                refreshTheme.value = true
+                            }
+                        }
+                    )
+
+                    if (showVideoClear) {
+                        ListItem(
+                            colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+                            headlineContent = { Text(text = videoClearTitle) },
+                            leadingContent = { Icon(painterResource(id = R.drawable.ic_clear_background), null) },
+                            modifier = Modifier.clickable {
+                                clearVideoDialog.showConfirm(
+                                    title = videoClearTitle,
+                                    content = context.getString(R.string.settings_clear_video_background_confirm),
+                                    markdown = false
+                                )
+                            }
+                        )
+                    }
+                    
+                    if (showVideoVolume) {
+                        ListItem(
+                            colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+                            headlineContent = { Text(videoVolumeTitle) },
+                            supportingContent = {
+                                androidx.compose.material3.Slider(
+                                    value = BackgroundConfig.videoVolume,
+                                    onValueChange = { BackgroundConfig.setVideoVolumeValue(it) },
+                                    onValueChangeFinished = { BackgroundConfig.save(context) },
+                                    valueRange = 0f..1f,
+                                    colors = androidx.compose.material3.SliderDefaults.colors(
+                                        thumbColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f),
+                                        activeTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f)
+                                    )
+                                )
+                            },
+                            leadingContent = { Icon(Icons.Filled.VolumeUp, null) }
+                        )
+                    }
                  } else {
                      // Image logic ...
                      if (showMultiBackgroundSwitch) {
@@ -585,30 +1006,47 @@ fun AppearanceSettings(
                         }
                      }
                      
-                     if (!BackgroundConfig.isMultiBackgroundEnabled && showSinglePicker) {
-                         ListItem(
-                            colors = ListItemDefaults.colors(containerColor = Color.Transparent),
-                            headlineContent = { Text(text = singleSelectTitle) },
-                            supportingContent = {
-                                if (!BackgroundConfig.customBackgroundUri.isNullOrEmpty()) {
-                                    Text(text = singleSelectedText, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.outline)
-                                }
-                            },
-                            leadingContent = { Icon(painterResource(id = R.drawable.ic_custom_background), null) },
-                            modifier = Modifier.clickable {
-                                if (PermissionUtils.hasExternalStoragePermission(context) && 
-                                    PermissionUtils.hasWriteExternalStoragePermission(context)) {
-                                    pickingType = "default"
-                                    try {
-                                        pickImageLauncher.launch("image/*")
-                                    } catch (e: ActivityNotFoundException) {
-                                        Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
-                                    }
-                                } else {
-                                    Toast.makeText(context, "Permission denied", Toast.LENGTH_SHORT).show()
-                                }
-                            }
+                     if (BackgroundConfig.isMultiBackgroundEnabled) {
+                        // Multi selectors
+                        val items = listOf(
+                            Triple(R.string.settings_select_home_background, "home", BackgroundConfig.homeBackgroundUri),
+                            Triple(R.string.settings_select_kernel_background, "kernel", BackgroundConfig.kernelBackgroundUri),
+                            Triple(R.string.settings_select_superuser_background, "superuser", BackgroundConfig.superuserBackgroundUri),
+                            Triple(R.string.settings_select_system_module_background, "system", BackgroundConfig.systemModuleBackgroundUri),
+                            Triple(R.string.settings_select_settings_background, "settings", BackgroundConfig.settingsBackgroundUri)
                         )
+                        items.forEach { (titleRes, type, uri) ->
+                            val title = stringResource(id = titleRes)
+                            if (matchAppearance || shouldShow(searchText, title)) {
+                                ListItem(
+                                    colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+                                    headlineContent = { Text(text = title) },
+                                    supportingContent = {
+                                        if (!uri.isNullOrEmpty()) {
+                                            Text(
+                                                text = stringResource(id = R.string.settings_background_selected),
+                                                style = MaterialTheme.typography.bodyMedium,
+                                                color = MaterialTheme.colorScheme.outline
+                                            )
+                                        }
+                                    },
+                                    leadingContent = { Icon(painterResource(id = R.drawable.ic_custom_background), null) },
+                                    modifier = Modifier.clickable {
+                                        if (PermissionUtils.hasExternalStoragePermission(context) && 
+                                            PermissionUtils.hasWriteExternalStoragePermission(context)) {
+                                            pickingType = type
+                                            try {
+                                                pickImageLauncher.launch("image/*")
+                                            } catch (e: ActivityNotFoundException) {
+                                                Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
+                                            }
+                                        } else {
+                                            Toast.makeText(context, "请先授予存储权限才能选择背景图片", Toast.LENGTH_SHORT).show()
+                                        }
+                                    }
+                                )
+                            }
+                        }
                      }
                  }
             }

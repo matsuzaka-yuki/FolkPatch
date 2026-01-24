@@ -351,27 +351,6 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler, ImageLoade
         me.bmax.apatch.ui.theme.SoundEffectConfig.load(this)
         MusicManager.init(this)
         
-        // Ensure background.png exists
-        try {
-            val bgFile = File(filesDir, "background.png")
-            val bgPrefs = getSharedPreferences("background_settings", Context.MODE_PRIVATE)
-            val customUri = bgPrefs.getString("custom_background_uri", "background.png")
-            // If using default configuration, or file missing/empty, copy from assets
-            val shouldCopy = customUri == "background.png" || !bgFile.exists() || bgFile.length() == 0L
-            
-            if (shouldCopy) {
-                Log.d(TAG, "Copying default background.png (shouldCopy=$shouldCopy)...")
-                assets.open("background.png").use { input ->
-                    bgFile.outputStream().use { output ->
-                        input.copyTo(output)
-                    }
-                }
-                Log.d(TAG, "Default background.png copied.")
-            }
-        } catch (e: Exception) {
-            Log.e(TAG, "Failed to copy default background: ${e.message}")
-        }
-        
         Log.d(TAG, "APApplication onCreate completed")
     }
 
