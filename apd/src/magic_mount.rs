@@ -173,7 +173,7 @@ fn collect_module_files() -> Result<Option<Node>> {
             continue;
         }
 
-        if !entry.path().join("/system").is_dir() {
+        if !entry.path().join("system").is_dir() {
             continue;
         }
 
