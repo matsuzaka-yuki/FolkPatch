@@ -74,7 +74,7 @@
   <string name="kpatch_version_update" formatted="false">バージョン: %s -&gt; %s</string>
   <string name="kpatch_shadow_path_title">KPatch</string>
   <string name="home_auth_key_title">SuperKey を入力</string>
-  <string name="home_auth_key_desc">Start after certification</string>
+  <string name="home_auth_key_desc">認証後に開始します</string>
   <string name="home_kpatch_info_title">情報</string>
   <string name="home_ap_cando_install">インストール</string>
   <string name="home_ap_cando_uninstall">アンインストール</string>
@@ -184,7 +184,7 @@
   <string name="hide_apatch_dialog_new_manager_name">新しいマネージャーの名前</string>
   <string name="hide_apatch_dialog_summary">ランチャーに表示される新しいアプリラベルとして使用されます</string>
   <string name="hide_apatch_manager_failure">非表示に失敗しました。バグを報告してください！</string>
-  <string name="setting_reset_su_path">su パスをリセット</string>
+  <string name="setting_reset_su_path">su のパスをリセット</string>
   <string name="setting_reset_su_new_path">新しいフルパス</string>
   <string name="apm_webui_open">開く</string>
   <string name="apm_action">アクション</string>
@@ -262,12 +262,12 @@
   <!-- Online Module Strings -->
   <string name="online_module_title">オンラインシステムモジュール</string>
   <string name="online_module_download_start">ダウンロードを開始中: %s</string>
-  <string name="online_module_download_complete">ダウンロード完了: %s</string>
+  <string name="online_module_download_complete">ダウンロードが完了: %s</string>
   <string name="online_module_download_notification">「%s」をダウンロード中です。進行状況は通知パネル、完了したファイルはダウンロードフォルダでご確認ください。</string>
   <!-- Online KPM Strings -->
   <string name="online_kpm_title">オンラインカーネルモジュール</string>
   <string name="online_kpm_download_start">ダウンロードを開始中: %s</string>
-  <string name="online_kpm_download_complete">ダウンロード完了: %s</string>
+  <string name="online_kpm_download_complete">ダウンロードが完了: %s</string>
   <string name="online_kpm_download_notification">「%s」をダウンロード中です。進行状況は通知パネル、完了したファイルはダウンロードフォルダでご確認ください。</string>
   <!-- Crash Handle Strings -->
   <string name="crash_handle_title">クラッシュレポート</string>
@@ -371,10 +371,10 @@
   <string name="apm_restore_success">復元が成功しました</string>
   <string name="apm_backup_failed">バックアップに失敗しました</string>
   <string name="apm_restore_failed">復元に失敗しました</string>
-  <string name="apm_backup_failed_msg">バックアップが失敗: %s</string>
+  <string name="apm_backup_failed_msg">バックアップに失敗: %s</string>
   <string name="apm_restore_failed_msg">復元に失敗: %s</string>
   <!-- APM Bulk Install Strings -->
-  <string name="apm_bulk_install_title">APM 一括インストール</string>
+  <string name="apm_bulk_install_title">APM を一括インストール</string>
   <string name="apm_bulk_install_list_title">モジュールの一覧</string>
   <string name="apm_bulk_install_add">モジュールを追加</string>
   <string name="apm_bulk_install_empty">モジュールが追加されていません</string>
@@ -390,16 +390,16 @@
   <string name="apm_bulk_install_first_use_text">この機能を使用すると複数のモジュールを一度にインストールできます。これは、インストール時にボタン操作を必要としないモジュールに適したクイックインストール方法です。音量ボタンの操作が必要なモジュールの場合は、設定でフルプロセスインストールモードを有効化してください。</string>
   <string name="apm_bulk_install_remove">削除</string>
   <string name="apm_first_use_title">システムモジュールへようこそ</string>
-  <string name="apm_first_use_text">システムモジュールへようこそ。Magisk エコシステムと互換性のあるモジュールを使用しています。将来的に Lua モジュールのサポートが追加される可能性があります。モジュールをインストールするには、右下のボタンをタップしてください。また、上部のインストーラーを使用してモジュールを一括インストールすることもできます。ワンタップですべてのモジュールをバックアップする機能も提供されていますが、このソリューションはすべてのモジュールに適している訳ではないため、ご自身でバックアップを作成してください。</string>
+  <string name="apm_first_use_text">システムモジュールへようこそ。Magisk エコシステムと互換性のあるモジュールを使用しています。将来的に Lua モジュールのサポートが追加される可能性があります。モジュールをインストールするには、右下のボタンをタップしてください。また、上部のインストーラーを使用してモジュールを一括インストールすることもできます。ワンタップですべてのモジュールをバックアップする機能も提供されていますが、このソリューションはすべてのモジュールに適している訳ではないため、自分でバックアップを作成してください。</string>
   <string name="kpm_autoload_kpm_list_title">KP モジュール</string>
   <string name="kpm_autoload_no_kpm_added">KP モジュールが追加されていません</string>
-  <string name="kpm_autoload_kpm_path">KPM パス</string>
+  <string name="kpm_autoload_kpm_path">KPM のパス</string>
   <string name="kpm_autoload_file_not_found">ファイルがありません</string>
   <string name="kpm_autoload_select_kpm_file">KPM ファイルを選択</string>
   <string name="kpm_autoload_first_time_title">KPM の自動読み込みについて</string>
-  <string name="kpm_autoload_first_time_message">This feature allows you to automatically load all configured KPMs temporarily on boot. This approach is more convenient than embedding directly into the kernel.\n\nFor example, KPMs that prevent partition modification can only be used temporarily, as embedding may cause boot failures. Or if you don\'t want to modify the BOOT partition, you can use this configuration to quickly load modules.\n\nPlease ensure the app is completely closed and reopened for the commands to execute. Generally, it will also load on boot. It is normal for the manager to have a black screen for a period of time! This uses a pure background loading method, remember to manually swipe down to refresh and check if the modules are loaded correctly!</string>
-  <string name="kpm_autoload_first_time_confirm">Got it</string>
-  <string name="kpm_autoload_do_not_show_again">Don\'t show again</string>
+  <string name="kpm_autoload_first_time_message">この機能を使用すると、設定済みのすべての KPM を起動時に自動で一時的に読み込めます。この方法は、カーネルに直接埋め込むよりも便利です。\n\n例えば、パーティションの変更を禁止する KPM は、埋め込みによって起動に失敗する可能性があるため、一時的にしか使用できません。または、boot パーティションを変更したくない場合は、この設定を使用してモジュールを迅速に読み込めます。\n\nコマンドを実行するには、アプリを完全に閉じて再起動してください。起動時で通常に読み込まれます。マネージャーの画面が一時的に暗転するのは正常です！これは純粋なバックグラウンドでの読み込み方式を使用しているため、手動で下にスワイプして更新してモジュールが正しく読み込まれているか確認してください！</string>
+  <string name="kpm_autoload_first_time_confirm">理解しました</string>
+  <string name="kpm_autoload_do_not_show_again">再度表示しない</string>
   <!-- Hide Settings Strings -->
   <string name="home_hide_su_path">su 実行可能パスを非表示</string>
   <string name="home_hide_kpatch_version">Kernel Patch バージョンを非表示</string>
@@ -408,17 +408,17 @@
   <string name="home_hide_kpatch_version_summary">Kernel Patch バージョン情報のカードを非表示にします</string>
   <string name="home_hide_fingerprint_summary">フィンガープリント情報のカードを非表示にします</string>
   <string name="kpm_page_first_time_title">警告</string>
-  <string name="kpm_page_first_time_message">Kernel modules directly modify the Boot implementation. Unlike system modules, they lack a good recovery mechanism. If issues arise, you can only fix them by entering Fastboot. It is recommended to load the module first to ensure there are no problems before embedding it into Boot. If a module can only be used by loading, you can try the automatic KPM module loading feature. If you do not understand kernel modules, please do not use this feature!</string>
+  <string name="kpm_page_first_time_message">カーネルモジュールは boot 実装を直接的に変更します。システムモジュールとは異なり、優れた復旧メカニズムが備わっていないため fastboot を起動して修正するしか方法がありません。boot に埋め込む前に、モジュールを読み込んで問題がないことを確認しておくことを推奨します。読み込まないと使用できないモジュールの場合は、KPM の自動読み込み機能を試すことができます。カーネルモジュールについてよく理解していない場合は、この機能を使用しないでください！</string>
   <!-- Auto Backup Strings -->
   <string name="settings_auto_backup_module">システムモジュールを自動でバックアップ</string>
-  <string name="settings_auto_backup_module_summary">Automatically backup module file to private directory when installing</string>
+  <string name="settings_auto_backup_module_summary">インストール時にモジュールファイルを自動でプライベートディレクトリにバックアップします</string>
   <string name="settings_open_backup_dir">バックアップディレクトリを開く</string>
   <string name="backup_dir_empty">バックアップディレクトリは空です</string>
   <string name="backup_dir_open_failed">バックアップディレクトリの展開に失敗しました</string>
   <string name="auto_backup_failed">自動バックアップが失敗: %s</string>
   <string name="auto_backup_success">自動バックアップが成功: %s</string>
-  <string name="settings_auto_backup_boot">Boot を自動でバックアップ</string>
-  <string name="settings_auto_backup_boot_summary">Boot をローカルストレージに自動でバックアップします (Downloads/FolkPatch/BootBackups)</string>
+  <string name="settings_auto_backup_boot">boot を自動でバックアップ</string>
+  <string name="settings_auto_backup_boot_summary">boot をローカルストレージに自動でバックアップします (Downloads/FolkPatch/BootBackups)</string>
   <!-- Home Layout Strings -->
   <string name="settings_home_layout_style">ホームレイアウトのスタイル</string>
   <string name="settings_home_layout_default">リスト UI</string>
@@ -446,20 +446,20 @@
   <string name="theme_description">説明</string>
   <string name="theme_export_action">エクスポート</string>
   <string name="theme_import_action">インポート</string>
-  <string name="theme_import_confirm">Are you sure you want to import this theme?</string>
+  <string name="theme_import_confirm">このテーマをインポートしてもよろしいですか？</string>
   <string name="theme_info">テーマ情報</string>
   <!-- Grid Working Card Background -->
   <string name="settings_grid_working_card_background">動作中カードの背景</string>
   <string name="settings_grid_working_card_background_enabled">カスタムカード背景が有効化されています</string>
-  <string name="settings_grid_working_card_background_summary">Custom background image for the working card</string>
+  <string name="settings_grid_working_card_background_summary">動作中カードのカスタム背景画像です</string>
   <string name="settings_grid_working_card_background_selected">背景が選択されています</string>
-  <string name="settings_grid_working_card_dual_opacity">Enable dual day/night opacity</string>
-  <string name="settings_grid_working_card_day_opacity">Day mode card opacity</string>
-  <string name="settings_grid_working_card_night_opacity">Night mode card opacity</string>
+  <string name="settings_grid_working_card_dual_opacity">日中/夜間でのデュアル透過を有効化する</string>
+  <string name="settings_grid_working_card_day_opacity">日中モードのカード透過</string>
+  <string name="settings_grid_working_card_night_opacity">夜間モードのカード透過</string>
   <string name="settings_clear_grid_working_card_background">カードの背景を消去する</string>
-  <string name="settings_clear_grid_working_card_background_confirm">Are you sure you want to clear the card background image?</string>
-  <string name="settings_grid_working_card_background_saved">Card background saved successfully</string>
-  <string name="settings_grid_working_card_background_error">Failed to save card background</string>
+  <string name="settings_clear_grid_working_card_background_confirm">カードの背景画像を消去してもよろしいですか？</string>
+  <string name="settings_grid_working_card_background_saved">カードの背景の保存に成功しました</string>
+  <string name="settings_grid_working_card_background_error">カードの背景の保存に失敗しました</string>
   <string name="settings_grid_working_card_background_cleared">カードの背景を消去しました</string>
   <!-- Biometric Strings -->
   <string name="action_biometric">生体認証</string>
@@ -476,7 +476,7 @@
   <string name="theme_store_author">作者: %s</string>
   <string name="theme_store_version">バージョン: %s</string>
   <string name="theme_source">ソース</string>
-  <string name="theme_store_download_failed">ダウンロードが失敗しました</string>
+  <string name="theme_store_download_failed">ダウンロードに失敗しました</string>
   <string name="theme_store_download">ダウンロード</string>
   <string name="theme_store_search_hint">テーマを検索...</string>
   <!-- Update Check Strings -->
@@ -492,7 +492,7 @@
   <string name="settings_category_general">一般</string>
   <string name="settings_app_list_loading_scheme">アプリリストの読み込み方式</string>
   <string name="settings_app_list_loading_scheme_summary">アプリリストの読み込み方式を選択します</string>
-  <string name="app_list_loading_scheme_root_service">Root サービス (デフォルト)</string>
+  <string name="app_list_loading_scheme_root_service">root サービス (デフォルト)</string>
   <string name="app_list_loading_scheme_package_manager">パッケージマネージャー (システム API)</string>
   <string name="app_list_loading_scheme_dialog_title">スキームを読み込み中</string>
   <string name="settings_category_appearance">外観</string>
@@ -500,26 +500,26 @@
   <string name="settings_category_module">モジュール</string>
   <string name="settings_category_security">セキュリティ</string>
   <!-- Background Music Strings -->
-  <string name="settings_background_music">背景の音楽</string>
-  <string name="settings_background_music_summary">Play background music when app is in foreground</string>
+  <string name="settings_background_music">BGM</string>
+  <string name="settings_background_music_summary">アプリがフォアグラウンド時に BGM を再生します</string>
   <string name="settings_background_music_playing">再生中: %s</string>
-  <string name="settings_background_music_enabled">背景の音楽が有効化されています</string>
+  <string name="settings_background_music_enabled">BGM が有効化されています</string>
   <string name="settings_select_music_file">音楽ファイルを選択</string>
   <string name="settings_music_selected">音楽が選択されています</string>
   <string name="settings_clear_music">音楽を消去</string>
-  <string name="settings_clear_music_confirm">Are you sure you want to clear the background music?</string>
+  <string name="settings_clear_music_confirm">BGM を消去しますか？</string>
   <string name="settings_music_auto_play">自動再生</string>
-  <string name="settings_music_auto_play_summary">Automatically play music when app opens</string>
+  <string name="settings_music_auto_play_summary">アプリを開いたときに音楽を自動再生します</string>
   <string name="settings_music_looping">ループ再生</string>
   <string name="settings_music_looping_summary">現在の曲をループ再生します</string>
   <string name="settings_music_volume">音量</string>
-  <string name="settings_music_saved">音楽を保存に成功しました</string>
+  <string name="settings_music_saved">音楽の保存に成功しました</string>
   <string name="settings_music_save_error">音楽の保存に失敗しました</string>
   <string name="settings_music_cleared">音楽を消去しました</string>
   <string name="settings_category_multimedia">マルチメディア</string>
   <string name="settings_music_playback_control">再生のコントロール</string>
   <!-- Theme Store Filter -->
-  <string name="theme_store_filter_title">テーマをフィルター</string>
+  <string name="theme_store_filter_title">テーマを絞り込む</string>
   <string name="theme_store_filter_author">作者</string>
   <string name="theme_store_filter_author_hint">作者の名前を入力</string>
   <string name="theme_store_filter_source">ソース</string>
@@ -529,7 +529,7 @@
   <string name="theme_store_filter_reset">リセット</string>
   <!-- File Picker -->
   <string name="file_picker_permission_required">権限が必要です</string>
-  <string name="file_picker_permission_desc">To browse files, please grant \'All files access\' permission.</string>
+  <string name="file_picker_permission_desc">ファイルを参照するには「すべてのファイルへのアクセス」の権限を許可してください。</string>
   <string name="file_picker_grant_permission">権限を許可</string>
   <string name="file_picker_cancel">キャンセル</string>
   <string name="file_picker_internal_storage">内部ストレージ</string>
@@ -577,17 +577,17 @@
   <string name="settings_sound_effect_enabled">有効</string>
   <string name="settings_sound_effect_playing">選択済み: %s</string>
   <string name="settings_select_sound_effect">サウンド効果を選択</string>
-  <string name="settings_sound_effect_selected">Sound effect file selected</string>
-  <string name="settings_sound_effect_scope">効果スコープ</string>
+  <string name="settings_sound_effect_selected">サウンド効果ファイルが選択されています</string>
+  <string name="settings_sound_effect_scope">効果のスコープ</string>
   <string name="settings_sound_effect_scope_global">グローバル (常に再生)</string>
   <string name="settings_sound_effect_scope_bottom_bar">ボトムバーのみ</string>
   <string name="settings_clear_sound_effect">サウンド効果を消去</string>
-  <string name="settings_clear_sound_effect_confirm">Are you sure you want to clear the sound effect?</string>
+  <string name="settings_clear_sound_effect_confirm">サウンド効果を消去してもよろしいですか？</string>
   <string name="settings_sound_effect_cleared">サウンド効果を消去しました</string>
   <!-- Backup Settings -->
   <string name="settings_category_backup">バックアップ</string>
   <string name="settings_enable_cloud_backup">クラウドバックアップを有効化する</string>
-  <string name="settings_enable_cloud_backup_summary">Automatically backup flashed modules to cloud service</string>
+  <string name="settings_enable_cloud_backup_summary">フラッシュされたモジュールをクラウドサービスに自動でバックアップします</string>
   <string name="settings_configure_webdav">WebDAV サービスを構成</string>
   <string name="webdav_config_title">WebDAV の構成</string>
   <string name="webdav_url">WebDAV の URL</string>
