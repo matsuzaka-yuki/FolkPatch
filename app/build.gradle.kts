@@ -328,6 +328,8 @@ dependencies {
 
     implementation(libs.ini4j)
 
+    implementation(libs.google.code.gson)
+
     compileOnly(libs.cxx)
 }
 

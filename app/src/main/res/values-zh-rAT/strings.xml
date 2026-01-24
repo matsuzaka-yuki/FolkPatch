@@ -683,4 +683,28 @@
     <string name="patch_output_written_to"> 圣光降临，圣物铭刻至 </string>
     <string name="patch_write_failed"> 圣光黯淡，深渊降临</string>
 
+    <!-- Script Library Strings -->
+    <string name="script_library">圣光咒语卷轴</string>
+    <string name="script_library_title">圣光咒语卷轴</string>
+    <string name="script_library_empty">暂无咒语，点击添加咒语卷轴</string>
+    <string name="script_library_add">添加咒语</string>
+    <string name="script_library_add_title">添加咒语</string>
+    <string name="script_library_select_file">选择咒语卷轴</string>
+    <string name="script_library_alias">咒名</string>
+    <string name="script_library_alias_hint">输入咒名（可选）</string>
+    <string name="script_library_run">咏唱</string>
+    <string name="script_library_delete">净化</string>
+    <string name="script_library_path">圣域路径：%s</string>
+    <string name="script_library_confirm_delete">确认净化此咒语？</string>
+    <string name="script_library_delete_success">咒语已净化</string>
+    <string name="script_library_delete_failed">净化咒语失败</string>
+    <string name="script_library_add_success">咒语添加成功</string>
+    <string name="script_library_add_failed">添加咒语失败：%s</string>
+    <string name="script_library_load_failed">打开咒语卷轴失败</string>
+    <string name="script_library_output">咒语显化</string>
+    <string name="script_library_no_output">无显化</string>
+    <string name="script_library_save_log">保存咏唱记录</string>
+    <string name="script_library_log_saved">咏唱记录已保存至 %s</string>
+    <string name="script_library_log_save_failed">保存咏唱记录失败：%s</string>
+
 </resources>

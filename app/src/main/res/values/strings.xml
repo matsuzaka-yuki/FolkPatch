@@ -183,8 +183,9 @@
     <string name="su_show_system_apps">Show system apps</string>
     <string name="su_hide_system_apps">Hide system apps</string>
     <string name="su_refresh">Refresh</string>
-
     <string name="apm">APModule</string>
+
+
     <string name="apm_not_installed">AndroidPatch not installed</string>
     <string name="apm_failed_to_enable">Failed to enable module: %s</string>
     <string name="apm_failed_to_disable">Failed to disable module: %s</string>
@@ -690,4 +691,29 @@
     <string name="settings_enable_local_backup">Enable Local Backup</string>
     <string name="settings_enable_local_backup_summary">Backup modules to local storage (Downloads/FolkPatch/ModuleBackups)</string>
     <string name="close">Close</string>
+
+
+
+    <string name="script_library">Script Library</string>
+    <string name="script_library_title">Script Library</string>
+    <string name="script_library_empty">No scripts, click the add button to add one</string>
+    <string name="script_library_add">Add Script</string>
+    <string name="script_library_add_title">Add Script</string>
+    <string name="script_library_select_file">Select Script File</string>
+    <string name="script_library_alias">Alias</string>
+    <string name="script_library_alias_hint">Enter script alias (optional)</string>
+    <string name="script_library_run">Run</string>
+    <string name="script_library_delete">Delete</string>
+    <string name="script_library_path">Path: %s</string>
+    <string name="script_library_confirm_delete">Confirm to delete script?</string>
+    <string name="script_library_delete_success">Script deleted successfully</string>
+    <string name="script_library_delete_failed">Failed to delete script</string>
+    <string name="script_library_add_success">Script added successfully</string>
+    <string name="script_library_add_failed">Failed to add script: %s</string>
+    <string name="script_library_load_failed">Failed to load script library</string>
+    <string name="script_library_output">Execution Output</string>
+    <string name="script_library_no_output">No output</string>
+    <string name="script_library_save_log">Save Log</string>
+    <string name="script_library_log_saved">Log saved to %s</string>
+    <string name="script_library_log_save_failed">Failed to save log: %s</string>
 </resources>

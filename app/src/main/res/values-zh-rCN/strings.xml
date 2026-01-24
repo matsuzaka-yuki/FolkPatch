@@ -682,4 +682,28 @@
     <string name="settings_enable_local_backup">启用本地备份</string>
     <string name="settings_enable_local_backup_summary">将模块备份到本地存储 (Downloads/FolkPatch/ModuleBackups)</string>
     <string name="close">关闭</string>
+
+    <!-- Script Library Strings -->
+    <string name="script_library">脚本库</string>
+    <string name="script_library_title">脚本库</string>
+    <string name="script_library_empty">暂无脚本，点击添加按钮添加一个</string>
+    <string name="script_library_add">添加脚本</string>
+    <string name="script_library_add_title">添加脚本</string>
+    <string name="script_library_select_file">选择脚本文件</string>
+    <string name="script_library_alias">别名</string>
+    <string name="script_library_alias_hint">输入脚本别名（可选）</string>
+    <string name="script_library_run">运行</string>
+    <string name="script_library_delete">删除</string>
+    <string name="script_library_path">路径：%s</string>
+    <string name="script_library_confirm_delete">确认删除脚本？</string>
+    <string name="script_library_delete_success">脚本删除成功</string>
+    <string name="script_library_delete_failed">删除脚本失败</string>
+    <string name="script_library_add_success">脚本添加成功</string>
+    <string name="script_library_add_failed">添加脚本失败：%s</string>
+    <string name="script_library_load_failed">加载脚本库失败</string>
+    <string name="script_library_output">执行输出</string>
+    <string name="script_library_no_output">无输出</string>
+    <string name="script_library_save_log">保存日志</string>
+    <string name="script_library_log_saved">日志已保存至 %s</string>
+    <string name="script_library_log_save_failed">保存日志失败：%s</string>
 </resources>

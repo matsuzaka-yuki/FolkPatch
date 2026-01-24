@@ -26,6 +26,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.PlaylistAddCheck
 import androidx.compose.material.icons.filled.Security
+import androidx.compose.material.icons.filled.Terminal
 import androidx.compose.material3.AlertDialogDefaults
 import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.DropdownMenu
@@ -66,6 +67,8 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootGraph
+import com.ramcosta.composedestinations.generated.destinations.ScriptLibraryScreenDestination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.launch
 import me.bmax.apatch.APApplication
 import me.bmax.apatch.Natives
@@ -84,7 +87,7 @@ import me.bmax.apatch.util.ui.APDialogBlurBehindUtils.Companion.setupWindowBlurL
 @OptIn(ExperimentalMaterialApi::class, ExperimentalMaterial3Api::class)
 @Destination<RootGraph>
 @Composable
-fun SuperUserScreen() {
+fun SuperUserScreen(navigator: DestinationsNavigator) {
     val viewModel = viewModel<SuperUserViewModel>()
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
@@ -131,6 +134,11 @@ fun SuperUserScreen() {
                 onSearchTextChange = { viewModel.search = it },
                 onClearClick = { viewModel.search = "" },
                 leadingActions = {
+                    IconButton(onClick = {
+                        navigator.navigate(ScriptLibraryScreenDestination)
+                    }) {
+                        Icon(Icons.Filled.Terminal, contentDescription = stringResource(R.string.script_library))
+                    }
                     IconButton(onClick = {
                         showBatchExcludeDialog = true
                     }) {

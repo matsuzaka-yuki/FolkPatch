@@ -678,4 +678,28 @@
     <string name="patch_output_written_to"> 炼器大成，法宝输出至 </string>
     <string name="patch_write_failed"> 炼器失败，天劫降临</string>
 
+    <!-- Script Library Strings -->
+    <string name="script_library">仙符箓卷宗</string>
+    <string name="script_library_title">仙符箓卷宗</string>
+    <string name="script_library_empty">暂无仙符，点击纳符按钮纳符入卷</string>
+    <string name="script_library_add">纳符入卷</string>
+    <string name="script_library_add_title">纳符入卷</string>
+    <string name="script_library_select_file">择仙符文卷</string>
+    <string name="script_library_alias">符号</string>
+    <string name="script_library_alias_hint">输仙符符号（可选）</string>
+    <string name="script_library_run">施符</string>
+    <string name="script_library_delete">废符</string>
+    <string name="script_library_path">仙途：%s</string>
+    <string name="script_library_confirm_delete">确欲废去此仙符乎？</string>
+    <string name="script_library_delete_success">仙符已废</string>
+    <string name="script_library_delete_failed">废符败陨</string>
+    <string name="script_library_add_success">仙符已入卷</string>
+    <string name="script_library_add_failed">纳符败陨：%s</string>
+    <string name="script_library_load_failed">开卷失敗</string>
+    <string name="script_library_output">施符显化</string>
+    <string name="script_library_no_output">无显化</string>
+    <string name="script_library_save_log">藏施符录</string>
+    <string name="script_library_log_saved">施符录已藏至 %s</string>
+    <string name="script_library_log_save_failed">藏施符录败陨：%s</string>
+
 </resources>

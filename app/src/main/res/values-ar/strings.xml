@@ -687,4 +687,28 @@
     <string name="webdav_test_failed">فشل الاختبار: %s</string>
     <string name="patch_output_written_to"> تم التصحيح بنجاح، تم كتابة ملف الإخراج إلى </string>
     <string name="patch_write_failed"> فشل تصحيح boot.img</string>
+
+    <!-- Script Library Strings -->
+    <string name="script_library">مكتبة السكربتات</string>
+    <string name="script_library_title">مكتبة السكربتات</string>
+    <string name="script_library_empty">لا توجد سكربتات، اضغط على زر الإضافة</string>
+    <string name="script_library_add">إضافة سكربت</string>
+    <string name="script_library_add_title">إضافة سكربت</string>
+    <string name="script_library_select_file">اختيار ملف السكربت</string>
+    <string name="script_library_alias">الاسم المستعار</string>
+    <string name="script_library_alias_hint">أدخل اسم السكربت (اختياري)</string>
+    <string name="script_library_run">تشغيل</string>
+    <string name="script_library_delete">حذف</string>
+    <string name="script_library_path">المسار: %s</string>
+    <string name="script_library_confirm_delete">تأكيد حذف السكربت؟</string>
+    <string name="script_library_delete_success">تم حذف السكربت بنجاح</string>
+    <string name="script_library_delete_failed">فشل حذف السكربت</string>
+    <string name="script_library_add_success">تمت إضافة السكربت بنجاح</string>
+    <string name="script_library_add_failed">فشل إضافة السكربت: %s</string>
+    <string name="script_library_load_failed">فشل تحميل مكتبة السكربتات</string>
+    <string name="script_library_output">مخرجات التنفيذ</string>
+    <string name="script_library_no_output">لا توجد مخرجات</string>
+    <string name="script_library_save_log">حفظ السجل</string>
+    <string name="script_library_log_saved">تم حفظ السجل في %s</string>
+    <string name="script_library_log_save_failed">فشل حفظ السجل: %s</string>
 </resources>

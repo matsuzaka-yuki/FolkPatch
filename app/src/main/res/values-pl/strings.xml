@@ -700,4 +700,28 @@
 
     <string name="patch_output_written_to"> Łatka zastosowana pomyślnie, plik zapisano do </string>
     <string name="patch_write_failed"> Błąd zapisu łatkowanego boot.img</string>
+
+    <!-- Script Library Strings -->
+    <string name="script_library">Biblioteka skryptów</string>
+    <string name="script_library_title">Biblioteka skryptów</string>
+    <string name="script_library_empty">Brak skryptów, kliknij przycisk dodawania</string>
+    <string name="script_library_add">Dodaj skrypt</string>
+    <string name="script_library_add_title">Dodaj skrypt</string>
+    <string name="script_library_select_file">Wybierz plik skryptu</string>
+    <string name="script_library_alias">Pseudonim</string>
+    <string name="script_library_alias_hint">Wprowadź pseudonim skryptu (opcjonalne)</string>
+    <string name="script_library_run">Uruchom</string>
+    <string name="script_library_delete">Usuń</string>
+    <string name="script_library_path">Ścieżka: %s</string>
+    <string name="script_library_confirm_delete">Potwierdzić usunięcie skryptu?</string>
+    <string name="script_library_delete_success">Skrypt usunięty pomyślnie</string>
+    <string name="script_library_delete_failed">Błąd usuwania skryptu</string>
+    <string name="script_library_add_success">Skrypt dodany pomyślnie</string>
+    <string name="script_library_add_failed">Błąd dodawania skryptu: %s</string>
+    <string name="script_library_load_failed">Błąd ładowania biblioteki skryptów</string>
+    <string name="script_library_output">Wyjście wykonania</string>
+    <string name="script_library_no_output">Brak wyjścia</string>
+    <string name="script_library_save_log">Zapisz log</string>
+    <string name="script_library_log_saved">Log zapisany w %s</string>
+    <string name="script_library_log_save_failed">Błąd zapisu logu: %s</string>
 </resources>

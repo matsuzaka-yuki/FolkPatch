@@ -696,4 +696,28 @@
 
     <string name="patch_output_written_to"> Vá thành công, tệp được ghi vào </string>
     <string name="patch_write_failed"> Ghi boot.img đã vá thất bại</string>
+
+    <!-- Script Library Strings -->
+    <string name="script_library">Thư viện Script</string>
+    <string name="script_library_title">Thư viện Script</string>
+    <string name="script_library_empty">Không có script nào, nhấn nút thêm để thêm</string>
+    <string name="script_library_add">Thêm Script</string>
+    <string name="script_library_add_title">Thêm Script</string>
+    <string name="script_library_select_file">Chọn tệp script</string>
+    <string name="script_library_alias">Bí danh</string>
+    <string name="script_library_alias_hint">Nhập bí danh script (tùy chọn)</string>
+    <string name="script_library_run">Chạy</string>
+    <string name="script_library_delete">Xóa</string>
+    <string name="script_library_path">Đường dẫn: %s</string>
+    <string name="script_library_confirm_delete">Xác nhận xóa script?</string>
+    <string name="script_library_delete_success">Xóa script thành công</string>
+    <string name="script_library_delete_failed">Xóa script thất bại</string>
+    <string name="script_library_add_success">Thêm script thành công</string>
+    <string name="script_library_add_failed">Thêm script thất bại: %s</string>
+    <string name="script_library_load_failed">Tải thư viện script thất bại</string>
+    <string name="script_library_output">Kết quả thực thi</string>
+    <string name="script_library_no_output">Không có kết quả</string>
+    <string name="script_library_save_log">Lưu nhật ký</string>
+    <string name="script_library_log_saved">Nhật ký đã lưu vào %s</string>
+    <string name="script_library_log_save_failed">Lưu nhật ký thất bại: %s</string>
 </resources>

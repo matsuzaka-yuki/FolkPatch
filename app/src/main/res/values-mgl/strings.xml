@@ -681,4 +681,28 @@
     <string name="patch_output_written_to"> 魔法炼成成功，魔法书书写至 </string>
     <string name="patch_write_failed"> 魔法炼成失败，魔力反噬</string>
 
+    <!-- Script Library Strings -->
+    <string name="script_library">魔法咒语书架</string>
+    <string name="script_library_title">魔法咒语书架</string>
+    <string name="script_library_empty">书架空空如也，点击添加咒语</string>
+    <string name="script_library_add">添加咒语</string>
+    <string name="script_library_add_title">添加咒语</string>
+    <string name="script_library_select_file">选择咒语卷轴</string>
+    <string name="script_library_alias">咒名</string>
+    <string name="script_library_alias_hint">输入咒语名称（可选）</string>
+    <string name="script_library_run">施展</string>
+    <string name="script_library_delete">遗忘</string>
+    <string name="script_library_path">魔法路径：%s</string>
+    <string name="script_library_confirm_delete">真的要遗忘这个咒语吗？</string>
+    <string name="script_library_delete_success">咒语已遗忘</string>
+    <string name="script_library_delete_failed">遗忘咒语失败</string>
+    <string name="script_library_add_success">咒语已添加</string>
+    <string name="script_library_add_failed">添加咒语失败：%s</string>
+    <string name="script_library_load_failed">打开魔法书失败</string>
+    <string name="script_library_output">魔法显现</string>
+    <string name="script_library_no_output">没有显现</string>
+    <string name="script_library_save_log">记录施展历史</string>
+    <string name="script_library_log_saved">施展历史已记录到 %s</string>
+    <string name="script_library_log_save_failed">记录施展历史失败：%s</string>
+
 </resources>

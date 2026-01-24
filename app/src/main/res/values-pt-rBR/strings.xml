@@ -700,4 +700,28 @@
 
     <string name="patch_output_written_to"> Patch aplicado com sucesso, arquivo escrito em </string>
     <string name="patch_write_failed"> Falha ao escrever boot.img com patch</string>
+
+    <!-- Script Library Strings -->
+    <string name="script_library">Biblioteca de Scripts</string>
+    <string name="script_library_title">Biblioteca de Scripts</string>
+    <string name="script_library_empty">Sem scripts, clique no botão adicionar para adicionar</string>
+    <string name="script_library_add">Adicionar Script</string>
+    <string name="script_library_add_title">Adicionar Script</string>
+    <string name="script_library_select_file">Selecionar arquivo de script</string>
+    <string name="script_library_alias">Apelido</string>
+    <string name="script_library_alias_hint">Digite o apelido do script (opcional)</string>
+    <string name="script_library_run">Executar</string>
+    <string name="script_library_delete">Excluir</string>
+    <string name="script_library_path">Caminho: %s</string>
+    <string name="script_library_confirm_delete">Confirmar exclusão do script?</string>
+    <string name="script_library_delete_success">Script excluído com sucesso</string>
+    <string name="script_library_delete_failed">Falha ao excluir script</string>
+    <string name="script_library_add_success">Script adicionado com sucesso</string>
+    <string name="script_library_add_failed">Falha ao adicionar script: %s</string>
+    <string name="script_library_load_failed">Falha ao carregar biblioteca de scripts</string>
+    <string name="script_library_output">Saída de execução</string>
+    <string name="script_library_no_output">Sem saída</string>
+    <string name="script_library_save_log">Salvar log</string>
+    <string name="script_library_log_saved">Log salvo em %s</string>
+    <string name="script_library_log_save_failed">Falha ao salvar log: %s</string>
 </resources>

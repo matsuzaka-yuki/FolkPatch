@@ -696,4 +696,28 @@
 
     <string name="patch_output_written_to"> Патч применен успешно, файл записан в </string>
     <string name="patch_write_failed"> Ошибка записи пропатченного boot.img</string>
+
+    <!-- Script Library Strings -->
+    <string name="script_library">Библиотека скриптов</string>
+    <string name="script_library_title">Библиотека скриптов</string>
+    <string name="script_library_empty">Нет скриптов, нажмите кнопку добавления</string>
+    <string name="script_library_add">Добавить скрипт</string>
+    <string name="script_library_add_title">Добавить скрипт</string>
+    <string name="script_library_select_file">Выбрать файл скрипта</string>
+    <string name="script_library_alias">Псевдоним</string>
+    <string name="script_library_alias_hint">Введите псевдоним скрипта (опционально)</string>
+    <string name="script_library_run">Запустить</string>
+    <string name="script_library_delete">Удалить</string>
+    <string name="script_library_path">Путь: %s</string>
+    <string name="script_library_confirm_delete">Подтвердить удаление скрипта?</string>
+    <string name="script_library_delete_success">Скрипт удален успешно</string>
+    <string name="script_library_delete_failed">Ошибка удаления скрипта</string>
+    <string name="script_library_add_success">Скрипт добавлен успешно</string>
+    <string name="script_library_add_failed">Ошибка добавления скрипта: %s</string>
+    <string name="script_library_load_failed">Ошибка загрузки библиотеки скриптов</string>
+    <string name="script_library_output">Вывод выполнения</string>
+    <string name="script_library_no_output">Нет вывода</string>
+    <string name="script_library_save_log">Сохранить лог</string>
+    <string name="script_library_log_saved">Лог сохранен в %s</string>
+    <string name="script_library_log_save_failed">Ошибка сохранения лога: %s</string>
 </resources>

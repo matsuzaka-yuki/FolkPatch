@@ -661,4 +661,28 @@
 
     <string name="patch_output_written_to"> パッチ成功、ファイルを書き込みました </string>
     <string name="patch_write_failed"> パッチ適用済みboot.imgの書き込みに失敗しました</string>
+
+    <!-- Script Library Strings -->
+    <string name="script_library">スクリプトライブラリ</string>
+    <string name="script_library_title">スクリプトライブラリ</string>
+    <string name="script_library_empty">スクリプトがありません、追加ボタンを押して追加</string>
+    <string name="script_library_add">スクリプト追加</string>
+    <string name="script_library_add_title">スクリプト追加</string>
+    <string name="script_library_select_file">スクリプトファイルを選択</string>
+    <string name="script_library_alias">エイリアス</string>
+    <string name="script_library_alias_hint">スクリプトエイリアスを入力（オプション）</string>
+    <string name="script_library_run">実行</string>
+    <string name="script_library_delete">削除</string>
+    <string name="script_library_path">パス：%s</string>
+    <string name="script_library_confirm_delete">スクリプト削除を確認？</string>
+    <string name="script_library_delete_success">スクリプト削除成功</string>
+    <string name="script_library_delete_failed">スクリプト削除失敗</string>
+    <string name="script_library_add_success">スクリプト追加成功</string>
+    <string name="script_library_add_failed">スクリプト追加失敗：%s</string>
+    <string name="script_library_load_failed">スクリプトライブラリ読み込み失敗</string>
+    <string name="script_library_output">実行出力</string>
+    <string name="script_library_no_output">出力なし</string>
+    <string name="script_library_save_log">ログ保存</string>
+    <string name="script_library_log_saved">ログを %s に保存</string>
+    <string name="script_library_log_save_failed">ログ保存失敗：%s</string>
 </resources>

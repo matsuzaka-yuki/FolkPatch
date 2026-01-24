@@ -679,4 +679,28 @@
 
     <string name="patch_output_written_to"> Patch berhasil, file ditulis ke </string>
     <string name="patch_write_failed"> Gagal menulis boot.img yang dipatch</string>
+
+    <!-- Script Library Strings -->
+    <string name="script_library">Pustaka Skrip</string>
+    <string name="script_library_title">Pustaka Skrip</string>
+    <string name="script_library_empty">Tidak ada skrip, klik tombol tambah untuk menambah</string>
+    <string name="script_library_add">Tambah Skrip</string>
+    <string name="script_library_add_title">Tambah Skrip</string>
+    <string name="script_library_select_file">Pilih file skrip</string>
+    <string name="script_library_alias">Alias</string>
+    <string name="script_library_alias_hint">Masukkan alias skrip (opsional)</string>
+    <string name="script_library_run">Jalankan</string>
+    <string name="script_library_delete">Hapus</string>
+    <string name="script_library_path">Path: %s</string>
+    <string name="script_library_confirm_delete">Konfirmasi hapus skrip?</string>
+    <string name="script_library_delete_success">Skrip dihapus berhasil</string>
+    <string name="script_library_delete_failed">Gagal menghapus skrip</string>
+    <string name="script_library_add_success">Skrip ditambahkan berhasil</string>
+    <string name="script_library_add_failed">Gagal menambahkan skrip: %s</string>
+    <string name="script_library_load_failed">Gagal memuat pustaka skrip</string>
+    <string name="script_library_output">Output eksekusi</string>
+    <string name="script_library_no_output">Tidak ada output</string>
+    <string name="script_library_save_log">Simpan log</string>
+    <string name="script_library_log_saved">Log disimpan ke %s</string>
+    <string name="script_library_log_save_failed">Gagal menyimpan log: %s</string>
 </resources>
