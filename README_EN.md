@@ -47,7 +47,7 @@ This project is based on the following open source projects:
 
 ## License
 
-FolkPatch is licensed under the [GNU General Public License v3 (GPL)](http://www.gnu.org/copyleft/gpl.html).
+FolkPatch is licensed under the [GNU General Public License v3 (GPL-3)](http://www.gnu.org/copyleft/gpl.html).
 
 # FolkPatch Discussion & Communication
 - Telegram Channel: [@FolkPatch](https://t.me/FolkPatch)
