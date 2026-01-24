@@ -1,691 +1,612 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">FolkPatch</string>
-    <string name="app_name_folksu">FolkSU</string>
-
-    <string name="desktop_app_name">Desktop App Name</string>
-
-    <string name="home">Home</string>
-
-    <string name="success">Success</string>
-    <string name="failure">Failure</string>
-
-    <string name="patch_warnning">Installation comes with risks. Please ensure your data is backed up.</string>
-    <string name="patch">Patch</string>
-
-    <string name="kernel_patch">KernelPatch</string>
-    <string name="android_patch">AndroidPatch</string>
-
-    <string name="settings_nav_layout_title">Navigation Layout Settings</string>
-    <string name="settings_nav_layout_summary">Hide or show some navigation components</string>
-    <string name="settings_show_apm">Show APM</string>
-    <string name="settings_show_kpm">Show KPM</string>
-    <string name="settings_show_superuser">Show SuperUser</string>
-
-    <string name="reboot">Reboot</string>
-    <string name="settings">Settings</string>
-    <string name="reboot_recovery">Reboot to Recovery</string>
-    <string name="reboot_bootloader">Reboot to Bootloader</string>
-    <string name="reboot_download">Reboot to Download</string>
-    <string name="reboot_edl">Reboot to EDL</string>
-    <string name="about">About</string>
-    <string name="settings_app_language">Language</string>
-    <string name="system_default">System default</string>
-    <string name="settings_global_namespace_mode">Global namespace mode</string>
-    <string name="settings_global_namespace_mode_summary">All root sessions use the global mount namespace</string>
-    <string name="settings_clear_super_key_dialog">Do you really want to proceed?</string>
-    <string name="settings_grid_working_card_hide_check">Hide status icon</string>
-    <string name="settings_grid_working_card_hide_check_summary">Hide the checkmark or warning icon on the working card</string>
-    <string name="settings_grid_working_card_hide_text">Hide status text</string>
-    <string name="settings_grid_working_card_hide_text_summary">Hide the \'Working\' or \'Not installed\' text on the working card</string>
-    <string name="settings_grid_working_card_hide_mode">Hide working mode</string>
-    <string name="settings_grid_working_card_hide_mode_summary">Hide the \'Full\' or \'Half\' text on the working card</string>
-
-
-    <string name="settings_folkx_engine_title">FolkX Animation Engine</string>
-    <string name="settings_folkx_engine_summary">Use smooth physics-based spring animation when switching between top-level pages</string>
-    <string name="settings_folkx_animation_type">Animation Type</string>
-    <string name="settings_folkx_animation_speed">Animation Speed</string>
-    <string name="settings_folkx_animation_linear">Linear Motion</string>
-    <string name="settings_folkx_animation_spatial">Spatial Motion</string>
-    <string name="settings_folkx_animation_fade">Fade In/Out</string>
-    <string name="settings_folkx_animation_vertical">Vertical Slide</string>
-    <string name="settings_folkx_animation_diagonal">Diagonal Slide</string>
-
-    <string name="su_exclude_all_title">Exclude All</string>
-    <string name="su_exclude_all_confirm">Are you sure you want to exclude all non-root apps?</string>
-    <string name="su_batch_exclude_title">Batch Exclude</string>
-    <string name="su_batch_exclude_content">Exclude injection for all non-ROOT apps, please select an action</string>
-    <string name="su_exclude_btn">Exclude</string>
-    <string name="su_exclude_reverse_btn">Reverse</string>
-
-    <string name="home_learn_apatch">Learn APatch</string>
-    <string name="home_click_to_learn_apatch">Learn about the features of APatch and how to use</string>
-    <string name="settings_hide_apatch_card">Hide Learn APatch card</string>
-    <string name="settings_hide_apatch_card_summary">Hide the Learn APatch card on the home screen</string>
-
-    <string name="about_source_code"><![CDATA[<p>View source code at %1$s<p/>Join our %2$s channel<p/>Join our %3$s group]]></string>
-    <string name="send_log">Send logs</string>
-    <string name="save_log">Save logs</string>
-    <string name="log_saved">Logs saved</string>
-    <string name="safe_mode">Safe mode</string>
-
-    <string name="super_key">SuperKey</string>
-    <string name="clear_super_key">Clear SuperKey</string>
-    <string name="patch_set_superkey">Set SuperKey</string>
-    <string name="home_patch_set_key_desc">Only credential for KernelPatch</string>
-    <string name="home_patch_next_step">Next step</string>
-
-    <string name="home_not_installed">Not installed</string>
-    <string name="home_install_unknown">Not installed or authenticated</string>
-    <string name="home_install_unknown_summary">Click to install</string>
-    <string name="home_click_to_install">Click to install</string>
-    <string name="home_working">Working</string>
-    <string name="home_kp_need_update">New version available</string>
-    <string name="home_kp_cando_update">Update</string>
-
-    <string name="home_installing">Installing</string>
-
-    <string name="kpatch_version">Version: %s</string>
-    <string name="apatch_version">Version: %s</string>
-
-    <string name="kpatch_version_update" formatted="false">Version: %s -&gt; %s</string>
-    <string name="kpatch_shadow_path_title">kpatch</string>
-    <string name="home_auth_key_title">Enter SuperKey</string>
-    <string name="home_auth_key_desc">Start after certification</string>
-    <string name="home_kpatch_info_title">Info</string>
-
-    <string name="home_ap_cando_install">Install</string>
-
-    <string name="home_ap_cando_uninstall">Uninstall</string>
-    <string name="home_ap_cando_reboot">Reboot</string>
-
-    <string name="patch_title">Patch</string>
-
-    <string name="patch_config_title">Patches</string>
-    <string name="patch_mode_bootimg_patch">Mode: Patch</string>
-    <string name="patch_mode_patch_and_install">Mode: Patch and install</string>
-    <string name="patch_mode_install_to_next_slot">Mode: Install to inactive slot (After OTA)</string>
-    <string name="patch_mode_restore">Mode: Restore</string>
-    <string name="patch_mode_uninstall_patch">Mode: Uninstall KPatch</string>
-    <string name="patch_select_bootimg_btn">Select boot</string>
-    <string name="patch_embed_kpm_btn">Embed KPM</string>
-    <string name="patch_start_patch_btn">Start</string>
-    <string name="patch_start_unpatch_btn">UnPatch</string>
-    <string name="patch_item_error">!!ERROR!!</string>
-    <string name="patch_item_bootimg">bootimg</string>
-    <string name="patch_item_bootimg_slot">Slot:</string>
-    <string name="patch_item_bootimg_dev">Device:</string>
-    <string name="patch_item_kernel">Kernel</string>
-    <string name="patch_item_kpimg">kpimg</string>
-    <string name="patch_item_kpimg_version">Version:</string>
-    <string name="patch_item_kpimg_comile_time">Time:</string>
-    <string name="patch_item_kpimg_config">Config:</string>
-    <string name="patch_item_new_extra_kpm">Embed new</string>
-    <string name="patch_item_existed_extra_kpm">Existed</string>
-    <string name="patch_item_extra_name">Name:</string>
-    <string name="patch_item_extra_version">Version:</string>
-    <string name="patch_item_extra_author">Author:</string>
-    <string name="patch_item_extra_kpm_license">License:</string>
-    <string name="patch_item_extra_kpm_desciption">Description:</string>
-    <string name="patch_item_extra_args">Args:</string>
-    <string name="patch_item_extra_event">Event:</string>
-    <string name="patch_item_skey">SuperKey</string>
-    <string name="patch_item_set_skey_label">The SuperKey should be 8-63 characters long and include numbers and letters, but no special characters.</string>
-
-    <string name="home_kernel">Kernel version</string>
-    <string name="home_manager_version">Manager version</string>
-    <string name="home_fingerprint">Fingerprint</string>
-
-    <string name="home_selinux_status">SELinux status</string>
-    <string name="home_selinux_status_disabled">Disabled</string>
-    <string name="home_selinux_status_enforcing">Enforcing</string>
-    <string name="home_selinux_status_permissive">Permissive</string>
-    <string name="home_selinux_status_unknown">Unknown</string>
-
-    <string name="settings_selinux_mode">SELinux Mode</string>
-    <string name="settings_selinux_mode_summary">Select SELinux enforcement mode</string>
-    <string name="settings_selinux_mode_enforcing">Enforcing (Strict)</string>
-    <string name="settings_selinux_mode_permissive">Permissive (Lenient)</string>
-    <string name="settings_selinux_current_mode">Current: %s</string>
-    <string name="settings_selinux_mode_enforcing_summary">SELinux fully enforces access rules</string>
-    <string name="settings_selinux_mode_permissive_summary">SELinux only logs violations, does not deny</string>
-
-    <string name="home_device_info">Device</string>
-    <string name="home_system_version">System version</string>
-    <string name="home_kpatch_version">KernelPatch version</string>
-    <string name="home_su_path">Executable su</string>
-    <string name="home_apatch_version">FolkPatch version</string>
-
-    <string name="kpm">KPModule</string>
-    <string name="kpm_kp_not_installed">KernelPatch not installed</string>
-    <string name="kpm_add_kpm">Add KPM</string>
-    <string name="kpm_load">Load</string>
-    <string name="kpm_install">Install</string>
-    <string name="kpm_embed">Embed</string>
-    <string name="kpm_load_toast_succ">Load succeed</string>
-    <string name="kpm_load_toast_failed">Load failed</string>
-    <string name="kpm_unload_confirm">Unload %s module?</string>
-    <string name="kpm_unload">Unload</string>
-    <string name="kpm_control">Control</string>
-    <string name="kpm_apm_empty">No module loaded</string>
-    <string name="kpm_version">Version</string>
-    <string name="kpm_license">License</string>
-    <string name="kpm_author">Author</string>
-    <string name="kpm_desc">Desc</string>
-    <string name="kpm_args">Args</string>
-
-    <string name="su_title">Superuser</string>
-    <string name="su_selinux_via_hook">Bypass via hook</string>
-    <string name="su_pkg_excluded_label">Exclude</string>
-    <string name="su_pkg_excluded_setting_title">Exclude modifications</string>
-    <string name="su_pkg_excluded_setting_summary">Enabling this option will allow FolkPatch to restore any files modified by the modules of this app.</string>
-    <string name="su_show_system_apps">Show system apps</string>
-    <string name="su_hide_system_apps">Hide system apps</string>
-    <string name="su_refresh">Refresh</string>
-
-    <string name="apm">APModule</string>
-    <string name="apm_not_installed">AndroidPatch not installed</string>
-    <string name="apm_failed_to_enable">Failed to enable module: %s</string>
-    <string name="apm_failed_to_disable">Failed to disable module: %s</string>
-    <string name="apm_empty">No module installed</string>
-    <string name="apm_remove">Remove</string>
-    <string name="apm_install">Install</string>
-    <string name="apm_uninstall_confirm">Uninstall the %s module?</string>
-    <string name="apm_uninstall_success">%s uninstalled</string>
-    <string name="apm_uninstall_failed">Failed to uninstall: %s</string>
-    <string name="apm_version">Version</string>
-    <string name="apm_author">Author</string>
-    <string name="apm_desc">Desc</string>
-    <string name="apm_overlay_fs_not_available">Modules are unavailable as OverlayFS is disabled by the kernel!</string>
-    <string name="apm_magisk_conflict">Modules are unavailable due to a conflict with Magisk!</string>
-    <string name="apm_mount_warning_title">Important Notice</string>
-    <string name="apm_mount_warning_message">Modules are not mounted by default. Please use built-in mounting system or metamodule.</string>
-    <string name="apm_mount_warning_button">I Understand</string>
-    <string name="apm_reboot_to_apply">Reboot to take effect</string>
-    <string name="apm_changelog">Changelog</string>
-    <string name="apm_update">Update</string>
-    <string name="apm_downloading">Downloading module: %s</string>
-    <string name="apm_start_downloading">Start downloading: %s</string>
-    <string name="apm_new_version_available">New version %s is available, click to upgrade.</string>
-
-    <string name="hide_apatch_manager">Hide APatch Manager</string>
-    <string name="hide_apatch_manager_summary">Install a proxy app with a random package ID and custom app label</string>
-    <string name="hide_apatch_dialog_new_manager_name">New manager name</string>
-    <string name="hide_apatch_dialog_summary">It will be used as the new app label shown in launcher</string>
-    <string name="hide_apatch_manager_failure">Failed to hide. Please report the bug!</string>
-
-    <string name="setting_reset_su_path">Reset su path</string>
-    <string name="setting_reset_su_new_path">New full path</string>
-
-
-    <string name="apm_webui_open">Open</string>
-    <string name="apm_action">Action</string>
-    <string name="enable_web_debugging">Enable WebView debugging</string>
-    <string name="enable_web_debugging_summary">Can be used to debug WebUI. Please enable only when needed.</string>
-    <string name="settings_apm_install_confirm">Confirm before install</string>
-    <string name="settings_apm_install_confirm_summary">Show a confirmation dialog before installing modules</string>
-    <string name="settings_show_more_module_info">Show module details</string>
-    <string name="settings_show_more_module_info_summary">Show module ID and size in the module list</string>
-    <string name="settings_apm_stay_on_page">Stay on operation page</string>
-    <string name="settings_apm_stay_on_page_summary">Do not automatically return after module action execution</string>
-    <string name="settings_show_disable_all_modules">Show \'Disable All Modules\' button</string>
-    <string name="settings_show_disable_all_modules_summary">Display a button in the modules page to disable all modules at once</string>
-    <string name="settings_disable_module_update_check">Disable module update check</string>
-    <string name="settings_disable_module_update_check_summary">Disable automatic update checks for system modules</string>
-    <string name="settings_module_sort_optimization">Module Sorting Optimization</string>
-    <string name="settings_module_sort_optimization_summary">Make system modules with WebUI and Action appear at the top</string>
-    <string name="settings_fold_system_module">Fold System Modules</string>
-    <string name="settings_fold_system_module_summary">Click module card to expand/collapse actions</string>
-    <string name="apm_install_confirm_title">Install Module</string>
-    <string name="apm_install_confirm_content">Are you sure you want to install %s?</string>
-    <string name="apm_disable_all_title">Disable All Modules</string>
-    <string name="apm_disable_all_confirm">Are you sure you want to disable all modules? Generally, this is done before an OTA update.</string>
-
-    <string name="settings_donot_store_superkey">Don\'t store SuperKey in local</string>
-    <string name="settings_donot_store_superkey_summary">Authenticate the SuperKey every time the manager starts</string>
-
-
-
-    <string name="mode_select_page_title">Install</string>
-    <string name="mode_select_page_patch_and_install">Patch and install</string>
-    <string name="mode_select_page_select_file">Select a boot image to patch</string>
-    <string name="restore_select_file">Select a partition boot file to restore</string>
-    <string name="mode_select_page_install_inactive_slot">Install to inactive slot (After OTA)</string>
-    <string name="mode_select_page_install_inactive_slot_warning">Your device will be **FORCED** to boot to the current inactive slot after a reboot!\nOnly use this option after OTA is done.\nContinue?</string>
-
-    <string name="home_dialog_auth_fail_title">Authentication failed</string>
-    <string name="home_dialog_auth_fail_content">Unable to authenticate the SuperKey, therefore APatch cannot work properly.\nHere are some possible reasons for authentication failure:\n1. You didn\'t patch the boot.img with KernelPatch.\n2. The patched boot.img wasn\'t flashed.\n3. The SuperKey is wrong or contains special characters.\n4. Your device doesn\'t support APatch and KernelPatch.\n\nPlease check and try again. If there are still issues, you can always ask questions on the official repository\'s issues page.</string>
-
-    <string name="home_more_menu_feedback_or_suggestion">Feedback or suggestion</string>
-    <string name="home_more_menu_about">About</string>
-
-    <string name="home_dialog_uninstall_title">Uninstall</string>
-    
-    <string name="home_dialog_uninstall_ap_only">Uninstall patch only</string>
-    <string name="home_dialog_uninstall_all">Uninstall fully</string>
-    <string name="home_dialog_uninstall_ap_only_desc">Remove AndroidPatch only and keep the manager.</string>
-    <string name="home_dialog_uninstall_all_desc">Remove AndroidPatch and start the full uninstall flow.</string>
-
-    <string name="kpm_control_dialog_title">Control KPM</string>
-    <string name="kpm_control_dialog_content">Please enter control parameters:</string>
-    <string name="kpm_control_paramters">Parameters</string>
-    <string name="kpm_control_outMsg">Output</string>
-    <string name="kpm_control_ok">Success!</string>
-    <string name="kpm_control_failed">Failed!</string>
-    
-    <string name="settings_night_mode_follow_sys">Dark theme follows system</string>
-    <string name="settings_night_mode_follow_sys_summary">Switch dark theme automatically based on system settings</string>
-    <string name="settings_night_theme_enabled">Dark theme</string>
-    
-    <string name="settings_use_system_color_theme">System color theme</string>
-    <string name="settings_use_system_color_theme_summary">Use color theme generated from wallpaper by system</string>
-    <string name="settings_custom_color_theme">Color theme</string>
-
-    <string name="amber_theme">Amber</string>
-    <string name="blue_theme">Blue</string>
-    <string name="blue_grey_theme">Blue Grey</string>
-    <string name="brown_theme">Brown</string>
-    <string name="cyan_theme">Cyan</string>
-    <string name="deep_orange_theme">Deep Orange</string>
-    <string name="deep_purple_theme">Deep Purple</string>
-    <string name="green_theme">Green</string>
-    <string name="indigo_theme">Indigo</string>
-    <string name="light_blue_theme">Light Blue</string>
-    <string name="light_green_theme">Light Green</string>
-    <string name="lime_theme">Lime</string>
-    <string name="orange_theme">Orange</string>
-    <string name="pink_theme">Pink</string>
-    <string name="purple_theme">Purple</string>
-    <string name="red_theme">Red</string>
-    <string name="sakura_theme">Sakura</string>
-    <string name="teal_theme">Teal</string>
-    <string name="yellow_theme">Yellow</string>
-
-    <string name="about_app_desc">A kernel-based root solution that supports kernel modules and kernel function hooks without recompiling the kernel.</string>
-    <string name="about_powered_by">Powered by %1$s</string>
-    <string name="about_telegram_group">Telegram Group</string>
-    
-    <!-- Online Module Strings -->
-    <string name="online_module_title">Online System Module</string>
-    <string name="online_module_download_start">Start downloading: %s</string>
-    <string name="online_module_download_complete">Download complete: %s</string>
-    <string name="online_module_download_notification">Downloading %s. Please check notification panel for progress and Download folder for completed file.</string>
-
-    <!-- Online KPM Strings -->
-    <string name="online_kpm_title">Online Kernel Modules</string>
-    <string name="online_kpm_download_start">Start downloading: %s</string>
-    <string name="online_kpm_download_complete">Download complete: %s</string>
-    <string name="online_kpm_download_notification">Downloading %s. Please check notification panel for progress and Download folder for completed file.</string>
-
-    <!-- Crash Handle Strings -->
-    <string name="crash_handle_title">Crash Report</string>
-    <string name="crash_handle_copy">Copy</string>
-
-    <!-- About Screen Strings -->
-    <string name="about_app_version">App Version</string>
-    <string name="about_github">GitHub</string>
-    <string name="about_telegram_channel">Telegram Channel</string>
-
-    <!-- App Title Strings -->
-    <string name="app_title_fpatch">FPatch</string>
-    <string name="app_title_apatch_folk">APatch Folk</string>
-    <string name="app_title_apatchx">APatch X</string>
-    <string name="app_title_apatch">APatch</string>
-    <string name="app_title_folkpatch">FolkPatch</string>
-    <string name="app_title_kernelpatch">KernelPatch</string>
-    <string name="app_title_supersu">SuperSU</string>
-    <string name="app_title_folksu">FolkSU</string>
-    <string name="app_title_superuser">Superuser</string>
-    <string name="app_title_superpatch">SuperPatch</string>
-    <string name="app_title_magicpatch">MagicPatch</string>
-
-    <string name="settings_app_dpi">App DPI</string>
-    <string name="settings_magic_mount">Folk Mount API</string>
-    <string name="settings_magic_mount_summary">Enable the built-in module mounting system</string>
-    <string name="settings_overlayfs_mode">Hybrid Mount Mode</string>
-    <string name="settings_overlayfs_mode_summary">Use OverlayFS with automatic Magic Mount fallback for maximum compatibility</string>
-    <string name="settings_app_title">App Title</string>
-    <string name="settings_custom_background">Custom Background</string>
-    <string name="settings_custom_background_enabled">Custom Background Enabled</string>
-    <string name="settings_custom_background_opacity">Card opacity</string>
-    <string name="settings_custom_background_blur">Background blur</string>
-    <string name="settings_custom_background_dim">Background dim</string>
-    <string name="settings_custom_background_dual_dim">Enable dual day/night dim</string>
-    <string name="settings_custom_background_day_dim">Day mode background dim</string>
-    <string name="settings_custom_background_night_dim">Night mode background dim</string>
-    <string name="settings_multi_background_mode">Multi-Background Mode</string>
-    <string name="settings_multi_background_mode_summary">Set different background images for different pages</string>
-    <string name="settings_select_home_background">Home Page Background</string>
-    <string name="settings_select_kernel_background">Kernel Module Background</string>
-    <string name="settings_select_superuser_background">Superuser Background</string>
-    <string name="settings_select_system_module_background">System Module Background</string>
-    <string name="settings_select_settings_background">Settings Background</string>
-
-    
-    <!-- Font Settings -->
-    <string name="settings_custom_font">Custom Font</string>
-    <string name="settings_select_font_file">Select Font File</string>
-    <string name="settings_custom_font_enabled">Custom Font Enabled</string>
-    <string name="settings_custom_font_summary">Use a custom TTF font for the app</string>
-    <string name="settings_font_selected">Custom Font Selected</string>
-    <string name="settings_custom_font_error">Failed to save font file</string>
-    <string name="settings_custom_font_saved">Custom font saved successfully</string>
-    <string name="settings_clear_font">Restore Default Font</string>
-    <string name="settings_clear_font_confirm">Are you sure you want to restore the default font?</string>
-    <string name="settings_font_cleared">Default font restored</string>
-    <string name="settings_font_select_hint">Select a TTF font file</string>
-    <string name="settings_select_background_image">Select Background Image</string>
-    <string name="settings_custom_background_summary">Set a custom background image</string>
-    <string name="settings_custom_background_saved">Background saved successfully</string>
-    <string name="settings_custom_background_error">Failed to save background</string>
-    <string name="settings_background_selected">Background selected</string>
-    <string name="settings_background_image_cleared">Background image cleared</string>
-    <string name="settings_clear_background">Clear Background</string>
-    <string name="settings_clear_background_confirm">Are you sure you want to clear the background image?</string>
-
-    <string name="settings_launcher_icon">Launcher Icon</string>
-    <string name="launcher_icon_default">FolkPatch</string>
-    <string name="launcher_icon_classic">FolkPatch Anime</string>
-    <string name="launcher_icon_apatch">APatch</string>
-    <string name="launcher_icon_kernelsu">KernelSU</string>
-
-    <!-- Video Background Settings -->
-    <string name="settings_video_background">Video Background</string>
-    <string name="settings_video_background_summary">Use a video as background</string>
-    <string name="settings_select_video">Select Video</string>
-    <string name="settings_video_selected">Video Selected</string>
-    <string name="settings_clear_video_background">Clear Video Background</string>
-    <string name="settings_clear_video_background_confirm">Are you sure you want to clear the video background?</string>
-    <string name="settings_video_background_enabled">Video Background Enabled</string>
-    <string name="settings_video_volume">Video Volume</string>
-    <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
-    <string name="launcher_icon_kitsune">Kitsune Mask</string>
-    <string name="launcher_icon_magisk">Magisk</string>
-    <string name="launcher_icon_superroot">SuperRoot</string>
-    
-    <!-- KPM AutoLoad Strings -->
-    <string name="kpm_autoload_title">KPM Auto-Load</string>
-    <string name="kpm_autoload_enabled">Enable auto-load</string>
-    <string name="kpm_autoload_enabled_summary">Automatically load KPM modules on application startup</string>
-    <string name="kpm_autoload_json_config">JSON Configuration</string>
-    <string name="kpm_autoload_json_label">Configuration JSON</string>
-    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
-    <string name="kpm_autoload_json_error">Invalid JSON format</string>
-    <string name="kpm_autoload_json_helper">Enter valid JSON with array of KPM file paths</string>
-    <string name="kpm_autoload_save">Save Configuration</string>
-    <string name="kpm_autoload_save_confirm">Save auto-load configuration?</string>
-    <string name="kpm_autoload_save_success">Configuration saved successfully</string>
-    <string name="kpm_autoload_save_failed">Failed to save configuration</string>
-    <string name="kpm_autoload_visual_mode">Visual Mode</string>
-    <string name="kpm_autoload_json_mode">JSON Mode</string>
-    <string name="kpm_autoload_add_kpm">Add KPM</string>
-    <string name="kpm_autoload_remove_kpm">Remove</string>
-    
-    <!-- Module Backup/Restore Strings -->
-    <string name="apm_backup_title">Backup Modules</string>
-    <string name="apm_restore_title">Restore Modules</string>
-    <string name="apm_backup_success">Backup successful</string>
-    <string name="apm_restore_success">Restore successful</string>
-    <string name="apm_backup_failed">Backup failed</string>
-    <string name="apm_restore_failed">Restore failed</string>
-    <string name="apm_backup_failed_msg">Backup failed: %s</string>
-    <string name="apm_restore_failed_msg">Restore failed: %s</string>
-
-    <!-- APM Bulk Install Strings -->
-    <string name="apm_bulk_install_title">APM Bulk Install</string>
-    <string name="apm_bulk_install_list_title">Modules List</string>
-    <string name="apm_bulk_install_add">Add Modules</string>
-    <string name="apm_bulk_install_empty">No modules added</string>
-    <string name="apm_bulk_install_action">Bulk Install</string>
-    <string name="apm_bulk_install_log_title">Bulk Install Log</string>
-    <string name="apm_bulk_install_log_start">Starting bulk installation...</string>
-    <string name="apm_bulk_install_log_installing">Installing %1$s</string>
-    <string name="apm_batch_install_full_process">Complete batch install process</string>
-    <string name="apm_batch_install_full_process_summary">System module batch installation is performed using the complete process</string>
-    <string name="next_module">Next module</string>
-    <string name="apm_bulk_install_log_installed">Module %s installed.</string>
-    <string name="apm_bulk_install_log_done">All operations completed.</string>
-    <string name="apm_bulk_install_first_use_text">This feature allows you to install multiple modules at once. It is a quick install method suitable for modules that do not involve key operations during installation. For modules requiring volume key interactions, please enable the complete process install mode in settings.</string>
-    <string name="apm_bulk_install_remove">Remove</string>
-    <string name="apm_first_use_title">Welcome to System Modules</string>
-    <string name="apm_first_use_text">Welcome to System Modules, this uses modules compatible with the Magisk ecosystem. In the future, support for Lua modules may be added. Click the button in the bottom right corner to install modules. You can also use the installer at the top to batch install modules. A feature to backup all modules with one click is also provided, but note that this solution may not be suitable for all modules, so you should make your own backups.</string>
-
-    <string name="kpm_autoload_kpm_list_title">KPM Modules</string>
-    <string name="kpm_autoload_no_kpm_added">No KPM modules added</string>
-    <string name="kpm_autoload_kpm_path">KPM Path</string>
-    <string name="kpm_autoload_file_not_found">File not found</string>
-    <string name="kpm_autoload_select_kpm_file">Select KPM File</string>
-    <string name="kpm_autoload_first_time_title">About KPM Auto-Load</string>
-    <string name="kpm_autoload_first_time_message">This feature allows you to automatically load all configured KPMs temporarily on boot. This approach is more convenient than embedding directly into the kernel.\n\nFor example, KPMs that prevent partition modification can only be used temporarily, as embedding may cause boot failures. Or if you don\'t want to modify the BOOT partition, you can use this configuration to quickly load modules.\n\nPlease ensure the app is completely closed and reopened for the commands to execute. Generally, it will also load on boot. It is normal for the manager to have a black screen for a period of time! This uses a pure background loading method, remember to manually swipe down to refresh and check if the modules are loaded correctly!</string>
-    <string name="kpm_autoload_first_time_confirm">Got it</string>
-    <string name="kpm_autoload_do_not_show_again">Don\'t show again</string>
-
-    <!-- Hide Settings Strings -->
-    <string name="home_hide_su_path">Hide su executable path</string>
-    <string name="home_hide_kpatch_version">Hide kernel patch version</string>
-    <string name="home_hide_fingerprint">Hide fingerprint</string>
-    <string name="home_hide_su_path_summary">Hide su executable path in info card</string>
-    <string name="home_hide_kpatch_version_summary">Hide kernel patch version in info card</string>
-    <string name="home_hide_fingerprint_summary">Hide fingerprint in info card</string>
-
-    <string name="kpm_page_first_time_title">Warning</string>
-    <string name="kpm_page_first_time_message">Kernel modules directly modify the Boot implementation. Unlike system modules, they lack a good recovery mechanism. If issues arise, you can only fix them by entering Fastboot. It is recommended to load the module first to ensure there are no problems before embedding it into Boot. If a module can only be used by loading, you can try the automatic KPM module loading feature. If you do not understand kernel modules, please do not use this feature!</string>
-    
-    
-    <!-- Auto Backup Strings -->
-    <string name="settings_auto_backup_module">Auto Backup System Modules</string>
-    <string name="settings_auto_backup_module_summary">Automatically backup module file to private directory when installing</string>
-    <string name="settings_open_backup_dir">Open Backup Directory</string>
-    <string name="backup_dir_empty">Backup directory is empty</string>
-    <string name="backup_dir_open_failed">Failed to open backup directory</string>
-    <string name="auto_backup_failed">Auto backup failed: %s</string>
-    <string name="auto_backup_success">Auto backup success: %s</string>
-    <string name="settings_auto_backup_boot">Auto Backup Boot</string>
-    <string name="settings_auto_backup_boot_summary">Automatically backup Boot to local storage (Downloads/FolkPatch/BootBackups)</string>
-
-    <!-- Home Layout Strings -->
-    <string name="settings_home_layout_style">Home Layout Style</string>
-    <string name="settings_home_layout_default">ListUI</string>
-    <string name="settings_home_layout_grid">GridUI</string>
-    <string name="settings_home_layout_focus">FocusUI</string>
-    <string name="settings_home_layout_sign">SignUI</string>
-    <string name="unofficial_version_title">Unofficial Version</string>
-    <string name="unofficial_version_message">You are using FolkPatch which is not an official app, please download the official app!</string>
-    <string name="go_to_github">Go to Github</string>
-    <string name="settings_save_theme">Save theme</string>
-    <string name="settings_import_theme">Import theme</string>
-    <string name="settings_theme_saved">Theme saved</string>
-    <string name="settings_theme_imported">Theme imported</string>
-    <string name="settings_theme_save_failed">Failed to save theme</string>
-    <string name="settings_theme_import_failed">Failed to import theme</string>
-
-    <!-- Theme Strings -->
-    <string name="theme_export_title">Export Theme</string>
-    <string name="theme_import_title">Import Theme</string>
-    <string name="theme_name">Theme Name</string>
-    <string name="theme_type">Theme Type</string>
-    <string name="theme_type_phone">Phone</string>
-    <string name="theme_type_tablet">Tablet</string>
-    <string name="theme_version">Version</string>
-    <string name="theme_author">Author</string>
-    <string name="theme_description">Description</string>
-    <string name="theme_export_action">Export</string>
-    <string name="theme_import_action">Import</string>
-    <string name="theme_import_confirm">Are you sure you want to import this theme?</string>
-    <string name="theme_info">Theme Info</string>
-
-    <!-- Grid Working Card Background -->
-    <string name="settings_grid_working_card_background">Working Card Background</string>
-    <string name="settings_grid_working_card_background_enabled">Custom card background enabled</string>
-    <string name="settings_grid_working_card_background_summary">Custom background image for the working card</string>
-    <string name="settings_grid_working_card_background_selected">Background selected</string>
-    <string name="settings_grid_working_card_dual_opacity">Enable dual day/night opacity</string>
-    <string name="settings_grid_working_card_day_opacity">Day mode card opacity</string>
-    <string name="settings_grid_working_card_night_opacity">Night mode card opacity</string>
-    <string name="settings_clear_grid_working_card_background">Clear Card Background</string>
-    <string name="settings_clear_grid_working_card_background_confirm">Are you sure you want to clear the card background image?</string>
-    <string name="settings_grid_working_card_background_saved">Card background saved successfully</string>
-    <string name="settings_grid_working_card_background_error">Failed to save card background</string>
-    <string name="settings_grid_working_card_background_cleared">Card background cleared</string>
-
-    <!-- Biometric Strings -->
-    <string name="action_biometric">Biometric Authentication</string>
-    <string name="msg_biometric">Please verify your biometric identity</string>
-    <string name="settings_biometric_login">Biometric Authentication</string>
-    <string name="settings_biometric_login_summary">Require biometric authentication when opening the app</string>
-    <string name="settings_strong_biometric">Strong Biometric Authentication</string>
-    <string name="settings_strong_biometric_summary">Require authentication for installing/uninstalling/disabling modules</string>
-
-    <!-- Theme Store Strings -->
-    <string name="theme_store_title">Theme Store</string>
-    <string name="theme_source_official">Official</string>
-    <string name="theme_source_third_party">Third Party</string>
-    <string name="theme_source_local">Local</string>
-    <string name="theme_store_author">Author: %s</string>
-    <string name="theme_store_version">Version: %s</string>
-    <string name="theme_source">Source</string>
-    <string name="theme_store_download_failed">Download failed</string>
-    <string name="theme_store_download">Download</string>
-    <string name="theme_store_search_hint">Search themes...</string>
-
-    <!-- Update Check Strings -->
-    <string name="settings_auto_update_check">Automatic Update Check</string>
-    <string name="settings_auto_update_check_summary">Automatically check for updates on app startup</string>
-    <string name="settings_check_update">Check for Updates</string>
-    <string name="update_available_title">Update Available</string>
-    <string name="update_available_message">Detected that your version is too low, do you want to download the new version?</string>
-    <string name="update_action">Update</string>
-    <string name="update_close">Close</string>
-    <string name="update_latest">You are on the latest version</string>
-    <string name="update_error">Error checking for updates</string>
-    <string name="settings_category_general">General</string>
-    <string name="settings_app_list_loading_scheme">App List Loading Scheme</string>
-    <string name="settings_app_list_loading_scheme_summary">Choose how to load the application list</string>
-    <string name="app_list_loading_scheme_root_service">RootService (Default)</string>
-    <string name="app_list_loading_scheme_package_manager">PackageManager (System API)</string>
-    <string name="app_list_loading_scheme_dialog_title">Loading Scheme</string>
-    <string name="settings_category_appearance">Appearance</string>
-    <string name="settings_category_behavior">Behavior</string>
-    <string name="settings_category_module">Modules</string>
-    <string name="settings_category_security">Security</string>
-    
-    <!-- Background Music Strings -->
-    <string name="settings_background_music">Background Music</string>
-    <string name="settings_background_music_summary">Play background music when app is in foreground</string>
-    <string name="settings_background_music_playing">Playing: %s</string>
-    <string name="settings_background_music_enabled">Background Music Enabled</string>
-    <string name="settings_select_music_file">Select music file</string>
-    <string name="settings_music_selected">Music selected</string>
-    <string name="settings_clear_music">Clear music</string>
-    <string name="settings_clear_music_confirm">Are you sure you want to clear the background music?</string>
-    <string name="settings_music_auto_play">Auto play</string>
-    <string name="settings_music_auto_play_summary">Automatically play music when app opens</string>
-    <string name="settings_music_looping">Loop play</string>
-    <string name="settings_music_looping_summary">Repeat the current song</string>
-    <string name="settings_music_volume">Volume</string>
-    <string name="settings_music_saved">Music file saved</string>
-    <string name="settings_music_save_error">Failed to save music file</string>
-    <string name="settings_music_cleared">Music cleared</string>
-    <string name="settings_category_multimedia">Multimedia</string>
-    <string name="settings_music_playback_control">Playback Control</string>
-
-    <!-- Theme Store Filter -->
-    <string name="theme_store_filter_title">Filter Themes</string>
-    <string name="theme_store_filter_author">Author</string>
-    <string name="theme_store_filter_author_hint">Enter author name</string>
-    <string name="theme_store_filter_source">Source</string>
-    <string name="theme_store_filter_source_all">All</string>
-    <string name="theme_store_filter_type">Device Type</string>
-    <string name="theme_store_filter_apply">Apply</string>
-    <string name="theme_store_filter_reset">Reset</string>
-
-    <!-- File Picker -->
-    <string name="file_picker_permission_required">Permission Required</string>
-    <string name="file_picker_permission_desc">To browse files, please grant \'All files access\' permission.</string>
-    <string name="file_picker_grant_permission">Grant Permission</string>
-    <string name="file_picker_cancel">Cancel</string>
-    <string name="file_picker_internal_storage">Internal Storage</string>
-    <string name="file_picker_no_files">No files</string>
-
-    <!-- HomeV3 Strings -->
-    <string name="home_device_status_title">Device Status</string>
-    <string name="home_device_status_battery_temp">Battery Temp</string>
-    <string name="home_device_status_cpu_load">CPU Load</string>
-    <string name="home_device_status_battery_level">Battery Level</string>
-    <string name="home_storage_title">Storage</string>
-    <string name="home_storage_internal">Internal Storage</string>
-    <string name="home_storage_ram">RAM</string>
-    <string name="home_storage_zram">ZRAM</string>
-    <string name="home_storage_swap">Swap File</string>
-    <string name="home_info_kernel">Kernel</string>
-    <string name="home_info_superkey">SuperKey</string>
-    <string name="home_info_auth_auth">Auth</string>
-    <string name="home_info_auth_na">N/A</string>
-    <string name="home_info_device_slot">Device Slot</string>
-    <string name="home_info_device_model">Device Model</string>
-    <string name="home_info_running_mode">Running Mode</string>
-    <string name="home_info_mode_full">Full</string>
-    <string name="home_info_mode_half">Half</string>
-    <string name="home_zygisk_implement">Zygisk Implement</string>
-    <string name="home_mount_implement">Mount Implementation</string>
-
-    <string name="settings_list_working_card_hide_mode">Hide Half/Full Card</string>
-    <string name="settings_list_working_card_hide_mode_summary">Hide the small card indicating working mode</string>
-
-    <!-- Install Mode Select -->
-    <string name="kp_install_methods">KernelPatch Patching/Installing</string>
-    <string name="restore_boot_methods">Select a boot to restore to boot partition</string>
-
-
-    <string name="su_backup_list">Backup List</string>
-    <string name="su_restore_list">Restore List</string>
-    <string name="backup_success">Backup successful</string>
-    <string name="restore_success">Restore successful</string>
-    <string name="patch_output_written_to"> Output file is written to </string>
-    <string name="patch_write_failed"> Write patched boot.img failed</string>
-
-    <!-- Badge Count Settings -->
-    <string name="enable_badge_count">Badge Count Settings</string>
-    <string name="enable_badge_count_summary">Configure badge count display for navigation items</string>
-    <string name="badge_superuser">Show SuperUser Badge</string>
-    <string name="badge_apm">Show APM Badge</string>
-    <string name="badge_kernel">Show Kernel Module Badge</string>
-    <string name="settings_sound_effect">Sound Effect</string>
-    <string name="settings_sound_effect_summary">Play sound effect on click</string>
-    <string name="settings_sound_effect_enabled">Enabled</string>
-    <string name="settings_sound_effect_playing">Selected: %s</string>
-    <string name="settings_select_sound_effect">Select Sound Effect</string>
-    <string name="settings_sound_effect_selected">Sound effect file selected</string>
-    <string name="settings_sound_effect_scope">Effect Scope</string>
-    <string name="settings_sound_effect_scope_global">Global (Anywhere)</string>
-    <string name="settings_sound_effect_scope_bottom_bar">Bottom Bar Only</string>
-    <string name="settings_clear_sound_effect">Clear Sound Effect</string>
-    <string name="settings_clear_sound_effect_confirm">Are you sure you want to clear the sound effect?</string>
-    <string name="settings_sound_effect_cleared">Sound effect cleared</string>
-
-    <!-- Backup Settings -->
-    <string name="settings_category_backup">Backup</string>
-    <string name="settings_enable_cloud_backup">Enable Cloud Backup</string>
-    <string name="settings_enable_cloud_backup_summary">Automatically backup flashed modules to cloud service</string>
-    <string name="settings_configure_webdav">Configure WebDAV Service</string>
-    <string name="webdav_config_title">WebDAV Configuration</string>
-    <string name="webdav_url">WebDAV URL</string>
-    <string name="webdav_username">Username</string>
-    <string name="webdav_password">Password</string>
-    <string name="webdav_test_success">Test Successful</string>
-    <string name="webdav_test_failed">Test Failed: %s</string>
-    <string name="webdav_uploading">Uploading to WebDAV...</string>
-    <string name="webdav_backup_success">WebDAV Backup Success</string>
-    <string name="webdav_backup_failed">WebDAV Backup Failed: %s</string>
-    <string name="save">Save</string>
-    <string name="test">Test</string>
-    <string name="webdav_path_label">Path (e.g. /Backup)</string>
-    <string name="webdav_view_logs">View Logs</string>
-    <string name="webdav_backup_logs_title">Backup Logs</string>
-    <string name="webdav_no_logs">No logs found.</string>
-    <string name="webdav_clear_logs">Clear</string>
-    <string name="settings_enable_local_backup">Enable Local Backup</string>
-    <string name="settings_enable_local_backup_summary">Backup modules to local storage (Downloads/FolkPatch/ModuleBackups)</string>
-    <string name="close">Close</string>
+  <string name="app_name" translatable="false">FolkPatch</string>
+  <string name="app_name_folksu">FolkSU</string>
+  <string name="desktop_app_name">Desktop App Name</string>
+  <string name="home">Home</string>
+  <string name="success">Success</string>
+  <string name="failure">Failure</string>
+  <string name="patch_warnning">Installation comes with risks. Please ensure your data is backed up.</string>
+  <string name="patch">Patch</string>
+  <string name="kernel_patch">KernelPatch</string>
+  <string name="android_patch">AndroidPatch</string>
+  <string name="settings_nav_layout_title">Navigation Layout Settings</string>
+  <string name="settings_nav_layout_summary">Hide or show some navigation components</string>
+  <string name="settings_show_apm">Show APM</string>
+  <string name="settings_show_kpm">Show KPM</string>
+  <string name="settings_show_superuser">Show SuperUser</string>
+  <string name="reboot">Reboot</string>
+  <string name="settings">Settings</string>
+  <string name="reboot_recovery">Reboot to Recovery</string>
+  <string name="reboot_bootloader">Reboot to Bootloader</string>
+  <string name="reboot_download">Reboot to Download</string>
+  <string name="reboot_edl">Reboot to EDL</string>
+  <string name="about">About</string>
+  <string name="settings_app_language">Language</string>
+  <string name="system_default">System default</string>
+  <string name="settings_global_namespace_mode">Global namespace mode</string>
+  <string name="settings_global_namespace_mode_summary">All root sessions use the global mount namespace</string>
+  <string name="settings_clear_super_key_dialog">Do you really want to proceed?</string>
+  <string name="settings_grid_working_card_hide_check">Hide status icon</string>
+  <string name="settings_grid_working_card_hide_check_summary">Hide the checkmark or warning icon on the working card</string>
+  <string name="settings_grid_working_card_hide_text">Hide status text</string>
+  <string name="settings_grid_working_card_hide_text_summary">Hide the \'Working\' or \'Not installed\' text on the working card</string>
+  <string name="settings_grid_working_card_hide_mode">Hide working mode</string>
+  <string name="settings_grid_working_card_hide_mode_summary">Hide the \'Full\' or \'Half\' text on the working card</string>
+  <string name="settings_folkx_engine_title">FolkX Animation Engine</string>
+  <string name="settings_folkx_engine_summary">Use smooth physics-based spring animation when switching between top-level pages</string>
+  <string name="settings_folkx_animation_type">Animation Type</string>
+  <string name="settings_folkx_animation_speed">Animation Speed</string>
+  <string name="settings_folkx_animation_linear">Linear Motion</string>
+  <string name="settings_folkx_animation_spatial">Spatial Motion</string>
+  <string name="settings_folkx_animation_fade">Fade In/Out</string>
+  <string name="settings_folkx_animation_vertical">Vertical Slide</string>
+  <string name="settings_folkx_animation_diagonal">Diagonal Slide</string>
+  <string name="su_exclude_all_title">Exclude All</string>
+  <string name="su_exclude_all_confirm">Are you sure you want to exclude all non-root apps?</string>
+  <string name="su_batch_exclude_title">Batch Exclude</string>
+  <string name="su_batch_exclude_content">Exclude injection for all non-ROOT apps, please select an action</string>
+  <string name="su_exclude_btn">Exclude</string>
+  <string name="su_exclude_reverse_btn">Reverse</string>
+  <string name="home_learn_apatch">Learn APatch</string>
+  <string name="home_click_to_learn_apatch">Learn about the features of APatch and how to use</string>
+  <string name="settings_hide_apatch_card">Hide Learn APatch card</string>
+  <string name="settings_hide_apatch_card_summary">Hide the Learn APatch card on the home screen</string>
+  <string name="about_source_code"><![CDATA[<p>View source code at %1$s<p/>Join our %2$s channel<p/>Join our %3$s group]]></string>
+  <string name="send_log">Send logs</string>
+  <string name="save_log">Save logs</string>
+  <string name="log_saved">Logs saved</string>
+  <string name="safe_mode">Safe mode</string>
+  <string name="super_key">SuperKey</string>
+  <string name="clear_super_key">Clear SuperKey</string>
+  <string name="patch_set_superkey">Set SuperKey</string>
+  <string name="home_patch_set_key_desc">Only credential for KernelPatch</string>
+  <string name="home_patch_next_step">Next step</string>
+  <string name="home_not_installed">Not installed</string>
+  <string name="home_install_unknown">Not installed or authenticated</string>
+  <string name="home_install_unknown_summary">Click to install</string>
+  <string name="home_click_to_install">Click to install</string>
+  <string name="home_working">Working</string>
+  <string name="home_kp_need_update">New version available</string>
+  <string name="home_kp_cando_update">Update</string>
+  <string name="home_installing">Installing</string>
+  <string name="kpatch_version">Version: %s</string>
+  <string name="apatch_version">Version: %s</string>
+  <string name="kpatch_version_update" formatted="false">Version: %s -&gt; %s</string>
+  <string name="kpatch_shadow_path_title">kpatch</string>
+  <string name="home_auth_key_title">Enter SuperKey</string>
+  <string name="home_auth_key_desc">Start after certification</string>
+  <string name="home_kpatch_info_title">Info</string>
+  <string name="home_ap_cando_install">Install</string>
+  <string name="home_ap_cando_uninstall">Uninstall</string>
+  <string name="home_ap_cando_reboot">Reboot</string>
+  <string name="patch_title">Patch</string>
+  <string name="patch_config_title">Patches</string>
+  <string name="patch_mode_bootimg_patch">Mode: Patch</string>
+  <string name="patch_mode_patch_and_install">Mode: Patch and install</string>
+  <string name="patch_mode_install_to_next_slot">Mode: Install to inactive slot (After OTA)</string>
+  <string name="patch_mode_restore">Mode: Restore</string>
+  <string name="patch_mode_uninstall_patch">Mode: Uninstall KPatch</string>
+  <string name="patch_select_bootimg_btn">Select boot</string>
+  <string name="patch_embed_kpm_btn">Embed KPM</string>
+  <string name="patch_start_patch_btn">Start</string>
+  <string name="patch_start_unpatch_btn">UnPatch</string>
+  <string name="patch_item_error">!!ERROR!!</string>
+  <string name="patch_item_bootimg">bootimg</string>
+  <string name="patch_item_bootimg_slot">Slot:</string>
+  <string name="patch_item_bootimg_dev">Device:</string>
+  <string name="patch_item_kernel">Kernel</string>
+  <string name="patch_item_kpimg">kpimg</string>
+  <string name="patch_item_kpimg_version">Version:</string>
+  <string name="patch_item_kpimg_comile_time">Time:</string>
+  <string name="patch_item_kpimg_config">Config:</string>
+  <string name="patch_item_new_extra_kpm">Embed new</string>
+  <string name="patch_item_existed_extra_kpm">Existed</string>
+  <string name="patch_item_extra_name">Name:</string>
+  <string name="patch_item_extra_version">Version:</string>
+  <string name="patch_item_extra_author">Author:</string>
+  <string name="patch_item_extra_kpm_license">License:</string>
+  <string name="patch_item_extra_kpm_desciption">Description:</string>
+  <string name="patch_item_extra_args">Args:</string>
+  <string name="patch_item_extra_event">Event:</string>
+  <string name="patch_item_skey">SuperKey</string>
+  <string name="patch_item_set_skey_label">The SuperKey should be 8-63 characters long and include numbers and letters, but no special characters.</string>
+  <string name="home_kernel">Kernel version</string>
+  <string name="home_manager_version">Manager version</string>
+  <string name="home_fingerprint">Fingerprint</string>
+  <string name="home_selinux_status">SELinux status</string>
+  <string name="home_selinux_status_disabled">Disabled</string>
+  <string name="home_selinux_status_enforcing">Enforcing</string>
+  <string name="home_selinux_status_permissive">Permissive</string>
+  <string name="home_selinux_status_unknown">Unknown</string>
+  <string name="settings_selinux_mode">SELinux Mode</string>
+  <string name="settings_selinux_mode_summary">Select SELinux enforcement mode</string>
+  <string name="settings_selinux_mode_enforcing">Enforcing (Strict)</string>
+  <string name="settings_selinux_mode_permissive">Permissive (Lenient)</string>
+  <string name="settings_selinux_current_mode">Current: %s</string>
+  <string name="settings_selinux_mode_enforcing_summary">SELinux fully enforces access rules</string>
+  <string name="settings_selinux_mode_permissive_summary">SELinux only logs violations, does not deny</string>
+  <string name="home_device_info">Device</string>
+  <string name="home_system_version">System version</string>
+  <string name="home_kpatch_version">KernelPatch version</string>
+  <string name="home_su_path">Executable su</string>
+  <string name="home_apatch_version">FolkPatch version</string>
+  <string name="kpm">KPModule</string>
+  <string name="kpm_kp_not_installed">KernelPatch not installed</string>
+  <string name="kpm_add_kpm">Add KPM</string>
+  <string name="kpm_load">Load</string>
+  <string name="kpm_install">Install</string>
+  <string name="kpm_embed">Embed</string>
+  <string name="kpm_load_toast_succ">Load succeed</string>
+  <string name="kpm_load_toast_failed">Load failed</string>
+  <string name="kpm_unload_confirm">Unload %s module?</string>
+  <string name="kpm_unload">Unload</string>
+  <string name="kpm_control">Control</string>
+  <string name="kpm_apm_empty">No module loaded</string>
+  <string name="kpm_version">Version</string>
+  <string name="kpm_license">License</string>
+  <string name="kpm_author">Author</string>
+  <string name="kpm_desc">Desc</string>
+  <string name="kpm_args">Args</string>
+  <string name="su_title">Superuser</string>
+  <string name="su_selinux_via_hook">Bypass via hook</string>
+  <string name="su_pkg_excluded_label">Exclude</string>
+  <string name="su_pkg_excluded_setting_title">Exclude modifications</string>
+  <string name="su_pkg_excluded_setting_summary">Enabling this option will allow FolkPatch to restore any files modified by the modules of this app.</string>
+  <string name="su_show_system_apps">Show system apps</string>
+  <string name="su_hide_system_apps">Hide system apps</string>
+  <string name="su_refresh">Refresh</string>
+  <string name="apm">APModule</string>
+  <string name="apm_not_installed">AndroidPatch not installed</string>
+  <string name="apm_failed_to_enable">Failed to enable module: %s</string>
+  <string name="apm_failed_to_disable">Failed to disable module: %s</string>
+  <string name="apm_empty">No module installed</string>
+  <string name="apm_remove">Remove</string>
+  <string name="apm_install">Install</string>
+  <string name="apm_uninstall_confirm">Uninstall the %s module?</string>
+  <string name="apm_uninstall_success">%s uninstalled</string>
+  <string name="apm_uninstall_failed">Failed to uninstall: %s</string>
+  <string name="apm_version">Version</string>
+  <string name="apm_author">Author</string>
+  <string name="apm_desc">Desc</string>
+  <string name="apm_overlay_fs_not_available">Modules are unavailable as OverlayFS is disabled by the kernel!</string>
+  <string name="apm_magisk_conflict">Modules are unavailable due to a conflict with Magisk!</string>
+  <string name="apm_mount_warning_title">Important Notice</string>
+  <string name="apm_mount_warning_message">Modules are not mounted by default. Please use built-in mounting system or metamodule.</string>
+  <string name="apm_mount_warning_button">I Understand</string>
+  <string name="apm_reboot_to_apply">Reboot to take effect</string>
+  <string name="apm_changelog">Changelog</string>
+  <string name="apm_update">Update</string>
+  <string name="apm_downloading">Downloading module: %s</string>
+  <string name="apm_start_downloading">Start downloading: %s</string>
+  <string name="apm_new_version_available">New version %s is available, click to upgrade.</string>
+  <string name="hide_apatch_manager">Hide APatch Manager</string>
+  <string name="hide_apatch_manager_summary">Install a proxy app with a random package ID and custom app label</string>
+  <string name="hide_apatch_dialog_new_manager_name">New manager name</string>
+  <string name="hide_apatch_dialog_summary">It will be used as the new app label shown in launcher</string>
+  <string name="hide_apatch_manager_failure">Failed to hide. Please report the bug!</string>
+  <string name="setting_reset_su_path">Reset su path</string>
+  <string name="setting_reset_su_new_path">New full path</string>
+  <string name="apm_webui_open">Open</string>
+  <string name="apm_action">Action</string>
+  <string name="enable_web_debugging">Enable WebView debugging</string>
+  <string name="enable_web_debugging_summary">Can be used to debug WebUI. Please enable only when needed.</string>
+  <string name="settings_apm_install_confirm">Confirm before install</string>
+  <string name="settings_apm_install_confirm_summary">Show a confirmation dialog before installing modules</string>
+  <string name="settings_show_more_module_info">Show module details</string>
+  <string name="settings_show_more_module_info_summary">Show module ID and size in the module list</string>
+  <string name="settings_apm_stay_on_page">Stay on operation page</string>
+  <string name="settings_apm_stay_on_page_summary">Do not automatically return after module action execution</string>
+  <string name="settings_show_disable_all_modules">Show \'Disable All Modules\' button</string>
+  <string name="settings_show_disable_all_modules_summary">Display a button in the modules page to disable all modules at once</string>
+  <string name="settings_disable_module_update_check">Disable module update check</string>
+  <string name="settings_disable_module_update_check_summary">Disable automatic update checks for system modules</string>
+  <string name="settings_module_sort_optimization">Module Sorting Optimization</string>
+  <string name="settings_module_sort_optimization_summary">Make system modules with WebUI and Action appear at the top</string>
+  <string name="settings_fold_system_module">Fold System Modules</string>
+  <string name="settings_fold_system_module_summary">Click module card to expand/collapse actions</string>
+  <string name="apm_install_confirm_title">Install Module</string>
+  <string name="apm_install_confirm_content">Are you sure you want to install %s?</string>
+  <string name="apm_disable_all_title">Disable All Modules</string>
+  <string name="apm_disable_all_confirm">Are you sure you want to disable all modules? Generally, this is done before an OTA update.</string>
+  <string name="settings_donot_store_superkey">Don\'t store SuperKey in local</string>
+  <string name="settings_donot_store_superkey_summary">Authenticate the SuperKey every time the manager starts</string>
+  <string name="mode_select_page_title">Install</string>
+  <string name="mode_select_page_patch_and_install">Patch and install</string>
+  <string name="mode_select_page_select_file">Select a boot image to patch</string>
+  <string name="restore_select_file">Select a partition boot file to restore</string>
+  <string name="mode_select_page_install_inactive_slot">Install to inactive slot (After OTA)</string>
+  <string name="mode_select_page_install_inactive_slot_warning">Your device will be **FORCED** to boot to the current inactive slot after a reboot!\nOnly use this option after OTA is done.\nContinue?</string>
+  <string name="home_dialog_auth_fail_title">Authentication failed</string>
+  <string name="home_dialog_auth_fail_content">Unable to authenticate the SuperKey, therefore APatch cannot work properly.\nHere are some possible reasons for authentication failure:\n1. You didn\'t patch the boot.img with KernelPatch.\n2. The patched boot.img wasn\'t flashed.\n3. The SuperKey is wrong or contains special characters.\n4. Your device doesn\'t support APatch and KernelPatch.\n\nPlease check and try again. If there are still issues, you can always ask questions on the official repository\'s issues page.</string>
+  <string name="home_more_menu_feedback_or_suggestion">Feedback or suggestion</string>
+  <string name="home_more_menu_about">About</string>
+  <string name="home_dialog_uninstall_title">Uninstall</string>
+  <string name="home_dialog_uninstall_ap_only">Uninstall patch only</string>
+  <string name="home_dialog_uninstall_all">Uninstall fully</string>
+  <string name="home_dialog_uninstall_ap_only_desc">Remove AndroidPatch only and keep the manager.</string>
+  <string name="home_dialog_uninstall_all_desc">Remove AndroidPatch and start the full uninstall flow.</string>
+  <string name="kpm_control_dialog_title">Control KPM</string>
+  <string name="kpm_control_dialog_content">Please enter control parameters:</string>
+  <string name="kpm_control_paramters">Parameters</string>
+  <string name="kpm_control_outMsg">Output</string>
+  <string name="kpm_control_ok">Success!</string>
+  <string name="kpm_control_failed">Failed!</string>
+  <string name="settings_night_mode_follow_sys">Dark theme follows system</string>
+  <string name="settings_night_mode_follow_sys_summary">Switch dark theme automatically based on system settings</string>
+  <string name="settings_night_theme_enabled">Dark theme</string>
+  <string name="settings_use_system_color_theme">System color theme</string>
+  <string name="settings_use_system_color_theme_summary">Use color theme generated from wallpaper by system</string>
+  <string name="settings_custom_color_theme">Color theme</string>
+  <string name="amber_theme">Amber</string>
+  <string name="blue_theme">Blue</string>
+  <string name="blue_grey_theme">Blue Grey</string>
+  <string name="brown_theme">Brown</string>
+  <string name="cyan_theme">Cyan</string>
+  <string name="deep_orange_theme">Deep Orange</string>
+  <string name="deep_purple_theme">Deep Purple</string>
+  <string name="green_theme">Green</string>
+  <string name="indigo_theme">Indigo</string>
+  <string name="light_blue_theme">Light Blue</string>
+  <string name="light_green_theme">Light Green</string>
+  <string name="lime_theme">Lime</string>
+  <string name="orange_theme">Orange</string>
+  <string name="pink_theme">Pink</string>
+  <string name="purple_theme">Purple</string>
+  <string name="red_theme">Red</string>
+  <string name="sakura_theme">Sakura</string>
+  <string name="teal_theme">Teal</string>
+  <string name="yellow_theme">Yellow</string>
+  <string name="about_app_desc">A kernel-based root solution that supports kernel modules and kernel function hooks without recompiling the kernel.</string>
+  <string name="about_powered_by">Powered by %1$s</string>
+  <string name="about_telegram_group">Telegram Group</string>
+  <!-- Online Module Strings -->
+  <string name="online_module_title">Online System Module</string>
+  <string name="online_module_download_start">Start downloading: %s</string>
+  <string name="online_module_download_complete">Download complete: %s</string>
+  <string name="online_module_download_notification">Downloading %s. Please check notification panel for progress and Download folder for completed file.</string>
+  <!-- Online KPM Strings -->
+  <string name="online_kpm_title">Online Kernel Modules</string>
+  <string name="online_kpm_download_start">Start downloading: %s</string>
+  <string name="online_kpm_download_complete">Download complete: %s</string>
+  <string name="online_kpm_download_notification">Downloading %s. Please check notification panel for progress and Download folder for completed file.</string>
+  <!-- Crash Handle Strings -->
+  <string name="crash_handle_title">Crash Report</string>
+  <string name="crash_handle_copy">Copy</string>
+  <!-- About Screen Strings -->
+  <string name="about_app_version">App Version</string>
+  <string name="about_github">GitHub</string>
+  <string name="about_telegram_channel">Telegram Channel</string>
+  <!-- App Title Strings -->
+  <string name="app_title_fpatch">FPatch</string>
+  <string name="app_title_apatch_folk">APatch Folk</string>
+  <string name="app_title_apatchx">APatch X</string>
+  <string name="app_title_apatch">APatch</string>
+  <string name="app_title_folkpatch">FolkPatch</string>
+  <string name="app_title_kernelpatch">KernelPatch</string>
+  <string name="app_title_supersu">SuperSU</string>
+  <string name="app_title_folksu">FolkSU</string>
+  <string name="app_title_superuser">Superuser</string>
+  <string name="app_title_superpatch">SuperPatch</string>
+  <string name="app_title_magicpatch">MagicPatch</string>
+  <string name="settings_app_dpi">App DPI</string>
+  <string name="settings_magic_mount">Folk Mount API</string>
+  <string name="settings_magic_mount_summary">Enable the built-in module mounting system</string>
+  <string name="settings_overlayfs_mode">Hybrid Mount Mode</string>
+  <string name="settings_overlayfs_mode_summary">Use OverlayFS with automatic Magic Mount fallback for maximum compatibility</string>
+  <string name="settings_app_title">App Title</string>
+  <string name="settings_custom_background">Custom Background</string>
+  <string name="settings_custom_background_enabled">Custom Background Enabled</string>
+  <string name="settings_custom_background_opacity">Card opacity</string>
+  <string name="settings_custom_background_blur">Background blur</string>
+  <string name="settings_custom_background_dim">Background dim</string>
+  <string name="settings_custom_background_dual_dim">Enable dual day/night dim</string>
+  <string name="settings_custom_background_day_dim">Day mode background dim</string>
+  <string name="settings_custom_background_night_dim">Night mode background dim</string>
+  <string name="settings_multi_background_mode">Multi-Background Mode</string>
+  <string name="settings_multi_background_mode_summary">Set different background images for different pages</string>
+  <string name="settings_select_home_background">Home Page Background</string>
+  <string name="settings_select_kernel_background">Kernel Module Background</string>
+  <string name="settings_select_superuser_background">Superuser Background</string>
+  <string name="settings_select_system_module_background">System Module Background</string>
+  <string name="settings_select_settings_background">Settings Background</string>
+  <!-- Font Settings -->
+  <string name="settings_custom_font">Custom Font</string>
+  <string name="settings_select_font_file">Select Font File</string>
+  <string name="settings_custom_font_enabled">Custom Font Enabled</string>
+  <string name="settings_custom_font_summary">Use a custom TTF font for the app</string>
+  <string name="settings_font_selected">Custom Font Selected</string>
+  <string name="settings_custom_font_error">Failed to save font file</string>
+  <string name="settings_custom_font_saved">Custom font saved successfully</string>
+  <string name="settings_clear_font">Restore Default Font</string>
+  <string name="settings_clear_font_confirm">Are you sure you want to restore the default font?</string>
+  <string name="settings_font_cleared">Default font restored</string>
+  <string name="settings_font_select_hint">Select a TTF font file</string>
+  <string name="settings_select_background_image">Select Background Image</string>
+  <string name="settings_custom_background_summary">Set a custom background image</string>
+  <string name="settings_custom_background_saved">Background saved successfully</string>
+  <string name="settings_custom_background_error">Failed to save background</string>
+  <string name="settings_background_selected">Background selected</string>
+  <string name="settings_background_image_cleared">Background image cleared</string>
+  <string name="settings_clear_background">Clear Background</string>
+  <string name="settings_clear_background_confirm">Are you sure you want to clear the background image?</string>
+  <string name="settings_launcher_icon">Launcher Icon</string>
+  <string name="launcher_icon_default">FolkPatch</string>
+  <string name="launcher_icon_classic">FolkPatch Anime</string>
+  <string name="launcher_icon_apatch">APatch</string>
+  <string name="launcher_icon_kernelsu">KernelSU</string>
+  <!-- Video Background Settings -->
+  <string name="settings_video_background">Video Background</string>
+  <string name="settings_video_background_summary">Use a video as background</string>
+  <string name="settings_select_video">Select Video</string>
+  <string name="settings_video_selected">Video Selected</string>
+  <string name="settings_clear_video_background">Clear Video Background</string>
+  <string name="settings_clear_video_background_confirm">Are you sure you want to clear the video background?</string>
+  <string name="settings_video_background_enabled">Video Background Enabled</string>
+  <string name="settings_video_volume">Video Volume</string>
+  <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
+  <string name="launcher_icon_kitsune">Kitsune Mask</string>
+  <string name="launcher_icon_magisk">Magisk</string>
+  <string name="launcher_icon_superroot">SuperRoot</string>
+  <!-- KPM AutoLoad Strings -->
+  <string name="kpm_autoload_title">KPM Auto-Load</string>
+  <string name="kpm_autoload_enabled">Enable auto-load</string>
+  <string name="kpm_autoload_enabled_summary">Automatically load KPM modules on application startup</string>
+  <string name="kpm_autoload_json_config">JSON Configuration</string>
+  <string name="kpm_autoload_json_label">Configuration JSON</string>
+  <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
+  <string name="kpm_autoload_json_error">Invalid JSON format</string>
+  <string name="kpm_autoload_json_helper">Enter valid JSON with array of KPM file paths</string>
+  <string name="kpm_autoload_save">Save Configuration</string>
+  <string name="kpm_autoload_save_confirm">Save auto-load configuration?</string>
+  <string name="kpm_autoload_save_success">Configuration saved successfully</string>
+  <string name="kpm_autoload_save_failed">Failed to save configuration</string>
+  <string name="kpm_autoload_visual_mode">Visual Mode</string>
+  <string name="kpm_autoload_json_mode">JSON Mode</string>
+  <string name="kpm_autoload_add_kpm">Add KPM</string>
+  <string name="kpm_autoload_remove_kpm">Remove</string>
+  <!-- Module Backup/Restore Strings -->
+  <string name="apm_backup_title">Backup Modules</string>
+  <string name="apm_restore_title">Restore Modules</string>
+  <string name="apm_backup_success">Backup successful</string>
+  <string name="apm_restore_success">Restore successful</string>
+  <string name="apm_backup_failed">Backup failed</string>
+  <string name="apm_restore_failed">Restore failed</string>
+  <string name="apm_backup_failed_msg">Backup failed: %s</string>
+  <string name="apm_restore_failed_msg">Restore failed: %s</string>
+  <!-- APM Bulk Install Strings -->
+  <string name="apm_bulk_install_title">APM Bulk Install</string>
+  <string name="apm_bulk_install_list_title">Modules List</string>
+  <string name="apm_bulk_install_add">Add Modules</string>
+  <string name="apm_bulk_install_empty">No modules added</string>
+  <string name="apm_bulk_install_action">Bulk Install</string>
+  <string name="apm_bulk_install_log_title">Bulk Install Log</string>
+  <string name="apm_bulk_install_log_start">Starting bulk installation...</string>
+  <string name="apm_bulk_install_log_installing">Installing %1$s</string>
+  <string name="apm_batch_install_full_process">Complete batch install process</string>
+  <string name="apm_batch_install_full_process_summary">System module batch installation is performed using the complete process</string>
+  <string name="next_module">Next module</string>
+  <string name="apm_bulk_install_log_installed">Module %s installed.</string>
+  <string name="apm_bulk_install_log_done">All operations completed.</string>
+  <string name="apm_bulk_install_first_use_text">This feature allows you to install multiple modules at once. It is a quick install method suitable for modules that do not involve key operations during installation. For modules requiring volume key interactions, please enable the complete process install mode in settings.</string>
+  <string name="apm_bulk_install_remove">Remove</string>
+  <string name="apm_first_use_title">Welcome to System Modules</string>
+  <string name="apm_first_use_text">Welcome to System Modules, this uses modules compatible with the Magisk ecosystem. In the future, support for Lua modules may be added. Click the button in the bottom right corner to install modules. You can also use the installer at the top to batch install modules. A feature to backup all modules with one click is also provided, but note that this solution may not be suitable for all modules, so you should make your own backups.</string>
+  <string name="kpm_autoload_kpm_list_title">KPM Modules</string>
+  <string name="kpm_autoload_no_kpm_added">No KPM modules added</string>
+  <string name="kpm_autoload_kpm_path">KPM Path</string>
+  <string name="kpm_autoload_file_not_found">File not found</string>
+  <string name="kpm_autoload_select_kpm_file">Select KPM File</string>
+  <string name="kpm_autoload_first_time_title">About KPM Auto-Load</string>
+  <string name="kpm_autoload_first_time_message">This feature allows you to automatically load all configured KPMs temporarily on boot. This approach is more convenient than embedding directly into the kernel.\n\nFor example, KPMs that prevent partition modification can only be used temporarily, as embedding may cause boot failures. Or if you don\'t want to modify the BOOT partition, you can use this configuration to quickly load modules.\n\nPlease ensure the app is completely closed and reopened for the commands to execute. Generally, it will also load on boot. It is normal for the manager to have a black screen for a period of time! This uses a pure background loading method, remember to manually swipe down to refresh and check if the modules are loaded correctly!</string>
+  <string name="kpm_autoload_first_time_confirm">Got it</string>
+  <string name="kpm_autoload_do_not_show_again">Don\'t show again</string>
+  <!-- Hide Settings Strings -->
+  <string name="home_hide_su_path">Hide su executable path</string>
+  <string name="home_hide_kpatch_version">Hide kernel patch version</string>
+  <string name="home_hide_fingerprint">Hide fingerprint</string>
+  <string name="home_hide_su_path_summary">Hide su executable path in info card</string>
+  <string name="home_hide_kpatch_version_summary">Hide kernel patch version in info card</string>
+  <string name="home_hide_fingerprint_summary">Hide fingerprint in info card</string>
+  <string name="kpm_page_first_time_title">Warning</string>
+  <string name="kpm_page_first_time_message">Kernel modules directly modify the Boot implementation. Unlike system modules, they lack a good recovery mechanism. If issues arise, you can only fix them by entering Fastboot. It is recommended to load the module first to ensure there are no problems before embedding it into Boot. If a module can only be used by loading, you can try the automatic KPM module loading feature. If you do not understand kernel modules, please do not use this feature!</string>
+  <!-- Auto Backup Strings -->
+  <string name="settings_auto_backup_module">Auto Backup System Modules</string>
+  <string name="settings_auto_backup_module_summary">Automatically backup module file to private directory when installing</string>
+  <string name="settings_open_backup_dir">Open Backup Directory</string>
+  <string name="backup_dir_empty">Backup directory is empty</string>
+  <string name="backup_dir_open_failed">Failed to open backup directory</string>
+  <string name="auto_backup_failed">Auto backup failed: %s</string>
+  <string name="auto_backup_success">Auto backup success: %s</string>
+  <string name="settings_auto_backup_boot">Auto Backup Boot</string>
+  <string name="settings_auto_backup_boot_summary">Automatically backup Boot to local storage (Downloads/FolkPatch/BootBackups)</string>
+  <!-- Home Layout Strings -->
+  <string name="settings_home_layout_style">Home Layout Style</string>
+  <string name="settings_home_layout_default">ListUI</string>
+  <string name="settings_home_layout_grid">GridUI</string>
+  <string name="settings_home_layout_focus">FocusUI</string>
+  <string name="settings_home_layout_sign">SignUI</string>
+  <string name="unofficial_version_title">Unofficial Version</string>
+  <string name="unofficial_version_message">You are using FolkPatch which is not an official app, please download the official app!</string>
+  <string name="go_to_github">Go to Github</string>
+  <string name="settings_save_theme">Save theme</string>
+  <string name="settings_import_theme">Import theme</string>
+  <string name="settings_theme_saved">Theme saved</string>
+  <string name="settings_theme_imported">Theme imported</string>
+  <string name="settings_theme_save_failed">Failed to save theme</string>
+  <string name="settings_theme_import_failed">Failed to import theme</string>
+  <!-- Theme Strings -->
+  <string name="theme_export_title">Export Theme</string>
+  <string name="theme_import_title">Import Theme</string>
+  <string name="theme_name">Theme Name</string>
+  <string name="theme_type">Theme Type</string>
+  <string name="theme_type_phone">Phone</string>
+  <string name="theme_type_tablet">Tablet</string>
+  <string name="theme_version">Version</string>
+  <string name="theme_author">Author</string>
+  <string name="theme_description">Description</string>
+  <string name="theme_export_action">Export</string>
+  <string name="theme_import_action">Import</string>
+  <string name="theme_import_confirm">Are you sure you want to import this theme?</string>
+  <string name="theme_info">Theme Info</string>
+  <!-- Grid Working Card Background -->
+  <string name="settings_grid_working_card_background">Working Card Background</string>
+  <string name="settings_grid_working_card_background_enabled">Custom card background enabled</string>
+  <string name="settings_grid_working_card_background_summary">Custom background image for the working card</string>
+  <string name="settings_grid_working_card_background_selected">Background selected</string>
+  <string name="settings_grid_working_card_dual_opacity">Enable dual day/night opacity</string>
+  <string name="settings_grid_working_card_day_opacity">Day mode card opacity</string>
+  <string name="settings_grid_working_card_night_opacity">Night mode card opacity</string>
+  <string name="settings_clear_grid_working_card_background">Clear Card Background</string>
+  <string name="settings_clear_grid_working_card_background_confirm">Are you sure you want to clear the card background image?</string>
+  <string name="settings_grid_working_card_background_saved">Card background saved successfully</string>
+  <string name="settings_grid_working_card_background_error">Failed to save card background</string>
+  <string name="settings_grid_working_card_background_cleared">Card background cleared</string>
+  <!-- Biometric Strings -->
+  <string name="action_biometric">Biometric Authentication</string>
+  <string name="msg_biometric">Please verify your biometric identity</string>
+  <string name="settings_biometric_login">Biometric Authentication</string>
+  <string name="settings_biometric_login_summary">Require biometric authentication when opening the app</string>
+  <string name="settings_strong_biometric">Strong Biometric Authentication</string>
+  <string name="settings_strong_biometric_summary">Require authentication for installing/uninstalling/disabling modules</string>
+  <!-- Theme Store Strings -->
+  <string name="theme_store_title">Theme Store</string>
+  <string name="theme_source_official">Official</string>
+  <string name="theme_source_third_party">Third Party</string>
+  <string name="theme_source_local">Local</string>
+  <string name="theme_store_author">Author: %s</string>
+  <string name="theme_store_version">Version: %s</string>
+  <string name="theme_source">Source</string>
+  <string name="theme_store_download_failed">Download failed</string>
+  <string name="theme_store_download">Download</string>
+  <string name="theme_store_search_hint">Search themes...</string>
+  <!-- Update Check Strings -->
+  <string name="settings_auto_update_check">Automatic Update Check</string>
+  <string name="settings_auto_update_check_summary">Automatically check for updates on app startup</string>
+  <string name="settings_check_update">Check for Updates</string>
+  <string name="update_available_title">Update Available</string>
+  <string name="update_available_message">Detected that your version is too low, do you want to download the new version?</string>
+  <string name="update_action">Update</string>
+  <string name="update_close">Close</string>
+  <string name="update_latest">You are on the latest version</string>
+  <string name="update_error">Error checking for updates</string>
+  <string name="settings_category_general">General</string>
+  <string name="settings_app_list_loading_scheme">App List Loading Scheme</string>
+  <string name="settings_app_list_loading_scheme_summary">Choose how to load the application list</string>
+  <string name="app_list_loading_scheme_root_service">RootService (Default)</string>
+  <string name="app_list_loading_scheme_package_manager">PackageManager (System API)</string>
+  <string name="app_list_loading_scheme_dialog_title">Loading Scheme</string>
+  <string name="settings_category_appearance">Appearance</string>
+  <string name="settings_category_behavior">Behavior</string>
+  <string name="settings_category_module">Modules</string>
+  <string name="settings_category_security">Security</string>
+  <!-- Background Music Strings -->
+  <string name="settings_background_music">Background Music</string>
+  <string name="settings_background_music_summary">Play background music when app is in foreground</string>
+  <string name="settings_background_music_playing">Playing: %s</string>
+  <string name="settings_background_music_enabled">Background Music Enabled</string>
+  <string name="settings_select_music_file">Select music file</string>
+  <string name="settings_music_selected">Music selected</string>
+  <string name="settings_clear_music">Clear music</string>
+  <string name="settings_clear_music_confirm">Are you sure you want to clear the background music?</string>
+  <string name="settings_music_auto_play">Auto play</string>
+  <string name="settings_music_auto_play_summary">Automatically play music when app opens</string>
+  <string name="settings_music_looping">Loop play</string>
+  <string name="settings_music_looping_summary">Repeat the current song</string>
+  <string name="settings_music_volume">Volume</string>
+  <string name="settings_music_saved">Music file saved</string>
+  <string name="settings_music_save_error">Failed to save music file</string>
+  <string name="settings_music_cleared">Music cleared</string>
+  <string name="settings_category_multimedia">Multimedia</string>
+  <string name="settings_music_playback_control">Playback Control</string>
+  <!-- Theme Store Filter -->
+  <string name="theme_store_filter_title">Filter Themes</string>
+  <string name="theme_store_filter_author">Author</string>
+  <string name="theme_store_filter_author_hint">Enter author name</string>
+  <string name="theme_store_filter_source">Source</string>
+  <string name="theme_store_filter_source_all">All</string>
+  <string name="theme_store_filter_type">Device Type</string>
+  <string name="theme_store_filter_apply">Apply</string>
+  <string name="theme_store_filter_reset">Reset</string>
+  <!-- File Picker -->
+  <string name="file_picker_permission_required">Permission Required</string>
+  <string name="file_picker_permission_desc">To browse files, please grant \'All files access\' permission.</string>
+  <string name="file_picker_grant_permission">Grant Permission</string>
+  <string name="file_picker_cancel">Cancel</string>
+  <string name="file_picker_internal_storage">Internal Storage</string>
+  <string name="file_picker_no_files">No files</string>
+  <!-- HomeV3 Strings -->
+  <string name="home_device_status_title">Device Status</string>
+  <string name="home_device_status_battery_temp">Battery Temp</string>
+  <string name="home_device_status_cpu_load">CPU Load</string>
+  <string name="home_device_status_battery_level">Battery Level</string>
+  <string name="home_storage_title">Storage</string>
+  <string name="home_storage_internal">Internal Storage</string>
+  <string name="home_storage_ram">RAM</string>
+  <string name="home_storage_zram">ZRAM</string>
+  <string name="home_storage_swap">Swap File</string>
+  <string name="home_info_kernel">Kernel</string>
+  <string name="home_info_superkey">SuperKey</string>
+  <string name="home_info_auth_auth">Auth</string>
+  <string name="home_info_auth_na">N/A</string>
+  <string name="home_info_device_slot">Device Slot</string>
+  <string name="home_info_device_model">Device Model</string>
+  <string name="home_info_running_mode">Running Mode</string>
+  <string name="home_info_mode_full">Full</string>
+  <string name="home_info_mode_half">Half</string>
+  <string name="home_zygisk_implement">Zygisk Implement</string>
+  <string name="home_mount_implement">Mount Implementation</string>
+  <string name="settings_list_working_card_hide_mode">Hide Half/Full Card</string>
+  <string name="settings_list_working_card_hide_mode_summary">Hide the small card indicating working mode</string>
+  <!-- Install Mode Select -->
+  <string name="kp_install_methods">KernelPatch Patching/Installing</string>
+  <string name="restore_boot_methods">Select a boot to restore to boot partition</string>
+  <string name="su_backup_list">Backup List</string>
+  <string name="su_restore_list">Restore List</string>
+  <string name="backup_success">Backup successful</string>
+  <string name="restore_success">Restore successful</string>
+  <string name="patch_output_written_to"> Output file is written to </string>
+  <string name="patch_write_failed"> Write patched boot.img failed</string>
+  <!-- Badge Count Settings -->
+  <string name="enable_badge_count">Badge Count Settings</string>
+  <string name="enable_badge_count_summary">Configure badge count display for navigation items</string>
+  <string name="badge_superuser">Show SuperUser Badge</string>
+  <string name="badge_apm">Show APM Badge</string>
+  <string name="badge_kernel">Show Kernel Module Badge</string>
+  <string name="settings_sound_effect">Sound Effect</string>
+  <string name="settings_sound_effect_summary">Play sound effect on click</string>
+  <string name="settings_sound_effect_enabled">Enabled</string>
+  <string name="settings_sound_effect_playing">Selected: %s</string>
+  <string name="settings_select_sound_effect">Select Sound Effect</string>
+  <string name="settings_sound_effect_selected">Sound effect file selected</string>
+  <string name="settings_sound_effect_scope">Effect Scope</string>
+  <string name="settings_sound_effect_scope_global">Global (Anywhere)</string>
+  <string name="settings_sound_effect_scope_bottom_bar">Bottom Bar Only</string>
+  <string name="settings_clear_sound_effect">Clear Sound Effect</string>
+  <string name="settings_clear_sound_effect_confirm">Are you sure you want to clear the sound effect?</string>
+  <string name="settings_sound_effect_cleared">Sound effect cleared</string>
+  <!-- Backup Settings -->
+  <string name="settings_category_backup">Backup</string>
+  <string name="settings_enable_cloud_backup">Enable Cloud Backup</string>
+  <string name="settings_enable_cloud_backup_summary">Automatically backup flashed modules to cloud service</string>
+  <string name="settings_configure_webdav">Configure WebDAV Service</string>
+  <string name="webdav_config_title">WebDAV Configuration</string>
+  <string name="webdav_url">WebDAV URL</string>
+  <string name="webdav_username">Username</string>
+  <string name="webdav_password">Password</string>
+  <string name="webdav_test_success">Test Successful</string>
+  <string name="webdav_test_failed">Test Failed: %s</string>
+  <string name="webdav_uploading">Uploading to WebDAV...</string>
+  <string name="webdav_backup_success">WebDAV Backup Success</string>
+  <string name="webdav_backup_failed">WebDAV Backup Failed: %s</string>
+  <string name="save">Save</string>
+  <string name="test">Test</string>
+  <string name="webdav_path_label">Path (e.g. /Backup)</string>
+  <string name="webdav_view_logs">View Logs</string>
+  <string name="webdav_backup_logs_title">Backup Logs</string>
+  <string name="webdav_no_logs">No logs found.</string>
+  <string name="webdav_clear_logs">Clear</string>
+  <string name="settings_enable_local_backup">Enable Local Backup</string>
+  <string name="settings_enable_local_backup_summary">Backup modules to local storage (Downloads/FolkPatch/ModuleBackups)</string>
+  <string name="close">Close</string>
 </resources>
