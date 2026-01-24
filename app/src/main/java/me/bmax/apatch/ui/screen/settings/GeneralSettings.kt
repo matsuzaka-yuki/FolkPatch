@@ -115,7 +115,7 @@ fun GeneralSettings(
     val showAppTitle = matchGeneral || shouldShow(searchText, appTitleTitle, currentAppTitle)
 
     val launcherIconTitle = stringResource(id = R.string.settings_launcher_icon)
-    val currentIconRaw = prefs.getString("launcher_icon_variant", "classic")
+    val currentIconRaw = prefs.getString("launcher_icon_variant", "default")
     val currentIcon = stringResource(iconNameToString(currentIconRaw.toString()))
     val showLauncherIcon = matchGeneral || shouldShow(searchText, launcherIconTitle, currentIcon)
 
@@ -618,10 +618,17 @@ fun appTitleNameToString(titleName: String): Int {
 @Composable
 fun iconNameToString(iconName: String): Int {
     return when (iconName) {
+        "default" -> R.string.launcher_icon_default
         "classic" -> R.string.launcher_icon_classic
+        "apatch" -> R.string.launcher_icon_apatch
+        "kernelsu" -> R.string.launcher_icon_kernelsu
+        "kernelsunext" -> R.string.launcher_icon_kernelsu_next
+        "kitsune" -> R.string.launcher_icon_kitsune
+        "magisk" -> R.string.launcher_icon_magisk
+        "superroot" -> R.string.launcher_icon_superroot
         "mask" -> R.string.launcher_icon_kitsune
         "camou" -> R.string.launcher_icon_default
-        else -> R.string.launcher_icon_classic
+        else -> R.string.launcher_icon_default
     }
 }
 

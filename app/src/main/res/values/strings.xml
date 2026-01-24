@@ -429,6 +429,8 @@
     <string name="apm_restore_failed">Restore failed</string>
     <string name="apm_backup_failed_msg">Backup failed: %s</string>
     <string name="apm_restore_failed_msg">Restore failed: %s</string>
+    <string name="apm_copy_list_title">Copy List</string>
+    <string name="apm_copy_list_success">Module list copied</string>
 
     <!-- APM Bulk Install Strings -->
     <string name="apm_bulk_install_title">APM Bulk Install</string>

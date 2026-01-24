@@ -445,6 +445,8 @@
     <string name="apm_restore_failed">记忆唤醒失败</string>
     <string name="apm_backup_failed_msg">记忆封印失败：%s</string>
     <string name="apm_restore_failed_msg">记忆唤醒失败：%s</string>
+    <string name="apm_copy_list_title">抄录魔法名录</string>
+    <string name="apm_copy_list_success">名录已抄录完毕</string>
 
     <!-- Font Settings -->
     <string name="settings_custom_font">魔法少女变身</string>

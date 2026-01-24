@@ -438,6 +438,8 @@
     <string name="apm_restore_failed">重塑受阻</string>
     <string name="apm_backup_failed_msg">拓印受阻：%s</string>
     <string name="apm_restore_failed_msg">重塑受阻：%s</string>
+    <string name="apm_copy_list_title">抄录卷宗</string>
+    <string name="apm_copy_list_success">名录已拓印</string>
 
     <!-- Font Settings -->
     <string name="settings_custom_font">仙府字体</string>

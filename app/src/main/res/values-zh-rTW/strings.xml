@@ -431,6 +431,8 @@
     <string name="apm_restore_failed">還原失敗</string>
     <string name="apm_backup_failed_msg">備份失敗：%s</string>
     <string name="apm_restore_failed_msg">還原失敗：%s</string>
+    <string name="apm_copy_list_title">複製列表</string>
+    <string name="apm_copy_list_success">模組列表已複製</string>
 
     <!-- Font Settings -->
     <string name="settings_custom_font">自訂字體</string>

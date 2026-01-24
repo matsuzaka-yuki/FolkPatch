@@ -44,7 +44,7 @@ object LauncherIconUtils {
 
     fun applySaved(context: Context, variantName: String? = null) {
         val prefs = APApplication.sharedPreferences
-        val vName = variantName ?: prefs.getString("launcher_icon_variant", "classic")
+        val vName = variantName ?: prefs.getString("launcher_icon_variant", "default")
         val appName = prefs.getString("desktop_app_name", "FolkPatch")
         val isFolkSU = appName == "FolkSU"
 

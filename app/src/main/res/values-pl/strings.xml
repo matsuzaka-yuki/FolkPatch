@@ -448,6 +448,8 @@
     <string name="apm_restore_failed">Przywracanie nieudane</string>
     <string name="apm_backup_failed_msg">Kopia zapasowa nieudana: %s</string>
     <string name="apm_restore_failed_msg">Przywracanie nieudane: %s</string>
+    <string name="apm_copy_list_title">Kopiuj listę</string>
+    <string name="apm_copy_list_success">Lista modułów skopiowana</string>
 
     <!-- Font Settings -->
     <string name="settings_custom_font">Niestandardowa czcionka</string>

@@ -439,6 +439,8 @@
     <string name="apm_restore_failed">Pemulihan gagal</string>
     <string name="apm_backup_failed_msg">Pencadangan gagal: %s</string>
     <string name="apm_restore_failed_msg">Pemulihan gagal: %s</string>
+    <string name="apm_copy_list_title">Salin daftar</string>
+    <string name="apm_copy_list_success">Daftar modul disalin</string>
 
     <string name="settings_custom_font">Font Kustom</string>
     <string name="settings_select_font_file">Pilih file font</string>

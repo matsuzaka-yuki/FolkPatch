@@ -427,6 +427,8 @@
     <string name="apm_restore_failed">فشلت الاستعادة</string>
     <string name="apm_backup_failed_msg">فشل النسخ الاحتياطي: %s</string>
     <string name="apm_restore_failed_msg">فشلت الاستعادة: %s</string>
+    <string name="apm_copy_list_title">نسخ القائمة</string>
+    <string name="apm_copy_list_success">تم نسخ قائمة الوحدات</string>
 
     <!-- APM Bulk Install Strings -->
     <string name="apm_bulk_install_title">التثبيت المجمع لـ APM</string>

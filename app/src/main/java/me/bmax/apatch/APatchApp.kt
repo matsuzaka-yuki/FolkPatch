@@ -323,7 +323,7 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler, ImageLoade
         }
         
         APatchKeyHelper.setSharedPreferences(sharedPreferences)
-        me.bmax.apatch.util.LauncherIconUtils.applySaved(this, sharedPreferences.getString("launcher_icon_variant", "classic"))
+        me.bmax.apatch.util.LauncherIconUtils.applySaved(this, sharedPreferences.getString("launcher_icon_variant", "default"))
         Log.d(TAG, "Reading superKey...")
         superKey = APatchKeyHelper.readSPSuperKey()
         Log.d(TAG, "superKey read completed, length=${superKey.length}")

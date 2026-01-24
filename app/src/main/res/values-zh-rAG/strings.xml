@@ -475,7 +475,8 @@
     <string name="apm_restore_failed">恢复失败了喵...</string>
     <string name="apm_backup_failed_msg">备份失败了喵：%s</string>
     <string name="apm_restore_failed_msg">恢复失败了喵：%s</string>
-    
+    <string name="apm_copy_list_title">抄录名录喵！</string>
+    <string name="apm_copy_list_success">名录已抄录喵！</string>
 
     <!-- Auto Backup Strings -->
     <string name="settings_auto_backup_module">自动备份系统模块喵</string>

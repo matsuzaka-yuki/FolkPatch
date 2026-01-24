@@ -459,6 +459,8 @@
     <string name="apm_restore_failed">Khôi phục thất bại</string>
     <string name="apm_backup_failed_msg">Sao lưu thất bại: %s</string>
     <string name="apm_restore_failed_msg">Khôi phục thất bại: %s</string>
+    <string name="apm_copy_list_title">Sao chép danh sách</string>
+    <string name="apm_copy_list_success">Đã sao chép danh sách mô-đun</string>
 
     <!-- Auto Backup Strings -->
     <string name="settings_auto_backup_module">Sao lưu tự động module hệ thống</string>

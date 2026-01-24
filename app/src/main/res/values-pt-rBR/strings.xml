@@ -424,6 +424,8 @@
     <string name="apm_restore_failed">Falha na restauração</string>
     <string name="apm_backup_failed_msg">Falha no backup: %s</string>
     <string name="apm_restore_failed_msg">Falha na restauração: %s</string>
+    <string name="apm_copy_list_title">Copiar lista</string>
+    <string name="apm_copy_list_success">Lista de módulos copiada</string>
 
     <!-- APM Bulk Install Strings -->
     <string name="apm_bulk_install_title">Instalação em Lote APM</string>

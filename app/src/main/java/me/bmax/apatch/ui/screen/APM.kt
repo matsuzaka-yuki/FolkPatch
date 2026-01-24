@@ -1,6 +1,8 @@
 package me.bmax.apatch.ui.screen
 
 import android.app.Activity.RESULT_OK
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -860,6 +862,22 @@ private fun TopBar(
                         onClick = {
                             showMenu = false
                             restoreLauncher.launch(arrayOf("application/gzip", "application/x-gzip", "application/x-tar"))
+                        }
+                    )
+                    WallpaperAwareDropdownMenuItem(
+                        text = { Text(stringResource(R.string.apm_copy_list_title)) },
+                        onClick = {
+                            showMenu = false
+                            val clipboardManager = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                            val moduleNames = viewModel.moduleList.joinToString("\n") { it.name }
+                            val clip = ClipData.newPlainText("Module List", moduleNames)
+                            clipboardManager.setPrimaryClip(clip)
+                            scope.launch {
+                                snackBarHost.showSnackbar(
+                                    message = context.getString(R.string.apm_copy_list_success),
+                                    duration = SnackbarDuration.Short
+                                )
+                            }
                         }
                     )
                 }

@@ -447,6 +447,8 @@
     <string name="apm_restore_failed">Ошибка восстановления</string>
     <string name="apm_backup_failed_msg">Ошибка резервного копирования: %s</string>
     <string name="apm_restore_failed_msg">Ошибка восстановления: %s</string>
+    <string name="apm_copy_list_title">Копировать список</string>
+    <string name="apm_copy_list_success">Список модулей скопирован</string>
 
     <!-- Font Settings -->
     <string name="settings_custom_font">Пользовательский шрифт</string>
