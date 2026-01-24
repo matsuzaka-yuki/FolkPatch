@@ -9,7 +9,7 @@
 
 </div>
 
-**Language / 语言:** [English](README_EN.md) | [中文](README.md)
+**Language / 语言:** [English](README_EN.md) | [中文](README.md) | [日本語](README_JA.md) 
 
 **FolkPatch** is an extended non-parallel branch based on [APatch](https://github.com/bmax121/APatch), only through optimizing the interface design and extending the features, without introducing new core functions.
 
@@ -47,7 +47,7 @@ This project is based on the following open source projects:
 
 ## License
 
-FolkPatch is licensed under the GNU General Public License v3 [GPL-3](http://www.gnu.org/copyleft/gpl.html).
+FolkPatch is licensed under the [GNU General Public License v3 (GPL)](http://www.gnu.org/copyleft/gpl.html).
 
 # FolkPatch Discussion & Communication
 - Telegram Channel: [@FolkPatch](https://t.me/FolkPatch)
