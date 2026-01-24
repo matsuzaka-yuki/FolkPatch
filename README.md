@@ -9,7 +9,7 @@
 
 </div>
 
-**语言 / Language:** [中文](README.md) | [English](README_EN.md)
+**语言 / Language:** [中文](README.md) | [English](README_EN.md) | [日本語](README_JA.md) 
 
 **FolkPatch** 是基于 [APatch](https://github.com/bmax121/APatch) 开发的扩展非并行分支，只通过优化界面设计和功能扩展，不引入新的核心功能。
 
@@ -47,7 +47,7 @@
 
 ## 许可证
 
-FolkPatch 遵循 GNU General Public License v3 [GPL-3](http://www.gnu.org/copyleft/gpl.html) 许可证开源。
+FolkPatch 遵循 [GNU General Public License v3 (GPL-3)](http://www.gnu.org/copyleft/gpl.html) 许可证开源。
 
 ## FolkPatch讨论交流
 
