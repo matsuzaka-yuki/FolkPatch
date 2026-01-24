@@ -28,7 +28,7 @@
 
 ## ダウンロードとインストール
 
-[リリース](https://github.com/matsuzaka-yuki/FolkPatch/releases/latest) の項目から最新の APK をダウンロードしてください。
+[リリース](https://github.com/matsuzaka-yuki/FolkPatch/releases/latest)の項目から最新の APK をダウンロードしてください。
 
 ## システム要件
 
