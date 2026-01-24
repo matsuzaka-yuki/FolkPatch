@@ -8,7 +8,7 @@
   <string name="patch_warnning">インストールにはリスクが伴います。必ずデータのバックアップを行ってください。</string>
   <string name="patch">パッチ</string>
   <string name="kernel_patch">KernelPatch</string>
-  <string name="android_patch">Android パッチ</string>
+  <string name="android_patch">AndroidPatch</string>
   <string name="settings_nav_layout_title">ナビゲーションレイアウトの設定</string>
   <string name="settings_nav_layout_summary">一部のナビゲーションコンポーネントを表示または非表示にします</string>
   <string name="settings_show_apm">APM を表示</string>
