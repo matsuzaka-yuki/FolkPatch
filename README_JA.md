@@ -47,7 +47,7 @@
 
 ## ライセンス
 
-FolkPatch は GNU General Public License v3 [GPL-3](http://www.gnu.org/copyleft/gpl.html) に基づいています。
+FolkPatch は [GNU General Public License v3 (GPL)](http://www.gnu.org/copyleft/gpl.html) に基づいています。
 
 # FolkPatch のディスカッションとコミュニケーション
 - Telegram チャンネル: [@FolkPatch](https://t.me/FolkPatch)
