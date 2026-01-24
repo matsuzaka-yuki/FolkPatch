@@ -288,6 +288,10 @@ fun AppearanceSettings(
     val listModeHiddenSummary = stringResource(id = R.string.settings_list_working_card_hide_mode_summary)
     val showListModeHidden = isListStyle && (matchAppearance || shouldShow(searchText, listModeHiddenTitle, listModeHiddenSummary))
 
+    val listCardHideStatusBadgeTitle = stringResource(id = R.string.settings_list_card_hide_status_badge)
+    val listCardHideStatusBadgeSummary = stringResource(id = R.string.settings_list_card_hide_status_badge_summary)
+    val showListCardHideStatusBadge = isListStyle && (matchAppearance || shouldShow(searchText, listCardHideStatusBadgeTitle, listCardHideStatusBadgeSummary))
+
     // Custom Background (Single/Multi)
     val customBackgroundTitle = stringResource(id = R.string.settings_custom_background)
     val customBackgroundSummary = stringResource(id = R.string.settings_custom_background_summary)
@@ -363,7 +367,7 @@ fun AppearanceSettings(
     val importThemeTitle = stringResource(id = R.string.settings_import_theme)
     val showImportTheme = matchAppearance || shouldShow(searchText, importThemeTitle)
     
-    val showAppearanceCategory = showNightModeFollowSys || showNightModeEnabled || showUseSystemColor || showCustomColor || showHomeLayout || showNavLayout || showGridBackgroundSwitch || showGridOpacity || showGridTextHidden || showGridModeHidden || showListModeHidden || showCustomBackgroundSwitch || showCustomFontSwitch || showThemeStore || showSaveTheme || showImportTheme
+    val showAppearanceCategory = showNightModeFollowSys || showNightModeEnabled || showUseSystemColor || showCustomColor || showHomeLayout || showNavLayout || showGridBackgroundSwitch || showGridOpacity || showGridTextHidden || showGridModeHidden || showListModeHidden || showListCardHideStatusBadge || showCustomBackgroundSwitch || showCustomFontSwitch || showThemeStore || showSaveTheme || showImportTheme
 
     val showThemeChooseDialog = remember { mutableStateOf(false) }
     val showHomeLayoutChooseDialog = remember { mutableStateOf(false) }
@@ -720,14 +724,28 @@ fun AppearanceSettings(
             }
 
             // Hide Mode
-             if (showGridModeHidden) {
-                 SwitchItem(
-                    icon = Icons.Filled.VisibilityOff,
-                    title = gridModeHiddenTitle,
-                    summary = gridModeHiddenSummary,
-                    checked = BackgroundConfig.isGridWorkingCardModeHidden,
+              if (showGridModeHidden) {
+                  SwitchItem(
+                     icon = Icons.Filled.VisibilityOff,
+                     title = gridModeHiddenTitle,
+                     summary = gridModeHiddenSummary,
+                     checked = BackgroundConfig.isGridWorkingCardModeHidden,
+                     onCheckedChange = {
+                         BackgroundConfig.setGridWorkingCardModeHiddenState(it)
+                         BackgroundConfig.save(context)
+                     }
+                 )
+             }
+
+            // Hide List Status Badge
+            if (showListCardHideStatusBadge) {
+                SwitchItem(
+                    icon = Icons.Filled.EmojiEmotions,
+                    title = listCardHideStatusBadgeTitle,
+                    summary = listCardHideStatusBadgeSummary,
+                    checked = BackgroundConfig.isListWorkingCardModeHidden,
                     onCheckedChange = {
-                        BackgroundConfig.setGridWorkingCardModeHiddenState(it)
+                        BackgroundConfig.setListWorkingCardModeHiddenState(it)
                         BackgroundConfig.save(context)
                     }
                 )

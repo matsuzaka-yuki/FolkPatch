@@ -375,6 +375,8 @@
     <string name="settings_grid_working_card_hide_mode_summary">隐仙术卡片上"Full"或"Half"文字</string>
     <string name="settings_list_working_card_hide_mode">隐仙术模式小卡片</string>
     <string name="settings_list_working_card_hide_mode_summary">隐显示仙术工作模式之小卡片</string>
+    <string name="settings_list_card_hide_status_badge">使用经典表情</string>
+    <string name="settings_list_card_hide_status_badge_summary">首页之仙域印记即刻变身经典表情</string>
     <string name="settings_custom_background_dual_dim">启昼夜双修仙法</string>
     <string name="settings_custom_background_day_dim">白昼仙法暗度</string>
     <string name="settings_custom_background_night_dim">夜晚仙法暗度</string>

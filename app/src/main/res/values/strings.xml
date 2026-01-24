@@ -632,6 +632,8 @@
 
     <string name="settings_list_working_card_hide_mode">Hide Half/Full Card</string>
     <string name="settings_list_working_card_hide_mode_summary">Hide the small card indicating working mode</string>
+    <string name="settings_list_card_hide_status_badge">Use Classic Emoji</string>
+    <string name="settings_list_card_hide_status_badge_summary">Turn the home status badge into classic emoji</string>
 
     <!-- Install Mode Select -->
     <string name="kp_install_methods">KernelPatch Patching/Installing</string>

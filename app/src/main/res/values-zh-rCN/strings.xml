@@ -624,6 +624,8 @@
 
     <string name="settings_list_working_card_hide_mode">隐藏 Half/Full 小卡片</string>
     <string name="settings_list_working_card_hide_mode_summary">隐藏显示工作模式的小卡片</string>
+    <string name="settings_list_card_hide_status_badge">使用经典表情</string>
+    <string name="settings_list_card_hide_status_badge_summary">首页的状态徽章即刻变身经典表情</string>
 
     <!-- Install Mode Select -->
     <string name="kp_install_methods">KernelPatch 修补/安装</string>

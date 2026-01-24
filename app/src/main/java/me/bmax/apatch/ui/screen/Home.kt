@@ -788,7 +788,11 @@ private fun KStatusCard(
                         APApplication.State.KERNELPATCH_INSTALLED -> {
                             Row(verticalAlignment = Alignment.CenterVertically) {
                                 Text(
-                                    text = stringResource(R.string.home_working),
+                                    text = if (BackgroundConfig.isListWorkingCardModeHidden) {
+                                        stringResource(R.string.home_working) + "😋"
+                                    } else {
+                                        stringResource(R.string.home_working)
+                                    },
                                     style = MaterialTheme.typography.titleMedium
                                 )
                                 if (!BackgroundConfig.isListWorkingCardModeHidden) {

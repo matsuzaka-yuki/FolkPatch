@@ -637,6 +637,8 @@
 
     <string name="settings_list_working_card_hide_mode">藏起Half/Full小卡片喵</string>
     <string name="settings_list_working_card_hide_mode_summary">藏起显示工作模式的小卡片喵！</string>
+    <string name="settings_list_card_hide_status_badge">使用经典表情喵</string>
+    <string name="settings_list_card_hide_status_badge_summary">首页的状态标记即刻变身经典表情喵！</string>
 
     <!-- Install Mode Select -->
     <string name="kp_install_methods">KernelPatch修补/安装喵</string>

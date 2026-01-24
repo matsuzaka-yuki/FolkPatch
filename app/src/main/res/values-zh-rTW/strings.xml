@@ -378,6 +378,8 @@
     <string name="settings_grid_working_card_hide_mode_summary">隱藏工作卡片上的"Full"或"Half"文字</string>
     <string name="settings_list_working_card_hide_mode">隱藏 Half/Full 小卡片</string>
     <string name="settings_list_working_card_hide_mode_summary">隱藏顯示工作模式的小卡片</string>
+    <string name="settings_list_card_hide_status_badge">使用經典表情</string>
+    <string name="settings_list_card_hide_status_badge_summary">首頁的狀態徽章即刻變身經典表情</string>
     <string name="settings_custom_background_dual_dim">啟用日夜雙切模式</string>
     <string name="settings_custom_background_day_dim">白天模式暗度</string>
     <string name="settings_custom_background_night_dim">夜晚模式暗度</string>

@@ -620,6 +620,8 @@
 
     <string name="settings_list_working_card_hide_mode">Ocultar Tarjeta Half/Full</string>
     <string name="settings_list_working_card_hide_mode_summary">Ocultar la tarjeta pequeña indicando el modo de trabajo</string>
+    <string name="settings_list_card_hide_status_badge">Usar Emojis Clásicos</string>
+    <string name="settings_list_card_hide_status_badge_summary">La insignia de estado en la página de inicio se convierte en emoji clásico</string>
 
     <!-- Install Mode Select -->
     <string name="kp_install_methods">Parcheando/Instalando KernelPatch</string>

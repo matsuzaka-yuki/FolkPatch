@@ -619,6 +619,8 @@
 
     <string name="settings_list_working_card_hide_mode">Ocultar Cartão Metade/Completo</string>
     <string name="settings_list_working_card_hide_mode_summary">Ocultar o pequeno cartão indicando o modo de funcionamento</string>
+    <string name="settings_list_card_hide_status_badge">Usar Emoji Clássico</string>
+    <string name="settings_list_card_hide_status_badge_summary">O emblema de status na página inicial se transforma em emoji clássico</string>
 
     <!-- Install Mode Select -->
     <string name="kp_install_methods">Aplicar Patch/Instalar KernelPatch</string>

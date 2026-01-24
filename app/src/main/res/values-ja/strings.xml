@@ -381,6 +381,8 @@
     <string name="settings_grid_working_card_hide_mode_summary">ワーキングカードの「Full」または「Half」テキストを非表示</string>
     <string name="settings_list_working_card_hide_mode">Half/Fullカードを非表示</string>
     <string name="settings_list_working_card_hide_mode_summary">動作モードを示す小さいカードを非表示</string>
+    <string name="settings_list_card_hide_status_badge">クラシック絵文字を使用</string>
+    <string name="settings_list_card_hide_status_badge_summary">ホーム画面のステータスバッジがクラシック絵文字に変身</string>
     <string name="settings_custom_background_dual_dim">昼夜デュアル背景暗度を有効にする</string>
     <string name="settings_custom_background_day_dim">昼間モードの背景暗度</string>
     <string name="settings_custom_background_night_dim">夜間モードの背景暗度</string>

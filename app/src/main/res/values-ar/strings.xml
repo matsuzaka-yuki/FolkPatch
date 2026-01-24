@@ -629,6 +629,8 @@
 
     <string name="settings_list_working_card_hide_mode">إخفاء بطاقة نصف/كامل</string>
     <string name="settings_list_working_card_hide_mode_summary">إخفاء البطاقة الصغيرة التي تشير إلى وضع العمل</string>
+    <string name="settings_list_card_hide_status_badge">استخدم الإيموجي الكلاسيكي</string>
+    <string name="settings_list_card_hide_status_badge_summary">شارة الحالة في الصفحة الرئيسية تتحول إلى إيموجي كلاسيكي</string>
 
     <!-- Install Mode Select -->
     <string name="kp_install_methods">تصحيح/تثبيت KernelPatch</string>
