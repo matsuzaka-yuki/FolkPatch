@@ -41,6 +41,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.saveable.rememberSaveable
 import android.content.SharedPreferences
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -329,11 +330,24 @@ class MainActivity : AppCompatActivity() {
                 
                 val uri = installUri
                 val uris = installUris
-                LaunchedEffect(Unit) {
+                val lastHandledExternalKey = rememberSaveable { mutableStateOf<String?>(null) }
+                LaunchedEffect(uri, uris) {
+                    val key = when {
+                        uris != null && uris.isNotEmpty() -> uris.joinToString("|") { it.toString() }
+                        uri != null -> uri.toString()
+                        else -> null
+                    }
+                    if (key == null || key == lastHandledExternalKey.value) {
+                        return@LaunchedEffect
+                    }
+                    lastHandledExternalKey.value = key
+
                     if (uris != null && uris.isNotEmpty()) {
                         navigator.navigate(ApmBulkInstallScreenDestination(initialUris = uris))
+                        installUris = null
+                        installUri = null
                     } else if (uri != null) {
-                         val fileName = withContext(Dispatchers.IO) {
+                        val fileName = withContext(Dispatchers.IO) {
                             getFileName(context, uri)
                         }
                         if (fileName.endsWith(".fpt", ignoreCase = true)) {
@@ -355,6 +369,8 @@ class MainActivity : AppCompatActivity() {
                             }
                             navigator.navigate(InstallScreenDestination(uri, MODULE_TYPE.APM))
                         }
+                        installUri = null
+                        installUris = null
                     }
                 }
 

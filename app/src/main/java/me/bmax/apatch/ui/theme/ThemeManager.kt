@@ -4,7 +4,10 @@ import android.content.Context
 import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
@@ -33,6 +36,9 @@ object ThemeManager {
     private const val BACKGROUND_FILENAME = "background.jpg"
     private const val FONT_FILENAME = "font.ttf"
     private const val KEY_STR = "FolkPatchThemeSecretKey2025"
+    private val importMutex = Mutex()
+    private var activeImportKey: String? = null
+    private var activeImportDeferred: CompletableDeferred<Boolean>? = null
 
     private fun getSecretKey(): SecretKeySpec {
         val digest = MessageDigest.getInstance("SHA-256")
@@ -359,7 +365,24 @@ object ThemeManager {
     }
 
     suspend fun importTheme(context: Context, uri: Uri): Boolean {
-        return withContext(Dispatchers.IO) {
+        val key = uri.toString()
+        val (deferred, shouldStart) = importMutex.withLock {
+            val existing = activeImportDeferred
+            if (activeImportKey == key && existing != null && !existing.isCompleted) {
+                return@withLock existing to false
+            }
+            val newDeferred = CompletableDeferred<Boolean>()
+            activeImportKey = key
+            activeImportDeferred = newDeferred
+            newDeferred to true
+        }
+
+        if (!shouldStart) {
+            return deferred.await()
+        }
+
+        val result = try {
+            withContext(Dispatchers.IO) {
             val cacheDir = File(context.cacheDir, "theme_import")
             if (cacheDir.exists()) cacheDir.deleteRecursively()
             cacheDir.mkdirs()
@@ -683,5 +706,17 @@ object ThemeManager {
                 cacheDir.deleteRecursively()
             }
         }
+        } catch (e: Exception) {
+            false
+        }
+
+        deferred.complete(result)
+        importMutex.withLock {
+            if (activeImportDeferred == deferred) {
+                activeImportDeferred = null
+                activeImportKey = null
+            }
+        }
+        return result
     }
 }
