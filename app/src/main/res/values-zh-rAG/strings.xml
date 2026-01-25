@@ -321,6 +321,14 @@
     <string name="online_kpm_download_complete">下载完成了喵：%s</string>
     <string name="online_kpm_download_notification">正在下 %s 喵！看通知栏进度，下完看下载文件夹哦喵</string>
 
+    <!-- Online Script Strings -->
+    <string name="online_script_title">给主人脚本喵</string>
+    <string name="online_script_download_start">开始下载喵：%s</string>
+    <string name="online_script_download_complete">下载完成了喵：%s</string>
+    <string name="online_script_download_notification">正在下 %s 喵！下载完成后会自动加到脚本库哦喵</string>
+    <string name="online_script_add_success">脚本已经加到脚本库了喵</string>
+    <string name="online_script_add_failed">添加脚本失败了喵：%s</string>
+
     <!-- Crash Handle Strings -->
     <string name="crash_handle_title">崩溃报告喵</string>
     <string name="crash_handle_copy">复制一下喵！</string>

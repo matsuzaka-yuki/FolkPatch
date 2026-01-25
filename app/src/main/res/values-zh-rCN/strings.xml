@@ -311,6 +311,14 @@
     <string name="online_kpm_download_complete">下载完成: %s</string>
     <string name="online_kpm_download_notification">正在下载 %s。请查看通知栏了解进度，下载完成后请查看下载文件夹。</string>
 
+    <!-- Online Script Strings -->
+    <string name="online_script_title">在线脚本</string>
+    <string name="online_script_download_start">开始下载: %s</string>
+    <string name="online_script_download_complete">下载完成: %s</string>
+    <string name="online_script_download_notification">正在下载 %s。下载完成后将自动添加到脚本库。</string>
+    <string name="online_script_add_success">脚本已添加到脚本库</string>
+    <string name="online_script_add_failed">添加脚本失败: %s</string>
+
     <!-- Crash Handle Strings -->
     <string name="crash_handle_title">崩溃报告</string>
     <string name="crash_handle_copy">复制</string>
