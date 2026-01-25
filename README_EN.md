@@ -7,8 +7,8 @@
 
 </div>
 
-🌏 README Language
-[**English**](./README_EN.md) / [**中文**](./README.md) /
+🌏 **README Language:**<br>
+[**English**](./README_EN.md) / [**中文**](./README.md) / [**日本語**](.README_JA.md)
 
 FolkPatch - A Root management tool focused on interface optimization and feature extension
 
@@ -110,7 +110,7 @@ This project is based on the following open source projects:
 
 ## 📄 License
 
-FolkPatch is licensed under the GNU General Public License v3 [GPL-3](http://www.gnu.org/copyleft/gpl.html).
+FolkPatch is licensed under the [GNU General Public License v3 (GPL-3)](http://www.gnu.org/copyleft/gpl.html).
 
 ## 💬 Community & Discussion
 
