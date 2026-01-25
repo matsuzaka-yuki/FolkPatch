@@ -7,8 +7,7 @@
 
 </div>
 
-🌏 **README Language:**<br>
-[**English**](./README_EN.md) / [**中文**](./README.md) / [**日本語**](.README_JA.md)
+🌏 **README Language:** [**English**](./README_EN.md) / [**中文**](./README.md) / [**日本語**](.README_JA.md)
 
 FolkPatch - A Root management tool focused on interface optimization and feature extension
 
