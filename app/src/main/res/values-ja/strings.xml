@@ -380,7 +380,7 @@
   <string name="kpm_autoload_save_confirm">自動で読み込みの構成を保存しますか？</string>
   <string name="kpm_autoload_save_success">構成の保存が成功しました</string>
   <string name="kpm_autoload_save_failed">構成の保存が失敗しました</string>
-  <string name="kpm_autoload_visual_mode">ビジュアルモード</string>
+  <string name="kpm_autoload_visual_mode">視覚モード</string>
   <string name="kpm_autoload_json_mode">JSON モード</string>
   <string name="kpm_autoload_add_kpm">KPM を追加</string>
   <string name="kpm_autoload_remove_kpm">削除</string>
