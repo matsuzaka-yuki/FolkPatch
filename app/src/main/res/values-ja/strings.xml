@@ -288,7 +288,7 @@
   <string name="online_script_title">オンラインスクリプト</string>
   <string name="online_script_download_start">ダウンロードを開始: %s</string>
   <string name="online_script_download_complete">ダウンロード完了: %s</string>
-  <string name="online_script_download_notification">%s をダウンロード中です</string>
+  <string name="online_script_download_notification">「%s」をダウンロード中です</string>
   <!-- Crash Handle Strings -->
   <string name="crash_handle_title">クラッシュレポート</string>
   <string name="crash_handle_copy">コピー</string>
