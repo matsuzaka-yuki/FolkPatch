@@ -7,8 +7,7 @@
 
 </div>
 
-🌏 **README 语言:**<br>
-[**English**](./README_EN.md) / [**中文**](./README.md) / [**日本語**](./README_JA.md)
+🌏 **README 语言:** [**English**](./README_EN.md) / [**中文**](./README.md) / [**日本語**](./README_JA.md)
 
 FolkPatch - 专注界面优化与功能扩展的Root管理工具
 
