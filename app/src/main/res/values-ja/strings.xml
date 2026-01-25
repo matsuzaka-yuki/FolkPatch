@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_name_folksu">FolkSU</string>
-  <string name="desktop_app_name">デスクトップアプリ名</string>
+  <string name="desktop_app_name">デスクトップのアプリ名</string>
   <string name="home">ホーム</string>
   <string name="success">成功しました</string>
   <string name="failure">失敗しました</string>
