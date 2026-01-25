@@ -25,6 +25,7 @@ import androidx.compose.ui.window.DialogWindowProvider
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootGraph
 import com.ramcosta.composedestinations.generated.destinations.ScriptExecutionLogScreenDestination
+import com.ramcosta.composedestinations.generated.destinations.OnlineScriptScreenDestination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.launch
 import me.bmax.apatch.R
@@ -71,6 +72,9 @@ fun ScriptLibraryScreen(navigator: DestinationsNavigator) {
                     }
                 },
                 actions = {
+                    IconButton(onClick = { navigator.navigate(OnlineScriptScreenDestination) }) {
+                        Icon(Icons.Default.Download, contentDescription = stringResource(R.string.online_script_title))
+                    }
                     IconButton(onClick = { showAddDialog = true }) {
                         Icon(Icons.Default.Add, contentDescription = stringResource(R.string.script_library_add))
                     }

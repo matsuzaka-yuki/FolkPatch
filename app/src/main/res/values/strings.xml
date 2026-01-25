@@ -319,6 +319,14 @@
     <string name="online_kpm_download_complete">Download complete: %s</string>
     <string name="online_kpm_download_notification">Downloading %s. Please check notification panel for progress and Download folder for completed file.</string>
 
+    <!-- Online Script Strings -->
+    <string name="online_script_title">Online Scripts</string>
+    <string name="online_script_download_start">Start downloading: %s</string>
+    <string name="online_script_download_complete">Download complete: %s</string>
+    <string name="online_script_download_notification">Downloading %s. Script will be automatically added to the script library after download completes.</string>
+    <string name="online_script_add_success">Script has been added to the script library</string>
+    <string name="online_script_add_failed">Failed to add script: %s</string>
+
     <!-- Crash Handle Strings -->
     <string name="crash_handle_title">Crash Report</string>
     <string name="crash_handle_copy">Copy</string>

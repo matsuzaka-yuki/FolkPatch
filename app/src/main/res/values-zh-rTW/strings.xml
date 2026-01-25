@@ -304,6 +304,14 @@
     <string name="online_kpm_download_complete">下載完成：%s</string>
     <string name="online_kpm_download_notification">正在下載 %s。請查看通知列取得下載進度，下載檔案位於 Download資料夾中。</string>
 
+    <!-- Online Script Strings -->
+    <string name="online_script_title">線上腳本</string>
+    <string name="online_script_download_start">開始下載：%s</string>
+    <string name="online_script_download_complete">下載完成：%s</string>
+    <string name="online_script_download_notification">正在下載 %s。下載完成後將自動新增至腳本庫。</string>
+    <string name="online_script_add_success">腳本已新增至腳本庫</string>
+    <string name="online_script_add_failed">新增腳本失敗：%s</string>
+
     <!-- Crash Handle Strings -->
     <string name="crash_handle_title">崩潰報告</string>
     <string name="crash_handle_copy">複製</string>
