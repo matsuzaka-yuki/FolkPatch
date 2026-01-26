@@ -11,7 +11,7 @@
   <string name="kernel_patch">KernelPatch</string>
   <string name="android_patch">AndroidPatch</string>
   <string name="settings_nav_layout_title">ナビゲーションレイアウトの設定</string>
-  <string name="settings_nav_layout_summary">一部のナビゲーションコンポーネントを表示または非表示にします</string>
+  <string name="settings_nav_layout_summary">一部のナビゲーションコンポーネントを表示または非表示にします。</string>
   <string name="settings_show_apm">APM を表示</string>
   <string name="settings_show_kpm">KPM を表示</string>
   <string name="settings_show_superuser">スーパーユーザーを表示</string>
@@ -25,16 +25,16 @@
   <string name="settings_app_language">言語</string>
   <string name="system_default">システムのデフォルト</string>
   <string name="settings_global_namespace_mode">グローバル名前空間モード</string>
-  <string name="settings_global_namespace_mode_summary">すべてのルートセッションはグローバルマウント名前空間を使用します</string>
+  <string name="settings_global_namespace_mode_summary">すべてのルートセッションはグローバルマウント名前空間を使用します。</string>
   <string name="settings_clear_super_key_dialog">続行してもよろしいですか？</string>
   <string name="settings_grid_working_card_hide_check">ステータスアイコンを非表示</string>
-  <string name="settings_grid_working_card_hide_check_summary">動作中のカードのチェックマークまは警告アイコンを非表示にします</string>
+  <string name="settings_grid_working_card_hide_check_summary">動作中のカードのチェックマークまは警告アイコンを非表示にします。</string>
   <string name="settings_grid_working_card_hide_text">ステータステキストを非表示</string>
-  <string name="settings_grid_working_card_hide_text_summary">動作中のカードの「動作中」または「未インストール」のテキストを非表示にします</string>
+  <string name="settings_grid_working_card_hide_text_summary">動作中のカードの「動作中」または「未インストール」のテキストを非表示にします。</string>
   <string name="settings_grid_working_card_hide_mode">動作モードを非表示</string>
-  <string name="settings_grid_working_card_hide_mode_summary">動作中のカードの「完全」または「一部」のテキストを非表示にします</string>
+  <string name="settings_grid_working_card_hide_mode_summary">動作中のカードの「完全」または「一部」のテキストを非表示にします。</string>
   <string name="settings_folkx_engine_title">FolkX アニメーションエンジン</string>
-  <string name="settings_folkx_engine_summary">トップレベルのページの切り替え時にスムーズな物理ベースのスプリングアニメーションを使用します</string>
+  <string name="settings_folkx_engine_summary">トップレベルのページの切り替え時にスムーズな物理ベースのスプリングアニメーションを使用します。</string>
   <string name="settings_folkx_animation_type">アニメーションタイプ</string>
   <string name="settings_folkx_animation_speed">アニメーション速度</string>
   <string name="settings_folkx_animation_linear">リニアモーション</string>
@@ -51,7 +51,7 @@
   <string name="home_learn_apatch">APatch について学習する</string>
   <string name="home_click_to_learn_apatch">APatch の機能と使用方法について学習します</string>
   <string name="settings_hide_apatch_card">APatch について学習するを非表示</string>
-  <string name="settings_hide_apatch_card_summary">APatch について学習するのカードを非表示にします</string>
+  <string name="settings_hide_apatch_card_summary">「APatch について学習する」のカードを非表示にします。</string>
   <string name="about_source_code"><![CDATA[<p>%1$s でソースコードを表示<p/>%2$s のチャンネルに参加<p/>%3$s のグループに参加]]></string>
   <string name="send_log">ログを送信</string>
   <string name="save_log">ログを保存</string>
@@ -64,7 +64,7 @@
   <string name="home_patch_next_step">次のステップ</string>
   <string name="home_not_installed">未インストール</string>
   <string name="home_install_unknown">未インストールまたは認証されていません</string>
-  <string name="home_install_unknown_summary">タップでインストールします</string>
+  <string name="home_install_unknown_summary">タップでインストール</string>
   <string name="home_click_to_install">タップでインストール</string>
   <string name="home_working">動作中</string>
   <string name="home_kp_need_update">新しいバージョンが利用可能です</string>
@@ -120,12 +120,12 @@
   <string name="home_selinux_status_permissive">Permissive</string>
   <string name="home_selinux_status_unknown">不明</string>
   <string name="settings_selinux_mode">SELinux モード</string>
-  <string name="settings_selinux_mode_summary">SELinux の Enforcing モードを選択します</string>
+  <string name="settings_selinux_mode_summary">SELinux の Enforcing モードを選択します。</string>
   <string name="settings_selinux_mode_enforcing">Enforcing (厳格)</string>
   <string name="settings_selinux_mode_permissive">Permissive (寛大)</string>
   <string name="settings_selinux_current_mode">現在: %s</string>
-  <string name="settings_selinux_mode_enforcing_summary">SELinux はアクセスルールを完全に施行します</string>
-  <string name="settings_selinux_mode_permissive_summary">SELinux は違反をログに記録しますが、拒否しません</string>
+  <string name="settings_selinux_mode_enforcing_summary">SELinux はアクセスルールを完全に施行します。</string>
+  <string name="settings_selinux_mode_permissive_summary">SELinux は違反をログに記録しますが、拒否しません。</string>
   <string name="home_device_info">デバイス</string>
   <string name="home_system_version">システム バージョン</string>
   <string name="home_kpatch_version">KernelPatch バージョン</string>
@@ -181,9 +181,9 @@
   <string name="apm_start_downloading">ダウンロードを開始中: %s</string>
   <string name="apm_new_version_available">新しいバージョンの %s が利用可能です。タップしてアップグレードしてください。</string>
   <string name="hide_apatch_manager">APatch Manager を非表示</string>
-  <string name="hide_apatch_manager_summary">ランダムなパッケージ ID とカスタムアプリラベルを持つプロキシアプリをインストールします</string>
+  <string name="hide_apatch_manager_summary">ランダムなパッケージ ID とカスタムアプリラベルを持つプロキシアプリをインストールします。</string>
   <string name="hide_apatch_dialog_new_manager_name">新しいマネージャーの名前</string>
-  <string name="hide_apatch_dialog_summary">ランチャーに表示される新しいアプリラベルとして使用されます</string>
+  <string name="hide_apatch_dialog_summary">ランチャーに表示される新しいアプリラベルとして使用されます。</string>
   <string name="hide_apatch_manager_failure">非表示に失敗しました。バグを報告してください！</string>
   <string name="setting_reset_su_path">su のパスをリセット</string>
   <string name="setting_reset_su_new_path">新しいフルパス</string>
@@ -192,28 +192,26 @@
   <string name="enable_web_debugging">WebView デバッグを有効化</string>
   <string name="enable_web_debugging_summary">WebUI のデバッグに使用できます。必要な場合のみ有効化してください。</string>
   <string name="settings_apm_install_confirm">確認後にインストール</string>
-  <string name="settings_apm_install_confirm_summary">モジュールをインストールする前に確認ダイアログを表示します</string>
+  <string name="settings_apm_install_confirm_summary">モジュールをインストールする前に確認ダイアログを表示します。</string>
   <string name="settings_show_more_module_info">モジュールの詳細を表示</string>
-  <string name="settings_show_more_module_info_summary">モジュールリストにモジュール ID とサイズを表示します</string>
+  <string name="settings_show_more_module_info_summary">モジュールリストにモジュール ID とサイズを表示します。</string>
   <string name="settings_apm_stay_on_page">操作ページに留まる</string>
-  <string name="settings_apm_stay_on_page_summary">モジュールのアクションを実行後に自動で戻らなくなります</string>
+  <string name="settings_apm_stay_on_page_summary">モジュールのアクションを実行後に自動で戻らなくなります。</string>
   <string name="settings_show_disable_all_modules">「すべてのモジュールを無効化」ボタンを表示</string>
-  <string name="settings_show_disable_all_modules_summary">モジュールページにすべてモジュールを無効化するボタンを表示します</string>
+  <string name="settings_show_disable_all_modules_summary">モジュールページにすべてモジュールを無効化するボタンを表示します。</string>
   <string name="settings_disable_module_update_check">モジュールの更新の確認を無効化する</string>
-  <string name="settings_disable_module_update_check_summary">システムモジュールの自動更新の確認を無効化します</string>
+  <string name="settings_disable_module_update_check_summary">システムモジュールの自動更新の確認を無効化します。</string>
   <string name="settings_module_sort_optimization">モジュールの並べ替えを最適化</string>
-  <string name="settings_module_sort_optimization_summary">WebUI とアクションを備えたシステムモジュールを上部に表示します</string>
+  <string name="settings_module_sort_optimization_summary">WebUI とアクションを備えたシステムモジュールを上部に表示します。</string>
   <string name="settings_fold_system_module">システムモジュールを折りたたむ</string>
-  <string name="settings_fold_system_module_summary">モジュールカードをタップで展開/折りたたみのアクションをします</string>
-  <string name="settings_auto_backup">自動バックアップ</string>
-  <string name="settings_auto_backup_summary">毎日1回自動バックアップ</string>
+  <string name="settings_fold_system_module_summary">モジュールカードをタップで展開/折りたたみのアクションをします。</string>
   <string name="settings_backup_password">バックアップパスワード</string>
   <string name="settings_backup_password_hint">バックアップ暗号化パスワード</string>
   <string name="settings_delete_remote_backup">クラウドバックアップを削除</string>
   <string name="delete_remote_backup_confirm">クラウドバックアップを削除しますか？</string>
   <string name="settings_backup_now">今すぐバックアップ</string>
   <string name="settings_encrypt_backup">バックアップを暗号化</string>
-  <string name="settings_encrypt_backup_summary">バックアップを暗号化して保存</string>
+  <string name="settings_encrypt_backup_summary">バックアップを暗号化して保存します。</string>
   <string name="settings_restore_backup">バックアップから復元</string>
   <string name="settings_test_webdav">WebDAV 接続テスト</string>
   <string name="settings_webdav_password">WebDAV パスワード</string>
@@ -224,7 +222,7 @@
   <string name="apm_disable_all_title">すべてのモジュールを無効化</string>
   <string name="apm_disable_all_confirm">すべてのモジュールを無効化してもよろしいですか？通常は OTA アップデートの前に行われます。</string>
   <string name="settings_donot_store_superkey">SuperKey をローカルに保存しない</string>
-  <string name="settings_donot_store_superkey_summary">マネージャーを起動するたびに SuperKey の認証を要求します</string>
+  <string name="settings_donot_store_superkey_summary">マネージャーを起動するたびに SuperKey の認証を要求します。</string>
   <string name="mode_select_page_title">インストール</string>
   <string name="mode_select_page_patch_and_install">パッチとインストール</string>
   <string name="mode_select_page_select_file">boot イメージを選択でパッチ</string>
@@ -247,10 +245,10 @@
   <string name="kpm_control_ok">成功しました！</string>
   <string name="kpm_control_failed">失敗しました！</string>
   <string name="settings_night_mode_follow_sys">システムに従ってダークテーマにする</string>
-  <string name="settings_night_mode_follow_sys_summary">システム設定に基づいてダークテーマを自動的に切り替えます</string>
+  <string name="settings_night_mode_follow_sys_summary">システム設定に基づいてダークテーマを自動的に切り替えます。</string>
   <string name="settings_night_theme_enabled">ダークテーマ</string>
   <string name="settings_use_system_color_theme">システムカラーテーマ</string>
-  <string name="settings_use_system_color_theme_summary">システムによって壁紙から生成されたカラーテーマを使用します</string>
+  <string name="settings_use_system_color_theme_summary">システムによって壁紙から生成されたカラーテーマを使用します。</string>
   <string name="settings_custom_color_theme">カラーテーマ</string>
   <string name="amber_theme">アンバー</string>
   <string name="blue_theme">ブルー</string>
@@ -310,7 +308,7 @@
   <string name="app_title_magicpatch">MagicPatch</string>
   <string name="settings_app_dpi">アプリの DPI</string>
   <string name="settings_magic_mount">Folk Mount API</string>
-  <string name="settings_magic_mount_summary">内蔵のモジュールマウントシステムを有効化します</string>
+  <string name="settings_magic_mount_summary">内蔵のモジュールマウントシステムを有効化します。</string>
   <string name="settings_overlayfs_mode">ハイブリッドマウントモード</string>
   <string name="settings_overlayfs_mode_summary">互換性を最大限に高めるために、Magic Mount の自動フォールバックを備えた OverlayFS を使用します。</string>
   <string name="settings_app_title">アプリのタイトル</string>
@@ -323,7 +321,7 @@
   <string name="settings_custom_background_day_dim">日中時に背景を暗転</string>
   <string name="settings_custom_background_night_dim">夜間時に背景を暗転</string>
   <string name="settings_multi_background_mode">マルチ背景モード</string>
-  <string name="settings_multi_background_mode_summary">ページごとの背景画像を設定します</string>
+  <string name="settings_multi_background_mode_summary">ページごとの背景画像を設定します。</string>
   <string name="settings_select_home_background">ホームページの背景</string>
   <string name="settings_select_kernel_background">カーネルモジュールの背景</string>
   <string name="settings_select_superuser_background">スーパーユーザーの背景</string>
@@ -333,7 +331,7 @@
   <string name="settings_custom_font">カスタムフォント</string>
   <string name="settings_select_font_file">フォントファイルを選択</string>
   <string name="settings_custom_font_enabled">カスタムフォントが有効化されています</string>
-  <string name="settings_custom_font_summary">アプリにカスタム TTF フォントを使用します</string>
+  <string name="settings_custom_font_summary">アプリにカスタム TTF フォントを使用します。</string>
   <string name="settings_font_selected">カスタムフォントが選択されています</string>
   <string name="settings_custom_font_error">フォントファイルの保存に失敗しました</string>
   <string name="settings_custom_font_saved">カスタムフォントの保存に成功しました</string>
@@ -356,7 +354,7 @@
   <string name="launcher_icon_kernelsu">KernelSU</string>
   <!-- Video Background Settings -->
   <string name="settings_video_background">動画の背景</string>
-  <string name="settings_video_background_summary">動画を背景として使用します</string>
+  <string name="settings_video_background_summary">動画を背景として使用します。</string>
   <string name="settings_select_video">動画を選択</string>
   <string name="settings_video_selected">動画が選択されています</string>
   <string name="settings_clear_video_background">動画の背景を消去</string>
@@ -370,7 +368,7 @@
   <!-- KPM AutoLoad Strings -->
   <string name="kpm_autoload_title">KPM を自動で読み込み</string>
   <string name="kpm_autoload_enabled">自動で読み込みが有効化されています</string>
-  <string name="kpm_autoload_enabled_summary">アプリの起動時に KP モジュールを自動で読み込みます</string>
+  <string name="kpm_autoload_enabled_summary">アプリの起動時に KP モジュールを自動で読み込みます。</string>
   <string name="kpm_autoload_json_config">JSON を構成</string>
   <string name="kpm_autoload_json_label">JSON を構成します</string>
   <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
@@ -397,11 +395,11 @@
   <string name="restore_failed">復元失敗: %s</string>
   <string name="delete_failed">削除失敗: %s</string>
   <string name="delete_success">削除成功</string>
-  <string name="apm_copy_list_title">Copy List</string>
-  <string name="apm_copy_list_success">Module list copied</string>
+  <string name="apm_copy_list_title">リストをコピー</string>
+  <string name="apm_copy_list_success">モジュールのリストをコピーしました</string>
   <!-- APM Bulk Install Strings -->
   <string name="apm_bulk_install_title">APM を一括インストール</string>
-  <string name="apm_bulk_install_list_title">モジュールの一覧</string>
+  <string name="apm_bulk_install_list_title">モジュールのリスト</string>
   <string name="apm_bulk_install_add">モジュールを追加</string>
   <string name="apm_bulk_install_empty">モジュールが追加されていません</string>
   <string name="apm_bulk_install_action">一括インストール</string>
@@ -409,7 +407,7 @@
   <string name="apm_bulk_install_log_start">一括インストールを開始中...</string>
   <string name="apm_bulk_install_log_installing">「%1$s」をインストール中</string>
   <string name="apm_batch_install_full_process">一括インストールをフルプロセスで実行する</string>
-  <string name="apm_batch_install_full_process_summary">システムモジュールの一括インストールでフルプロセスを使用して実行します</string>
+  <string name="apm_batch_install_full_process_summary">システムモジュールの一括インストールでフルプロセスを使用して実行します。</string>
   <string name="next_module">次のモジュール</string>
   <string name="apm_bulk_install_log_installed">「%s」をインストールしました。</string>
   <string name="apm_bulk_install_log_done">すべての操作が完了しました。</string>
@@ -430,26 +428,27 @@
   <string name="home_hide_su_path">su 実行可能パスを非表示</string>
   <string name="home_hide_kpatch_version">Kernel Patch バージョンを非表示</string>
   <string name="home_hide_fingerprint">フィンガープリントを非表示</string>
-  <string name="home_hide_su_path_summary">su 実行可能パス情報のカードを非表示にします</string>
-  <string name="home_hide_kpatch_version_summary">Kernel Patch バージョン情報のカードを非表示にします</string>
-  <string name="home_hide_fingerprint_summary">フィンガープリント情報のカードを非表示にします</string>
+  <string name="home_hide_su_path_summary">su 実行可能パス情報のカードを非表示にします。</string>
+  <string name="home_hide_kpatch_version_summary">Kernel Patch バージョン情報のカードを非表示にします。</string>
+  <string name="home_hide_fingerprint_summary">フィンガープリント情報のカードを非表示にします。</string>
   <string name="kpm_page_first_time_title">警告</string>
   <string name="kpm_page_first_time_message">カーネルモジュールは boot 実装を直接的に変更します。システムモジュールとは異なり、優れた復旧メカニズムが備わっていないため fastboot を起動して修正するしか方法がありません。boot に埋め込む前に、モジュールを読み込んで問題がないことを確認しておくことを推奨します。読み込まないと使用できないモジュールの場合は、KPM の自動読み込み機能を試すことができます。カーネルモジュールについてよく理解していない場合は、この機能を使用しないでください！</string>
   <!-- Auto Backup Strings -->
   <string name="settings_auto_backup_module">システムモジュールを自動でバックアップ</string>
-  <string name="settings_auto_backup_module_summary">インストール時にモジュールファイルを自動でプライベートディレクトリにバックアップします</string>
+  <string name="settings_auto_backup_module_summary">インストール時にモジュールファイルを自動でプライベートディレクトリにバックアップします。</string>
   <string name="settings_open_backup_dir">バックアップディレクトリを開く</string>
   <string name="backup_dir_empty">バックアップディレクトリは空です</string>
   <string name="backup_dir_open_failed">バックアップディレクトリの展開に失敗しました</string>
   <string name="auto_backup_failed">自動バックアップが失敗: %s</string>
   <string name="auto_backup_success">自動バックアップが成功: %s</string>
   <string name="settings_auto_backup_boot">boot を自動でバックアップ</string>
-  <string name="settings_auto_backup_boot_summary">boot をローカルストレージに自動でバックアップします (Downloads/FolkPatch/BootBackups)</string>
+  <string name="settings_auto_backup_boot_summary">boot をローカルストレージに自動でバックアップします (Downloads/FolkPatch/BootBackups)。</string>
   <!-- Home Layout Strings -->
   <string name="settings_home_layout_style">ホームレイアウトのスタイル</string>
   <string name="settings_home_layout_default">リスト UI</string>
   <string name="settings_home_layout_grid">グリッド UI</string>
   <string name="settings_home_layout_focus">フォーカス UI</string>
+  <string name="settings_home_layout_sign">サイン UI</string>
   <string name="unofficial_version_title">非公式なバージョン</string>
   <string name="unofficial_version_message">非公式な FolkPatch を使用しています。公式のアプリをダウンロードしてください！</string>
   <string name="go_to_github">GitHub を開く</string>
@@ -476,7 +475,7 @@
   <!-- Grid Working Card Background -->
   <string name="settings_grid_working_card_background">動作中カードの背景</string>
   <string name="settings_grid_working_card_background_enabled">カスタムカード背景が有効化されています</string>
-  <string name="settings_grid_working_card_background_summary">動作中カードのカスタム背景画像です</string>
+  <string name="settings_grid_working_card_background_summary">動作中カードのカスタム背景画像です。</string>
   <string name="settings_grid_working_card_background_selected">背景が選択されています</string>
   <string name="settings_grid_working_card_dual_opacity">日中/夜間でのデュアル透過を有効化する</string>
   <string name="settings_grid_working_card_day_opacity">日中モードのカード透過</string>
@@ -490,9 +489,9 @@
   <string name="action_biometric">生体認証</string>
   <string name="msg_biometric">生体認証で確認してください</string>
   <string name="settings_biometric_login">生体認証</string>
-  <string name="settings_biometric_login_summary">アプリを開くときに生体認証を要求します</string>
+  <string name="settings_biometric_login_summary">アプリを開くときに生体認証を要求します。</string>
   <string name="settings_strong_biometric">強力な生体認証</string>
-  <string name="settings_strong_biometric_summary">モジュールのインストール/アンインストール/無効化で認証を要求します</string>
+  <string name="settings_strong_biometric_summary">モジュールのインストール/アンインストール/無効化で認証を要求します。</string>
   <!-- Theme Store Strings -->
   <string name="theme_store_title">テーマストア</string>
   <string name="theme_source_official">公式</string>
@@ -506,7 +505,7 @@
   <string name="theme_store_search_hint">テーマを検索...</string>
   <!-- Update Check Strings -->
   <string name="settings_auto_update_check">自動で更新を確認する</string>
-  <string name="settings_auto_update_check_summary">アプリの開始時に更新を自動で確認します</string>
+  <string name="settings_auto_update_check_summary">アプリの開始時に更新を自動で確認します。</string>
   <string name="settings_check_update">更新を確認</string>
   <string name="update_available_title">更新が利用可能です</string>
   <string name="update_available_message">バージョンが低すぎることが検出されました。新しいバージョンをダウンロードしますか？</string>
@@ -516,7 +515,7 @@
   <string name="update_error">更新の確認でエラーが発生しました</string>
   <string name="settings_category_general">一般</string>
   <string name="settings_app_list_loading_scheme">アプリリストの読み込み方式</string>
-  <string name="settings_app_list_loading_scheme_summary">アプリリストの読み込み方式を選択します</string>
+  <string name="settings_app_list_loading_scheme_summary">アプリリストの読み込み方式を選択します。</string>
   <string name="app_list_loading_scheme_root_service">root サービス (デフォルト)</string>
   <string name="app_list_loading_scheme_package_manager">パッケージマネージャー (システム API)</string>
   <string name="app_list_loading_scheme_dialog_title">スキームを読み込み中</string>
@@ -526,7 +525,7 @@
   <string name="settings_category_security">セキュリティ</string>
   <!-- Background Music Strings -->
   <string name="settings_background_music">BGM</string>
-  <string name="settings_background_music_summary">アプリがフォアグラウンド時に BGM を再生します</string>
+  <string name="settings_background_music_summary">アプリがフォアグラウンド時に BGM を再生します。</string>
   <string name="settings_background_music_playing">再生中: %s</string>
   <string name="settings_background_music_enabled">BGM が有効化されています</string>
   <string name="settings_select_music_file">音楽ファイルを選択</string>
@@ -534,9 +533,9 @@
   <string name="settings_clear_music">音楽を消去</string>
   <string name="settings_clear_music_confirm">BGM を消去しますか？</string>
   <string name="settings_music_auto_play">自動再生</string>
-  <string name="settings_music_auto_play_summary">アプリを開いたときに音楽を自動再生します</string>
+  <string name="settings_music_auto_play_summary">アプリを開いたときに音楽を自動再生します。</string>
   <string name="settings_music_looping">ループ再生</string>
-  <string name="settings_music_looping_summary">現在の曲をループ再生します</string>
+  <string name="settings_music_looping_summary">現在の曲をループ再生します。</string>
   <string name="settings_music_volume">音量</string>
   <string name="settings_music_saved">音楽の保存に成功しました</string>
   <string name="settings_music_save_error">音楽の保存に失敗しました</string>
@@ -581,9 +580,9 @@
   <string name="home_zygisk_implement">Zygisk の実装</string>
   <string name="home_mount_implement">マウントの実装</string>
   <string name="settings_list_working_card_hide_mode">一部/完全のカードを非表示</string>
-  <string name="settings_list_working_card_hide_mode_summary">動作モードの小さなカードを非表示にします</string>
+  <string name="settings_list_working_card_hide_mode_summary">動作モードの小さなカードを非表示にします。</string>
   <string name="settings_list_card_hide_status_badge">クラシックの絵文字を使用する</string>
-  <string name="settings_list_card_hide_status_badge_summary">ホームのステータスバッジにクラシックの絵文字を使用します</string>
+  <string name="settings_list_card_hide_status_badge_summary">ホームのステータスバッジにクラシックの絵文字を使用します。</string>
   <!-- Install Mode Select -->
   <string name="kp_install_methods">KernelPatch をパッチ/インストール</string>
   <string name="restore_boot_methods">boot パーティションを復元する boot を選択してください</string>
@@ -595,12 +594,12 @@
   <string name="patch_write_failed">パッチ済みの boot.img のフラッシュに失敗しました</string>
   <!-- Badge Count Settings -->
   <string name="enable_badge_count">バッジカウントの設定</string>
-  <string name="enable_badge_count_summary">ナビゲーション項目のバッジカウント表示を設定します</string>
+  <string name="enable_badge_count_summary">ナビゲーション項目のバッジカウント表示を設定します。</string>
   <string name="badge_superuser">スーパーユーザーバッジを表示</string>
   <string name="badge_apm">APM バッジを表示</string>
   <string name="badge_kernel">カーネルモジュールバッジを表示</string>
   <string name="settings_sound_effect">サウンド効果</string>
-  <string name="settings_sound_effect_summary">タップ時にサウンド効果を再生します</string>
+  <string name="settings_sound_effect_summary">タップ時にサウンド効果を再生します。</string>
   <string name="settings_sound_effect_enabled">有効</string>
   <string name="settings_sound_effect_playing">選択済み: %s</string>
   <string name="settings_select_sound_effect">サウンド効果を選択</string>
@@ -614,7 +613,7 @@
   <!-- Backup Settings -->
   <string name="settings_category_backup">バックアップ</string>
   <string name="settings_enable_cloud_backup">クラウドバックアップを有効化する</string>
-  <string name="settings_enable_cloud_backup_summary">フラッシュされたモジュールをクラウドサービスに自動でバックアップします</string>
+  <string name="settings_enable_cloud_backup_summary">フラッシュされたモジュールをクラウドサービスに自動でバックアップします。</string>
   <string name="settings_configure_webdav">WebDAV サービスを構成</string>
   <string name="webdav_config_title">WebDAV の構成</string>
   <string name="webdav_url">WebDAV の URL</string>
@@ -633,7 +632,7 @@
   <string name="webdav_no_logs">ログは見つかりません</string>
   <string name="webdav_clear_logs">消去</string>
   <string name="settings_enable_local_backup">ローカルバックアップを有効化する</string>
-  <string name="settings_enable_local_backup_summary">ローカルストレージにバックアップします (Downloads/FolkPatch/ModuleBackups)</string>
+  <string name="settings_enable_local_backup_summary">ローカルストレージにバックアップします (Downloads/FolkPatch/ModuleBackups)。</string>
   <string name="close">閉じる</string>
   <string name="script_library">スクリプトライブラリ</string>
   <string name="script_library_title">スクリプトライブラリ</string>
