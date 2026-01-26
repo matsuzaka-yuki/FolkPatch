@@ -33,6 +33,16 @@
 -keep class me.bmax.apatch.IAPRootService { *; }
 -keep class me.bmax.apatch.IAPRootService$Stub { *; }
 -keep class rikka.parcelablelist.ParcelableListSlice { *; }
+# Keep ScriptInfo for Gson serialization in release
+-keep class me.bmax.apatch.data.ScriptInfo { *; }
+-keepclassmembers class me.bmax.apatch.data.ScriptInfo { *; }
+
+# Gson
+-keepattributes Signature
+-keepattributes *Annotation*
+-keep class sun.misc.Unsafe { *; }
+-keep class com.google.gson.** { *; }
+-keep class * extends com.google.gson.reflect.TypeToken
 
 # Kotlin
 -assumenosideeffects class kotlin.jvm.internal.Intrinsics {

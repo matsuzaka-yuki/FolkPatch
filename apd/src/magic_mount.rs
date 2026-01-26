@@ -173,13 +173,15 @@ fn collect_module_files() -> Result<Option<Node>> {
             continue;
         }
 
-        if !entry.path().join("/system").is_dir() {
+        let mod_system = entry.path().join("system");
+
+        if !mod_system.is_dir() {
             continue;
         }
 
         log::debug!("collecting {}", entry.path().display());
 
-        has_file |= system.collect_module_files(entry.path().join("system"))?;
+        has_file |= system.collect_module_files(mod_system)?;
     }
 
     if has_file {

@@ -98,6 +98,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.isActive
 import kotlin.system.exitProcess
 import me.zhanghai.android.appiconloader.coil.AppIconKeyer
 import me.bmax.apatch.util.UpdateChecker
@@ -307,13 +308,38 @@ class MainActivity : AppCompatActivity() {
 
             // Start badge count refresh coroutine
             LaunchedEffect(Unit) {
-                while (true) {
-                    try {
-                        me.bmax.apatch.util.AppData.DataRefreshManager.refreshData()
-                    } catch (e: Exception) {
-                        android.util.Log.e("BadgeCount", "Failed to refresh badge data", e)
+                val badgePrefs = APApplication.sharedPreferences
+                var lastEnableSuperUser = badgePrefs.getBoolean("badge_superuser", true)
+                var lastEnableApm = badgePrefs.getBoolean("badge_apm", true)
+                var lastEnableKernel = badgePrefs.getBoolean("badge_kernel", true)
+
+                while (isActive) {
+                    val enableSuperUser = badgePrefs.getBoolean("badge_superuser", true)
+                    val enableApm = badgePrefs.getBoolean("badge_apm", true)
+                    val enableKernel = badgePrefs.getBoolean("badge_kernel", true)
+                    val forceRefresh =
+                        (!lastEnableSuperUser && enableSuperUser) ||
+                        (!lastEnableApm && enableApm) ||
+                        (!lastEnableKernel && enableKernel)
+
+                    lastEnableSuperUser = enableSuperUser
+                    lastEnableApm = enableApm
+                    lastEnableKernel = enableKernel
+
+                    if (enableSuperUser || enableApm || enableKernel) {
+                        try {
+                            me.bmax.apatch.util.AppData.DataRefreshManager.refreshData(
+                                enableSuperUser = enableSuperUser,
+                                enableApm = enableApm,
+                                enableKernel = enableKernel,
+                                force = forceRefresh
+                            )
+                        } catch (e: Exception) {
+                            android.util.Log.e("BadgeCount", "Failed to refresh badge data", e)
+                        }
                     }
-                    delay(5000)  // Refresh every 5 seconds
+
+                    delay(if (enableSuperUser || enableApm || enableKernel) 15000L else 60000L)
                 }
             }
 

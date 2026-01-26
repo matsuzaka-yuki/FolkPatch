@@ -44,7 +44,10 @@ private fun getKPatchPath(): String {
 
 class RootShellInitializer : Shell.Initializer() {
     override fun onInit(context: Context, shell: Shell): Boolean {
-        shell.newJob().add("export PATH=\$PATH:/system_ext/bin:/vendor/bin").exec()
+        shell.newJob().add(
+            "export PATH=\$PATH:/system_ext/bin:/vendor/bin:${APApplication.APATCH_FOLDER}bin",
+            "export BUSYBOX=${APApplication.APATCH_FOLDER}bin/busybox"
+        ).exec()
         return true
     }
 }

@@ -450,7 +450,6 @@
   <string name="settings_home_layout_default">リスト UI</string>
   <string name="settings_home_layout_grid">グリッド UI</string>
   <string name="settings_home_layout_focus">フォーカス UI</string>
-  <string name="settings_home_layout_sign">サイン UI</string>
   <string name="unofficial_version_title">非公式なバージョン</string>
   <string name="unofficial_version_message">非公式な FolkPatch を使用しています。公式のアプリをダウンロードしてください！</string>
   <string name="go_to_github">GitHub を開く</string>

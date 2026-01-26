@@ -1,8 +1,8 @@
 package me.bmax.apatch.util
 
+import android.os.SystemClock
 import android.util.Log
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -23,6 +23,8 @@ object AppData {
         private val _apmModuleCount = MutableStateFlow(0)
         private val _kernelModuleCount = MutableStateFlow(0)
 
+        private var lastRefreshAt = 0L
+
         // Public read-only state flows
         val superuserCount: StateFlow<Int> = _superuserCount.asStateFlow()
         val apmModuleCount: StateFlow<Int> = _apmModuleCount.asStateFlow()
@@ -31,10 +33,43 @@ object AppData {
         /**
          * Refresh all data counts
          */
-        suspend fun refreshData() = withContext(Dispatchers.IO) {
-            _superuserCount.value = getSuperuserCount()
-            _apmModuleCount.value = getApmModuleCount()
-            _kernelModuleCount.value = getKernelModuleCount()
+        suspend fun refreshData(
+            enableSuperUser: Boolean,
+            enableApm: Boolean,
+            enableKernel: Boolean,
+            minIntervalMs: Long = 15000L,
+            force: Boolean = false
+        ) = withContext(Dispatchers.IO) {
+            if (!enableSuperUser && !enableApm && !enableKernel) {
+                return@withContext
+            }
+
+            val now = SystemClock.elapsedRealtime()
+            if (!force && now - lastRefreshAt < minIntervalMs) {
+                return@withContext
+            }
+            lastRefreshAt = now
+
+            if (enableSuperUser) {
+                val count = getSuperuserCount()
+                if (_superuserCount.value != count) {
+                    _superuserCount.value = count
+                }
+            }
+
+            if (enableApm) {
+                val count = getApmModuleCount()
+                if (_apmModuleCount.value != count) {
+                    _apmModuleCount.value = count
+                }
+            }
+
+            if (enableKernel) {
+                val count = getKernelModuleCount()
+                if (_kernelModuleCount.value != count) {
+                    _kernelModuleCount.value = count
+                }
+            }
         }
     }
 
@@ -56,8 +91,8 @@ object AppData {
     /**
      * Get APM module count
      */
-    private suspend fun getApmModuleCount(): Int = withContext(Dispatchers.IO) {
-        try {
+    private suspend fun getApmModuleCount(): Int {
+        return try {
             val result = listModules()
             val array = JSONArray(result)
             array.length()
@@ -79,5 +114,4 @@ object AppData {
         }
     }
 }
-
 

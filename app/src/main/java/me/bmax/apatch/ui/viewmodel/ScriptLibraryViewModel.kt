@@ -2,10 +2,12 @@ package me.bmax.apatch.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import me.bmax.apatch.data.ScriptInfo
 import me.bmax.apatch.util.ScriptLibraryManager
 import java.io.File
@@ -26,7 +28,7 @@ class ScriptLibraryViewModel : ViewModel() {
     }
 
     fun loadScripts() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             _isLoading.value = true
             _error.value = null
             try {
@@ -41,7 +43,7 @@ class ScriptLibraryViewModel : ViewModel() {
     }
 
     fun addScript(sourceFile: File, alias: String, onSuccess: () -> Unit, onError: (String) -> Unit) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             _isLoading.value = true
             _error.value = null
             try {
@@ -53,15 +55,23 @@ class ScriptLibraryViewModel : ViewModel() {
                     
                     val saveSuccess = ScriptLibraryManager.saveScripts(updatedList)
                     if (saveSuccess) {
-                        onSuccess()
+                        withContext(Dispatchers.Main) {
+                            onSuccess()
+                        }
                     } else {
-                        onError("保存配置失败")
+                        withContext(Dispatchers.Main) {
+                            onError("Failed to save configuration")
+                        }
                     }
                 } else {
-                    onError("脚本文件复制失败")
+                    withContext(Dispatchers.Main) {
+                        onError("Failed to copy script file")
+                    }
                 }
             } catch (e: Exception) {
-                onError(e.message ?: "未知错误")
+                withContext(Dispatchers.Main) {
+                    onError(e.message ?: "Unknown error")
+                }
             } finally {
                 _isLoading.value = false
             }
@@ -69,7 +79,7 @@ class ScriptLibraryViewModel : ViewModel() {
     }
 
     fun removeScript(scriptInfo: ScriptInfo, onSuccess: () -> Unit, onError: (String) -> Unit) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             _isLoading.value = true
             _error.value = null
             try {
@@ -81,15 +91,23 @@ class ScriptLibraryViewModel : ViewModel() {
                     
                     val saveSuccess = ScriptLibraryManager.saveScripts(updatedList)
                     if (saveSuccess) {
-                        onSuccess()
+                        withContext(Dispatchers.Main) {
+                            onSuccess()
+                        }
                     } else {
-                        onError("保存配置失败")
+                        withContext(Dispatchers.Main) {
+                            onError("Failed to save configuration")
+                        }
                     }
                 } else {
-                    onError("删除脚本文件失败")
+                    withContext(Dispatchers.Main) {
+                        onError("Failed to delete script file")
+                    }
                 }
             } catch (e: Exception) {
-                onError(e.message ?: "未知错误")
+                withContext(Dispatchers.Main) {
+                    onError(e.message ?: "Unknown error")
+                }
             } finally {
                 _isLoading.value = false
             }
@@ -97,21 +115,25 @@ class ScriptLibraryViewModel : ViewModel() {
     }
 
     fun executeScript(scriptInfo: ScriptInfo, onComplete: (ScriptLibraryManager.ScriptExecutionResult) -> Unit) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             _isLoading.value = true
             _error.value = null
             try {
                 val result = ScriptLibraryManager.executeScript(scriptInfo)
-                onComplete(result)
+                withContext(Dispatchers.Main) {
+                    onComplete(result)
+                }
             } catch (e: Exception) {
-                onComplete(
-                    ScriptLibraryManager.ScriptExecutionResult(
-                        success = false,
-                        exitCode = -1,
-                        output = "",
-                        error = e.message ?: "执行失败"
+                withContext(Dispatchers.Main) {
+                    onComplete(
+                        ScriptLibraryManager.ScriptExecutionResult(
+                            success = false,
+                            exitCode = -1,
+                            output = "",
+                            error = e.message ?: "Execution failed"
+                        )
                     )
-                )
+                }
             } finally {
                 _isLoading.value = false
             }
