@@ -20,6 +20,12 @@
 
     <string name="settings_nav_layout_title">Ustawienia układu nawigacji</string>
     <string name="settings_nav_layout_summary">Ukryj lub pokaż niektóre elementy nawigacji</string>
+    <string name="settings_nav_scheme">Schemat nawigacji</string>
+    <string name="settings_nav_mode">Tryb paska nawigacji</string>
+    <string name="settings_nav_mode_summary">Wybierz sposób wyświetlania paska nawigacji</string>
+    <string name="settings_nav_mode_auto">Automatycznie (na podstawie szerokości ekranu)</string>
+    <string name="settings_nav_mode_bottom">Zawsze dolny pasek</string>
+    <string name="settings_nav_mode_rail">Zawsze boczny pasek</string>
     <string name="settings_show_apm">Pokaż APM</string>
     <string name="settings_show_kpm">Pokaż KPM</string>
     <string name="settings_show_superuser">Pokaż SuperUser</string>

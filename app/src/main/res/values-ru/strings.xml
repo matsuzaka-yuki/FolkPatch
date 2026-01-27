@@ -21,6 +21,12 @@
 
     <string name="settings_nav_layout_title">Настройки макета навигации</string>
     <string name="settings_nav_layout_summary">Скрыть или показать некоторые компоненты навигации</string>
+    <string name="settings_nav_scheme">Схема навигации</string>
+    <string name="settings_nav_mode">Режим навигационной панели</string>
+    <string name="settings_nav_mode_summary">Выберите способ отображения навигационной панели</string>
+    <string name="settings_nav_mode_auto">Автоматически (на основе ширины экрана)</string>
+    <string name="settings_nav_mode_bottom">Всегда нижняя панель</string>
+    <string name="settings_nav_mode_rail">Всегда боковая панель</string>
     <string name="settings_show_apm">Показать APM</string>
     <string name="settings_show_kpm">Показать KPM</string>
     <string name="settings_show_superuser">Показать Суперпользователя</string>

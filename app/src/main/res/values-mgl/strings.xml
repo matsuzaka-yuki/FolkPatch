@@ -18,6 +18,12 @@
 
     <string name="settings_nav_layout_title">星图导航设定</string>
     <string name="settings_nav_layout_summary">隐藏或显示星图导航的部分组件</string>
+    <string name="settings_nav_scheme">星图导航方案</string>
+    <string name="settings_nav_mode">星图导航栏模式</string>
+    <string name="settings_nav_mode_summary">选择星图导航栏的显示方式</string>
+    <string name="settings_nav_mode_auto">魔法自动 (根据魔法阵宽度)</string>
+    <string name="settings_nav_mode_bottom">始终底部星图导航栏</string>
+    <string name="settings_nav_mode_rail">始终侧边星图导航栏</string>
     <string name="settings_show_apm">显示星之魔法阵</string>
     <string name="settings_show_kpm">显示心之结晶</string>
     <string name="settings_show_superuser">显示魔法使</string>

@@ -18,6 +18,12 @@
 
     <string name="settings_nav_layout_title">Cài đặt bố cục điều hướng</string>
     <string name="settings_nav_layout_summary">Ẩn hoặc hiển thị một số thành phần điều hướng</string>
+    <string name="settings_nav_scheme">Phương thức điều hướng</string>
+    <string name="settings_nav_mode">Chế độ thanh điều hướng</string>
+    <string name="settings_nav_mode_summary">Chọn cách hiển thị thanh điều hướng</string>
+    <string name="settings_nav_mode_auto">Tự động (dựa trên chiều rộng màn hình)</string>
+    <string name="settings_nav_mode_bottom">Luôn ở thanh dưới</string>
+    <string name="settings_nav_mode_rail">Luôn ở thanh bên</string>
     <string name="settings_show_apm">Hiển thị APM</string>
     <string name="settings_show_kpm">Hiển thị KPM</string>
     <string name="settings_show_superuser">Hiển thị SuperUser</string>
