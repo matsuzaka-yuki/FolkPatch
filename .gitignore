@@ -17,3 +17,4 @@ keystore.properties
 app/src/main/resources/
 private
 .claude/
+.qoder

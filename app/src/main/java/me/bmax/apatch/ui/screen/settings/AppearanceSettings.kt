@@ -558,6 +558,46 @@ fun AppearanceSettings(
                 }
             }
             
+            // Navigation Scheme Settings (独立设置项)
+            val navSchemeTitle = stringResource(id = R.string.settings_nav_scheme)
+            var currentNavMode by remember { mutableStateOf(prefs.getString("nav_mode", "auto") ?: "auto") }
+            val navSchemeLabel = when (currentNavMode) {
+                "rail" -> stringResource(R.string.settings_nav_mode_rail)
+                "bottom" -> stringResource(R.string.settings_nav_mode_bottom)
+                else -> stringResource(R.string.settings_nav_mode_auto)
+            }
+            var showNavSchemeDialog by remember { mutableStateOf(false) }
+            val showNavScheme = matchAppearance || shouldShow(searchText, navSchemeTitle, navSchemeLabel)
+            
+            if (showNavScheme) {
+                ListItem(
+                    colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+                    headlineContent = { Text(text = navSchemeTitle) },
+                    modifier = Modifier.clickable { showNavSchemeDialog = true },
+                    supportingContent = {
+                        Text(
+                            text = navSchemeLabel,
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.outline
+                        )
+                    },
+                    leadingContent = { Icon(Icons.Filled.SwapHoriz, null) }
+                )
+            }
+            
+            if (showNavSchemeDialog) {
+                NavModeChooseDialog(
+                    showDialog = remember { mutableStateOf(true) }.apply { value = showNavSchemeDialog },
+                    currentMode = currentNavMode,
+                    onModeSelected = { mode ->
+                        currentNavMode = mode
+                        prefs.edit().putString("nav_mode", mode).apply()
+                        showNavSchemeDialog = false
+                    },
+                    onDismiss = { showNavSchemeDialog = false }
+                )
+            }
+            
             // ... (Rest of appearance settings, similar pattern)
             // Due to length, I'm abbreviating slightly, but logic is preserved.
             
@@ -1706,6 +1746,61 @@ fun ThemeImportDialog(
                     }
                 }
             }
+            val dialogWindowProvider = LocalView.current.parent as DialogWindowProvider
+            APDialogBlurBehindUtils.setupWindowBlurListener(dialogWindowProvider.window)
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun NavModeChooseDialog(
+    showDialog: MutableState<Boolean>,
+    currentMode: String,
+    onModeSelected: (String) -> Unit,
+    onDismiss: () -> Unit
+) {
+    val modes = listOf(
+        "auto" to R.string.settings_nav_mode_auto,
+        "bottom" to R.string.settings_nav_mode_bottom,
+        "rail" to R.string.settings_nav_mode_rail
+    )
+
+    BasicAlertDialog(
+        onDismissRequest = onDismiss,
+        properties = DialogProperties(
+            decorFitsSystemWindows = true,
+            usePlatformDefaultWidth = false,
+        )
+    ) {
+        Surface(
+            modifier = Modifier
+                .width(310.dp)
+                .wrapContentHeight(),
+            shape = RoundedCornerShape(30.dp),
+            tonalElevation = AlertDialogDefaults.TonalElevation,
+            color = AlertDialogDefaults.containerColor,
+        ) {
+            Column {
+                modes.forEach { (mode, labelRes) ->
+                    ListItem(
+                        headlineContent = { Text(text = stringResource(labelRes)) },
+                        modifier = Modifier.clickable {
+                            onModeSelected(mode)
+                        },
+                        trailingContent = {
+                            if (mode == currentMode) {
+                                Icon(
+                                    imageVector = Icons.Filled.Check,
+                                    contentDescription = null,
+                                    tint = MaterialTheme.colorScheme.primary
+                                )
+                            }
+                        }
+                    )
+                }
+            }
+
             val dialogWindowProvider = LocalView.current.parent as DialogWindowProvider
             APDialogBlurBehindUtils.setupWindowBlurListener(dialogWindowProvider.window)
         }

@@ -28,6 +28,9 @@ import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationRail
+import androidx.compose.material3.NavigationRailItem
+import androidx.compose.material3.NavigationRailDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
@@ -84,11 +87,14 @@ import androidx.compose.material3.Surface
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialogDefaults
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.background
 import androidx.compose.ui.window.DialogProperties
@@ -442,165 +448,65 @@ class MainActivity : AppCompatActivity() {
                     )
                 }
 
-                Scaffold(
-                    bottomBar = { BottomBar(navController) }
-                ) { _ ->
-                    CompositionLocalProvider(
-                        LocalSnackbarHost provides snackBarHostState,
-                    ) {
-                        DestinationsNavHost(
-                            modifier = Modifier.padding(bottom = 80.dp),
-                            navGraph = NavGraphs.root,
-                            navController = navController,
-                            engine = rememberNavHostEngine(navHostContentAlignment = Alignment.TopCenter),
-                            defaultTransitions = object : NavHostAnimatedDestinationStyle() {
-                                override val enterTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition =
-                                    {
-                                        // If the target is a detail page (not a bottom navigation page), slide in from the right
-                                        if (targetState.destination.route !in bottomBarRoutes) {
-                                            slideInHorizontally(initialOffsetX = { it })
-                                        } else {
-                                            // Otherwise (switching between bottom navigation pages)
-                                            if (folkXEngineEnabled) {
-                                                val initialRoute = initialState.destination.route
-                                                val targetRoute = targetState.destination.route
-                                                val initialIndex = BottomBarDestination.entries.indexOfFirst { it.direction.route == initialRoute }
-                                                val targetIndex = BottomBarDestination.entries.indexOfFirst { it.direction.route == targetRoute }
+                // 读取导航栏模式设置
+                var navMode by remember { mutableStateOf(prefs.getString("nav_mode", "auto") ?: "auto") }
+                
+                DisposableEffect(Unit) {
+                    val navModeListener = SharedPreferences.OnSharedPreferenceChangeListener { sharedPrefs, key ->
+                        if (key == "nav_mode") {
+                            navMode = sharedPrefs.getString("nav_mode", "auto") ?: "auto"
+                        }
+                    }
+                    prefs.registerOnSharedPreferenceChangeListener(navModeListener)
+                    onDispose {
+                        prefs.unregisterOnSharedPreferenceChangeListener(navModeListener)
+                    }
+                }
 
-                                                val stiffness = 300f * folkXAnimationSpeed * folkXAnimationSpeed
-                                                val duration300 = (300 / folkXAnimationSpeed).toInt()
-                                                val duration600 = (600 / folkXAnimationSpeed).toInt()
-
-                                                if (initialIndex != -1 && targetIndex != -1) {
-                                                    when (folkXAnimationType) {
-                                                        "spatial" -> {
-                                                            if (targetIndex > initialIndex) {
-                                                                scaleIn(initialScale = 0.9f, animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness)) + fadeIn(animationSpec = tween(duration300))
-                                                            } else {
-                                                                scaleIn(initialScale = 1.1f, animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness)) + fadeIn(animationSpec = tween(duration300))
-                                                            }
-                                                        }
-                                                        "fade" -> {
-                                                            fadeIn(animationSpec = tween(duration300))
-                                                        }
-                                                        "vertical" -> {
-                                                            if (targetIndex > initialIndex) {
-                                                                slideInVertically(animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness), initialOffsetY = { height: Int -> height }) + fadeIn()
-                                                            } else {
-                                                                slideInVertically(animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness), initialOffsetY = { height: Int -> -height }) + fadeIn()
-                                                            }
-                                                        }
-                                                        "diagonal" -> {
-                                                            if (targetIndex > initialIndex) {
-                                                                slideInHorizontally(animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness), initialOffsetX = { width: Int -> width }) +
-                                                                slideInVertically(animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness), initialOffsetY = { height: Int -> height }) + fadeIn()
-                                                            } else {
-                                                                slideInHorizontally(animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness), initialOffsetX = { width: Int -> -width }) +
-                                                                slideInVertically(animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness), initialOffsetY = { height: Int -> -height }) + fadeIn()
-                                                            }
-                                                        }
-                                                        else -> {
-                                                            if (targetIndex > initialIndex) {
-                                                                slideInHorizontally(animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness), initialOffsetX = { width: Int -> width })
-                                                            } else {
-                                                                slideInHorizontally(animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness), initialOffsetX = { width: Int -> -width })
-                                                            }
-                                                        }
-                                                    }
-                                                } else {
-                                                    fadeIn(animationSpec = tween(340))
-                                                }
-                                            } else {
-                                                fadeIn(animationSpec = tween(340))
-                                            }
-                                        }
-                                    }
-
-                                override val exitTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition =
-                                    {
-                                        // If navigating from the home page (bottom navigation page) to a detail page, slide out to the left
-                                        if (initialState.destination.route in bottomBarRoutes && targetState.destination.route !in bottomBarRoutes) {
-                                            slideOutHorizontally(targetOffsetX = { -it / 4 }) + fadeOut()
-                                        } else {
-                                            // Otherwise (switching between bottom navigation pages)
-                                            if (folkXEngineEnabled && initialState.destination.route in bottomBarRoutes && targetState.destination.route in bottomBarRoutes) {
-                                                val initialRoute = initialState.destination.route
-                                                val targetRoute = targetState.destination.route
-                                                val initialIndex = BottomBarDestination.entries.indexOfFirst { it.direction.route == initialRoute }
-                                                val targetIndex = BottomBarDestination.entries.indexOfFirst { it.direction.route == targetRoute }
-
-                                                val stiffness = 300f * folkXAnimationSpeed * folkXAnimationSpeed
-                                                val duration300 = (300 / folkXAnimationSpeed).toInt()
-                                                val duration600 = (600 / folkXAnimationSpeed).toInt()
-
-                                                if (initialIndex != -1 && targetIndex != -1) {
-                                                    when (folkXAnimationType) {
-                                                        "spatial" -> {
-                                                            if (targetIndex > initialIndex) {
-                                                                scaleOut(targetScale = 1.1f, animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness)) + fadeOut(animationSpec = tween(duration300))
-                                                            } else {
-                                                                scaleOut(targetScale = 0.9f, animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness)) + fadeOut(animationSpec = tween(duration300))
-                                                            }
-                                                        }
-                                                        "fade" -> {
-                                                            fadeOut(animationSpec = tween(duration600))
-                                                        }
-                                                        "vertical" -> {
-                                                            if (targetIndex > initialIndex) {
-                                                                slideOutVertically(animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness), targetOffsetY = { height -> -height }) + fadeOut()
-                                                            } else {
-                                                                slideOutVertically(animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness), targetOffsetY = { height -> height }) + fadeOut()
-                                                            }
-                                                        }
-                                                        "diagonal" -> {
-                                                            if (targetIndex > initialIndex) {
-                                                                slideOutHorizontally(animationSpec = tween(duration600), targetOffsetX = { width -> -width }) +
-                                                                slideOutVertically(animationSpec = tween(duration600), targetOffsetY = { height -> -height }) + fadeOut(animationSpec = tween(duration600))
-                                                            } else {
-                                                                slideOutHorizontally(animationSpec = tween(duration600), targetOffsetX = { width -> width }) +
-                                                                slideOutVertically(animationSpec = tween(duration600), targetOffsetY = { height -> height }) + fadeOut(animationSpec = tween(duration600))
-                                                            }
-                                                        }
-                                                        else -> {
-                                                            if (targetIndex > initialIndex) {
-                                                                slideOutHorizontally(animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness), targetOffsetX = { width -> -width })
-                                                            } else {
-                                                                slideOutHorizontally(animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness), targetOffsetX = { width -> width })
-                                                            }
-                                                        }
-                                                    }
-                                                } else {
-                                                    fadeOut(animationSpec = tween(340))
-                                                }
-                                            } else {
-                                                fadeOut(animationSpec = tween(340))
-                                            }
-                                        }
-                                    }
-
-                                override val popEnterTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition =
-                                    {
-                                        // If returning to the home page (bottom navigation page), slide in from the left
-                                        if (targetState.destination.route in bottomBarRoutes) {
-                                            slideInHorizontally(initialOffsetX = { -it / 4 }) + fadeIn()
-                                        } else {
-                                            // Otherwise (e.g., returning between multiple detail pages), use default fade in
-                                            fadeIn(animationSpec = tween(340))
-                                        }
-                                    }
-
-                                override val popExitTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition =
-                                    {
-                                        // If returning from a detail page (not a bottom navigation page), scale down and fade out
-                                        if (initialState.destination.route !in bottomBarRoutes) {
-                                            scaleOut(targetScale = 0.9f) + fadeOut()
-                                        } else {
-                                            // Otherwise, use default fade out
-                                            fadeOut(animationSpec = tween(340))
-                                        }
-                                    }
+                // 使用 BoxWithConstraints 检测屏幕宽度
+                BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
+                    val useNavigationRail = when (navMode) {
+                        "rail" -> true
+                        "bottom" -> false
+                        else -> maxWidth >= 600.dp // auto
+                    }
+                    
+                    if (useNavigationRail) {
+                        // 横向布局：NavigationRail 在左侧
+                        Row(modifier = Modifier.fillMaxSize()) {
+                            NavigationRailBar(navController)
+                            
+                            Box(modifier = Modifier.weight(1f)) {
+                                CompositionLocalProvider(
+                                    LocalSnackbarHost provides snackBarHostState,
+                                ) {
+                                    DestinationsNavHost(
+                                        modifier = Modifier.fillMaxSize(),
+                                        navGraph = NavGraphs.root,
+                                        navController = navController,
+                                        engine = rememberNavHostEngine(navHostContentAlignment = Alignment.TopCenter),
+                                        defaultTransitions = createNavTransitions(folkXEngineEnabled, folkXAnimationType, folkXAnimationSpeed, bottomBarRoutes, useNavigationRail = true)
+                                    )
+                                }
                             }
-                        )
+                        }
+                    } else {
+                        // 竖向布局：NavigationBar 在底部
+                        Scaffold(
+                            bottomBar = { BottomBar(navController) }
+                        ) { _ ->
+                            CompositionLocalProvider(
+                                LocalSnackbarHost provides snackBarHostState,
+                            ) {
+                                DestinationsNavHost(
+                                    modifier = Modifier.padding(bottom = 80.dp),
+                                    navGraph = NavGraphs.root,
+                                    navController = navController,
+                                    engine = rememberNavHostEngine(navHostContentAlignment = Alignment.TopCenter),
+                                    defaultTransitions = createNavTransitions(folkXEngineEnabled, folkXAnimationType, folkXAnimationSpeed, bottomBarRoutes, useNavigationRail = false)
+                                )
+                            }
+                        }
                     }
                 }
             }
@@ -795,6 +701,294 @@ private fun BottomBar(navController: NavHostController) {
                         )
                     }
                 }
+            }
+        }
+    }
+}
+
+@Composable
+private fun NavigationRailBar(navController: NavHostController) {
+    val context = LocalContext.current
+    val state by APApplication.apStateLiveData.observeAsState(APApplication.State.UNKNOWN_STATE)
+    val navigator = navController.rememberDestinationsNavigator()
+
+    val prefs = APApplication.sharedPreferences
+    var showNavApm by remember { mutableStateOf(prefs.getBoolean("show_nav_apm", true)) }
+    var showNavKpm by remember { mutableStateOf(prefs.getBoolean("show_nav_kpm", true)) }
+    var showNavSuperUser by remember { mutableStateOf(prefs.getBoolean("show_nav_superuser", true)) }
+
+    var enableSuperUserBadge by remember { mutableStateOf(prefs.getBoolean("badge_superuser", true)) }
+    var enableApmBadge by remember { mutableStateOf(prefs.getBoolean("badge_apm", true)) }
+    var enableKernelBadge by remember { mutableStateOf(prefs.getBoolean("badge_kernel", true)) }
+
+    val superuserCount by me.bmax.apatch.util.AppData.DataRefreshManager.superuserCount.collectAsState()
+    val apmModuleCount by me.bmax.apatch.util.AppData.DataRefreshManager.apmModuleCount.collectAsState()
+    val kernelModuleCount by me.bmax.apatch.util.AppData.DataRefreshManager.kernelModuleCount.collectAsState()
+
+    DisposableEffect(Unit) {
+        val listener = SharedPreferences.OnSharedPreferenceChangeListener { sharedPrefs, key ->
+            when (key) {
+                "show_nav_apm" -> showNavApm = sharedPrefs.getBoolean(key, true)
+                "show_nav_kpm" -> showNavKpm = sharedPrefs.getBoolean(key, true)
+                "show_nav_superuser" -> showNavSuperUser = sharedPrefs.getBoolean(key, true)
+                "badge_superuser" -> enableSuperUserBadge = sharedPrefs.getBoolean(key, true)
+                "badge_apm" -> enableApmBadge = sharedPrefs.getBoolean(key, true)
+                "badge_kernel" -> enableKernelBadge = sharedPrefs.getBoolean(key, true)
+            }
+        }
+        prefs.registerOnSharedPreferenceChangeListener(listener)
+        onDispose {
+            prefs.unregisterOnSharedPreferenceChangeListener(listener)
+        }
+    }
+
+    Crossfade(
+        targetState = state,
+        label = "NavigationRailStateCrossfade"
+    ) { state ->
+        val kPatchReady = state != APApplication.State.UNKNOWN_STATE
+        val aPatchReady = state == APApplication.State.ANDROIDPATCH_INSTALLED
+
+        NavigationRail(
+            modifier = Modifier.fillMaxHeight(),
+            containerColor = if (BackgroundConfig.isCustomBackgroundEnabled) {
+                MaterialTheme.colorScheme.surface.copy(alpha = BackgroundConfig.customBackgroundOpacity)
+            } else {
+                NavigationRailDefaults.ContainerColor
+            }
+        ) {
+            Spacer(Modifier.weight(1f))
+            
+            BottomBarDestination.entries.forEach { destination ->
+                val show = when {
+                    destination == BottomBarDestination.AModule && !showNavApm -> false
+                    destination == BottomBarDestination.KModule && !showNavKpm -> false
+                    destination == BottomBarDestination.SuperUser && !showNavSuperUser -> false
+                    (destination.kPatchRequired && !kPatchReady) || (destination.aPatchRequired && !aPatchReady) -> false
+                    else -> true
+                }
+
+                if (show) {
+                    key(destination) {
+                        val isCurrentDestOnBackStack by navController.isRouteOnBackStackAsState(destination.direction)
+
+                        NavigationRailItem(
+                            selected = isCurrentDestOnBackStack,
+                            onClick = {
+                                if (me.bmax.apatch.ui.theme.SoundEffectConfig.scope == me.bmax.apatch.ui.theme.SoundEffectConfig.SCOPE_BOTTOM_BAR) {
+                                    me.bmax.apatch.util.SoundEffectManager.play(context)
+                                }
+                                if (isCurrentDestOnBackStack) {
+                                    navigator.popBackStack(destination.direction, false)
+                                }
+                                navigator.navigate(destination.direction) {
+                                    popUpTo(NavGraphs.root) {
+                                        saveState = true
+                                    }
+                                    launchSingleTop = true
+                                    restoreState = true
+                                }
+                            },
+                            icon = {
+                                val badgeContent = when {
+                                    destination == BottomBarDestination.SuperUser && enableSuperUserBadge -> superuserCount
+                                    destination == BottomBarDestination.AModule && enableApmBadge -> apmModuleCount
+                                    destination == BottomBarDestination.KModule && enableKernelBadge -> kernelModuleCount
+                                    else -> 0
+                                }
+
+                                BadgedBox(
+                                    badge = {
+                                        if (badgeContent > 0) {
+                                            Badge(containerColor = MaterialTheme.colorScheme.secondary) {
+                                                Text(text = badgeContent.toString())
+                                            }
+                                        }
+                                    }
+                                ) {
+                                    if (isCurrentDestOnBackStack) {
+                                        Icon(destination.iconSelected, stringResource(destination.label))
+                                    } else {
+                                        Icon(destination.iconNotSelected, stringResource(destination.label))
+                                    }
+                                }
+                            },
+                            label = {
+                                Text(
+                                    text = stringResource(destination.label),
+                                    overflow = TextOverflow.Visible,
+                                    maxLines = 1,
+                                    softWrap = false
+                                )
+                            },
+                            alwaysShowLabel = false
+                        )
+                    }
+                }
+            }
+            
+            Spacer(Modifier.weight(1f))
+        }
+    }
+}
+
+@Composable
+private fun createNavTransitions(
+    folkXEngineEnabled: Boolean,
+    folkXAnimationType: String?,
+    folkXAnimationSpeed: Float,
+    bottomBarRoutes: Set<String>,
+    useNavigationRail: Boolean = false
+): NavHostAnimatedDestinationStyle {
+    return object : NavHostAnimatedDestinationStyle() {
+        override val enterTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition = {
+            if (targetState.destination.route !in bottomBarRoutes) {
+                slideInHorizontally(initialOffsetX = { it })
+            } else {
+                if (folkXEngineEnabled) {
+                    val initialRoute = initialState.destination.route
+                    val targetRoute = targetState.destination.route
+                    val initialIndex = BottomBarDestination.entries.indexOfFirst { it.direction.route == initialRoute }
+                    val targetIndex = BottomBarDestination.entries.indexOfFirst { it.direction.route == targetRoute }
+
+                    val stiffness = 300f * folkXAnimationSpeed * folkXAnimationSpeed
+                    val duration300 = (300 / folkXAnimationSpeed).toInt()
+
+                    if (initialIndex != -1 && targetIndex != -1) {
+                        when (folkXAnimationType) {
+                            "spatial" -> {
+                                if (targetIndex > initialIndex) {
+                                    scaleIn(initialScale = 0.9f, animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness)) + fadeIn(animationSpec = tween(duration300))
+                                } else {
+                                    scaleIn(initialScale = 1.1f, animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness)) + fadeIn(animationSpec = tween(duration300))
+                                }
+                            }
+                            "fade" -> fadeIn(animationSpec = tween(duration300))
+                            "vertical" -> {
+                                if (targetIndex > initialIndex) {
+                                    slideInVertically(animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness), initialOffsetY = { height -> height }) + fadeIn()
+                                } else {
+                                    slideInVertically(animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness), initialOffsetY = { height -> -height }) + fadeIn()
+                                }
+                            }
+                            "diagonal" -> {
+                                if (targetIndex > initialIndex) {
+                                    slideInHorizontally(animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness), initialOffsetX = { width -> width }) +
+                                    slideInVertically(animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness), initialOffsetY = { height -> height }) + fadeIn()
+                                } else {
+                                    slideInHorizontally(animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness), initialOffsetX = { width -> -width }) +
+                                    slideInVertically(animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness), initialOffsetY = { height -> -height }) + fadeIn()
+                                }
+                            }
+                            else -> {
+                                // linear: 侧边导航栏使用上下滑动，底部导航栏使用左右滑动
+                                if (useNavigationRail) {
+                                    if (targetIndex > initialIndex) {
+                                        slideInVertically(animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness), initialOffsetY = { height -> height }) + fadeIn()
+                                    } else {
+                                        slideInVertically(animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness), initialOffsetY = { height -> -height }) + fadeIn()
+                                    }
+                                } else {
+                                    if (targetIndex > initialIndex) {
+                                        slideInHorizontally(animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness), initialOffsetX = { width -> width })
+                                    } else {
+                                        slideInHorizontally(animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness), initialOffsetX = { width -> -width })
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        fadeIn(animationSpec = tween(340))
+                    }
+                } else {
+                    fadeIn(animationSpec = tween(340))
+                }
+            }
+        }
+
+        override val exitTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition = {
+            if (initialState.destination.route in bottomBarRoutes && targetState.destination.route !in bottomBarRoutes) {
+                slideOutHorizontally(targetOffsetX = { -it / 4 }) + fadeOut()
+            } else {
+                if (folkXEngineEnabled && initialState.destination.route in bottomBarRoutes && targetState.destination.route in bottomBarRoutes) {
+                    val initialRoute = initialState.destination.route
+                    val targetRoute = targetState.destination.route
+                    val initialIndex = BottomBarDestination.entries.indexOfFirst { it.direction.route == initialRoute }
+                    val targetIndex = BottomBarDestination.entries.indexOfFirst { it.direction.route == targetRoute }
+
+                    val stiffness = 300f * folkXAnimationSpeed * folkXAnimationSpeed
+                    val duration300 = (300 / folkXAnimationSpeed).toInt()
+                    val duration600 = (600 / folkXAnimationSpeed).toInt()
+
+                    if (initialIndex != -1 && targetIndex != -1) {
+                        when (folkXAnimationType) {
+                            "spatial" -> {
+                                if (targetIndex > initialIndex) {
+                                    scaleOut(targetScale = 1.1f, animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness)) + fadeOut(animationSpec = tween(duration300))
+                                } else {
+                                    scaleOut(targetScale = 0.9f, animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness)) + fadeOut(animationSpec = tween(duration300))
+                                }
+                            }
+                            "fade" -> fadeOut(animationSpec = tween(duration600))
+                            "vertical" -> {
+                                if (targetIndex > initialIndex) {
+                                    slideOutVertically(animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness), targetOffsetY = { height -> -height }) + fadeOut()
+                                } else {
+                                    slideOutVertically(animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness), targetOffsetY = { height -> height }) + fadeOut()
+                                }
+                            }
+                            "diagonal" -> {
+                                if (targetIndex > initialIndex) {
+                                    slideOutHorizontally(animationSpec = tween(duration600), targetOffsetX = { width -> -width }) +
+                                    slideOutVertically(animationSpec = tween(duration600), targetOffsetY = { height -> -height }) + fadeOut(animationSpec = tween(duration600))
+                                } else {
+                                    slideOutHorizontally(animationSpec = tween(duration600), targetOffsetX = { width -> width }) +
+                                    slideOutVertically(animationSpec = tween(duration600), targetOffsetY = { height -> height }) + fadeOut(animationSpec = tween(duration600))
+                                }
+                            }
+                            else -> {
+                                // linear: 侧边导航栏使用上下滑动，底部导航栏使用左右滑动
+                                if (useNavigationRail) {
+                                    if (targetIndex > initialIndex) {
+                                        slideOutVertically(animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness), targetOffsetY = { height -> -height }) + fadeOut()
+                                    } else {
+                                        slideOutVertically(animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness), targetOffsetY = { height -> height }) + fadeOut()
+                                    }
+                                } else {
+                                    if (targetIndex > initialIndex) {
+                                        slideOutHorizontally(animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness), targetOffsetX = { width -> -width })
+                                    } else {
+                                        slideOutHorizontally(animationSpec = spring(dampingRatio = 0.8f, stiffness = stiffness), targetOffsetX = { width -> width })
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        fadeOut(animationSpec = tween(340))
+                    }
+                } else {
+                    fadeOut(animationSpec = tween(340))
+                }
+            }
+        }
+
+        override val popEnterTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition = {
+            if (targetState.destination.route in bottomBarRoutes) {
+                if (useNavigationRail) {
+                    slideInVertically(initialOffsetY = { -it / 4 }) + fadeIn()
+                } else {
+                    slideInHorizontally(initialOffsetX = { -it / 4 }) + fadeIn()
+                }
+            } else {
+                fadeIn(animationSpec = tween(340))
+            }
+        }
+
+        override val popExitTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition = {
+            if (initialState.destination.route !in bottomBarRoutes) {
+                scaleOut(targetScale = 0.9f) + fadeOut()
+            } else {
+                fadeOut(animationSpec = tween(340))
             }
         }
     }
