@@ -18,6 +18,12 @@
 
     <string name="settings_nav_layout_title">إعدادات تخطيط التنقل</string>
     <string name="settings_nav_layout_summary">إخفاء أو إظهار بعض مكونات التنقل</string>
+    <string name="settings_nav_scheme">مخطط التنقل</string>
+    <string name="settings_nav_mode">وضع شريط التنقل</string>
+    <string name="settings_nav_mode_summary">اختر طريقة عرض شريط التنقل</string>
+    <string name="settings_nav_mode_auto">تلقائي (بناءً على عرض الشاشة)</string>
+    <string name="settings_nav_mode_bottom">شريط سفلي دائمًا</string>
+    <string name="settings_nav_mode_rail">شريط جانبي دائمًا</string>
     <string name="settings_show_apm">إظهار APM</string>
     <string name="settings_show_kpm">إظهار KPM</string>
     <string name="settings_show_superuser">إظهار المستخدم المتميز</string>

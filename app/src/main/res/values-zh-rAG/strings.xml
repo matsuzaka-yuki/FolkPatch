@@ -18,6 +18,12 @@
 
     <string name="settings_nav_layout_title">导航布局设置喵</string>
     <string name="settings_nav_layout_summary">隐藏东西喵，不要一直问人家怎么弄啦喵~</string>
+    <string name="settings_nav_scheme">导航方案设置喵~</string>
+    <string name="settings_nav_mode">导航栏模式喵~</string>
+    <string name="settings_nav_mode_summary">选择导航栏的显示方式喵~</string>
+    <string name="settings_nav_mode_auto">自动 (根据屏幕宽度) 喵~</string>
+    <string name="settings_nav_mode_bottom">始终底部导航栏 喵~</string>
+    <string name="settings_nav_mode_rail">始终侧边导航栏 喵~</string>
     <string name="settings_show_apm">显示系统模块喵</string>
     <string name="settings_show_kpm">显示内核模块喵</string>
     <string name="settings_show_superuser">显示超级用户喵</string>

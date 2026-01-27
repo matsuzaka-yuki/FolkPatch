@@ -91,115 +91,194 @@ fun HomeScreenV3(
         UninstallDialog(showDialog = showUninstallDialog, navigator)
     }
     
-    Column(
-        modifier = Modifier
-            .padding(paddingValues)
-            .fillMaxSize()
-            .verticalScroll(scrollState)
-            .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
-    ) {
-        // KernelPatch Card (Magisk Style)
-        MagiskStyleCard(
-            title = "KernelPatch",
-            icon = Icons.Outlined.Extension,
-            actionText = when (kpState) {
-                APApplication.State.KERNELPATCH_NEED_UPDATE -> stringResource(R.string.home_kp_cando_update)
-                APApplication.State.UNKNOWN_STATE -> stringResource(R.string.kpm_install)
-                else -> stringResource(R.string.kpm_install)
-            },
-            showAction = kpState != APApplication.State.KERNELPATCH_INSTALLED,
-            isWallpaperMode = isWallpaperMode,
-            onActionClick = {
-                if (kpState == APApplication.State.UNKNOWN_STATE) {
-                    showAuthKeyDialog.value = true
-                } else {
-                    navigator.navigate(InstallModeSelectScreenDestination)
-                }
-            }
-        ) {
-            InfoRow(
-                label = stringResource(R.string.home_kpatch_version),
-                value = if (kpState != APApplication.State.UNKNOWN_STATE) Version.installedKPVString() else stringResource(R.string.home_not_installed)
-            )
-            if (kpState != APApplication.State.UNKNOWN_STATE && zygiskImplement != "None") {
-                InfoRow(
-                    label = stringResource(R.string.home_zygisk_implement),
-                    value = zygiskImplement
-                )
-            }
-            if (kpState != APApplication.State.UNKNOWN_STATE && mountImplement != "None") {
-                InfoRow(
-                    label = stringResource(R.string.home_mount_implement),
-                    value = mountImplement
-                )
-            }
-            InfoRow(
-                label = stringResource(R.string.home_info_kernel),
-                value = System.getProperty("os.version") ?: stringResource(R.string.home_selinux_status_unknown)
-            )
-            if (kpState != APApplication.State.UNKNOWN_STATE) {
-                InfoRow(
-                    label = stringResource(R.string.home_info_superkey),
-                    value = if (APApplication.superKey.isNotEmpty()) stringResource(R.string.home_info_auth_auth) else stringResource(R.string.home_info_auth_na)
-                )
-            }
-        }
-
-        // App Card (Manager Style)
-        MagiskStyleCard(
-            title = stringResource(R.string.app_name),
-            icon = Icons.Outlined.Android,
-            actionText = if (apState == APApplication.State.ANDROIDPATCH_INSTALLED) stringResource(R.string.home_ap_cando_uninstall) else stringResource(R.string.kpm_install),
-            showAction = true,
-            actionEnabled = kpState == APApplication.State.KERNELPATCH_INSTALLED || kpState == APApplication.State.KERNELPATCH_NEED_UPDATE || apState == APApplication.State.ANDROIDPATCH_INSTALLED,
-            isWallpaperMode = isWallpaperMode,
-            onActionClick = {
-                if (apState == APApplication.State.ANDROIDPATCH_INSTALLED) {
-                    showUninstallDialog.value = true
-                } else if (kpState == APApplication.State.KERNELPATCH_INSTALLED || kpState == APApplication.State.KERNELPATCH_NEED_UPDATE) {
-                    APApplication.installApatch()
-                }
-            }
-        ) {
-            InfoRow(
-                label = stringResource(R.string.home_apatch_version),
-                value = "${managerVersion.second} (${managerVersion.first})"
-            )
-            InfoRow(
-                label = stringResource(R.string.home_info_device_slot),
-                value = deviceSlot
-            )
-            InfoRow(
-                label = stringResource(R.string.home_info_device_model),
-                value = Build.MODEL
-            )
-            InfoRow(
-                label = stringResource(R.string.home_info_running_mode),
-                value = if (apState == APApplication.State.ANDROIDPATCH_INSTALLED) stringResource(R.string.home_info_mode_full) else if (kpState == APApplication.State.KERNELPATCH_INSTALLED || kpState == APApplication.State.KERNELPATCH_NEED_UPDATE) stringResource(R.string.home_info_mode_half) else stringResource(R.string.home_info_auth_na)
-            )
-            InfoRow(
-                label = stringResource(R.string.home_selinux_status),
-                value = getSELinuxStatus()
-            )
-            InfoRow(
-                label = stringResource(R.string.home_su_path),
-                value = if (kpState != APApplication.State.UNKNOWN_STATE) Natives.suPath() else stringResource(R.string.home_info_auth_na)
-            )
-        }
-
-        // Device Status Card
-        DeviceStatusCard(isWallpaperMode = isWallpaperMode)
+    BoxWithConstraints {
+        val isWide = maxWidth >= 600.dp && maxWidth > maxHeight
         
-        // Storage Card
-        StorageCard(isWallpaperMode = isWallpaperMode)
+        Column(
+            modifier = Modifier
+                .padding(paddingValues)
+                .fillMaxSize()
+                .verticalScroll(scrollState)
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            if (isWide) {
+                // Row 1: KernelPatch + APP
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                    modifier = Modifier.height(IntrinsicSize.Max)
+                ) {
+                    KernelPatchCard(
+                        kpState = kpState,
+                        navigator = navigator,
+                        showAuthKeyDialog = showAuthKeyDialog,
+                        isWallpaperMode = isWallpaperMode,
+                        zygiskImplement = zygiskImplement,
+                        mountImplement = mountImplement,
+                        modifier = Modifier.weight(1f).fillMaxHeight()
+                    )
+                    AppCard(
+                        apState = apState,
+                        kpState = kpState,
+                        deviceSlot = deviceSlot,
+                        showUninstallDialog = showUninstallDialog,
+                        isWallpaperMode = isWallpaperMode,
+                        modifier = Modifier.weight(1f).fillMaxHeight()
+                    )
+                }
+                
+                // Row 2: Device + Storage
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                    modifier = Modifier.height(IntrinsicSize.Max)
+                ) {
+                    DeviceStatusCard(
+                        isWallpaperMode = isWallpaperMode,
+                        modifier = Modifier.weight(1f).fillMaxHeight()
+                    )
+                    StorageCard(
+                        isWallpaperMode = isWallpaperMode,
+                        modifier = Modifier.weight(1f).fillMaxHeight()
+                    )
+                }
+            } else {
+                // Vertical Stack
+                KernelPatchCard(
+                    kpState = kpState,
+                    navigator = navigator,
+                    showAuthKeyDialog = showAuthKeyDialog,
+                    isWallpaperMode = isWallpaperMode,
+                    zygiskImplement = zygiskImplement,
+                    mountImplement = mountImplement
+                )
+                AppCard(
+                    apState = apState,
+                    kpState = kpState,
+                    deviceSlot = deviceSlot,
+                    showUninstallDialog = showUninstallDialog,
+                    isWallpaperMode = isWallpaperMode
+                )
+                DeviceStatusCard(isWallpaperMode = isWallpaperMode)
+                StorageCard(isWallpaperMode = isWallpaperMode)
+            }
 
-        Spacer(Modifier.height(16.dp))
+            Spacer(Modifier.height(16.dp))
+        }
     }
 }
 
 @Composable
-private fun DeviceStatusCard(isWallpaperMode: Boolean) {
+private fun KernelPatchCard(
+    kpState: APApplication.State,
+    navigator: DestinationsNavigator,
+    showAuthKeyDialog: MutableState<Boolean>,
+    isWallpaperMode: Boolean,
+    zygiskImplement: String,
+    mountImplement: String,
+    modifier: Modifier = Modifier
+) {
+    MagiskStyleCard(
+        title = "KernelPatch",
+        icon = Icons.Outlined.Extension,
+        actionText = when (kpState) {
+            APApplication.State.KERNELPATCH_NEED_UPDATE -> stringResource(R.string.home_kp_cando_update)
+            APApplication.State.UNKNOWN_STATE -> stringResource(R.string.kpm_install)
+            else -> stringResource(R.string.kpm_install)
+        },
+        showAction = kpState != APApplication.State.KERNELPATCH_INSTALLED,
+        isWallpaperMode = isWallpaperMode,
+        onActionClick = {
+            if (kpState == APApplication.State.UNKNOWN_STATE) {
+                showAuthKeyDialog.value = true
+            } else {
+                navigator.navigate(InstallModeSelectScreenDestination)
+            }
+        },
+        modifier = modifier
+    ) {
+        InfoRow(
+            label = stringResource(R.string.home_kpatch_version),
+            value = if (kpState != APApplication.State.UNKNOWN_STATE) Version.installedKPVString() else stringResource(R.string.home_not_installed)
+        )
+        if (kpState != APApplication.State.UNKNOWN_STATE && zygiskImplement != "None") {
+            InfoRow(
+                label = stringResource(R.string.home_zygisk_implement),
+                value = zygiskImplement
+            )
+        }
+        if (kpState != APApplication.State.UNKNOWN_STATE && mountImplement != "None") {
+            InfoRow(
+                label = stringResource(R.string.home_mount_implement),
+                value = mountImplement
+            )
+        }
+        InfoRow(
+            label = stringResource(R.string.home_info_kernel),
+            value = System.getProperty("os.version") ?: stringResource(R.string.home_selinux_status_unknown)
+        )
+        if (kpState != APApplication.State.UNKNOWN_STATE) {
+            InfoRow(
+                label = stringResource(R.string.home_info_superkey),
+                value = if (APApplication.superKey.isNotEmpty()) stringResource(R.string.home_info_auth_auth) else stringResource(R.string.home_info_auth_na)
+            )
+        }
+    }
+}
+
+@Composable
+private fun AppCard(
+    apState: APApplication.State,
+    kpState: APApplication.State,
+    deviceSlot: String,
+    showUninstallDialog: MutableState<Boolean>,
+    isWallpaperMode: Boolean,
+    modifier: Modifier = Modifier
+) {
+    MagiskStyleCard(
+        title = stringResource(R.string.app_name),
+        icon = Icons.Outlined.Android,
+        actionText = if (apState == APApplication.State.ANDROIDPATCH_INSTALLED) stringResource(R.string.home_ap_cando_uninstall) else stringResource(R.string.kpm_install),
+        showAction = true,
+        actionEnabled = kpState == APApplication.State.KERNELPATCH_INSTALLED || kpState == APApplication.State.KERNELPATCH_NEED_UPDATE || apState == APApplication.State.ANDROIDPATCH_INSTALLED,
+        isWallpaperMode = isWallpaperMode,
+        onActionClick = {
+            if (apState == APApplication.State.ANDROIDPATCH_INSTALLED) {
+                showUninstallDialog.value = true
+            } else if (kpState == APApplication.State.KERNELPATCH_INSTALLED || kpState == APApplication.State.KERNELPATCH_NEED_UPDATE) {
+                APApplication.installApatch()
+            }
+        },
+        modifier = modifier
+    ) {
+        InfoRow(
+            label = stringResource(R.string.home_apatch_version),
+            value = "${managerVersion.second} (${managerVersion.first})"
+        )
+        InfoRow(
+            label = stringResource(R.string.home_info_device_slot),
+            value = deviceSlot
+        )
+        InfoRow(
+            label = stringResource(R.string.home_info_device_model),
+            value = Build.MODEL
+        )
+        InfoRow(
+            label = stringResource(R.string.home_info_running_mode),
+            value = if (apState == APApplication.State.ANDROIDPATCH_INSTALLED) stringResource(R.string.home_info_mode_full) else if (kpState == APApplication.State.KERNELPATCH_INSTALLED || kpState == APApplication.State.KERNELPATCH_NEED_UPDATE) stringResource(R.string.home_info_mode_half) else stringResource(R.string.home_info_auth_na)
+        )
+        InfoRow(
+            label = stringResource(R.string.home_selinux_status),
+            value = getSELinuxStatus()
+        )
+        InfoRow(
+            label = stringResource(R.string.home_su_path),
+            value = if (kpState != APApplication.State.UNKNOWN_STATE) Natives.suPath() else stringResource(R.string.home_info_auth_na)
+        )
+    }
+}
+
+@Composable
+private fun DeviceStatusCard(isWallpaperMode: Boolean, modifier: Modifier = Modifier) {
     val context = LocalContext.current
     var batteryTemp by remember { mutableStateOf(0f) }
     var batteryLevel by remember { mutableIntStateOf(0) }
@@ -233,7 +312,8 @@ private fun DeviceStatusCard(isWallpaperMode: Boolean) {
         actionText = "",
         showAction = false,
         isWallpaperMode = isWallpaperMode,
-        onActionClick = {}
+        onActionClick = {},
+        modifier = modifier
     ) {
         Row(
             modifier = Modifier
@@ -264,7 +344,7 @@ private fun DeviceStatusCard(isWallpaperMode: Boolean) {
 }
 
 @Composable
-private fun StorageCard(isWallpaperMode: Boolean) {
+private fun StorageCard(isWallpaperMode: Boolean, modifier: Modifier = Modifier) {
     var ramUsed by remember { mutableLongStateOf(0L) }
     var ramTotal by remember { mutableLongStateOf(0L) }
     var storageUsed by remember { mutableLongStateOf(0L) }
@@ -312,7 +392,8 @@ private fun StorageCard(isWallpaperMode: Boolean) {
         actionText = "",
         showAction = false,
         isWallpaperMode = isWallpaperMode,
-        onActionClick = {}
+        onActionClick = {},
+        modifier = modifier
     ) {
         StorageRow(
             label = stringResource(R.string.home_storage_internal),
@@ -438,6 +519,7 @@ private fun MagiskStyleCard(
     actionEnabled: Boolean = true,
     isWallpaperMode: Boolean,
     onActionClick: () -> Unit,
+    modifier: Modifier = Modifier,
     content: @Composable ColumnScope.() -> Unit
 ) {
     val isSystemInDarkTheme = androidx.compose.foundation.isSystemInDarkTheme()
@@ -453,7 +535,7 @@ private fun MagiskStyleCard(
     // To achieve white "shadow" (glow), we need a custom modifier.
     
     ElevatedCard(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .then(
                 if (isSystemInDarkTheme && !isWallpaperMode) {

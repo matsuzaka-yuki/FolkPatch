@@ -21,6 +21,12 @@
 
     <string name="settings_nav_layout_title">Pengaturan Tata Letak Navigasi</string>
     <string name="settings_nav_layout_summary">Sembunyikan atau tampilkan beberapa komponen navigasi</string>
+    <string name="settings_nav_scheme">Skema Navigasi</string>
+    <string name="settings_nav_mode">Mode Bilah Navigasi</string>
+    <string name="settings_nav_mode_summary">Pilih cara tampilan bilah navigasi</string>
+    <string name="settings_nav_mode_auto">Otomatis (berdasarkan lebar layar)</string>
+    <string name="settings_nav_mode_bottom">Selalu Bilah Bawah</string>
+    <string name="settings_nav_mode_rail">Selalu Bilah Samping</string>
     <string name="settings_show_apm">Tampilkan APM</string>
     <string name="settings_show_kpm">Tampilkan KPM</string>
     <string name="settings_show_superuser">Tampilkan SuperUser</string>

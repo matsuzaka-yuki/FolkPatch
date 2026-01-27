@@ -493,11 +493,16 @@ fun GeneralSettings(
 fun appTitleList(): List<AppTitle> {
     return listOf(
         AppTitle("folkpatch", R.string.app_title_folkpatch),
+        AppTitle("fpatch", R.string.app_title_fpatch),
+        AppTitle("apatch_folk", R.string.app_title_apatch_folk),
+        AppTitle("apatchx", R.string.app_title_apatchx),
         AppTitle("apatch", R.string.app_title_apatch),
-        AppTitle("kpatch", R.string.app_title_kernelpatch),
-        AppTitle("magisk", R.string.launcher_icon_magisk),
+        AppTitle("kernelpatch", R.string.app_title_kernelpatch),
         AppTitle("supersu", R.string.app_title_supersu),
-        AppTitle("kernelsu", R.string.launcher_icon_kernelsu)
+        AppTitle("folksu", R.string.app_title_folksu),
+        AppTitle("superuser", R.string.app_title_superuser),
+        AppTitle("superpatch", R.string.app_title_superpatch),
+        AppTitle("magicpatch", R.string.app_title_magicpatch),
     )
 }
 
@@ -1011,15 +1016,6 @@ fun ResetSUPathDialog(showDialog: MutableState<Boolean>) {
 @Composable
 fun AppTitleChooseDialog(showDialog: MutableState<Boolean>) {
     val prefs = APApplication.sharedPreferences
-    
-    val appTitles = listOf(
-        AppTitle("folkpatch", R.string.app_title_folkpatch),
-        AppTitle("apatch", R.string.app_title_apatch),
-        AppTitle("kpatch", R.string.app_title_kernelpatch),
-        AppTitle("magisk", R.string.launcher_icon_magisk),
-        AppTitle("supersu", R.string.app_title_supersu),
-        AppTitle("kernelsu", R.string.launcher_icon_kernelsu)
-    )
 
     BasicAlertDialog(
         onDismissRequest = { showDialog.value = false }, properties = DialogProperties(
@@ -1036,7 +1032,7 @@ fun AppTitleChooseDialog(showDialog: MutableState<Boolean>) {
             color = AlertDialogDefaults.containerColor,
         ) {
             LazyColumn {
-                items(appTitles) { title ->
+                items(appTitleList()) { title ->
                     ListItem(
                         headlineContent = { Text(text = stringResource(title.nameId)) },
                         modifier = Modifier.clickable {

@@ -10,11 +10,11 @@ use std::{
 use anyhow::{Context, Result, bail};
 use extattr::lgetxattr;
 use rustix::{
-    fs::{
-        Gid, MetadataExt, Mode, MountFlags, MountPropagationFlags, Uid, UnmountFlags, bind_mount,
-        chmod, chown, mount, move_mount, unmount,
+    fs::{Gid, MetadataExt, Mode, Uid, chmod, chown},
+    mount::{
+        MountFlags, MountPropagationFlags, UnmountFlags, mount, mount_bind, mount_change,
+        mount_move, unmount,
     },
-    mount::mount_change,
 };
 
 use crate::{
@@ -240,7 +240,7 @@ fn mount_mirror<P: AsRef<Path>, WP: AsRef<Path>>(
             work_dir_path.display()
         );
         fs::File::create(&work_dir_path)?;
-        bind_mount(&path, &work_dir_path)?;
+        mount_bind(&path, &work_dir_path)?;
     } else if file_type.is_dir() {
         log::debug!(
             "mount mirror dir {} -> {}",
@@ -250,13 +250,11 @@ fn mount_mirror<P: AsRef<Path>, WP: AsRef<Path>>(
         create_dir(&work_dir_path)?;
         let metadata = entry.metadata()?;
         chmod(&work_dir_path, Mode::from_raw_mode(metadata.mode()))?;
-        unsafe {
-            chown(
-                &work_dir_path,
-                Some(Uid::from_raw(metadata.uid())),
-                Some(Gid::from_raw(metadata.gid())),
-            )?;
-        }
+        chown(
+            &work_dir_path,
+            Some(Uid::from_raw(metadata.uid())),
+            Some(Gid::from_raw(metadata.gid())),
+        )?;
         lsetfilecon(&work_dir_path, lgetfilecon(&path)?.as_str())?;
         for entry in read_dir(&path)?.flatten() {
             mount_mirror(&path, &work_dir_path, &entry)?;
@@ -296,7 +294,7 @@ fn do_magic_mount<P: AsRef<Path>, WP: AsRef<Path>>(
                     module_path.display(),
                     work_dir_path.display()
                 );
-                bind_mount(module_path, target_path)?;
+                mount_bind(module_path, target_path)?;
             } else {
                 bail!("cannot mount root file {}!", path.display());
             }
@@ -364,13 +362,11 @@ fn do_magic_mount<P: AsRef<Path>, WP: AsRef<Path>>(
                     bail!("cannot mount root dir {}!", path.display());
                 };
                 chmod(&work_dir_path, Mode::from_raw_mode(metadata.mode()))?;
-                unsafe {
-                    chown(
-                        &work_dir_path,
-                        Some(Uid::from_raw(metadata.uid())),
-                        Some(Gid::from_raw(metadata.gid())),
-                    )?;
-                }
+                chown(
+                    &work_dir_path,
+                    Some(Uid::from_raw(metadata.uid())),
+                    Some(Gid::from_raw(metadata.gid())),
+                )?;
                 lsetfilecon(&work_dir_path, lgetfilecon(path)?.as_str())?;
             }
 
@@ -380,7 +376,7 @@ fn do_magic_mount<P: AsRef<Path>, WP: AsRef<Path>>(
                     path.display(),
                     work_dir_path.display()
                 );
-                bind_mount(&work_dir_path, &work_dir_path).context("bind self")?;
+                mount_bind(&work_dir_path, &work_dir_path).context("bind self")?;
             }
 
             if path.exists() && !current.replace {
@@ -441,7 +437,7 @@ fn do_magic_mount<P: AsRef<Path>, WP: AsRef<Path>>(
                     work_dir_path.display(),
                     path.display()
                 );
-                move_mount(&work_dir_path, &path).context("move self")?;
+                mount_move(&work_dir_path, &path).context("move self")?;
                 mount_change(&path, MountPropagationFlags::PRIVATE).context("make self private")?;
             }
         }
@@ -463,7 +459,7 @@ pub fn magic_mount() -> Result<()> {
             &tmp_dir,
             "tmpfs",
             MountFlags::empty(),
-            "",
+            None,
         )
         .context("mount tmp")?;
         mount_change(&tmp_dir, MountPropagationFlags::PRIVATE).context("make tmp private")?;

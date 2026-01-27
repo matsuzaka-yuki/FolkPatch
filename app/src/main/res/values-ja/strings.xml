@@ -10,9 +10,15 @@
   <string name="patch">パッチ</string>
   <string name="kernel_patch">KernelPatch</string>
   <string name="android_patch">AndroidPatch</string>
-  <string name="settings_nav_layout_title">ナビゲーションレイアウトの設定</string>
-  <string name="settings_nav_layout_summary">一部のナビゲーションコンポーネントを表示または非表示にします</string>
-  <string name="settings_show_apm">APM を表示</string>
+    <string name="settings_nav_layout_title">ナビゲーションレイアウトの設定</string>
+    <string name="settings_nav_layout_summary">一部のナビゲーションコンポーネントを表示または非表示にします</string>
+    <string name="settings_nav_scheme">ナビゲーションスキーム</string>
+    <string name="settings_nav_mode">ナビゲーションバーモード</string>
+    <string name="settings_nav_mode_summary">ナビゲーションバーの表示方法を選択</string>
+    <string name="settings_nav_mode_auto">自動（画面幅に基づく）</string>
+    <string name="settings_nav_mode_bottom">常に下部バー</string>
+    <string name="settings_nav_mode_rail">常にサイドレール</string>
+    <string name="settings_show_apm">APM を表示</string>
   <string name="settings_show_kpm">KPM を表示</string>
   <string name="settings_show_superuser">スーパーユーザーを表示</string>
   <string name="reboot">再起動</string>
@@ -397,8 +403,8 @@
   <string name="restore_failed">復元失敗: %s</string>
   <string name="delete_failed">削除失敗: %s</string>
   <string name="delete_success">削除成功</string>
-  <string name="apm_copy_list_title">Copy List</string>
-  <string name="apm_copy_list_success">Module list copied</string>
+  <string name="apm_copy_list_title">リストをコピー</string>
+  <string name="apm_copy_list_success">モジュールリストをコピーしました</string>
   <!-- APM Bulk Install Strings -->
   <string name="apm_bulk_install_title">APM を一括インストール</string>
   <string name="apm_bulk_install_list_title">モジュールの一覧</string>

@@ -3,7 +3,6 @@ package me.bmax.apatch.ui.webui
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
-import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.util.LruCache
 import androidx.core.graphics.createBitmap
@@ -32,8 +31,6 @@ object AppIconUtil {
     }
 
     private fun drawableToBitmap(drawable: Drawable, size: Int): Bitmap {
-        if (drawable is BitmapDrawable) return drawable.bitmap
-
         val width = if (drawable.intrinsicWidth > 0) drawable.intrinsicWidth else size
         val height = if (drawable.intrinsicHeight > 0) drawable.intrinsicHeight else size
 
