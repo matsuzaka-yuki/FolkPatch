@@ -397,8 +397,8 @@
   <string name="restore_failed">復元失敗: %s</string>
   <string name="delete_failed">削除失敗: %s</string>
   <string name="delete_success">削除成功</string>
-  <string name="apm_copy_list_title">Copy List</string>
-  <string name="apm_copy_list_success">Module list copied</string>
+  <string name="apm_copy_list_title">リストをコピー</string>
+  <string name="apm_copy_list_success">モジュールリストをコピーしました</string>
   <!-- APM Bulk Install Strings -->
   <string name="apm_bulk_install_title">APM を一括インストール</string>
   <string name="apm_bulk_install_list_title">モジュールの一覧</string>
