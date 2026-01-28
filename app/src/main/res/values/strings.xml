@@ -309,10 +309,8 @@
     <string name="crash_handle_title">App crashed…</string>
     <string name="crash_handle_copy">Copy crash log</string>
     <string name="crash_handle_copied">Crash log copied to clipboard.</string>
-    <string name="settings_lite_mode">Enable Lite mode</string>
-    <string name="settings_lite_mode_mode_summary">APModule functions may exhibit failures after being enabled, but in some cases they can still effectively avoid detection. Reboot required.</string>
-    <string name="settings_force_overlayfs_mode">Force use of OverlayFS</string>
-    <string name="settings_force_overlayfs_mode_summary">Use OverlayFS to mount APModules instead of Magic Mount when kernel support is available. Reboot required.</string>
+    <string name="settings_magic_mount">Folk Mount API</string>
+    <string name="settings_magic_mount_summary">Enable the built-in module mounting system</string>
     <string name="online_apm_module_title">Online APM Modules</string>
     <string name="online_kpm_module_title">Online KPM Modules</string>
     <string name="online_module_search_hint">Search modules...</string>
@@ -345,4 +343,9 @@
     <string name="kpm_autoload_kpm_path">KPM Path</string>
     <string name="kpm_autoload_file_not_found">File not found</string>
     <string name="kpm_autoload_select_kpm_file">Select KPM File</string>
+    <string name="apm_mount_warning_title">Important Notice</string>
+    <string name="apm_mount_warning_message">Modules are not mounted by default. Please use built-in mounting system or metamodule.</string>
+    <string name="apm_mount_warning_button">I Understand</string>
+    <string name="kpm_autoload_do_not_show_again">Don\'t show again</string>
+    <string name="kpm_autoload_first_time_confirm">Got it</string>
 </resources>

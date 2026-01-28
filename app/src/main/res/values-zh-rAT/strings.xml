@@ -272,6 +272,8 @@
     <string name="settings_force_overlayfs_mode">强制星之回廊模式</string>
     <string name="settings_force_overlayfs_mode_summary">强制使用星之回廊加载魔法阵</string>
     <string name="settings_check_update">检查魔法升级</string>
+    <string name="settings_magic_mount">Folk Mount API</string>
+    <string name="settings_magic_mount_summary">启用内置的模块挂载系统</string>
     <string name="update_available_title">发现新魔法</string>
     <string name="update_available_message">检测到您的魔法等级过低，是否要下载新版本的魔法？</string>
     <string name="update_action">升级魔法</string>
@@ -311,4 +313,11 @@
     <string name="kpm_autoload_kpm_path">心之结晶路径</string>
     <string name="kpm_autoload_file_not_found">未找到魔法文件</string>
     <string name="kpm_autoload_select_kpm_file">选择心之结晶文件</string>
+    <string name="apm_first_use_title">欢迎使用星之魔法阵</string>
+    <string name="apm_first_use_text">欢迎使用星之魔法阵，此功能使用兼容Magisk生态的魔法阵。未来可能会添加对Lua魔法阵的支持。点击右下角的按钮可安装魔法阵。您也可以使用顶部的安装器批量安装魔法阵。</string>
+    <string name="apm_mount_warning_title">重要提示</string>
+    <string name="apm_mount_warning_message">魔法阵默认不挂载。请使用内置挂载系统或元魔法阵。</string>
+    <string name="apm_mount_warning_button">我已知悉</string>
+    <string name="kpm_autoload_do_not_show_again">不再显示</string>
+    <string name="kpm_autoload_first_time_confirm">知道了</string>
 </resources>

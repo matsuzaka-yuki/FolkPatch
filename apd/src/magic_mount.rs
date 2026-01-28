@@ -10,21 +10,24 @@ use std::{
 use anyhow::{Context, Result, bail};
 use extattr::lgetxattr;
 use rustix::{
-    fs::{
-        Gid, MetadataExt, Mode, MountFlags, MountPropagationFlags, Uid, UnmountFlags, bind_mount,
-        chmod, chown, mount, move_mount, unmount,
+    fs::{Gid, MetadataExt, Mode, Uid, chmod, chown},
+    mount::{
+        MountFlags, MountPropagationFlags, UnmountFlags, mount, mount_bind, mount_change,
+        mount_move, unmount,
     },
-    mount::mount_change,
-    path::Arg,
 };
 
 use crate::{
-    defs::{AP_OVERLAY_SOURCE, DISABLE_FILE_NAME, MODULE_DIR, SKIP_MOUNT_FILE_NAME},
+    defs::{
+        AP_MAGIC_MOUNT_SOURCE, DISABLE_FILE_NAME, MODULE_DIR, REMOVE_FILE_NAME,
+        SKIP_MOUNT_FILE_NAME,
+    },
     magic_mount::NodeFileType::{Directory, RegularFile, Symlink, Whiteout},
     restorecon::{lgetfilecon, lsetfilecon},
     utils::{ensure_dir_exists, get_work_dir},
 };
 
+const REPLACE_DIR_FILE_NAME: &str = ".replace";
 const REPLACE_DIR_XATTR: &str = "trusted.overlay.opaque";
 
 #[derive(PartialEq, Eq, Hash, Clone, Debug)]
@@ -36,20 +39,20 @@ enum NodeFileType {
 }
 
 impl NodeFileType {
-    fn from_file_type(file_type: FileType) -> Option<Self> {
+    fn from_file_type(file_type: FileType) -> Self {
         if file_type.is_file() {
-            Some(RegularFile)
+            RegularFile
         } else if file_type.is_dir() {
-            Some(Directory)
+            Directory
         } else if file_type.is_symlink() {
-            Some(Symlink)
+            Symlink
         } else {
-            None
+            Whiteout
         }
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 struct Node {
     name: String,
     file_type: NodeFileType,
@@ -61,7 +64,10 @@ struct Node {
 }
 
 impl Node {
-    fn collect_module_files<T: AsRef<Path>>(&mut self, module_dir: T) -> Result<bool> {
+    fn collect_module_files<P>(&mut self, module_dir: P) -> Result<bool>
+    where
+        P: AsRef<Path>,
+    {
         let dir = module_dir.as_ref();
         let mut has_file = false;
         for entry in dir.read_dir()?.flatten() {
@@ -73,7 +79,7 @@ impl Node {
             };
 
             if let Some(node) = node {
-                has_file |= if node.file_type == Directory {
+                has_file |= if node.file_type == NodeFileType::Directory {
                     node.collect_module_files(dir.join(&node.name))? || node.replace
                 } else {
                     true
@@ -82,6 +88,19 @@ impl Node {
         }
 
         Ok(has_file)
+    }
+
+    fn dir_is_replace<P>(path: P) -> bool
+    where
+        P: AsRef<Path>,
+    {
+        if let Ok(v) = lgetxattr(&path, REPLACE_DIR_XATTR)
+            && String::from_utf8_lossy(&v) == "y"
+        {
+            return true;
+        }
+
+        path.as_ref().join(REPLACE_DIR_FILE_NAME).exists()
     }
 
     fn new_root<T: ToString>(name: T) -> Self {
@@ -95,32 +114,29 @@ impl Node {
         }
     }
 
-    fn new_module<T: ToString>(name: T, entry: &DirEntry) -> Option<Self> {
+    fn new_module<S>(name: &S, entry: &DirEntry) -> Option<Self>
+    where
+        S: ToString,
+    {
         if let Ok(metadata) = entry.metadata() {
             let path = entry.path();
             let file_type = if metadata.file_type().is_char_device() && metadata.rdev() == 0 {
-                Some(Whiteout)
+                NodeFileType::Whiteout
             } else {
                 NodeFileType::from_file_type(metadata.file_type())
             };
-            if let Some(file_type) = file_type {
-                let mut replace = false;
-                if file_type == Directory {
-                    if let Ok(v) = lgetxattr(&path, REPLACE_DIR_XATTR) {
-                        if String::from_utf8_lossy(&v) == "y" {
-                            replace = true;
-                        }
-                    }
-                }
-                return Some(Node {
-                    name: name.to_string(),
-                    file_type,
-                    children: Default::default(),
-                    module_path: Some(path),
-                    replace,
-                    skip: false,
-                });
+            let replace = file_type == NodeFileType::Directory && Self::dir_is_replace(&path);
+            if replace {
+                log::debug!("{} need replace", path.display());
             }
+            return Some(Self {
+                name: name.to_string(),
+                file_type,
+                children: HashMap::default(),
+                module_path: Some(path),
+                replace,
+                skip: false,
+            });
         }
 
         None
@@ -132,35 +148,52 @@ fn collect_module_files() -> Result<Option<Node>> {
     let mut system = Node::new_root("system");
     let module_root = Path::new(MODULE_DIR);
     let mut has_file = false;
+
+    log::debug!("begin collect module files: {}", module_root.display());
+
     for entry in module_root.read_dir()?.flatten() {
         if !entry.file_type()?.is_dir() {
             continue;
         }
 
+        let id = entry.file_name().to_str().unwrap().to_string();
+        log::debug!("processing new module: {id}");
+
+        let prop = entry.path().join("module.prop");
+        if !prop.exists() {
+            log::debug!("skipped module {id}, because not found module.prop");
+            continue;
+        }
+
         if entry.path().join(DISABLE_FILE_NAME).exists()
+            || entry.path().join(REMOVE_FILE_NAME).exists()
             || entry.path().join(SKIP_MOUNT_FILE_NAME).exists()
         {
+            log::debug!("skipped module {id}, due to disable/remove/skip_mount");
             continue;
         }
 
         let mod_system = entry.path().join("system");
+
         if !mod_system.is_dir() {
             continue;
         }
 
         log::debug!("collecting {}", entry.path().display());
 
-        has_file |= system.collect_module_files(&mod_system)?;
+        has_file |= system.collect_module_files(mod_system)?;
     }
 
     if has_file {
-        for (partition, require_symlink) in [
+        const BUILTIN_PARTITIONS: [(&str, bool); 5] = [
             ("vendor", true),
             ("system_ext", true),
             ("product", true),
             ("odm", false),
             ("oem", false),
-        ] {
+        ];
+
+        for (partition, require_symlink) in BUILTIN_PARTITIONS {
             let path_of_root = Path::new("/").join(partition);
             let path_of_system = Path::new("/system").join(partition);
             if path_of_root.is_dir() && (!require_symlink || path_of_system.is_symlink()) {
@@ -170,6 +203,7 @@ fn collect_module_files() -> Result<Option<Node>> {
                 }
             }
         }
+
         root.children.insert("system".to_string(), system);
         Ok(Some(root))
     } else {
@@ -206,7 +240,7 @@ fn mount_mirror<P: AsRef<Path>, WP: AsRef<Path>>(
             work_dir_path.display()
         );
         fs::File::create(&work_dir_path)?;
-        bind_mount(&path, &work_dir_path)?;
+        mount_bind(&path, &work_dir_path)?;
     } else if file_type.is_dir() {
         log::debug!(
             "mount mirror dir {} -> {}",
@@ -216,13 +250,11 @@ fn mount_mirror<P: AsRef<Path>, WP: AsRef<Path>>(
         create_dir(&work_dir_path)?;
         let metadata = entry.metadata()?;
         chmod(&work_dir_path, Mode::from_raw_mode(metadata.mode()))?;
-        unsafe {
-            chown(
-                &work_dir_path,
-                Some(Uid::from_raw(metadata.uid())),
-                Some(Gid::from_raw(metadata.gid())),
-            )?;
-        }
+        chown(
+            &work_dir_path,
+            Some(Uid::from_raw(metadata.uid())),
+            Some(Gid::from_raw(metadata.gid())),
+        )?;
         lsetfilecon(&work_dir_path, lgetfilecon(&path)?.as_str())?;
         for entry in read_dir(&path)?.flatten() {
             mount_mirror(&path, &work_dir_path, &entry)?;
@@ -262,7 +294,7 @@ fn do_magic_mount<P: AsRef<Path>, WP: AsRef<Path>>(
                     module_path.display(),
                     work_dir_path.display()
                 );
-                bind_mount(module_path, target_path)?;
+                mount_bind(module_path, target_path)?;
             } else {
                 bail!("cannot mount root file {}!", path.display());
             }
@@ -290,8 +322,7 @@ fn do_magic_mount<P: AsRef<Path>, WP: AsRef<Path>>(
                         Whiteout => real_path.exists(),
                         _ => {
                             if let Ok(metadata) = real_path.symlink_metadata() {
-                                let file_type = NodeFileType::from_file_type(metadata.file_type())
-                                    .unwrap_or(Whiteout);
+                                let file_type = NodeFileType::from_file_type(metadata.file_type());
                                 file_type != node.file_type || file_type == Symlink
                             } else {
                                 // real path not exists
@@ -331,13 +362,11 @@ fn do_magic_mount<P: AsRef<Path>, WP: AsRef<Path>>(
                     bail!("cannot mount root dir {}!", path.display());
                 };
                 chmod(&work_dir_path, Mode::from_raw_mode(metadata.mode()))?;
-                unsafe {
-                    chown(
-                        &work_dir_path,
-                        Some(Uid::from_raw(metadata.uid())),
-                        Some(Gid::from_raw(metadata.gid())),
-                    )?;
-                }
+                chown(
+                    &work_dir_path,
+                    Some(Uid::from_raw(metadata.uid())),
+                    Some(Gid::from_raw(metadata.gid())),
+                )?;
                 lsetfilecon(&work_dir_path, lgetfilecon(path)?.as_str())?;
             }
 
@@ -347,7 +376,7 @@ fn do_magic_mount<P: AsRef<Path>, WP: AsRef<Path>>(
                     path.display(),
                     work_dir_path.display()
                 );
-                bind_mount(&work_dir_path, &work_dir_path).context("bind self")?;
+                mount_bind(&work_dir_path, &work_dir_path).context("bind self")?;
             }
 
             if path.exists() && !current.replace {
@@ -408,7 +437,7 @@ fn do_magic_mount<P: AsRef<Path>, WP: AsRef<Path>>(
                     work_dir_path.display(),
                     path.display()
                 );
-                move_mount(&work_dir_path, &path).context("move self")?;
+                mount_move(&work_dir_path, &path).context("move self")?;
                 mount_change(&path, MountPropagationFlags::PRIVATE).context("make self private")?;
             }
         }
@@ -421,30 +450,27 @@ fn do_magic_mount<P: AsRef<Path>, WP: AsRef<Path>>(
 }
 
 pub fn magic_mount() -> Result<()> {
-    match collect_module_files()? {
-        Some(root) => {
-            log::debug!("collected: {:#?}", root);
-            let tmp_dir = PathBuf::from(get_work_dir());
-            ensure_dir_exists(&tmp_dir)?;
-            mount(
-                AP_OVERLAY_SOURCE,
-                &tmp_dir,
-                "tmpfs",
-                MountFlags::empty(),
-                "",
-            )
-            .context("mount tmp")?;
-            mount_change(&tmp_dir, MountPropagationFlags::PRIVATE).context("make tmp private")?;
-            let result = do_magic_mount("/", &tmp_dir, root, false);
-            if let Err(e) = unmount(&tmp_dir, UnmountFlags::DETACH) {
-                log::error!("failed to unmount tmp {}", e);
-            }
-            fs::remove_dir(tmp_dir).ok();
-            result
+    if let Some(root) = collect_module_files()? {
+        log::debug!("collected: {:#?}", root);
+        let tmp_dir = PathBuf::from(get_work_dir());
+        ensure_dir_exists(&tmp_dir)?;
+        mount(
+            AP_MAGIC_MOUNT_SOURCE,
+            &tmp_dir,
+            "tmpfs",
+            MountFlags::empty(),
+            None,
+        )
+        .context("mount tmp")?;
+        mount_change(&tmp_dir, MountPropagationFlags::PRIVATE).context("make tmp private")?;
+        let result = do_magic_mount("/", &tmp_dir, root, false);
+        if let Err(e) = unmount(&tmp_dir, UnmountFlags::DETACH) {
+            log::error!("failed to unmount tmp {}", e);
         }
-        _ => {
-            log::info!("no modules to mount, skipping!");
-            Ok(())
-        }
+        fs::remove_dir(tmp_dir).ok();
+        result
+    } else {
+        log::info!("no modules to mount, skipping!");
+        Ok(())
     }
 }

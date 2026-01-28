@@ -55,15 +55,12 @@ import me.bmax.apatch.ui.component.rememberLoadingDialog
 import me.bmax.apatch.util.APatchKeyHelper
 import me.bmax.apatch.util.DPIUtils
 import me.bmax.apatch.util.getBugreportFile
-import me.bmax.apatch.util.isForceUsingOverlayFS
 import me.bmax.apatch.util.isGlobalNamespaceEnabled
-import me.bmax.apatch.util.isLiteModeEnabled
+import me.bmax.apatch.util.isMagicMountEnabled
 import me.bmax.apatch.util.outputStream
-import me.bmax.apatch.util.overlayFsAvailable
 import me.bmax.apatch.util.rootShellForResult
-import me.bmax.apatch.util.setForceUsingOverlayFS
 import me.bmax.apatch.util.setGlobalNamespaceEnabled
-import me.bmax.apatch.util.setLiteMode
+import me.bmax.apatch.util.setMagicMountEnabled
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import top.yukonga.miuix.kmp.basic.MiuixScrollBehavior
@@ -92,22 +89,15 @@ fun SettingScreen(navigator: DestinationsNavigator) {
     var isGlobalNamespaceEnabled by rememberSaveable {
         mutableStateOf(false)
     }
-    var isLiteModeEnabled by rememberSaveable {
-        mutableStateOf(false)
-    }
-    var forceUsingOverlayFS by rememberSaveable {
+    var isMagicMountEnabled by rememberSaveable {
         mutableStateOf(false)
     }
     var bSkipStoreSuperKey by rememberSaveable {
         mutableStateOf(APatchKeyHelper.shouldSkipStoreSuperKey())
     }
-    val isOverlayFSAvailable by rememberSaveable {
-        mutableStateOf(overlayFsAvailable())
-    }
     if (kPatchReady && aPatchReady) {
         isGlobalNamespaceEnabled = isGlobalNamespaceEnabled()
-        isLiteModeEnabled = isLiteModeEnabled()
-        forceUsingOverlayFS = isForceUsingOverlayFS()
+        isMagicMountEnabled = isMagicMountEnabled()
     }
 
     val showResetSuPathDialog = remember { mutableStateOf(false) }
@@ -246,28 +236,17 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                             })
                     }
 
-                    // Lite Mode
+                    // FolkPatch (Magic Mount)
                     if (kPatchReady && aPatchReady) {
                         SuperSwitch(
-                            title = stringResource(id = R.string.settings_lite_mode),
-                            summary = stringResource(id = R.string.settings_lite_mode_mode_summary),
-                            checked = isLiteModeEnabled,
+                            title = stringResource(id = R.string.settings_magic_mount),
+                            summary = stringResource(id = R.string.settings_magic_mount_summary),
+                            checked = isMagicMountEnabled,
                             onCheckedChange = {
-                                setLiteMode(it)
-                                isLiteModeEnabled = it
-                            })
-                    }
-
-                    // Force OverlayFS
-                    if (kPatchReady && aPatchReady && isOverlayFSAvailable) {
-                        SuperSwitch(
-                            title = stringResource(id = R.string.settings_force_overlayfs_mode),
-                            summary = stringResource(id = R.string.settings_force_overlayfs_mode_summary),
-                            checked = forceUsingOverlayFS,
-                            onCheckedChange = {
-                                setForceUsingOverlayFS(it)
-                                forceUsingOverlayFS = it
-                            })
+                                setMagicMountEnabled(it)
+                                isMagicMountEnabled = it
+                            }
+                        )
                     }
 
                     // Stay on Page

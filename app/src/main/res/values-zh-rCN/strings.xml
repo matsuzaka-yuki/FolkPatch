@@ -264,6 +264,8 @@
     <string name="settings_lite_mode_mode_summary">开启后系统模块功能可能会展现失败，但某些情形下仍能有效地规避检测，重启生效。</string>
     <string name="settings_force_overlayfs_mode">强制使用 OverlayFS</string>
     <string name="settings_force_overlayfs_mode_summary">在内核支持可用时用 OverlayFS 而非 Magic Mount 来挂载系统模块，需要重启生效。</string>
+    <string name="settings_magic_mount">Folk Mount API</string>
+    <string name="settings_magic_mount_summary">启用内置的模块挂载系统</string>
     <string name="online_apm_module_title">在线 APM 模块</string>
     <string name="online_kpm_module_title">在线 KPM 模块</string>
     <string name="online_module_search_hint">搜索模块...</string>
@@ -296,4 +298,11 @@
     <string name="kpm_autoload_kpm_path">KPM路径</string>
     <string name="kpm_autoload_file_not_found">文件未找到</string>
     <string name="kpm_autoload_select_kpm_file">选择KPM文件</string>
+    <string name="apm_first_use_title">欢迎使用系统模块</string>
+    <string name="apm_first_use_text">欢迎使用系统模块，这是使用兼容 Magisk 生态的模块。未来可能会添加对 Lua 模块的支持。点击右下角的按钮可安装模块。您也可以使用顶部的安装器批量安装模块。</string>
+    <string name="apm_mount_warning_title">重要通知</string>
+    <string name="apm_mount_warning_message">模块默认不挂载。请使用内置挂载系统或元模块。</string>
+    <string name="apm_mount_warning_button">我已知悉</string>
+    <string name="kpm_autoload_do_not_show_again">不再显示</string>
+    <string name="kpm_autoload_first_time_confirm">知道了</string>
 </resources>

@@ -532,14 +532,14 @@ private fun KStatusCardList(
                             APApplication.State.KERNELPATCH_NEED_UPDATE -> {
                                 Text(
                                     text = stringResource(id = R.string.home_ap_cando_update),
-                                    color = if (isInstalled) Color.White else Color.Unspecified
+                                    color = if (isInstalled) MiuixTheme.colorScheme.onPrimary else Color.Unspecified
                                 )
                             }
 
                             APApplication.State.KERNELPATCH_NEED_REBOOT -> {
                                 Text(
                                     text = stringResource(id = R.string.home_ap_cando_reboot),
-                                    color = if (isInstalled) Color.White else Color.Unspecified
+                                    color = if (isInstalled) MiuixTheme.colorScheme.onPrimary else Color.Unspecified
                                 )
                             }
 
@@ -550,7 +550,7 @@ private fun KStatusCardList(
                             else -> {
                                 Text(
                                     text = stringResource(id = R.string.home_ap_cando_uninstall),
-                                    color = if (isInstalled) Color.White else Color.Unspecified
+                                    color = if (isInstalled) MiuixTheme.colorScheme.onPrimary else Color.Unspecified
                                 )
                             }
                         }

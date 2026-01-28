@@ -237,6 +237,8 @@
     <string name="unofficial_version_title">Versión no oficial</string>
     <string name="unofficial_version_message">Está utilizando el gestor de FolkPatch de terceros, esto puede causar pérdidas financieras, ¡descargue la aplicación oficial!</string>
     <string name="go_to_github">Ir a Github</string>
+    <string name="settings_magic_mount">Folk Mount API</string>
+    <string name="settings_magic_mount_summary">Activar el sistema de montaje de módulos integrado</string>
     <string name="online_apm_module_title">Módulos APM en línea</string>
     <string name="online_kpm_module_title">Módulos KPM en línea</string>
     <string name="online_module_search_hint">Buscar módulos...</string>
@@ -278,4 +280,11 @@
     <string name="kpm_autoload_kpm_path">Ruta KPM</string>
     <string name="kpm_autoload_file_not_found">Archivo no encontrado</string>
     <string name="kpm_autoload_select_kpm_file">Seleccionar Archivo KPM</string>
+    <string name="apm_first_use_title">Bienvenido a los Módulos del Sistema</string>
+    <string name="apm_first_use_text">Bienvenido a los Módulos del Sistema, que utiliza módulos compatibles con el ecosistema de Magisk. En el futuro, se podría añadir soporte para módulos Lua. Haz clic en el botón de la esquina inferior derecha para instalar módulos. También puedes usar el instalador de arriba para instalar módulos por lotes.</string>
+    <string name="apm_mount_warning_title">Aviso Importante</string>
+    <string name="apm_mount_warning_message">Los módulos no se montan por defecto. Por favor, utiliza el sistema de montaje integrado o met módulo.</string>
+    <string name="apm_mount_warning_button">Entiendo</string>
+    <string name="kpm_autoload_do_not_show_again">No mostrar de nuevo</string>
+    <string name="kpm_autoload_first_time_confirm">Entendido</string>
 </resources>

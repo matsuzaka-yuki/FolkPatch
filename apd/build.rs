@@ -1,26 +1,4 @@
-use std::{env, fs::File, io::{Read, Write}, path::Path, process::Command};
-
-fn get_gradle_version_code() -> Option<u32> {
-    let gradle_file = "../build.gradle.kts";
-    if let Ok(mut file) = File::open(gradle_file) {
-        let mut content = String::new();
-        if file.read_to_string(&mut content).is_ok() {
-            if let Some(start) = content.find("fun getVersionCode(): Int {") {
-                let rest = &content[start..];
-                if let Some(return_idx) = rest.find("return") {
-                    let rest = &rest[return_idx + 6..];
-                    if let Some(end_idx) = rest.find('}') {
-                        let num_str = rest[..end_idx].trim();
-                        if let Ok(code) = num_str.parse::<u32>() {
-                            return Some(code);
-                        }
-                    }
-                }
-            }
-        }
-    }
-    None
-}
+use std::{env, fs::File, io::Write, path::Path, process::Command};
 
 fn get_git_version() -> Result<(u32, String), std::io::Error> {
     // Try to get version code from environment variable first
@@ -28,8 +6,6 @@ fn get_git_version() -> Result<(u32, String), std::io::Error> {
         env_version_code.parse().map_err(|_| {
             std::io::Error::new(std::io::ErrorKind::Other, "Failed to parse {version_code}")
         })?
-    } else if let Some(gradle_code) = get_gradle_version_code() {
-        gradle_code
     } else {
         // Fallback to git-based calculation
         let output = Command::new("git")
@@ -47,16 +23,16 @@ fn get_git_version() -> Result<(u32, String), std::io::Error> {
     let version_name = if let Ok(env_version_name) = env::var("APATCH_VERSION_NAME") {
         env_version_name
     } else {
-        format!("{}-Matsuzaka-yuki", version_code)
+        "113005-Matsuzaka-yuki".to_string()
     };
 
     Ok((version_code, version_name))
 }
 
 fn main() {
+    // update VersionCode when git repository change
     println!("cargo:rerun-if-changed=../.git/HEAD");
     println!("cargo:rerun-if-changed=../.git/refs/");
-    println!("cargo:rerun-if-changed=../build.gradle.kts");
 
     let (code, name) = match get_git_version() {
         Ok((code, name)) => (code, name),

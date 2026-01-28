@@ -236,6 +236,8 @@
     <string name="unofficial_version_title">نسخة غير رسمية</string>
     <string name="unofficial_version_message">أنت تستخدم مدير FolkPatch من طرف ثالث، وهذا قد يسبب خسائر مالية، يرجى تحميل التطبيق الرسمي!</string>
     <string name="go_to_github">الذهاب إلى Github</string>
+    <string name="settings_magic_mount">Folk Mount API</string>
+    <string name="settings_magic_mount_summary">تمكين نظام تحميل الوحدات المدمج</string>
     <string name="settings_apm_install_confirm">تأكيد قبل التثبيت</string>
     <string name="settings_apm_install_confirm_summary">إظهار مربع حوار تأكيد قبل تثبيت الوحدات</string>
     <string name="apm_install_confirm_title">تثبيت الوحدة</string>
@@ -277,4 +279,11 @@
     <string name="kpm_autoload_kpm_path">مسار KPM</string>
     <string name="kpm_autoload_file_not_found">لم يتم العثور على الملف</string>
     <string name="kpm_autoload_select_kpm_file">تحديد ملف KPM</string>
+    <string name="apm_first_use_title">مرحبًا بك في وحدات النظام</string>
+    <string name="apm_first_use_text">مرحبًا بك في وحدات النظام، والتي تستخدم وحدات متوافقة مع نظام Magisk البيئي. في المستقبل، قد يتم إضافة دعم لوحدات Lua. انقر على الزر في الزاوية اليمنى السفلية لتثبيت الوحدات. يمكنك أيضًا استخدام المثبت في الأعلى لتثبيت الوحدات دفعة واحدة.</string>
+    <string name="apm_mount_warning_title">إشعار مهم</string>
+    <string name="apm_mount_warning_message">الوحدات غير مثبتة افتراضيًا. يرجى استخدام نظام التحميل المدمج أو الوحدة الوصفية.</string>
+    <string name="apm_mount_warning_button">أفهم</string>
+    <string name="kpm_autoload_do_not_show_again">لا تظهر مرة أخرى</string>
+    <string name="kpm_autoload_first_time_confirm">حسنًا</string>
 </resources>

@@ -232,10 +232,11 @@
     <string name="update_available_title">有新版本可用</string>
     <string name="update_available_message">FolkPatch 有新版本可用，是否立即更新？</string>
     <string name="update_close">稍後</string>
-    <string name="update_action">立即更新</string>
     <string name="unofficial_version_title">非官方版本</string>
-    <string name="unofficial_version_message">您正在使用的 FolkPatch 管理器为第三方版本，可能会造成财产损失，请下载正版APP使用！</string>
+    <string name="unofficial_version_message">您正在使用的 FolkPatch 管理器为第三方版本，可能会造成財產損失，請下載正版APP使用！</string>
     <string name="go_to_github">前往 Github</string>
+    <string name="settings_magic_mount">Folk Mount API</string>
+    <string name="settings_magic_mount_summary">啟用內建的模組掛載系統</string>
     <string name="online_apm_module_title">線上 APM 模組</string>
     <string name="online_kpm_module_title">線上 KPM 模組</string>
     <string name="online_module_search_hint">搜尋模組...</string>
@@ -276,4 +277,11 @@
     <string name="kpm_autoload_kpm_path">KPM路徑</string>
     <string name="kpm_autoload_file_not_found">檔案未找到</string>
     <string name="kpm_autoload_select_kpm_file">選擇KPM檔案</string>
+    <string name="apm_first_use_title">歡迎使用系統模組</string>
+    <string name="apm_first_use_text">歡迎使用系統模組，這是使用與 Magisk 生態相容的模組。未來可能會加入對 Lua 模組的支援。點擊右下角的按鈕來安裝模組。您也可以使用上方的安裝器來批次安裝模組。</string>
+    <string name="apm_mount_warning_title">重要通知</string>
+    <string name="apm_mount_warning_message">模組預設不會掛載。請使用內建掛載系統或元模組。</string>
+    <string name="apm_mount_warning_button">我知道了</string>
+    <string name="kpm_autoload_do_not_show_again">不要再顯示</string>
+    <string name="kpm_autoload_first_time_confirm">知道了</string>
 </resources>

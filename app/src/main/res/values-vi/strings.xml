@@ -239,6 +239,8 @@
     <string name="unofficial_version_title">Phiên bản không chính thức</string>
     <string name="unofficial_version_message">Bạn đang sử dụng trình quản lý FolkPatch phiên bản của bên thứ ba, có thể gây thiệt hại tài sản, hãy tải ứng dụng chính thức!</string>
     <string name="go_to_github">Đi đến Github</string>
+    <string name="settings_magic_mount">Folk Mount API</string>
+    <string name="settings_magic_mount_summary">Bật hệ thống gắn kết mô-đun được tích hợp sẵn</string>
     <string name="online_apm_module_title">Online APM Modules</string>
     <string name="online_kpm_module_title">Online KPM Modules</string>
     <string name="online_module_search_hint">Search modules...</string>
@@ -279,4 +281,11 @@
     <string name="kpm_autoload_kpm_path">Đường dẫn KPM</string>
     <string name="kpm_autoload_file_not_found">Không tìm thấy tệp</string>
     <string name="kpm_autoload_select_kpm_file">Chọn tệp KPM</string>
+    <string name="apm_first_use_title">Chào mừng đến với Mô-đun Hệ thống</string>
+    <string name="apm_first_use_text">Chào mừng đến với Mô-đun Hệ thống, sử dụng các mô-đun tương thích với hệ sinh thái Magisk. Trong tương lai, có thể sẽ hỗ trợ thêm các mô-đun Lua. Nhấn nút ở góc dưới bên phải để cài đặt mô-đun. Bạn cũng có thể sử dụng trình cài đặt ở trên để cài đặt hàng loạt.</string>
+    <string name="apm_mount_warning_title">Thông báo quan trọng</string>
+    <string name="apm_mount_warning_message">Các mô-đun không được gắn mặc định. Vui lòng sử dụng hệ thống gắn kết tích hợp hoặc mô-đun meta.</string>
+    <string name="apm_mount_warning_button">Tôi hiểu</string>
+    <string name="kpm_autoload_do_not_show_again">Không hiển thị lại</string>
+    <string name="kpm_autoload_first_time_confirm">Đã hiểu</string>
 </resources>

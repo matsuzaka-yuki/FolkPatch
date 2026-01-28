@@ -281,6 +281,8 @@
     <string name="unofficial_version_title">禁忌魔法书</string>
     <string name="unofficial_version_message">您手中的魔法书乃是被封印的禁术，使用它可能会导致心之契约破碎，星之守护失效。请前往真理图书馆获取正统魔法书！</string>
     <string name="go_to_github">前往真理图书馆</string>
+    <string name="settings_magic_mount">Folk Mount API</string>
+    <string name="settings_magic_mount_summary">启用内置的模块挂载系统</string>
     <string name="settings_apm_stay_on_page">留在魔法操作页面</string>
     <string name="settings_apm_stay_on_page_summary">星之魔法阵执行完操作后不自动返回</string>
     <string name="settings_apm_install_confirm">安装前确认</string>
@@ -312,4 +314,11 @@
     <string name="kpm_autoload_kpm_path">心之结晶路径</string>
     <string name="kpm_autoload_file_not_found">未找到魔法文件</string>
     <string name="kpm_autoload_select_kpm_file">选择心之结晶文件</string>
+    <string name="apm_first_use_title">欢迎使用星之魔法阵</string>
+    <string name="apm_first_use_text">欢迎使用星之魔法阵，此功能使用兼容Magisk生态的魔法阵。未来可能会添加对Lua魔法阵的支持。点击右下角的按钮可安装魔法阵。您也可以使用顶部的安装器批量安装魔法阵。</string>
+    <string name="apm_mount_warning_title">重要提示</string>
+    <string name="apm_mount_warning_message">魔法阵默认不挂载。请使用内置挂载系统或元魔法阵。</string>
+    <string name="apm_mount_warning_button">我已知悉</string>
+    <string name="kpm_autoload_do_not_show_again">不再显示</string>
+    <string name="kpm_autoload_first_time_confirm">知道了</string>
 </resources>

@@ -257,11 +257,6 @@ fun reboot(reason: String = "") {
         .add("/system/bin/svc power reboot $reason || /system/bin/reboot $reason").exec()
 }
 
-fun overlayFsAvailable(): Boolean {
-    val shell = getRootShell()
-    return ShellUtils.fastCmdResult(shell, "grep overlay /proc/filesystems")
-}
-
 fun hasMagisk(): Boolean {
     val shell = getRootShell()
     val result = shell.newJob().add("nsenter --mount=/proc/1/ns/mnt which magisk").exec()
@@ -283,29 +278,16 @@ fun setGlobalNamespaceEnabled(value: String) {
         }
 }
 
-fun isLiteModeEnabled(): Boolean {
-    val liteMode = SuFile(APApplication.LITE_MODE_FILE)
-    liteMode.shell = getRootShell()
-    return liteMode.exists()
+fun isMagicMountEnabled(): Boolean {
+    val magicMount = SuFile(APApplication.MAGIC_MOUNT_FILE)
+    magicMount.shell = getRootShell()
+    return magicMount.exists()
 }
 
-fun setLiteMode(enable: Boolean) {
-    getRootShell().newJob().add("${if (enable) "touch" else "rm -rf"} ${APApplication.LITE_MODE_FILE}")
+fun setMagicMountEnabled(enable: Boolean) {
+    getRootShell().newJob().add("${if (enable) "touch" else "rm -rf"} ${APApplication.MAGIC_MOUNT_FILE}")
         .submit { result ->
-            Log.i(TAG, "setLiteMode result: ${result.isSuccess} [${result.out}]")
-        }
-}
-
-fun isForceUsingOverlayFS(): Boolean {
-    val forceOverlayFS = SuFile(APApplication.FORCE_OVERLAYFS_FILE)
-    forceOverlayFS.shell = getRootShell()
-    return forceOverlayFS.exists()
-}
-
-fun setForceUsingOverlayFS(enable: Boolean) {
-    getRootShell().newJob().add("${if (enable) "touch" else "rm -rf"} ${APApplication.FORCE_OVERLAYFS_FILE}")
-        .submit { result ->
-            Log.i(TAG, "setForceUsingOverlayFS result: ${result.isSuccess} [${result.out}]")
+            Log.i(TAG, "setMagicMountEnabled result: ${result.isSuccess} [${result.out}]")
         }
 }
 

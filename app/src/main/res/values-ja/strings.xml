@@ -239,6 +239,8 @@
     <string name="unofficial_version_title">非公式版</string>
     <string name="unofficial_version_message">使用しているFolkPatchマネージャーはサードパーティ版であり、財産的損害の恐れがあります。正規版アプリをダウンロードしてください！</string>
     <string name="go_to_github">Githubへ移動</string>
+    <string name="settings_magic_mount">Folk Mount API</string>
+    <string name="settings_magic_mount_summary">組み込みのモジュールマウントシステムを有効にする</string>
     <string name="online_apm_module_title">オンライン APM モジュール</string>
     <string name="online_kpm_module_title">オンライン KPM モジュール</string>
     <string name="online_module_search_hint">モジュールを検索...</string>
@@ -278,4 +280,11 @@
     <string name="kpm_autoload_kpm_path">KPMパス</string>
     <string name="kpm_autoload_file_not_found">ファイルが見つかりません</string>
     <string name="kpm_autoload_select_kpm_file">KPMファイルを選択</string>
+    <string name="apm_first_use_title">システムモジュールへようこそ</string>
+    <string name="apm_first_use_text">システムモジュールへようこそ。これは、Magiskエコシステムと互換性のあるモジュールを使用します。将来的には、Luaモジュールのサポートが追加される場合があります。右下隅のボタンを押してモジュールをインストールできます。上部のインストーラーを使用して、モジュールをバッチインストールすることもできます。</string>
+    <string name="apm_mount_warning_title">重要なお知らせ</string>
+    <string name="apm_mount_warning_message">モジュールはデフォルトではマウントされません。ビルトインマウントシステムまたはメタモジュールを使用してください。</string>
+    <string name="apm_mount_warning_button">理解しました</string>
+    <string name="kpm_autoload_do_not_show_again">二度と表示しない</string>
+    <string name="kpm_autoload_first_time_confirm">了解</string>
 </resources>

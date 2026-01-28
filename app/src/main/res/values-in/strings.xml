@@ -237,6 +237,8 @@
     <string name="unofficial_version_title">Versi Tidak Resmi</string>
     <string name="unofficial_version_message">Anda menggunakan pengelola FolkPatch pihak ketiga, ini dapat menyebabkan kerugian finansial, silakan unduh aplikasi resmi!</string>
     <string name="go_to_github">Pergi ke Github</string>
+    <string name="settings_magic_mount">Folk Mount API</string>
+    <string name="settings_magic_mount_summary">Aktifkan sistem pemasangan modul bawaan</string>
     <string name="online_apm_module_title">Online APM Modules</string>
     <string name="online_kpm_module_title">Online KPM Modules</string>
     <string name="online_module_search_hint">Search modules...</string>
@@ -277,4 +279,11 @@
     <string name="kpm_autoload_kpm_path">Jalur KPM</string>
     <string name="kpm_autoload_file_not_found">File tidak ditemukan</string>
     <string name="kpm_autoload_select_kpm_file">Pilih file KPM</string>
+    <string name="apm_first_use_title">Selamat Datang di Modul Sistem</string>
+    <string name="apm_first_use_text">Selamat Datang di Modul Sistem, ini menggunakan modul yang kompatibel dengan ekosistem Magisk. Di masa depan, dukungan untuk modul Lua mungkin akan ditambahkan. Klik tombol di sudut kanan bawah untuk menginstal modul. Anda juga dapat menggunakan penginstal di bagian atas untuk menginstal modul secara massal.</string>
+    <string name="apm_mount_warning_title">Pemberitahuan Penting</string>
+    <string name="apm_mount_warning_message">Modul tidak dipasang secara default. Silakan gunakan sistem pemasangan bawaan atau metamodul.</string>
+    <string name="apm_mount_warning_button">Saya Mengerti</string>
+    <string name="kpm_autoload_do_not_show_again">Jangan tampilkan lagi</string>
+    <string name="kpm_autoload_first_time_confirm">Mengerti</string>
 </resources>

@@ -265,11 +265,11 @@
     
     <string name="settings_lite_mode">清修之境</string>
     <string name="settings_lite_mode_mode_summary">不挂载仙法符箓以获得更好的施法性能和隐藏性</string>
-    <string name="hide_about_card">隐藏关于卡片</string>
-    <string name="hide_about_card_summary">隐藏仙府主页的关于卡片</string>
     <string name="settings_force_overlayfs_mode">强启OverlayFS仙域</string>
     <string name="settings_force_overlayfs_mode_summary">强以OverlayFS仙域引仙符入道</string>
     <string name="settings_check_update">检查仙法更新</string>
+    <string name="settings_magic_mount">Folk Mount API</string>
+    <string name="settings_magic_mount_summary">启用内置的模块挂载系统</string>
     <string name="update_available_title">发现新仙法</string>
     <string name="update_available_message">检测到道友的仙法篇次过低，是否要下载新篇次的仙法？</string>
     <string name="update_action">渡劫升仙</string>
@@ -309,4 +309,11 @@
     <string name="kpm_autoload_kpm_path">道核仙符之路</string>
     <string name="kpm_autoload_file_not_found">仙符文卷未觅</string>
     <string name="kpm_autoload_select_kpm_file">择道核仙符文卷</string>
+    <string name="apm_first_use_title">欢迎使用天道仙符</string>
+    <string name="apm_first_use_text">欢迎使用天道仙符，此功能使用兼容Magisk生态的仙符。未来可能会添加对Lua仙符的支持。点击右下角的按钮可安装仙符。您也可以使用顶部的安装器批量安装仙符。</string>
+    <string name="apm_mount_warning_title">重要提示</string>
+    <string name="apm_mount_warning_message">仙符默认不挂载。请使用内置挂载系统或元仙符。</string>
+    <string name="apm_mount_warning_button">我已知悉</string>
+    <string name="kpm_autoload_do_not_show_again">不再显示</string>
+    <string name="kpm_autoload_first_time_confirm">知道了</string>
 </resources>

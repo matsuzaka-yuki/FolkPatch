@@ -48,6 +48,7 @@ class APModuleViewModel : ViewModel() {
         val hasActionScript: Boolean,
         val isZygisk: Boolean,
         val isLSPosed: Boolean,
+        val isMetamodule: Boolean,
     )
 
     data class ModuleUpdateInfo(
@@ -72,7 +73,8 @@ class APModuleViewModel : ViewModel() {
     val moduleList by derivedStateOf {
         val comparator = compareBy(Collator.getInstance(Locale.getDefault()), ModuleInfo::id)
         val finalComparator = if (isApmSortEnabled) {
-            compareByDescending<ModuleInfo> { it.isZygisk }
+            compareByDescending<ModuleInfo> { it.isMetamodule }
+                .thenByDescending { it.isZygisk }
                 .thenByDescending { it.isLSPosed }
                 .thenByDescending { it.hasWebUi }
                 .thenByDescending { it.hasActionScript }
@@ -132,7 +134,8 @@ class APModuleViewModel : ViewModel() {
                             obj.optBoolean("web"),
                             obj.optBoolean("action"),
                             zygiskModuleIds.contains(obj.getString("id")),
-                            obj.optString("name").contains("LSPosed", ignoreCase = true)
+                            obj.optString("name").contains("LSPosed", ignoreCase = true),
+                            obj.optString("metamodule") == "1" || obj.optString("metamodule").equals("true", ignoreCase = true)
                         )
                     }.toList()
                 isNeedRefresh = false

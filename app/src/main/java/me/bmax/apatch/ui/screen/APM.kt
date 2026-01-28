@@ -10,6 +10,8 @@ import android.util.Patterns
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.background
+import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -22,6 +24,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
@@ -33,6 +36,7 @@ import androidx.compose.material.icons.filled.InstallMobile
 import androidx.compose.material.icons.filled.OpenInBrowser
 import androidx.compose.material.icons.filled.CloudDownload
 import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.outlined.Delete
 import com.ramcosta.composedestinations.generated.destinations.OnlineAPMModuleScreenDestination
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -96,12 +100,24 @@ import top.yukonga.miuix.kmp.basic.SearchBar
 import top.yukonga.miuix.kmp.basic.Switch
 import top.yukonga.miuix.kmp.basic.TopAppBar
 import top.yukonga.miuix.kmp.utils.overScrollVertical
+import top.yukonga.miuix.kmp.extra.SuperDialog
+import top.yukonga.miuix.kmp.basic.TextButton
+import top.yukonga.miuix.kmp.basic.ButtonDefaults
+import top.yukonga.miuix.kmp.basic.CardDefaults
+import androidx.compose.material3.Checkbox
+import androidx.compose.ui.graphics.Color
 
 @Destination<RootGraph>
 @Composable
 fun APModuleScreen(navigator: DestinationsNavigator) {
     val context = LocalContext.current
     val scrollBehavior = MiuixScrollBehavior()
+
+    val prefs = remember { APApplication.sharedPreferences }
+
+    var showMountWarning by remember {
+        mutableStateOf(!prefs.getBoolean("apm_mount_warning_shown", false))
+    }
 
     val state by APApplication.apStateLiveData.observeAsState(APApplication.State.UNKNOWN_STATE)
     if (state != APApplication.State.ANDROIDPATCH_INSTALLED && state != APApplication.State.ANDROIDPATCH_NEED_UPDATE) {
@@ -263,7 +279,12 @@ fun APModuleScreen(navigator: DestinationsNavigator) {
                         }
                     },
                     context = context,
-                    scrollBehavior = scrollBehavior
+                    scrollBehavior = scrollBehavior,
+                    showMountWarning = showMountWarning,
+                    onDismissWarning = {
+                        prefs.edit().putBoolean("apm_mount_warning_shown", true).apply()
+                        showMountWarning = false
+                    }
                 )
             }
         }
@@ -279,7 +300,9 @@ private fun ModuleList(
     onInstallModule: (Uri) -> Unit,
     onClickModule: (id: String, name: String, hasWebUi: Boolean) -> Unit,
     context: Context,
-    scrollBehavior: ScrollBehavior
+    scrollBehavior: ScrollBehavior,
+    showMountWarning: Boolean,
+    onDismissWarning: () -> Unit
 ) {
     val failedEnable = stringResource(R.string.apm_failed_to_enable)
     val failedDisable = stringResource(R.string.apm_failed_to_disable)
@@ -434,6 +457,37 @@ private fun ModuleList(
                 )
             },
         ) {
+            if (showMountWarning) {
+                item {
+                    Card(
+                        modifier = Modifier.fillMaxWidth(),
+                        colors = CardDefaults.defaultColors(
+                            color = MiuixTheme.colorScheme.error.copy(alpha = 0.1f),
+                            contentColor = MiuixTheme.colorScheme.error
+                        )
+                    ) {
+                        Column(modifier = Modifier.padding(16.dp)) {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Icon(Icons.Outlined.Delete, null, tint = MiuixTheme.colorScheme.error)
+                                Spacer(Modifier.width(8.dp))
+                                Text(stringResource(R.string.apm_mount_warning_title), fontWeight = FontWeight.Bold)
+                            }
+                            Spacer(Modifier.height(8.dp))
+                            Text(stringResource(R.string.apm_mount_warning_message), style = MiuixTheme.textStyles.body2)
+                            Spacer(Modifier.height(8.dp))
+                            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
+                                TextButton(
+                                    text = stringResource(R.string.apm_mount_warning_button),
+                                    onClick = onDismissWarning,
+                                    colors = ButtonDefaults.textButtonColors(
+                                        MiuixTheme.colorScheme.onError
+                                    )
+                                )
+                            }
+                        }
+                    }
+                }
+            }
             when {
                 viewModel.moduleList.isEmpty() -> {
                     item {
@@ -548,13 +602,36 @@ private fun ModuleItem(
                             .weight(1f),
                         verticalArrangement = Arrangement.spacedBy(2.dp)
                     ) {
-                        Text(
-                            text = module.name,
-                            style = MiuixTheme.textStyles.title4.copy(fontWeight = FontWeight.Bold),
-                            maxLines = 2,
-                            textDecoration = decoration,
-                            overflow = TextOverflow.Ellipsis
-                        )
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Text(
+                                text = module.name,
+                                style = MiuixTheme.textStyles.title4.copy(fontWeight = FontWeight.Bold),
+                                maxLines = 2,
+                                textDecoration = decoration,
+                                overflow = TextOverflow.Ellipsis,
+                                modifier = Modifier.weight(1f, fill = false)
+                            )
+                            if (module.isMetamodule) {
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Box(
+                                    modifier = Modifier
+                                        .background(
+                                            color = MiuixTheme.colorScheme.primary,
+                                            shape = RoundedCornerShape(4.dp)
+                                        )
+                                        .padding(horizontal = 4.dp, vertical = 2.dp)
+                                ) {
+                                    Text(
+                                        text = "META",
+                                        style = MiuixTheme.textStyles.body2.copy(
+                                            color = MiuixTheme.colorScheme.onPrimary,
+                                            fontSize = 10.sp,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    )
+                                }
+                            }
+                        }
 
                         Text(
                             text = "$moduleVersion: ${module.version}\n$moduleAuthor: ${module.author}",

@@ -325,6 +325,8 @@ dependencies {
 
     implementation(libs.ini4j)
 
+    implementation(libs.capsule)
+
     compileOnly(libs.cxx)
 }
 
