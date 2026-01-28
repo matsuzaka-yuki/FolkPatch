@@ -18,6 +18,12 @@
 
     <string name="settings_nav_layout_title">Configuración del diseño de navegación</string>
     <string name="settings_nav_layout_summary">Ocultar o mostrar algunos componentes de navegación</string>
+    <string name="settings_nav_scheme">Esquema de navegación</string>
+    <string name="settings_nav_mode">Modo de barra de navegación</string>
+    <string name="settings_nav_mode_summary">Elige cómo se muestra la barra de navegación</string>
+    <string name="settings_nav_mode_auto">Automático (según el ancho de pantalla)</string>
+    <string name="settings_nav_mode_bottom">Siempre barra inferior</string>
+    <string name="settings_nav_mode_rail">Siempre barra lateral</string>
     <string name="settings_show_apm">Mostrar APM</string>
     <string name="settings_show_kpm">Mostrar KPM</string>
     <string name="settings_show_superuser">Mostrar SuperUsuario</string>

@@ -18,6 +18,12 @@
 
     <string name="settings_nav_layout_title">神谕圣所导航圣图设定</string>
     <string name="settings_nav_layout_summary">隐去或现出神谕圣所导航圣图之部分组件</string>
+    <string name="settings_nav_scheme">神谕圣所导航圣图方案</string>
+    <string name="settings_nav_mode">神谕圣所导航圣图模式</string>
+    <string name="settings_nav_mode_summary">选择神谕圣所导航圣图之现出方式</string>
+    <string name="settings_nav_mode_auto">神谕自动 (视圣域广度而定)</string>
+    <string name="settings_nav_mode_bottom">永恒现于神谕圣所底部圣图</string>
+    <string name="settings_nav_mode_rail">永恒现于神谕圣所侧方圣图</string>
     <string name="settings_show_apm">现星辰圣光阵</string>
     <string name="settings_show_kpm">现灵魂晶石</string>
     <string name="settings_show_superuser">现圣光使者</string>

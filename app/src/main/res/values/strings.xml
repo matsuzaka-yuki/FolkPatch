@@ -18,6 +18,12 @@
 
     <string name="settings_nav_layout_title">Navigation Layout Settings</string>
     <string name="settings_nav_layout_summary">Hide or show some navigation components</string>
+    <string name="settings_nav_scheme">Navigation Scheme</string>
+    <string name="settings_nav_mode">Navigation Bar Mode</string>
+    <string name="settings_nav_mode_summary">Choose how the navigation bar is displayed</string>
+    <string name="settings_nav_mode_auto">Auto (based on screen width)</string>
+    <string name="settings_nav_mode_bottom">Always Bottom Bar</string>
+    <string name="settings_nav_mode_rail">Always Side Rail</string>
     <string name="settings_show_apm">Show APM</string>
     <string name="settings_show_kpm">Show KPM</string>
     <string name="settings_show_superuser">Show SuperUser</string>

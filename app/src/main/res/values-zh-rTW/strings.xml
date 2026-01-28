@@ -21,6 +21,12 @@
 
     <string name="settings_nav_layout_title">底部導覽列設定</string>
     <string name="settings_nav_layout_summary">顯示或隱藏導覽列中的項目</string>
+    <string name="settings_nav_scheme">導航方案設定</string>
+    <string name="settings_nav_mode">導覽欄模式</string>
+    <string name="settings_nav_mode_summary">選擇導覽欄的顯示方式</string>
+    <string name="settings_nav_mode_auto">自動（根據螢幕寬度）</string>
+    <string name="settings_nav_mode_bottom">始終底部導覽欄</string>
+    <string name="settings_nav_mode_rail">始終側邊導覽欄</string>
     <string name="settings_show_apm">顯示系統模組</string>
     <string name="settings_show_kpm">顯示核心模組</string>
     <string name="settings_show_superuser">顯示超級使用者</string>

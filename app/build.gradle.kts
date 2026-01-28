@@ -4,6 +4,7 @@ import com.android.build.gradle.tasks.PackageAndroidArtifact
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.net.URI
 import java.util.Properties
+import java.io.File
 import java.io.FileInputStream
 
 plugins {
@@ -17,9 +18,16 @@ plugins {
     id("kotlin-parcelize")
 }
 
+val androidCompileSdkVersion: Int by rootProject.extra
+val androidCompileNdkVersion: String by rootProject.extra
+val androidBuildToolsVersion: String by rootProject.extra
+val androidMinSdkVersion: Int by rootProject.extra
+val androidTargetSdkVersion: Int by rootProject.extra
+val androidSourceCompatibility: JavaVersion by rootProject.extra
+val androidTargetCompatibility: JavaVersion by rootProject.extra
 val managerVersionCode: Int by rootProject.extra
 val managerVersionName: String by rootProject.extra
-val branchname: String by rootProject.extra
+val branchName: String by rootProject.extra
 val kernelPatchVersion: String by rootProject.extra
 
 // Load keystore properties
@@ -43,6 +51,26 @@ apksign {
     keyPasswordProperty = "KEY_PASSWORD"
 }
 
+val ccache = System.getenv("PATH")?.split(File.pathSeparator)
+    ?.map { File(it, "ccache") }?.firstOrNull { it.exists() }?.absolutePath
+
+val baseFlags = listOf(
+    "-Wall", "-Qunused-arguments", "-fno-rtti", "-fvisibility=hidden",
+    "-fvisibility-inlines-hidden", "-fno-exceptions", "-fno-stack-protector",
+    "-fomit-frame-pointer", "-Wno-builtin-macro-redefined", "-Wno-unused-value",
+    "-D__FILE__=__FILE_NAME__",
+    "-DANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES=ON", "-Wno-unused", "-Wno-unused-parameter",
+    "-Wno-unused-command-line-argument", "-Wno-incompatible-function-pointer-types",
+    "-U_FORTIFY_SOURCE", "-D_FORTIFY_SOURCE=0"
+)
+
+val baseArgs = mutableListOf(
+    "-DANDROID_STL=none", "-DANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES=ON",
+    "-DCMAKE_CXX_STANDARD=23", "-DCMAKE_C_STANDARD=23",
+    "-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON", "-DCMAKE_VISIBILITY_INLINES_HIDDEN=ON",
+    "-DCMAKE_CXX_VISIBILITY_PRESET=hidden", "-DCMAKE_C_VISIBILITY_PRESET=hidden"
+).apply { if (ccache != null) add("-DANDROID_CCACHE=$ccache") }
+
 android {
     namespace = "me.bmax.apatch"
     signingConfigs {
@@ -63,6 +91,11 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            externalNativeBuild {
+                cmake {
+                    arguments += listOf("-DCMAKE_CXX_FLAGS_DEBUG=-Og", "-DCMAKE_C_FLAGS_DEBUG=-Og")
+                }
+            }
         }
         release {
             isMinifyEnabled = true
@@ -77,15 +110,23 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            externalNativeBuild {
+                cmake {
+                    val relFlags = listOf(
+                        "-flto", "-ffunction-sections", "-fdata-sections", "-Wl,--gc-sections",
+                        "-fno-unwind-tables", "-fno-asynchronous-unwind-tables", "-Wl,--exclude-libs,ALL",
+                        "-Ofast", "-fmerge-all-constants", "-flto=full", "-ffat-lto-objects",
+                        "-fno-semantic-interposition", "-fno-threadsafe-statics"
+                    )
+                    cppFlags += relFlags
+                    cFlags += relFlags
+                    arguments += listOf("-DCMAKE_BUILD_TYPE=Release", "-DCMAKE_CXX_FLAGS_RELEASE=-O3 -DNDEBUG", "-DCMAKE_C_FLAGS_RELEASE=-O3 -DNDEBUG")
+                }
+            }
         }
     }
 
     dependenciesInfo.includeInApk = false
-
-    // https://stackoverflow.com/a/77745844
-    tasks.withType<PackageAndroidArtifact> {
-        doFirst { appMetadata.asFile.orNull?.writeText("") }
-    }
 
     buildFeatures {
         aidl = true
@@ -96,10 +137,24 @@ android {
 
     defaultConfig {
         applicationId = "me.yuki.folk"
+        minSdk = androidMinSdkVersion
+        targetSdk = androidTargetSdkVersion
+        versionCode = managerVersionCode
+        versionName = managerVersionName
         buildConfigField("String", "buildKPV", "\"$kernelPatchVersion\"")
         buildConfigField("boolean", "DEBUG_FAKE_ROOT", localProperties.getProperty("debug.fake_root", "false"))
 
-        base.archivesName = "FolkPatch_${managerVersionCode}_${managerVersionName}_on_${branchname}"
+        base.archivesName = "FolkPatch_${managerVersionCode}_${managerVersionName}_on_${branchName}"
+
+        ndk.abiFilters.addAll(arrayOf("arm64-v8a"))
+        externalNativeBuild {
+            cmake {
+                cppFlags += baseFlags + "-std=c++2b"
+                cFlags += baseFlags + "-std=c2x"
+                arguments += baseArgs
+                abiFilters("arm64-v8a")
+            }
+        }
     }
 
     compileOptions {
@@ -128,15 +183,24 @@ android {
         generateLocaleConfig = true
     }
 
-    sourceSets["main"].jniLibs.srcDir("libs")
+    compileSdk = androidCompileSdkVersion
+    ndkVersion = androidCompileNdkVersion
+    buildToolsVersion = androidBuildToolsVersion
 
-    applicationVariants.all {
-        kotlin.sourceSets {
-            getByName(name) {
-                kotlin.srcDir("build/generated/ksp/$name/kotlin")
-            }
-        }
+    lint {
+        abortOnError = false
+        checkReleaseBuilds = false
     }
+
+    android.sourceSets.named("main") {
+        kotlin.directories += "build/generated/ksp/$name/kotlin"
+        jniLibs.directories += "libs"
+    }
+}
+
+// https://stackoverflow.com/a/77745844
+tasks.withType<PackageAndroidArtifact> {
+    doFirst { appMetadata.asFile.orNull?.writeText("") }
 }
 
 java {
@@ -331,14 +395,4 @@ dependencies {
     implementation(libs.google.code.gson)
 
     compileOnly(libs.cxx)
-}
-
-cmaker {
-    default {
-        arguments += "-DANDROID_STL=none"
-        arguments += "-DANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES=ON"
-        abiFilters("arm64-v8a")
-        cppFlags += "-std=c++2b"
-        cFlags += "-std=c2x"
-    }
 }

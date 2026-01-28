@@ -17,6 +17,12 @@
 
     <string name="settings_nav_layout_title">天机阁导航阵图设定</string>
     <string name="settings_nav_layout_summary">隐去或现出天机阁导航阵图之部分组件</string>
+    <string name="settings_nav_scheme">天机阁导航阵法方案</string>
+    <string name="settings_nav_mode">天机阁导航阵法模式</string>
+    <string name="settings_nav_mode_summary">选择天机阁导航阵法之现出方式</string>
+    <string name="settings_nav_mode_auto">天机自动 (视界域广而定)</string>
+    <string name="settings_nav_mode_bottom">永恒现于天机阁底部阵法</string>
+    <string name="settings_nav_mode_rail">永恒现于天机阁侧方阵法</string>
     <string name="settings_show_apm">现天道仙符</string>
     <string name="settings_show_kpm">现道核仙符</string>
     <string name="settings_show_superuser">现登仙至尊</string>
