@@ -241,6 +241,8 @@
     <string name="settings_module_sort_optimization_summary">Fazer módulos de sistema com WebUI e Ação aparecerem no topo</string>
     <string name="settings_fold_system_module">Dobrar Módulos do Sistema</string>
     <string name="settings_fold_system_module_summary">Clique no cartão do módulo para expandir/colapsar ações</string>
+        <string name="settings_simple_list_bottom_bar">Barra Inferior Simples</string>
+        <string name="settings_simple_list_bottom_bar_summary">Usar estilo de botões somente com ícones para ações de módulo, inspirado no APatch</string>
     <string name="apm_install_confirm_title">Instalar Módulo</string>
     <string name="apm_install_confirm_content">Tem certeza de que deseja instalar %s?</string>
     <string name="apm_disable_all_title">Desativar Todos os Módulos</string>
@@ -257,7 +259,14 @@
     <string name="mode_select_page_install_inactive_slot_warning">Seu dispositivo será **FORÇADO** a inicializar no slot inativo atual após reiniciar!\nUse esta opção apenas após o término da OTA.\nContinuar?</string>
 
     <string name="home_dialog_auth_fail_title">Falha na autenticação</string>
-    <string name="home_dialog_auth_fail_content">Não foi possível autenticar a SuperKey, portanto o APatch não pode funcionar corretamente.\nAqui estão algumas possíveis razões para a falha:\n1. Você não aplicou o patch no boot.img com KernelPatch.\n2. O boot.img modificado não foi instalado (flashed).\n3. A SuperKey está errada ou contém caracteres especiais.\n4. Seu dispositivo não suporta APatch e KernelPatch.\n\nPor favor, verifique e tente novamente. Se houver problemas persistentes, você pode perguntar na página de issues do repositório oficial.</string>
+    <string name="home_dialog_auth_fail_content">Não foi possível autenticar a SuperKey, portanto o APatch não pode funcionar corretamente.
+Aqui estão algumas possíveis razões para a falha:
+1. Você não aplicou o patch no boot.img com KernelPatch.
+2. O boot.img modificado não foi instalado (flashed).
+3. A SuperKey está errada ou contém caracteres especiais.
+4. Seu dispositivo não suporta APatch e KernelPatch.
+
+Por favor, verifique e tente novamente. Se houver problemas persistentes, você pode perguntar na página de issues do repositório oficial.</string>
 
     <string name="home_more_menu_feedback_or_suggestion">Feedback ou sugestão</string>
     <string name="home_more_menu_about">Sobre</string>
@@ -415,7 +424,13 @@
     <string name="kpm_autoload_enabled_summary">Carregar módulos KPM automaticamente ao iniciar o aplicativo</string>
     <string name="kpm_autoload_json_config">Configuração JSON</string>
     <string name="kpm_autoload_json_label">JSON de Configuração</string>
-    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
+    <string name="kpm_autoload_json_placeholder">{
+  "enabled": true,
+  "kpmPaths": [
+    "/path/to/module1.kpm",
+    "/path/to/module2.kpm"
+  ]
+}</string>
     <string name="kpm_autoload_json_error">Formato JSON inválido</string>
     <string name="kpm_autoload_json_helper">Insira um JSON válido com array de caminhos de arquivos KPM</string>
     <string name="kpm_autoload_save">Salvar Configuração</string>
@@ -464,7 +479,11 @@
     <string name="kpm_autoload_file_not_found">Arquivo não encontrado</string>
     <string name="kpm_autoload_select_kpm_file">Selecionar Arquivo KPM</string>
     <string name="kpm_autoload_first_time_title">Sobre Auto-Carregamento KPM</string>
-    <string name="kpm_autoload_first_time_message">Este recurso permite carregar automaticamente todos os KPMs configurados de forma temporária na inicialização. Esta abordagem é mais conveniente do que embutir diretamente no kernel.\n\nPor exemplo, KPMs que impedem modificação de partição só podem ser usados temporariamente, pois embutir pode causar falhas no boot. Ou se você não quer modificar a partição BOOT, pode usar essa configuração para carregar módulos rapidamente.\n\nPor favor, certifique-se de fechar completamente o app e reabri-lo para que os comandos sejam executados. Geralmente, ele também carregará na inicialização do sistema. É normal que o gerenciador fique com tela preta por um período! Isso usa um método de carregamento em segundo plano, lembre-se de atualizar manualmente (arrastar para baixo) para verificar se os módulos foram carregados corretamente!</string>
+    <string name="kpm_autoload_first_time_message">Este recurso permite carregar automaticamente todos os KPMs configurados de forma temporária na inicialização. Esta abordagem é mais conveniente do que embutir diretamente no kernel.
+
+Por exemplo, KPMs que impedem modificação de partição só podem ser usados temporariamente, pois embutir pode causar falhas no boot. Ou se você não quer modificar a partição BOOT, pode usar essa configuração para carregar módulos rapidamente.
+
+Por favor, certifique-se de fechar completamente o app e reabri-lo para que os comandos sejam executados. Geralmente, ele também carregará na inicialização do sistema. É normal que o gerenciador fique com tela preta por um período! Isso usa um método de carregamento em segundo plano, lembre-se de atualizar manualmente (arrastar para baixo) para verificar se os módulos foram carregados corretamente!</string>
     <string name="kpm_autoload_first_time_confirm">Entendi</string>
     <string name="kpm_autoload_do_not_show_again">Não mostrar novamente</string>
 

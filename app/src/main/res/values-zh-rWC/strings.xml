@@ -232,6 +232,8 @@
     <string name="settings_module_sort_optimization_summary">使天界仙符中具WebUI与符法者排于前列</string>
     <string name="settings_fold_system_module">折叠天界仙符</string>
     <string name="settings_fold_system_module_summary">点击仙符画卷展开/折叠符法按钮</string>
+        <string name="settings_simple_list_bottom_bar">简约仙符底栏</string>
+        <string name="settings_simple_list_bottom_bar_summary">仙符符法使用纯图标按钮样式，灵感来自APatch</string>
     <string name="apm_disable_all_title">禁诸仙符</string>
     <string name="apm_disable_all_confirm">确欲尽禁诸仙符乎？大抵天道易筋前为之可避天劫。</string>
 
@@ -245,7 +247,14 @@
     <string name="mode_select_page_install_inactive_slot_warning">仙器重铸后，必启于当前未启之仙槽！\n唯天道易筋既毕，可用此渡劫之选。\n道友欲继之乎？</string>
 
     <string name="home_dialog_auth_fail_title">仙籍验败</string>
-    <string name="home_dialog_auth_fail_content">未验登仙秘钥，APatch仙法未可用。\n仙籍验败之由，约有数端：\n一、未以KernelPatch仙法炼符补仙躯boot.img；\n二、炼符后之仙躯boot.img未引仙入体；\n三、登仙秘钥符文舛误，或杂邪魔异符；\n四、仙器不兼容APatch与KernelPatch仙法。\n\n宜勘之重试。若仍有天劫，可于仙门官库issue仙台问之。</string>
+    <string name="home_dialog_auth_fail_content">未验登仙秘钥，APatch仙法未可用。
+仙籍验败之由，约有数端：
+一、未以KernelPatch仙法炼符补仙躯boot.img；
+二、炼符后之仙躯boot.img未引仙入体；
+三、登仙秘钥符文舛误，或杂邪魔异符；
+四、仙器不兼容APatch与KernelPatch仙法。
+
+宜勘之重试。若仍有天劫，可于仙门官库issue仙台问之。</string>
 
     <string name="home_more_menu_feedback_or_suggestion">呈渡劫见谛或献升仙策</string>
     <string name="home_more_menu_about">仙门叙略</string>
@@ -401,7 +410,13 @@
     <string name="kpm_autoload_enabled_summary">仙器启时，自动引道核仙符入道</string>
     <string name="kpm_autoload_json_config">JSON天机典式</string>
     <string name="kpm_autoload_json_label">JSON天机典式</string>
-    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
+    <string name="kpm_autoload_json_placeholder">{
+  "enabled": true,
+  "kpmPaths": [
+    "/path/to/module1.kpm",
+    "/path/to/module2.kpm"
+  ]
+}</string>
     <string name="kpm_autoload_json_error">JSON天机典式非正</string>
     <string name="kpm_autoload_json_helper">输正之JSON天机典式，含道核仙符文卷路之数组</string>
     <string name="kpm_autoload_save">存天机典式</string>
@@ -418,7 +433,11 @@
     <string name="kpm_autoload_file_not_found">仙符文卷未觅</string>
     <string name="kpm_autoload_select_kpm_file">择道核仙符文卷</string>
     <string name="kpm_autoload_first_time_title">论道核仙符自动引符</string>
-    <string name="kpm_autoload_first_time_message">此仙能可令重铸仙躯时自动临时引天机典式文卷之诸道核仙符，此法较之直嵌道核，更便渡劫也。\n\n譬如，防仙域分区被改之道核仙符，唯可临时引符用之，嵌之则仙器不启。或不欲损BOOT仙域，可藉此天机典式速引符入道。\n\n必使凡器尽退再入，方行渡劫之令。大抵重铸入仙府，亦能引符。仙府辖器黑屏片时，乃渡劫常态也，用纯后台引符之法，宜手动上滑刷新仙域，察其是否引符入道！</string>
+    <string name="kpm_autoload_first_time_message">此仙能可令重铸仙躯时自动临时引天机典式文卷之诸道核仙符，此法较之直嵌道核，更便渡劫也。
+
+譬如，防仙域分区被改之道核仙符，唯可临时引符用之，嵌之则仙器不启。或不欲损BOOT仙域，可藉此天机典式速引符入道。
+
+必使凡器尽退再入，方行渡劫之令。大抵重铸入仙府，亦能引符。仙府辖器黑屏片时，乃渡劫常态也，用纯后台引符之法，宜手动上滑刷新仙域，察其是否引符入道！</string>
     <string name="kpm_autoload_first_time_confirm">贫道已知</string>
     <string name="kpm_autoload_do_not_show_again">毋复显渡劫警言</string>
 

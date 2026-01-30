@@ -239,6 +239,8 @@
     <string name="settings_module_sort_optimization_summary">带WebUI和Action的模块放前面喵！</string>
     <string name="settings_fold_system_module">折叠系统模块喵</string>
     <string name="settings_fold_system_module_summary">点模块卡片展开/收起操作按钮喵！</string>
+        <string name="settings_simple_list_bottom_bar">简约列表底栏喵</string>
+        <string name="settings_simple_list_bottom_bar_summary">模块操作用纯图标按钮喵，灵感来自APatch喵！</string>
     <string name="apm_install_confirm_title">装模块喵</string>
     <string name="apm_install_confirm_content">确定装 %s 嘛喵？不要装错哦！</string>
     <string name="apm_disable_all_title">关所有模块喵</string>
@@ -434,7 +436,13 @@
     <string name="kpm_autoload_enabled_summary">应用开了就自动加载KPM模块哒喵！</string>
     <string name="kpm_autoload_json_config">JSON配置喵</string>
     <string name="kpm_autoload_json_label">JSON配置喵</string>
-    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n} 喵</string>
+    <string name="kpm_autoload_json_placeholder">{
+  "enabled": true,
+  "kpmPaths": [
+    "/path/to/module1.kpm",
+    "/path/to/module2.kpm"
+  ]
+} 喵</string>
     <string name="kpm_autoload_json_error">JSON格式错了喵！</string>
     <string name="kpm_autoload_json_helper">输有效的JSON喵，里面得有KPM文件路径数组哦</string>
     <string name="kpm_autoload_save">存配置喵！</string>

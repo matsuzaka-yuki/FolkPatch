@@ -244,6 +244,8 @@
     <string name="settings_module_sort_optimization_summary">Make system modules with WebUI and Action appear at the top</string>
     <string name="settings_fold_system_module">Fold System Modules</string>
     <string name="settings_fold_system_module_summary">Click module card to expand/collapse actions</string>
+    <string name="settings_simple_list_bottom_bar">Simple List Bottom Bar</string>
+    <string name="settings_simple_list_bottom_bar_summary">Use icon-only buttons style for module actions, inspired by APatch</string>
     <string name="apm_install_confirm_title">Install Module</string>
     <string name="apm_install_confirm_content">Are you sure you want to install %s?</string>
     <string name="apm_disable_all_title">Disable All Modules</string>
@@ -262,7 +264,14 @@
     <string name="mode_select_page_install_inactive_slot_warning">Your device will be **FORCED** to boot to the current inactive slot after a reboot!\nOnly use this option after OTA is done.\nContinue?</string>
 
     <string name="home_dialog_auth_fail_title">Authentication failed</string>
-    <string name="home_dialog_auth_fail_content">Unable to authenticate the SuperKey, therefore APatch cannot work properly.\nHere are some possible reasons for authentication failure:\n1. You didn\'t patch the boot.img with KernelPatch.\n2. The patched boot.img wasn\'t flashed.\n3. The SuperKey is wrong or contains special characters.\n4. Your device doesn\'t support APatch and KernelPatch.\n\nPlease check and try again. If there are still issues, you can always ask questions on the official repository\'s issues page.</string>
+    <string name="home_dialog_auth_fail_content">Unable to authenticate the SuperKey, therefore APatch cannot work properly.
+Here are some possible reasons for authentication failure:
+1. You didn\'t patch the boot.img with KernelPatch.
+2. The patched boot.img wasn\'t flashed.
+3. The SuperKey is wrong or contains special characters.
+4. Your device doesn\'t support APatch and KernelPatch.
+
+Please check and try again. If there are still issues, you can always ask questions on the official repository\'s issues page.</string>
 
     <string name="home_more_menu_feedback_or_suggestion">Feedback or suggestion</string>
     <string name="home_more_menu_about">About</string>
@@ -421,7 +430,13 @@
     <string name="kpm_autoload_enabled_summary">Automatically load KPM modules on application startup</string>
     <string name="kpm_autoload_json_config">JSON Configuration</string>
     <string name="kpm_autoload_json_label">Configuration JSON</string>
-    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
+    <string name="kpm_autoload_json_placeholder">{
+  "enabled": true,
+  "kpmPaths": [
+    "/path/to/module1.kpm",
+    "/path/to/module2.kpm"
+  ]
+}</string>
     <string name="kpm_autoload_json_error">Invalid JSON format</string>
     <string name="kpm_autoload_json_helper">Enter valid JSON with array of KPM file paths</string>
     <string name="kpm_autoload_save">Save Configuration</string>
@@ -470,7 +485,11 @@
     <string name="kpm_autoload_file_not_found">File not found</string>
     <string name="kpm_autoload_select_kpm_file">Select KPM File</string>
     <string name="kpm_autoload_first_time_title">About KPM Auto-Load</string>
-    <string name="kpm_autoload_first_time_message">This feature allows you to automatically load all configured KPMs temporarily on boot. This approach is more convenient than embedding directly into the kernel.\n\nFor example, KPMs that prevent partition modification can only be used temporarily, as embedding may cause boot failures. Or if you don\'t want to modify the BOOT partition, you can use this configuration to quickly load modules.\n\nPlease ensure the app is completely closed and reopened for the commands to execute. Generally, it will also load on boot. It is normal for the manager to have a black screen for a period of time! This uses a pure background loading method, remember to manually swipe down to refresh and check if the modules are loaded correctly!</string>
+    <string name="kpm_autoload_first_time_message">This feature allows you to automatically load all configured KPMs temporarily on boot. This approach is more convenient than embedding directly into the kernel.
+
+For example, KPMs that prevent partition modification can only be used temporarily, as embedding may cause boot failures. Or if you don\'t want to modify the BOOT partition, you can use this configuration to quickly load modules.
+
+Please ensure the app is completely closed and reopened for the commands to execute. Generally, it will also load on boot. It is normal for the manager to have a black screen for a period of time! This uses a pure background loading method, remember to manually swipe down to refresh and check if the modules are loaded correctly!</string>
     <string name="kpm_autoload_first_time_confirm">Got it</string>
     <string name="kpm_autoload_do_not_show_again">Don\'t show again</string>
 

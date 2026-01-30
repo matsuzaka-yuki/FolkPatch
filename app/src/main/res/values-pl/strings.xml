@@ -233,6 +233,8 @@
     <string name="settings_module_sort_optimization_summary">Umieść moduły systemowe z WebUI i Action na początku listy</string>
     <string name="settings_fold_system_module">Zwiń Moduły Systemowe</string>
     <string name="settings_fold_system_module_summary">Kliknij kartę modułu, aby rozwinąć/zwinąć akcje</string>
+    <string name="settings_simple_list_bottom_bar">Prosty dolny pasek listy</string>
+    <string name="settings_simple_list_bottom_bar_summary">Użyj stylu przycisków tylko z ikonami dla akcji modułu, zainspirowane APatch</string>
     <string name="settings_show_more_module_info">Pokaż szczegóły modułu</string>
     <string name="settings_show_more_module_info_summary">Pokaż ID i rozmiar modułu na liście modułów</string>
     <string name="apm_install_confirm_title">Instalacja modułu</string>
@@ -251,7 +253,14 @@
     <string name="mode_select_page_install_inactive_slot_warning">Twoje urządzenie zostanie **WYMUSZONE** do uruchomienia w aktualnie nieaktywnym slocie po ponownym uruchomieniu!\nUżyj tej opcji tylko po zakończeniu OTA.\nKontynuować?</string>
 
     <string name="home_dialog_auth_fail_title">Uwierzytelnianie nie powiodło się</string>
-    <string name="home_dialog_auth_fail_content">Nie można uwierzytelnić SuperKlucza, dlatego APatch nie może działać prawidłowo.\nOto kilka możliwych przyczyn niepowodzenia uwierzytelnienia:\n1. Nie poprawiłeś boot.img za pomocą KernelPatch.\n2. Poprawiony obraz boot.img nie został wgrany.\n3. SuperKlucz jest nieprawidłowy lub zawiera znaki specjalne.\n4. Twoje urządzenie nie obsługuje APatch i KernelPatch.\n\nProszę sprawdzić i spróbować ponownie. Jeśli nadal występują problemy, zawsze można zadać pytania na stronie problemów oficjalnego repozytorium.</string>
+    <string name="home_dialog_auth_fail_content">Nie można uwierzytelnić SuperKlucza, dlatego APatch nie może działać prawidłowo.
+Oto kilka możliwych przyczyn niepowodzenia uwierzytelnienia:
+1. Nie poprawiłeś boot.img za pomocą KernelPatch.
+2. Poprawiony obraz boot.img nie został wgrany.
+3. SuperKlucz jest nieprawidłowy lub zawiera znaki specjalne.
+4. Twoje urządzenie nie obsługuje APatch i KernelPatch.
+
+Proszę sprawdzić i spróbować ponownie. Jeśli nadal występują problemy, zawsze można zadać pytania na stronie problemów oficjalnego repozytorium.</string>
 
     <string name="home_more_menu_feedback_or_suggestion">Opinie lub sugestie</string>
     <string name="home_more_menu_about">O aplikacji</string>
@@ -403,7 +412,13 @@
     <string name="settings_grid_working_card_night_opacity">Przezroczystość karty w trybie nocnym</string>
     <string name="kpm_autoload_json_config">Konfiguracja JSON</string>
     <string name="kpm_autoload_json_label">Konfiguracja JSON</string>
-    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/sciezka/do/modulu1.kpm",\n    "/sciezka/do/modulu2.kpm"\n  ]\n}</string>
+    <string name="kpm_autoload_json_placeholder">{
+  "enabled": true,
+  "kpmPaths": [
+    "/sciezka/do/modulu1.kpm",
+    "/sciezka/do/modulu2.kpm"
+  ]
+}</string>
     <string name="kpm_autoload_json_error">Nieprawidłowy format JSON</string>
     <string name="kpm_autoload_json_helper">Wprowadź poprawny format JSON z tablicą ścieżek do plików KPM</string>
     <string name="kpm_autoload_save">Zapisz konfigurację</string>
@@ -420,7 +435,11 @@
     <string name="kpm_autoload_file_not_found">Nie znaleziono pliku</string>
     <string name="kpm_autoload_select_kpm_file">Wybierz plik KPM</string>
     <string name="kpm_autoload_first_time_title">O automatycznym ładowaniu KPM</string>
-    <string name="kpm_autoload_first_time_message">Ta funkcja pozwala automatycznie tymczasowo załadować wszystkie skonfigurowane KPM przy starcie. To podejście jest bardziej wygodne niż bezpośrednie osadzanie w jądrze.\n\nNa przykład, KPM, które zapobiegają modyfikacji partycji mogą być używane tylko tymczasowo, ponieważ osadzanie może spowodować awarię rozruchu. Lub jeśli nie chcesz modyfikować partycji BOOT, możesz użyć tej konfiguracji do szybkiego ładowania modułów.\n\nUpewnij się, że aplikacja jest całkowicie zamknięta i ponownie otwarta, aby polecenia zostały wykonane. Zazwyczaj ładowanie następuje również przy starcie. Czasowe czarny ekran menedżera jest normalnym zjawiskiem! Używana jest czysto后台owa metoda ładowania, pamiętaj, aby ręcznie przesunąć w dół, aby odświeżyć i sprawdzić, czy moduły zostały poprawnie załadowane!</string>
+    <string name="kpm_autoload_first_time_message">Ta funkcja pozwala automatycznie tymczasowo załadować wszystkie skonfigurowane KPM przy starcie. To podejście jest bardziej wygodne niż bezpośrednie osadzanie w jądrze.
+
+Na przykład, KPM, które zapobiegają modyfikacji partycji mogą być używane tylko tymczasowo, ponieważ osadzanie może spowodować awarię rozruchu. Lub jeśli nie chcesz modyfikować partycji BOOT, możesz użyć tej konfiguracji do szybkiego ładowania modułów.
+
+Upewnij się, że aplikacja jest całkowicie zamknięta i ponownie otwarta, aby polecenia zostały wykonane. Zazwyczaj ładowanie następuje również przy starcie. Czasowe czarny ekran menedżera jest normalnym zjawiskiem! Używana jest czysto后台owa metoda ładowania, pamiętaj, aby ręcznie przesunąć w dół, aby odświeżyć i sprawdzić, czy moduły zostały poprawnie załadowane!</string>
     <string name="kpm_autoload_first_time_confirm">Rozumiem</string>
     <string name="kpm_autoload_do_not_show_again">Nie pokazuj ponownie</string>
 

@@ -211,6 +211,8 @@
   <string name="settings_module_sort_optimization_summary">WebUI とアクションを備えたシステムモジュールを上部に表示します</string>
   <string name="settings_fold_system_module">システムモジュールを折りたたむ</string>
   <string name="settings_fold_system_module_summary">モジュールカードをタップで展開/折りたたみのアクションをします</string>
+    <string name="settings_simple_list_bottom_bar">シンプルリストボトムバー</string>
+    <string name="settings_simple_list_bottom_bar_summary">モジュール操作にアイコンのみのボタンスタイルを使用、APatchにインスパイア</string>
   <string name="settings_auto_backup">自動バックアップ</string>
   <string name="settings_auto_backup_summary">毎日1回自動バックアップ</string>
   <string name="settings_backup_password">バックアップパスワード</string>
@@ -238,7 +240,14 @@
   <string name="mode_select_page_install_inactive_slot">非アクティブスロットにインストール (OTA 後)</string>
   <string name="mode_select_page_install_inactive_slot_warning">再起動後にデバイスは、非アクティブなスロットから**強制的に**起動されます！\nこのオプションは、OTA の完了後にのみ使用してください。\n続行しますか？</string>
   <string name="home_dialog_auth_fail_title">認証に失敗しました</string>
-  <string name="home_dialog_auth_fail_content">SuperKey を認証できないため、APatch は正常に動作しません。\n認証の失敗で考えられる原因は以下の通りです:\n1. boot.img に KernelPatch を適用していない。\n2. パッチを適用した boot.img をフラッシュしていない。\n3. SuperKey が間違っているか、特殊文字が含まれている。\n4. 使用しているデバイスが APatch と KernelPatch に対応していない。\n\n確認をした上で、再度お試しください。それでも問題が解決しない場合は、公式リポジトリの Issue ページでいつでも質問ができます。</string>
+  <string name="home_dialog_auth_fail_content">SuperKey を認証できないため、APatch は正常に動作しません。
+認証の失敗で考えられる原因は以下の通りです:
+1. boot.img に KernelPatch を適用していない。
+2. パッチを適用した boot.img をフラッシュしていない。
+3. SuperKey が間違っているか、特殊文字が含まれている。
+4. 使用しているデバイスが APatch と KernelPatch に対応していない。
+
+確認をした上で、再度お試しください。それでも問題が解決しない場合は、公式リポジトリの Issue ページでいつでも質問ができます。</string>
   <string name="home_more_menu_feedback_or_suggestion">フィードバックまたは提案</string>
   <string name="home_more_menu_about">アプリについて</string>
   <string name="home_dialog_uninstall_title">アンインストール</string>
@@ -379,7 +388,13 @@
   <string name="kpm_autoload_enabled_summary">アプリの起動時に KP モジュールを自動で読み込みます</string>
   <string name="kpm_autoload_json_config">JSON を構成</string>
   <string name="kpm_autoload_json_label">JSON を構成します</string>
-  <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
+  <string name="kpm_autoload_json_placeholder">{
+  "enabled": true,
+  "kpmPaths": [
+    "/path/to/module1.kpm",
+    "/path/to/module2.kpm"
+  ]
+}</string>
   <string name="kpm_autoload_json_error">無効な JSON フォーマット</string>
   <string name="kpm_autoload_json_helper">KPM ファイルパスの配列を含む有効な JSON ファイルを入力してください</string>
   <string name="kpm_autoload_save">構成を保存</string>
@@ -429,7 +444,11 @@
   <string name="kpm_autoload_file_not_found">ファイルがありません</string>
   <string name="kpm_autoload_select_kpm_file">KPM ファイルを選択</string>
   <string name="kpm_autoload_first_time_title">KPM の自動読み込みについて</string>
-  <string name="kpm_autoload_first_time_message">この機能を使用すると、設定済みのすべての KPM を起動時に自動で一時的に読み込めます。この方法は、カーネルに直接埋め込むよりも便利です。\n\n例えば、パーティションの変更を禁止する KPM は、埋め込みによって起動に失敗する可能性があるため、一時的にしか使用できません。または、boot パーティションを変更したくない場合は、この設定を使用してモジュールを迅速に読み込めます。\n\nコマンドを実行するには、アプリを完全に閉じて再起動してください。起動時で通常に読み込まれます。マネージャーの画面が一時的に暗転するのは正常です！これは純粋なバックグラウンドでの読み込み方式を使用しているため、手動で下にスワイプして更新してモジュールが正しく読み込まれているか確認してください！</string>
+  <string name="kpm_autoload_first_time_message">この機能を使用すると、設定済みのすべての KPM を起動時に自動で一時的に読み込めます。この方法は、カーネルに直接埋め込むよりも便利です。
+
+例えば、パーティションの変更を禁止する KPM は、埋め込みによって起動に失敗する可能性があるため、一時的にしか使用できません。または、boot パーティションを変更したくない場合は、この設定を使用してモジュールを迅速に読み込めます。
+
+コマンドを実行するには、アプリを完全に閉じて再起動してください。起動時で通常に読み込まれます。マネージャーの画面が一時的に暗転するのは正常です！これは純粋なバックグラウンドでの読み込み方式を使用しているため、手動で下にスワイプして更新してモジュールが正しく読み込まれているか確認してください！</string>
   <string name="kpm_autoload_first_time_confirm">理解しました</string>
   <string name="kpm_autoload_do_not_show_again">再度表示しない</string>
   <!-- Hide Settings Strings -->

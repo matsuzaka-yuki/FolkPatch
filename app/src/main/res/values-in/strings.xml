@@ -234,6 +234,8 @@
     <string name="settings_module_sort_optimization_summary">Jadikan modul sistem dengan WebUI dan Action muncul di bagian atas</string>
     <string name="settings_fold_system_module">Lipat Modul Sistem</string>
     <string name="settings_fold_system_module_summary">Klik kartu modul untuk memperluas/menyembunyikan tindakan</string>
+        <string name="settings_simple_list_bottom_bar">Bar Bawah Daftar Sederhana</string>
+        <string name="settings_simple_list_bottom_bar_summary">Gunakan gaya tombol hanya ikon untuk tindakan modul, terinspirasi dari APatch</string>
     <string name="settings_show_more_module_info">Tampilkan detail modul</string>
     <string name="settings_show_more_module_info_summary">Tampilkan ID dan ukuran modul dalam daftar modul</string>
     <string name="apm_install_confirm_title">Instal modul</string>
@@ -251,7 +253,14 @@
     <string name="mode_select_page_install_inactive_slot_warning">Perangkat Anda **AKAN DIPAKSA** untuk boot ke slot tidak aktif saat ini setelah *reboot*!\nGunakan opsi ini hanya setelah OTA selesai.\nLanjutkan?</string>
 
     <string name="home_dialog_auth_fail_title">Kesalahan autentikasi</string>
-    <string name="home_dialog_auth_fail_content">Gagal mengautentikasi SuperKey, yang menyebabkan APatch tidak dapat bekerja dengan benar.\nBerikut adalah beberapa kemungkinan penyebab kesalahan auntentikasi:\n1. Anda belum me-*patch* boot.img dengan KernelPatch.\n2. boot.img yang di-*patch* belum di-*flash*.\n3. SuperKey salah atau berisi karakter khusus.\n4. Perangkat Anda tidak mendukung APatch dan KernelPatch.\n\nHarap periksa dan coba lagi. Jika masalah masih ada, Anda selalu dapat mengajukan pertanyaan di halaman *issues* repositori resmi.</string>
+    <string name="home_dialog_auth_fail_content">Gagal mengautentikasi SuperKey, yang menyebabkan APatch tidak dapat bekerja dengan benar.
+Berikut adalah beberapa kemungkinan penyebab kesalahan auntentikasi:
+1. Anda belum me-*patch* boot.img dengan KernelPatch.
+2. boot.img yang di-*patch* belum di-*flash*.
+3. SuperKey salah atau berisi karakter khusus.
+4. Perangkat Anda tidak mendukung APatch dan KernelPatch.
+
+Harap periksa dan coba lagi. Jika masalah masih ada, Anda selalu dapat mengajukan pertanyaan di halaman *issues* repositori resmi.</string>
 
     <string name="home_more_menu_feedback_or_suggestion">Umpan Balik atau Saran</string>
     <string name="home_more_menu_about">Tentang Aplikasi</string>
@@ -381,7 +390,13 @@
     <string name="kpm_autoload_enabled_summary">Muat modul KPM secara otomatis saat aplikasi dimulai</string>
     <string name="kpm_autoload_json_config">Konfigurasi JSON</string>
     <string name="kpm_autoload_json_label">Konfigurasi JSON</string>
-    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
+    <string name="kpm_autoload_json_placeholder">{
+  "enabled": true,
+  "kpmPaths": [
+    "/path/to/module1.kpm",
+    "/path/to/module2.kpm"
+  ]
+}</string>
     <string name="kpm_autoload_json_error">Format JSON tidak valid</string>
     <string name="kpm_autoload_json_helper">Masukkan JSON yang valid dengan array jalur file KPM</string>
     <string name="settings_grid_working_card_hide_check">Sembunyikan ikon status</string>
@@ -414,7 +429,11 @@
     <string name="kpm_autoload_file_not_found">File tidak ditemukan</string>
     <string name="kpm_autoload_select_kpm_file">Pilih file KPM</string>
     <string name="kpm_autoload_first_time_title">Tentang Muat Otomatis KPM</string>
-    <string name="kpm_autoload_first_time_message">Fitur ini memungkinkan Anda memuat semua KPM yang dikonfigurasi secara otomatis untuk sementara waktu saat boot. Pendekatan ini lebih nyaman daripada menyematkannya langsung ke kernel.\n\nMisalnya, KPM yang mencegah modifikasi partisi hanya dapat digunakan untuk sementara waktu, karena penyematan dapat menyebabkan kegagalan boot. Atau jika Anda tidak ingin memodifikasi partisi BOOT, Anda dapat menggunakan konfigurasi ini untuk memuat modul dengan cepat.\n\nPastikan aplikasi ditutup sepenuhnya dan dimulai ulang untuk menjalankan perintah. Ini juga akan dimuat saat boot normal. Adalah normal jika manajer mengalami layar hitam untuk beberapa saat! Ini menggunakan metode pemuatan latar belakang yang bersih, jangan lupa untuk menarik ke bawah secara manual untuk menyegarkan dan memeriksa apakah modul dimuat dengan benar!</string>
+    <string name="kpm_autoload_first_time_message">Fitur ini memungkinkan Anda memuat semua KPM yang dikonfigurasi secara otomatis untuk sementara waktu saat boot. Pendekatan ini lebih nyaman daripada menyematkannya langsung ke kernel.
+
+Misalnya, KPM yang mencegah modifikasi partisi hanya dapat digunakan untuk sementara waktu, karena penyematan dapat menyebabkan kegagalan boot. Atau jika Anda tidak ingin memodifikasi partisi BOOT, Anda dapat menggunakan konfigurasi ini untuk memuat modul dengan cepat.
+
+Pastikan aplikasi ditutup sepenuhnya dan dimulai ulang untuk menjalankan perintah. Ini juga akan dimuat saat boot normal. Adalah normal jika manajer mengalami layar hitam untuk beberapa saat! Ini menggunakan metode pemuatan latar belakang yang bersih, jangan lupa untuk menarik ke bawah secara manual untuk menyegarkan dan memeriksa apakah modul dimuat dengan benar!</string>
     <string name="kpm_autoload_first_time_confirm">Mengerti</string>
     <string name="kpm_autoload_do_not_show_again">Jangan tampilkan lagi</string>
 

@@ -40,7 +40,11 @@ fun ModuleSettings(
     val apmBatchInstallFullProcessSummary = stringResource(id = R.string.apm_batch_install_full_process_summary)
     val showApmBatchInstallFullProcess = matchModule || shouldShow(searchText, apmBatchInstallFullProcessTitle, apmBatchInstallFullProcessSummary)
 
-    val showModuleCategory = showMoreInfo || showModuleSortOptimization || showDisableModuleUpdateCheck || showFoldSystemModule || showApmBatchInstallFullProcess
+    val simpleListBottomBarTitle = stringResource(id = R.string.settings_simple_list_bottom_bar)
+    val simpleListBottomBarSummary = stringResource(id = R.string.settings_simple_list_bottom_bar_summary)
+    val showSimpleListBottomBar = matchModule || shouldShow(searchText, simpleListBottomBarTitle, simpleListBottomBarSummary)
+
+    val showModuleCategory = showMoreInfo || showModuleSortOptimization || showDisableModuleUpdateCheck || showFoldSystemModule || showApmBatchInstallFullProcess || showSimpleListBottomBar
 
     if (showModuleCategory) {
         SettingsCategory(icon = Icons.Filled.Extension, title = moduleTitle, isSearching = searchText.isNotEmpty()) {
@@ -111,6 +115,20 @@ fun ModuleSettings(
                     onCheckedChange = {
                         apmBatchInstallFullProcess = it
                         prefs.edit().putBoolean("apm_batch_install_full_process", it).apply()
+                    }
+                )
+            }
+
+            if (showSimpleListBottomBar) {
+                var simpleListBottomBar by remember { mutableStateOf(prefs.getBoolean("simple_list_bottom_bar", false)) }
+                SwitchItem(
+                    icon = Icons.Filled.ViewCompact,
+                    title = simpleListBottomBarTitle,
+                    summary = simpleListBottomBarSummary,
+                    checked = simpleListBottomBar,
+                    onCheckedChange = {
+                        simpleListBottomBar = it
+                        prefs.edit().putBoolean("simple_list_bottom_bar", it).apply()
                     }
                 )
             }

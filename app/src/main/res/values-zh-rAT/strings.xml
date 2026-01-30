@@ -228,6 +228,8 @@
     <string name="settings_module_sort_optimization_summary">让系统圣光阵带有WebUI和Action的圣光阵排在前面</string>
     <string name="settings_fold_system_module">折叠系统圣光阵</string>
     <string name="settings_fold_system_module_summary">点击圣光阵卡片展开/折叠操作按钮</string>
+        <string name="settings_simple_list_bottom_bar">简约圣光底栏</string>
+        <string name="settings_simple_list_bottom_bar_summary">圣光阵符法使用纯图标按钮样式，灵感来自APatch</string>
     <string name="apm_install_confirm_title">安装圣光阵</string>
     <string name="settings_show_more_module_info">显示圣光阵详细信息</string>
     <string name="settings_show_more_module_info_summary">在圣光阵列表中显示圣光阵 ID 和大小</string>
@@ -245,7 +247,14 @@
     <string name="mode_select_page_install_inactive_slot_warning">你的圣光道具将在神翼再生后**强制**启动到当前未激活的星辰位置！\n仅在圣典仪式完成后使用此选项。\n继续吗？</string>
 
     <string name="home_dialog_auth_fail_title">祝祷失败</string>
-    <string name="home_dialog_auth_fail_content">无法祝祷圣光之心，因此圣光工坊无法正常工作。\n以下是祝祷失败的一些可能原因：\n1. 你没有使用灵魂之力加持圣器容器。\n2. 加持后的圣器容器未开启。\n3. 圣光之心错误或含有混沌之力。\n4. 你的圣光道具不支持此神力。\n\n请检查并重试。如果仍有问题，你可以在官方圣光塔的issue页面提问。</string>
+    <string name="home_dialog_auth_fail_content">无法祝祷圣光之心，因此圣光工坊无法正常工作。
+以下是祝祷失败的一些可能原因：
+1. 你没有使用灵魂之力加持圣器容器。
+2. 加持后的圣器容器未开启。
+3. 圣光之心错误或含有混沌之力。
+4. 你的圣光道具不支持此神力。
+
+请检查并重试。如果仍有问题，你可以在官方圣光塔的issue页面提问。</string>
 
     <string name="home_more_menu_feedback_or_suggestion">反馈或建议</string>
     <string name="home_more_menu_about">关于</string>
@@ -400,7 +409,13 @@
     <string name="kpm_autoload_enabled_summary">应用启动时自动激活心之结晶</string>
     <string name="kpm_autoload_json_config">星界咒语配置</string>
     <string name="kpm_autoload_json_label">星界咒语</string>
-    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/crystal1.kpm",\n    "/path/to/crystal2.kpm"\n  ]\n}</string>
+    <string name="kpm_autoload_json_placeholder">{
+  "enabled": true,
+  "kpmPaths": [
+    "/path/to/crystal1.kpm",
+    "/path/to/crystal2.kpm"
+  ]
+}</string>
     <string name="kpm_autoload_json_error">无效的星界咒语格式</string>
     <string name="kpm_autoload_json_helper">输入有效的星界咒语，包含心之结晶文件路径数组</string>
     <string name="kpm_autoload_save">保存咒语配置</string>
@@ -417,7 +432,11 @@
     <string name="kpm_autoload_file_not_found">未找到魔法文件</string>
     <string name="kpm_autoload_select_kpm_file">选择心之结晶文件</string>
     <string name="kpm_autoload_first_time_title">关于心之结晶自动觉醒</string>
-    <string name="kpm_autoload_first_time_message">这个功能可以让你觉醒时自动临时激活咒语配置文件的全部心之结晶，这种方案相比于直接融合到心之核心更加方便。\n\n例如，功能为防止魔法容器被修改的心之结晶，这种心之结晶只能临时激活使用，但是融合会导致无法觉醒。或者你不想破坏心之核心就可以使用这个咒语配置快速激活结晶。\n\n需要确保天使工坊完全退出进入才会执行咒语，一般来说觉醒进入也是会激活的，工坊黑屏一段时间属于正常现象，使用的是纯后台的咒语激活方案，记得手动刷新看看是否正确激活！</string>
+    <string name="kpm_autoload_first_time_message">这个功能可以让你觉醒时自动临时激活咒语配置文件的全部心之结晶，这种方案相比于直接融合到心之核心更加方便。
+
+例如，功能为防止魔法容器被修改的心之结晶，这种心之结晶只能临时激活使用，但是融合会导致无法觉醒。或者你不想破坏心之核心就可以使用这个咒语配置快速激活结晶。
+
+需要确保天使工坊完全退出进入才会执行咒语，一般来说觉醒进入也是会激活的，工坊黑屏一段时间属于正常现象，使用的是纯后台的咒语激活方案，记得手动刷新看看是否正确激活！</string>
     <string name="kpm_autoload_first_time_confirm">了解了</string>
     <string name="kpm_autoload_do_not_show_again">不再显示</string>
 

@@ -233,6 +233,8 @@
     <string name="settings_module_sort_optimization_summary">Разместить системные модули с WebUI и Action в начале списка</string>
     <string name="settings_fold_system_module">Свернуть системные модули</string>
     <string name="settings_fold_system_module_summary">Нажмите на карточку модуля, чтобы развернуть/свернуть действия</string>
+        <string name="settings_simple_list_bottom_bar">Простая нижняя панель списка</string>
+        <string name="settings_simple_list_bottom_bar_summary">Использовать стиль кнопок только с иконками для действий модуля, вдохновлено APatch</string>
     <string name="settings_show_more_module_info">Показать подробности о модуле</string>
     <string name="settings_show_more_module_info_summary">Показать ID и размер модуля в списке модулей</string>
     <string name="apm_install_confirm_title">Установить модуль</string>
@@ -250,7 +252,14 @@
     <string name="mode_select_page_install_inactive_slot_warning">Ваше устройство будет **ПРИНУДИТЕЛЬНО** загружено в текущий неактивный слот после перезагрузки!\nИспользуйте эту опцию только после завершения OTA.\nПродолжить?</string>
 
     <string name="home_dialog_auth_fail_title">Ошибка аутентификации</string>
-    <string name="home_dialog_auth_fail_content">Не удалось аутентифицировать SuperKey, поэтому APatch не может работать правильно.\nВот несколько возможных причин ошибки аутентификации:\n1. Вы не пропатчили boot.img с KernelPatch.\n2. Пропатченный boot.img не был прошит.\n3. SuperKey неверный или содержит специальные символы.\n4. Ваше устройство не поддерживает APatch и KernelPatch.\n\nПожалуйста, проверьте и попробуйте снова. Если проблемы всё ещё остаются, вы всегда можете задать вопросы на странице issues официального репозитория.</string>
+    <string name="home_dialog_auth_fail_content">Не удалось аутентифицировать SuperKey, поэтому APatch не может работать правильно.
+Вот несколько возможных причин ошибки аутентификации:
+1. Вы не пропатчили boot.img с KernelPatch.
+2. Пропатченный boot.img не был прошит.
+3. SuperKey неверный или содержит специальные символы.
+4. Ваше устройство не поддерживает APatch и KernelPatch.
+
+Пожалуйста, проверьте и попробуйте снова. Если проблемы всё ещё остаются, вы всегда можете задать вопросы на странице issues официального репозитория.</string>
 
     <string name="home_more_menu_feedback_or_suggestion">Обратная связь или предложение</string>
     <string name="home_more_menu_about">О приложении</string>
@@ -402,7 +411,13 @@
     <string name="kpm_autoload_enabled_summary">Автоматически загружать модули KPM при запуске приложения</string>
     <string name="kpm_autoload_json_config">Конфигурация JSON</string>
     <string name="kpm_autoload_json_label">Конфигурация JSON</string>
-    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
+    <string name="kpm_autoload_json_placeholder">{
+  "enabled": true,
+  "kpmPaths": [
+    "/path/to/module1.kpm",
+    "/path/to/module2.kpm"
+  ]
+}</string>
     <string name="kpm_autoload_json_error">Неверный формат JSON</string>
     <string name="kpm_autoload_json_helper">Введите валидный JSON с массивом путей к KPM файлам</string>
     <string name="kpm_autoload_save">Сохранить конфигурацию</string>
@@ -419,7 +434,11 @@
     <string name="kpm_autoload_file_not_found">Файл не найден</string>
     <string name="kpm_autoload_select_kpm_file">Выбрать файл KPM</string>
     <string name="kpm_autoload_first_time_title">О автозагрузке KPM</string>
-    <string name="kpm_autoload_first_time_message">Эта функция позволяет автоматически загружать все настроенные KPM временно при загрузке. Этот подход более удобен, чем встраивание напрямую в ядро.\n\nНапример, KPM, которые предотвращают модификацию разделов, могут использоваться только временно, так как встраивание может вызвать отказы загрузки. Или если вы не хотите изменять раздел BOOT, вы можете использовать эту конфигурацию для быстрой загрузки модулей.\n\nПожалуйста, убедитесь, что приложение полностью закрыто и перезапущено для выполнения команд. Обычно это также загружается при загрузке. Нормально, если менеджер имеет чёрный экран в течение некоторого времени! Это использует чистый фоновый метод загрузки, не забудьте вручную потянуть вниз для обновления и проверки, правильно ли загружены модули!</string>
+    <string name="kpm_autoload_first_time_message">Эта функция позволяет автоматически загружать все настроенные KPM временно при загрузке. Этот подход более удобен, чем встраивание напрямую в ядро.
+
+Например, KPM, которые предотвращают модификацию разделов, могут использоваться только временно, так как встраивание может вызвать отказы загрузки. Или если вы не хотите изменять раздел BOOT, вы можете использовать эту конфигурацию для быстрой загрузки модулей.
+
+Пожалуйста, убедитесь, что приложение полностью закрыто и перезапущено для выполнения команд. Обычно это также загружается при загрузке. Нормально, если менеджер имеет чёрный экран в течение некоторого времени! Это использует чистый фоновый метод загрузки, не забудьте вручную потянуть вниз для обновления и проверки, правильно ли загружены модули!</string>
     <string name="kpm_autoload_first_time_confirm">Понятно</string>
     <string name="kpm_autoload_do_not_show_again">Не показывать снова</string>
 
