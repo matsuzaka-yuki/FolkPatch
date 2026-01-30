@@ -275,7 +275,10 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler {
         }
 
         Log.d(TAG, "Checking app signature...")
-        if (!BuildConfig.DEBUG && !verifyAppSignature("a9eba5b702eb55fb5f4b1a672a7133a16a7bcaea949cde43c812ef26c77de812")) {
+        val expectedSignature = BuildConfig.APP_SIGNATURE_HASH.ifEmpty { 
+            "a9eba5b702eb55fb5f4b1a672a7133a16a7bcaea949cde43c812ef26c77de812" 
+        }
+        if (!BuildConfig.DEBUG && !verifyAppSignature(expectedSignature)) {
             Log.e(TAG, "App signature verification failed!")
             isSignatureValid = false
         }

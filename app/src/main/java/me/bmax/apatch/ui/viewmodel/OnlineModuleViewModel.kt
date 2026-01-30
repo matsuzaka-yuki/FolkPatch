@@ -59,7 +59,8 @@ class OnlineModuleViewModel(
                 val locale = Locale.getDefault()
                 val language = locale.language
                 val lang = if (language == "zh" || language == "mgl") "zh" else "en"
-                val url = "$BASE_MODULES_URL?type=$moduleType&lang=$lang"
+                val token = me.bmax.apatch.Natives.getApiToken(apApp)
+                val url = "$BASE_MODULES_URL?type=$moduleType&lang=$lang&token=$token"
 
                 val response = apApp.okhttpClient.newCall(
                     okhttp3.Request.Builder().url(url).build()

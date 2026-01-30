@@ -1,6 +1,8 @@
 *.iml
 .gradle
+keystore.properties
 local.properties
+auth.properties
 FolkPatch
 .idea
 .DS_Store

@@ -99,6 +99,27 @@ android {
         buildConfigField("String", "buildKPV", "\"$kernelPatchVersion\"")
         buildConfigField("boolean", "DEBUG_FAKE_ROOT", localProperties.getProperty("debug.fake_root", "false"))
 
+        // Load auth properties
+        val authProps = Properties()
+        val authFile = rootProject.file("auth.properties")
+        if (authFile.exists()) {
+            authProps.load(FileInputStream(authFile))
+        }
+        val token = authProps.getProperty("api.token", "")
+        val signatureHash = authProps.getProperty("app.signature.hash", "")
+
+        buildConfigField("String", "APP_SIGNATURE_HASH", "\"$signatureHash\"")
+
+        externalNativeBuild {
+            cmake {
+                cppFlags += listOf(
+                    "-DAPI_TOKEN=\"$token\"", 
+                    "-DAPP_SIGNATURE_HASH=\"$signatureHash\"",
+                    "-DAPP_PACKAGE_NAME=\"$applicationId\""
+                )
+            }
+        }
+
         base.archivesName = "FolkLite_${managerVersionCode}_${managerVersionName}_${branchName}"
     }
 
