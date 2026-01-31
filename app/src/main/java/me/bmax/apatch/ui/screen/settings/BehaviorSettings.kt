@@ -44,6 +44,10 @@ fun BehaviorSettings(
     val disableModulesSummary = stringResource(id = R.string.settings_show_disable_all_modules_summary)
     val showDisableModules = aPatchReady && (matchBehavior || shouldShow(searchText, disableModulesTitle, disableModulesSummary))
 
+    val enableModuleShortcutAddTitle = stringResource(id = R.string.settings_enable_module_shortcut_add)
+    val enableModuleShortcutAddSummary = stringResource(id = R.string.settings_enable_module_shortcut_add_summary)
+    val showEnableModuleShortcutAdd = aPatchReady && (matchBehavior || shouldShow(searchText, enableModuleShortcutAddTitle, enableModuleShortcutAddSummary))
+
     val stayOnPageTitle = stringResource(id = R.string.settings_apm_stay_on_page)
     val stayOnPageSummary = stringResource(id = R.string.settings_apm_stay_on_page_summary)
     val showStayOnPage = aPatchReady && (matchBehavior || shouldShow(searchText, stayOnPageTitle, stayOnPageSummary))
@@ -95,7 +99,7 @@ fun BehaviorSettings(
     
     val showBadgeSettings = kPatchReady && (matchBehavior || shouldShow(searchText, badgeCountTitle, badgeCountSummary, showSuperUserBadgeTitle, showApmBadgeTitle, showKernelBadgeTitle))
 
-    val showBehaviorCategory = showWebDebugging || showInstallConfirm || showDisableModules || showStayOnPage || showHideApatch || showHideSu || showHideKpatch || showHideFingerprint || showHideZygisk || showHideMount || showBadgeSettings
+    val showBehaviorCategory = showWebDebugging || showInstallConfirm || showDisableModules || showEnableModuleShortcutAdd || showStayOnPage || showHideApatch || showHideSu || showHideKpatch || showHideFingerprint || showHideZygisk || showHideMount || showBadgeSettings
 
     if (showBehaviorCategory) {
         SettingsCategory(icon = Icons.Filled.Visibility, title = behaviorTitle, isSearching = searchText.isNotEmpty()) {
@@ -141,6 +145,21 @@ fun BehaviorSettings(
                     onCheckedChange = {
                         showDisableAllModules = it
                         prefs.edit().putBoolean("show_disable_all_modules", it).apply()
+                    }
+                )
+            }
+
+            // Enable Module Shortcut Add
+            if (showEnableModuleShortcutAdd) {
+                var enableModuleShortcutAdd by remember { mutableStateOf(prefs.getBoolean("enable_module_shortcut_add", false)) }
+                SwitchItem(
+                    icon = Icons.Filled.AddCircleOutline,
+                    title = enableModuleShortcutAddTitle,
+                    summary = enableModuleShortcutAddSummary,
+                    checked = enableModuleShortcutAdd,
+                    onCheckedChange = {
+                        enableModuleShortcutAdd = it
+                        prefs.edit().putBoolean("enable_module_shortcut_add", it).apply()
                     }
                 )
             }

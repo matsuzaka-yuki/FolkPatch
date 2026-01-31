@@ -228,6 +228,13 @@
 
     <string name="apm_webui_open">Abrir</string>
     <string name="apm_action">Acción</string>
+    <string name="module_shortcut_add">Acceso directo</string>
+    <string name="module_shortcut_not_supported">El iniciador no soporta accesos directos de escritorio.</string>
+    <string name="module_shortcut_created">Acceso directo creado en el escritorio.</string>
+    <string name="module_shortcut_updated">Acceso directo actualizado.</string>
+    <string name="module_shortcut_permission_tip_xiaomi">Habilite el permiso "Crear accesos directos de escritorio" para esta aplicación en configuración de Xiaomi.</string>
+    <string name="module_shortcut_permission_tip_oppo">Habilite el permiso "Acceso directo de escritorio" para esta aplicación en configuración de OPPO.</string>
+    <string name="module_shortcut_permission_tip_default">Si falla la creación del acceso directo, habilite el permiso de acceso directo de escritorio para esta aplicación en configuración del sistema.</string>
     <string name="enable_web_debugging">Habilitar depuración WebView</string>
     <string name="enable_web_debugging_summary">Se puede usar para depurar la WebUI. Habilítalo solo si es necesario.</string>
     <string name="settings_apm_install_confirm">Confirmar antes de instalar</string>
@@ -236,6 +243,8 @@
     <string name="settings_show_more_module_info_summary">Mostrar ID y tamaño del módulo en la lista</string>
     <string name="settings_apm_stay_on_page">Permanecer en la página</string>
     <string name="settings_apm_stay_on_page_summary">No regresar automáticamente tras ejecutar una acción del módulo</string>
+    <string name="settings_enable_module_shortcut_add">Habilitar botón de agregar acceso directo</string>
+    <string name="settings_enable_module_shortcut_add_summary">Mostrar botón de agregar acceso directo WebUI</string>
     <string name="settings_show_disable_all_modules">Mostrar botón \'Deshabilitar todos\'</string>
     <string name="settings_show_disable_all_modules_summary">Mostrar un botón en la página de módulos para deshabilitar todos a la vez</string>
     <string name="settings_module_sort_optimization">Optimización de orden de módulos</string>

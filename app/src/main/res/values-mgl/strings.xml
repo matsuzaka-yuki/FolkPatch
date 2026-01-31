@@ -218,12 +218,21 @@
 
     <string name="apm_webui_open">开启</string>
     <string name="apm_action">魔法操作</string>
+    <string name="module_shortcut_add">魔法传送门</string>
+    <string name="module_shortcut_not_supported">魔法使召唤界面不支持桌面魔法传送门。</string>
+    <string name="module_shortcut_created">已在桌面创建魔法传送门。</string>
+    <string name="module_shortcut_updated">魔法传送门已更新。</string>
+    <string name="module_shortcut_permission_tip_xiaomi">请在小米魔法界面的设置中为本魔法使启用"创建桌面魔法传送门"权限。</string>
+    <string name="module_shortcut_permission_tip_oppo">请在OPPO魔法界面的设置中为本魔法使启用"桌面魔法传送门"权限。</string>
+    <string name="module_shortcut_permission_tip_default">若创建魔法传送门失败，请在魔法阵设置中为本魔法使启用桌面魔法传送门权限。</string>
     <string name="enable_web_debugging">启用魔法阵调试</string>
     <string name="enable_web_debugging_summary">可用于调试星界魔法阵。请仅在需要时启用。</string>
     <string name="settings_apm_install_confirm">安装魔法阵确认</string>
     <string name="settings_apm_install_confirm_summary">安装魔法阵前显示确认魔法阵</string>
     <string name="settings_apm_stay_on_page">留在魔法阵页面</string>
     <string name="settings_apm_stay_on_page_summary">星之魔法阵执行完魔法后不自动返回</string>
+    <string name="settings_enable_module_shortcut_add">启用魔法传送门添加按钮</string>
+    <string name="settings_enable_module_shortcut_add_summary">在系统魔法阵页面显示WebUI魔法传送门添加按钮</string>
     <string name="settings_show_disable_all_modules">显示"禁用全部魔法阵"按钮</string>
     <string name="settings_show_disable_all_modules_summary">在魔法阵页面显示一键禁用所有魔法阵的按钮</string>
     <string name="settings_module_sort_optimization">魔法阵排序优化</string>

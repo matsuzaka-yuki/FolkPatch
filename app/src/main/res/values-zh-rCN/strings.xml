@@ -223,6 +223,13 @@
 
     <string name="apm_webui_open">打开</string>
     <string name="apm_action">操作</string>
+    <string name="module_shortcut_add">快捷</string>
+    <string name="module_shortcut_not_supported">启动器不支持桌面快捷方式。</string>
+    <string name="module_shortcut_created">已在桌面创建快捷方式。</string>
+    <string name="module_shortcut_updated">快捷方式已更新。</string>
+    <string name="module_shortcut_permission_tip_xiaomi">请在 Xiaomi 设置中为本应用启用“创建桌面快捷方式”权限。</string>
+    <string name="module_shortcut_permission_tip_oppo">请在 OPPO 设置中为本应用启用“桌面快捷方式”权限。</string>
+    <string name="module_shortcut_permission_tip_default">若创建快捷方式失败，请在系统设置中为本应用启用桌面快捷方式权限。</string>
     <string name="enable_web_debugging">启用 WebView 调试</string>
     <string name="enable_web_debugging_summary">可用于调试 WebUI。请仅在需要时启用。</string>
     <string name="settings_apm_install_confirm">安装模块确认</string>
@@ -231,6 +238,8 @@
     <string name="settings_show_more_module_info_summary">在模块列表中显示模块 ID 和大小</string>
     <string name="settings_apm_stay_on_page">留在操作页面</string>
     <string name="settings_apm_stay_on_page_summary">系统模块执行完操作后不自动返回</string>
+    <string name="settings_enable_module_shortcut_add">启用快捷添加按钮</string>
+    <string name="settings_enable_module_shortcut_add_summary">显示WebUI快捷方式添加按钮</string>
     <string name="settings_show_disable_all_modules">显示"禁用全部模块"按钮</string>
     <string name="settings_show_disable_all_modules_summary">在模块页面显示一键禁用所有模块的按钮</string>
     <string name="settings_disable_module_update_check">禁用模块更新检查</string>
@@ -239,8 +248,8 @@
     <string name="settings_module_sort_optimization_summary">让系统模块带有WebUI和Action的模块排在前面</string>
     <string name="settings_fold_system_module">折叠系统模块</string>
     <string name="settings_fold_system_module_summary">点击模块卡片展开/折叠操作按钮</string>
-        <string name="settings_simple_list_bottom_bar">简约列表底栏</string>
-        <string name="settings_simple_list_bottom_bar_summary">模块操作使用纯图标按钮样式，灵感来自APatch</string>
+    <string name="settings_simple_list_bottom_bar">简约列表底栏</string>
+    <string name="settings_simple_list_bottom_bar_summary">模块操作使用纯图标按钮样式，灵感来自APatch</string>
     <string name="apm_install_confirm_title">安装模块</string>
     <string name="apm_install_confirm_content">确定要安装 %s 吗？</string>
     <string name="apm_disable_all_title">禁用所有模块</string>

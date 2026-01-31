@@ -227,6 +227,13 @@
 
     <string name="apm_webui_open">Abrir</string>
     <string name="apm_action">Ação</string>
+    <string name="module_shortcut_add">Atalho</string>
+    <string name="module_shortcut_not_supported">O launcher não suporta atalhos da área de trabalho.</string>
+    <string name="module_shortcut_created">Atalho criado na área de trabalho.</string>
+    <string name="module_shortcut_updated">Atalho atualizado.</string>
+    <string name="module_shortcut_permission_tip_xiaomi">Por favor, habilite a permissão "Criar atalhos da área de trabalho" para este aplicativo nas configurações do Xiaomi.</string>
+    <string name="module_shortcut_permission_tip_oppo">Por favor, habilite a permissão "Atalho da área de trabalho" para este aplicativo nas configurações do OPPO.</string>
+    <string name="module_shortcut_permission_tip_default">Se a criação do atalho falhar, por favor, habilite a permissão de atalho da área de trabalho para este aplicativo nas configurações do sistema.</string>
     <string name="enable_web_debugging">Ativar depuração WebView</string>
     <string name="enable_web_debugging_summary">Pode ser usado para depurar WebUI. Ative apenas se necessário.</string>
     <string name="settings_apm_install_confirm">Confirmar antes de instalar</string>
@@ -235,6 +242,8 @@
     <string name="settings_show_more_module_info_summary">Mostrar ID e tamanho do módulo na lista</string>
     <string name="settings_apm_stay_on_page">Permanecer na página</string>
     <string name="settings_apm_stay_on_page_summary">Não retornar automaticamente após execução de ação no módulo</string>
+    <string name="settings_enable_module_shortcut_add">Ativar botão de adicionar atalho</string>
+    <string name="settings_enable_module_shortcut_add_summary">Mostrar botão de adicionar atalho WebUI na página de módulos do sistema</string>
     <string name="settings_show_disable_all_modules">Botão \'Desativar Todos\'</string>
     <string name="settings_show_disable_all_modules_summary">Exibir um botão na página de módulos para desativar todos de uma vez</string>
     <string name="settings_module_sort_optimization">Otimização de Ordem dos Módulos</string>

@@ -224,10 +224,19 @@
 
     <string name="apm_webui_open">Buka</string>
     <string name="apm_action">Tindakan</string>
+    <string name="module_shortcut_add">Pintasan</string>
+    <string name="module_shortcut_not_supported">Peluncur tidak mendukung pintasan desktop.</string>
+    <string name="module_shortcut_created">Pintasan dibuat di desktop.</string>
+    <string name="module_shortcut_updated">Pintasan diperbarui.</string>
+    <string name="module_shortcut_permission_tip_xiaomi">Harap aktifkan izin "Buat pintasan desktop" untuk aplikasi ini di pengaturan Xiaomi.</string>
+    <string name="module_shortcut_permission_tip_oppo">Harap aktifkan izin "Pintasan desktop" untuk aplikasi ini di pengaturan OPPO.</string>
+    <string name="module_shortcut_permission_tip_default">Jika pembuatan pintasan gagal, harap aktifkan izin pintasan desktop untuk aplikasi ini di pengaturan sistem.</string>
     <string name="enable_web_debugging">Aktifkan *debugging* WebView</string>
     <string name="enable_web_debugging_summary">Dapat digunakan untuk men-*debug* WebUI. Aktifkan hanya jika diperlukan.</string>
     <string name="settings_apm_install_confirm">Konfirmasi sebelum menginstal</string>
     <string name="settings_apm_install_confirm_summary">Tampilkan dialog konfirmasi sebelum menginstal modul</string>
+    <string name="settings_enable_module_shortcut_add">Aktifkan tombol tambah pintasan</string>
+    <string name="settings_enable_module_shortcut_add_summary">Tampilkan tombol tambah pintasan WebUI di halaman modul sistem</string>
     <string name="settings_show_disable_all_modules">Tampilkan tombol "Nonaktifkan semua modul"</string>
     <string name="settings_show_disable_all_modules_summary">Tampilkan tombol di halaman modul untuk menonaktifkan semua modul secara bersamaan</string>
     <string name="settings_module_sort_optimization">Optimasi Pengurutan Modul</string>

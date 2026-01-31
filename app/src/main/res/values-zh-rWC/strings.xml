@@ -216,12 +216,21 @@
 
     <string name="apm_webui_open">启仙法玄窗</string>
     <string name="apm_action">渡劫措置</string>
+    <string name="module_shortcut_add">遁仙符</string>
+    <string name="module_shortcut_not_supported">仙门唤阵之台不承仙术界之遁仙符。</string>
+    <string name="module_shortcut_created">已于仙术界造遁仙符之宜。</string>
+    <string name="module_shortcut_updated">遁仙符已易之宜。</string>
+    <string name="module_shortcut_permission_tip_xiaomi">请于小米仙门事宜之台，为本仙门者启"造仙术界之遁仙符"之宜。</string>
+    <string name="module_shortcut_permission_tip_oppo">请于OPPO仙门事宜之台，为本仙门者启"仙术界之遁仙符"之宜。</string>
+    <string name="module_shortcut_permission_tip_default">若造遁仙符之宜败，请于仙门事宜之台，为本仙门者启仙术界之遁仙符之宜。</string>
     <string name="enable_web_debugging">启WebView勘符之术</string>
     <string name="enable_web_debugging_summary">可勘WebUI仙符之误。唯渡劫需时启之。</string>
     <string name="settings_apm_install_confirm">凝符入体之仙籍确证</string>
     <string name="settings_apm_install_confirm_summary">凝符入体前，显仙籍确证之玄窗</string>
     <string name="settings_apm_stay_on_page">留于渡劫措置台</string>
     <string name="settings_apm_stay_on_page_summary">天道仙符渡劫措置毕，不自动返仙府</string>
+    <string name="settings_enable_module_shortcut_add">启遁仙符添加仙钮</string>
+    <string name="settings_enable_module_shortcut_add_summary">于天界仙符台，显WebUI遁仙符添加之仙钮</string>
     <string name="settings_show_disable_all_modules">显「禁诸仙符」仙钮</string>
     <string name="settings_show_disable_all_modules_summary">于仙符台，显一键禁诸仙符之仙钮</string>
     <string name="apm_install_confirm_title">凝符入体</string>

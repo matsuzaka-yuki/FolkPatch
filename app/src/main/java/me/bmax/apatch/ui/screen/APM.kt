@@ -54,6 +54,7 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.FilledTonalButton
+import androidx.compose.material.icons.outlined.Add
 import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.material.icons.outlined.Download
 import androidx.compose.material.icons.outlined.Restore
@@ -124,6 +125,7 @@ import me.bmax.apatch.ui.viewmodel.APModuleViewModel
 import me.bmax.apatch.util.DownloadListener
 import me.bmax.apatch.util.download
 import me.bmax.apatch.util.hasMagisk
+import me.bmax.apatch.util.ModuleShortcut
 import me.bmax.apatch.util.reboot
 import me.bmax.apatch.util.toggleModule
 import me.bmax.apatch.util.ui.LocalSnackbarHost
@@ -482,6 +484,23 @@ private fun ModuleList(
     val downloadingText = stringResource(R.string.apm_downloading)
     val startDownloadingText = stringResource(R.string.apm_start_downloading)
 
+    // Enable Module Shortcut Add
+    var enableModuleShortcutAdd by remember {
+        mutableStateOf(prefs.getBoolean("enable_module_shortcut_add", false))
+    }
+    
+    DisposableEffect(Unit) {
+        val listener = SharedPreferences.OnSharedPreferenceChangeListener { sharedPreferences, key ->
+            if (key == "enable_module_shortcut_add") {
+                enableModuleShortcutAdd = sharedPreferences.getBoolean("enable_module_shortcut_add", false)
+            }
+        }
+        prefs.registerOnSharedPreferenceChangeListener(listener)
+        onDispose {
+            prefs.unregisterOnSharedPreferenceChangeListener(listener)
+        }
+    }
+
     val loadingDialog = rememberLoadingDialog()
     val confirmDialog = rememberConfirmDialog()
 
@@ -696,6 +715,7 @@ private fun ModuleList(
                             showMoreModuleInfo = showMoreModuleInfo,
                             foldSystemModule = foldSystemModule,
                             simpleListBottomBar = simpleListBottomBar,
+                            enableModuleShortcutAdd = enableModuleShortcutAdd,
                             expanded = expandedModuleId == module.id,
                             onExpandToggle = {
                                 expandedModuleId = if (expandedModuleId == module.id) null else module.id
@@ -923,6 +943,7 @@ private fun ModuleItem(
     showMoreModuleInfo: Boolean,
     foldSystemModule: Boolean,
     simpleListBottomBar: Boolean,
+    enableModuleShortcutAdd: Boolean,
     expanded: Boolean,
     onExpandToggle: () -> Unit,
     onUninstall: (APModuleViewModel.ModuleInfo) -> Unit,
@@ -934,6 +955,7 @@ private fun ModuleItem(
 ) {
     val context = LocalContext.current
     val viewModel = viewModel<APModuleViewModel>()
+    val shortcutAdd = stringResource(id = R.string.module_shortcut_add)
     
     val isWallpaperMode = BackgroundConfig.isCustomBackgroundEnabled
     val opacity = if (isWallpaperMode) {
@@ -1153,6 +1175,34 @@ private fun ModuleItem(
                                 if (!simpleListBottomBar) {
                                     Spacer(Modifier.width(8.dp))
                                     Text(stringResource(R.string.apm_webui_open))
+                                }
+                            }
+
+                            if (enableModuleShortcutAdd) {
+                                FilledTonalButton(
+                                    onClick = {
+                                        ModuleShortcut.createModuleWebUiShortcut(
+                                            context = context,
+                                            moduleId = module.id,
+                                            name = module.name,
+                                            iconUri = null
+                                        )
+                                    },
+                                    contentPadding = if (simpleListBottomBar) PaddingValues(12.dp) else ButtonDefaults.TextButtonContentPadding,
+                                    modifier = if (simpleListBottomBar) Modifier else Modifier.height(36.dp),
+                                    colors = ButtonDefaults.filledTonalButtonColors(
+                                        containerColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = (opacity + 0.3f).coerceAtMost(1f))
+                                    )
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.Outlined.Add,
+                                        contentDescription = shortcutAdd,
+                                        modifier = Modifier.size(20.dp)
+                                    )
+                                    if (!simpleListBottomBar) {
+                                        Spacer(Modifier.width(8.dp))
+                                        Text(shortcutAdd)
+                                    }
                                 }
                             }
                         }

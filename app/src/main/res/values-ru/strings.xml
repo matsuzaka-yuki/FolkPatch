@@ -223,10 +223,19 @@
 
     <string name="apm_webui_open">Открыть</string>
     <string name="apm_action">Действие</string>
+    <string name="module_shortcut_add">Ярлык</string>
+    <string name="module_shortcut_not_supported">Лаунчер не поддерживает ярлыки на рабочем столе.</string>
+    <string name="module_shortcut_created">Ярлык создан на рабочем столе.</string>
+    <string name="module_shortcut_updated">Ярлык обновлен.</string>
+    <string name="module_shortcut_permission_tip_xiaomi">Пожалуйста, включите разрешение "Создание ярлыков на рабочем столе" для этого приложения в настройках Xiaomi.</string>
+    <string name="module_shortcut_permission_tip_oppo">Пожалуйста, включите разрешение "Ярлык на рабочем столе" для этого приложения в настройках OPPO.</string>
+    <string name="module_shortcut_permission_tip_default">Если создание ярлыка не удается, пожалуйста, включите разрешение ярлыка на рабочем столе для этого приложения в настройках системы.</string>
     <string name="enable_web_debugging">Включить отладку WebView</string>
     <string name="enable_web_debugging_summary">Можно использовать для отладки WebUI. Включайте только при необходимости.</string>
     <string name="settings_apm_install_confirm">Подтверждать перед установкой</string>
     <string name="settings_apm_install_confirm_summary">Показывать диалог подтверждения перед установкой модулей</string>
+    <string name="settings_enable_module_shortcut_add">Включить кнопку добавления ярлыка</string>
+    <string name="settings_enable_module_shortcut_add_summary">Показать кнопку добавления ярлыка WebUI на странице системных модулей</string>
     <string name="settings_show_disable_all_modules">Показать кнопку "Отключить все модули"</string>
     <string name="settings_show_disable_all_modules_summary">Отображать кнопку на странице модулей для отключения всех модулей одновременно</string>
     <string name="settings_module_sort_optimization">Оптимизация сортировки модулей</string>

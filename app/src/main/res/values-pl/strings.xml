@@ -223,10 +223,19 @@
 
     <string name="apm_webui_open">Otwórz</string>
     <string name="apm_action">Akcja</string>
+    <string name="module_shortcut_add">Skrót</string>
+    <string name="module_shortcut_not_supported">Launcher nie obsługuje skrótów pulpitu.</string>
+    <string name="module_shortcut_created">Utworzono skrót na pulpicie.</string>
+    <string name="module_shortcut_updated">Zaktualizowano skrót.</string>
+    <string name="module_shortcut_permission_tip_xiaomi">Proszę włączyć uprawnienie "Tworzenie skrótów pulpitu" dla tej aplikacji w ustawieniach Xiaomi.</string>
+    <string name="module_shortcut_permission_tip_oppo">Proszę włączyć uprawnienie "Skrót pulpitu" dla tej aplikacji w ustawieniach OPPO.</string>
+    <string name="module_shortcut_permission_tip_default">Jeśli utworzenie skrótu nie powiedzie się, proszę włączyć uprawnienie skrótu pulpitu dla tej aplikacji w ustawieniach systemu.</string>
     <string name="enable_web_debugging">Włącz debugowanie WebView</string>
     <string name="enable_web_debugging_summary">Może być używane do debugowania WebUI. Włącz tylko w razie potrzeby.</string>
     <string name="settings_apm_install_confirm">Potwierdź przed instalacją</string>
     <string name="settings_apm_install_confirm_summary">Pokaż okno dialogowe potwierdzenia przed instalacją modułów</string>
+    <string name="settings_enable_module_shortcut_add">Włącz przycisk dodawania skrótu</string>
+    <string name="settings_enable_module_shortcut_add_summary">Pokaż przycisk dodawania skrótu WebUI na stronie modułów systemowych</string>
     <string name="settings_show_disable_all_modules">Pokaż przycisk \'Wyłącz wszystkie moduły\'</string>
     <string name="settings_show_disable_all_modules_summary">Wyświetl przycisk na stronie modułów, aby wyłączyć wszystkie moduły naraz</string>
     <string name="settings_module_sort_optimization">Optymalizacja sortowania modułów</string>

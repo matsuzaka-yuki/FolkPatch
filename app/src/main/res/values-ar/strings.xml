@@ -228,6 +228,13 @@
 
     <string name="apm_webui_open">فتح</string>
     <string name="apm_action">إجراء</string>
+    <string name="module_shortcut_add">اختصار</string>
+    <string name="module_shortcut_not_supported">المشغل لا يدعم اختصارات سطح المكتب.</string>
+    <string name="module_shortcut_created">تم إنشاء اختصار على سطح المكتب.</string>
+    <string name="module_shortcut_updated">تم تحديث الاختصار.</string>
+    <string name="module_shortcut_permission_tip_xiaomi">الرجاء تفعيل "إنشاء اختصارات سطح المكتب" لهذا التطبيق في إعدادات Xiaomi.</string>
+    <string name="module_shortcut_permission_tip_oppo">الرجاء تفعيل "اختصار سطح المكتب" لهذا التطبيق في إعدادات OPPO.</string>
+    <string name="module_shortcut_permission_tip_default">إذا فشل إنشاء الاختصار، الرجاء تفعيل إذن اختصار سطح المكتب لهذا التطبيق في إعدادات النظام.</string>
     <string name="enable_web_debugging">تمكين تصحيح أخطاء WebView</string>
     <string name="enable_web_debugging_summary">يمكن استخدامه لتصحيح أخطاء واجهة المستخدم الرسومية للويب. يرجى تمكينه عند الحاجة فقط.</string>
     <string name="settings_apm_install_confirm">تأكيد قبل التثبيت</string>
@@ -236,6 +243,8 @@
     <string name="settings_show_more_module_info_summary">إظهار معرف الوحدة وحجمها في قائمة الوحدات</string>
     <string name="settings_apm_stay_on_page">البقاء في صفحة العملية</string>
     <string name="settings_apm_stay_on_page_summary">عدم الرجوع تلقائيًا بعد تنفيذ إجراء الوحدة</string>
+    <string name="settings_enable_module_shortcut_add">تمكين زر إضافة اختصار</string>
+    <string name="settings_enable_module_shortcut_add_summary">إظهار زر إضافة اختصار واجهة المستخدم الرسومية للويب</string>
     <string name="settings_show_disable_all_modules">إظهار زر "تعطيل كل الوحدات"</string>
     <string name="settings_show_disable_all_modules_summary">عرض زر في صفحة الوحدات لتعطيل جميع الوحدات مرة واحدة</string>
     <string name="settings_module_sort_optimization">تحسين فرز الوحدات</string>

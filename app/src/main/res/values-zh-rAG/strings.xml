@@ -223,6 +223,13 @@
 
     <string name="apm_webui_open">打开喵！</string>
     <string name="apm_action">操作喵</string>
+    <string name="module_shortcut_add">快捷喵</string>
+    <string name="module_shortcut_not_supported">启动器不支持桌面快捷方式喵！</string>
+    <string name="module_shortcut_created">已在桌面创建快捷方式哒喵！</string>
+    <string name="module_shortcut_updated">快捷方式已更新哒喵！</string>
+    <string name="module_shortcut_permission_tip_xiaomi">请在小米设置中为本应用启用"创建桌面快捷方式"权限喵！</string>
+    <string name="module_shortcut_permission_tip_oppo">请在OPPO设置中为本应用启用"桌面快捷方式"权限喵！</string>
+    <string name="module_shortcut_permission_tip_default">若创建快捷方式失败，请在系统设置中为本应用启用桌面快捷方式权限喵！</string>
     <string name="enable_web_debugging">开WebView调试喵</string>
     <string name="enable_web_debugging_summary">调WebUI用的哒，没事不要开哦喵！</string>
     <string name="settings_apm_install_confirm">装模块要确认喵</string>
@@ -232,6 +239,8 @@
     <string name="settings_apm_stay_on_page">留在操作页喵</string>
     <string name="settings_apm_stay_on_page_summary">系统模块操作完不要自动回去啦喵</string>
     <string name="settings_show_disable_all_modules">显示“关所有模块”按钮喵</string>
+    <string name="settings_enable_module_shortcut_add">开快捷添加按钮喵</string>
+    <string name="settings_enable_module_shortcut_add_summary">在系统模块页面显示WebUI快捷添加按钮喵！</string>
     <string name="settings_show_disable_all_modules_summary">模块页显示一键关所有模块的按钮喵！</string>
     <string name="settings_disable_module_update_check">关掉模块更新检查喵</string>
     <string name="settings_disable_module_update_check_summary">不要自动查系统模块更新喵！</string>

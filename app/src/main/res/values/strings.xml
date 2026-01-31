@@ -228,6 +228,13 @@
 
     <string name="apm_webui_open">Open</string>
     <string name="apm_action">Action</string>
+    <string name="module_shortcut_add">Shortcut</string>
+    <string name="module_shortcut_not_supported">Launcher does not support desktop shortcuts.</string>
+    <string name="module_shortcut_created">Shortcut created on desktop.</string>
+    <string name="module_shortcut_updated">Shortcut updated.</string>
+    <string name="module_shortcut_permission_tip_xiaomi">Please enable "Create desktop shortcuts" permission for this app in Xiaomi settings.</string>
+    <string name="module_shortcut_permission_tip_oppo">Please enable "Desktop shortcut" permission for this app in OPPO settings.</string>
+    <string name="module_shortcut_permission_tip_default">If shortcut creation fails, please enable desktop shortcut permission for this app in system settings.</string>
     <string name="enable_web_debugging">Enable WebView debugging</string>
     <string name="enable_web_debugging_summary">Can be used to debug WebUI. Please enable only when needed.</string>
     <string name="settings_apm_install_confirm">Confirm before install</string>
@@ -236,6 +243,8 @@
     <string name="settings_show_more_module_info_summary">Show module ID and size in the module list</string>
     <string name="settings_apm_stay_on_page">Stay on operation page</string>
     <string name="settings_apm_stay_on_page_summary">Do not automatically return after module action execution</string>
+    <string name="settings_enable_module_shortcut_add">Enable shortcut add button</string>
+    <string name="settings_enable_module_shortcut_add_summary">Show WebUI shortcut add button</string>
     <string name="settings_show_disable_all_modules">Show \'Disable All Modules\' button</string>
     <string name="settings_show_disable_all_modules_summary">Display a button in the modules page to disable all modules at once</string>
     <string name="settings_disable_module_update_check">Disable module update check</string>

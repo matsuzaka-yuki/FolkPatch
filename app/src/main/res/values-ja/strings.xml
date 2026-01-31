@@ -195,6 +195,13 @@
   <string name="setting_reset_su_new_path">新しいフルパス</string>
   <string name="apm_webui_open">開く</string>
   <string name="apm_action">アクション</string>
+  <string name="module_shortcut_add">ショートカット</string>
+  <string name="module_shortcut_not_supported">ランチャーはデスクトップショートカットをサポートしていません。</string>
+  <string name="module_shortcut_created">デスクトップにショートカットを作成しました。</string>
+  <string name="module_shortcut_updated">ショートカットを更新しました。</string>
+  <string name="module_shortcut_permission_tip_xiaomi">Xiaomiの設定で、このアプリの「デスクトップショートカットを作成」権限を有効にしてください。</string>
+  <string name="module_shortcut_permission_tip_oppo">OPPOの設定で、このアプリの「デスクトップショートカット」権限を有効にしてください。</string>
+  <string name="module_shortcut_permission_tip_default">ショートカットの作成に失敗した場合、システム設定でこのアプリのデスクトップショートカット権限を有効にしてください。</string>
   <string name="enable_web_debugging">WebView デバッグを有効化</string>
   <string name="enable_web_debugging_summary">WebUI のデバッグに使用できます。必要な場合のみ有効化してください。</string>
   <string name="settings_apm_install_confirm">確認後にインストール</string>
@@ -203,6 +210,8 @@
   <string name="settings_show_more_module_info_summary">モジュールリストにモジュール ID とサイズを表示します</string>
   <string name="settings_apm_stay_on_page">操作ページに留まる</string>
   <string name="settings_apm_stay_on_page_summary">モジュールのアクションを実行後に自動で戻らなくなります</string>
+  <string name="settings_enable_module_shortcut_add">ショートカット追加ボタンを有効化</string>
+  <string name="settings_enable_module_shortcut_add_summary">システムモジュールページにWebUIショートカット追加ボタンを表示</string>
   <string name="settings_show_disable_all_modules">「すべてのモジュールを無効化」ボタンを表示</string>
   <string name="settings_show_disable_all_modules_summary">モジュールページにすべてモジュールを無効化するボタンを表示します</string>
   <string name="settings_disable_module_update_check">モジュールの更新の確認を無効化する</string>
