@@ -228,10 +228,10 @@ fun StatusCardCircle(
                          )
                          Spacer(Modifier.width(8.dp))
                          
-                         // Full/Half Label
-                        if (!classicEmojiEnabled) {
-                            LabelText(label = modeText)
-                        }
+                        // Full/Half Label
+                       if (!classicEmojiEnabled) {
+                           ModeLabelText(label = modeText)
+                       }
                     }
                     Spacer(Modifier.height(4.dp))
                     Text(
@@ -437,7 +437,7 @@ fun InfoCardCircle(kpState: APApplication.State, apState: APApplication.State) {
 }
 
 @Composable
-fun LabelText(
+fun ModeLabelText(
     label: String,
     modifier: Modifier = Modifier,
     color: Color = MaterialTheme.colorScheme.onPrimary,
