@@ -378,6 +378,8 @@ Por favor verifica e intenta de nuevo. Si persisten los problemas, siempre puede
     <string name="app_title_magicpatch">MagicPatch</string>
 
     <string name="settings_app_dpi">DPI de la App</string>
+    <string name="settings_alt_icon">Icono alternativo</string>
+    <string name="alt_icon_summary">Usar icono de lanzador alternativo</string>
     <string name="settings_magic_mount">Folk Mount API</string>
     <string name="settings_magic_mount_summary">Activar el sistema de montaje de módulos integrado</string>
     <string name="settings_app_title">Título de la App</string>
@@ -419,10 +421,6 @@ Por favor verifica e intenta de nuevo. Si persisten los problemas, siempre puede
     <string name="settings_clear_background_confirm">¿Seguro que deseas borrar la imagen de fondo?</string>
 
     <string name="settings_launcher_icon">Icono del Launcher</string>
-    <string name="launcher_icon_default">FolkPatch</string>
-    <string name="launcher_icon_classic">FolkPatch Anime</string>
-    <string name="launcher_icon_apatch">APatch</string>
-    <string name="launcher_icon_kernelsu">KernelSU</string>
 
     <!-- Video Background Settings -->
     <string name="settings_video_background">Fondo de Video</string>
@@ -433,10 +431,6 @@ Por favor verifica e intenta de nuevo. Si persisten los problemas, siempre puede
     <string name="settings_clear_video_background_confirm">¿Seguro que deseas borrar el fondo de video?</string>
     <string name="settings_video_background_enabled">Fondo de Video Habilitado</string>
     <string name="settings_video_volume">Volumen del Video</string>
-    <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
-    <string name="launcher_icon_kitsune">Kitsune Mask</string>
-    <string name="launcher_icon_magisk">Magisk</string>
-    <string name="launcher_icon_superroot">SuperRoot</string>
     
     <!-- KPM AutoLoad Strings -->
     <string name="kpm_autoload_title">Auto-carga de KPM</string>

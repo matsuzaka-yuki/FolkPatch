@@ -376,6 +376,8 @@ Proszę sprawdzić i spróbować ponownie. Jeśli nadal występują problemy, za
     <string name="app_title_magicpatch">MagicPatch</string>
 
     <string name="settings_app_dpi">DPI aplikacji</string>
+    <string name="settings_alt_icon">Alternatywna ikona</string>
+    <string name="alt_icon_summary">Użyj alternatywnej ikony programu uruchamiającego</string>
     <string name="settings_magic_mount">Folk Mount API</string>
     <string name="settings_magic_mount_summary">Włącz wbudowany system montowania modułów</string>
     <string name="settings_app_title">Tytuł aplikacji</string>
@@ -400,14 +402,6 @@ Proszę sprawdzić i spróbować ponownie. Jeśli nadal występują problemy, za
     <string name="settings_select_system_module_background">Tło modułu systemowego</string>
     <string name="settings_select_settings_background">Tło strony ustawień</string>
     <string name="settings_launcher_icon">Ikona launchera</string>
-    <string name="launcher_icon_default">FolkPatch</string>
-    <string name="launcher_icon_classic">FolkPatch Anime</string>
-    <string name="launcher_icon_apatch">APatch</string>
-    <string name="launcher_icon_kernelsu">KernelSU</string>
-    <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
-    <string name="launcher_icon_kitsune">Kitsune Mask</string>
-    <string name="launcher_icon_magisk">Magisk</string>
-    <string name="launcher_icon_superroot">SuperRoot</string>
     
     <!-- KPM AutoLoad Strings -->
     <string name="kpm_autoload_title">Automatyczne ładowanie KPM</string>

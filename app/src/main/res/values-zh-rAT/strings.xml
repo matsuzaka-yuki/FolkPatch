@@ -377,6 +377,8 @@
     <string name="settings_custom_background_summary">设置自定义天使背景图片</string>
     <string name="settings_custom_background_saved">天使背景保存成功</string>
     <string name="settings_custom_background_error">保存天使背景失败</string>
+    <string name="settings_alt_icon">備用圖標</string>
+    <string name="alt_icon_summary">使用備選啟動器圖標</string>
     <string name="settings_background_selected">已选择天使背景</string>
     <string name="settings_background_image_cleared">天使背景已清除</string>
     <string name="settings_clear_background">清除天使背景</string>
@@ -389,14 +391,6 @@
     <string name="settings_select_system_module_background">系统模块天使背景</string>
     <string name="settings_select_settings_background">设置页面天使背景</string>
     <string name="settings_launcher_icon">天使使徽章</string>
-    <string name="launcher_icon_default">FolkPatch</string>
-    <string name="launcher_icon_classic">FolkPatch Anime</string>
-    <string name="launcher_icon_apatch">APatch</string>
-    <string name="launcher_icon_kernelsu">KernelSU</string>
-    <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
-    <string name="launcher_icon_kitsune">Kitsune Mask</string>
-    <string name="launcher_icon_magisk">Magisk</string>
-    <string name="launcher_icon_superroot">SuperRoot</string>
     
     <!-- 隐藏设定字符串 -->
     <string name="home_hide_su_path">隐藏天使使路径</string>

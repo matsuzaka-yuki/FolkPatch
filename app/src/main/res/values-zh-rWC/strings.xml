@@ -375,6 +375,8 @@
     <string name="settings_select_background_image">择仙府背景图</string>
     <string name="settings_custom_background_summary">设自定仙府背景图</string>
     <string name="settings_custom_background_saved">仙府背景已存</string>
+    <string name="settings_alt_icon">備用圖標</string>
+    <string name="alt_icon_summary">用備選啟動器圖標</string>
     <string name="settings_custom_background_error">存仙府背景败陨</string>
     <string name="settings_background_selected">已择仙府背景</string>
     <string name="settings_background_image_cleared">仙府背景图已涤</string>
@@ -388,14 +390,6 @@
     <string name="settings_select_system_module_background">系统模块仙府背景</string>
     <string name="settings_select_settings_background">设置页面仙府背景</string>
     <string name="settings_launcher_icon">引仙台标识</string>
-    <string name="launcher_icon_default">FolkPatch</string>
-    <string name="launcher_icon_classic">FolkPatch Anime</string>
-    <string name="launcher_icon_apatch">APatch</string>
-    <string name="launcher_icon_kernelsu">KernelSU</string>
-    <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
-    <string name="launcher_icon_kitsune">Kitsune Mask</string>
-    <string name="launcher_icon_magisk">Magisk</string>
-    <string name="launcher_icon_superroot">SuperRoot</string>
     
     <string name="su_exclude_all_title">批量摒除仙籍</string>
     <string name="su_exclude_all_confirm">确欲尽摒诸未授登仙权之凡器乎？</string>

@@ -416,11 +416,8 @@
     <string name="settings_clear_background_confirm">确定要清除背景图片吗？</string>
 
 
-    <string name="settings_launcher_icon">桌面图标</string>
-    <string name="launcher_icon_default">FolkPatch</string>
-    <string name="launcher_icon_classic">FolkPatch Anime</string>
-    <string name="launcher_icon_apatch">APatch</string>
-    <string name="launcher_icon_kernelsu">KernelSU</string>
+    <string name="settings_alt_icon">备用图标</string>
+    <string name="alt_icon_summary">使用备选启动器图标</string>
 
     <!-- Video Background Settings -->
     <string name="settings_video_background">视频背景</string>
@@ -431,10 +428,6 @@
     <string name="settings_clear_video_background_confirm">确定要清除视频壁纸吗？</string>
     <string name="settings_video_background_enabled">视频背景已启用</string>
     <string name="settings_video_volume">视频音量</string>
-    <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
-    <string name="launcher_icon_kitsune">Kitsune Mask</string>
-    <string name="launcher_icon_magisk">Magisk</string>
-    <string name="launcher_icon_superroot">SuperRoot</string>
     
     <string name="su_exclude_all_title">批量排除</string>
     <string name="su_exclude_all_confirm">确定要将所有未授权Root的应用设为排除吗？</string>

@@ -222,10 +222,7 @@ fun AppearanceSettings(
     val showCustomColor = (!isDynamicColorSupport || !useSystemDynamicColor) && (matchAppearance || shouldShow(searchText, customColorTitle, customColorValue))
 
     // App Title
-    val appTitleTitle = stringResource(id = R.string.settings_app_title)
-    val currentAppTitleRaw = prefs.getString("app_title", "folkpatch")
-    val currentAppTitle = stringResource(appTitleNameToString(currentAppTitleRaw.toString()))
-    val showAppTitle = matchAppearance || shouldShow(searchText, appTitleTitle, currentAppTitle)
+
 
     // Home Layout
     val homeLayoutTitle = stringResource(id = R.string.settings_home_layout_style)
@@ -373,11 +370,11 @@ fun AppearanceSettings(
     val importThemeTitle = stringResource(id = R.string.settings_import_theme)
     val showImportTheme = matchAppearance || shouldShow(searchText, importThemeTitle)
     
-    val showAppearanceCategory = showNightModeFollowSys || showNightModeEnabled || showUseSystemColor || showCustomColor || showAppTitle || showHomeLayout || showNavLayout || showGridBackgroundSwitch || showGridOpacity || showGridTextHidden || showGridModeHidden || showListModeHidden || showListCardHideStatusBadge || showCustomBackgroundSwitch || showCustomFontSwitch || showThemeStore || showSaveTheme || showImportTheme
+    val showAppearanceCategory = showNightModeFollowSys || showNightModeEnabled || showUseSystemColor || showCustomColor || showHomeLayout || showNavLayout || showGridBackgroundSwitch || showGridOpacity || showGridTextHidden || showGridModeHidden || showListModeHidden || showListCardHideStatusBadge || showCustomBackgroundSwitch || showCustomFontSwitch || showThemeStore || showSaveTheme || showImportTheme
 
     val showThemeChooseDialog = remember { mutableStateOf(false) }
     val showHomeLayoutChooseDialog = remember { mutableStateOf(false) }
-    val showAppTitleDialog = remember { mutableStateOf(false) }
+
 
     if (showAppearanceCategory) {
         SettingsCategory(icon = Icons.Filled.ColorLens, title = appearanceTitle, isSearching = searchText.isNotEmpty()) {
@@ -443,25 +440,6 @@ fun AppearanceSettings(
                         )
                     },
                     leadingContent = { Icon(Icons.Filled.ColorLens, null) }
-                )
-            }
-
-            // App Title
-            if (showAppTitle) {
-                ListItem(
-                    colors = ListItemDefaults.colors(containerColor = Color.Transparent),
-                    headlineContent = { Text(text = appTitleTitle) },
-                    modifier = Modifier.clickable {
-                        showAppTitleDialog.value = true
-                    },
-                    supportingContent = {
-                        Text(
-                            text = currentAppTitle,
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.outline
-                        )
-                    },
-                    leadingContent = { Icon(Icons.Filled.Title, null) }
                 )
             }
 
@@ -1239,10 +1217,7 @@ fun AppearanceSettings(
         HomeLayoutChooseDialog(showHomeLayoutChooseDialog)
     }
     
-    if (showAppTitleDialog.value) {
-        AppTitleChooseDialog(showAppTitleDialog)
-    }
-    
+
     if (showExportDialog.value) {
         ThemeExportDialog(
             showDialog = showExportDialog,

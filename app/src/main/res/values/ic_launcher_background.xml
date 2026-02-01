@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="ic_launcher_background">#081B11</color>
-    <color name="ic_launcher_kitsune_background">#ff004c</color>
-    <color name="ic_launcher_magisk_background">#009788</color>
-    <color name="ic_launcher_folkpatch_background">#FFFFFF</color>
+    <color name="ic_launcher_background">#091B22</color>
+    <color name="ic_launcher_background_white">#FFFFFF</color>
 </resources>

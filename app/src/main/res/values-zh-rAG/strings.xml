@@ -378,6 +378,8 @@
 
 
     <string name="settings_app_dpi">应用DPI喵</string>
+    <string name="settings_alt_icon">备用图标喵</string>
+    <string name="alt_icon_summary">用备选启动器图标喵</string>
     <string name="settings_magic_mount">我要挂载喵</string>
     <string name="settings_magic_mount_summary">开内置的模块挂载系统哒喵！</string>
     <string name="settings_app_title">应用名字喵</string>
@@ -420,14 +422,6 @@
 
 
     <string name="settings_launcher_icon">桌面图标喵</string>
-    <string name="launcher_icon_default">FolkPatch</string>
-    <string name="launcher_icon_classic">FolkPatch Anime</string>
-    <string name="launcher_icon_apatch">APatch</string>
-    <string name="launcher_icon_kernelsu">KernelSU</string>
-    <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
-    <string name="launcher_icon_kitsune">Kitsune Mask</string>
-    <string name="launcher_icon_magisk">Magisk</string>
-    <string name="launcher_icon_superroot">SuperRoot</string>
     <!-- Video Background Settings -->
     <string name="settings_video_background">视频背景喵</string>
     <string name="settings_video_background_summary">用视频当背景喵！</string>

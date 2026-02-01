@@ -377,6 +377,8 @@ Por favor, verifique e tente novamente. Se houver problemas persistentes, você 
     <string name="app_title_magicpatch">MagicPatch</string>
 
     <string name="settings_app_dpi">DPI do App</string>
+    <string name="settings_alt_icon">Ícone alternativo</string>
+    <string name="alt_icon_summary">Usar ícone alternativo do lançador</string>
     <string name="settings_magic_mount">Folk Mount API</string>
     <string name="settings_magic_mount_summary">Ativar o sistema de montagem de módulos integrado</string>
     <string name="settings_app_title">Título do App</string>
@@ -418,10 +420,6 @@ Por favor, verifique e tente novamente. Se houver problemas persistentes, você 
     <string name="settings_clear_background_confirm">Tem certeza de que deseja limpar a imagem de fundo?</string>
 
     <string name="settings_launcher_icon">Ícone do Launcher</string>
-    <string name="launcher_icon_default">FolkPatch</string>
-    <string name="launcher_icon_classic">FolkPatch Anime</string>
-    <string name="launcher_icon_apatch">APatch</string>
-    <string name="launcher_icon_kernelsu">KernelSU</string>
 
     <!-- Video Background Settings -->
     <string name="settings_video_background">Fundo de Vídeo</string>
@@ -432,10 +430,6 @@ Por favor, verifique e tente novamente. Se houver problemas persistentes, você 
     <string name="settings_clear_video_background_confirm">Tem certeza de que deseja limpar o fundo de vídeo?</string>
     <string name="settings_video_background_enabled">Fundo de Vídeo Ativado</string>
     <string name="settings_video_volume">Volume do Vídeo</string>
-    <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
-    <string name="launcher_icon_kitsune">Kitsune Mask</string>
-    <string name="launcher_icon_magisk">Magisk</string>
-    <string name="launcher_icon_superroot">SuperRoot</string>
     
     <!-- KPM AutoLoad Strings -->
     <string name="kpm_autoload_title">Auto-Carregamento KPM</string>

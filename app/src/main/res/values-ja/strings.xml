@@ -342,8 +342,10 @@
   <string name="app_title_superuser">Superuser</string>
   <string name="app_title_superpatch">SuperPatch</string>
   <string name="app_title_magicpatch">MagicPatch</string>
-  <string name="settings_app_dpi">アプリの DPI</string>
-  <string name="settings_magic_mount">Folk Mount API</string>
+    <string name="settings_app_dpi">アプリの DPI</string>
+    <string name="settings_alt_icon">代替アイコン</string>
+    <string name="alt_icon_summary">代替のランチャーアイコンを使用する</string>
+    <string name="settings_magic_mount">Folk Mount API</string>
   <string name="settings_magic_mount_summary">内蔵のモジュールマウントシステムを有効化します</string>
   <string name="settings_overlayfs_mode">ハイブリッドマウントモード</string>
   <string name="settings_overlayfs_mode_summary">互換性を最大限に高めるために、Magic Mount の自動フォールバックを備えた OverlayFS を使用します。</string>
@@ -384,10 +386,6 @@
   <string name="settings_clear_background">背景を消去</string>
   <string name="settings_clear_background_confirm">背景画像を消去してもよろしいですか？</string>
   <string name="settings_launcher_icon">ランチャーアイコン</string>
-  <string name="launcher_icon_default">FolkPatch</string>
-  <string name="launcher_icon_classic">FolkPatch Anime</string>
-  <string name="launcher_icon_apatch">APatch</string>
-  <string name="launcher_icon_kernelsu">KernelSU</string>
   <!-- Video Background Settings -->
   <string name="settings_video_background">動画の背景</string>
   <string name="settings_video_background_summary">動画を背景として使用します</string>
@@ -397,10 +395,6 @@
   <string name="settings_clear_video_background_confirm">動画の背景を消去してもよろしいですか？</string>
   <string name="settings_video_background_enabled">動画の背景が有効化されています</string>
   <string name="settings_video_volume">動画の音量</string>
-  <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
-  <string name="launcher_icon_kitsune">Kitsune Mask</string>
-  <string name="launcher_icon_magisk">Magisk</string>
-  <string name="launcher_icon_superroot">SuperRoot</string>
   <!-- KPM AutoLoad Strings -->
   <string name="kpm_autoload_title">KPM を自動で読み込み</string>
   <string name="kpm_autoload_enabled">自動で読み込みが有効化されています</string>

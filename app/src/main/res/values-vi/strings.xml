@@ -380,7 +380,9 @@ Vui lòng kiểm tra và thử lại. Nếu vẫn có vấn đề, bạn có th�
     <string name="settings_custom_background_opacity">Độ mờ của thẻ</string>
     <string name="settings_custom_background_blur">Làm mờ nền</string>
     <string name="settings_custom_background_dim">Mức tối của nền</string>
-    
+    <string name="settings_alt_icon">Biểu tượng thay thế</string>
+    <string name="alt_icon_summary">Sử dụng biểu tượng trình khởi chạy thay thế</string>
+
     <!-- Font Settings -->
     <string name="settings_custom_font">Font chữ tùy chỉnh</string>
     <string name="settings_select_font_file">Chọn tệp font chữ</string>
@@ -409,13 +411,6 @@ Vui lòng kiểm tra và thử lại. Nếu vẫn có vấn đề, bạn có th�
     <string name="settings_select_system_module_background">Nền mô-đun hệ thống</string>
     <string name="settings_select_settings_background">Nền trang cài đặt</string>
     <string name="settings_launcher_icon">Biểu tượng màn hình chính</string>
-    <string name="launcher_icon_default">FolkPatch</string>
-    <string name="launcher_icon_classic">FolkPatch Anime</string>
-    <string name="launcher_icon_apatch">APatch</string>
-    <string name="launcher_icon_kernelsu">KernelSU</string>
-    <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
-    <string name="launcher_icon_kitsune">Mặt nạ Kitsune</string>
-    <string name="launcher_icon_magisk">Magisk</string>
     <string name="settings_grid_working_card_hide_check">Ẩn biểu tượng trạng thái</string>
     <string name="settings_grid_working_card_hide_check_summary">Ẩn dấu kiểm hoặc biểu tượng cảnh báo trên thẻ đang hoạt động</string>
     <string name="settings_grid_working_card_hide_text">Ẩn văn bản trạng thái</string>
@@ -432,7 +427,6 @@ Vui lòng kiểm tra và thử lại. Nếu vẫn có vấn đề, bạn có th�
     <string name="settings_grid_working_card_dual_opacity">Bật chế độ độ trong suốt ngày/đêm kép</string>
     <string name="settings_grid_working_card_day_opacity">Độ trong suốt thẻ ban ngày</string>
     <string name="settings_grid_working_card_night_opacity">Độ trong suốt thẻ ban đêm</string>
-    <string name="launcher_icon_superroot">SuperRoot</string>
     
     <string name="su_exclude_all_title">Loại trừ hàng loạt</string>
     <string name="su_exclude_all_confirm">Bạn có chắc chắn muốn đặt tất cả ứng dụng chưa được cấp quyền Root thành loại trừ không?</string>

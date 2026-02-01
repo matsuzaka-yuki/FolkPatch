@@ -383,6 +383,8 @@ Harap periksa dan coba lagi. Jika masalah masih ada, Anda selalu dapat mengajuka
     <string name="settings_custom_background_summary">Atur gambar latar belakang kustom</string>
     <string name="settings_custom_background_saved">Latar belakang berhasil disimpan</string>
     <string name="settings_custom_background_error">Gagal menyimpan latar belakang</string>
+    <string name="settings_alt_icon">Ikon Alternatif</string>
+    <string name="alt_icon_summary">Gunakan ikon peluncur alternatif</string>
     <string name="settings_background_selected">Latar belakang dipilih</string>
     <string name="settings_background_image_cleared">Gambar latar belakang dihapus</string>
     <string name="settings_clear_background">Hapus latar belakang</string>
@@ -395,14 +397,6 @@ Harap periksa dan coba lagi. Jika masalah masih ada, Anda selalu dapat mengajuka
     <string name="settings_select_system_module_background">Latar Belakang Modul Sistem</string>
     <string name="settings_select_settings_background">Latar Belakang Halaman Pengaturan</string>
     <string name="settings_launcher_icon">Ikon Peluncur</string>
-    <string name="launcher_icon_default">FolkPatch</string>
-    <string name="launcher_icon_classic">FolkPatch Anime</string>
-    <string name="launcher_icon_apatch">APatch</string>
-    <string name="launcher_icon_kernelsu">KernelSU</string>
-    <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
-    <string name="launcher_icon_kitsune">Topeng Kitsune</string>
-    <string name="launcher_icon_magisk">Magisk</string>
-    <string name="launcher_icon_superroot">SuperRoot</string>
 
     <string name="kpm_autoload_title">Muat Otomatis KPM</string>
     <string name="kpm_autoload_enabled">Aktifkan muat otomatis</string>

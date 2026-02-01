@@ -423,11 +423,8 @@ Please check and try again. If there are still issues, you can always ask questi
     <string name="settings_clear_background">Clear Background</string>
     <string name="settings_clear_background_confirm">Are you sure you want to clear the background image?</string>
 
-    <string name="settings_launcher_icon">Launcher Icon</string>
-    <string name="launcher_icon_default">FolkPatch</string>
-    <string name="launcher_icon_classic">FolkPatch Anime</string>
-    <string name="launcher_icon_apatch">APatch</string>
-    <string name="launcher_icon_kernelsu">KernelSU</string>
+    <string name="settings_alt_icon">Alternate Icon</string>
+    <string name="alt_icon_summary">Use alternate launcher icon</string>
 
     <!-- Video Background Settings -->
     <string name="settings_video_background">Video Background</string>
@@ -438,10 +435,6 @@ Please check and try again. If there are still issues, you can always ask questi
     <string name="settings_clear_video_background_confirm">Are you sure you want to clear the video background?</string>
     <string name="settings_video_background_enabled">Video Background Enabled</string>
     <string name="settings_video_volume">Video Volume</string>
-    <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
-    <string name="launcher_icon_kitsune">Kitsune Mask</string>
-    <string name="launcher_icon_magisk">Magisk</string>
-    <string name="launcher_icon_superroot">SuperRoot</string>
     
     <!-- KPM AutoLoad Strings -->
     <string name="kpm_autoload_title">KPM Auto-Load</string>

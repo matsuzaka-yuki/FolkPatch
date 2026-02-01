@@ -379,6 +379,8 @@
     <string name="app_title_magicpatch">MagicPatch</string>
 
     <string name="settings_app_dpi">DPI التطبيق</string>
+    <string name="settings_alt_icon">أيقونة بديلة</string>
+    <string name="alt_icon_summary">استخدم أيقونة المشغل البديلة</string>
     <string name="settings_magic_mount">Folk Mount API</string>
     <string name="settings_magic_mount_summary">تفعيل نظام تركيب الوحدات المدمج</string>
     <string name="settings_app_title">عنوان التطبيق</string>
@@ -421,10 +423,6 @@
     <string name="settings_clear_background_confirm">هل أنت متأكد من أنك تريد مسح صورة الخلفية؟</string>
 
     <string name="settings_launcher_icon">أيقونة اللانشر</string>
-    <string name="launcher_icon_default">FolkPatch</string>
-    <string name="launcher_icon_classic">FolkPatch Anime</string>
-    <string name="launcher_icon_apatch">APatch</string>
-    <string name="launcher_icon_kernelsu">KernelSU</string>
 
     <!-- Video Background Settings -->
     <string name="settings_video_background">خلفية الفيديو</string>
@@ -435,10 +433,6 @@
     <string name="settings_clear_video_background_confirm">هل أنت متأكد من أنك تريد مسح خلفية الفيديو؟</string>
     <string name="settings_video_background_enabled">تمكين خلفية الفيديو</string>
     <string name="settings_video_volume">مستوى صوت الفيديو</string>
-    <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
-    <string name="launcher_icon_kitsune">Kitsune Mask</string>
-    <string name="launcher_icon_magisk">Magisk</string>
-    <string name="launcher_icon_superroot">SuperRoot</string>
     
     <!-- KPM AutoLoad Strings -->
     <string name="kpm_autoload_title">التحميل التلقائي لـ KPM</string>

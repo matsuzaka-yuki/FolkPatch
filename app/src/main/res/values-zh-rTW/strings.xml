@@ -378,6 +378,8 @@
     <string name="settings_custom_background_opacity">卡片透明度</string>
     <string name="settings_custom_background_blur">背景模糊效果</string>
     <string name="settings_custom_background_dim">背景暗度</string>
+    <string name="settings_alt_icon">備用圖標</string>
+    <string name="alt_icon_summary">使用備選啟動器圖標</string>
     <string name="settings_select_background_image">選擇背景圖片</string>
     <string name="settings_custom_background_summary">設定自訂背景圖片</string>
     <string name="settings_custom_background_saved">背景儲存成功</string>
@@ -394,14 +396,6 @@
     <string name="settings_select_system_module_background">系統模組背景</string>
     <string name="settings_select_settings_background">設定頁面背景</string>
     <string name="settings_launcher_icon">桌面圖示</string>
-    <string name="launcher_icon_default">FolkPatch Anime</string>
-    <string name="launcher_icon_classic">FolkPatch</string>
-    <string name="launcher_icon_apatch">APatch</string>
-    <string name="launcher_icon_kernelsu">KernelSU</string>
-    <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
-    <string name="launcher_icon_kitsune">Kitsune Mask</string>
-    <string name="launcher_icon_magisk">Magisk</string>
-    <string name="launcher_icon_superroot">SuperRoot</string>
     <string name="su_exclude_all_title">批次排除</string>
     <string name="su_exclude_all_confirm">確定要將所有未授權 Root 的應用程式設為排除嗎？</string>
     <!-- KPM AutoLoad Strings -->

@@ -109,15 +109,10 @@ fun GeneralSettings(
     val resetSuPathTitle = stringResource(id = R.string.setting_reset_su_path)
     val showResetSuPath = kPatchReady && (matchGeneral || shouldShow(searchText, resetSuPathTitle))
 
-    val appTitleTitle = stringResource(id = R.string.settings_app_title)
-    val currentAppTitleRaw = prefs.getString("app_title", "folkpatch")
-    val currentAppTitle = stringResource(appTitleNameToString(currentAppTitleRaw.toString()))
-    val showAppTitle = matchGeneral || shouldShow(searchText, appTitleTitle, currentAppTitle)
 
-    val launcherIconTitle = stringResource(id = R.string.settings_launcher_icon)
-    val currentIconRaw = prefs.getString("launcher_icon_variant", "default")
-    val currentIcon = stringResource(iconNameToString(currentIconRaw.toString()))
-    val showLauncherIcon = matchGeneral || shouldShow(searchText, launcherIconTitle, currentIcon)
+
+    val launcherIconTitle = stringResource(id = R.string.settings_alt_icon)
+    val showLauncherIcon = matchGeneral || shouldShow(searchText, launcherIconTitle)
 
     val desktopAppNameTitle = stringResource(id = R.string.desktop_app_name)
     val currentDesktopAppName = prefs.getString("desktop_app_name", "FolkPatch")
@@ -140,20 +135,20 @@ fun GeneralSettings(
     val currentSchemeLabel = if (currentScheme == "root_service") stringResource(R.string.app_list_loading_scheme_root_service) else stringResource(R.string.app_list_loading_scheme_package_manager)
     val showAppListLoadingScheme = kPatchReady && (matchGeneral || shouldShow(searchText, appListLoadingSchemeTitle, currentSchemeLabel))
 
-    val showGeneralCategory = showLanguage || showUpdate || showAutoUpdate || showGlobalNamespace || showMagicMount || showResetSuPath || showAppTitle || showLauncherIcon || showDesktopAppName || showDpi || showLog || showFolkXEngine || showAppListLoadingScheme || showSELinuxMode
+    val showGeneralCategory = showLanguage || showUpdate || showAutoUpdate || showGlobalNamespace || showMagicMount || showResetSuPath || showLauncherIcon || showDesktopAppName || showDpi || showLog || showFolkXEngine || showAppListLoadingScheme || showSELinuxMode
 
     // Dialog States
     val showLanguageDialog = remember { mutableStateOf(false) }
     val showUpdateDialog = remember { mutableStateOf(false) }
     val showResetSuPathDialog = remember { mutableStateOf(false) }
-    val showAppTitleDialog = remember { mutableStateOf(false) }
-    val showIconChooseDialog = remember { mutableStateOf(false) }
     val showDesktopAppNameDialog = remember { mutableStateOf(false) }
     val showDpiDialog = remember { mutableStateOf(false) }
     val showFolkXAnimationTypeDialog = remember { mutableStateOf(false) }
     val showFolkXAnimationSpeedDialog = remember { mutableStateOf(false) }
     val showAppListLoadingSchemeDialog = remember { mutableStateOf(false) }
     val showSELinuxModeDialog = remember { mutableStateOf(false) }
+    
+    val useAltIcon = remember { mutableStateOf(prefs.getBoolean("use_alt_icon", false)) }
 
     var autoUpdateCheck by remember { mutableStateOf(prefs.getBoolean("auto_update_check", true)) }
 
@@ -323,6 +318,21 @@ fun GeneralSettings(
                     })
             }
 
+            // Launcher Icon
+            if (showLauncherIcon) {
+                SwitchItem(
+                    icon = Icons.Filled.Settings,
+                    title = stringResource(id = R.string.settings_alt_icon),
+                    summary = stringResource(id = R.string.alt_icon_summary),
+                    checked = useAltIcon.value,
+                    onCheckedChange = {
+                        prefs.edit { putBoolean("use_alt_icon", it) }
+                        LauncherIconUtils.toggleLauncherIcon(context, it)
+                        useAltIcon.value = it
+                    }
+                )
+            }
+
             // Reset SU Path
             if (showResetSuPath) {
                 ListItem(
@@ -331,36 +341,6 @@ fun GeneralSettings(
                     supportingContent = {},
                     headlineContent = { Text(resetSuPathTitle) },
                     modifier = Modifier.clickable { showResetSuPathDialog.value = true })
-            }
-
-            // App Title
-            if (showAppTitle) {
-                ListItem(colors = ListItemDefaults.colors(containerColor = Color.Transparent), headlineContent = {
-                    Text(text = appTitleTitle)
-                }, modifier = Modifier.clickable {
-                    showAppTitleDialog.value = true
-                }, supportingContent = {
-                    Text(
-                        text = currentAppTitle,
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.outline
-                    )
-                }, leadingContent = { Icon(Icons.Filled.Label, null) })
-            }
-
-            // Launcher Icon
-            if (showLauncherIcon) {
-                ListItem(colors = ListItemDefaults.colors(containerColor = Color.Transparent), headlineContent = {
-                    Text(text = launcherIconTitle)
-                }, modifier = Modifier.clickable {
-                    showIconChooseDialog.value = true
-                }, supportingContent = {
-                    Text(
-                        text = currentIcon,
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.outline
-                    )
-                }, leadingContent = { Icon(painterResource(id = R.drawable.settings), null) })
             }
 
             // Desktop App Name
@@ -453,17 +433,11 @@ fun GeneralSettings(
         )
     }
     
-    if (showAppTitleDialog.value) {
-        AppTitleChooseDialog(showAppTitleDialog)
-    }
-    
-    if (showIconChooseDialog.value) {
-        IconChooseDialog(showIconChooseDialog)
-    }
-    
     if (showDesktopAppNameDialog.value) {
         DesktopAppNameChooseDialog(showDesktopAppNameDialog)
     }
+
+    LanguageDialog(showLanguageDialog)
 
     if (showDpiDialog.value) {
         DpiChooseDialog(showDpiDialog)
@@ -489,48 +463,6 @@ fun GeneralSettings(
 // For now, I will assume they are here. I will paste the implementations I found.
 
 
-
-fun appTitleList(): List<AppTitle> {
-    return listOf(
-        AppTitle("folkpatch", R.string.app_title_folkpatch),
-        AppTitle("fpatch", R.string.app_title_fpatch),
-        AppTitle("apatch_folk", R.string.app_title_apatch_folk),
-        AppTitle("apatchx", R.string.app_title_apatchx),
-        AppTitle("apatch", R.string.app_title_apatch),
-        AppTitle("kernelpatch", R.string.app_title_kernelpatch),
-        AppTitle("supersu", R.string.app_title_supersu),
-        AppTitle("folksu", R.string.app_title_folksu),
-        AppTitle("superuser", R.string.app_title_superuser),
-        AppTitle("superpatch", R.string.app_title_superpatch),
-        AppTitle("magicpatch", R.string.app_title_magicpatch),
-    )
-}
-
-data class AppTitle(val name: String, val nameId: Int)
-
-fun appTitleNameToString(titleName: String): Int {
-    return appTitleList().find { it.name == titleName }?.nameId ?: R.string.app_title_folkpatch
-}
-
-@Composable
-fun iconNameToString(iconName: String): Int {
-    return when (iconName) {
-        "default" -> R.string.launcher_icon_default
-        "classic" -> R.string.launcher_icon_classic
-        "apatch" -> R.string.launcher_icon_apatch
-        "kernelsu" -> R.string.launcher_icon_kernelsu
-        "kernelsunext" -> R.string.launcher_icon_kernelsu_next
-        "kitsune" -> R.string.launcher_icon_kitsune
-        "magisk" -> R.string.launcher_icon_magisk
-        "superroot" -> R.string.launcher_icon_superroot
-        "mask" -> R.string.launcher_icon_kitsune
-        "camou" -> R.string.launcher_icon_default
-        else -> R.string.launcher_icon_default
-    }
-}
-
-// ... Implementations of LanguageDialog, DpiChooseDialog, etc. (Pasted from Read output)
-// I will need to complete the file with the dialogs I read earlier.
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -572,10 +504,10 @@ fun LanguageDialog(showLanguageDialog: MutableState<Boolean>) {
                         )
                     }
                 }
-            }
 
-            val dialogWindowProvider = LocalView.current.parent as DialogWindowProvider
-            APDialogBlurBehindUtils.setupWindowBlurListener(dialogWindowProvider.window)
+                val dialogWindowProvider = LocalView.current.parent as DialogWindowProvider
+                APDialogBlurBehindUtils.setupWindowBlurListener(dialogWindowProvider.window)
+            }
         }
     }
 }
@@ -1010,97 +942,6 @@ fun ResetSUPathDialog(showDialog: MutableState<Boolean>) {
             APDialogBlurBehindUtils.setupWindowBlurListener(dialogWindowProvider.window)
         }
     }
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun AppTitleChooseDialog(showDialog: MutableState<Boolean>) {
-    val prefs = APApplication.sharedPreferences
-
-    BasicAlertDialog(
-        onDismissRequest = { showDialog.value = false }, properties = DialogProperties(
-            decorFitsSystemWindows = true,
-            usePlatformDefaultWidth = false,
-        )
-    ) {
-        Surface(
-            modifier = Modifier
-                .width(310.dp)
-                .wrapContentHeight(),
-            shape = RoundedCornerShape(30.dp),
-            tonalElevation = AlertDialogDefaults.TonalElevation,
-            color = AlertDialogDefaults.containerColor,
-        ) {
-            LazyColumn {
-                items(appTitleList()) { title ->
-                    ListItem(
-                        headlineContent = { Text(text = stringResource(title.nameId)) },
-                        modifier = Modifier.clickable {
-                            showDialog.value = false
-                            prefs.edit { putString("app_title", title.name) }
-                        })
-                }
-            }
-
-            val dialogWindowProvider = LocalView.current.parent as DialogWindowProvider
-            APDialogBlurBehindUtils.setupWindowBlurListener(dialogWindowProvider.window)
-        }
-    }
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun IconChooseDialog(showDialog: MutableState<Boolean>) {
-    val prefs = APApplication.sharedPreferences
-    val context = LocalContext.current
-
-    BasicAlertDialog(
-        onDismissRequest = { showDialog.value = false }, properties = DialogProperties(
-            decorFitsSystemWindows = true,
-            usePlatformDefaultWidth = false,
-        )
-    ) {
-        Surface(
-            modifier = Modifier
-                .width(310.dp)
-                .wrapContentHeight(),
-            shape = RoundedCornerShape(30.dp),
-            tonalElevation = AlertDialogDefaults.TonalElevation,
-            color = AlertDialogDefaults.containerColor,
-        ) {
-            LazyColumn {
-                items(iconPresetList()) { preset ->
-                    ListItem(
-                        headlineContent = { Text(text = stringResource(preset.nameId)) },
-                        modifier = Modifier.clickable {
-                            showDialog.value = false
-                            prefs.edit { putString("launcher_icon_variant", preset.name) }
-                            me.bmax.apatch.util.LauncherIconUtils.applySaved(context, preset.name)
-                        })
-                }
-            }
-
-            val dialogWindowProvider = LocalView.current.parent as DialogWindowProvider
-            APDialogBlurBehindUtils.setupWindowBlurListener(dialogWindowProvider.window)
-        }
-    }
-}
-
-private data class IconPreset(
-    val name: String, @androidx.annotation.StringRes val nameId: Int
-)
-
-private fun iconPresetList(): List<IconPreset> {
-    return listOf(
-        IconPreset("default", R.string.launcher_icon_default),
-        IconPreset("classic", R.string.launcher_icon_classic),
-        IconPreset("apatch", R.string.launcher_icon_apatch),
-        IconPreset("kernelsu", R.string.launcher_icon_kernelsu),
-        IconPreset("kernelsunext", R.string.launcher_icon_kernelsu_next),
-        IconPreset("kitsune", R.string.launcher_icon_kitsune),
-        IconPreset("magisk", R.string.launcher_icon_magisk),
-        IconPreset("superroot", R.string.launcher_icon_superroot),
-    )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)

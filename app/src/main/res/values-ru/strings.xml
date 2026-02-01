@@ -375,6 +375,8 @@
     <string name="app_title_magicpatch">MagicPatch</string>
 
     <string name="settings_app_dpi">DPI приложения</string>
+    <string name="settings_alt_icon">Альтернативная иконка</string>
+    <string name="alt_icon_summary">Использовать альтернативный значок запуска</string>
     <string name="settings_magic_mount">Folk Mount API</string>
     <string name="settings_magic_mount_summary">Включить встроенную систему монтирования модулей</string>
     <string name="settings_app_title">Заголовок приложения</string>
@@ -399,14 +401,6 @@
     <string name="settings_select_system_module_background">Фон системного модуля</string>
     <string name="settings_select_settings_background">Фон страницы настроек</string>
     <string name="settings_launcher_icon">Иконка лаунчера</string>
-    <string name="launcher_icon_default">FolkPatch</string>
-    <string name="launcher_icon_classic">FolkPatch Anime</string>
-    <string name="launcher_icon_apatch">APatch</string>
-    <string name="launcher_icon_kernelsu">KernelSU</string>
-    <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
-    <string name="launcher_icon_kitsune">Kitsune Mask</string>
-    <string name="launcher_icon_magisk">Magisk</string>
-    <string name="launcher_icon_superroot">SuperRoot</string>
     <string name="settings_grid_working_card_hide_check">Скрыть значок статуса</string>
     <string name="settings_grid_working_card_hide_check_summary">Скрыть галочку или значок предупреждения на рабочей карточке</string>
     <string name="settings_grid_working_card_hide_text">Скрыть текст статуса</string>
