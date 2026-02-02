@@ -121,7 +121,9 @@ import me.bmax.apatch.APApplication
 import me.bmax.apatch.R
 import me.bmax.apatch.apApp
 import me.bmax.apatch.ui.WebUIActivity
+import me.bmax.apatch.ui.component.AdaptiveModuleButtonRow
 import me.bmax.apatch.ui.component.ConfirmResult
+import me.bmax.apatch.ui.component.ModuleButtonConfig
 import me.bmax.apatch.ui.component.ModuleRemoveButton
 import me.bmax.apatch.ui.component.ModuleStateIndicator
 import me.bmax.apatch.ui.component.ModuleUpdateButton
@@ -1379,128 +1381,75 @@ private fun ModuleItem(
                     enter = fadeIn() + expandVertically(),
                     exit = shrinkVertically() + fadeOut()
                 ) {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(if (simpleListBottomBar) 12.dp else 8.dp)
-                    ) {
-                        if (module.hasWebUi && module.enabled && !module.remove) {
-                            FilledTonalButton(
-                                onClick = { onClick(module) },
-                                contentPadding = if (simpleListBottomBar) PaddingValues(12.dp) else ButtonDefaults.TextButtonContentPadding,
-                                modifier = if (simpleListBottomBar) Modifier else Modifier.height(36.dp),
-                                colors = ButtonDefaults.filledTonalButtonColors(
-                                    containerColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = (opacity + 0.3f).coerceAtMost(1f))
-                                )
-                            ) {
-                                 Icon(
-                                    imageVector = Icons.AutoMirrored.Outlined.Wysiwyg,
-                                    contentDescription = stringResource(R.string.apm_webui_open),
-                                    modifier = Modifier.size(20.dp)
-                                )
-                                if (!simpleListBottomBar) {
-                                    Spacer(Modifier.width(8.dp))
-                                    Text(stringResource(R.string.apm_webui_open))
-                                }
-                            }
-
-                        }
-
-                        if (module.hasActionScript && module.enabled && !module.remove) {
-                            FilledTonalButton(
-                                onClick = {
-                                    navigator.navigate(ExecuteAPMActionScreenDestination(module.id))
-                                    viewModel.markNeedRefresh()
-                                },
-                                contentPadding = if (simpleListBottomBar) PaddingValues(12.dp) else ButtonDefaults.TextButtonContentPadding,
-                                modifier = if (simpleListBottomBar) Modifier else Modifier.height(36.dp),
-                                colors = ButtonDefaults.filledTonalButtonColors(
-                                    containerColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = (opacity + 0.3f).coerceAtMost(1f))
-                                )
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Outlined.Terminal,
-                                    contentDescription = stringResource(R.string.apm_action),
-                                    modifier = Modifier.size(20.dp)
-                                )
-                                if (!simpleListBottomBar) {
-                                    Spacer(Modifier.width(8.dp))
-                                    Text(stringResource(R.string.apm_action))
-                                }
-                            }
-                        }
-                        
-                        if (enableModuleShortcutAdd && module.enabled && !module.remove && (module.hasWebUi || module.hasActionScript)) {
-                            FilledTonalButton(
-                                onClick = { 
-                                    shortcutName = module.name
-                                    shortcutIconUri = null
-                                    shortcutType = if (module.hasWebUi) "webui" else "action"
-                                    showShortcutDialog = true 
-                                },
-                                contentPadding = if (simpleListBottomBar) PaddingValues(12.dp) else ButtonDefaults.TextButtonContentPadding,
-                                modifier = if (simpleListBottomBar) Modifier else Modifier.height(36.dp),
-                                colors = ButtonDefaults.filledTonalButtonColors(
-                                    containerColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = (opacity + 0.3f).coerceAtMost(1f))
-                                )
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Outlined.Add,
-                                    contentDescription = shortcutAdd,
-                                    modifier = Modifier.size(20.dp)
-                                )
-                                if (!simpleListBottomBar) {
-                                    Spacer(Modifier.width(8.dp))
-                                    Text(shortcutAdd)
-                                }
-                            }
-                        }
-
-                         if (updateUrl.isNotEmpty() && !module.remove && !module.update) {
-                            FilledTonalButton(
-                                onClick = { onUpdate(module) },
-                                contentPadding = if (simpleListBottomBar) PaddingValues(12.dp) else ButtonDefaults.TextButtonContentPadding,
-                                modifier = if (simpleListBottomBar) Modifier else Modifier.height(36.dp),
-                                colors = ButtonDefaults.filledTonalButtonColors(
-                                    containerColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = (opacity + 0.3f).coerceAtMost(1f))
-                                )
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Outlined.Download,
-                                    contentDescription = stringResource(R.string.apm_update),
-                                    modifier = Modifier.size(20.dp)
-                                )
-                                if (!simpleListBottomBar) {
-                                    Spacer(Modifier.width(8.dp))
-                                    Text(stringResource(R.string.apm_update))
-                                }
-                            }
-                        }
-
-                        Spacer(modifier = Modifier.weight(1f))
-
-                        FilledTonalButton(
-                            onClick = { onUninstall(module) },
-                            enabled = !module.remove,
-                            contentPadding = if (simpleListBottomBar) PaddingValues(12.dp) else ButtonDefaults.TextButtonContentPadding,
-                            modifier = if (simpleListBottomBar) Modifier else Modifier.height(36.dp),
-                            colors = if (simpleListBottomBar) ButtonDefaults.filledTonalButtonColors(
-                                containerColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = (opacity + 0.3f).coerceAtMost(1f))
-                            ) else ButtonDefaults.filledTonalButtonColors(
-                                containerColor = MaterialTheme.colorScheme.errorContainer.copy(alpha = (opacity + 0.3f).coerceAtMost(1f)),
-                                contentColor = MaterialTheme.colorScheme.onErrorContainer
-                            )
-                        ) {
-                            Icon(
-                                imageVector = Icons.Outlined.Delete,
-                                contentDescription = stringResource(R.string.apm_remove),
-                                modifier = Modifier.size(20.dp)
-                            )
-                            if (!simpleListBottomBar) {
-                                Spacer(Modifier.width(8.dp))
-                                Text(stringResource(R.string.apm_remove))
-                            }
-                        }
+           
+                    val buttons = mutableListOf<ModuleButtonConfig>()
+                    
+                    if (module.hasWebUi && module.enabled && !module.remove) {
+                        buttons.add(ModuleButtonConfig(
+                            icon = Icons.AutoMirrored.Outlined.Wysiwyg,
+                            text = stringResource(R.string.apm_webui_open),
+                            contentDescription = stringResource(R.string.apm_webui_open),
+                            onClick = { onClick(module) }
+                        ))
                     }
+                    
+                    if (module.hasActionScript && module.enabled && !module.remove) {
+                        buttons.add(ModuleButtonConfig(
+                            icon = Icons.Outlined.Terminal,
+                            text = stringResource(R.string.apm_action),
+                            contentDescription = stringResource(R.string.apm_action),
+                            onClick = {
+                                navigator.navigate(ExecuteAPMActionScreenDestination(module.id))
+                                viewModel.markNeedRefresh()
+                            }
+                        ))
+                    }
+                    
+                    if (enableModuleShortcutAdd && module.enabled && !module.remove && (module.hasWebUi || module.hasActionScript)) {
+                        buttons.add(ModuleButtonConfig(
+                            icon = Icons.Outlined.Add,
+                            text = shortcutAdd,
+                            contentDescription = shortcutAdd,
+                            onClick = { 
+                                shortcutName = module.name
+                                shortcutIconUri = null
+                                shortcutType = if (module.hasWebUi) "webui" else "action"
+                                showShortcutDialog = true 
+                            }
+                        ))
+                    }
+                    
+                    if (updateUrl.isNotEmpty() && !module.remove && !module.update) {
+                        buttons.add(ModuleButtonConfig(
+                            icon = Icons.Outlined.Download,
+                            text = stringResource(R.string.apm_update),
+                            contentDescription = stringResource(R.string.apm_update),
+                            onClick = { onUpdate(module) }
+                        ))
+                    }
+                    
+     
+                    val deleteButton = ModuleButtonConfig(
+                        icon = Icons.Outlined.Delete,
+                        text = stringResource(R.string.apm_remove),
+                        contentDescription = stringResource(R.string.apm_remove),
+                        onClick = { onUninstall(module) },
+                        enabled = !module.remove,
+                        colors = if (simpleListBottomBar) ButtonDefaults.filledTonalButtonColors(
+                            containerColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = (opacity + 0.3f).coerceAtMost(1f))
+                        ) else ButtonDefaults.filledTonalButtonColors(
+                            containerColor = MaterialTheme.colorScheme.errorContainer.copy(alpha = (opacity + 0.3f).coerceAtMost(1f)),
+                            contentColor = MaterialTheme.colorScheme.onErrorContainer
+                        )
+                    )
+                    
+                    AdaptiveModuleButtonRow(
+                        buttons = buttons,
+                        trailingButton = deleteButton,
+                        simpleListBottomBar = simpleListBottomBar,
+                        spacing = if (simpleListBottomBar) 12 else 8,
+                        opacity = opacity
+                    )
                 }
             }
         }
