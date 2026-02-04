@@ -49,8 +49,6 @@ import me.bmax.apatch.ui.component.SwitchItem
 import me.bmax.apatch.ui.viewmodel.SuperUserViewModel
 import me.bmax.apatch.util.PkgConfig
 
-import me.bmax.apatch.ui.theme.BackgroundLayer
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Destination<RootGraph>
 @Composable
@@ -59,7 +57,6 @@ fun AppProfileScreen(
     packageName: String,
     uid: Int
 ) {
-    BackgroundLayer()
     val appInfoState = remember(packageName, uid) {
         derivedStateOf {
             SuperUserViewModel.apps.find { it.packageName == packageName && it.uid == uid }
@@ -88,9 +85,6 @@ fun AppProfileScreen(
         containerColor = Color.Transparent,
         topBar = {
             TopAppBar(
-                colors = androidx.compose.material3.TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color.Transparent
-                ),
                 title = { Text(stringResource(R.string.su_title)) },
                 navigationIcon = {
                     IconButton(onClick = { navigator.popBackStack() }) {
