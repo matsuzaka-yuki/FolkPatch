@@ -293,15 +293,15 @@ boot_actions() {
     local apk_path=$(find /data/app -name "base.apk" -path "*/me.yuki.folk-*" 2>/dev/null | head -n 1)
     if [ -n "$apk_path" ] && [ -f "$apk_path" ]; then
       # Extract jq from APK assets
-      mkdir -p /tmp/jq_extract
-      if unzip -o "$apk_path" "jq/jq" -d /tmp/jq_extract >&2; then
-        if [ -f "/tmp/jq_extract/jq/jq" ]; then
-          cp /tmp/jq_extract/jq/jq "$NVBASE/jq"
+      mkdir -p /data/local/tmp/jq_extract
+      if unzip -o "$apk_path" "jq/jq" -d /data/local/tmp/jq_extract >&2; then
+        if [ -f "/data/local/tmp/jq_extract/jq/jq" ]; then
+          cp /data/local/tmp/jq_extract/jq/jq "$NVBASE/jq"
           chmod 755 "$NVBASE/jq"
-          rm -rf /tmp/jq_extract
+          rm -rf /data/local/tmp/jq_extract
         fi
       else
-        rm -rf /tmp/jq_extract
+        rm -rf /data/local/tmp/jq_extract
       fi
     fi
   fi
