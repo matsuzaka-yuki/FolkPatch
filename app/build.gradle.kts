@@ -161,13 +161,16 @@ android {
                 }
                 val token = authProps.getProperty("api.token", "")
                 val signatureHash = authProps.getProperty("app.signature.hash", "")
-                
+
                 // Pass to C++ compiler directly via flags
-                cppFlags += listOf(
-                    "-DAPI_TOKEN=\"$token\"", 
-                    "-DAPP_SIGNATURE_HASH=\"$signatureHash\"",
-                    "-DAPP_PACKAGE_NAME=\"$applicationId\""
-                )
+                // Only add flags if values are non-empty to avoid compiler errors
+                if (token.isNotEmpty()) {
+                    cppFlags += "-DAPI_TOKEN=\"$token\""
+                }
+                if (signatureHash.isNotEmpty()) {
+                    cppFlags += "-DAPP_SIGNATURE_HASH=\"$signatureHash\""
+                }
+                cppFlags += "-DAPP_PACKAGE_NAME=\"$applicationId\""
                 
                 abiFilters("arm64-v8a")
             }

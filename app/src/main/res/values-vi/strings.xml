@@ -612,6 +612,8 @@ Cần đảm bảo phần mềm thoát hoàn toàn vào mới sẽ thực thi l�
     <string name="settings_category_general">Chung</string>
     <string name="settings_category_appearance">Giao diện</string>
     <string name="settings_category_behavior">Hành vi</string>
+    <string name="settings_use_legacy_su_page">Ủy quyền siêu người dùng một trang</string>
+    <string name="settings_use_legacy_su_page_summary">Trang siêu người dùng chuyển sang thiết kế ủy quyền một trang</string>
     <string name="settings_category_module">Mô-đun</string>
     <string name="settings_category_security">Bảo mật</string>
     

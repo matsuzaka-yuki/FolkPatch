@@ -611,6 +611,8 @@
     <string name="module">模块</string>
     <string name="settings_category_appearance">外观</string>
     <string name="settings_category_behavior">行为</string>
+    <string name="settings_use_legacy_su_page">单页超级用户授权</string>
+    <string name="settings_use_legacy_su_page_summary">超级用户页面改用单页授权设计</string>
     <string name="settings_category_module">模块</string>
     <string name="settings_category_security">安全</string>
     

@@ -577,6 +577,8 @@
   <string name="app_list_loading_scheme_dialog_title">スキームを読み込み中</string>
   <string name="settings_category_appearance">外観</string>
   <string name="settings_category_behavior">動作</string>
+  <string name="settings_use_legacy_su_page">シングルページスーパーユーザー認証</string>
+  <string name="settings_use_legacy_su_page_summary">スーパーユーザーページがシングルページ認証デザインに切り替わりました</string>
   <string name="settings_category_module">モジュール</string>
   <string name="settings_category_security">セキュリティ</string>
   <!-- Background Music Strings -->

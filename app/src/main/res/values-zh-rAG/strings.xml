@@ -611,6 +611,8 @@
     <!--折叠选项-->
     <string name="settings_category_general">常规喵</string>
     <string name="settings_app_list_loading_scheme">应用列表加载方案喵</string>
+    <string name="settings_use_legacy_su_page">单页超级用户授权喵</string>
+    <string name="settings_use_legacy_su_page_summary">超级用户页面改用单页授权设计喵</string>
     <string name="settings_app_list_loading_scheme_summary">选怎么加载应用列表嘛喵！</string>
     <string name="app_list_loading_scheme_root_service">RootService（默认）</string>
     <string name="app_list_loading_scheme_package_manager">PackageManager（系统API）</string>

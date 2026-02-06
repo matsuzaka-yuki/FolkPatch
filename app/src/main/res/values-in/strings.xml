@@ -597,6 +597,8 @@ Pastikan aplikasi ditutup sepenuhnya dan dimulai ulang untuk menjalankan perinta
     <string name="settings_category_general">Umum</string>
     <string name="settings_category_appearance">Tampilan</string>
     <string name="settings_category_behavior">Perilaku</string>
+    <string name="settings_use_legacy_su_page">Otorisasi superuser satu halaman</string>
+    <string name="settings_use_legacy_su_page_summary">Halaman superuser beralih ke desain otorisasi satu halaman</string>
     <string name="settings_category_module">Modul</string>
     <string name="settings_category_security">Keamanan</string>
     

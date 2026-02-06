@@ -612,6 +612,8 @@ Por ejemplo, los KPM que previenen la modificación de particiones solo pueden u
     <string name="settings_category_general">General</string>
     <string name="settings_category_appearance">Apariencia</string>
     <string name="settings_category_behavior">Comportamiento</string>
+    <string name="settings_use_legacy_su_page">Autorización de superusuario de página única</string>
+    <string name="settings_use_legacy_su_page_summary">La página de superusuario cambió a diseño de autorización de página única</string>
     <string name="settings_category_module">Módulos</string>
     <string name="settings_category_security">Seguridad</string>
     

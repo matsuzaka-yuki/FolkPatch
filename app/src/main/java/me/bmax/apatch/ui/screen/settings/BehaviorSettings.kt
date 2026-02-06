@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.automirrored.filled.PlaylistAddCheck
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -90,6 +91,10 @@ fun BehaviorSettings(
     val hideMountSummary = stringResource(id = R.string.home_hide_mount_summary)
     val showHideMount = kPatchReady && (matchBehavior || shouldShow(searchText, hideMountTitle, hideMountSummary))
 
+    val useLegacySuPageTitle = stringResource(id = R.string.settings_use_legacy_su_page)
+    val useLegacySuPageSummary = stringResource(id = R.string.settings_use_legacy_su_page_summary)
+    val showUseLegacySuPage = kPatchReady && (matchBehavior || shouldShow(searchText, useLegacySuPageTitle, useLegacySuPageSummary))
+
     // Badge Count Settings
     val badgeCountTitle = stringResource(id = R.string.enable_badge_count)
     val badgeCountSummary = stringResource(id = R.string.enable_badge_count_summary)
@@ -99,7 +104,7 @@ fun BehaviorSettings(
     
     val showBadgeSettings = kPatchReady && (matchBehavior || shouldShow(searchText, badgeCountTitle, badgeCountSummary, showSuperUserBadgeTitle, showApmBadgeTitle, showKernelBadgeTitle))
 
-    val showBehaviorCategory = showWebDebugging || showInstallConfirm || showDisableModules || showEnableModuleShortcutAdd || showStayOnPage || showHideApatch || showHideSu || showHideKpatch || showHideFingerprint || showHideZygisk || showHideMount || showBadgeSettings
+    val showBehaviorCategory = showWebDebugging || showInstallConfirm || showDisableModules || showEnableModuleShortcutAdd || showStayOnPage || showHideApatch || showHideSu || showHideKpatch || showHideFingerprint || showHideZygisk || showHideMount || showUseLegacySuPage || showBadgeSettings
 
     if (showBehaviorCategory) {
         SettingsCategory(icon = Icons.Filled.Visibility, title = behaviorTitle, isSearching = searchText.isNotEmpty()) {
@@ -265,6 +270,21 @@ fun BehaviorSettings(
                     onCheckedChange = {
                         hideMount = it
                         prefs.edit().putBoolean("hide_mount", it).apply()
+                    }
+                )
+            }
+
+            // Use Legacy SU Page
+            if (showUseLegacySuPage) {
+                var useLegacySuPage by remember { mutableStateOf(prefs.getBoolean("use_legacy_su_page", false)) }
+                SwitchItem(
+                    icon = Icons.Filled.ViewList,
+                    title = useLegacySuPageTitle,
+                    summary = useLegacySuPageSummary,
+                    checked = useLegacySuPage,
+                    onCheckedChange = {
+                        useLegacySuPage = it
+                        prefs.edit().putBoolean("use_legacy_su_page", it).apply()
                     }
                 )
             }

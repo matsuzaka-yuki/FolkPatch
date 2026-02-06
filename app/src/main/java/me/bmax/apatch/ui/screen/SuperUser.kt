@@ -2,6 +2,7 @@ package me.bmax.apatch.ui.screen
 
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
@@ -23,7 +24,9 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.Security
 import androidx.compose.material.icons.automirrored.filled.PlaylistAddCheck
 import androidx.compose.material.icons.filled.Terminal
 import androidx.compose.material3.AlertDialogDefaults
@@ -36,12 +39,14 @@ import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -67,12 +72,16 @@ import com.ramcosta.composedestinations.generated.destinations.AppProfileScreenD
 import com.ramcosta.composedestinations.generated.destinations.ScriptLibraryScreenDestination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.launch
+import me.bmax.apatch.APApplication
+import me.bmax.apatch.Natives
 import me.bmax.apatch.R
 import me.bmax.apatch.apApp
 import me.bmax.apatch.ui.component.SearchAppBar
 import me.bmax.apatch.ui.component.WallpaperAwareDropdownMenu
 import me.bmax.apatch.ui.component.WallpaperAwareDropdownMenuItem
+import me.bmax.apatch.ui.component.SwitchItem
 import me.bmax.apatch.ui.viewmodel.SuperUserViewModel
+import me.bmax.apatch.util.PkgConfig
 import me.bmax.apatch.util.ui.APDialogBlurBehindUtils.Companion.setupWindowBlurListener
 
 
@@ -80,6 +89,21 @@ import me.bmax.apatch.util.ui.APDialogBlurBehindUtils.Companion.setupWindowBlurL
 @Destination<RootGraph>
 @Composable
 fun SuperUserScreen(navigator: DestinationsNavigator) {
+    val prefs = APApplication.sharedPreferences
+    val useLegacySuPage = prefs.getBoolean("use_legacy_su_page", false)
+
+    if (useLegacySuPage) {
+        // Legacy APatch-style single-screen UI
+        SuperUserScreenLegacy(navigator)
+    } else {
+        // Current FolkPatch-style multi-screen UI
+        SuperUserScreenModern(navigator)
+    }
+}
+
+@OptIn(ExperimentalMaterialApi::class, ExperimentalMaterial3Api::class)
+@Composable
+private fun SuperUserScreenModern(navigator: DestinationsNavigator) {
     val viewModel = viewModel<SuperUserViewModel>()
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
@@ -276,6 +300,144 @@ fun SuperUserScreen(navigator: DestinationsNavigator) {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
+@Composable
+private fun SuperUserScreenLegacy(navigator: DestinationsNavigator) {
+    val viewModel = viewModel<SuperUserViewModel>()
+    val scope = rememberCoroutineScope()
+    val context = LocalContext.current
+
+    val backupLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.CreateDocument("application/json")
+    ) { uri ->
+        uri?.let { viewModel.backupAppList(context, it) }
+    }
+
+    val restoreLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.OpenDocument()
+    ) { uri ->
+        uri?.let { viewModel.restoreAppList(context, it) }
+    }
+
+    var showBatchExcludeDialog by remember { mutableStateOf(false) }
+
+    if (showBatchExcludeDialog) {
+        BatchExcludeDialog(
+            onDismiss = { showBatchExcludeDialog = false },
+            onExclude = {
+                viewModel.excludeAll()
+                showBatchExcludeDialog = false
+            },
+            onReverseExclude = {
+                viewModel.reverseExcludeAll()
+                showBatchExcludeDialog = false
+            }
+        )
+    }
+
+    LaunchedEffect(Unit) {
+        if (viewModel.appList.isEmpty()) {
+            viewModel.fetchAppList()
+        }
+    }
+
+    Scaffold(
+        topBar = {
+            SearchAppBar(
+                title = { Text(stringResource(R.string.su_title)) },
+                searchText = viewModel.search,
+                onSearchTextChange = { viewModel.search = it },
+                onClearClick = { viewModel.search = "" },
+                leadingActions = {
+                    IconButton(onClick = {
+                        navigator.navigate(ScriptLibraryScreenDestination)
+                    }) {
+                        Icon(Icons.Filled.Terminal, contentDescription = stringResource(R.string.script_library))
+                    }
+                    IconButton(onClick = {
+                        showBatchExcludeDialog = true
+                    }) {
+                        Icon(Icons.AutoMirrored.Filled.PlaylistAddCheck, contentDescription = stringResource(R.string.su_batch_exclude_title))
+                    }
+                },
+                dropdownContent = {
+                    var showDropdown by remember { mutableStateOf(false) }
+
+                    IconButton(
+                        onClick = { showDropdown = true },
+                    ) {
+                        Icon(
+                            imageVector = Icons.Filled.MoreVert,
+                            contentDescription = stringResource(id = R.string.settings)
+                        )
+
+                        WallpaperAwareDropdownMenu(
+                            expanded = showDropdown,
+                            onDismissRequest = { showDropdown = false },
+                            shape = RoundedCornerShape(10.dp)
+                        ) {
+                            WallpaperAwareDropdownMenuItem(
+                                text = { Text(stringResource(R.string.su_refresh)) },
+                                onClick = {
+                                    scope.launch {
+                                        viewModel.fetchAppList()
+                                    }
+                                    showDropdown = false
+                                }
+                            )
+
+                            WallpaperAwareDropdownMenuItem(
+                                text = {
+                                    Text(
+                                        if (viewModel.showSystemApps) {
+                                            stringResource(R.string.su_hide_system_apps)
+                                        } else {
+                                            stringResource(R.string.su_show_system_apps)
+                                        }
+                                    )
+                                },
+                                onClick = {
+                                    viewModel.showSystemApps = !viewModel.showSystemApps
+                                    showDropdown = false
+                                }
+                            )
+
+                            WallpaperAwareDropdownMenuItem(
+                                text = { Text(stringResource(R.string.su_backup_list)) },
+                                onClick = {
+                                    backupLauncher.launch("FolkPatch_list_backup.json")
+                                    showDropdown = false
+                                }
+                            )
+
+                            WallpaperAwareDropdownMenuItem(
+                                text = { Text(stringResource(R.string.su_restore_list)) },
+                                onClick = {
+                                    restoreLauncher.launch(arrayOf("application/json", "*/*"))
+                                    showDropdown = false
+                                }
+                            )
+                        }
+                    }
+                }
+            )
+        },
+    ) { innerPadding ->
+
+        PullToRefreshBox(
+            modifier = Modifier.padding(innerPadding),
+            onRefresh = { scope.launch { viewModel.fetchAppList() } },
+            isRefreshing = viewModel.isRefreshing
+        ) {
+            LazyColumn(Modifier.fillMaxSize()) {
+                items(viewModel.appList.filter { it.packageName != apApp.packageName }, key = { it.packageName + it.uid }) { app ->
+                    AppItemLegacy(app)
+                }
+            }
+        }
+    }
+}
+
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun AppItem(
@@ -328,6 +490,110 @@ private fun AppItem(
             }
         }
     )
+}
+
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+private fun AppItemLegacy(
+    app: SuperUserViewModel.AppInfo,
+) {
+    val config = app.config
+    var showEditProfile by remember { mutableStateOf(false) }
+    var rootGranted by remember { mutableStateOf(config.allow != 0) }
+    var excludeApp by remember { mutableIntStateOf(config.exclude) }
+
+    ListItem(
+        modifier = Modifier.clickable(onClick = {
+            if (!rootGranted) {
+                showEditProfile = !showEditProfile
+            } else {
+                rootGranted = false
+                config.allow = 0
+                Natives.revokeSu(app.uid)
+                PkgConfig.changeConfig(config)
+            }
+        }),
+        colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+        headlineContent = { Text(app.label) },
+        leadingContent = {
+            AsyncImage(
+                model = ImageRequest.Builder(LocalContext.current).data(app.packageInfo)
+                    .crossfade(true).build(),
+                contentDescription = app.label,
+                modifier = Modifier
+                    .padding(4.dp)
+                    .width(48.dp)
+                    .height(48.dp)
+            )
+        },
+        supportingContent = {
+            Column {
+                Text(app.packageName)
+                FlowRow {
+                    if (excludeApp == 1) {
+                        LabelText(label = stringResource(id = R.string.su_pkg_excluded_label))
+                    }
+                    if (rootGranted) {
+                        LabelText(label = config.profile.uid.toString())
+                        LabelText(label = config.profile.toUid.toString())
+                        LabelText(
+                            label = when {
+                                config.profile.scontext.isNotEmpty() -> config.profile.scontext
+                                else -> stringResource(id = R.string.su_selinux_via_hook)
+                            }
+                        )
+                    }
+                }
+            }
+        },
+        trailingContent = {
+            Switch(checked = rootGranted, onCheckedChange = {
+                rootGranted = !rootGranted
+                if (rootGranted) {
+                    excludeApp = 0
+                    config.allow = 1
+                    config.exclude = 0
+                    config.profile.scontext = APApplication.MAGISK_SCONTEXT
+                } else {
+                    config.allow = 0
+                }
+                config.profile.uid = app.uid
+                PkgConfig.changeConfig(config)
+                if (config.allow == 1) {
+                    Natives.grantSu(app.uid, 0, config.profile.scontext)
+                    Natives.setUidExclude(app.uid, 0)
+                } else {
+                    Natives.revokeSu(app.uid)
+                }
+            })
+        },
+    )
+
+    AnimatedVisibility(
+        visible = showEditProfile && !rootGranted,
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        SwitchItem(
+            icon = Icons.Filled.Security,
+            title = stringResource(id = R.string.su_pkg_excluded_setting_title),
+            summary = stringResource(id = R.string.su_pkg_excluded_setting_summary),
+            checked = excludeApp == 1,
+            onCheckedChange = {
+                if (it) {
+                    excludeApp = 1
+                    config.allow = 0
+                    config.profile.scontext = APApplication.DEFAULT_SCONTEXT
+                    Natives.revokeSu(app.uid)
+                } else {
+                    excludeApp = 0
+                }
+                config.exclude = excludeApp
+                config.profile.uid = app.uid
+                PkgConfig.changeConfig(config)
+                Natives.setUidExclude(app.uid, excludeApp)
+            },
+        )
+    }
 }
 
 @Composable
