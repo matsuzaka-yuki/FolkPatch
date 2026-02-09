@@ -43,7 +43,7 @@ This project is based on the following open source projects:
 
 ## License
 
-FolkPatch is open source under the GNU General Public License v3 [GPL-3](http://www.gnu.org/copyleft/gpl.html).
+FolkPatch is open source under the [GNU General Public License v3 (GPL-3)](http://www.gnu.org/copyleft/gpl.html).
 
 ## FolkPatch Discussion & Communication
 
