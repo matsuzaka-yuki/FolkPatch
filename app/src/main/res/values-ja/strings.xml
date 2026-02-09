@@ -225,7 +225,18 @@
     <string name="mode_select_page_install_inactive_slot">非アクティブスロットにインストール (OTA 後)</string>
     <string name="mode_select_page_install_inactive_slot_warning">再起動後にデバイスは、非アクティブなスロットから**強制的に**起動されます！\nこのオプションは、OTA の完了後にのみ使用してください。\n続行しますか？</string>
     <string name="home_dialog_auth_fail_title">認証に失敗しました</string>
-    <string name="home_dialog_auth_fail_content">SuperKey を認証できないため、APatch は正常に動作しません。\n認証の失敗で考えられる原因は以下の通りです:\n1. boot.img に KernelPatch を適用していない。\n2. パッチを適用した boot.img をフラッシュしていない。\n3. SuperKey が間違っているか、特殊文字が含まれている。\n4. 使用しているデバイスが APatch と KernelPatch に対応していない。\n\n確認をした上で、再度お試しください。それでも問題が解決しない場合は、公式リポジトリの Issue ページでいつでも質問ができます。</string>
+    <string name="home_dialog_auth_fail_content">スーパーキーを認証できず、FolkPatch のアクティベーションに失敗しました。
+認証失敗の考えられる原因は以下の通りです——ご自身の状況に当てはまるものを確認してください：
+
+
+\n1. そもそも KernelPatch で boot.img をパッチしていないか、自分が何をしたか忘れている。
+\n2. パッチ適用後の boot.img がパソコンで寝ているだけで、デバイスに書き込んでいない。
+\n3. スー パーキーの入力が間違っているか、宇宙語のような謎の記号が含まれている。
+\n4. お使いのデバイスが FolkPatch と KernelPatch に対応していない可能性があり、無理に行っても無駄です。
+\n5. 不可解な操作を行った可能性があります——例えば、パッケージ名除外モジュールで FolkPatch をブロックしてしまい、自分を追い出してしまったなど。
+\nまずしっかり確認してから、もう一度お試しください。問題が解決しない場合は、公式リポジトリーの Issue ページで質問してください。
+結局のところ、一部の問題は完全にご自身で引き起こしているものかもしれません！
+幸運を祈ります！ちなみに、下のドキュメントボタンをクリックするのが間違いありません！</string>
     <string name="home_more_menu_feedback_or_suggestion">フィードバックまたは提案</string>
     <string name="home_more_menu_about">アプリについて</string>
     <string name="home_more_menu_document">ドキュメント</string>

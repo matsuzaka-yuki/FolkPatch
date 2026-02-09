@@ -259,8 +259,8 @@
     <string name="settings_module_sort_optimization_summary">Đưa các module hệ thống có WebUI và Action lên đầu danh sách</string>
     <string name="settings_fold_system_module">Gấp gọn module hệ thống</string>
     <string name="settings_fold_system_module_summary">Nhấp vào thẻ module để mở rộng/gộp lại các hành động</string>
-        <string name="settings_simple_list_bottom_bar">Thanh dưới đơn giản</string>
-        <string name="settings_simple_list_bottom_bar_summary">Sử dụng kiểu nút chỉ có biểu tượng cho các hành động module, lấy cảm hứng từ APatch</string>
+    <string name="settings_simple_list_bottom_bar">Thanh dưới đơn giản</string>
+    <string name="settings_simple_list_bottom_bar_summary">Sử dụng kiểu nút chỉ có biểu tượng cho các hành động module, lấy cảm hứng từ APatch</string>
     <string name="apm_install_confirm_title">Cài đặt module</string>
     <string name="apm_install_confirm_content">Bạn có chắc chắn muốn cài đặt %s không?</string>
     <string name="settings_show_more_module_info">Hiển thị chi tiết module</string>
@@ -291,14 +291,16 @@
     <string name="mode_select_page_install_inactive_slot_warning">Thiết bị của bạn SẼ BỊ BẮT BUỘC khởi động vào slot chưa kích hoạt hiện tại sau khi khởi động lại!\nChỉ sử dụng tùy chọn này sau khi OTA hoàn tất.\nTiếp tục?</string>
 
     <string name="home_dialog_auth_fail_title">Xác thực thất bại</string>
-    <string name="home_dialog_auth_fail_content">Không thể xác thực khóa siêu cấp, do đó APatch không thể hoạt động bình thường.
-Dưới đây là một số nguyên nhân có thể导致 xác thực thất bại:
-1. Bạn chưa sử dụng KernelPatch để vá boot.img.
-2. boot.img sau khi vá chưa được flash.
-3. Khóa siêu cấp sai hoặc chứa ký tự đặc biệt.
-4. Thiết bị của bạn không hỗ trợ APatch và KernelPatch.
+    <string name="home_dialog_auth_fail_content">Không thể xác thực khóa siêu cấp, gây ra việc kích hoạt FolkPatch thất bại.
+Dưới đây là một số nguyên nhân có thể gây ra thất bại xác thực—vui lòng kiểm tra xem nguyên nhân nào áp dụng với bạn:
 
-Vui lòng kiểm tra và thử lại. Nếu vẫn có vấn đề, bạn có thể đặt câu hỏi trên trang issue của kho lưu trữ chính thức.</string>
+\n1. Bạn hoàn toàn không sử dụng KernelPatch để vá boot.img, hoặc quên những gì bạn thực sự đã làm.
+\n2. boot.img đã vá vẫn đang nằm trên máy tính của bạn ngủ, chưa bao giờ được flash vào thiết bị.
+\n3. Khóa siêu cấp được nhập sai, hoặc chứa các ký tự bí ẩn, như các ký tự từ ngôn ngữ ngoài hành tinh.
+\n4. Thiết bị của bạn có thể không tương thích với FolkPatch và KernelPatch, cố gắng ép buộc là vô ích.
+\n5. Bạn có thể đã thực hiện một số thao tác bí ẩn—như sử dụng một số mô-đun loại trừ tên gói đã chặn FolkPatch, dẫn đến việc tự loại bỏ mình khỏi trò chơi.
+
+</string>
 
     <string name="home_more_menu_feedback_or_suggestion">Phản hồi hoặc đề xuất</string>
     <string name="home_more_menu_about">Về</string>

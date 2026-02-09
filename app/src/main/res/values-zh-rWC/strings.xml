@@ -289,14 +289,18 @@
     <string name="mode_select_page_install_inactive_slot_warning">仙器重铸后，必启于当前未启之仙槽！\n唯天道易筋既毕，可用此渡劫之选。\n道友欲继之乎？</string>
 
     <string name="home_dialog_auth_fail_title">仙籍验败</string>
-    <string name="home_dialog_auth_fail_content">未验登仙秘钥，APatch仙法未可用。
-仙籍验败之由，约有数端：
-一、未以KernelPatch仙法炼符补仙躯boot.img；
-二、炼符后之仙躯boot.img未引仙入体；
-三、登仙秘钥符文舛误，或杂邪魔异符；
-四、仙器不兼容APatch与KernelPatch仙法。
+    <string name="home_dialog_auth_fail_content">未验登仙秘钥，致 FolkPatch 仙法未成。
+仙籍验败之由，约有数端——道友可自省之：
 
-宜勘之重试。若仍有天劫，可于仙门官库issue仙台问之。</string>
+\n一、尔根本未以 KernelPatch 仙法炼符补仙躯 boot.img，或忘却自身所为之事。
+\n二、炼符后之仙躯 boot.img 尚卧于凡间电脑之中，根本未引仙入体。
+\n三、登仙秘钥符文舛误，或杂邪魔异符，如来自外域之文字。
+\n四、尔之仙器可能不兼容 FolkPatch 与 KernelPatch 仙法，强行渡劫亦是徒劳。
+\n五、尔或行神秘操作——如用排除仙名之仙法屏蔽 FolkPatch，终致自绝于仙途。
+\n六、尔或安装与当世仙官兼容有碍之内核仙法，致使仙力冲突！
+\n宜先勘之重试，若仍有天劫，可于仙门官库 issue 仙台问之。
+毕竟，有些劫数可能纯粹是尔亲手种下之因！
+祝道友渡劫顺利！顺带一提，点击下方道藏按钮准没错！</string>
 
     <string name="home_more_menu_feedback_or_suggestion">呈渡劫见谛或献升仙策</string>
     <string name="home_more_menu_about">仙门叙略</string>

@@ -270,8 +270,8 @@
     <string name="settings_module_sort_optimization_summary">Hacer que los módulos del sistema con WebUI y Acción aparezcan arriba</string>
     <string name="settings_fold_system_module">Plegar Módulos del Sistema</string>
     <string name="settings_fold_system_module_summary">Haz clic en la tarjeta del módulo para expandir/contraer acciones</string>
-        <string name="settings_simple_list_bottom_bar">Barra Inferior Simple</string>
-        <string name="settings_simple_list_bottom_bar_summary">Usar botones solo con iconos para acciones de módulo, inspirado en APatch</string>
+    <string name="settings_simple_list_bottom_bar">Barra Inferior Simple</string>
+    <string name="settings_simple_list_bottom_bar_summary">Usar botones solo con iconos para acciones de módulo, inspirado en APatch</string>
     <string name="apm_install_confirm_title">Instalar Módulo</string>
     <string name="apm_install_confirm_content">¿Seguro que deseas instalar %s?</string>
     <string name="apm_disable_all_title">Deshabilitar todos los módulos</string>
@@ -301,14 +301,17 @@
     <string name="mode_select_page_install_inactive_slot_warning">¡Tu dispositivo será **FORZADO** a arrancar en la ranura inactiva actual tras reiniciar!\nUsa esta opción solo después de completar la OTA.\n¿Continuar?</string>
 
     <string name="home_dialog_auth_fail_title">Error de autenticación</string>
-    <string name="home_dialog_auth_fail_content">No se pudo autenticar la SuperKey, por lo tanto APatch no puede funcionar correctamente.
-Aquí hay algunas posibles razones:
-1. No parcheaste el boot.img con KernelPatch.
-2. El boot.img parcheado no se flasheó.
-3. La SuperKey es incorrecta o contiene caracteres especiales.
-4. Tu dispositivo no soporta APatch y KernelPatch.
+    <string name="home_dialog_auth_fail_content">No se pudo autenticar la SuperKey, causando que la activación de FolkPatch falle.
+Aquí hay algunas posibles razones para el fallo de autenticación—por favor verifica cuál se aplica a ti:
 
-Por favor verifica e intenta de nuevo. Si persisten los problemas, siempre puedes preguntar en la página de issues del repositorio oficial.</string>
+
+\n1. No usaste KernelPatch para parchear boot.img en absoluto, o olvidaste lo que realmente hiciste.
+\n2. El boot.img parcheado todavía está durmiendo en tu computadora, nunca fue flasheado al dispositivo.
+\n3. La SuperKey fue ingresada incorrectamente, o contiene símbolos misteriosos, como caracteres de idiomas alienígenas.
+\n4. Tu dispositivo puede no ser compatible con FolkPatch y KernelPatch, los intentos forzados son en vano.
+\n5. Puede que hayas hecho algunas operaciones misteriosas—como usar ciertos módulos que excluyen nombres de paquetes que bloquearon FolkPatch, resultando en sacarte a ti mismo del juego.
+
+</string>
 
     <string name="home_more_menu_feedback_or_suggestion">Comentarios o sugerencias</string>
     <string name="home_more_menu_about">Acerca de</string>

@@ -297,14 +297,17 @@
     <string name="mode_select_page_install_inactive_slot_warning">Cihazınız yeniden başlatma sonrası mevcut etkin olmayan slottan **ZORLA** açılacaktır!\nBu seçeneği yalnızca OTA tamamlandıktan sonra kullanın.\nDevam edilsin mi?</string>
 
     <string name="home_dialog_auth_fail_title">Kimlik doğrulama başarısız</string>
-    <string name="home_dialog_auth_fail_content">SuperKey doğrulanamadı, bu nedenle APatch düzgün çalışamaz.
-Kimlik doğrulamanın başarısız olmasının bazı olası nedenleri:
-1. boot.img dosyasını KernelPatch ile yamalamadınız.
-2. Yamalanmış boot.img flashlanmadı.
-3. SuperKey yanlış veya özel karakterler içeriyor.
-4. Cihazınız APatch ve KernelPatch’i desteklemiyor.
+    <string name="home_dialog_auth_fail_content">SuperKey doğrulanamadı, bu da FolkPatch aktivasyonunun başarısız olmasına neden oldu.
+Kimlik doğrulama başarısızlığının bazı olası nedenleri aşağıdadır—lütfen hangisinin sizin için geçerli olduğunu kontrol edin:
 
-Lütfen kontrol edip tekrar deneyin. Sorun devam ederse, resmi deponun issues sayfasında her zaman soru sorabilirsiniz.</string>
+\n1. KernelPatch ile boot.img dosyasını düzlemediniz veya gerçekten ne yaptığınızı unuttunuz.
+\n2. Düzeltme yapılmış boot.img hala bilgisayarınızda uyuyor, cihaza asla flashlanmadı.
+\n3. SuperKey yanlış girildi veya gizemli semboller içeriyor, örneğin uzaylı dillerinden karakterler.
+\n4. Cihazınız FolkPatch ve KernelPatch ile uyumlu olmayabilir, zorlama girişleri boşunadır.
+\n5. Bazı gizemli işlemler yapmış olabilirsiniz—örneğin, FolkPatch\'i engelleyen ve sonunda sizi oyunun dışına iten paket adı dışlama modülleri kullanmak gibi.
+\nLütfen önce dikkatlice kontrol edin, sonra tekrar deneyin. Sorun devam ederse, sorular sormak için resmi deponun issues sayfasına davetlisiniz.
+Sonuçta, bazı sorunlar tamamen sizin kendi yapmanızdan kaynaklanıyor olabilir!
+Bol şans! Ayrıca, aşağıdaki belge butonuna tıklamak kesinlikle doğru!</string>
 
     <string name="home_more_menu_feedback_or_suggestion">Geri bildirim veya öneri</string>
     <string name="home_more_menu_about">Hakkında</string>

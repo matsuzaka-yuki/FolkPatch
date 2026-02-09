@@ -295,14 +295,16 @@
     <string name="mode_select_page_install_inactive_slot_warning">Twoje urządzenie zostanie **WYMUSZONE** do uruchomienia w aktualnie nieaktywnym slocie po ponownym uruchomieniu!\nUżyj tej opcji tylko po zakończeniu OTA.\nKontynuować?</string>
 
     <string name="home_dialog_auth_fail_title">Uwierzytelnianie nie powiodło się</string>
-    <string name="home_dialog_auth_fail_content">Nie można uwierzytelnić SuperKlucza, dlatego APatch nie może działać prawidłowo.
-Oto kilka możliwych przyczyn niepowodzenia uwierzytelnienia:
-1. Nie poprawiłeś boot.img za pomocą KernelPatch.
-2. Poprawiony obraz boot.img nie został wgrany.
-3. SuperKlucz jest nieprawidłowy lub zawiera znaki specjalne.
-4. Twoje urządzenie nie obsługuje APatch i KernelPatch.
+    <string name="home_dialog_auth_fail_content">Nie można uwierzytelnić SuperKlucza, powodując niepowodzenie aktywacji FolkPatch.
+Oto kilka możliwych przyczyn niepowodzenia uwierzytelnienia—proszę sprawdzić, która dotyczy Ciebie:
 
-Proszę sprawdzić i spróbować ponownie. Jeśli nadal występują problemy, zawsze można zadać pytania na stronie problemów oficjalnego repozytorium.</string>
+\n1. W ogóle nie użyłeś KernelPatch do łatania boot.img lub zapomniałeś, co właściwie zrobiłeś.
+\n2. Opatana boot.img nadal śpi na Twoim komputerze, w ogóle nie została wgrana do urządzenia.
+\n3. SuperKlucz został wpisany nieprawidłowo lub zawiera tajemnicze symbole, takie jak znaki z obcych języków.
+\n4. Twoje urządzenie może nie być kompatybilne z FolkPatch i KernelPatch, próby siłowe są daremne.
+\n5. Możesz wykonać jakieś tajemnicze operacje—na przykład użyć pewnych modułów wykluczających nazwy pakietów, które zablokowały FolkPatch, w rezultacie eliminując siebie z gry.
+
+</string>
 
     <string name="home_more_menu_feedback_or_suggestion">Opinie lub sugestie</string>
     <string name="home_more_menu_about">O aplikacji</string>

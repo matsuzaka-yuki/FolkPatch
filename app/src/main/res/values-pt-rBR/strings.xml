@@ -301,14 +301,15 @@
     <string name="mode_select_page_install_inactive_slot_warning">Seu dispositivo será **FORÇADO** a inicializar no slot inativo atual após reiniciar!\nUse esta opção apenas após o término da OTA.\nContinuar?</string>
 
     <string name="home_dialog_auth_fail_title">Falha na autenticação</string>
-    <string name="home_dialog_auth_fail_content">Não foi possível autenticar a SuperKey, portanto o APatch não pode funcionar corretamente.
-Aqui estão algumas possíveis razões para a falha:
-1. Você não aplicou o patch no boot.img com KernelPatch.
-2. O boot.img modificado não foi instalado (flashed).
-3. A SuperKey está errada ou contém caracteres especiais.
-4. Seu dispositivo não suporta APatch e KernelPatch.
+    <string name="home_dialog_auth_fail_content">Não foi possível autenticar a SuperKey, causando falha na ativação do FolkPatch.
+Aqui estão algumas possíveis razões para a falha de autenticação—verifique qual se aplica a você:
+\n1. Você não usou KernelPatch para aplicar patch no boot.img, ou esqueceu o que realmente fez.
+\n2. O boot.img com patch ainda está dormindo no seu computador, nunca foi flashado no dispositivo.
+\n3. A SuperKey foi inserida incorretamente, ou contém símbolos misteriosos, como caracteres de línguas alienígenas.
+\n4. Seu dispositivo pode não ser compatível com FolkPatch e KernelPatch, tentativas forçadas são em vão.
+\n5. Você pode ter feito algumas operações misteriosas—como usar certos módulos que excluem nomes de pacotes que bloquearam o FolkPatch, resultando em se eliminar do jogo.
 
-Por favor, verifique e tente novamente. Se houver problemas persistentes, você pode perguntar na página de issues do repositório oficial.</string>
+</string>
 
     <string name="home_more_menu_feedback_or_suggestion">Feedback ou sugestão</string>
     <string name="home_more_menu_about">Sobre</string>

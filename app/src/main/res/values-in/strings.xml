@@ -295,14 +295,15 @@
     <string name="mode_select_page_install_inactive_slot_warning">Perangkat Anda **AKAN DIPAKSA** untuk boot ke slot tidak aktif saat ini setelah *reboot*!\nGunakan opsi ini hanya setelah OTA selesai.\nLanjutkan?</string>
 
     <string name="home_dialog_auth_fail_title">Kesalahan autentikasi</string>
-    <string name="home_dialog_auth_fail_content">Gagal mengautentikasi SuperKey, yang menyebabkan APatch tidak dapat bekerja dengan benar.
-Berikut adalah beberapa kemungkinan penyebab kesalahan auntentikasi:
-1. Anda belum me-*patch* boot.img dengan KernelPatch.
-2. boot.img yang di-*patch* belum di-*flash*.
-3. SuperKey salah atau berisi karakter khusus.
-4. Perangkat Anda tidak mendukung APatch dan KernelPatch.
+    <string name="home_dialog_auth_fail_content">Tidak dapat mengautentikasi SuperKey, menyebabkan aktivasi FolkPatch gagal.
+Berikut adalah beberapa kemungkinan penyebab kegagalan autentikasi—silakan cek mana yang berlaku untuk Anda:
+\n1. Anda sama sekali tidak menggunakan KernelPatch untuk mem-*patch* boot.img, atau lupa apa yang sebenarnya Anda lakukan.
+\n2. boot.img yang sudah di-*patch* masih tidur di komputer Anda, belum di-*flash* ke perangkat.
+\n3. SuperKey dimasukkan secara tidak benar, atau mengandung simbol misterius, seperti karakter dari bahasa alien.
+\n4. Perangkat Anda mungkin tidak kompatibel dengan FolkPatch dan KernelPatch, usaha paksa adalah sia-sia.
+\n5. Anda mungkin melakukan beberapa operasi misterius—seperti menggunakan modul tertentu yang mengecualikan nama paket yang memblokir FolkPatch, mengakibatkan Anda mengeluarkan diri sendiri dari permainan.
 
-Harap periksa dan coba lagi. Jika masalah masih ada, Anda selalu dapat mengajukan pertanyaan di halaman *issues* repositori resmi.</string>
+</string>
 
     <string name="home_more_menu_feedback_or_suggestion">Umpan Balik atau Saran</string>
     <string name="home_more_menu_about">Tentang Aplikasi</string>

@@ -1,4 +1,4 @@
-﻿﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">FolkPatch</string>
     <string name="app_name_folksu">FolkSU</string>
@@ -290,14 +290,17 @@
     <string name="mode_select_page_install_inactive_slot_warning">您的设备将在重启后**强制**启动到当前未激活的槽位！\n仅在 OTA 完成后使用此选项。\n继续吗？</string>
 
     <string name="home_dialog_auth_fail_title">认证失败</string>
-    <string name="home_dialog_auth_fail_content">无法认证超级密钥，因此 APatch 无法正常工作。
-以下是认证失败的一些可能原因：
-1. 您没有使用 KernelPatch 修补 boot.img。
-2. 修补后的 boot.img 未刷入。
-3. 超级密钥错误或包含特殊字符。
-4. 您的设备不支持 APatch 和 KernelPatch。
-
-请检查并重试。如果仍有问题，您可以在官方仓库的 issue 页面提问。</string>
+    <string name="home_dialog_auth_fail_content">无法认证超级密钥，导致 FolkPatch 激活失败。  
+以下是认证失败的一些可能原因——请对号入座：
+\n1. 您根本没使用 KernelPatch 来修补 boot.img，或者忘了自己到底做了啥。
+\n2. 修补完的 boot.img 还躺在电脑里睡觉，根本没刷进设备。
+\n3. 超级密钥输错了,或者夹杂了神秘符号，比如来自外星文的字符。
+\n4. 您的设备可能并不兼容 FolkPatch 和 KernelPatch，强行折腾也是徒劳。
+\n5. 您可能搞了一些神秘操作——比如用了某些排除包名的模块把 FolkPatch 给屏蔽了，结果把自己整出局了。
+\n请先好好检查一遍，再试一次。如果问题依旧，欢迎到官方仓库的 issue 页面提问。  
+毕竟，有些问题可能纯粹是您自己亲手造成的!
+祝你好运 啊!顺带一提,您点击下面的文档按钮准没错!
+</string>
 
     <string name="home_more_menu_feedback_or_suggestion">反馈或建议</string>
     <string name="home_more_menu_about">关于</string>
