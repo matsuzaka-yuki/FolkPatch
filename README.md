@@ -1,5 +1,5 @@
 <div align="center">
-<a href="https://github.com/matsuzaka-yuki/FolkPatch/releases/latest"><img src="logo.png" style="width: 128px;" alt="logo"></a>
+<a href="https://github.com/matsuzaka-yuki/FolkPatch/releases/latest"><img src="logo.png" style="width: 800px;" alt="logo"></a>
 
 <h1 align="center">FolkPatch Miuix</h1>
 
