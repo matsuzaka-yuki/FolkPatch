@@ -410,6 +410,12 @@ fun AuthFailedTipDialog(showDialog: MutableState<Boolean>) {
                 Row(
                     modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End
                 ) {
+                    val uriHandler = LocalUriHandler.current
+                    TextButton(onClick = {
+                        uriHandler.openUri("https://fp.mysqil.com/")
+                    }) {
+                        Text(text = stringResource(R.string.home_more_menu_document))
+                    }
                     TextButton(onClick = { showDialog.value = false }) {
                         Text(text = stringResource(id = android.R.string.ok))
                     }
@@ -1130,7 +1136,7 @@ fun getDeviceInfo(): String {
     if (!Build.BRAND.equals(Build.MANUFACTURER, ignoreCase = true)) {
         manufacturer += " " + Build.BRAND[0].uppercaseChar() + Build.BRAND.substring(1)
     }
-    manufacturer += " " + me.bmax.apatch.util.getDeviceModelForDisplay() + " "
+    manufacturer += " " + Build.MODEL + " "
     return manufacturer
 }
 

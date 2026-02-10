@@ -141,6 +141,7 @@ import me.bmax.apatch.util.reboot
 import me.bmax.apatch.util.toggleModule
 import me.bmax.apatch.util.ui.LocalSnackbarHost
 import me.bmax.apatch.util.uninstallModule
+import me.bmax.apatch.util.undoUninstallModule
 
 import com.ramcosta.composedestinations.generated.destinations.ApmBulkInstallScreenDestination
 import com.ramcosta.composedestinations.generated.destinations.OnlineModuleScreenDestination
@@ -610,17 +611,31 @@ private fun ModuleList(
         } else {
             failedUninstall.format(module.name)
         }
-        val actionLabel = if (success) {
-            reboot
-        } else {
-            null
-        }
-        val result = snackBarHost.showSnackbar(
-            message = message, actionLabel = actionLabel, duration = SnackbarDuration.Long
+        snackBarHost.showSnackbar(
+            message = message, duration = SnackbarDuration.Short
         )
-        if (result == SnackbarResult.ActionPerformed) {
-            reboot()
+    }
+
+    suspend fun onModuleUndoUninstall(module: APModuleViewModel.ModuleInfo) {
+        if (!checkStrongBiometric()) return
+
+        val success = loadingDialog.withLoading {
+            withContext(Dispatchers.IO) {
+                undoUninstallModule(module.id)
+            }
         }
+
+        if (success) {
+            viewModel.fetchModuleList()
+        }
+        val message = if (success) {
+            context.getString(R.string.apm_undo_uninstall_success).format(module.name)
+        } else {
+            context.getString(R.string.apm_undo_uninstall_failed).format(module.name)
+        }
+        snackBarHost.showSnackbar(
+            message = message, duration = SnackbarDuration.Short
+        )
     }
 
     PullToRefreshBox(
@@ -747,6 +762,9 @@ private fun ModuleList(
                             },
                             onUninstall = {
                                 scope.launch { onModuleUninstall(module) }
+                            },
+                            onUndoUninstall = {
+                                scope.launch { onModuleUndoUninstall(module) }
                             },
                             onCheckChanged = { checked ->
                                 scope.launch {
@@ -1061,6 +1079,7 @@ private fun ModuleItem(
     expanded: Boolean,
     onExpandToggle: () -> Unit,
     onUninstall: (APModuleViewModel.ModuleInfo) -> Unit,
+    onUndoUninstall: (APModuleViewModel.ModuleInfo) -> Unit,
     onCheckChanged: (Boolean) -> Unit,
     onUpdate: (APModuleViewModel.ModuleInfo) -> Unit,
     onClick: (APModuleViewModel.ModuleInfo) -> Unit,
@@ -1447,15 +1466,23 @@ private fun ModuleItem(
                         ))
                     }
                     
-     
+
                     val deleteButton = ModuleButtonConfig(
-                        icon = Icons.Outlined.Delete,
-                        text = stringResource(R.string.apm_remove),
-                        contentDescription = stringResource(R.string.apm_remove),
-                        onClick = { onUninstall(module) },
-                        enabled = !module.remove,
+                        icon = if (module.remove) Icons.Outlined.Restore else Icons.Outlined.Delete,
+                        text = if (module.remove) stringResource(R.string.apm_undo) else stringResource(R.string.apm_remove),
+                        contentDescription = if (module.remove) stringResource(R.string.apm_undo) else stringResource(R.string.apm_remove),
+                        onClick = {
+                            if (module.remove) {
+                                onUndoUninstall(module)
+                            } else {
+                                onUninstall(module)
+                            }
+                        },
                         colors = if (simpleListBottomBar) ButtonDefaults.filledTonalButtonColors(
                             containerColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = (opacity + 0.3f).coerceAtMost(1f))
+                        ) else if (module.remove) ButtonDefaults.filledTonalButtonColors(
+                            containerColor = MaterialTheme.colorScheme.tertiaryContainer.copy(alpha = (opacity + 0.3f).coerceAtMost(1f)),
+                            contentColor = MaterialTheme.colorScheme.onTertiaryContainer
                         ) else ButtonDefaults.filledTonalButtonColors(
                             containerColor = MaterialTheme.colorScheme.errorContainer.copy(alpha = (opacity + 0.3f).coerceAtMost(1f)),
                             contentColor = MaterialTheme.colorScheme.onErrorContainer

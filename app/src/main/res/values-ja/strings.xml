@@ -172,10 +172,13 @@
     <string name="apm_failed_to_disable">モジュールの無効化に失敗: %s</string>
     <string name="apm_empty">モジュールはインストールされていません</string>
     <string name="apm_remove">削除</string>
+    <string name="apm_undo">元に戻す</string>
     <string name="apm_install">インストール</string>
     <string name="apm_uninstall_confirm">「%s」のモジュールをアンインストールしますか？</string>
     <string name="apm_uninstall_success">「%s」はアンインストールされました</string>
     <string name="apm_uninstall_failed">アンインストールに失敗: %s</string>
+    <string name="apm_undo_uninstall_success">%s を復元しました</string>
+    <string name="apm_undo_uninstall_failed">復元に失敗: %s</string>
     <string name="apm_version">バージョン</string>
     <string name="apm_author">作者</string>
     <string name="apm_desc">説明</string>
@@ -262,6 +265,7 @@
     <string name="home_dialog_auth_fail_content">SuperKey を認証できないため、APatch は正常に動作しません。\n認証の失敗で考えられる原因は以下の通りです:\n1. boot.img に KernelPatch を適用していない。\n2. パッチを適用した boot.img をフラッシュしていない。\n3. SuperKey が間違っているか、特殊文字が含まれている。\n4. 使用しているデバイスが APatch と KernelPatch に対応していない。\n\n確認をした上で、再度お試しください。それでも問題が解決しない場合は、公式リポジトリの Issue ページでいつでも質問ができます。</string>
     <string name="home_more_menu_feedback_or_suggestion">フィードバックまたは提案</string>
     <string name="home_more_menu_about">アプリについて</string>
+    <string name="home_more_menu_document">ドキュメント</string>
     <string name="home_dialog_uninstall_title">アンインストール</string>
     <string name="home_dialog_uninstall_ap_only">パッチのアンインストールのみ</string>
     <string name="home_dialog_uninstall_all">完全にアンインストール</string>
@@ -698,4 +702,11 @@
     <string name="script_library_save_log">ログを保存</string>
     <string name="script_library_log_saved">「%s」にログを保存しました。</string>
     <string name="script_library_log_save_failed">ログの保存に失敗: %s</string>
+    <string name="settings_vibration">バイブレーションと触覚</string>
+    <string name="settings_vibration_summary">タッチ操作時に振動する</string>
+    <string name="settings_vibration_enabled">バイブレーションを有効化</string>
+    <string name="settings_vibration_intensity">バイブレーションの強さ</string>
+    <string name="settings_vibration_scope">バイブレーションの範囲</string>
+    <string name="settings_vibration_scope_global">グローバル（すべての場所）</string>
+    <string name="settings_vibration_scope_bottom_bar">下部バーのみ</string>
 </resources>

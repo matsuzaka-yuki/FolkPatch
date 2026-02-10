@@ -1,5 +1,6 @@
 package me.bmax.apatch.ui.screen
 
+import android.os.Build
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -37,7 +38,6 @@ import me.bmax.apatch.util.HardwareMonitor
 import me.bmax.apatch.util.Version
 import me.bmax.apatch.util.Version.getManagerVersion
 import me.bmax.apatch.util.getSELinuxStatus
-import me.bmax.apatch.util.getDeviceModelForDisplay
 import me.bmax.apatch.util.rootShellForResult
 
 private val managerVersion = getManagerVersion()
@@ -261,7 +261,7 @@ private fun AppCard(
         )
         InfoRow(
             label = stringResource(R.string.home_info_device_model),
-            value = remember { getDeviceModelForDisplay() }
+            value = Build.MODEL
         )
         InfoRow(
             label = stringResource(R.string.home_info_running_mode),

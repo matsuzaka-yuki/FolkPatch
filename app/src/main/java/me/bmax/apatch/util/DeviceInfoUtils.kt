@@ -63,29 +63,6 @@ private fun getSystemProperty(key: String): Boolean {
     return false
 }
 
-
-private fun getSystemPropertyString(key: String, defaultValue: String = ""): String {
-    try {
-        val c = Class.forName("android.os.SystemProperties")
-        val get = c.getMethod("get", String::class.java, String::class.java)
-        return (get.invoke(c, key, defaultValue) as? String) ?: defaultValue
-    } catch (e: Exception) {
-        Log.e("APatch", "[DeviceUtils] Failed to get system property string: ", e)
-    }
-    return defaultValue
-}
-
-fun getDeviceModelForDisplay(): String {
-    val brand = getSystemPropertyString("ro.product.brand", Build.BRAND).trim()
-    if (brand.equals("OnePlus", ignoreCase = true)) {
-        val marketName = getSystemPropertyString("ro.vendor.oplus.market.name").trim()
-        if (marketName.isNotEmpty()) {
-
-            return marketName.removePrefix("OnePlus").trim()
-        }
-    }
-    return Build.MODEL
-}
 // Check to see if device supports A/B (seamless) system updates
 fun isABDevice(): Boolean {
     return getSystemProperty("ro.build.ab_update")

@@ -210,10 +210,13 @@
     <string name="apm_failed_to_disable">فشل تعطيل الوحدة: %s</string>
     <string name="apm_empty">لا توجد وحدات مثبتة</string>
     <string name="apm_remove">إزالة</string>
+    <string name="apm_undo">تراجع</string>
     <string name="apm_install">تثبيت</string>
     <string name="apm_uninstall_confirm">إلغاء تثبيت وحدة %s؟</string>
     <string name="apm_uninstall_success">تم إلغاء تثبيت %s</string>
     <string name="apm_uninstall_failed">فشل إلغاء التثبيت: %s</string>
+    <string name="apm_undo_uninstall_success">تم استعادة %s بنجاح</string>
+    <string name="apm_undo_uninstall_failed">فشل الاستعادة: %s</string>
     <string name="apm_version">الإصدار</string>
     <string name="apm_author">المؤلف</string>
     <string name="apm_desc">الوصف</string>
@@ -302,17 +305,21 @@
     <string name="mode_select_page_install_inactive_slot_warning">سيتم **إجبار** جهازك على الإقلاع إلى الفتحة غير النشطة الحالية بعد إعادة التشغيل!\nاستخدم هذا الخيار فقط بعد الانتهاء من OTA.\nهل تريد المتابعة؟</string>
 
     <string name="home_dialog_auth_fail_title">فشلت المصادقة</string>
-    <string name="home_dialog_auth_fail_content">تعذر المصادقة على المفتاح الخارق، وبالتالي لا يمكن لـ APatch العمل بشكل صحيح.
-فيما يلي بعض الأسباب المحتملة لفشل المصادقة:
-1. لم تقم بتصحيح boot.img باستخدام KernelPatch.
-2. لم يتم تفليش boot.img المصحح.
-3. المفتاح الخارق خاطئ أو يحتوي على أحرف خاصة.
-4. جهازك لا يدعم APatch و KernelPatch.
+    <string name="home_dialog_auth_fail_content">تعذر المصادقة على المفتاح الخارق، مما يؤدي إلى فشل تنشيط FolkPatch.
+فيما يلي بعض الأسباب المحتملة لفشل المصادقة—يرجى التحقق من السبب الذي ينطبق عليك:
 
-يرجى التحقق والمحاولة مرة أخرى. إذا استمرت المشكلات، يمكنك دائمًا طرح الأسئلة على صفحة المشكلات في المستودع الرسمي.</string>
+
+\n1. لم تستخدم KernelPatch لتصحيح boot.img على الإطلاق، أو نسيت ما فعلته بالفعل.
+\n2. boot.img المصحح لا يزال نائمًا على جهاز الكمبيوتر الخاص بك، ولم يتم وميضه في الجهاز أبدًا.
+\n3. تم إدخال المفتاح الخارق بشكل غير صحيح، أو يحتوي على رموز غامضة، مثل أحرف من لغات كوكبية.
+\n4. قد يكون جهازك غير متوافق مع FolkPatch و KernelPatch، والمحاولات القسرية بلا طائل.
+\n5. قد تكون قد قمت ببعض العمليات الغامضة—مثل استخدام وحدات معينة تستبعد أسماء الحزم التي منعت FolkPatch، مما أدى إلى إخراج نفسك من اللعبة.
+
+</string>
 
     <string name="home_more_menu_feedback_or_suggestion">ملاحظات أو اقتراحات</string>
     <string name="home_more_menu_about">حول</string>
+    <string name="home_more_menu_document">توثيق</string>
 
     <string name="home_dialog_uninstall_title">إلغاء التثبيت</string>
     
@@ -772,4 +779,11 @@
     <string name="script_library_save_log">حفظ السجل</string>
     <string name="script_library_log_saved">تم حفظ السجل في %s</string>
     <string name="script_library_log_save_failed">فشل حفظ السجل: %s</string>
+    <string name="settings_vibration">الاهتزاز واللمس</string>
+    <string name="settings_vibration_summary">الاهتزاز عند اللمس</string>
+    <string name="settings_vibration_enabled">تفعيل الاهتزاز</string>
+    <string name="settings_vibration_intensity">شدة الاهتزاز</string>
+    <string name="settings_vibration_scope">نطاق الاهتزاز</string>
+    <string name="settings_vibration_scope_global">عالمي (في كل مكان)</string>
+    <string name="settings_vibration_scope_bottom_bar">الشريط السفلي فقط</string>
 </resources>

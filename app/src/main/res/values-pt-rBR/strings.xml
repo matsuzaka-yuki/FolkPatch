@@ -210,10 +210,13 @@
     <string name="apm_failed_to_disable">Falha ao desativar módulo: %s</string>
     <string name="apm_empty">Nenhum módulo instalado</string>
     <string name="apm_remove">Remover</string>
+    <string name="apm_undo">Desfazer</string>
     <string name="apm_install">Instalar</string>
     <string name="apm_uninstall_confirm">Desinstalar o módulo %s?</string>
     <string name="apm_uninstall_success">%s desinstalado</string>
     <string name="apm_uninstall_failed">Falha ao desinstalar: %s</string>
+    <string name="apm_undo_uninstall_success">%s restaurado com sucesso</string>
+    <string name="apm_undo_uninstall_failed">Falha ao restaurar: %s</string>
     <string name="apm_version">Versão</string>
     <string name="apm_author">Autor</string>
     <string name="apm_desc">Desc</string>
@@ -301,17 +304,19 @@
     <string name="mode_select_page_install_inactive_slot_warning">Seu dispositivo será **FORÇADO** a inicializar no slot inativo atual após reiniciar!\nUse esta opção apenas após o término da OTA.\nContinuar?</string>
 
     <string name="home_dialog_auth_fail_title">Falha na autenticação</string>
-    <string name="home_dialog_auth_fail_content">Não foi possível autenticar a SuperKey, portanto o APatch não pode funcionar corretamente.
-Aqui estão algumas possíveis razões para a falha:
-1. Você não aplicou o patch no boot.img com KernelPatch.
-2. O boot.img modificado não foi instalado (flashed).
-3. A SuperKey está errada ou contém caracteres especiais.
-4. Seu dispositivo não suporta APatch e KernelPatch.
+    <string name="home_dialog_auth_fail_content">Não foi possível autenticar a SuperKey, causando falha na ativação do FolkPatch.
+Aqui estão algumas possíveis razões para a falha de autenticação—verifique qual se aplica a você:
+\n1. Você não usou KernelPatch para aplicar patch no boot.img, ou esqueceu o que realmente fez.
+\n2. O boot.img com patch ainda está dormindo no seu computador, nunca foi flashado no dispositivo.
+\n3. A SuperKey foi inserida incorretamente, ou contém símbolos misteriosos, como caracteres de línguas alienígenas.
+\n4. Seu dispositivo pode não ser compatível com FolkPatch e KernelPatch, tentativas forçadas são em vão.
+\n5. Você pode ter feito algumas operações misteriosas—como usar certos módulos que excluem nomes de pacotes que bloquearam o FolkPatch, resultando em se eliminar do jogo.
 
-Por favor, verifique e tente novamente. Se houver problemas persistentes, você pode perguntar na página de issues do repositório oficial.</string>
+</string>
 
     <string name="home_more_menu_feedback_or_suggestion">Feedback ou sugestão</string>
     <string name="home_more_menu_about">Sobre</string>
+    <string name="home_more_menu_document">Documentação</string>
 
     <string name="home_dialog_uninstall_title">Desinstalar</string>
     
@@ -787,4 +792,11 @@ Por favor, certifique-se de fechar completamente o app e reabri-lo para que os c
     <string name="script_library_save_log">Salvar log</string>
     <string name="script_library_log_saved">Log salvo em %s</string>
     <string name="script_library_log_save_failed">Falha ao salvar log: %s</string>
+    <string name="settings_vibration">Vibração e tato</string>
+    <string name="settings_vibration_summary">Vibrar ao tocar</string>
+    <string name="settings_vibration_enabled">Ativar vibração</string>
+    <string name="settings_vibration_intensity">Intensidade da vibração</string>
+    <string name="settings_vibration_scope">Escopo da vibração</string>
+    <string name="settings_vibration_scope_global">Global (Em todo lugar)</string>
+    <string name="settings_vibration_scope_bottom_bar">Apenas barra inferior</string>
 </resources>

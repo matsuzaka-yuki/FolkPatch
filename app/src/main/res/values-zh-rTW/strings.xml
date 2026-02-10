@@ -195,6 +195,9 @@
     <string name="apm_uninstall_confirm">確定要解除安裝 \"%s\" 模組？</string>
     <string name="apm_uninstall_success">%s 已解除安裝</string>
     <string name="apm_uninstall_failed">無法解除安裝 %s</string>
+    <string name="apm_undo">復原</string>
+    <string name="apm_undo_uninstall_success">%s 已復原</string>
+    <string name="apm_undo_uninstall_failed">復原失敗: %s</string>
     <string name="apm_version">版本</string>
     <string name="apm_author">作者</string>
     <string name="apm_desc">說明</string>
@@ -291,17 +294,20 @@
 繼續？</string>
 
     <string name="home_dialog_auth_fail_title">驗證失敗</string>
-    <string name="home_dialog_auth_fail_content">無法驗證超級密鑰，因此 APatch 無法正常運作。 
-以下是驗證失敗的一些可能原因： 
-⒈ 您尚未使用 KernelPatch 程式修補啟動映像檔。 
-⒉ 修補後的啟動映像檔未刷入裝置。 
-⒊超級密鑰錯誤。 
-⒋ 您的裝置不支援 APatch 和 KernelPatch。 
- 
-請檢查後再次嘗試。如果仍有問題存在，您隨時可以在官方存放庫的議題頁面上提問。</string>
+    <string name="home_dialog_auth_fail_content">無法認證超級密鑰，導致 FolkPatch 激活失敗。
+以下是認證失敗的一些可能原因——請對號入座：
+\n1. 您根本沒使用 KernelPatch 來修補 boot.img，或者忘了自己到底做了啥。
+\n2. 修補完的 boot.img 還躺在電腦裡睡覺，根本沒刷進設備。
+\n3. 超級密鑰輸錯了，或者夾雜了神秘符號，比如來自外星文的字符。
+\n4. 您的設備可能並不兼容 FolkPatch 和 KernelPatch，強行折騰也是徒勞。
+\n5. 您可能搞了一些神秘操作——比如用了某些排除包名的模組把 FolkPatch 給屏蔽了，結果把自己整出局了。
+\n請先好好檢查一遍，再試一次。如果問題依舊，歡迎到官方倉庫的 issue 頁面提問。
+畢竟，有些問題可能純粹是您自己親手造成的！
+祝你好運啊！順帶一提，您點擊下面的文檔按鈕準沒錯！</string>
 
     <string name="home_more_menu_feedback_or_suggestion">回饋或建議</string>
     <string name="home_more_menu_about">關於</string>
+    <string name="home_more_menu_document">文檔</string>
 
     <string name="home_dialog_uninstall_title">解除安裝</string>
     <string name="home_dialog_uninstall_ap_only">僅移除系統修補</string>
@@ -717,6 +723,14 @@
     <string name="settings_clear_sound_effect">清除音效</string>
     <string name="settings_clear_sound_effect_confirm">確定要清除音效嗎？</string>
     <string name="settings_sound_effect_cleared">音效已清除</string>
+
+    <string name="settings_vibration">震動觸感</string>
+    <string name="settings_vibration_summary">在觸摸事件時震動</string>
+    <string name="settings_vibration_enabled">啟用震動</string>
+    <string name="settings_vibration_intensity">震動強度</string>
+    <string name="settings_vibration_scope">震動範圍</string>
+    <string name="settings_vibration_scope_global">全域(任意位置)</string>
+    <string name="settings_vibration_scope_bottom_bar">僅底部欄</string>
 
     <!-- Backup Settings -->
     <string name="settings_category_backup">備份</string>

@@ -190,10 +190,13 @@
     <string name="apm_failed_to_disable">解除圣光阵失败: %s</string>
     <string name="apm_empty">未祝祷圣光阵</string>
     <string name="apm_remove">移除</string>
+    <string name="apm_undo">撤销</string>
     <string name="apm_install">祝祷</string>
     <string name="apm_uninstall_confirm">解除%s圣光阵祝祷？</string>
     <string name="apm_uninstall_success">%s已解除祝祷</string>
     <string name="apm_uninstall_failed">解除祝祷失败: %s</string>
+    <string name="apm_undo_uninstall_success">%s已恢复祝祷</string>
+    <string name="apm_undo_uninstall_failed">恢复祝祷失败: %s</string>
     <string name="apm_version">神恩等级</string>
     <string name="apm_author">创造者</string>
     <string name="apm_desc">圣光描述</string>
@@ -290,17 +293,20 @@
     <string name="mode_select_page_install_inactive_slot_warning">你的圣光道具将在神翼再生后**强制**启动到当前未激活的星辰位置！\n仅在圣典仪式完成后使用此选项。\n继续吗？</string>
 
     <string name="home_dialog_auth_fail_title">祝祷失败</string>
-    <string name="home_dialog_auth_fail_content">无法祝祷圣光之心，因此圣光工坊无法正常工作。
-以下是祝祷失败的一些可能原因：
-1. 你没有使用灵魂之力加持圣器容器。
-2. 加持后的圣器容器未开启。
-3. 圣光之心错误或含有混沌之力。
-4. 你的圣光道具不支持此神力。
-
-请检查并重试。如果仍有问题，你可以在官方圣光塔的issue页面提问。</string>
+    <string name="home_dialog_auth_fail_content">无法祝祷圣光之心，导致 FolkPatch 激活失败。
+以下是祝祷失败的一些可能原因——请对号入座：
+\n1. 你根本没使用 KernelPatch 来加持 boot.img，或者忘了自己到底做了啥。
+\n2. 加持完的 boot.img 还躺在电脑里休眠，根本没启圣到设备。
+\n3. 圣光之心输错了，或者夹杂了混沌符号，比如来自异界符文的字符。
+\n4. 你的圣光道具可能并不兼容 FolkPatch 和 KernelPatch，强行施法也是徒劳。
+\n5. 你可能搞了一些神秘操作——比如用了某些排除圣名的魔法把 FolkPatch 给屏蔽了，结果把自己整出局了。
+\n请先好好检查一遍，再试一次。如果问题依旧，欢迎到官方圣光塔的 issue 页面提问。
+毕竟，有些问题可能纯粹是您自己亲手造成的！
+祝你好运啊！顺带一提，你点击下面的文档按钮准没错！</string>
 
     <string name="home_more_menu_feedback_or_suggestion">反馈或建议</string>
     <string name="home_more_menu_about">关于</string>
+    <string name="home_more_menu_document">文档</string>
 
     <string name="home_dialog_uninstall_title">解除祝福</string>
     
@@ -771,4 +777,11 @@
     <string name="script_library_log_saved">咏唱记录已保存至 %s</string>
     <string name="script_library_log_save_failed">保存咏唱记录失败：%s</string>
 
+    <string name="settings_vibration">圣光之触</string>
+    <string name="settings_vibration_summary">感知神圣的震颤</string>
+    <string name="settings_vibration_enabled">开启神圣震动</string>
+    <string name="settings_vibration_intensity">神恩强度</string>
+    <string name="settings_vibration_scope">圣光范围</string>
+    <string name="settings_vibration_scope_global">普世(任意位置)</string>
+    <string name="settings_vibration_scope_bottom_bar">仅限祭坛(底部栏)</string>
 </resources>

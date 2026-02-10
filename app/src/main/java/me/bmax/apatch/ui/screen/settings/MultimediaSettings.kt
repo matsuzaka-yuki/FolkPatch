@@ -30,6 +30,7 @@ import me.bmax.apatch.ui.component.rememberConfirmDialog
 import me.bmax.apatch.ui.component.rememberLoadingDialog
 import me.bmax.apatch.ui.theme.MusicConfig
 import me.bmax.apatch.ui.theme.SoundEffectConfig
+import me.bmax.apatch.ui.theme.VibrationConfig
 import me.bmax.apatch.util.MusicManager
 import me.bmax.apatch.util.SoundEffectManager
 import me.bmax.apatch.util.ui.APDialogBlurBehindUtils
@@ -132,7 +133,19 @@ fun MultimediaSettings(
     val soundEffectScopeTitle = stringResource(id = R.string.settings_sound_effect_scope)
     val showSoundEffectScope = SoundEffectConfig.isSoundEffectEnabled && (matchMultimedia || shouldShow(searchText, soundEffectScopeTitle))
 
-    val showMultimediaCategory = showMusicSwitch || showSelectMusic || showAutoPlay || showLooping || showMusicVolume || showPlaybackControl || showClearMusic || showSoundEffectSwitch || showSelectSoundEffect || showSoundEffectScope
+    // Vibration Config
+    val vibrationTitle = stringResource(id = R.string.settings_vibration)
+    val vibrationSummary = stringResource(id = R.string.settings_vibration_summary)
+    val vibrationEnabledText = stringResource(id = R.string.settings_vibration_enabled)
+    val showVibrationSwitch = matchMultimedia || shouldShow(searchText, vibrationTitle, vibrationSummary, vibrationEnabledText)
+
+    val vibrationIntensityTitle = stringResource(id = R.string.settings_vibration_intensity)
+    val showVibrationIntensity = VibrationConfig.isVibrationEnabled && (matchMultimedia || shouldShow(searchText, vibrationIntensityTitle))
+
+    val vibrationScopeTitle = stringResource(id = R.string.settings_vibration_scope)
+    val showVibrationScope = VibrationConfig.isVibrationEnabled && (matchMultimedia || shouldShow(searchText, vibrationScopeTitle))
+
+    val showMultimediaCategory = showMusicSwitch || showSelectMusic || showAutoPlay || showLooping || showMusicVolume || showPlaybackControl || showClearMusic || showSoundEffectSwitch || showSelectSoundEffect || showSoundEffectScope || showVibrationSwitch || showVibrationIntensity || showVibrationScope
 
     if (showMultimediaCategory) {
         SettingsCategory(
@@ -488,6 +501,145 @@ fun MultimediaSettings(
                             }
                         }
                     }
+                }
+            }
+
+            // Vibration
+            if (showVibrationSwitch) {
+                SwitchItem(
+                    icon = Icons.Filled.Vibration,
+                    title = vibrationTitle,
+                    summary = if (VibrationConfig.isVibrationEnabled) vibrationEnabledText else vibrationSummary,
+                    checked = VibrationConfig.isVibrationEnabled
+                ) {
+                    VibrationConfig.setEnabledState(it)
+                    VibrationConfig.save(context)
+                }
+            }
+
+            if (VibrationConfig.isVibrationEnabled) {
+                if (showVibrationScope) {
+                    var showScopeDialog by remember { mutableStateOf(false) }
+                    ListItem(
+                        colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+                        headlineContent = { Text(text = vibrationScopeTitle) },
+                        supportingContent = {
+                            Text(
+                                text = if (VibrationConfig.scope == VibrationConfig.SCOPE_GLOBAL) 
+                                    stringResource(R.string.settings_vibration_scope_global)
+                                else 
+                                    stringResource(R.string.settings_vibration_scope_bottom_bar),
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.outline
+                            )
+                        },
+                        leadingContent = { Icon(Icons.Filled.Tune, null) },
+                        modifier = Modifier.clickable {
+                            showScopeDialog = true
+                        }
+                    )
+
+                    if (showScopeDialog) {
+                        BasicAlertDialog(
+                            onDismissRequest = { showScopeDialog = false },
+                            properties = DialogProperties(
+                                decorFitsSystemWindows = true,
+                                usePlatformDefaultWidth = false,
+                            )
+                        ) {
+                            Surface(
+                                modifier = Modifier
+                                    .width(310.dp)
+                                    .wrapContentHeight(),
+                                shape = RoundedCornerShape(30.dp),
+                                tonalElevation = AlertDialogDefaults.TonalElevation,
+                                color = AlertDialogDefaults.containerColor,
+                            ) {
+                                Column(modifier = Modifier.padding(24.dp)) {
+                                    Text(
+                                        text = vibrationScopeTitle,
+                                        style = MaterialTheme.typography.headlineSmall,
+                                        modifier = Modifier.padding(bottom = 16.dp)
+                                    )
+                                    
+                                    Surface(
+                                        shape = RoundedCornerShape(12.dp),
+                                        color = AlertDialogDefaults.containerColor,
+                                        tonalElevation = 2.dp
+                                    ) {
+                                        Column {
+                                            // Global Option
+                                            ListItem(
+                                                headlineContent = { Text(stringResource(R.string.settings_vibration_scope_global)) },
+                                                leadingContent = {
+                                                    RadioButton(
+                                                        selected = VibrationConfig.scope == VibrationConfig.SCOPE_GLOBAL,
+                                                        onClick = null
+                                                    )
+                                                },
+                                                modifier = Modifier.clickable {
+                                                    VibrationConfig.setScopeValue(VibrationConfig.SCOPE_GLOBAL)
+                                                    VibrationConfig.save(context)
+                                                    showScopeDialog = false
+                                                }
+                                            )
+
+                                            // Bottom Bar Option
+                                            ListItem(
+                                                headlineContent = { Text(stringResource(R.string.settings_vibration_scope_bottom_bar)) },
+                                                leadingContent = {
+                                                    RadioButton(
+                                                        selected = VibrationConfig.scope == VibrationConfig.SCOPE_BOTTOM_BAR,
+                                                        onClick = null
+                                                    )
+                                                },
+                                                modifier = Modifier.clickable {
+                                                    VibrationConfig.setScopeValue(VibrationConfig.SCOPE_BOTTOM_BAR)
+                                                    VibrationConfig.save(context)
+                                                    showScopeDialog = false
+                                                }
+                                            )
+                                        }
+                                    }
+
+                                    Row(
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .padding(top = 24.dp),
+                                        horizontalArrangement = Arrangement.End
+                                    ) {
+                                        TextButton(onClick = { showScopeDialog = false }) {
+                                            Text(stringResource(id = android.R.string.cancel))
+                                        }
+                                    }
+                                }
+                                val dialogWindowProvider = LocalView.current.parent as DialogWindowProvider
+                                APDialogBlurBehindUtils.setupWindowBlurListener(dialogWindowProvider.window)
+                            }
+                        }
+                    }
+                }
+
+                if (showVibrationIntensity) {
+                    ListItem(
+                        colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+                        headlineContent = { Text(vibrationIntensityTitle) },
+                        supportingContent = {
+                            androidx.compose.material3.Slider(
+                                value = VibrationConfig.vibrationIntensity,
+                                onValueChange = { 
+                                    VibrationConfig.setIntensityValue(it)
+                                },
+                                onValueChangeFinished = { VibrationConfig.save(context) },
+                                valueRange = 0f..1f,
+                                colors = androidx.compose.material3.SliderDefaults.colors(
+                                    thumbColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f),
+                                    activeTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f)
+                                )
+                            )
+                        },
+                        leadingContent = { Icon(Icons.Filled.Vibration, null) }
+                    )
                 }
             }
         }

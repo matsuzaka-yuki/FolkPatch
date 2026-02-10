@@ -206,10 +206,13 @@
     <string name="apm_failed_to_disable">关模块失败了喵：%s</string>
     <string name="apm_empty">没装模块喵，这里空空的</string>
     <string name="apm_remove">删掉喵！</string>
+    <string name="apm_undo">恢复喵！</string>
     <string name="apm_install">安装喵！</string>
     <string name="apm_uninstall_confirm">要把%s模块卸了嘛喵？不要后悔哦</string>
     <string name="apm_uninstall_success">%s 卸掉了喵！</string>
     <string name="apm_uninstall_failed">卸载失败了喵：%s</string>
+    <string name="apm_undo_uninstall_success">%s恢复成功了喵</string>
+    <string name="apm_undo_uninstall_failed">恢复失败了喵：%s</string>
     <string name="apm_version">版本哒</string>
     <string name="apm_author">作者哒</string>
     <string name="apm_desc">描述哒</string>
@@ -268,8 +271,8 @@
     <string name="settings_module_sort_optimization_summary">带WebUI和Action的模块放前面喵！</string>
     <string name="settings_fold_system_module">折叠系统模块喵</string>
     <string name="settings_fold_system_module_summary">点模块卡片展开/收起操作按钮喵！</string>
-        <string name="settings_simple_list_bottom_bar">简约列表底栏喵</string>
-        <string name="settings_simple_list_bottom_bar_summary">模块操作用纯图标按钮喵，灵感来自APatch喵！</string>
+    <string name="settings_simple_list_bottom_bar">简约列表底栏喵</string>
+    <string name="settings_simple_list_bottom_bar_summary">模块操作用纯图标按钮喵，灵感来自APatch喵！</string>
     <string name="apm_install_confirm_title">装模块喵</string>
     <string name="apm_install_confirm_content">确定装 %s 嘛喵？不要装错哦！</string>
     <string name="apm_disable_all_title">关所有模块喵</string>
@@ -301,17 +304,20 @@
 要继续嘛？</string>
 
     <string name="home_dialog_auth_fail_title">认证失败了喵！</string>
-    <string name="home_dialog_auth_fail_content">超级密钥认不了，APatch用不了喵！
-失败的原因大概是喵：
-1. 你没用KernelPatch修补boot.img喵！
-2. 修补后的boot.img没刷进去喵！
-3. 超级密钥错了或者有特殊符号喵！
-4. 你设备不支持APatch和KernelPatch喵！
-
-自己查查看喵！实在不行就去官方仓库提issue喵！</string>
+    <string name="home_dialog_auth_fail_content">超级密钥认不了喵，导致 FolkPatch 激活失败喵！
+失败的原因大概是喵——请自己对号入座喵：
+\n1. 你根本没使用 KernelPatch 来修补 boot.img，或者忘了自己到底做了啥喵。
+\n2. 修补完的 boot.img 还躺在电脑里睡觉，根本没刷进设备喵。
+\n3. 超级密钥输错了，或者夹杂了神秘符号，比如来自外星文的字符喵。
+\n4. 你的设备可能并不兼容 FolkPatch 和 KernelPatch，强行折腾也是徒劳喵。
+\n5. 你可能搞了一些神秘操作——比如用了某些排除包名的模块把 FolkPatch 给屏蔽了，结果把自己整出局了喵。
+\n请先好好检查一遍，再试一次喵。如果问题依旧，欢迎到官方仓库的 issue 页面提问喵。
+毕竟，有些问题可能纯粹是您自己亲手造成的喵！
+祝你好运啊喵！顺带一提，你点击下面的文档按钮准没错喵！</string>
 
     <string name="home_more_menu_feedback_or_suggestion">反馈或者建议喵</string>
     <string name="home_more_menu_about">关于人家哒</string>
+    <string name="home_more_menu_document">文档喵</string>
 
     <string name="home_dialog_uninstall_title">卸载喵！</string>
     
@@ -771,4 +777,11 @@
     <string name="script_library_save_log">保存日志喵！</string>
     <string name="script_library_log_saved">日志保存到 %s 喵！</string>
     <string name="script_library_log_save_failed">保存日志失败了喵：%s</string>
+    <string name="settings_vibration">震动触感喵</string>
+    <string name="settings_vibration_summary">在触摸事件时震动喵</string>
+    <string name="settings_vibration_enabled">启用震动喵</string>
+    <string name="settings_vibration_intensity">震动强度喵</string>
+    <string name="settings_vibration_scope">震动范围喵</string>
+    <string name="settings_vibration_scope_global">全局喵</string>
+    <string name="settings_vibration_scope_bottom_bar">仅底部栏喵</string>
 </resources>

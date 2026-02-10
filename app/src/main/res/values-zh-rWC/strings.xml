@@ -189,10 +189,13 @@
     <string name="apm_failed_to_disable">禁仙符败陨：%s</string>
     <string name="apm_empty">未凝炼仙符入体</string>
     <string name="apm_remove">祛符出体</string>
+    <string name="apm_undo">撤销</string>
     <string name="apm_install">凝符入体</string>
     <string name="apm_uninstall_confirm">欲废去%s天道仙符？</string>
     <string name="apm_uninstall_success">%s仙符已废</string>
     <string name="apm_uninstall_failed">废符败陨：%s</string>
+    <string name="apm_undo_uninstall_success">%s已恢复契约</string>
+    <string name="apm_undo_uninstall_failed">恢复契约失败: %s</string>
     <string name="apm_version">符篆篇次</string>
     <string name="apm_author">符祖</string>
     <string name="apm_desc">符篆玄义</string>
@@ -289,17 +292,22 @@
     <string name="mode_select_page_install_inactive_slot_warning">仙器重铸后，必启于当前未启之仙槽！\n唯天道易筋既毕，可用此渡劫之选。\n道友欲继之乎？</string>
 
     <string name="home_dialog_auth_fail_title">仙籍验败</string>
-    <string name="home_dialog_auth_fail_content">未验登仙秘钥，APatch仙法未可用。
-仙籍验败之由，约有数端：
-一、未以KernelPatch仙法炼符补仙躯boot.img；
-二、炼符后之仙躯boot.img未引仙入体；
-三、登仙秘钥符文舛误，或杂邪魔异符；
-四、仙器不兼容APatch与KernelPatch仙法。
+    <string name="home_dialog_auth_fail_content">未验登仙秘钥，致 FolkPatch 仙法未成。
+仙籍验败之由，约有数端——道友可自省之：
 
-宜勘之重试。若仍有天劫，可于仙门官库issue仙台问之。</string>
+\n一、尔根本未以 KernelPatch 仙法炼符补仙躯 boot.img，或忘却自身所为之事。
+\n二、炼符后之仙躯 boot.img 尚卧于凡间电脑之中，根本未引仙入体。
+\n三、登仙秘钥符文舛误，或杂邪魔异符，如来自外域之文字。
+\n四、尔之仙器可能不兼容 FolkPatch 与 KernelPatch 仙法，强行渡劫亦是徒劳。
+\n五、尔或行神秘操作——如用排除仙名之仙法屏蔽 FolkPatch，终致自绝于仙途。
+\n六、尔或安装与当世仙官兼容有碍之内核仙法，致使仙力冲突！
+\n宜先勘之重试，若仍有天劫，可于仙门官库 issue 仙台问之。
+毕竟，有些劫数可能纯粹是尔亲手种下之因！
+祝道友渡劫顺利！顺带一提，点击下方道藏按钮准没错！</string>
 
     <string name="home_more_menu_feedback_or_suggestion">呈渡劫见谛或献升仙策</string>
     <string name="home_more_menu_about">仙门叙略</string>
+    <string name="home_more_menu_document">道藏</string>
 
     <string name="home_dialog_uninstall_title">废去仙籍</string>
     <string name="home_dialog_uninstall_ap_only">唯废符箓</string>
@@ -766,4 +774,11 @@
     <string name="script_library_log_saved">施符录已藏至 %s</string>
     <string name="script_library_log_save_failed">藏施符录败陨：%s</string>
 
+    <string name="settings_vibration">天地律动</string>
+    <string name="settings_vibration_summary">感知天地之颤</string>
+    <string name="settings_vibration_enabled">开启律动</string>
+    <string name="settings_vibration_intensity">律动强度</string>
+    <string name="settings_vibration_scope">律动范围</string>
+    <string name="settings_vibration_scope_global">普天之下</string>
+    <string name="settings_vibration_scope_bottom_bar">仅限基台</string>
 </resources>

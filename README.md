@@ -102,7 +102,7 @@ FolkPatch - 专注界面优化与功能扩展的Root管理工具
 本项目基于以下开源项目：
 
 - [KernelPatch](https://github.com/bmax121/KernelPatch/) - 核心组件
-- [Magisk](https://github.com/topjohnwu/Magisk) - magiskboot和magiskpolicy
+- [Magisk](https://github.com/topjohnwu/Magisk) - magiskpolicy
 - [KernelSU](https://github.com/tiann/KernelSU) - 应用UI和类似Magisk的模块支持
 - [Sukisu-Ultra](https://github.com/SukiSU-Ultra/SukiSU-Ultra) - 参考一些界面的设计
 - [APatch](https://github.com/bmax121/APatch) - 上游分支

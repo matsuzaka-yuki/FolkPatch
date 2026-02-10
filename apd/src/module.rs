@@ -528,6 +528,21 @@ pub fn uninstall_module(id: &str) -> Result<()> {
     Ok(())
 }
 
+pub fn undo_uninstall_module(id: &str) -> Result<()> {
+    let module_path = Path::new(defs::MODULE_DIR).join(id);
+    ensure!(module_path.exists(), "Module {id} not found");
+
+    // Remove the remove mark
+    let remove_file = module_path.join(defs::REMOVE_FILE_NAME);
+    if remove_file.exists() {
+        fs::remove_file(&remove_file)
+            .with_context(|| format!("Failed to delete remove file for module '{id}'"))?;
+        info!("Removed the remove mark for module {id}");
+    }
+
+    Ok(())
+}
+
 /// Read module.prop from the given module path and return as a HashMap
 pub fn read_module_prop(module_path: &Path) -> Result<HashMap<String, String>> {
     let module_prop = module_path.join("module.prop");

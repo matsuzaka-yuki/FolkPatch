@@ -162,6 +162,9 @@ class MainActivity : AppCompatActivity() {
             if (me.bmax.apatch.ui.theme.SoundEffectConfig.scope == me.bmax.apatch.ui.theme.SoundEffectConfig.SCOPE_GLOBAL) {
                 me.bmax.apatch.util.SoundEffectManager.play(this)
             }
+            if (me.bmax.apatch.ui.theme.VibrationConfig.scope == me.bmax.apatch.ui.theme.VibrationConfig.SCOPE_GLOBAL) {
+                me.bmax.apatch.util.VibrationManager.vibrate(this)
+            }
         }
         return super.dispatchTouchEvent(ev)
     }
@@ -676,6 +679,9 @@ private fun BottomBar(navController: NavHostController) {
                                 if (me.bmax.apatch.ui.theme.SoundEffectConfig.scope == me.bmax.apatch.ui.theme.SoundEffectConfig.SCOPE_BOTTOM_BAR) {
                                     me.bmax.apatch.util.SoundEffectManager.play(context)
                                 }
+                                if (me.bmax.apatch.ui.theme.VibrationConfig.scope == me.bmax.apatch.ui.theme.VibrationConfig.SCOPE_BOTTOM_BAR) {
+                                    me.bmax.apatch.util.VibrationManager.vibrate(context)
+                                }
                                 if (isCurrentDestOnBackStack) {
                                     navigator.popBackStack(destination.direction, false)
                                 }
@@ -799,6 +805,9 @@ private fun NavigationRailBar(navController: NavHostController) {
                             onClick = {
                                 if (me.bmax.apatch.ui.theme.SoundEffectConfig.scope == me.bmax.apatch.ui.theme.SoundEffectConfig.SCOPE_BOTTOM_BAR) {
                                     me.bmax.apatch.util.SoundEffectManager.play(context)
+                                }
+                                if (me.bmax.apatch.ui.theme.VibrationConfig.scope == me.bmax.apatch.ui.theme.VibrationConfig.SCOPE_BOTTOM_BAR) {
+                                    me.bmax.apatch.util.VibrationManager.vibrate(context)
                                 }
                                 if (isCurrentDestOnBackStack) {
                                     navigator.popBackStack(destination.direction, false)
