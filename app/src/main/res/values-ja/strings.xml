@@ -3,8 +3,8 @@
     <string name="app_name_folksu">FolkSU</string>
     <string name="desktop_app_name">デスクトップのアプリ名</string>
     <string name="home">ホーム</string>
-    <string name="success">成功しました</string>
-    <string name="failure">失敗しました</string>
+    <string name="success">成功しました。</string>
+    <string name="failure">失敗しました。</string>
     <string name="patch_warnning">インストールにはリスクが伴います。必ずデータのバックアップを行ってください。</string>
     <string name="patch">パッチ</string>
     <string name="kernel_patch">KernelPatch</string>
@@ -62,7 +62,7 @@
     <string name="about_source_code"><![CDATA[<p>%1$s でソースコードを表示<p/>%2$s のチャンネルに参加<p/>%3$s のグループに参加]]></string>
     <string name="send_log">ログを送信</string>
     <string name="save_log">ログを保存</string>
-    <string name="log_saved">ログを保存しました</string>
+    <string name="log_saved">ログを保存しました。</string>
     <string name="safe_mode">セーフモード</string>
     <string name="super_key">SuperKey</string>
     <string name="clear_super_key">SuperKey を消去</string>
@@ -74,6 +74,7 @@
     <string name="home_install_unknown_summary">タップでインストール</string>
     <string name="home_click_to_install">タップでインストール</string>
     <string name="home_working">動作中</string>
+    <string name="home_version">バージョン: %s</string>
     <string name="home_kp_need_update">新しいバージョンが利用可能です</string>
     <string name="home_kp_cando_update">更新</string>
     <string name="home_installing">インストール中</string>
@@ -160,6 +161,10 @@
     <string name="su_pkg_excluded_label">除外</string>
     <string name="su_pkg_excluded_setting_title">変更を除外</string>
     <string name="su_pkg_excluded_setting_summary">このオプションを有効化すると、FolkPatch はこのアプリのモジュールによって変更されたすべてのファイルを復元できるようになります。</string>
+    <string name="su_pkg_root_setting_title">スーパーユーザー</string>
+    <string name="su_pkg_root_setting_summary">このオプションを有効化すると、アプリへのスーパーユーザーアクセスが許可され SU コマンドを使用できるようになります。</string>
+    <string name="su_pkg_normal_setting_title">通常モード</string>
+    <string name="su_pkg_normal_setting_summary">デフォルト、特別な処理はしません。</string>
     <string name="su_show_system_apps">システムアプリを表示</string>
     <string name="su_hide_system_apps">システムアプリを非表示</string>
     <string name="su_refresh">更新</string>
@@ -199,6 +204,13 @@
     <string name="setting_reset_su_new_path">新しいフルパス</string>
     <string name="apm_webui_open">開く</string>
     <string name="apm_action">アクション</string>
+    <string name="module_shortcut_add">ショートカット</string>
+    <string name="module_shortcut_not_supported">ランチャーはデスクトップショートカットに非対応です。</string>
+    <string name="module_shortcut_created">デスクトップにショートカットを作成しました。</string>
+    <string name="module_shortcut_updated">ショートカットを更新しました。</string>
+    <string name="module_shortcut_permission_tip_xiaomi">Xiaomi の設定でこのアプリの「デスクトップショートカットの作成」の権限を有効化してください。</string>
+    <string name="module_shortcut_permission_tip_oppo">OPPO の設定でこのアプリの「デスクトップショートカット」の権限を有効化してください。</string>
+    <string name="module_shortcut_permission_tip_default">ショートカットの作成に失敗した場合は、システム設定でこのアプリのデスクトップショートカットの許可を有効化してください。</string>
     <string name="enable_web_debugging">WebView デバッグを有効化</string>
     <string name="enable_web_debugging_summary">WebUI のデバッグに使用できます。必要な場合のみ有効化してください。</string>
     <string name="settings_apm_install_confirm">確認後にインストール</string>
@@ -207,6 +219,8 @@
     <string name="settings_show_more_module_info_summary">モジュールリストにモジュール ID とサイズを表示します。</string>
     <string name="settings_apm_stay_on_page">操作ページに留まる</string>
     <string name="settings_apm_stay_on_page_summary">モジュールのアクションを実行後に自動で戻らなくなります。</string>
+    <string name="settings_enable_module_shortcut_add">ショートカット追加ボタンを有効化</string>
+    <string name="settings_enable_module_shortcut_add_summary">WebUI ショートカット追加ボタンを表示</string>
     <string name="settings_show_disable_all_modules">「すべてのモジュールを無効化」ボタンを表示</string>
     <string name="settings_show_disable_all_modules_summary">モジュールページにすべてモジュールを無効化するボタンを表示します。</string>
     <string name="settings_disable_module_update_check">モジュールの更新の確認を無効化する</string>
@@ -220,7 +234,27 @@
     <string name="apm_install_confirm_title">モジュールをインストール</string>
     <string name="apm_install_confirm_content">「%s」をインストールしてもよろしいですか？</string>
     <string name="apm_disable_all_title">すべてのモジュールを無効化</string>
+    <string name="module_shortcut_name">ショートカット名</string>
+    <string name="module_shortcut_icon">ショートカットアイコン</string>
+    <string name="module_shortcut_type">ショートカットタイプ</string>
+    <string name="module_shortcut_type_webui">WebUI</string>
+    <string name="module_shortcut_type_action">アクション</string>
+    <string name="module_shortcut_icon_default">デフォルトのアイコンを使用</string>
+    <string name="module_shortcut_icon_select">アイコンを選択</string>
     <string name="apm_disable_all_confirm">すべてのモジュールを無効化してもよろしいですか？通常は OTA アップデートの前に行われます。</string>
+    <string name="apm_enable_module_banner">モジュールバナーを有効化</string>
+    <string name="apm_enable_module_banner_summary">モジュールのバナー画像が利用可能な場合に表示します。</string>
+    <string name="apm_enable_folk_banner">カスタムモジュールバナー</string>
+    <string name="apm_enable_folk_banner_summary">モジュールカードを長押しでバナー画像を選択します。</string>
+    <string name="apm_folk_banner_title">Folk バナー</string>
+    <string name="apm_folk_banner_select">画像を選択</string>
+    <string name="apm_folk_banner_clear">Folk バナーを消去</string>
+    <string name="apm_folk_banner_saved">「%s」に Folk バナーをインジェクトしました。</string>
+    <string name="apm_folk_banner_cleared">「%s」の Folk バナーを消去しました。</string>
+    <string name="apm_folk_banner_failed">「%s」の Folk バナーの更新に失敗しました。</string>
+    <string name="settings_banner_custom_opacity">バナーの透過</string>
+    <string name="settings_banner_custom_opacity_summary">壁紙モードを使用する代わりにカスタム可能な透過バナーを使用します。</string>
+    <string name="settings_banner_opacity">バナーの透過率</string>
     <string name="settings_donot_store_superkey">SuperKey をローカルに保存しない</string>
     <string name="settings_donot_store_superkey_summary">マネージャーを起動するたびに SuperKey の認証を要求します。</string>
     <string name="mode_select_page_title">インストール</string>
@@ -229,19 +263,8 @@
     <string name="restore_select_file">boot イメージを選択で復元</string>
     <string name="mode_select_page_install_inactive_slot">非アクティブスロットにインストール (OTA 後)</string>
     <string name="mode_select_page_install_inactive_slot_warning">再起動後にデバイスは、非アクティブなスロットから**強制的に**起動されます！\nこのオプションは、OTA の完了後にのみ使用してください。\n続行しますか？</string>
-    <string name="home_dialog_auth_fail_title">認証に失敗しました</string>
-    <string name="home_dialog_auth_fail_content">スーパーキーを認証できず、FolkPatch のアクティベーションに失敗しました。
-認証失敗の考えられる原因は以下の通りです——ご自身の状況に当てはまるものを確認してください：
-
-
-\n1. そもそも KernelPatch で boot.img をパッチしていないか、自分が何をしたか忘れている。
-\n2. パッチ適用後の boot.img がパソコンで寝ているだけで、デバイスに書き込んでいない。
-\n3. スー パーキーの入力が間違っているか、宇宙語のような謎の記号が含まれている。
-\n4. お使いのデバイスが FolkPatch と KernelPatch に対応していない可能性があり、無理に行っても無駄です。
-\n5. 不可解な操作を行った可能性があります——例えば、パッケージ名除外モジュールで FolkPatch をブロックしてしまい、自分を追い出してしまったなど。
-\nまずしっかり確認してから、もう一度お試しください。問題が解決しない場合は、公式リポジトリーの Issue ページで質問してください。
-結局のところ、一部の問題は完全にご自身で引き起こしているものかもしれません！
-幸運を祈ります！ちなみに、下のドキュメントボタンをクリックするのが間違いありません！</string>
+    <string name="home_dialog_auth_fail_title">認証に失敗しました。</string>
+    <string name="home_dialog_auth_fail_content">SuperKey を認証できないため、APatch は正常に動作しません。\n認証の失敗で考えられる原因は以下の通りです:\n1. boot.img に KernelPatch を適用していない。\n2. パッチを適用した boot.img をフラッシュしていない。\n3. SuperKey が間違っているか、特殊文字が含まれている。\n4. 使用しているデバイスが APatch と KernelPatch に対応していない。\n\n確認をした上で、再度お試しください。それでも問題が解決しない場合は、公式リポジトリの Issue ページでいつでも質問ができます。</string>
     <string name="home_more_menu_feedback_or_suggestion">フィードバックまたは提案</string>
     <string name="home_more_menu_about">アプリについて</string>
     <string name="home_more_menu_document">ドキュメント</string>
@@ -251,7 +274,7 @@
     <string name="home_dialog_uninstall_ap_only_desc">AndroidPatch のみを削除し、マネージャーは保持します。</string>
     <string name="home_dialog_uninstall_all_desc">AndroidPatch を削除し、完全なアンインストールフローを行います。</string>
     <string name="kpm_control_dialog_title">KPM のコントロール</string>
-    <string name="kpm_control_dialog_content">コントロールパラメータを入力してください:</string>
+    <string name="kpm_control_dialog_content">コントロールパラメータを入力:</string>
     <string name="kpm_control_paramters">パラメータ</string>
     <string name="kpm_control_outMsg">出力</string>
     <string name="kpm_control_ok">成功しました！</string>
@@ -313,6 +336,7 @@
     <string name="app_title_apatch">APatch</string>
     <string name="app_title_folkpatch">FolkPatch</string>
     <string name="app_title_kernelpatch">KernelPatch</string>
+    <string name="app_title_kernelsu">KernelSU</string>
     <string name="app_title_supersu">SuperSU</string>
     <string name="app_title_folksu">FolkSU</string>
     <string name="app_title_superuser">Superuser</string>
@@ -342,39 +366,32 @@
     <string name="settings_select_font_file">フォントファイルを選択</string>
     <string name="settings_custom_font_enabled">カスタムフォントが有効化されています</string>
     <string name="settings_custom_font_summary">アプリにカスタム TTF フォントを使用します。</string>
-    <string name="settings_font_selected">カスタムフォントが選択されています</string>
-    <string name="settings_custom_font_error">フォントファイルの保存に失敗しました</string>
-    <string name="settings_custom_font_saved">カスタムフォントの保存に成功しました</string>
+    <string name="settings_font_selected">カスタムフォントが選択されました。</string>
+    <string name="settings_custom_font_error">フォントファイルの保存に失敗しました。</string>
+    <string name="settings_custom_font_saved">カスタムフォントの保存に成功しました。</string>
     <string name="settings_clear_font">デフォルトのフォントに復元</string>
     <string name="settings_clear_font_confirm">デフォルトのフォントに復元しますか？</string>
-    <string name="settings_font_cleared">デフォルトのフォントに復元しました</string>
+    <string name="settings_font_cleared">デフォルトのフォントに復元しました。</string>
     <string name="settings_font_select_hint">TTF フォントファイルを選択</string>
     <string name="settings_select_background_image">背景画像を選択</string>
     <string name="settings_custom_background_summary">カスタム背景画像を設定します</string>
-    <string name="settings_custom_background_saved">背景の保存に成功しました</string>
-    <string name="settings_custom_background_error">背景の保存に失敗しました</string>
-    <string name="settings_background_selected">背景が選択されています</string>
+    <string name="settings_custom_background_saved">背景の保存が成功しました。</string>
+    <string name="settings_custom_background_error">背景の保存に失敗しました。</string>
+    <string name="settings_background_selected">背景が選択されました。</string>
     <string name="settings_background_image_cleared">背景画像を消去しました</string>
     <string name="settings_clear_background">背景を消去</string>
     <string name="settings_clear_background_confirm">背景画像を消去してもよろしいですか？</string>
-    <string name="settings_launcher_icon">ランチャーアイコン</string>
-    <string name="launcher_icon_default">FolkPatch</string>
-    <string name="launcher_icon_classic">FolkPatch Anime</string>
-    <string name="launcher_icon_apatch">APatch</string>
-    <string name="launcher_icon_kernelsu">KernelSU</string>
+    <string name="settings_alt_icon">代替アイコン</string>
+    <string name="alt_icon_summary">代替アイコンをランチャーに使用します。</string>
     <!-- Video Background Settings -->
     <string name="settings_video_background">動画の背景</string>
     <string name="settings_video_background_summary">動画を背景として使用します。</string>
     <string name="settings_select_video">動画を選択</string>
-    <string name="settings_video_selected">動画が選択されています</string>
+    <string name="settings_video_selected">動画が選択されました。</string>
     <string name="settings_clear_video_background">動画の背景を消去</string>
     <string name="settings_clear_video_background_confirm">動画の背景を消去してもよろしいですか？</string>
     <string name="settings_video_background_enabled">動画の背景が有効化されています</string>
     <string name="settings_video_volume">動画の音量</string>
-    <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
-    <string name="launcher_icon_kitsune">Kitsune Mask</string>
-    <string name="launcher_icon_magisk">Magisk</string>
-    <string name="launcher_icon_superroot">SuperRoot</string>
     <!-- KPM AutoLoad Strings -->
     <string name="kpm_autoload_title">KPM を自動で読み込み</string>
     <string name="kpm_autoload_enabled">自動で読み込みが有効化されています</string>
@@ -382,12 +399,12 @@
     <string name="kpm_autoload_json_config">JSON を構成</string>
     <string name="kpm_autoload_json_label">JSON を構成します</string>
     <string name="kpm_autoload_json_placeholder">{\n  \"enabled\": true,\n  \"kpmPaths\": [\n    \"/path/to/module1.kpm\",\n    \"/path/to/module2.kpm\"\n  ]\n}</string>
-    <string name="kpm_autoload_json_error">無効な JSON フォーマット</string>
+    <string name="kpm_autoload_json_error">無効な JSON 形式</string>
     <string name="kpm_autoload_json_helper">KPM ファイルパスの配列を含む有効な JSON ファイルを入力してください</string>
     <string name="kpm_autoload_save">構成を保存</string>
     <string name="kpm_autoload_save_confirm">自動で読み込みの構成を保存しますか？</string>
-    <string name="kpm_autoload_save_success">構成の保存が成功しました</string>
-    <string name="kpm_autoload_save_failed">構成の保存が失敗しました</string>
+    <string name="kpm_autoload_save_success">構成の保存が成功しました。</string>
+    <string name="kpm_autoload_save_failed">構成の保存が失敗しました。</string>
     <string name="kpm_autoload_visual_mode">視覚モード</string>
     <string name="kpm_autoload_json_mode">JSON モード</string>
     <string name="kpm_autoload_add_kpm">KPM を追加</string>
@@ -395,14 +412,14 @@
     <!-- Module Backup/Restore Strings -->
     <string name="apm_backup_title">モジュールをバックアップ</string>
     <string name="apm_restore_title">モジュールを復元</string>
-    <string name="apm_backup_success">バックアップが成功しました</string>
-    <string name="apm_restore_success">復元が成功しました</string>
-    <string name="apm_backup_failed">バックアップに失敗しました</string>
-    <string name="apm_restore_failed">復元に失敗しました</string>
+    <string name="apm_backup_success">バックアップが成功しました。</string>
+    <string name="apm_restore_success">復元が成功しました。</string>
+    <string name="apm_backup_failed">バックアップに失敗しました。</string>
+    <string name="apm_restore_failed">復元に失敗しました。</string>
     <string name="apm_backup_failed_msg">バックアップに失敗: %s</string>
     <string name="apm_restore_failed_msg">復元に失敗: %s</string>
     <string name="apm_copy_list_title">リストをコピー</string>
-    <string name="apm_copy_list_success">モジュールのリストをコピーしました</string>
+    <string name="apm_copy_list_success">モジュールのリストをコピーしました。</string>
     <!-- APM Bulk Install Strings -->
     <string name="apm_bulk_install_title">APM を一括インストール</string>
     <string name="apm_bulk_install_list_title">モジュールのリスト</string>
@@ -434,9 +451,13 @@
     <string name="home_hide_su_path">su 実行可能パスを非表示</string>
     <string name="home_hide_kpatch_version">Kernel Patch バージョンを非表示</string>
     <string name="home_hide_fingerprint">フィンガープリントを非表示</string>
+    <string name="home_hide_zygisk">Zygisk の実装を非表示</string>
+    <string name="home_hide_mount">マウントの実装を非表示</string>
     <string name="home_hide_su_path_summary">su 実行可能パス情報のカードを非表示にします。</string>
     <string name="home_hide_kpatch_version_summary">Kernel Patch バージョン情報のカードを非表示にします。</string>
     <string name="home_hide_fingerprint_summary">フィンガープリント情報のカードを非表示にします。</string>
+    <string name="home_hide_zygisk_summary">Zygisk の実装情報のカードを非表示</string>
+    <string name="home_hide_mount_summary">マウントの実装情報のカードを非表示</string>
     <string name="kpm_page_first_time_title">警告</string>
     <string name="kpm_page_first_time_message">カーネルモジュールは boot 実装を直接的に変更します。システムモジュールとは異なり、優れた復旧メカニズムが備わっていないため fastboot を起動して修正するしか方法がありません。boot に埋め込む前に、モジュールを読み込んで問題がないことを確認しておくことを推奨します。読み込まないと使用できないモジュールの場合は、KPM の自動読み込み機能を試すことができます。カーネルモジュールについてよく理解していない場合は、この機能を使用しないでください！</string>
     <!-- Auto Backup Strings -->
@@ -444,7 +465,7 @@
     <string name="settings_auto_backup_module_summary">インストール時にモジュールファイルを自動でプライベートディレクトリにバックアップします。</string>
     <string name="settings_open_backup_dir">バックアップディレクトリを開く</string>
     <string name="backup_dir_empty">バックアップディレクトリは空です</string>
-    <string name="backup_dir_open_failed">バックアップディレクトリの展開に失敗しました</string>
+    <string name="backup_dir_open_failed">バックアップディレクトリの展開に失敗しました。</string>
     <string name="auto_backup_failed">自動バックアップが失敗: %s</string>
     <string name="auto_backup_success">自動バックアップが成功: %s</string>
     <string name="settings_auto_backup_boot">boot を自動でバックアップ</string>
@@ -455,15 +476,16 @@
     <string name="settings_home_layout_grid">グリッド UI</string>
     <string name="settings_home_layout_focus">フォーカス UI</string>
     <string name="settings_home_layout_sign">サイン UI</string>
+    <string name="settings_home_layout_circle">サークル UI</string>
     <string name="unofficial_version_title">非公式なバージョン</string>
     <string name="unofficial_version_message">非公式な FolkPatch を使用しています。公式のアプリをダウンロードしてください！</string>
     <string name="go_to_github">GitHub を開く</string>
     <string name="settings_save_theme">テーマを保存</string>
     <string name="settings_import_theme">テーマをインポート</string>
-    <string name="settings_theme_saved">テーマを保存しました</string>
-    <string name="settings_theme_imported">テーマをインポートしました</string>
-    <string name="settings_theme_save_failed">テーマの保存に失敗しました</string>
-    <string name="settings_theme_import_failed">テーマのインポートに失敗しました</string>
+    <string name="settings_theme_saved">テーマを保存しました。</string>
+    <string name="settings_theme_imported">テーマをインポートしました。</string>
+    <string name="settings_theme_save_failed">テーマの保存に失敗しました。</string>
+    <string name="settings_theme_import_failed">テーマのインポートに失敗しました。</string>
     <!-- Theme Strings -->
     <string name="theme_export_title">テーマをエクスポート</string>
     <string name="theme_import_title">テーマをインポート</string>
@@ -482,15 +504,15 @@
     <string name="settings_grid_working_card_background">動作中カードの背景</string>
     <string name="settings_grid_working_card_background_enabled">カスタムカード背景が有効化されています</string>
     <string name="settings_grid_working_card_background_summary">動作中カードのカスタム背景画像です。</string>
-    <string name="settings_grid_working_card_background_selected">背景が選択されています</string>
+    <string name="settings_grid_working_card_background_selected">背景が選択されました。</string>
     <string name="settings_grid_working_card_dual_opacity">日中/夜間でのデュアル透過を有効化する</string>
     <string name="settings_grid_working_card_day_opacity">日中モードのカード透過</string>
     <string name="settings_grid_working_card_night_opacity">夜間モードのカード透過</string>
     <string name="settings_clear_grid_working_card_background">カードの背景を消去する</string>
     <string name="settings_clear_grid_working_card_background_confirm">カードの背景画像を消去してもよろしいですか？</string>
-    <string name="settings_grid_working_card_background_saved">カードの背景の保存に成功しました</string>
-    <string name="settings_grid_working_card_background_error">カードの背景の保存に失敗しました</string>
-    <string name="settings_grid_working_card_background_cleared">カードの背景を消去しました</string>
+    <string name="settings_grid_working_card_background_saved">カードの背景の保存に成功しました。</string>
+    <string name="settings_grid_working_card_background_error">カードの背景の保存に失敗しました。</string>
+    <string name="settings_grid_working_card_background_cleared">カードの背景を消去しました。</string>
     <!-- Biometric Strings -->
     <string name="action_biometric">生体認証</string>
     <string name="msg_biometric">生体認証で確認してください</string>
@@ -506,7 +528,7 @@
     <string name="theme_store_author">作者: %s</string>
     <string name="theme_store_version">バージョン: %s</string>
     <string name="theme_source">ソース</string>
-    <string name="theme_store_download_failed">ダウンロードに失敗しました</string>
+    <string name="theme_store_download_failed">ダウンロードに失敗しました。</string>
     <string name="theme_store_download">ダウンロード</string>
     <string name="theme_store_search_hint">テーマを検索...</string>
     <!-- Update Check Strings -->
@@ -518,7 +540,7 @@
     <string name="update_action">更新</string>
     <string name="update_close">閉じる</string>
     <string name="update_latest">最新のバージョンを使用しています</string>
-    <string name="update_error">更新の確認でエラーが発生しました</string>
+    <string name="update_error">更新の確認でエラーが発生しました。</string>
     <string name="settings_category_general">一般</string>
     <string name="superuser">スーパーユーザー</string>
     <string name="module">モジュール</string>
@@ -527,6 +549,8 @@
     <string name="app_list_loading_scheme_root_service">root サービス (デフォルト)</string>
     <string name="app_list_loading_scheme_package_manager">パッケージマネージャー (システム API)</string>
     <string name="app_list_loading_scheme_dialog_title">スキームを読み込み中</string>
+    <string name="superuser">スーパーユーザー</string>
+    <string name="module">モジュール</string>
     <string name="settings_category_appearance">外観</string>
     <string name="settings_category_behavior">動作</string>
     <string name="settings_category_module">モジュール</string>
@@ -537,7 +561,7 @@
     <string name="settings_background_music_playing">再生中: %s</string>
     <string name="settings_background_music_enabled">BGM が有効化されています</string>
     <string name="settings_select_music_file">音楽ファイルを選択</string>
-    <string name="settings_music_selected">音楽が選択されています</string>
+    <string name="settings_music_selected">音楽が選択されました。</string>
     <string name="settings_clear_music">音楽を消去</string>
     <string name="settings_clear_music_confirm">BGM を消去しますか？</string>
     <string name="settings_music_auto_play">自動再生</string>
@@ -545,10 +569,12 @@
     <string name="settings_music_looping">ループ再生</string>
     <string name="settings_music_looping_summary">現在の曲をループ再生します。</string>
     <string name="settings_music_volume">音量</string>
-    <string name="settings_music_saved">音楽の保存に成功しました</string>
-    <string name="settings_music_save_error">音楽の保存に失敗しました</string>
-    <string name="settings_music_cleared">音楽を消去しました</string>
+    <string name="settings_music_saved">音楽の保存に成功しました。</string>
+    <string name="settings_music_save_error">音楽の保存に失敗しました。</string>
+    <string name="settings_music_cleared">音楽を消去しました。</string>
     <string name="settings_category_multimedia">マルチメディア</string>
+    <string name="settings_use_legacy_su_page">単一ページのスーパーユーザー認証</string>
+    <string name="settings_use_legacy_su_page_summary">スーパーユーザーページを単一ページな認証に切り替えます。</string>
     <string name="settings_music_playback_control">再生のコントロール</string>
     <!-- Theme Store Filter -->
     <string name="theme_store_filter_title">テーマを絞り込む</string>
@@ -591,15 +617,31 @@
     <string name="settings_list_working_card_hide_mode_summary">動作モードの小さなカードを非表示にします。</string>
     <string name="settings_list_card_hide_status_badge">クラシックの絵文字を使用する</string>
     <string name="settings_list_card_hide_status_badge_summary">ホームのステータスバッジにクラシックの絵文字を使用します。</string>
+    <string name="settings_custom_badge_text">カスタムバッジテキスト</string>
+    <string name="settings_custom_badge_text_summary">バッジのテキスト表示を変更します。</string>
+    <string name="settings_custom_badge_text_full_half">完全/一部 (デフォルト)</string>
+    <string name="settings_custom_badge_text_lkm">LKM</string>
+    <string name="settings_custom_badge_text_gki">GKI</string>
+    <string name="settings_custom_badge_text_n_gki">非 GKI</string>
+    <string name="settings_custom_badge_text_oki">OKI</string>
+    <string name="settings_custom_badge_text_built_in">内蔵</string>
     <!-- Install Mode Select -->
     <string name="kp_install_methods">KernelPatch をパッチ/インストール</string>
     <string name="restore_boot_methods">boot パーティションを復元する boot を選択してください</string>
     <string name="su_backup_list">リストをバックアップ</string>
     <string name="su_restore_list">リストを復元</string>
-    <string name="backup_success">バックアップが成功しました</string>
-    <string name="restore_success">復元が成功しました</string>
+    <string name="backup_success">バックアップが成功しました。</string>
+    <string name="restore_success">復元が成功しました。</string>
+    <!-- SuperUser App Action Dialog -->
+    <string name="su_app_action_title">アプリのアクション</string>
+    <string name="su_app_action_content">アプリで実行するアクションを選択してください</string>
+    <string name="su_app_action_launch">アプリを起動</string>
+    <string name="su_app_action_force_stop">強制停止</string>
+    <string name="su_app_action_launch_success">「%s」を起動中</string>
+    <string name="su_app_action_force_stop_success">「%s」を強制停止しました。</string>
+    <string name="su_app_action_failed">操作に失敗しました: %s</string>
     <string name="patch_output_written_to">出力ファイル先</string>
-    <string name="patch_write_failed">パッチ済みの boot.img のフラッシュに失敗しました</string>
+    <string name="patch_write_failed">パッチ済みの boot.img のフラッシュに失敗しました。</string>
     <!-- Badge Count Settings -->
     <string name="enable_badge_count">バッジカウントの設定</string>
     <string name="enable_badge_count_summary">ナビゲーション項目のバッジカウント表示を設定します。</string>
@@ -611,13 +653,13 @@
     <string name="settings_sound_effect_enabled">有効</string>
     <string name="settings_sound_effect_playing">選択済み: %s</string>
     <string name="settings_select_sound_effect">サウンド効果を選択</string>
-    <string name="settings_sound_effect_selected">サウンド効果ファイルが選択されています</string>
+    <string name="settings_sound_effect_selected">サウンド効果が選択されました。</string>
     <string name="settings_sound_effect_scope">効果のスコープ</string>
     <string name="settings_sound_effect_scope_global">グローバル (常に再生)</string>
     <string name="settings_sound_effect_scope_bottom_bar">ボトムバーのみ</string>
     <string name="settings_clear_sound_effect">サウンド効果を消去</string>
     <string name="settings_clear_sound_effect_confirm">サウンド効果を消去してもよろしいですか？</string>
-    <string name="settings_sound_effect_cleared">サウンド効果を消去しました</string>
+    <string name="settings_sound_effect_cleared">サウンド効果を消去しました。</string>
     <!-- Backup Settings -->
     <string name="settings_category_backup">バックアップ</string>
     <string name="settings_enable_cloud_backup">クラウドバックアップを有効化する</string>
@@ -627,10 +669,10 @@
     <string name="webdav_url">WebDAV の URL</string>
     <string name="webdav_username">ユーザー名</string>
     <string name="webdav_password">パスワード</string>
-    <string name="webdav_test_success">テストが成功しました</string>
+    <string name="webdav_test_success">テストが成功しました。</string>
     <string name="webdav_test_failed">テストに失敗: %s</string>
     <string name="webdav_uploading">WebDAV にアップロード中...</string>
-    <string name="webdav_backup_success">WebDAV バックアップに成功しました</string>
+    <string name="webdav_backup_success">WebDAV バックアップに成功しました。</string>
     <string name="webdav_backup_failed">WebDAV バックアップに失敗: %s</string>
     <string name="save">保存</string>
     <string name="test">テスト</string>
@@ -654,15 +696,15 @@
     <string name="script_library_delete">削除</string>
     <string name="script_library_path">パス: %s</string>
     <string name="script_library_confirm_delete">スクリプトを削除してもよろしいですか？</string>
-    <string name="script_library_delete_success">スクリプトの削除に成功しました</string>
-    <string name="script_library_delete_failed">スクリプトの削除に失敗しました</string>
-    <string name="script_library_add_success">スクリプトを追加しました</string>
+    <string name="script_library_delete_success">スクリプトの削除に成功しました。</string>
+    <string name="script_library_delete_failed">スクリプトの削除に失敗しました。</string>
+    <string name="script_library_add_success">スクリプトを追加しました。</string>
     <string name="script_library_add_failed">スクリプトの追加に失敗: %s</string>
-    <string name="script_library_load_failed">スクリプトライブラリの読み込みに失敗しました</string>
+    <string name="script_library_load_failed">スクリプトライブラリの読み込みに失敗しました。</string>
     <string name="script_library_output">出力を実行</string>
     <string name="script_library_no_output">出力なし</string>
     <string name="script_library_save_log">ログを保存</string>
-    <string name="script_library_log_saved">「%s」にログを保存しました</string>
+    <string name="script_library_log_saved">「%s」にログを保存しました。</string>
     <string name="script_library_log_save_failed">ログの保存に失敗: %s</string>
     <string name="settings_vibration">バイブレーションと触覚</string>
     <string name="settings_vibration_summary">タッチ操作時に振動する</string>
