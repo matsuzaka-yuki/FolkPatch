@@ -1,5 +1,5 @@
 <div align="center">
-<a href="https://github.com/matsuzaka-yuki/FolkPatch/releases/latest"><img src="logo.png" style="width: 128px;" alt="logo"></a>
+<a href="https://github.com/matsuzaka-yuki/FolkPatch/releases/latest"><img src="logo.png" style="width: 800px;" alt="logo"></a>
 
 <h1 align="center">FolkPatch Miuix</h1>
 
@@ -9,7 +9,7 @@
 
 </div>
 
-**Language / 语言:** [中文](README.md) | [English](README_EN.md)
+**Language / 语言:** [中文](README.md) | [English](README_EN.md) | [日本語](README_JA.md)
 
 **FolkPatch** is an extended non-parallel branch developed based on [APatch](https://github.com/bmax121/APatch), which only optimizes interface design and extends features without introducing new core functionalities.
 
@@ -43,7 +43,7 @@ This project is based on the following open source projects:
 
 ## License
 
-FolkPatch is open source under the GNU General Public License v3 [GPL-3](http://www.gnu.org/copyleft/gpl.html).
+FolkPatch is open source under the [GNU General Public License v3 (GPL-3)](http://www.gnu.org/copyleft/gpl.html).
 
 ## FolkPatch Discussion & Communication
 
