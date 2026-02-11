@@ -799,4 +799,6 @@
     <string name="settings_vibration_scope">Область вибрации</string>
     <string name="settings_vibration_scope_global">Везде (Глобально)</string>
     <string name="settings_vibration_scope_bottom_bar">Только нижняя панель</string>
+    <string name="search_modules">Поиск модулей...</string>
+    <string name="search_scripts">Поиск скриптов...</string>
 </resources>

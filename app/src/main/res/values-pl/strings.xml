@@ -803,4 +803,6 @@ Upewnij się, że aplikacja jest całkowicie zamknięta i ponownie otwarta, aby 
     <string name="settings_vibration_scope_bottom_bar">Tylko dolny pasek</string>
     <string name="superuser">Superużytkownik</string>
     <string name="module">Moduł</string>
+    <string name="search_modules">Szukaj modułów...</string>
+    <string name="search_scripts">Szukaj skryptów...</string>
 </resources>

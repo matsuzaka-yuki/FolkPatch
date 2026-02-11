@@ -596,6 +596,8 @@
     <string name="theme_store_download_failed">下载失败</string>
     <string name="theme_store_download">下载</string>
     <string name="theme_store_search_hint">搜索主题...</string>
+    <string name="search_modules">搜索模块...</string>
+    <string name="search_scripts">搜索脚本...</string>
 
     <!-- Update Check Strings -->
     <string name="settings_auto_update_check">自动检查更新</string>

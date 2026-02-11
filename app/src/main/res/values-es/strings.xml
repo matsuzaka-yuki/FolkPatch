@@ -803,4 +803,6 @@ Por ejemplo, los KPM que previenen la modificación de particiones solo pueden u
     <string name="settings_vibration_scope">Alcance de vibración</string>
     <string name="settings_vibration_scope_global">Global (En todas partes)</string>
     <string name="settings_vibration_scope_bottom_bar">Solo barra inferior</string>
+    <string name="search_modules">Buscar módulos...</string>
+    <string name="search_scripts">Buscar scripts...</string>
 </resources>

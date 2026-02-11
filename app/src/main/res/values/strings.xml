@@ -618,6 +618,8 @@ Please ensure the app is completely closed and reopened for the commands to exec
     <string name="theme_store_download_failed">Download failed</string>
     <string name="theme_store_download">Download</string>
     <string name="theme_store_search_hint">Search themes...</string>
+    <string name="search_modules">Search modules...</string>
+    <string name="search_scripts">Search scripts...</string>
 
     <!-- Update Check Strings -->
     <string name="settings_auto_update_check">Automatic Update Check</string>

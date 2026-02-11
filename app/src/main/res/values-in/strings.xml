@@ -781,4 +781,6 @@ Pastikan aplikasi ditutup sepenuhnya dan dimulai ulang untuk menjalankan perinta
     <string name="settings_vibration_scope_bottom_bar">Hanya bilah bawah</string>
     <string name="superuser">Superuser</string>
     <string name="module">Modul</string>
+    <string name="search_modules">Cari modul...</string>
+    <string name="search_scripts">Cari skrip...</string>
 </resources>

@@ -53,7 +53,7 @@ fun OnlineKPMScreen(navigator: DestinationsNavigator) {
                         TextField(
                             value = viewModel.searchQuery,
                             onValueChange = { viewModel.onSearchQueryChange(it) },
-                            placeholder = { Text(stringResource(R.string.theme_store_search_hint)) },
+                            placeholder = { Text(stringResource(R.string.search_modules)) },
                             singleLine = true,
                             colors = TextFieldDefaults.colors(
                                 focusedContainerColor =  Color.Transparent,

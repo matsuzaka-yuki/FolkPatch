@@ -814,4 +814,6 @@ Komutların çalışması için uygulamanın tamamen kapatılıp yeniden açıld
     <string name="settings_vibration_scope">Titreşim kapsamı</string>
     <string name="settings_vibration_scope_global">Küresel (Her yer)</string>
     <string name="settings_vibration_scope_bottom_bar">Sadece alt çubuk</string>
+    <string name="search_modules">Modülleri ara...</string>
+    <string name="search_scripts">Script ara...</string>
 </resources>																	 

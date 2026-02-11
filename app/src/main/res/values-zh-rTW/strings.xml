@@ -788,4 +788,6 @@
     <string name="script_library_log_saved">日誌已儲存至 %s</string>
     <string name="script_library_log_save_failed">儲存日誌失敗：%s</string>
 
+    <string name="search_modules">搜尋模組...</string>
+    <string name="search_scripts">搜尋腳本...</string>
 </resources>

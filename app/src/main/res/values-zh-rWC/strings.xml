@@ -783,4 +783,6 @@
     <string name="settings_vibration_scope">律动范围</string>
     <string name="settings_vibration_scope_global">普天之下</string>
     <string name="settings_vibration_scope_bottom_bar">仅限基台</string>
+    <string name="search_modules">搜索仙符...</string>
+    <string name="search_scripts">搜索丹方...</string>
 </resources>

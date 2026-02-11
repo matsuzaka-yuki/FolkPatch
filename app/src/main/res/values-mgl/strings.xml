@@ -785,4 +785,6 @@
     <string name="settings_vibration_scope_bottom_bar">仅基座法阵</string>
     <string name="superuser">魔法使</string>
     <string name="module">星之魔法阵</string>
+    <string name="search_modules">搜索魔法阵...</string>
+    <string name="search_scripts">搜索魔法卷轴...</string>
 </resources>

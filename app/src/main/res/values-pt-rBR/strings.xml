@@ -801,4 +801,6 @@ Por favor, certifique-se de fechar completamente o app e reabri-lo para que os c
     <string name="settings_vibration_scope_bottom_bar">Apenas barra inferior</string>
     <string name="superuser">Superusuário</string>
     <string name="module">Módulo</string>
+    <string name="search_modules">Buscar módulos...</string>
+    <string name="search_scripts">Buscar scripts...</string>
 </resources>

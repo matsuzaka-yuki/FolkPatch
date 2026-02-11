@@ -786,4 +786,6 @@
     <string name="settings_vibration_scope">震动范围喵</string>
     <string name="settings_vibration_scope_global">全局喵</string>
     <string name="settings_vibration_scope_bottom_bar">仅底部栏喵</string>
+    <string name="search_modules">搜索模块喵...</string>
+    <string name="search_scripts">搜索脚本喵...</string>
 </resources>

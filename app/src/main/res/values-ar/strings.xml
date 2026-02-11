@@ -788,4 +788,6 @@
     <string name="settings_vibration_scope_bottom_bar">الشريط السفلي فقط</string>
     <string name="superuser">المستخدم الخارق</string>
     <string name="module">وحدة</string>
+    <string name="search_modules">بحث في الوحدات...</string>
+    <string name="search_scripts">بحث في السكربتات...</string>
 </resources>

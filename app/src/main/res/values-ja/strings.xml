@@ -669,4 +669,6 @@
     <string name="settings_vibration_scope">バイブレーションの範囲</string>
     <string name="settings_vibration_scope_global">グローバル（すべての場所）</string>
     <string name="settings_vibration_scope_bottom_bar">下部バーのみ</string>
+    <string name="search_modules">モジュールを検索...</string>
+    <string name="search_scripts">スクリプトを検索...</string>
 </resources>

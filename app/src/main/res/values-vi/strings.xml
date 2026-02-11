@@ -798,4 +798,6 @@ Cần đảm bảo phần mềm thoát hoàn toàn vào mới sẽ thực thi l�
     <string name="settings_vibration_scope">Phạm vi rung</string>
     <string name="settings_vibration_scope_global">Toàn cầu (Mọi nơi)</string>
     <string name="settings_vibration_scope_bottom_bar">Chỉ thanh dưới cùng</string>
+    <string name="search_modules">Tìm kiếm module...</string>
+    <string name="search_scripts">Tìm kiếm script...</string>
 </resources>
