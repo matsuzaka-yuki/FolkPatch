@@ -676,6 +676,10 @@
     <string name="settings_sound_effect_summary">タップ時にサウンド効果を再生します。</string>
     <string name="settings_sound_effect_enabled">有効</string>
     <string name="settings_sound_effect_playing">選択済み: %s</string>
+    <string name="settings_sound_effect_source">音源</string>
+    <string name="settings_sound_effect_source_local">ローカルファイル</string>
+    <string name="settings_sound_effect_source_preset">プリセット</string>
+    <string name="settings_sound_effect_preset_title">プリセットサウンド</string>
     <string name="settings_select_sound_effect">サウンド効果を選択</string>
     <string name="settings_sound_effect_selected">サウンド効果が選択されました。</string>
     <string name="settings_sound_effect_scope">効果のスコープ</string>
@@ -684,6 +688,17 @@
     <string name="settings_clear_sound_effect">サウンド効果を消去</string>
     <string name="settings_clear_sound_effect_confirm">サウンド効果を消去してもよろしいですか？</string>
     <string name="settings_sound_effect_cleared">サウンド効果を消去しました。</string>
+
+    <string name="settings_startup_sound">起動音</string>
+    <string name="settings_startup_sound_summary">アプリ起動時に音を再生</string>
+    <string name="settings_startup_sound_enabled">起動音が有効</string>
+    <string name="settings_startup_sound_playing">再生中: %s</string>
+    <string name="settings_select_startup_sound">起動音を選択</string>
+    <string name="settings_startup_sound_selected">起動音が選択されました</string>
+    <string name="settings_clear_startup_sound">起動音を消去</string>
+    <string name="settings_clear_startup_sound_confirm">起動音を消去してもよろしいですか？</string>
+    <string name="settings_startup_sound_cleared">起動音を消去しました</string>
+
     <!-- Backup Settings -->
     <string name="settings_category_backup">バックアップ</string>
     <string name="settings_enable_cloud_backup">クラウドバックアップを有効化する</string>

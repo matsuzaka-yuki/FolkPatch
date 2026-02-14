@@ -743,6 +743,10 @@ Por ejemplo, los KPM que previenen la modificación de particiones solo pueden u
     <string name="settings_sound_effect_summary">Reproducir efecto de sonido al hacer clic</string>
     <string name="settings_sound_effect_enabled">Habilitado</string>
     <string name="settings_sound_effect_playing">Seleccionado: %s</string>
+    <string name="settings_sound_effect_source">Fuente de sonido</string>
+    <string name="settings_sound_effect_source_local">Archivo local</string>
+    <string name="settings_sound_effect_source_preset">Predeterminado</string>
+    <string name="settings_sound_effect_preset_title">Sonidos predeterminados</string>
     <string name="settings_select_sound_effect">Seleccionar archivo de sonido</string>
     <string name="settings_sound_effect_selected">Archivo de sonido seleccionado</string>
     <string name="settings_sound_effect_scope">Alcance del efecto</string>
@@ -751,6 +755,16 @@ Por ejemplo, los KPM que previenen la modificación de particiones solo pueden u
     <string name="settings_clear_sound_effect">Borrar efecto de sonido</string>
     <string name="settings_clear_sound_effect_confirm">¿Estás seguro de que quieres borrar el efecto de sonido?</string>
     <string name="settings_sound_effect_cleared">Efecto de sonido borrado</string>
+
+    <string name="settings_startup_sound">Sonido de inicio</string>
+    <string name="settings_startup_sound_summary">Reproducir sonido al iniciar la aplicación</string>
+    <string name="settings_startup_sound_enabled">Sonido de inicio habilitado</string>
+    <string name="settings_startup_sound_playing">Reproduciendo: %s</string>
+    <string name="settings_select_startup_sound">Seleccionar sonido de inicio</string>
+    <string name="settings_startup_sound_selected">Sonido de inicio seleccionado</string>
+    <string name="settings_clear_startup_sound">Borrar sonido de inicio</string>
+    <string name="settings_clear_startup_sound_confirm">¿Estás seguro de que quieres borrar el sonido de inicio?</string>
+    <string name="settings_startup_sound_cleared">Sonido de inicio borrado</string>
 
     <string name="settings_enable_cloud_backup_summary">Copia de seguridad automática en la nube</string>
     <string name="settings_configure_webdav">Configurar servicio WebDAV</string>

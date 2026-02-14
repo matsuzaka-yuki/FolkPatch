@@ -741,6 +741,10 @@ Upewnij się, że aplikacja jest całkowicie zamknięta i ponownie otwarta, aby 
     <string name="settings_sound_effect_summary">Odtwarzaj dźwięk przy kliknięciu</string>
     <string name="settings_sound_effect_enabled">Włączone</string>
     <string name="settings_sound_effect_playing">Wybrano: %s</string>
+    <string name="settings_sound_effect_source">Źródło dźwięku</string>
+    <string name="settings_sound_effect_source_local">Plik lokalny</string>
+    <string name="settings_sound_effect_source_preset">Wstępne ustawienie</string>
+    <string name="settings_sound_effect_preset_title">Dźwięki wstępne</string>
     <string name="settings_select_sound_effect">Wybierz plik dźwiękowy</string>
     <string name="settings_sound_effect_selected">Wybrano plik dźwiękowy</string>
     <string name="settings_sound_effect_scope">Zakres efektu</string>
@@ -749,6 +753,16 @@ Upewnij się, że aplikacja jest całkowicie zamknięta i ponownie otwarta, aby 
     <string name="settings_clear_sound_effect">Wyczyść efekt dźwiękowy</string>
     <string name="settings_clear_sound_effect_confirm">Czy na pewno chcesz usunąć efekt dźwiękowy?</string>
     <string name="settings_sound_effect_cleared">Wyczyszczono efekt dźwiękowy</string>
+
+    <string name="settings_startup_sound">Dźwięk uruchomienia</string>
+    <string name="settings_startup_sound_summary">Odtwórz dźwięk przy uruchomieniu aplikacji</string>
+    <string name="settings_startup_sound_enabled">Dźwięk uruchomienia włączony</string>
+    <string name="settings_startup_sound_playing">Odtwarzanie: %s</string>
+    <string name="settings_select_startup_sound">Wybierz dźwięk uruchomienia</string>
+    <string name="settings_startup_sound_selected">Dźwięk uruchomienia wybrany</string>
+    <string name="settings_clear_startup_sound">Wyczyść dźwięk uruchomienia</string>
+    <string name="settings_clear_startup_sound_confirm">Czy na pewno chcesz usunąć dźwięk uruchomienia?</string>
+    <string name="settings_startup_sound_cleared">Dźwięk uruchomienia usunięty</string>
 
     <string name="settings_enable_cloud_backup_summary">Automatyczna kopia zapasowa w chmurze</string>
     <string name="settings_configure_webdav">Konfiguruj usługę WebDAV</string>

@@ -24,35 +24,56 @@ object SoundEffectManager {
         
         // Scope check is done by the caller (onClick listener)
         
-        val filename = SoundEffectConfig.soundEffectFilename ?: return
-        val file = File(SoundEffectConfig.getSoundEffectDir(context), filename)
+        val sourceType = SoundEffectConfig.sourceType
         
-        if (!file.exists()) return
-
         scope.launch {
-            try {
-                if (mediaPlayer == null) {
-                    mediaPlayer = MediaPlayer()
-                } else {
-                    mediaPlayer?.reset()
-                }
+            playSound(context, sourceType, SoundEffectConfig.presetName, SoundEffectConfig.soundEffectFilename, "sound")
+        }
+    }
 
-                mediaPlayer?.apply {
-                    setDataSource(context, Uri.fromFile(file))
-                    setOnPreparedListener { mp ->
-                        mp.start()
-                    }
-                    setOnErrorListener { mp, what, extra ->
-                        Log.e(TAG, "MediaPlayer error: $what, $extra")
-                        mp.reset()
-                        true
-                    }
-                    prepareAsync() // Use async to avoid blocking UI
-                }
-            } catch (e: Exception) {
-                Log.e(TAG, "Failed to play sound effect", e)
-                mediaPlayer = null // Reset on hard failure
+    fun playStartup(context: Context) {
+        if (!SoundEffectConfig.isStartupSoundEnabled) return
+        
+        val sourceType = SoundEffectConfig.startupSourceType
+        
+        scope.launch {
+            playSound(context, sourceType, SoundEffectConfig.startupPresetName, SoundEffectConfig.startupSoundFilename, "start")
+        }
+    }
+
+    private fun playSound(context: Context, sourceType: String, presetName: String, filename: String?, assetDir: String) {
+        try {
+            if (mediaPlayer == null) {
+                mediaPlayer = MediaPlayer()
+            } else {
+                mediaPlayer?.reset()
             }
+
+            mediaPlayer?.apply {
+                if (sourceType == SoundEffectConfig.SOURCE_TYPE_PRESET) {
+                    val afd = context.assets.openFd("$assetDir/$presetName.wav")
+                    setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
+                    afd.close()
+                } else {
+                    if (filename == null) return
+                    val file = File(SoundEffectConfig.getSoundEffectDir(context), filename)
+                    if (!file.exists()) return
+                    setDataSource(context, Uri.fromFile(file))
+                }
+                
+                setOnPreparedListener { mp ->
+                    mp.start()
+                }
+                setOnErrorListener { mp, what, extra ->
+                    Log.e(TAG, "MediaPlayer error: $what, $extra")
+                    mp.reset()
+                    true
+                }
+                prepareAsync() // Use async to avoid blocking UI
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to play sound effect", e)
+            mediaPlayer = null // Reset on hard failure
         }
     }
 

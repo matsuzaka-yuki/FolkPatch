@@ -740,6 +740,10 @@
     <string name="settings_sound_effect_summary">施法（点击）时回响魔法音效</string>
     <string name="settings_sound_effect_enabled">魔法音效已激活</string>
     <string name="settings_sound_effect_playing">当前音效: %s</string>
+    <string name="settings_sound_effect_source">魔法音源</string>
+    <string name="settings_sound_effect_source_local">现世音卷</string>
+    <string name="settings_sound_effect_source_preset">预设魔法</string>
+    <string name="settings_sound_effect_preset_title">魔法音效典藏</string>
     <string name="settings_select_sound_effect">挑选魔法音效</string>
     <string name="settings_sound_effect_selected">魔法音效已选定</string>
     <string name="settings_sound_effect_scope">音效生效结界</string>
@@ -748,6 +752,16 @@
     <string name="settings_clear_sound_effect">消除魔法音效</string>
     <string name="settings_clear_sound_effect_confirm">确定要消除此魔法音效吗？</string>
     <string name="settings_sound_effect_cleared">声音魔法已消散</string>
+
+    <string name="settings_startup_sound">唤醒魔法音</string>
+    <string name="settings_startup_sound_summary">启动魔法书时奏响魔法音</string>
+    <string name="settings_startup_sound_enabled">唤醒音已激活</string>
+    <string name="settings_startup_sound_playing">正在播放: %s</string>
+    <string name="settings_select_startup_sound">选择唤醒魔法音</string>
+    <string name="settings_startup_sound_selected">已选定唤醒魔法音</string>
+    <string name="settings_clear_startup_sound">消除唤醒音</string>
+    <string name="settings_clear_startup_sound_confirm">确定要消除唤醒魔法音吗？</string>
+    <string name="settings_startup_sound_cleared">唤醒音已消散</string>
 
     <!-- Backup Settings -->
     <string name="settings_category_backup">记忆回廊</string>

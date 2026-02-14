@@ -778,6 +778,10 @@ Please ensure the app is completely closed and reopened for the commands to exec
     <string name="settings_sound_effect_summary">Play sound effect on click</string>
     <string name="settings_sound_effect_enabled">Enabled</string>
     <string name="settings_sound_effect_playing">Selected: %s</string>
+    <string name="settings_sound_effect_source">Sound Source</string>
+    <string name="settings_sound_effect_source_local">Local File</string>
+    <string name="settings_sound_effect_source_preset">Preset</string>
+    <string name="settings_sound_effect_preset_title">Preset Sound</string>
     <string name="settings_select_sound_effect">Select Sound Effect</string>
     <string name="settings_sound_effect_selected">Sound effect file selected</string>
     <string name="settings_sound_effect_scope">Effect Scope</string>
@@ -786,6 +790,16 @@ Please ensure the app is completely closed and reopened for the commands to exec
     <string name="settings_clear_sound_effect">Clear Sound Effect</string>
     <string name="settings_clear_sound_effect_confirm">Are you sure you want to clear the sound effect?</string>
     <string name="settings_sound_effect_cleared">Sound effect cleared</string>
+
+    <string name="settings_startup_sound">Startup Sound</string>
+    <string name="settings_startup_sound_summary">Play sound when app starts</string>
+    <string name="settings_startup_sound_enabled">Startup Sound Enabled</string>
+    <string name="settings_startup_sound_playing">Playing: %s</string>
+    <string name="settings_select_startup_sound">Select Startup Sound</string>
+    <string name="settings_startup_sound_selected">Startup sound selected</string>
+    <string name="settings_clear_startup_sound">Clear Startup Sound</string>
+    <string name="settings_clear_startup_sound_confirm">Are you sure you want to clear the startup sound?</string>
+    <string name="settings_startup_sound_cleared">Startup sound cleared</string>
 
     <string name="settings_vibration">Vibration Feedback</string>
     <string name="settings_vibration_summary">Vibrate on touch events</string>

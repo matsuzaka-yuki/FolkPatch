@@ -255,6 +255,8 @@ class MainActivity : AppCompatActivity() {
                     override fun onAuthenticationSucceeded(result: androidx.biometric.BiometricPrompt.AuthenticationResult) {
                         super.onAuthenticationSucceeded(result)
                         isLocked.value = false
+                        // Play startup sound after biometric auth success
+                        me.bmax.apatch.util.SoundEffectManager.playStartup(this@MainActivity)
                     }
                 })
             val promptInfo = androidx.biometric.BiometricPrompt.PromptInfo.Builder()
@@ -263,6 +265,9 @@ class MainActivity : AppCompatActivity() {
                 .setAllowedAuthenticators(androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG or androidx.biometric.BiometricManager.Authenticators.DEVICE_CREDENTIAL)
                 .build()
             biometricPrompt.authenticate(promptInfo)
+        } else {
+            // Play startup sound directly if no biometric auth needed
+            me.bmax.apatch.util.SoundEffectManager.playStartup(this)
         }
         setupUI()
     }

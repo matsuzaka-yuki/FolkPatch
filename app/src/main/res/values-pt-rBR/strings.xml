@@ -739,6 +739,10 @@ Por favor, certifique-se de fechar completamente o app e reabri-lo para que os c
     <string name="settings_sound_effect_summary">Tocar efeito sonoro ao clicar</string>
     <string name="settings_sound_effect_enabled">Ativado</string>
     <string name="settings_sound_effect_playing">Selecionado: %s</string>
+    <string name="settings_sound_effect_source">Fonte do som</string>
+    <string name="settings_sound_effect_source_local">Arquivo local</string>
+    <string name="settings_sound_effect_source_preset">Predefinição</string>
+    <string name="settings_sound_effect_preset_title">Sons predefinidos</string>
     <string name="settings_select_sound_effect">Selecionar arquivo de som</string>
     <string name="settings_sound_effect_selected">Arquivo de som selecionado</string>
     <string name="settings_sound_effect_scope">Escopo do efeito</string>
@@ -747,6 +751,16 @@ Por favor, certifique-se de fechar completamente o app e reabri-lo para que os c
     <string name="settings_clear_sound_effect">Limpar efeito sonoro</string>
     <string name="settings_clear_sound_effect_confirm">Tem certeza que deseja limpar o efeito sonoro?</string>
     <string name="settings_sound_effect_cleared">Efeito sonoro limpo</string>
+
+    <string name="settings_startup_sound">Som de inicialização</string>
+    <string name="settings_startup_sound_summary">Tocar som ao iniciar o aplicativo</string>
+    <string name="settings_startup_sound_enabled">Som de inicialização ativado</string>
+    <string name="settings_startup_sound_playing">Tocando: %s</string>
+    <string name="settings_select_startup_sound">Selecionar som de inicialização</string>
+    <string name="settings_startup_sound_selected">Som de inicialização selecionado</string>
+    <string name="settings_clear_startup_sound">Limpar som de inicialização</string>
+    <string name="settings_clear_startup_sound_confirm">Tem certeza que deseja limpar o som de inicialização?</string>
+    <string name="settings_startup_sound_cleared">Som de inicialização limpo</string>
 
     <string name="settings_enable_cloud_backup_summary">Backup automático na nuvem</string>
     <string name="settings_configure_webdav">Configurar serviço WebDAV</string>

@@ -765,6 +765,10 @@ Komutların çalışması için uygulamanın tamamen kapatılıp yeniden açıld
     <string name="settings_sound_effect_summary">Tıklamada ses efekti çal</string>
     <string name="settings_sound_effect_enabled">Etkin</string>
     <string name="settings_sound_effect_playing">Seçili: %s</string>
+    <string name="settings_sound_effect_source">Ses Kaynağı</string>
+    <string name="settings_sound_effect_source_local">Yerel Dosya</string>
+    <string name="settings_sound_effect_source_preset">Hazır</string>
+    <string name="settings_sound_effect_preset_title">Hazır Sesler</string>
     <string name="settings_select_sound_effect">Ses Efekti Seç</string>
     <string name="settings_sound_effect_selected">Ses efekti dosyası seçildi</string>
     <string name="settings_sound_effect_scope">Efekt Kapsamı</string>
@@ -773,6 +777,16 @@ Komutların çalışması için uygulamanın tamamen kapatılıp yeniden açıld
     <string name="settings_clear_sound_effect">Ses Efektini Temizle</string>
     <string name="settings_clear_sound_effect_confirm">Ses efektini temizlemek istediğinize emin misiniz?</string>
     <string name="settings_sound_effect_cleared">Ses efekti temizlendi</string>
+
+    <string name="settings_startup_sound">Başlangıç Sesi</string>
+    <string name="settings_startup_sound_summary">Uygulama başlatıldığında ses çal</string>
+    <string name="settings_startup_sound_enabled">Başlangıç Sesi Etkin</string>
+    <string name="settings_startup_sound_playing">Çalıyor: %s</string>
+    <string name="settings_select_startup_sound">Başlangıç Sesi Seç</string>
+    <string name="settings_startup_sound_selected">Başlangıç sesi seçildi</string>
+    <string name="settings_clear_startup_sound">Başlangıç Sesini Temizle</string>
+    <string name="settings_clear_startup_sound_confirm">Başlangıç sesini temizlemek istediğinize emin misiniz?</string>
+    <string name="settings_startup_sound_cleared">Başlangıç sesi temizlendi</string>
 
     <!-- Backup Settings -->
     <string name="settings_category_backup">Yedekleme</string>

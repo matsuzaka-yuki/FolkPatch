@@ -744,6 +744,10 @@
     <string name="settings_sound_effect_summary">戳人家的时候会叫喵</string>
     <string name="settings_sound_effect_enabled">已经开启啦喵</string>
     <string name="settings_sound_effect_playing">现在选的是: %s 喵</string>
+    <string name="settings_sound_effect_source">声音从哪来喵</string>
+    <string name="settings_sound_effect_source_local">本地的声音喵</string>
+    <string name="settings_sound_effect_source_preset">预设的喵</string>
+    <string name="settings_sound_effect_preset_title">预设声音喵</string>
     <string name="settings_select_sound_effect">选个好听的声音喵</string>
     <string name="settings_sound_effect_selected">声音选好啦喵</string>
     <string name="settings_sound_effect_scope">在哪里叫喵</string>
@@ -752,6 +756,16 @@
     <string name="settings_clear_sound_effect">不要声音了喵</string>
     <string name="settings_clear_sound_effect_confirm">真的不要听人家叫了吗喵？</string>
     <string name="settings_sound_effect_cleared">声音没有了喵...</string>
+
+    <string name="settings_startup_sound">欢迎音喵</string>
+    <string name="settings_startup_sound_summary">打开时叫一声欢迎主人喵</string>
+    <string name="settings_startup_sound_enabled">欢迎音已开启喵</string>
+    <string name="settings_startup_sound_playing">正在叫: %s 喵</string>
+    <string name="settings_select_startup_sound">选个欢迎音喵</string>
+    <string name="settings_startup_sound_selected">欢迎音选好啦喵</string>
+    <string name="settings_clear_startup_sound">不要欢迎音了喵</string>
+    <string name="settings_clear_startup_sound_confirm">真的不要欢迎音了吗喵？</string>
+    <string name="settings_startup_sound_cleared">欢迎音没有了喵...</string>
 
     <!-- Backup Settings -->
     <string name="settings_category_backup">备份喵</string>

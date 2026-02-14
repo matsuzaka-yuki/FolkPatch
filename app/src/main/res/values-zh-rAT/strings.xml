@@ -743,6 +743,10 @@
     <string name="settings_sound_effect_summary">点击时回响圣音</string>
     <string name="settings_sound_effect_enabled">圣音已降临</string>
     <string name="settings_sound_effect_playing">当前圣音: %s</string>
+    <string name="settings_sound_effect_source">圣音来源</string>
+    <string name="settings_sound_effect_source_local">凡间法器</string>
+    <string name="settings_sound_effect_source_preset">圣光预设</string>
+    <string name="settings_sound_effect_preset_title">圣光音库</string>
     <string name="settings_select_sound_effect">选择圣音法器</string>
     <string name="settings_sound_effect_selected">圣音法器已选</string>
     <string name="settings_sound_effect_scope">圣音回响范围</string>
@@ -751,6 +755,16 @@
     <string name="settings_clear_sound_effect">净化圣音</string>
     <string name="settings_clear_sound_effect_confirm">确定要净化此圣音吗？</string>
     <string name="settings_sound_effect_cleared">圣音已净化</string>
+
+    <string name="settings_startup_sound">降临圣音</string>
+    <string name="settings_startup_sound_summary">圣域开启时奏响降临圣音</string>
+    <string name="settings_startup_sound_enabled">降临圣音已降临</string>
+    <string name="settings_startup_sound_playing">正在奏响: %s</string>
+    <string name="settings_select_startup_sound">选择降临圣音</string>
+    <string name="settings_startup_sound_selected">降临圣音已选</string>
+    <string name="settings_clear_startup_sound">净化降临圣音</string>
+    <string name="settings_clear_startup_sound_confirm">确定要净化降临圣音吗？</string>
+    <string name="settings_startup_sound_cleared">降临圣音已净化</string>
 
     <!-- Backup Settings -->
     <string name="settings_category_backup">圣域记忆</string>

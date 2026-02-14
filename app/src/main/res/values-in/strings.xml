@@ -720,6 +720,10 @@ Pastikan aplikasi ditutup sepenuhnya dan dimulai ulang untuk menjalankan perinta
     <string name="settings_sound_effect_summary">Mainkan suara saat klik</string>
     <string name="settings_sound_effect_enabled">Diaktifkan</string>
     <string name="settings_sound_effect_playing">Dipilih: %s</string>
+    <string name="settings_sound_effect_source">Sumber Suara</string>
+    <string name="settings_sound_effect_source_local">File Lokal</string>
+    <string name="settings_sound_effect_source_preset">Preset</string>
+    <string name="settings_sound_effect_preset_title">Suara Preset</string>
     <string name="settings_select_sound_effect">Pilih file suara</string>
     <string name="settings_sound_effect_selected">File suara dipilih</string>
     <string name="settings_sound_effect_scope">Cakupan Efek</string>
@@ -728,6 +732,16 @@ Pastikan aplikasi ditutup sepenuhnya dan dimulai ulang untuk menjalankan perinta
     <string name="settings_clear_sound_effect">Hapus Efek Suara</string>
     <string name="settings_clear_sound_effect_confirm">Apakah Anda yakin ingin menghapus efek suara?</string>
     <string name="settings_sound_effect_cleared">Efek suara dihapus</string>
+
+    <string name="settings_startup_sound">Suara Startup</string>
+    <string name="settings_startup_sound_summary">Mainkan suara saat aplikasi dimulai</string>
+    <string name="settings_startup_sound_enabled">Suara Startup Diaktifkan</string>
+    <string name="settings_startup_sound_playing">Memutar: %s</string>
+    <string name="settings_select_startup_sound">Pilih Suara Startup</string>
+    <string name="settings_startup_sound_selected">Suara startup dipilih</string>
+    <string name="settings_clear_startup_sound">Hapus Suara Startup</string>
+    <string name="settings_clear_startup_sound_confirm">Apakah Anda yakin ingin menghapus suara startup?</string>
+    <string name="settings_startup_sound_cleared">Suara startup dihapus</string>
 
     <!-- Backup Settings -->
     <string name="settings_category_backup">Pengaturan Cadangan</string>

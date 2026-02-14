@@ -739,6 +739,10 @@
     <string name="settings_sound_effect_summary">Воспроизводить звук при нажатии</string>
     <string name="settings_sound_effect_enabled">Включено</string>
     <string name="settings_sound_effect_playing">Выбрано: %s</string>
+    <string name="settings_sound_effect_source">Источник звука</string>
+    <string name="settings_sound_effect_source_local">Локальный файл</string>
+    <string name="settings_sound_effect_source_preset">Предустановка</string>
+    <string name="settings_sound_effect_preset_title">Предустановленные звуки</string>
     <string name="settings_select_sound_effect">Выбрать звуковой файл</string>
     <string name="settings_sound_effect_selected">Звуковой файл выбран</string>
     <string name="settings_sound_effect_scope">Область действия</string>
@@ -747,6 +751,16 @@
     <string name="settings_clear_sound_effect">Очистить звуковой эффект</string>
     <string name="settings_clear_sound_effect_confirm">Вы уверены, что хотите удалить звуковой эффект?</string>
     <string name="settings_sound_effect_cleared">Звуковой эффект удален</string>
+
+    <string name="settings_startup_sound">Звук запуска</string>
+    <string name="settings_startup_sound_summary">Воспроизводить звук при запуске приложения</string>
+    <string name="settings_startup_sound_enabled">Звук запуска включен</string>
+    <string name="settings_startup_sound_playing">Воспроизведение: %s</string>
+    <string name="settings_select_startup_sound">Выбрать звук запуска</string>
+    <string name="settings_startup_sound_selected">Звук запуска выбран</string>
+    <string name="settings_clear_startup_sound">Очистить звук запуска</string>
+    <string name="settings_clear_startup_sound_confirm">Вы уверены, что хотите удалить звук запуска?</string>
+    <string name="settings_startup_sound_cleared">Звук запуска удален</string>
 
     <string name="settings_enable_cloud_backup_summary">Автоматическое резервное копирование в облако</string>
     <string name="settings_configure_webdav">Настроить службу WebDAV</string>

@@ -738,6 +738,10 @@ Cần đảm bảo phần mềm thoát hoàn toàn vào mới sẽ thực thi l�
     <string name="settings_sound_effect_summary">Phát âm thanh khi nhấn</string>
     <string name="settings_sound_effect_enabled">Đã bật</string>
     <string name="settings_sound_effect_playing">Đang chọn: %s</string>
+    <string name="settings_sound_effect_source">Nguồn âm thanh</string>
+    <string name="settings_sound_effect_source_local">Tệp cục bộ</string>
+    <string name="settings_sound_effect_source_preset">Đặt trước</string>
+    <string name="settings_sound_effect_preset_title">Âm thanh đặt trước</string>
     <string name="settings_select_sound_effect">Chọn tập tin âm thanh</string>
     <string name="settings_sound_effect_selected">Đã chọn tập tin âm thanh</string>
     <string name="settings_sound_effect_scope">Phạm vi hiệu ứng</string>
@@ -746,6 +750,16 @@ Cần đảm bảo phần mềm thoát hoàn toàn vào mới sẽ thực thi l�
     <string name="settings_clear_sound_effect">Xóa hiệu ứng âm thanh</string>
     <string name="settings_clear_sound_effect_confirm">Bạn có chắc chắn muốn xóa hiệu ứng âm thanh không?</string>
     <string name="settings_sound_effect_cleared">Đã xóa hiệu ứng âm thanh</string>
+
+    <string name="settings_startup_sound">Âm thanh khởi động</string>
+    <string name="settings_startup_sound_summary">Phát âm thanh khi khởi động ứng dụng</string>
+    <string name="settings_startup_sound_enabled">Đã bật âm thanh khởi động</string>
+    <string name="settings_startup_sound_playing">Đang phát: %s</string>
+    <string name="settings_select_startup_sound">Chọn âm thanh khởi động</string>
+    <string name="settings_startup_sound_selected">Đã chọn âm thanh khởi động</string>
+    <string name="settings_clear_startup_sound">Xóa âm thanh khởi động</string>
+    <string name="settings_clear_startup_sound_confirm">Bạn có chắc chắn muốn xóa âm thanh khởi động không?</string>
+    <string name="settings_startup_sound_cleared">Đã xóa âm thanh khởi động</string>
 
     <string name="settings_enable_cloud_backup_summary">Sao lưu tự động lên đám mây</string>
     <string name="settings_configure_webdav">Cấu hình dịch vụ WebDAV</string>

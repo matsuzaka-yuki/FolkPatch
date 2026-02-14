@@ -748,6 +748,10 @@
     <string name="settings_sound_effect_summary">操作时发出厨房声响</string>
     <string name="settings_sound_effect_enabled">声响已开</string>
     <string name="settings_sound_effect_playing">当前声响: %s</string>
+    <string name="settings_sound_effect_source">声响来源</string>
+    <string name="settings_sound_effect_source_local">本地食材</string>
+    <string name="settings_sound_effect_source_preset">主厨预设</string>
+    <string name="settings_sound_effect_preset_title">主厨音效库</string>
     <string name="settings_select_sound_effect">选择声响文件</string>
     <string name="settings_sound_effect_selected">已选声响文件</string>
     <string name="settings_sound_effect_scope">声响范围</string>
@@ -756,6 +760,16 @@
     <string name="settings_clear_sound_effect">清除声响</string>
     <string name="settings_clear_sound_effect_confirm">确定要清除声响吗？</string>
     <string name="settings_sound_effect_cleared">声响已关</string>
+
+    <string name="settings_startup_sound">开张声响</string>
+    <string name="settings_startup_sound_summary">餐厅开门时播放迎宾声响</string>
+    <string name="settings_startup_sound_enabled">开张声响已开</string>
+    <string name="settings_startup_sound_playing">正在播放: %s</string>
+    <string name="settings_select_startup_sound">选择开张声响</string>
+    <string name="settings_startup_sound_selected">已选开张声响</string>
+    <string name="settings_clear_startup_sound">关闭开张声响</string>
+    <string name="settings_clear_startup_sound_confirm">确定要关闭开张声响吗？</string>
+    <string name="settings_startup_sound_cleared">开张声响已关</string>
 
     <string name="settings_vibration">触感反馈</string>
     <string name="settings_vibration_summary">操作时震动提示</string>

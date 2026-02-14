@@ -751,6 +751,10 @@
     <string name="settings_sound_effect_summary">点击时播放音效</string>
     <string name="settings_sound_effect_enabled">已启用</string>
     <string name="settings_sound_effect_playing">当前选择: %s</string>
+    <string name="settings_sound_effect_source">音效来源</string>
+    <string name="settings_sound_effect_source_local">本地文件</string>
+    <string name="settings_sound_effect_source_preset">预设</string>
+    <string name="settings_sound_effect_preset_title">预设音效</string>
     <string name="settings_select_sound_effect">选择音效文件</string>
     <string name="settings_sound_effect_selected">已选择音效文件</string>
     <string name="settings_sound_effect_scope">生效范围</string>
@@ -759,6 +763,16 @@
     <string name="settings_clear_sound_effect">清除音效</string>
     <string name="settings_clear_sound_effect_confirm">确定要清除音效吗？</string>
     <string name="settings_sound_effect_cleared">音效已清除</string>
+
+    <string name="settings_startup_sound">启动音效</string>
+    <string name="settings_startup_sound_summary">应用启动时播放音效</string>
+    <string name="settings_startup_sound_enabled">已启用启动音效</string>
+    <string name="settings_startup_sound_playing">正在播放: %s</string>
+    <string name="settings_select_startup_sound">选择启动音效</string>
+    <string name="settings_startup_sound_selected">已选择启动音效</string>
+    <string name="settings_clear_startup_sound">清除启动音效</string>
+    <string name="settings_clear_startup_sound_confirm">确定要清除启动音效吗？</string>
+    <string name="settings_startup_sound_cleared">启动音效已清除</string>
 
     <string name="settings_vibration">震动触感</string>
     <string name="settings_vibration_summary">在触摸事件时震动</string>

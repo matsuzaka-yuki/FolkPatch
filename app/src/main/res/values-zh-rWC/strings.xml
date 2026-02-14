@@ -740,6 +740,10 @@
     <string name="settings_sound_effect_summary">触动法阵时奏响仙音</string>
     <string name="settings_sound_effect_enabled">已启阵</string>
     <string name="settings_sound_effect_playing">当前仙音：%s</string>
+    <string name="settings_sound_effect_source">仙音之源</string>
+    <string name="settings_sound_effect_source_local">凡间法宝</string>
+    <string name="settings_sound_effect_source_preset">仙界预设</string>
+    <string name="settings_sound_effect_preset_title">仙音宝库</string>
     <string name="settings_select_sound_effect">择仙音法宝</string>
     <string name="settings_sound_effect_selected">已择仙音法宝</string>
     <string name="settings_sound_effect_scope">仙音结界范围</string>
@@ -748,6 +752,16 @@
     <string name="settings_clear_sound_effect">散去仙音</string>
     <string name="settings_clear_sound_effect_confirm">道友确欲散去此仙音乎？</string>
     <string name="settings_sound_effect_cleared">仙音已散</string>
+
+    <string name="settings_startup_sound">开境仙音</string>
+    <string name="settings_startup_sound_summary">开启仙界时奏响开境仙音</string>
+    <string name="settings_startup_sound_enabled">开境仙音已启</string>
+    <string name="settings_startup_sound_playing">正在奏响：%s</string>
+    <string name="settings_select_startup_sound">选择开境仙音</string>
+    <string name="settings_startup_sound_selected">已择开境仙音</string>
+    <string name="settings_clear_startup_sound">散去开境仙音</string>
+    <string name="settings_clear_startup_sound_confirm">道友确欲散去开境仙音乎？</string>
+    <string name="settings_startup_sound_cleared">开境仙音已散</string>
 
     <!-- Backup Settings -->
     <string name="settings_category_backup">乾坤备份</string>
