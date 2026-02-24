@@ -30,6 +30,16 @@ use crate::{
 pub fn on_post_data_fs(superkey: Option<String>) -> Result<()> {
     utils::umask(0);
     use std::process::Stdio;
+
+    // Create /data/adb/fp directory for hide and umount binaries
+    let fp_dir = Path::new("/data/adb/fp");
+    if !fp_dir.exists() {
+        fs::create_dir_all(fp_dir).with_context(|| "Failed to create /data/adb/fp directory")?;
+        let permissions = fs::Permissions::from_mode(0o755);
+        fs::set_permissions(fp_dir, permissions).with_context(|| "Failed to set permissions for /data/adb/fp")?;
+        info!("Created directory: /data/adb/fp");
+    }
+
     #[cfg(unix)]
     init_load_package_uid_config(&superkey);
 
@@ -191,10 +201,35 @@ pub fn on_post_data_fs(superkey: Option<String>) -> Result<()> {
                 }
             }
         } else {
-            warn!("Hide binary not found at {}", defs::HIDE_BINARY_PATH);
+            warn!("Hide binary not found at {}, please copy it manually", defs::HIDE_BINARY_PATH);
         }
     } else {
         info!("Hide Service disabled");
+    }
+
+    // Execute Umount Service if enabled
+    if Path::new(defs::UMOUNT_SERVICE_FILE).exists() {
+        info!("Umount Service enabled, executing umount binary...");
+        if Path::new(defs::UMOUNT_BINARY_PATH).exists() {
+            let result = Command::new(defs::UMOUNT_BINARY_PATH)
+                .status();
+            match result {
+                Ok(status) => {
+                    if status.success() {
+                        info!("Umount binary executed successfully");
+                    } else {
+                        warn!("Umount binary exited with status: {:?}", status.code());
+                    }
+                }
+                Err(e) => {
+                    warn!("Failed to execute umount binary: {}", e);
+                }
+            }
+        } else {
+            warn!("Umount binary not found at {}, please copy it manually", defs::UMOUNT_BINARY_PATH);
+        }
+    } else {
+        info!("Umount Service disabled");
     }
 
     // exec modules post-fs-data scripts
