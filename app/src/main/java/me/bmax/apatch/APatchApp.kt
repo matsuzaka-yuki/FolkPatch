@@ -85,7 +85,9 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler, ImageLoade
         const val GLOBAL_NAMESPACE_FILE = "/data/adb/.global_namespace_enable"
         const val MAGIC_MOUNT_FILE = "/data/adb/.magic_mount_enable"
         const val HIDE_SERVICE_FILE = "/data/adb/.hide_service_enable"
-        const val HIDE_BINARY_PATH = APATCH_BIN_FOLDER + "hide"
+        const val HIDE_BINARY_PATH = "/data/adb/fp/hide"
+        const val UMOUNT_SERVICE_FILE = "/data/adb/.umount_service_enable"
+        const val UMOUNT_BINARY_PATH = "/data/adb/fp/umount"
         const val KPMS_DIR = APATCH_FOLDER + "kpms/"
 
         @Deprecated("Use 'apd -V'")

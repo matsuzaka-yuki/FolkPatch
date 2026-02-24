@@ -427,10 +427,10 @@ fun setHideServiceEnabled(enable: Boolean) {
 fun executeHideBinary(): Boolean {
     val shell = getRootShell()
     val context = apApp.applicationContext
-    
-    // 确保 bin 目录存在
-    shell.newJob().add("mkdir -p ${APApplication.APATCH_FOLDER}bin").exec()
-    
+
+    // 确保 fp 目录存在
+    shell.newJob().add("mkdir -p /data/adb/fp").exec()
+
     // 从 assets 复制 Hide 二进制文件到可执行目录
     try {
         val hideAsset = context.assets.open("Service/Hide")
@@ -439,7 +439,7 @@ fun executeHideBinary(): Boolean {
             hideAsset.copyTo(output)
         }
         hideAsset.close()
-        
+
         // 复制到目标目录并设置权限
         val cmds = arrayOf(
             "cp ${tempFile.absolutePath} ${APApplication.HIDE_BINARY_PATH}",
@@ -447,14 +447,69 @@ fun executeHideBinary(): Boolean {
             "restorecon ${APApplication.HIDE_BINARY_PATH}",
             APApplication.HIDE_BINARY_PATH
         )
-        
+
         val result = shell.newJob().add(*cmds).exec()
         tempFile.delete()
-        
+
         Log.i(TAG, "executeHideBinary result: ${result.isSuccess} [${result.out}]")
         return result.isSuccess
     } catch (e: Exception) {
         Log.e(TAG, "executeHideBinary failed: ${e.message}", e)
+        return false
+    }
+}
+
+fun isUmountServiceEnabled(): Boolean {
+    val umountService = SuFile(APApplication.UMOUNT_SERVICE_FILE)
+    umountService.shell = getRootShell()
+    return umountService.exists()
+}
+
+fun setUmountServiceEnabled(enabled: Boolean): Boolean {
+    val shell = getRootShell()
+    val result = if (enabled) {
+        shell.newJob().add("touch ${APApplication.UMOUNT_SERVICE_FILE}").exec().isSuccess
+    } else {
+        shell.newJob().add("rm -rf ${APApplication.UMOUNT_SERVICE_FILE}").exec().isSuccess
+    }
+
+    // 如果启用，立即执行一次 Umount 二进制复制
+    if (enabled) {
+        executeUmountBinary()
+    }
+
+    return result
+}
+
+fun executeUmountBinary(): Boolean {
+    val shell = getRootShell()
+    val context = apApp.applicationContext
+
+    // 确保 fp 目录存在
+    shell.newJob().add("mkdir -p /data/adb/fp").exec()
+
+    try {
+        val umountAsset = context.assets.open("Service/Umount")
+        val tempFile = File(context.cacheDir, "umount_temp")
+        tempFile.outputStream().use { output ->
+            umountAsset.copyTo(output)
+        }
+        umountAsset.close()
+
+        val cmds = arrayOf(
+            "cp ${tempFile.absolutePath} ${APApplication.UMOUNT_BINARY_PATH}",
+            "chmod 755 ${APApplication.UMOUNT_BINARY_PATH}",
+            "restorecon ${APApplication.UMOUNT_BINARY_PATH}",
+            APApplication.UMOUNT_BINARY_PATH
+        )
+
+        val result = shell.newJob().add(*cmds).exec()
+        tempFile.delete()
+
+        Log.i(TAG, "executeUmountBinary result: ${result.isSuccess} [${result.out}]")
+        return result.isSuccess
+    } catch (e: Exception) {
+        Log.e(TAG, "executeUmountBinary failed: ${e.message}", e)
         return false
     }
 }
