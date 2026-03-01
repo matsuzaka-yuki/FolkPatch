@@ -1074,7 +1074,14 @@ private fun KPModuleItem(
                         )
 
                         Text(
-                            text = "${module.version} • $moduleAuthor ${module.author}",
+                            text = module.version,
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            textDecoration = decoration
+                        )
+
+                        Text(
+                            text = module.author,
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             textDecoration = decoration

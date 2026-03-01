@@ -1439,9 +1439,16 @@ private fun ModuleItem(
                             style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                             textDecoration = if (module.remove) TextDecoration.LineThrough else TextDecoration.None
                         )
-                        
+
                         Text(
-                            text = "${module.version} • ${module.author}",
+                            text = module.version,
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            textDecoration = if (module.remove) TextDecoration.LineThrough else TextDecoration.None
+                        )
+
+                        Text(
+                            text = module.author,
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             textDecoration = if (module.remove) TextDecoration.LineThrough else TextDecoration.None
