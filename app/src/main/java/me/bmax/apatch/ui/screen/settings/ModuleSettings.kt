@@ -92,7 +92,7 @@ fun ModuleSettings(
             }
 
             if (showFoldSystemModule) {
-                var foldSystemModule by remember { mutableStateOf(prefs.getBoolean("fold_system_module", false)) }
+                var foldSystemModule by remember { mutableStateOf(prefs.getBoolean("fold_system_module", true)) }
                 SwitchItem(
                     icon = Icons.Filled.Folder,
                     title = foldSystemModuleTitle,

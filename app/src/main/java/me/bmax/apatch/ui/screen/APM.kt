@@ -180,7 +180,7 @@ fun APModuleScreen(navigator: DestinationsNavigator) {
     var dontShowAgain by remember { mutableStateOf(false) }
 
     var showMoreModuleInfo by remember { mutableStateOf(prefs.getBoolean("show_more_module_info", true)) }
-    var foldSystemModule by remember { mutableStateOf(prefs.getBoolean("fold_system_module", false)) }
+    var foldSystemModule by remember { mutableStateOf(prefs.getBoolean("fold_system_module", true)) }
     var simpleListBottomBar by remember { mutableStateOf(prefs.getBoolean("simple_list_bottom_bar", false)) }
 
     val viewModel = viewModel<APModuleViewModel>()
