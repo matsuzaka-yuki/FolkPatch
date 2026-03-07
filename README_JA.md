@@ -92,4 +92,3 @@ FolkPatch - インターフェースの最適化と拡張機能に重視した R
 
 ### FolkPatch ディスカッションとコミュニケーション
 - Telegram チャンネル: [@FolkPatch](https://t.me/FolkPatch)
-- QQ グループ: 1074588103
