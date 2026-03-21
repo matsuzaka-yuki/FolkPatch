@@ -622,6 +622,9 @@ Please ensure the app is completely closed and reopened for the commands to exec
     <string name="settings_home_layout_sign">SignUI</string>
     <string name="settings_home_layout_circle">CircleUI</string>
     <string name="settings_home_layout_dashboard_pro">DashboardUI</string>
+    <string name="unofficial_version_title">Unofficial Version</string>
+    <string name="unofficial_version_message">You are using FolkPatch which is not an official app, please download the official app!</string>
+    <string name="go_to_github">Go to Github</string>
     <string name="settings_save_theme">Save theme</string>
     <string name="settings_import_theme">Import theme</string>
     <string name="settings_theme_saved">Theme saved</string>
