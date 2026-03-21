@@ -4,8 +4,12 @@ import android.os.Parcelable
 import androidx.annotation.Keep
 import androidx.compose.runtime.Immutable
 import kotlinx.parcelize.Parcelize
+import kotlin.jvm.JvmInline
 
 object KPModel {
+
+    @JvmInline
+    value class SuperKey(val value: String)
 
     enum class TriggerEvent(val event: String) {
         PAGING_INIT("paging-init"),
@@ -13,14 +17,13 @@ object KPModel {
         POST_KERNEL_INIT("post-kernel-init"),
     }
 
-
     enum class ExtraType(val desc: String) {
         NONE("none"),
         KPM("kpm"),
         SHELL("shell"),
         EXEC("exec"),
         RAW("raw"),
-        ANDROID_RC("android_rc");
+        ANDROID_RC("android_rc"),
     }
 
     interface IExtraInfo : Parcelable {
@@ -52,7 +55,7 @@ object KPModel {
         var compileTime: String,
         var config: String,
         var superKey: String,
-        var rootSuperkey: String
+        var rootSuperkey: String,
     ) : Parcelable
 
     @Immutable

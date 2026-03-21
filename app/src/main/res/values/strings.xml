@@ -612,7 +612,7 @@ Please ensure the app is completely closed and reopened for the commands to exec
     <string name="auto_backup_failed">Auto backup failed: %s</string>
     <string name="auto_backup_success">Auto backup success: %s</string>
     <string name="settings_auto_backup_boot">Auto Backup Boot</string>
-    <string name="settings_auto_backup_boot_summary">Automatically backup Boot to local storage (Downloads/FolkPatch/BootBackups)</string>
+    <string name="settings_auto_backup_boot_summary">Automatically backup Boot to local storage (/data/FolkPatch_patched_version_timestamp/)</string>
 
     <!-- Home Layout Strings -->
     <string name="settings_home_layout_style">Home Layout Style</string>

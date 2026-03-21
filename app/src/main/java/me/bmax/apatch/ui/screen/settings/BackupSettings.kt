@@ -90,7 +90,7 @@ fun BackupSettings(
              }
 
              if (showEnableBootBackup) {
-                 var autoBackupBoot by remember { mutableStateOf(prefs.getBoolean("auto_backup_boot", false)) }
+                 var autoBackupBoot by remember { mutableStateOf(prefs.getBoolean("auto_backup_boot", true)) }
                  SwitchItem(
                     icon = Icons.Filled.RestartAlt,
                     title = enableBootBackupTitle,
