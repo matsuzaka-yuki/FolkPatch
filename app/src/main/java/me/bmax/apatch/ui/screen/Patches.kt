@@ -56,7 +56,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -99,14 +99,26 @@ fun Patches(mode: PatchesViewModel.PatchMode) {
     val scope = rememberCoroutineScope()
 
     val viewModel = viewModel<PatchesViewModel>()
-    SideEffect {
+    val needReboot by viewModel.needReboot.collectAsState()
+    val error by viewModel.error.collectAsState()
+    val kpimgInfo by viewModel.kpimgInfo.collectAsState()
+    val kimgInfo by viewModel.kimgInfo.collectAsState()
+    val bootSlot by viewModel.bootSlot.collectAsState()
+    val bootDev by viewModel.bootDev.collectAsState()
+    val running by viewModel.running.collectAsState()
+    val patching by viewModel.patching.collectAsState()
+    val patchdone by viewModel.patchdone.collectAsState()
+    val patchLog by viewModel.patchLog.collectAsState()
+    val superkey by viewModel.superkey.collectAsState()
+
+    LaunchedEffect(Unit) {
         viewModel.prepare(mode)
     }
 
     Scaffold(topBar = {
         TopBar()
     }, floatingActionButton = {
-        if (viewModel.needReboot) {
+        if (needReboot) {
             val reboot = stringResource(id = R.string.reboot)
             ExtendedFloatingActionButton(
                 onClick = {
@@ -150,109 +162,95 @@ fun Patches(mode: PatchesViewModel.PatchMode) {
             }
 
             PatchMode(mode)
-            ErrorView(viewModel.error)
-            KernelPatchImageView(viewModel.kpimgInfo)
+            ErrorView(error)
+            KernelPatchImageView(kpimgInfo)
 
-            if ((mode == PatchesViewModel.PatchMode.PATCH_ONLY || mode == PatchesViewModel.PatchMode.RESTORE) && selectedBootImage != null && viewModel.kimgInfo.banner.isEmpty()) {
+            if ((mode == PatchesViewModel.PatchMode.PATCH_ONLY || mode == PatchesViewModel.PatchMode.RESTORE) && selectedBootImage != null && kimgInfo.banner.isEmpty()) {
                 viewModel.copyAndParseBootimg(selectedBootImage!!)
-                // Fix endless loop. It's not normal if (parse done && working thread is not working) but banner still null
-                // Leave user re-choose
-                if (!viewModel.running && viewModel.kimgInfo.banner.isEmpty()) {
+                if (!running && kimgInfo.banner.isEmpty()) {
                     selectedBootImage = null
                 }
             }
 
-            // select boot.img
-            if ((mode == PatchesViewModel.PatchMode.PATCH_ONLY || mode == PatchesViewModel.PatchMode.RESTORE) && viewModel.kimgInfo.banner.isEmpty()) {
+            if ((mode == PatchesViewModel.PatchMode.PATCH_ONLY || mode == PatchesViewModel.PatchMode.RESTORE) && kimgInfo.banner.isEmpty()) {
                 SelectFileButton(
                     text = stringResource(id = R.string.patch_select_bootimg_btn),
-                    onSelected = { data, uri ->
-                        Log.d(TAG, "select boot.img, data: $data, uri: $uri")
+                    onSelected = { _, uri ->
+                        Log.d(TAG, "select boot.img, uri: $uri")
                         viewModel.copyAndParseBootimg(uri)
                     }
                 )
             }
 
-            if (viewModel.bootSlot.isNotEmpty() || viewModel.bootDev.isNotEmpty()) {
-                BootimgView(slot = viewModel.bootSlot, boot = viewModel.bootDev)
+            if (bootSlot.isNotEmpty() || bootDev.isNotEmpty()) {
+                BootimgView(slot = bootSlot, boot = bootDev)
             }
 
-            if (viewModel.kimgInfo.banner.isNotEmpty()) {
-                KernelImageView(viewModel.kimgInfo)
+            if (kimgInfo.banner.isNotEmpty()) {
+                KernelImageView(kimgInfo)
             }
 
-            if (mode != PatchesViewModel.PatchMode.UNPATCH && mode != PatchesViewModel.PatchMode.RESTORE && viewModel.kimgInfo.banner.isNotEmpty()) {
+            if (mode != PatchesViewModel.PatchMode.UNPATCH && mode != PatchesViewModel.PatchMode.RESTORE && kimgInfo.banner.isNotEmpty()) {
                 SetSuperKeyView(viewModel)
             }
 
-            // existed extras
             if (mode == PatchesViewModel.PatchMode.PATCH_AND_INSTALL || mode == PatchesViewModel.PatchMode.INSTALL_TO_NEXT_SLOT) {
-                viewModel.existedExtras.forEach(action = {
+                viewModel.existedExtras.forEach {
                     ExtraItem(extra = it, true, onDelete = {
                         viewModel.existedExtras.remove(it)
                     })
-                })
+                }
             }
 
-            // add new extras
             if (mode != PatchesViewModel.PatchMode.UNPATCH && mode != PatchesViewModel.PatchMode.RESTORE) {
-                viewModel.newExtras.forEach(action = {
+                viewModel.newExtras.forEach {
                     ExtraItem(extra = it, false, onDelete = {
                         val idx = viewModel.newExtras.indexOf(it)
                         viewModel.newExtras.remove(it)
                         viewModel.newExtrasFileName.removeAt(idx)
                     })
-                })
+                }
             }
 
-            // add new KPM
-            if (viewModel.superkey.isNotEmpty() && !viewModel.patching && !viewModel.patchdone && mode != PatchesViewModel.PatchMode.UNPATCH && mode != PatchesViewModel.PatchMode.RESTORE) {
-
+            if (superkey.isNotEmpty() && !patching && !patchdone && mode != PatchesViewModel.PatchMode.UNPATCH && mode != PatchesViewModel.PatchMode.RESTORE) {
                 SelectFileButton(
                     text = stringResource(id = R.string.patch_embed_kpm_btn),
-                    onSelected = { data, uri ->
-                        Log.d(TAG, "select kpm, data: $data, uri: $uri")
+                    onSelected = { _, uri ->
+                        Log.d(TAG, "select kpm, uri: $uri")
                         viewModel.embedKPM(uri)
                     }
                 )
             }
 
-            // do patch, update, unpatch
-            if (!viewModel.patching && !viewModel.patchdone) {
-                // patch start
-                if (mode != PatchesViewModel.PatchMode.UNPATCH && (viewModel.superkey.isNotEmpty() || mode == PatchesViewModel.PatchMode.RESTORE)) {
+            if (!patching && !patchdone) {
+                if (mode != PatchesViewModel.PatchMode.UNPATCH && (superkey.isNotEmpty() || mode == PatchesViewModel.PatchMode.RESTORE)) {
                     StartButton(stringResource(id = R.string.patch_start_patch_btn)) {
-                        viewModel.doPatch(
-                            mode
-                        )
+                        viewModel.doPatch(mode)
                     }
                 }
-                // unpatch
-                if (mode == PatchesViewModel.PatchMode.UNPATCH && viewModel.kimgInfo.banner.isNotEmpty()) {
+                if (mode == PatchesViewModel.PatchMode.UNPATCH && kimgInfo.banner.isNotEmpty()) {
                     StartButton(stringResource(id = R.string.patch_start_unpatch_btn)) { viewModel.doUnpatch() }
                 }
             }
 
-            // patch log
-            if (viewModel.patching || viewModel.patchdone) {
+            if (patching || patchdone) {
                 SelectionContainer {
                     Text(
                         modifier = Modifier.padding(8.dp),
-                        text = viewModel.patchLog,
+                        text = patchLog,
                         fontSize = MaterialTheme.typography.bodySmall.fontSize,
                         fontFamily = MaterialTheme.typography.bodySmall.fontFamily,
                         lineHeight = MaterialTheme.typography.bodySmall.lineHeight,
                     )
                 }
-                LaunchedEffect(viewModel.patchLog) {
+                LaunchedEffect(patchLog) {
                     scrollState.animateScrollTo(scrollState.maxValue)
                 }
             }
 
             Spacer(modifier = Modifier.height(12.dp))
 
-            // loading progress
-            if (viewModel.running) {
+            if (running) {
                 Box(
                     modifier = Modifier
                         .padding(innerPadding)
@@ -436,13 +434,18 @@ private fun ExtraItem(extra: KPModel.IExtraInfo, existed: Boolean, onDelete: () 
 
 @Composable
 private fun SetSuperKeyView(viewModel: PatchesViewModel) {
-    var skey by remember { mutableStateOf(viewModel.superkey) }
+    val superkey by viewModel.superkey.collectAsState()
+    var skey by remember { mutableStateOf(superkey) }
     var showWarn by remember { mutableStateOf(!viewModel.checkSuperKeyValidation(skey)) }
     var keyVisible by remember { mutableStateOf(false) }
+
+    LaunchedEffect(superkey) {
+        skey = superkey
+        showWarn = !viewModel.checkSuperKeyValidation(superkey)
+    }
+
     ElevatedCard(
-        colors = CardDefaults.elevatedCardColors(containerColor = run {
-            MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 1f)
-        })
+        colors = CardDefaults.elevatedCardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 1f))
     ) {
         Column(
             modifier = Modifier
@@ -468,7 +471,6 @@ private fun SetSuperKeyView(viewModel: PatchesViewModel) {
                 )
             }
             Column {
-                //Spacer(modifier = Modifier.height(8.dp))
                 Box(
                     contentAlignment = Alignment.CenterEnd,
                 ) {
@@ -484,10 +486,10 @@ private fun SetSuperKeyView(viewModel: PatchesViewModel) {
                         onValueChange = {
                             skey = it
                             if (viewModel.checkSuperKeyValidation(it)) {
-                                viewModel.superkey = it
+                                viewModel.setSuperKey(it)
                                 showWarn = false
                             } else {
-                                viewModel.superkey = ""
+                                viewModel.setSuperKey("")
                                 showWarn = true
                             }
                         },
