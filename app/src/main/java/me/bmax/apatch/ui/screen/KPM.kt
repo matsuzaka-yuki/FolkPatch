@@ -118,6 +118,7 @@ import java.io.IOException
 import java.io.File
 
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.offset
 import androidx.compose.ui.graphics.Color
 import me.bmax.apatch.ui.theme.BackgroundConfig
 import androidx.compose.material3.ButtonDefaults
@@ -313,58 +314,65 @@ fun KPModuleScreen(navigator: DestinationsNavigator) {
 
             var expanded by remember { mutableStateOf(false) }
             val options = listOf(moduleEmbed, moduleInstall, moduleLoad)
+            val isFloatingMode = APApplication.sharedPreferences.getString("nav_mode", "floating") == "floating"
 
-            Column {
-                FloatingActionButton(
-                    onClick = {
-                        expanded = !expanded
-                    },
-                    contentColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 1f),
-                    containerColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f),
-                ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.package_import),
-                        contentDescription = null
-                    )
-                }
+            val fabContent: @Composable () -> Unit = {
+                Column {
+                    FloatingActionButton(
+                        onClick = {
+                            expanded = !expanded
+                        },
+                        contentColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 1f),
+                        containerColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f),
+                    ) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.package_import),
+                            contentDescription = null
+                        )
+                    }
 
-                WallpaperAwareDropdownMenu(
-                    expanded = expanded,
-                    onDismissRequest = { expanded = false },
-                    shape = RoundedCornerShape(10.dp)
-                ) {
-                    options.forEach { label ->
-                        WallpaperAwareDropdownMenuItem(text = { Text(label) }, onClick = {
-                            expanded = false
-                            scope.launch {
-                                if (!checkStrongBiometric()) return@launch
-                                when (label) {
-                                    moduleEmbed -> {
-                                        navigator.navigate(PatchesDestination(PatchesViewModel.PatchMode.PATCH_AND_INSTALL))
-                                    }
+                    WallpaperAwareDropdownMenu(
+                        expanded = expanded,
+                        onDismissRequest = { expanded = false },
+                        shape = RoundedCornerShape(10.dp)
+                    ) {
+                        options.forEach { label ->
+                            WallpaperAwareDropdownMenuItem(text = { Text(label) }, onClick = {
+                                expanded = false
+                                scope.launch {
+                                    if (!checkStrongBiometric()) return@launch
+                                    when (label) {
+                                        moduleEmbed -> {
+                                            navigator.navigate(PatchesDestination(PatchesViewModel.PatchMode.PATCH_AND_INSTALL))
+                                        }
 
-                                    moduleInstall -> {
-//                                        val intent = Intent(Intent.ACTION_GET_CONTENT)
-//                                        intent.type = "application/zip"
-//                                        selectZipLauncher.launch(intent)
-                                        Toast.makeText(
-                                            context,
-                                            "Under development",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                    }
+                                        moduleInstall -> {
+                                            Toast.makeText(
+                                                context,
+                                                "Under development",
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+                                        }
 
-                                    moduleLoad -> {
-                                        val intent = Intent(Intent.ACTION_GET_CONTENT)
-                                        intent.type = "*/*"
-                                        intent.addCategory(Intent.CATEGORY_OPENABLE)
-                                        selectKpmLauncher.launch(intent)
+                                        moduleLoad -> {
+                                            val intent = Intent(Intent.ACTION_GET_CONTENT)
+                                            intent.type = "*/*"
+                                            intent.addCategory(Intent.CATEGORY_OPENABLE)
+                                            selectKpmLauncher.launch(intent)
+                                        }
                                     }
                                 }
-                            }
-                        })
+                            })
+                        }
                     }
                 }
+            }
+            if (isFloatingMode) {
+                Box(modifier = Modifier.offset(y = (-88).dp)) {
+                    fabContent()
+                }
+            } else {
+                fabContent()
             }
         }
     }) { innerPadding ->

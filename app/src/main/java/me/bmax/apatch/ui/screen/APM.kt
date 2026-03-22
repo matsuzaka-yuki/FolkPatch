@@ -60,6 +60,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.offset
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material.icons.outlined.Add
@@ -334,24 +335,48 @@ fun APModuleScreen(navigator: DestinationsNavigator) {
                 }
             }
 
-            FloatingActionButton(
-                contentColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 1f),
-                containerColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f),
-                onClick = {
-                    scope.launch {
-                        if (checkStrongBiometric()) {
-                            // select the zip file to install
-                            val intent = Intent(Intent.ACTION_GET_CONTENT)
-                            intent.type = "application/zip"
-                            intent.addCategory(Intent.CATEGORY_OPENABLE)
-                            selectZipLauncher.launch(intent)
-                        }
+            val isFloatingMode = APApplication.sharedPreferences.getString("nav_mode", "floating") == "floating"
+
+            if (isFloatingMode) {
+                Box(modifier = Modifier.offset(y = (-88).dp)) {
+                    FloatingActionButton(
+                        contentColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 1f),
+                        containerColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f),
+                        onClick = {
+                            scope.launch {
+                                if (checkStrongBiometric()) {
+                                    val intent = Intent(Intent.ACTION_GET_CONTENT)
+                                    intent.type = "application/zip"
+                                    intent.addCategory(Intent.CATEGORY_OPENABLE)
+                                    selectZipLauncher.launch(intent)
+                                }
+                            }
+                        }) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.package_import),
+                            contentDescription = null
+                        )
                     }
-                }) {
-                Icon(
-                    painter = painterResource(id = R.drawable.package_import),
-                    contentDescription = null
-                )
+                }
+            } else {
+                FloatingActionButton(
+                    contentColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 1f),
+                    containerColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f),
+                    onClick = {
+                        scope.launch {
+                            if (checkStrongBiometric()) {
+                                val intent = Intent(Intent.ACTION_GET_CONTENT)
+                                intent.type = "application/zip"
+                                intent.addCategory(Intent.CATEGORY_OPENABLE)
+                                selectZipLauncher.launch(intent)
+                            }
+                        }
+                    }) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.package_import),
+                        contentDescription = null
+                    )
+                }
             }
         }
     }, snackbarHost = { SnackbarHost(snackBarHost) }) { innerPadding ->
