@@ -159,12 +159,18 @@ fun rememberScrollConnection(
     isScrollingDown: MutableState<Boolean>,
     scrollOffset: MutableState<Float>,
     previousScrollOffset: MutableState<Float>,
-    threshold: Float = 50f
+    threshold: Float = 50f,
+    onUserScroll: (() -> Unit)? = null
 ): NestedScrollConnection {
-    return remember {
+    return remember(onUserScroll) {
         object : NestedScrollConnection {
             override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset {
                 val delta = available.y
+
+                if (delta != 0f) {
+                    // Any scroll counts as user interaction, reset auto-hide timer
+                    onUserScroll?.invoke()
+                }
 
                 // Update scroll offset
                 val newOffset = scrollOffset.value + delta
@@ -587,16 +593,35 @@ class MainActivity : AppCompatActivity() {
                 val scrollOffset = remember { mutableStateOf(0f) }
                 val previousScrollOffset = remember { mutableStateOf(0f) }
 
+                // Floating bottom bar visibility & 3s auto-hide timer
+                var isBottomBarVisible by rememberSaveable { mutableStateOf(true) }
+                var autoHideKey by remember { mutableStateOf(0) }
+
+                fun resetBottomBarAutoHide() {
+                    isBottomBarVisible = true
+                    // Changing the key restarts the LaunchedEffect timer
+                    autoHideKey++
+                }
+
                 // Remember the last valid navbar selection (persists across navbar hide/show)
                 val lastValidNavbarSelection = remember { mutableStateOf(0) }
 
                 val currentBackStackEntry by navController.currentBackStackEntryAsState()
                 val currentRoute = currentBackStackEntry?.destination?.route
 
-                // Show bottom bar logic: hide when scrolling down in floating mode
+                // Show bottom bar logic: hide when scrolling down in floating mode,
+                // plus 3s auto-hide after last interaction.
                 val isFloatingMode = navMode == "floating"
+
+                LaunchedEffect(isFloatingMode, autoHideKey) {
+                    if (isFloatingMode && isBottomBarVisible) {
+                        delay(3000L)
+                        isBottomBarVisible = false
+                    }
+                }
+
                 val showBottomBar = if (isFloatingMode) {
-                    !isScrollingDown.value
+                    isBottomBarVisible && !isScrollingDown.value
                 } else {
                     true
                 }
@@ -644,8 +669,15 @@ class MainActivity : AppCompatActivity() {
                                 ) {
                                     DestinationsNavHost(
                                         modifier = Modifier
-                                            .fillMaxSize()
-                                            .nestedScroll(rememberScrollConnection(isScrollingDown, scrollOffset, previousScrollOffset)),
+                                             .fillMaxSize()
+                                             .nestedScroll(
+                                                 rememberScrollConnection(
+                                                     isScrollingDown,
+                                                     scrollOffset,
+                                                     previousScrollOffset,
+                                                     onUserScroll = { resetBottomBarAutoHide() }
+                                                 )
+                                             ),
                                         navGraph = NavGraphs.root,
                                         navController = navController,
                                         engine = rememberNavHostEngine(navHostContentAlignment = Alignment.TopCenter),
@@ -654,14 +686,19 @@ class MainActivity : AppCompatActivity() {
                                 }
 
                                 // Floating Bottom Bar as overlay
-                                AnimatedVisibility(
-                                    visible = showBottomBar,
-                                    modifier = Modifier.align(Alignment.BottomCenter),
-                                    enter = slideInVertically(initialOffsetY = { it }) + fadeIn(),
-                                    exit = slideOutVertically(targetOffsetY = { it }) + fadeOut()
-                                ) {
-                                    BottomBar(navController, isFloating = true, lastValidSelection = lastValidNavbarSelection)
-                                }
+                                 AnimatedVisibility(
+                                     visible = showBottomBar,
+                                     modifier = Modifier.align(Alignment.BottomCenter),
+                                     enter = slideInVertically(initialOffsetY = { it }) + fadeIn(),
+                                     exit = slideOutVertically(targetOffsetY = { it }) + fadeOut()
+                                 ) {
+                                     BottomBar(
+                                         navController = navController,
+                                         isFloating = true,
+                                         lastValidSelection = lastValidNavbarSelection,
+                                         onUserInteraction = { resetBottomBarAutoHide() }
+                                     )
+                                 }
                             }
                         } else {
                             // Non-floating mode: use traditional Scaffold
@@ -757,7 +794,8 @@ fun UnofficialVersionDialog() {
 private fun BottomBar(
     navController: NavHostController,
     isFloating: Boolean = false,
-    lastValidSelection: MutableState<Int> = mutableStateOf(0)
+    lastValidSelection: MutableState<Int> = mutableStateOf(0),
+    onUserInteraction: (() -> Unit)? = null
 ) {
     val context = LocalContext.current
     if (!APApplication.isSignatureValid) {
@@ -899,7 +937,8 @@ private fun BottomBar(
                             enableKernelBadge = enableKernelBadge,
                             currentRoute = currentRoute,
                             navController = navController,
-                            context = context
+                            context = context,
+                            onUserInteraction = onUserInteraction
                         )
                     }
                 }
@@ -917,6 +956,7 @@ private fun BottomBar(
                         NavigationBarItem(
                             selected = isCurrentDestOnBackStack,
                             onClick = {
+                                onUserInteraction?.invoke()
                                 if (me.bmax.apatch.ui.theme.SoundEffectConfig.scope == me.bmax.apatch.ui.theme.SoundEffectConfig.SCOPE_BOTTOM_BAR) {
                                     me.bmax.apatch.util.SoundEffectManager.play(context)
                                 }
@@ -988,7 +1028,8 @@ private fun BottomBarContent(
     enableKernelBadge: Boolean,
     currentRoute: String?,
     navController: NavHostController,
-    context: android.content.Context
+    context: android.content.Context,
+    onUserInteraction: (() -> Unit)? = null
 ) {
     val navigator = navController.rememberDestinationsNavigator()
     val itemSize = 56.dp
@@ -1057,6 +1098,7 @@ private fun BottomBarContent(
                             .size(itemSize)
                             .clip(MaterialTheme.shapes.large)
                             .clickable {
+                                onUserInteraction?.invoke()
                                 // If already on this destination, do nothing
                                 if (destination.direction.route == currentRoute) return@clickable
 
