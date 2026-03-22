@@ -121,6 +121,7 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.offset
 import androidx.compose.ui.graphics.Color
 import me.bmax.apatch.ui.theme.BackgroundConfig
+import me.bmax.apatch.ui.LocalBottomBarVisible
 import androidx.compose.material3.ButtonDefaults
 
 import android.content.SharedPreferences
@@ -367,8 +368,9 @@ fun KPModuleScreen(navigator: DestinationsNavigator) {
                     }
                 }
             }
+            val bottomBarVisible = LocalBottomBarVisible.current.value
             if (isFloatingMode) {
-                Box(modifier = Modifier.offset(y = (-88).dp)) {
+                Box(modifier = Modifier.offset(y = if (bottomBarVisible) (-88).dp else 0.dp)) {
                     fabContent()
                 }
             } else {

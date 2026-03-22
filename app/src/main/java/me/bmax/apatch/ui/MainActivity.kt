@@ -154,6 +154,8 @@ data class ScrollState(
 
 val LocalScrollState = compositionLocalOf<ScrollState?> { null }
 
+val LocalBottomBarVisible = compositionLocalOf { mutableStateOf(true) }
+
 @Composable
 fun rememberScrollConnection(
     isScrollingDown: MutableState<Boolean>,
@@ -659,13 +661,17 @@ class MainActivity : AppCompatActivity() {
                         if (isFloatingMode) {
                             // Floating mode: use overlay approach with AnimatedVisibility
                             Box(modifier = Modifier.fillMaxSize()) {
+                                val bottomBarVisibleState = remember { mutableStateOf(showBottomBar) }
+                                bottomBarVisibleState.value = showBottomBar
+
                                 CompositionLocalProvider(
                                     LocalSnackbarHost provides snackBarHostState,
                                     LocalScrollState provides ScrollState(
                                         isScrollingDown = isScrollingDown,
                                         scrollOffset = scrollOffset,
                                         previousScrollOffset = previousScrollOffset
-                                    )
+                                    ),
+                                    LocalBottomBarVisible provides bottomBarVisibleState
                                 ) {
                                     DestinationsNavHost(
                                         modifier = Modifier

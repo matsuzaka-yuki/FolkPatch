@@ -158,6 +158,7 @@ import me.bmax.apatch.ui.component.WallpaperAwareDropdownMenu
 import me.bmax.apatch.ui.component.WallpaperAwareDropdownMenuItem
 import me.bmax.apatch.util.ModuleBackupUtils
 import me.bmax.apatch.ui.theme.BackgroundConfig
+import me.bmax.apatch.ui.LocalBottomBarVisible
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -336,9 +337,10 @@ fun APModuleScreen(navigator: DestinationsNavigator) {
             }
 
             val isFloatingMode = APApplication.sharedPreferences.getString("nav_mode", "floating") == "floating"
+            val bottomBarVisible = LocalBottomBarVisible.current.value
 
             if (isFloatingMode) {
-                Box(modifier = Modifier.offset(y = (-88).dp)) {
+                Box(modifier = Modifier.offset(y = if (bottomBarVisible) (-88).dp else 0.dp)) {
                     FloatingActionButton(
                         contentColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 1f),
                         containerColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f),
