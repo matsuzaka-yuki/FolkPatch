@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Build
 import android.net.Uri
 import android.os.Bundle
-import androidx.activity.compose.PredictiveBackHandler
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -156,6 +155,7 @@ data class ScrollState(
 val LocalScrollState = compositionLocalOf<ScrollState?> { null }
 
 val LocalBottomBarVisible = compositionLocalOf { mutableStateOf(true) }
+val LocalIsFloatingNavMode = compositionLocalOf { false }
 
 @Composable
 fun rememberScrollConnection(
@@ -479,29 +479,6 @@ class MainActivity : AppCompatActivity() {
 
             APatchThemeWithBackground(navController = navController) {
                 
-                var backProgress by remember { mutableStateOf(0f) }
-                var isBackInProgress by remember { mutableStateOf(false) }
-                
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                    PredictiveBackHandler(enabled = true) { progress ->
-                        try {
-                            progress.collect { event ->
-                                if (event.progress <= 1f) {
-                                    backProgress = event.progress
-                                    isBackInProgress = true
-                                }
-                            }
-                        } catch (_: kotlinx.coroutines.CancellationException) {
-                            // 用户取消了返回手势，正常行为
-                        } catch (e: Exception) {
-                            android.util.Log.e("PredictiveBack", "Error handling predictive back", e)
-                        } finally {
-                            isBackInProgress = false
-                            backProgress = 0f
-                        }
-                    }
-                }
-                
                 val showUpdateDialog = remember { mutableStateOf(false) }
                 val context = LocalContext.current
 
@@ -669,6 +646,7 @@ class MainActivity : AppCompatActivity() {
                             Box(modifier = Modifier.weight(1f)) {
                                 CompositionLocalProvider(
                                     LocalSnackbarHost provides snackBarHostState,
+                                    LocalIsFloatingNavMode provides false,
                                 ) {
                                     DestinationsNavHost(
                                         modifier = Modifier.fillMaxSize(),
@@ -695,7 +673,8 @@ class MainActivity : AppCompatActivity() {
                                         scrollOffset = scrollOffset,
                                         previousScrollOffset = previousScrollOffset
                                     ),
-                                    LocalBottomBarVisible provides bottomBarVisibleState
+                                    LocalBottomBarVisible provides bottomBarVisibleState,
+                                    LocalIsFloatingNavMode provides true
                                 ) {
                                     DestinationsNavHost(
                                         modifier = Modifier
@@ -737,6 +716,7 @@ class MainActivity : AppCompatActivity() {
                             ) { _ ->
                                 CompositionLocalProvider(
                                     LocalSnackbarHost provides snackBarHostState,
+                                    LocalIsFloatingNavMode provides false,
                                 ) {
                                     DestinationsNavHost(
                                         modifier = Modifier.padding(bottom = 80.dp),
@@ -1229,6 +1209,29 @@ private fun NavigationRailBar(navController: NavHostController) {
         val kPatchReady = state != APApplication.State.UNKNOWN_STATE
         val aPatchReady = state == APApplication.State.ANDROIDPATCH_INSTALLED
 
+        val visibleDestinations = BottomBarDestination.entries.filter { destination ->
+            when {
+                destination == BottomBarDestination.AModule && !showNavApm -> false
+                destination == BottomBarDestination.KModule && !showNavKpm -> false
+                destination == BottomBarDestination.SuperUser && !showNavSuperUser -> false
+                (destination.kPatchRequired && !kPatchReady) || (destination.aPatchRequired && !aPatchReady) -> false
+                else -> true
+            }
+        }
+
+        val currentBackStackEntry by navController.currentBackStackEntryAsState()
+        val currentRoute = currentBackStackEntry?.destination?.route
+
+        val isOnBackStack = visibleDestinations.map { destination ->
+            navController.isRouteOnBackStackAsState(destination.direction).value
+        }
+
+        val selectedIndex = run {
+            val exactMatch = visibleDestinations.indexOfFirst { it.direction.route == currentRoute }
+            if (exactMatch != -1) exactMatch
+            else isOnBackStack.indexOfLast { it }
+        }
+
         NavigationRail(
             modifier = Modifier.fillMaxHeight(),
             containerColor = if (BackgroundConfig.isCustomBackgroundEnabled) {
@@ -1238,75 +1241,66 @@ private fun NavigationRailBar(navController: NavHostController) {
             }
         ) {
             Spacer(Modifier.weight(1f))
-            
-            BottomBarDestination.entries.forEach { destination ->
-                val show = when {
-                    destination == BottomBarDestination.AModule && !showNavApm -> false
-                    destination == BottomBarDestination.KModule && !showNavKpm -> false
-                    destination == BottomBarDestination.SuperUser && !showNavSuperUser -> false
-                    (destination.kPatchRequired && !kPatchReady) || (destination.aPatchRequired && !aPatchReady) -> false
-                    else -> true
-                }
 
-                if (show) {
-                    key(destination) {
-                        val isCurrentDestOnBackStack by navController.isRouteOnBackStackAsState(destination.direction)
+            visibleDestinations.forEachIndexed { index, destination ->
+                key(destination) {
+                    val isCurrentDestOnBackStack by navController.isRouteOnBackStackAsState(destination.direction)
+                    val isSelected = index == selectedIndex
 
-                        NavigationRailItem(
-                            selected = isCurrentDestOnBackStack,
-                            onClick = {
-                                if (me.bmax.apatch.ui.theme.SoundEffectConfig.scope == me.bmax.apatch.ui.theme.SoundEffectConfig.SCOPE_BOTTOM_BAR) {
-                                    me.bmax.apatch.util.SoundEffectManager.play(context)
+                    NavigationRailItem(
+                        selected = isSelected,
+                        onClick = {
+                            if (me.bmax.apatch.ui.theme.SoundEffectConfig.scope == me.bmax.apatch.ui.theme.SoundEffectConfig.SCOPE_BOTTOM_BAR) {
+                                me.bmax.apatch.util.SoundEffectManager.play(context)
+                            }
+                            if (me.bmax.apatch.ui.theme.VibrationConfig.scope == me.bmax.apatch.ui.theme.VibrationConfig.SCOPE_BOTTOM_BAR) {
+                                me.bmax.apatch.util.VibrationManager.vibrate(context)
+                            }
+                            if (isCurrentDestOnBackStack) {
+                                navigator.popBackStack(destination.direction, false)
+                            }
+                            navigator.navigate(destination.direction) {
+                                popUpTo(NavGraphs.root) {
+                                    saveState = true
                                 }
-                                if (me.bmax.apatch.ui.theme.VibrationConfig.scope == me.bmax.apatch.ui.theme.VibrationConfig.SCOPE_BOTTOM_BAR) {
-                                    me.bmax.apatch.util.VibrationManager.vibrate(context)
-                                }
-                                if (isCurrentDestOnBackStack) {
-                                    navigator.popBackStack(destination.direction, false)
-                                }
-                                navigator.navigate(destination.direction) {
-                                    popUpTo(NavGraphs.root) {
-                                        saveState = true
-                                    }
-                                    launchSingleTop = true
-                                    restoreState = true
-                                }
-                            },
-                            icon = {
-                                val badgeContent = when {
-                                    destination == BottomBarDestination.SuperUser && enableSuperUserBadge -> superuserCount
-                                    destination == BottomBarDestination.AModule && enableApmBadge -> apmModuleCount
-                                    destination == BottomBarDestination.KModule && enableKernelBadge -> kernelModuleCount
-                                    else -> 0
-                                }
+                                launchSingleTop = true
+                                restoreState = true
+                            }
+                        },
+                        icon = {
+                            val badgeContent = when {
+                                destination == BottomBarDestination.SuperUser && enableSuperUserBadge -> superuserCount
+                                destination == BottomBarDestination.AModule && enableApmBadge -> apmModuleCount
+                                destination == BottomBarDestination.KModule && enableKernelBadge -> kernelModuleCount
+                                else -> 0
+                            }
 
-                                BadgedBox(
-                                    badge = {
-                                        if (badgeContent > 0) {
-                                            Badge(containerColor = MaterialTheme.colorScheme.secondary) {
-                                                Text(text = badgeContent.toString())
-                                            }
+                            BadgedBox(
+                                badge = {
+                                    if (badgeContent > 0) {
+                                        Badge(containerColor = MaterialTheme.colorScheme.secondary) {
+                                            Text(text = badgeContent.toString())
                                         }
                                     }
-                                ) {
-                                    if (isCurrentDestOnBackStack) {
-                                        Icon(destination.iconSelected, stringResource(destination.label))
-                                    } else {
-                                        Icon(destination.iconNotSelected, stringResource(destination.label))
-                                    }
                                 }
-                            },
-                            label = {
-                                Text(
-                                    text = stringResource(destination.label),
-                                    overflow = TextOverflow.Visible,
-                                    maxLines = 1,
-                                    softWrap = false
-                                )
-                            },
-                            alwaysShowLabel = false
-                        )
-                    }
+                            ) {
+                                if (isSelected) {
+                                    Icon(destination.iconSelected, stringResource(destination.label))
+                                } else {
+                                    Icon(destination.iconNotSelected, stringResource(destination.label))
+                                }
+                            }
+                        },
+                        label = {
+                            Text(
+                                text = stringResource(destination.label),
+                                overflow = TextOverflow.Visible,
+                                maxLines = 1,
+                                softWrap = false
+                            )
+                        },
+                        alwaysShowLabel = false
+                    )
                 }
             }
             

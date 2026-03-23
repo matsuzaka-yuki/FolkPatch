@@ -269,7 +269,7 @@ fun AppearanceSettings(
 
     // Navigation Scheme Settings
     val navSchemeTitle = stringResource(id = R.string.settings_nav_scheme)
-    var currentNavMode by remember { mutableStateOf(prefs.getString("nav_mode", "auto") ?: "auto") }
+    var currentNavMode by remember { mutableStateOf(prefs.getString("nav_mode", "floating") ?: "floating") }
     val navSchemeLabel = when (currentNavMode) {
         "rail" -> stringResource(R.string.settings_nav_mode_rail)
         "bottom" -> stringResource(R.string.settings_nav_mode_bottom)

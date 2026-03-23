@@ -161,6 +161,7 @@ import me.bmax.apatch.ui.component.WallpaperAwareDropdownMenuItem
 import me.bmax.apatch.util.ModuleBackupUtils
 import me.bmax.apatch.ui.theme.BackgroundConfig
 import me.bmax.apatch.ui.LocalBottomBarVisible
+import me.bmax.apatch.ui.LocalIsFloatingNavMode
 import androidx.compose.ui.platform.LocalConfiguration
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -339,7 +340,7 @@ fun APModuleScreen(navigator: DestinationsNavigator) {
                 }
             }
 
-            val isFloatingMode = APApplication.sharedPreferences.getString("nav_mode", "floating") == "floating"
+            val isFloatingMode = LocalIsFloatingNavMode.current
             val bottomBarVisible = LocalBottomBarVisible.current.value
             val configuration = LocalConfiguration.current
             val isLandscape = configuration.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE

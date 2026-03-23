@@ -125,6 +125,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import me.bmax.apatch.ui.theme.BackgroundConfig
 import me.bmax.apatch.ui.LocalBottomBarVisible
+import me.bmax.apatch.ui.LocalIsFloatingNavMode
 import androidx.compose.material3.ButtonDefaults
 
 import android.content.SharedPreferences
@@ -318,7 +319,7 @@ fun KPModuleScreen(navigator: DestinationsNavigator) {
 
             var expanded by remember { mutableStateOf(false) }
             val options = listOf(moduleEmbed, moduleInstall, moduleLoad)
-            val isFloatingMode = APApplication.sharedPreferences.getString("nav_mode", "floating") == "floating"
+            val isFloatingMode = LocalIsFloatingNavMode.current
 
             val fabContent: @Composable () -> Unit = {
                 Column {
