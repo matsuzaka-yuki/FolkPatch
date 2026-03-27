@@ -311,5 +311,42 @@
     <string name="settings_section_module">Functions</string>
     <string name="settings_section_customization">Customization</string>
     <string name="settings_section_app">App</string>
+    <!-- Seed Color -->
+    <string name="settings_key_color">Warna benih</string>
+    <string name="settings_key_color_summary">Pilih warna benih untuk tema Monet</string>
+    <string name="settings_key_color_default">Bawaan (Wallpaper)</string>
+    <string name="color_red">Red</string>
+    <string name="color_pink">Pink</string>
+    <string name="color_purple">Purple</string>
+    <string name="color_deep_purple">Deep Purple</string>
+    <string name="color_indigo">Indigo</string>
+    <string name="color_blue">Blue</string>
+    <string name="color_cyan">Cyan</string>
+    <string name="color_teal">Teal</string>
+    <string name="color_green">Green</string>
+    <string name="color_yellow">Yellow</string>
+    <string name="color_amber">Amber</string>
+    <string name="color_orange">Orange</string>
+    <string name="color_brown">Brown</string>
+    <string name="color_blue_grey">Blue Grey</string>
+    <string name="color_sakura">Sakura</string>
+
+    <!-- Settings Summaries -->
+    <string name="settings_theme_summary">Pilih mode warna untuk aplikasi</string>
+    <string name="settings_home_layout_style_summary">Beralih antara tata letak grid dan daftar</string>
+    <string name="settings_app_dpi_summary">Sesuaikan kepadatan tampilan aplikasi</string>
+    <string name="settings_app_language_summary">Ubah bahasa tampilan aplikasi</string>
+    <string name="clear_super_key_summary">Hapus kredensial SuperKey yang tersimpan</string>
+    <string name="setting_reset_su_path_summary">Atur ulang jalur su</string>
+    <string name="send_log_summary">Ekspor atau bagikan laporan bug</string>
+
     <string name="settings_section_about">Logs</string>
+
+    <!-- Theme Mode -->
+    <string name="settings_theme_mode_system">Ikuti sistem</string>
+    <string name="settings_theme_mode_light">Terang</string>
+    <string name="settings_theme_mode_dark">Gelap</string>
+    <string name="settings_theme_mode_monet_system">Monet (Ikuti sistem)</string>
+    <string name="settings_theme_mode_monet_light">Monet (Terang)</string>
+    <string name="settings_theme_mode_monet_dark">Monet (Gelap)</string>
 </resources>

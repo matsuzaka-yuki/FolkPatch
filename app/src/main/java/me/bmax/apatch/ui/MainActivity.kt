@@ -156,6 +156,10 @@ class MainActivity : AppCompatActivity() {
             val context = LocalActivity.current ?: this
             val prefs = context.getSharedPreferences("config", MODE_PRIVATE)
             var colorMode by remember { mutableIntStateOf(prefs.getInt("color_mode", 0)) }
+            var keyColorInt by remember { mutableIntStateOf(VisualConfig.keyColor) }
+            val keyColor = remember(keyColorInt) {
+                if (keyColorInt == 0) null else Color(keyColorInt)
+            }
 
             // Visual effect config
             var enableBlur by remember { mutableStateOf(VisualConfig.enableBlur) }
@@ -166,6 +170,7 @@ class MainActivity : AppCompatActivity() {
                 val listener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
                     when (key) {
                         "color_mode" -> colorMode = prefs.getInt("color_mode", 0)
+                        "key_color" -> keyColorInt = VisualConfig.keyColor
                         "enable_blur" -> enableBlur = VisualConfig.enableBlur
                         "enable_floating_bottom_bar" -> enableFloatingBottomBar = VisualConfig.enableFloatingBottomBar
                         "enable_liquid_glass" -> enableLiquidGlass = VisualConfig.enableLiquidGlass
@@ -175,7 +180,7 @@ class MainActivity : AppCompatActivity() {
                 onDispose { prefs.unregisterOnSharedPreferenceChangeListener(listener) }
             }
 
-            APatchTheme(colorMode = colorMode) {
+            APatchTheme(colorMode = colorMode, keyColor = keyColor) {
                 CompositionLocalProvider(
                     LocalEnableBlur provides enableBlur,
                     LocalEnableFloatingBottomBar provides enableFloatingBottomBar,

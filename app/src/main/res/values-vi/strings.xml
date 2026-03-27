@@ -313,5 +313,42 @@
     <string name="settings_section_module">Functions</string>
     <string name="settings_section_customization">Customization</string>
     <string name="settings_section_app">App</string>
+    <!-- Seed Color -->
+    <string name="settings_key_color">Màu hạt giống</string>
+    <string name="settings_key_color_summary">Chọn màu hạt giống cho chủ đề Monet</string>
+    <string name="settings_key_color_default">Mặc định (Hình nền)</string>
+    <string name="color_red">Red</string>
+    <string name="color_pink">Pink</string>
+    <string name="color_purple">Purple</string>
+    <string name="color_deep_purple">Deep Purple</string>
+    <string name="color_indigo">Indigo</string>
+    <string name="color_blue">Blue</string>
+    <string name="color_cyan">Cyan</string>
+    <string name="color_teal">Teal</string>
+    <string name="color_green">Green</string>
+    <string name="color_yellow">Yellow</string>
+    <string name="color_amber">Amber</string>
+    <string name="color_orange">Orange</string>
+    <string name="color_brown">Brown</string>
+    <string name="color_blue_grey">Blue Grey</string>
+    <string name="color_sakura">Sakura</string>
+
+    <!-- Settings Summaries -->
+    <string name="settings_theme_summary">Chọn chế độ màu cho ứng dụng</string>
+    <string name="settings_home_layout_style_summary">Chuyển đổi giữa bố cục lưới và danh sách</string>
+    <string name="settings_app_dpi_summary">Điều chỉnh mật độ hiển thị ứng dụng</string>
+    <string name="settings_app_language_summary">Thay đổi ngôn ngữ hiển thị ứng dụng</string>
+    <string name="clear_super_key_summary">Xóa SuperKey đã lưu</string>
+    <string name="setting_reset_su_path_summary">Đặt lại đường dẫn su</string>
+    <string name="send_log_summary">Xuất hoặc chia sẻ báo cáo lỗi</string>
+
     <string name="settings_section_about">Logs</string>
+
+    <!-- Theme Mode -->
+    <string name="settings_theme_mode_system">Theo hệ thống</string>
+    <string name="settings_theme_mode_light">Sáng</string>
+    <string name="settings_theme_mode_dark">Tối</string>
+    <string name="settings_theme_mode_monet_system">Monet (Theo hệ thống)</string>
+    <string name="settings_theme_mode_monet_light">Monet (Sáng)</string>
+    <string name="settings_theme_mode_monet_dark">Monet (Tối)</string>
 </resources>

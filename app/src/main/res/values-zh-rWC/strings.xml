@@ -342,5 +342,42 @@
     <string name="settings_section_module">功能</string>
     <string name="settings_section_customization">自定义</string>
     <string name="settings_section_app">应用</string>
+    <!-- Seed Color -->
+    <string name="settings_key_color">种子颜色</string>
+    <string name="settings_key_color_summary">选择 Monet 主题的种子颜色</string>
+    <string name="settings_key_color_default">默认（壁纸）</string>
+    <string name="color_red">Red</string>
+    <string name="color_pink">Pink</string>
+    <string name="color_purple">Purple</string>
+    <string name="color_deep_purple">Deep Purple</string>
+    <string name="color_indigo">Indigo</string>
+    <string name="color_blue">Blue</string>
+    <string name="color_cyan">Cyan</string>
+    <string name="color_teal">Teal</string>
+    <string name="color_green">Green</string>
+    <string name="color_yellow">Yellow</string>
+    <string name="color_amber">Amber</string>
+    <string name="color_orange">Orange</string>
+    <string name="color_brown">Brown</string>
+    <string name="color_blue_grey">Blue Grey</string>
+    <string name="color_sakura">Sakura</string>
+
+    <!-- Settings Summaries -->
+    <string name="settings_theme_summary">选择应用的颜色模式</string>
+    <string name="settings_home_layout_style_summary">切换网格和列表布局</string>
+    <string name="settings_app_dpi_summary">调整应用显示密度</string>
+    <string name="settings_app_language_summary">更改应用显示语言</string>
+    <string name="clear_super_key_summary">移除已存储的 SuperKey 凭证</string>
+    <string name="setting_reset_su_path_summary">重置 su 可执行文件路径</string>
+    <string name="send_log_summary">导出或分享错误报告</string>
+
     <string name="settings_section_about">日志</string>
+
+    <!-- Theme Mode -->
+    <string name="settings_theme_mode_system">跟随系统</string>
+    <string name="settings_theme_mode_light">浅色</string>
+    <string name="settings_theme_mode_dark">深色</string>
+    <string name="settings_theme_mode_monet_system">Monet（跟随系统）</string>
+    <string name="settings_theme_mode_monet_light">Monet（浅色）</string>
+    <string name="settings_theme_mode_monet_dark">Monet（深色）</string>
 </resources>

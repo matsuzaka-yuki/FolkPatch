@@ -346,5 +346,42 @@
     <string name="settings_section_module">功能</string>
     <string name="settings_section_customization">自定义</string>
     <string name="settings_section_app">应用</string>
+    <!-- Seed Color -->
+    <string name="settings_key_color">種子顏色</string>
+    <string name="settings_key_color_summary">選擇 Monet 主題的種子顏色</string>
+    <string name="settings_key_color_default">預設（桌布）</string>
+    <string name="color_red">Red</string>
+    <string name="color_pink">Pink</string>
+    <string name="color_purple">Purple</string>
+    <string name="color_deep_purple">Deep Purple</string>
+    <string name="color_indigo">Indigo</string>
+    <string name="color_blue">Blue</string>
+    <string name="color_cyan">Cyan</string>
+    <string name="color_teal">Teal</string>
+    <string name="color_green">Green</string>
+    <string name="color_yellow">Yellow</string>
+    <string name="color_amber">Amber</string>
+    <string name="color_orange">Orange</string>
+    <string name="color_brown">Brown</string>
+    <string name="color_blue_grey">Blue Grey</string>
+    <string name="color_sakura">Sakura</string>
+
+    <!-- Settings Summaries -->
+    <string name="settings_theme_summary">選擇應用的顏色模式</string>
+    <string name="settings_home_layout_style_summary">切換網格和列表佈局</string>
+    <string name="settings_app_dpi_summary">調整應用顯示密度</string>
+    <string name="settings_app_language_summary">更改應用顯示語言</string>
+    <string name="clear_super_key_summary">移除已儲存的 SuperKey 憑證</string>
+    <string name="setting_reset_su_path_summary">重設 su 可執行檔路徑</string>
+    <string name="send_log_summary">匯出或分享錯誤報告</string>
+
     <string name="settings_section_about">日志</string>
+
+    <!-- Theme Mode -->
+    <string name="settings_theme_mode_system">跟隨系統</string>
+    <string name="settings_theme_mode_light">淺色</string>
+    <string name="settings_theme_mode_dark">深色</string>
+    <string name="settings_theme_mode_monet_system">Monet（跟隨系統）</string>
+    <string name="settings_theme_mode_monet_light">Monet（淺色）</string>
+    <string name="settings_theme_mode_monet_dark">Monet（深色）</string>
 </resources>

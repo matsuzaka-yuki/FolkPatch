@@ -260,6 +260,7 @@
     <string name="kpm_control_failed">Operation failed!</string>
 
     <string name="settings_theme">Theme</string>
+    <string name="settings_theme_summary">Choose color mode for the app</string>
     <string name="settings_theme_mode_system">Follow system</string>
     <string name="settings_theme_mode_light">Light</string>
     <string name="settings_theme_mode_dark">Dark</string>
@@ -376,4 +377,32 @@
     <string name="settings_section_customization">Customization</string>
     <string name="settings_section_general">General</string>
     <string name="settings_section_about">Logs</string>
+
+    <!-- Seed Color -->
+    <string name="settings_key_color">Seed color</string>
+    <string name="settings_key_color_summary">Choose seed color for Monet theme</string>
+    <string name="settings_key_color_default">Default (Wallpaper)</string>
+    <string name="color_red">Red</string>
+    <string name="color_pink">Pink</string>
+    <string name="color_purple">Purple</string>
+    <string name="color_deep_purple">Deep Purple</string>
+    <string name="color_indigo">Indigo</string>
+    <string name="color_blue">Blue</string>
+    <string name="color_cyan">Cyan</string>
+    <string name="color_teal">Teal</string>
+    <string name="color_green">Green</string>
+    <string name="color_yellow">Yellow</string>
+    <string name="color_amber">Amber</string>
+    <string name="color_orange">Orange</string>
+    <string name="color_brown">Brown</string>
+    <string name="color_blue_grey">Blue Grey</string>
+    <string name="color_sakura">Sakura</string>
+
+    <!-- Settings Summaries -->
+    <string name="settings_home_layout_style_summary">Switch between grid and list layout</string>
+    <string name="settings_app_dpi_summary">Adjust app display density</string>
+    <string name="settings_app_language_summary">Change app display language</string>
+    <string name="clear_super_key_summary">Remove stored SuperKey credential</string>
+    <string name="setting_reset_su_path_summary">Reset su executable path</string>
+    <string name="send_log_summary">Export or share bug reports</string>
 </resources>

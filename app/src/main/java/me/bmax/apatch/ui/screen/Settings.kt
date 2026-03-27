@@ -60,6 +60,8 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.dp
 import androidx.core.content.FileProvider
 import androidx.core.content.edit
@@ -249,6 +251,7 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                     Card(modifier = Modifier.padding(top = 12.dp).fillMaxWidth()) {
                     SuperDropdown(
                         title = stringResource(id = R.string.settings_theme),
+                        summary = stringResource(id = R.string.settings_theme_summary),
                         items = themeItems,
                         selectedIndex = themeMode,
                         leftAction = {
@@ -263,6 +266,67 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                             themeMode = index
                         }
                     )
+
+                    AnimatedVisibility(visible = themeMode in 0..2) {
+                        val colorItems = listOf(
+                            stringResource(id = R.string.settings_key_color_default),
+                            stringResource(id = R.string.color_red),
+                            stringResource(id = R.string.color_pink),
+                            stringResource(id = R.string.color_purple),
+                            stringResource(id = R.string.color_deep_purple),
+                            stringResource(id = R.string.color_indigo),
+                            stringResource(id = R.string.color_blue),
+                            stringResource(id = R.string.color_cyan),
+                            stringResource(id = R.string.color_teal),
+                            stringResource(id = R.string.color_green),
+                            stringResource(id = R.string.color_yellow),
+                            stringResource(id = R.string.color_amber),
+                            stringResource(id = R.string.color_orange),
+                            stringResource(id = R.string.color_brown),
+                            stringResource(id = R.string.color_blue_grey),
+                            stringResource(id = R.string.color_sakura),
+                        )
+                        val colorValues = listOf(
+                            0,
+                            Color(0xFFF44336).toArgb(),
+                            Color(0xFFE91E63).toArgb(),
+                            Color(0xFF9C27B0).toArgb(),
+                            Color(0xFF673AB7).toArgb(),
+                            Color(0xFF3F51B5).toArgb(),
+                            Color(0xFF2196F3).toArgb(),
+                            Color(0xFF00BCD4).toArgb(),
+                            Color(0xFF009688).toArgb(),
+                            Color(0xFF4FAF50).toArgb(),
+                            Color(0xFFFFEB3B).toArgb(),
+                            Color(0xFFFFC107).toArgb(),
+                            Color(0xFFFF9800).toArgb(),
+                            Color(0xFF795548).toArgb(),
+                            Color(0xFF607D8F).toArgb(),
+                            Color(0xFFFF9CA8).toArgb(),
+                        )
+                        var keyColorIndex by rememberSaveable {
+                            mutableIntStateOf(
+                                colorValues.indexOf(VisualConfig.keyColor).takeIf { it >= 0 } ?: 0
+                            )
+                        }
+                        SuperDropdown(
+                            title = stringResource(id = R.string.settings_key_color),
+                            summary = stringResource(id = R.string.settings_key_color_summary),
+                            items = colorItems,
+                            selectedIndex = keyColorIndex,
+                            leftAction = {
+                                Icon(
+                                    Icons.Rounded.Palette,
+                                    null,
+                                    modifier = Modifier.padding(end = 6.dp)
+                                )
+                            },
+                            onSelectedIndexChange = { index ->
+                                VisualConfig.keyColor = colorValues[index]
+                                keyColorIndex = index
+                            }
+                        )
+                    }
 
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                         var enableBlur by rememberSaveable {
@@ -329,6 +393,7 @@ fun SettingScreen(navigator: DestinationsNavigator) {
 
                     SuperDropdown(
                         title = stringResource(id = R.string.settings_home_layout_style),
+                        summary = stringResource(id = R.string.settings_home_layout_style_summary),
                         items = homeLayoutItems,
                         selectedIndex = homeLayoutIndex,
                         leftAction = {
@@ -361,6 +426,7 @@ fun SettingScreen(navigator: DestinationsNavigator) {
 
                     SuperDropdown(
                         title = stringResource(id = R.string.settings_app_dpi),
+                        summary = stringResource(id = R.string.settings_app_dpi_summary),
                         items = dpiItems,
                         selectedIndex = dpiIndex,
                         leftAction = {
@@ -381,6 +447,7 @@ fun SettingScreen(navigator: DestinationsNavigator) {
 
                     SuperDropdown(
                         title = stringResource(R.string.settings_app_language),
+                        summary = stringResource(R.string.settings_app_language_summary),
                         items = languages.toList(),
                         selectedIndex = langSelectedIndex,
                         leftAction = {
@@ -420,6 +487,7 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                             stringResource(id = R.string.settings_clear_super_key_dialog)
                         SuperArrow(
                             title = stringResource(R.string.clear_super_key),
+                            summary = stringResource(R.string.clear_super_key_summary),
                             leftAction = {
                                 Icon(
                                     Icons.Rounded.VpnKey,
@@ -501,6 +569,7 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                     if (kPatchReady) {
                         SuperArrow(
                             title = stringResource(R.string.setting_reset_su_path),
+                            summary = stringResource(R.string.setting_reset_su_path_summary),
                             leftAction = {
                                 Icon(
                                     Icons.Rounded.Restore,
@@ -711,6 +780,7 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                     Card(modifier = Modifier.fillMaxWidth()) {
                     SuperArrow(
                         title = stringResource(R.string.send_log),
+                        summary = stringResource(R.string.send_log_summary),
                         leftAction = {
                             Icon(
                                 Icons.Rounded.Send,

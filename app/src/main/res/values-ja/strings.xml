@@ -329,5 +329,34 @@
     <string name="settings_section_module">Functions</string>
     <string name="settings_section_customization">Customization</string>
     <string name="settings_section_app">App</string>
+    <!-- Seed Color -->
+    <string name="settings_key_color">シードカラー</string>
+    <string name="settings_key_color_summary">Monetテーマのシードカラーを選択</string>
+    <string name="settings_key_color_default">デフォルト（壁紙）</string>
+    <string name="color_red">Red</string>
+    <string name="color_pink">Pink</string>
+    <string name="color_purple">Purple</string>
+    <string name="color_deep_purple">Deep Purple</string>
+    <string name="color_indigo">Indigo</string>
+    <string name="color_blue">Blue</string>
+    <string name="color_cyan">Cyan</string>
+    <string name="color_teal">Teal</string>
+    <string name="color_green">Green</string>
+    <string name="color_yellow">Yellow</string>
+    <string name="color_amber">Amber</string>
+    <string name="color_orange">Orange</string>
+    <string name="color_brown">Brown</string>
+    <string name="color_blue_grey">Blue Grey</string>
+    <string name="color_sakura">Sakura</string>
+
+    <!-- Settings Summaries -->
+    <string name="settings_theme_summary">アプリのカラーモードを選択</string>
+    <string name="settings_home_layout_style_summary">グリッドとリストレイアウトを切り替え</string>
+    <string name="settings_app_dpi_summary">アプリの表示密度を調整</string>
+    <string name="settings_app_language_summary">アプリの表示言語を変更</string>
+    <string name="clear_super_key_summary">保存済みのSuperKeyを削除</string>
+    <string name="setting_reset_su_path_summary">su実行ファイルのパスをリセット</string>
+    <string name="send_log_summary">バグレポートをエクスポートまたは共有</string>
+
     <string name="settings_section_about">Logs</string>
 </resources>

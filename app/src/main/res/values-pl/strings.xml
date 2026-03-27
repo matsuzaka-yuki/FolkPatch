@@ -311,5 +311,42 @@
     <string name="settings_section_module">Functions</string>
     <string name="settings_section_customization">Customization</string>
     <string name="settings_section_app">App</string>
+    <!-- Seed Color -->
+    <string name="settings_key_color">Kolor bazowy</string>
+    <string name="settings_key_color_summary">Wybierz kolor bazowy dla motywu Monet</string>
+    <string name="settings_key_color_default">Domyślny (tapeta)</string>
+    <string name="color_red">Red</string>
+    <string name="color_pink">Pink</string>
+    <string name="color_purple">Purple</string>
+    <string name="color_deep_purple">Deep Purple</string>
+    <string name="color_indigo">Indigo</string>
+    <string name="color_blue">Blue</string>
+    <string name="color_cyan">Cyan</string>
+    <string name="color_teal">Teal</string>
+    <string name="color_green">Green</string>
+    <string name="color_yellow">Yellow</string>
+    <string name="color_amber">Amber</string>
+    <string name="color_orange">Orange</string>
+    <string name="color_brown">Brown</string>
+    <string name="color_blue_grey">Blue Grey</string>
+    <string name="color_sakura">Sakura</string>
+
+    <!-- Settings Summaries -->
+    <string name="settings_theme_summary">Wybierz tryb kolorów aplikacji</string>
+    <string name="settings_home_layout_style_summary">Przełącz między siatką a listą</string>
+    <string name="settings_app_dpi_summary">Dostosuj gęstość wyświetlania aplikacji</string>
+    <string name="settings_app_language_summary">Zmień język wyświetlania aplikacji</string>
+    <string name="clear_super_key_summary">Usuń zapisane poświadczenia SuperKey</string>
+    <string name="setting_reset_su_path_summary">Resetuj ścieżkę pliku su</string>
+    <string name="send_log_summary">Eksportuj lub udostępnij raporty o błędach</string>
+
     <string name="settings_section_about">Logs</string>
+
+    <!-- Theme Mode -->
+    <string name="settings_theme_mode_system">Zgodny z systemem</string>
+    <string name="settings_theme_mode_light">Jasny</string>
+    <string name="settings_theme_mode_dark">Ciemny</string>
+    <string name="settings_theme_mode_monet_system">Monet (Zgodny z systemem)</string>
+    <string name="settings_theme_mode_monet_light">Monet (Jasny)</string>
+    <string name="settings_theme_mode_monet_dark">Monet (Ciemny)</string>
 </resources>

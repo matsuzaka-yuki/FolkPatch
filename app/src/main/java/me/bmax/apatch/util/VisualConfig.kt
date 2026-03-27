@@ -8,8 +8,13 @@ object VisualConfig {
     private const val KEY_ENABLE_BLUR = "enable_blur"
     private const val KEY_ENABLE_FLOATING_BOTTOM_BAR = "enable_floating_bottom_bar"
     private const val KEY_ENABLE_LIQUID_GLASS = "enable_liquid_glass"
+    private const val KEY_KEY_COLOR = "key_color"
 
     private val prefs get() = APApplication.sharedPreferences
+
+    var keyColor: Int
+        get() = prefs.getInt(KEY_KEY_COLOR, 0)
+        set(value) = prefs.edit { putInt(KEY_KEY_COLOR, value) }
 
     var enableBlur: Boolean
         get() = prefs.getBoolean(KEY_ENABLE_BLUR, true)

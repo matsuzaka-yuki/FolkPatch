@@ -312,5 +312,42 @@
     <string name="settings_section_module">Functions</string>
     <string name="settings_section_customization">Customization</string>
     <string name="settings_section_app">App</string>
+    <!-- Seed Color -->
+    <string name="settings_key_color">Color semilla</string>
+    <string name="settings_key_color_summary">Elige el color semilla para el tema Monet</string>
+    <string name="settings_key_color_default">Predeterminado (Fondo de pantalla)</string>
+    <string name="color_red">Red</string>
+    <string name="color_pink">Pink</string>
+    <string name="color_purple">Purple</string>
+    <string name="color_deep_purple">Deep Purple</string>
+    <string name="color_indigo">Indigo</string>
+    <string name="color_blue">Blue</string>
+    <string name="color_cyan">Cyan</string>
+    <string name="color_teal">Teal</string>
+    <string name="color_green">Green</string>
+    <string name="color_yellow">Yellow</string>
+    <string name="color_amber">Amber</string>
+    <string name="color_orange">Orange</string>
+    <string name="color_brown">Brown</string>
+    <string name="color_blue_grey">Blue Grey</string>
+    <string name="color_sakura">Sakura</string>
+
+    <!-- Settings Summaries -->
+    <string name="settings_theme_summary">Elige el modo de color de la aplicación</string>
+    <string name="settings_home_layout_style_summary">Cambiar entre diseño de cuadrícula y lista</string>
+    <string name="settings_app_dpi_summary">Ajustar la densidad de visualización de la aplicación</string>
+    <string name="settings_app_language_summary">Cambiar el idioma de la aplicación</string>
+    <string name="clear_super_key_summary">Eliminar la credencial SuperKey almacenada</string>
+    <string name="setting_reset_su_path_summary">Restablecer la ruta del ejecutable su</string>
+    <string name="send_log_summary">Exportar o compartir informes de errores</string>
+
     <string name="settings_section_about">Logs</string>
+
+    <!-- Theme Mode -->
+    <string name="settings_theme_mode_system">Seguir al sistema</string>
+    <string name="settings_theme_mode_light">Claro</string>
+    <string name="settings_theme_mode_dark">Oscuro</string>
+    <string name="settings_theme_mode_monet_system">Monet (Seguir al sistema)</string>
+    <string name="settings_theme_mode_monet_light">Monet (Claro)</string>
+    <string name="settings_theme_mode_monet_dark">Monet (Oscuro)</string>
 </resources>

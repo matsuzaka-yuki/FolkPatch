@@ -311,5 +311,42 @@
     <string name="settings_section_module">Functions</string>
     <string name="settings_section_customization">Customization</string>
     <string name="settings_section_app">App</string>
+    <!-- Seed Color -->
+    <string name="settings_key_color">اللون الأساسي</string>
+    <string name="settings_key_color_summary">اختر اللون الأساسي لسمة Monet</string>
+    <string name="settings_key_color_default">افتراضي (الخلفية)</string>
+    <string name="color_red">Red</string>
+    <string name="color_pink">Pink</string>
+    <string name="color_purple">Purple</string>
+    <string name="color_deep_purple">Deep Purple</string>
+    <string name="color_indigo">Indigo</string>
+    <string name="color_blue">Blue</string>
+    <string name="color_cyan">Cyan</string>
+    <string name="color_teal">Teal</string>
+    <string name="color_green">Green</string>
+    <string name="color_yellow">Yellow</string>
+    <string name="color_amber">Amber</string>
+    <string name="color_orange">Orange</string>
+    <string name="color_brown">Brown</string>
+    <string name="color_blue_grey">Blue Grey</string>
+    <string name="color_sakura">Sakura</string>
+
+    <!-- Settings Summaries -->
+    <string name="settings_theme_summary">اختر وضع الألوان للتطبيق</string>
+    <string name="settings_home_layout_style_summary">التبديل بين تخطيط الشبكة والقائمة</string>
+    <string name="settings_app_dpi_summary">تعديل كثافة عرض التطبيق</string>
+    <string name="settings_app_language_summary">تغيير لغة عرض التطبيق</string>
+    <string name="clear_super_key_summary">إزالة بيانات SuperKey المخزنة</string>
+    <string name="setting_reset_su_path_summary">إعادة تعيين مسار su</string>
+    <string name="send_log_summary">تصدير أو مشاركة تقارير الأخطاء</string>
+
     <string name="settings_section_about">Logs</string>
+
+    <!-- Theme Mode -->
+    <string name="settings_theme_mode_system">تبع النظام</string>
+    <string name="settings_theme_mode_light">فاتح</string>
+    <string name="settings_theme_mode_dark">داكن</string>
+    <string name="settings_theme_mode_monet_system">Monet (تبع النظام)</string>
+    <string name="settings_theme_mode_monet_light">Monet (فاتح)</string>
+    <string name="settings_theme_mode_monet_dark">Monet (داكن)</string>
 </resources>
