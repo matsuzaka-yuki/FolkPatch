@@ -338,4 +338,9 @@
     <string name="settings_floating_bottom_bar_summary">使用悬浮仙丹样式的仙域导航阵法</string>
     <string name="settings_enable_liquid_glass">琉璃仙镜</string>
     <string name="settings_enable_liquid_glass_summary">为悬浮仙舟底栏施加琉璃仙镜之效</string>
+    <string name="settings_section_kernel">内核补丁</string>
+    <string name="settings_section_module">功能</string>
+    <string name="settings_section_customization">自定义</string>
+    <string name="settings_section_app">应用</string>
+    <string name="settings_section_about">日志</string>
 </resources>

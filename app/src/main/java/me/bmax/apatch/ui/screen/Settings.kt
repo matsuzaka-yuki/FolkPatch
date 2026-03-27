@@ -19,8 +19,32 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.AccountTree
+import androidx.compose.material.icons.rounded.AutoFixHigh
+import androidx.compose.material.icons.rounded.BugReport
+import androidx.compose.material.icons.rounded.BlurOn
+import androidx.compose.material.icons.rounded.Dashboard
+import androidx.compose.material.icons.rounded.Dock
+import androidx.compose.material.icons.rounded.Eject
+import androidx.compose.material.icons.rounded.Extension
+import androidx.compose.material.icons.rounded.HideImage
+import androidx.compose.material.icons.rounded.Language
+import androidx.compose.material.icons.rounded.Lock
+import androidx.compose.material.icons.rounded.Menu
+import androidx.compose.material.icons.rounded.OpenInNew
+import androidx.compose.material.icons.rounded.Palette
+import androidx.compose.material.icons.rounded.Restore
+import androidx.compose.material.icons.rounded.Send
+import androidx.compose.material.icons.rounded.Sort
+import androidx.compose.material.icons.rounded.SystemUpdate
+import androidx.compose.material.icons.rounded.VerifiedUser
+import androidx.compose.material.icons.rounded.VisibilityOff
+import androidx.compose.material.icons.rounded.VpnKey
+import androidx.compose.material.icons.rounded.ZoomIn
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
@@ -69,16 +93,18 @@ import me.bmax.apatch.util.setMagicMountEnabled
 import me.bmax.apatch.util.VisualConfig
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import top.yukonga.miuix.kmp.basic.ButtonDefaults
+import top.yukonga.miuix.kmp.basic.Card
+import top.yukonga.miuix.kmp.basic.Icon
 import top.yukonga.miuix.kmp.basic.MiuixScrollBehavior
 import top.yukonga.miuix.kmp.basic.Scaffold
+import top.yukonga.miuix.kmp.basic.SmallTitle
 import top.yukonga.miuix.kmp.basic.TextButton
 import top.yukonga.miuix.kmp.basic.TextField
 import top.yukonga.miuix.kmp.basic.TopAppBar
 import top.yukonga.miuix.kmp.extra.SuperArrow
 import top.yukonga.miuix.kmp.extra.SuperBottomSheet
 import top.yukonga.miuix.kmp.extra.SuperDialog
-import top.yukonga.miuix.kmp.basic.ButtonDefaults
-import top.yukonga.miuix.kmp.basic.Card
 import top.yukonga.miuix.kmp.extra.SuperDropdown
 import top.yukonga.miuix.kmp.extra.SuperSwitch
 import top.yukonga.miuix.kmp.utils.overScrollVertical
@@ -157,31 +183,250 @@ fun SettingScreen(navigator: DestinationsNavigator) {
         }
     )
     { paddingValues ->
+        val prefs = APApplication.sharedPreferences
+        var currentDpi by rememberSaveable {
+            mutableIntStateOf(prefs.getInt("app_dpi", -1))
+        }
+
+        val languages = stringArrayResource(id = R.array.languages)
+        val languagesValues = stringArrayResource(id = R.array.languages_values)
+        val currentLocales = AppCompatDelegate.getApplicationLocales()
+        val currentLanguageTag = if (currentLocales.isEmpty) null
+        else currentLocales.get(0)?.toLanguageTag()
+        val langInitialIndex = if (currentLanguageTag == null) 0
+        else languagesValues.indexOf(currentLanguageTag).let { if (it >= 0) it else 0 }
+        var langSelectedIndex by remember { mutableStateOf(langInitialIndex) }
+
+        var themeMode by rememberSaveable {
+            mutableIntStateOf(prefs.getInt("color_mode", 0))
+        }
+        val themeItems = listOf(
+            stringResource(id = R.string.settings_theme_mode_monet_system),
+            stringResource(id = R.string.settings_theme_mode_monet_light),
+            stringResource(id = R.string.settings_theme_mode_monet_dark),
+            stringResource(id = R.string.settings_theme_mode_system),
+            stringResource(id = R.string.settings_theme_mode_light),
+            stringResource(id = R.string.settings_theme_mode_dark),
+        )
+
+        var enableFloatingBottomBar by rememberSaveable {
+            mutableStateOf(VisualConfig.enableFloatingBottomBar)
+        }
+
+        val homeLayoutItems = listOf(
+            stringResource(id = R.string.settings_home_layout_list),
+            stringResource(id = R.string.settings_home_layout_default)
+        )
+        val homeLayoutValues = listOf("list", "default")
+        var currentHomeLayout by rememberSaveable { mutableStateOf(prefs.getString("home_layout_style", "list") ?: "list") }
+        var homeLayoutIndex = homeLayoutValues.indexOf(currentHomeLayout).let { if (it == -1) 0 else it }
+
+        val dpiItems = listOf(
+            stringResource(id = R.string.dpi_preset_system_default),
+            stringResource(id = R.string.dpi_preset_small),
+            stringResource(id = R.string.dpi_preset_medium),
+            stringResource(id = R.string.dpi_preset_large),
+            stringResource(id = R.string.dpi_preset_xlarge)
+        )
+        val dpiValues = listOf(-1, 320, 400, 480, 560)
+        var dpiIndex by rememberSaveable {
+            mutableStateOf(dpiValues.indexOf(currentDpi).coerceAtLeast(0))
+        }
+
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .overScrollVertical()
-                .nestedScroll(scrollBehavior.nestedScrollConnection),
-            contentPadding = PaddingValues(
-                start = 10.dp,
-                top = paddingValues.calculateTopPadding() + 16.dp,
-                end = 10.dp,
-                bottom = paddingValues.calculateBottomPadding() + 16.dp
-            )
+                .nestedScroll(scrollBehavior.nestedScrollConnection)
+                .padding(horizontal = 12.dp),
+            contentPadding = paddingValues
         ) {
+            // --- Section: Customization ---
             item {
-                val prefs = APApplication.sharedPreferences
-                var currentDpi by rememberSaveable {
-                    mutableIntStateOf(prefs.getInt("app_dpi", -1))
+                SmallTitle(text = stringResource(R.string.settings_section_customization))
+            }
+            item {
+                    Card(modifier = Modifier.padding(top = 12.dp).fillMaxWidth()) {
+                    SuperDropdown(
+                        title = stringResource(id = R.string.settings_theme),
+                        items = themeItems,
+                        selectedIndex = themeMode,
+                        leftAction = {
+                            Icon(
+                                Icons.Rounded.Palette,
+                                null,
+                                modifier = Modifier.padding(end = 6.dp)
+                            )
+                        },
+                        onSelectedIndexChange = { index ->
+                            prefs.edit { putInt("color_mode", index) }
+                            themeMode = index
+                        }
+                    )
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                        var enableBlur by rememberSaveable {
+                            mutableStateOf(VisualConfig.enableBlur)
+                        }
+                        SuperSwitch(
+                            title = stringResource(id = R.string.settings_enable_blur),
+                            summary = stringResource(id = R.string.settings_enable_blur_summary),
+                            checked = enableBlur,
+                            leftAction = {
+                                Icon(
+                                    Icons.Rounded.BlurOn,
+                                    null,
+                                    modifier = Modifier.padding(end = 6.dp)
+                                )
+                            },
+                            onCheckedChange = {
+                                VisualConfig.enableBlur = it
+                                enableBlur = VisualConfig.enableBlur
+                            }
+                        )
+                    }
+
+                    SuperSwitch(
+                        title = stringResource(id = R.string.settings_floating_bottom_bar),
+                        summary = stringResource(id = R.string.settings_floating_bottom_bar_summary),
+                        checked = enableFloatingBottomBar,
+                        leftAction = {
+                            Icon(
+                                Icons.Rounded.Dock,
+                                null,
+                                modifier = Modifier.padding(end = 6.dp)
+                            )
+                        },
+                        onCheckedChange = {
+                            VisualConfig.enableFloatingBottomBar = it
+                            enableFloatingBottomBar = it
+                        }
+                    )
+
+                    AnimatedVisibility(
+                        visible = enableFloatingBottomBar && Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
+                    ) {
+                        var enableLiquidGlass by rememberSaveable {
+                            mutableStateOf(VisualConfig.enableLiquidGlass)
+                        }
+                        SuperSwitch(
+                            title = stringResource(id = R.string.settings_enable_liquid_glass),
+                            summary = stringResource(id = R.string.settings_enable_liquid_glass_summary),
+                            checked = enableLiquidGlass,
+                            leftAction = {
+                                Icon(
+                                    Icons.Rounded.AutoFixHigh,
+                                    null,
+                                    modifier = Modifier.padding(end = 6.dp)
+                                )
+                            },
+                            onCheckedChange = {
+                                VisualConfig.enableLiquidGlass = it
+                                enableLiquidGlass = VisualConfig.enableLiquidGlass
+                            }
+                        )
+                    }
+
+                    SuperDropdown(
+                        title = stringResource(id = R.string.settings_home_layout_style),
+                        items = homeLayoutItems,
+                        selectedIndex = homeLayoutIndex,
+                        leftAction = {
+                            Icon(
+                                Icons.Rounded.Dashboard,
+                                null,
+                                modifier = Modifier.padding(end = 6.dp)
+                            )
+                        },
+                        onSelectedIndexChange = { index ->
+                            prefs.edit { putString("home_layout_style", homeLayoutValues[index]) }
+                            currentHomeLayout = homeLayoutValues[index]
+                        }
+                    )
+
+                    SuperArrow(
+                        title = stringResource(id = R.string.settings_nav_layout_title),
+                        summary = stringResource(id = R.string.settings_nav_layout_summary),
+                        leftAction = {
+                            Icon(
+                                Icons.Rounded.Menu,
+                                null,
+                                modifier = Modifier.padding(end = 6.dp)
+                            )
+                        },
+                        onClick = {
+                            navigator.navigate(NavigationLayoutScreenDestination)
+                        }
+                    )
+
+                    SuperDropdown(
+                        title = stringResource(id = R.string.settings_app_dpi),
+                        items = dpiItems,
+                        selectedIndex = dpiIndex,
+                        leftAction = {
+                            Icon(
+                                Icons.Rounded.ZoomIn,
+                                null,
+                                modifier = Modifier.padding(end = 6.dp)
+                            )
+                        },
+                        onSelectedIndexChange = { index ->
+                            DPIUtils.setDpi(context, dpiValues[index])
+                            prefs.edit { putInt("app_dpi", dpiValues[index]) }
+                            currentDpi = dpiValues[index]
+                            dpiIndex = index
+                            (context as? Activity)?.recreate()
+                        }
+                    )
+
+                    SuperDropdown(
+                        title = stringResource(R.string.settings_app_language),
+                        items = languages.toList(),
+                        selectedIndex = langSelectedIndex,
+                        leftAction = {
+                            Icon(
+                                Icons.Rounded.Language,
+                                null,
+                                modifier = Modifier.padding(end = 6.dp)
+                            )
+                        },
+                        onSelectedIndexChange = { newIndex ->
+                            langSelectedIndex = newIndex
+                            if (newIndex == 0) {
+                                AppCompatDelegate.setApplicationLocales(
+                                    LocaleListCompat.getEmptyLocaleList()
+                                )
+                            } else {
+                                AppCompatDelegate.setApplicationLocales(
+                                    LocaleListCompat.forLanguageTags(
+                                        languagesValues[newIndex]
+                                    )
+                                )
+                            }
+                        }
+                    )
                 }
-                Card {
-                    // clear key
+            }
+
+            // --- Section: Kernel Patch ---
+            item {
+                SmallTitle(text = stringResource(R.string.settings_section_kernel))
+            }
+            item {
+                    Card(modifier = Modifier.fillMaxWidth()) {
                     if (kPatchReady) {
                         val clearKeyDialogTitle = stringResource(id = R.string.clear_super_key)
                         val clearKeyDialogContent =
                             stringResource(id = R.string.settings_clear_super_key_dialog)
                         SuperArrow(
                             title = stringResource(R.string.clear_super_key),
+                            leftAction = {
+                                Icon(
+                                    Icons.Rounded.VpnKey,
+                                    null,
+                                    modifier = Modifier.padding(end = 6.dp)
+                                )
+                            },
                             onClick = { showClearKeyDialog.value = true }
                         )
                         if (showClearKeyDialog.value) {
@@ -194,15 +439,12 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                                     modifier = Modifier.fillMaxWidth(),
                                     horizontalArrangement = Arrangement.End
                                 ) {
-
                                     TextButton(
                                         stringResource(id = android.R.string.cancel),
                                         onClick = { showClearKeyDialog.value = false },
                                         modifier = Modifier.weight(1f),
                                     )
-
                                     Spacer(Modifier.width(20.dp))
-
                                     TextButton(
                                         stringResource(id = android.R.string.ok),
                                         onClick = {
@@ -218,347 +460,273 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                         }
                     }
 
-                    // store key local?
                     SuperSwitch(
                         title = stringResource(id = R.string.settings_donot_store_superkey),
                         summary = stringResource(id = R.string.settings_donot_store_superkey_summary),
                         checked = bSkipStoreSuperKey,
+                        leftAction = {
+                            Icon(
+                                Icons.Rounded.Lock,
+                                null,
+                                modifier = Modifier.padding(end = 6.dp)
+                            )
+                        },
                         onCheckedChange = {
                             bSkipStoreSuperKey = it
                             APatchKeyHelper.setShouldSkipStoreSuperKey(bSkipStoreSuperKey)
-                        })
+                        }
+                    )
 
-                    // Global mount
                     if (kPatchReady && aPatchReady) {
                         SuperSwitch(
                             title = stringResource(id = R.string.settings_global_namespace_mode),
                             summary = stringResource(id = R.string.settings_global_namespace_mode_summary),
                             checked = isGlobalNamespaceEnabled,
+                            leftAction = {
+                                Icon(
+                                    Icons.Rounded.AccountTree,
+                                    null,
+                                    modifier = Modifier.padding(end = 6.dp)
+                                )
+                            },
                             onCheckedChange = {
                                 setGlobalNamespaceEnabled(
-                                    if (isGlobalNamespaceEnabled) {
-                                        "0"
-                                    } else {
-                                        "1"
-                                    }
+                                    if (isGlobalNamespaceEnabled) "0" else "1"
                                 )
                                 isGlobalNamespaceEnabled = it
-                            })
+                            }
+                        )
                     }
 
-                    // FolkPatch (Magic Mount)
-                    if (kPatchReady && aPatchReady) {
+                    if (kPatchReady) {
+                        SuperArrow(
+                            title = stringResource(R.string.setting_reset_su_path),
+                            leftAction = {
+                                Icon(
+                                    Icons.Rounded.Restore,
+                                    null,
+                                    modifier = Modifier.padding(end = 6.dp)
+                                )
+                            },
+                            onClick = { showResetSuPathDialog.value = true }
+                        )
+                    }
+                }
+            }
+
+            // --- Section: Functions ---
+            if (kPatchReady && aPatchReady) {
+                item {
+                    SmallTitle(text = stringResource(R.string.settings_section_module))
+                }
+                item {
+                Card(modifier = Modifier.fillMaxWidth()) {
                         SuperSwitch(
                             title = stringResource(id = R.string.settings_magic_mount),
                             summary = stringResource(id = R.string.settings_magic_mount_summary),
                             checked = isMagicMountEnabled,
+                            leftAction = {
+                                Icon(
+                                    Icons.Rounded.Extension,
+                                    null,
+                                    modifier = Modifier.padding(end = 6.dp)
+                                )
+                            },
                             onCheckedChange = {
                                 setMagicMountEnabled(it)
                                 isMagicMountEnabled = it
                             }
                         )
-                    }
 
-                    // FolkPatch Hide
-                    if (kPatchReady && aPatchReady) {
                         SuperSwitch(
                             title = stringResource(id = R.string.settings_hide_service),
                             summary = stringResource(id = R.string.settings_hide_service_summary),
                             checked = isHideServiceEnabled,
+                            leftAction = {
+                                Icon(
+                                    Icons.Rounded.VisibilityOff,
+                                    null,
+                                    modifier = Modifier.padding(end = 6.dp)
+                                )
+                            },
                             onCheckedChange = {
                                 setHideServiceEnabled(it)
                                 isHideServiceEnabled = it
                             }
                         )
-                    }
 
-                    // Zig Umount
-                    if (kPatchReady && aPatchReady) {
                         SuperArrow(
                             title = stringResource(id = R.string.settings_umount_service),
                             summary = stringResource(id = R.string.settings_umount_service_summary),
+                            leftAction = {
+                                Icon(
+                                    Icons.Rounded.Eject,
+                                    null,
+                                    modifier = Modifier.padding(end = 6.dp)
+                                )
+                            },
                             onClick = {
                                 navigator.navigate(UmountConfigScreenDestination)
                             }
                         )
                     }
+                }
+            }
 
-                    // Stay on Page
-                    if (aPatchReady) {
-                        var stayOnPage by rememberSaveable {
-                            mutableStateOf(prefs.getBoolean("apm_action_stay_on_page", true))
-                        }
-                        SuperSwitch(
-                            title = stringResource(id = R.string.settings_apm_stay_on_page),
-                            summary = stringResource(id = R.string.settings_apm_stay_on_page_summary),
-                            checked = stayOnPage,
-                            onCheckedChange = {
-                                prefs.edit { putBoolean("apm_action_stay_on_page", it) }
-                                stayOnPage = it
-                            })
-
-                        // APM Sorting
-                        var apmSortEnabled by rememberSaveable {
-                            mutableStateOf(prefs.getBoolean("apm_sort_enabled", true))
-                        }
-                        SuperSwitch(
-                            title = stringResource(id = R.string.settings_apm_sorting),
-                            summary = stringResource(id = R.string.settings_apm_sorting_summary),
-                            checked = apmSortEnabled,
-                            onCheckedChange = {
-                                prefs.edit { putBoolean("apm_sort_enabled", it) }
-                                apmSortEnabled = it
-                            })
+            // --- Section: Behavior ---
+            item {
+                SmallTitle(text = stringResource(R.string.settings_section_general))
+            }
+            item {
+                Card(modifier = Modifier.fillMaxWidth()) {
+                    var stayOnPage by rememberSaveable {
+                        mutableStateOf(prefs.getBoolean("apm_action_stay_on_page", true))
                     }
-
-                    // WebView Debug
-                    if (aPatchReady) {
-                        var enableWebDebugging by rememberSaveable {
-                            mutableStateOf(prefs.getBoolean("enable_web_debugging", false))
-                        }
-
-                        SuperSwitch(
-                            title = stringResource(id = R.string.enable_web_debugging),
-                            summary = stringResource(id = R.string.enable_web_debugging_summary),
-                            checked = enableWebDebugging,
-                            onCheckedChange = { isChecked ->
-                                enableWebDebugging = isChecked
-                                APApplication.sharedPreferences.edit {
-                                    putBoolean("enable_web_debugging", isChecked)
-                                }
-                            }
-                        )
-
-                        // Install Confirmation
-                        var installConfirm by rememberSaveable {
-                            mutableStateOf(prefs.getBoolean("apm_install_confirm_enabled", true))
-                        }
-                        SuperSwitch(
-                            title = stringResource(id = R.string.settings_apm_install_confirm),
-                            summary = stringResource(id = R.string.settings_apm_install_confirm_summary),
-                            checked = installConfirm,
-                            onCheckedChange = {
-                                prefs.edit { putBoolean("apm_install_confirm_enabled", it) }
-                                installConfirm = it
-                            }
-                        )
-                    }
-
-                    // Check Update
-                    var checkUpdate by rememberSaveable {
-                        mutableStateOf(
-                            prefs.getBoolean("check_update", true)
-                        )
-                    }
-
                     SuperSwitch(
-                        title = stringResource(id = R.string.settings_check_update),
-                        summary = stringResource(id = R.string.settings_check_update_summary),
-                        checked = checkUpdate,
-                        onCheckedChange = { isChecked ->
-                            checkUpdate = isChecked
-                            prefs.edit { putBoolean("check_update", isChecked) }
-                        })
+                        title = stringResource(id = R.string.settings_apm_stay_on_page),
+                        summary = stringResource(id = R.string.settings_apm_stay_on_page_summary),
+                        checked = stayOnPage,
+                        leftAction = {
+                            Icon(
+                                Icons.Rounded.OpenInNew,
+                                null,
+                                modifier = Modifier.padding(end = 6.dp)
+                            )
+                        },
+                        onCheckedChange = {
+                            prefs.edit { putBoolean("apm_action_stay_on_page", it) }
+                            stayOnPage = it
+                        }
+                    )
 
-                    // Hide About Card
+                    var apmSortEnabled by rememberSaveable {
+                        mutableStateOf(prefs.getBoolean("apm_sort_enabled", true))
+                    }
+                    SuperSwitch(
+                        title = stringResource(id = R.string.settings_apm_sorting),
+                        summary = stringResource(id = R.string.settings_apm_sorting_summary),
+                        checked = apmSortEnabled,
+                        leftAction = {
+                            Icon(
+                                Icons.Rounded.Sort,
+                                null,
+                                modifier = Modifier.padding(end = 6.dp)
+                            )
+                        },
+                        onCheckedChange = {
+                            prefs.edit { putBoolean("apm_sort_enabled", it) }
+                            apmSortEnabled = it
+                        }
+                    )
+
+                    var enableWebDebugging by rememberSaveable {
+                        mutableStateOf(prefs.getBoolean("enable_web_debugging", false))
+                    }
+                    SuperSwitch(
+                        title = stringResource(id = R.string.enable_web_debugging),
+                        summary = stringResource(id = R.string.enable_web_debugging_summary),
+                        checked = enableWebDebugging,
+                        leftAction = {
+                            Icon(
+                                Icons.Rounded.BugReport,
+                                null,
+                                modifier = Modifier.padding(end = 6.dp)
+                            )
+                        },
+                        onCheckedChange = { isChecked ->
+                            enableWebDebugging = isChecked
+                            APApplication.sharedPreferences.edit {
+                                putBoolean("enable_web_debugging", isChecked)
+                            }
+                        }
+                    )
+
+                    var installConfirm by rememberSaveable {
+                        mutableStateOf(prefs.getBoolean("apm_install_confirm_enabled", true))
+                    }
+                    SuperSwitch(
+                        title = stringResource(id = R.string.settings_apm_install_confirm),
+                        summary = stringResource(id = R.string.settings_apm_install_confirm_summary),
+                        checked = installConfirm,
+                        leftAction = {
+                            Icon(
+                                Icons.Rounded.VerifiedUser,
+                                null,
+                                modifier = Modifier.padding(end = 6.dp)
+                            )
+                        },
+                        onCheckedChange = {
+                            prefs.edit { putBoolean("apm_install_confirm_enabled", it) }
+                            installConfirm = it
+                        }
+                    )
+
                     var hideAboutCard by rememberSaveable {
-                        mutableStateOf(
-                            prefs.getBoolean("hide_about_card", false)
-                        )
+                        mutableStateOf(prefs.getBoolean("hide_about_card", false))
                     }
                     SuperSwitch(
                         title = stringResource(id = R.string.hide_about_card),
                         summary = stringResource(id = R.string.hide_about_card_summary),
                         checked = hideAboutCard,
+                        leftAction = {
+                            Icon(
+                                Icons.Rounded.HideImage,
+                                null,
+                                modifier = Modifier.padding(end = 6.dp)
+                            )
+                        },
                         onCheckedChange = { isChecked ->
                             hideAboutCard = isChecked
                             prefs.edit { putBoolean("hide_about_card", isChecked) }
-                        })
-
-                    // Theme System
-                    var themeMode by rememberSaveable {
-                        mutableIntStateOf(prefs.getInt("color_mode", 0))
-                    }
-
-                    val themeItems = listOf(
-                        stringResource(id = R.string.settings_theme_mode_monet_system),
-                        stringResource(id = R.string.settings_theme_mode_monet_light),
-                        stringResource(id = R.string.settings_theme_mode_monet_dark),
-                        stringResource(id = R.string.settings_theme_mode_system),
-                        stringResource(id = R.string.settings_theme_mode_light),
-                        stringResource(id = R.string.settings_theme_mode_dark),
-                    )
-
-                    SuperDropdown(
-                        title = stringResource(id = R.string.settings_theme),
-                        items = themeItems,
-                        selectedIndex = themeMode,
-                        onSelectedIndexChange = { index ->
-                            prefs.edit { putInt("color_mode", index) }
-                            themeMode = index
                         }
                     )
 
-                    // Blur (only on API 33+)
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                        var enableBlur by rememberSaveable {
-                            mutableStateOf(VisualConfig.enableBlur)
-                        }
-                        SuperSwitch(
-                            title = stringResource(id = R.string.settings_enable_blur),
-                            summary = stringResource(id = R.string.settings_enable_blur_summary),
-                            checked = enableBlur,
-                            onCheckedChange = {
-                                VisualConfig.enableBlur = it
-                                enableBlur = VisualConfig.enableBlur
-                            }
-                        )
-                    }
-
-                    // Floating Bottom Bar
-                    var enableFloatingBottomBar by rememberSaveable {
-                        mutableStateOf(VisualConfig.enableFloatingBottomBar)
+                    var checkUpdate by rememberSaveable {
+                        mutableStateOf(prefs.getBoolean("check_update", true))
                     }
                     SuperSwitch(
-                        title = stringResource(id = R.string.settings_floating_bottom_bar),
-                        summary = stringResource(id = R.string.settings_floating_bottom_bar_summary),
-                        checked = enableFloatingBottomBar,
-                        onCheckedChange = {
-                            VisualConfig.enableFloatingBottomBar = it
-                            enableFloatingBottomBar = it
+                        title = stringResource(id = R.string.settings_check_update),
+                        summary = stringResource(id = R.string.settings_check_update_summary),
+                        checked = checkUpdate,
+                        leftAction = {
+                            Icon(
+                                Icons.Rounded.SystemUpdate,
+                                null,
+                                modifier = Modifier.padding(end = 6.dp)
+                            )
+                        },
+                        onCheckedChange = { isChecked ->
+                            checkUpdate = isChecked
+                            prefs.edit { putBoolean("check_update", isChecked) }
                         }
                     )
+                }
+            }
 
-                    // Liquid Glass (only when floating bar is ON and API 33+)
-                    AnimatedVisibility(
-                        visible = enableFloatingBottomBar && Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
-                    ) {
-                        var enableLiquidGlass by rememberSaveable {
-                            mutableStateOf(VisualConfig.enableLiquidGlass)
-                        }
-                        SuperSwitch(
-                            title = stringResource(id = R.string.settings_enable_liquid_glass),
-                            summary = stringResource(id = R.string.settings_enable_liquid_glass_summary),
-                            checked = enableLiquidGlass,
-                            onCheckedChange = {
-                                VisualConfig.enableLiquidGlass = it
-                                enableLiquidGlass = VisualConfig.enableLiquidGlass
-                            }
-                        )
-                    }
-
-                    // Home Layout
-                    val homeLayoutItems = listOf(
-                        stringResource(id = R.string.settings_home_layout_list),
-                        stringResource(id = R.string.settings_home_layout_default)
-                    )
-                    val homeLayoutValues = listOf("list", "default")
-                    var currentHomeLayout by rememberSaveable { mutableStateOf(prefs.getString("home_layout_style", "list") ?: "list") }
-                    var homeLayoutIndex = homeLayoutValues.indexOf(currentHomeLayout)
-                    if (homeLayoutIndex == -1) homeLayoutIndex = 0
-
-                    SuperDropdown(
-                        title = stringResource(id = R.string.settings_home_layout_style),
-                        items = homeLayoutItems,
-                        selectedIndex = homeLayoutIndex,
-                        onSelectedIndexChange = { index ->
-                            prefs.edit { putString("home_layout_style", homeLayoutValues[index]) }
-                            currentHomeLayout = homeLayoutValues[index]
-                        }
-                    )
-
-                    // su path
-                    if (kPatchReady) {
-                        SuperArrow(
-                            title = stringResource(R.string.setting_reset_su_path),
-                            onClick = { showResetSuPathDialog.value = true }
-                        )
-                    }
-
-                    // language
-                    val languages = stringArrayResource(id = R.array.languages)
-                    val languagesValues = stringArrayResource(id = R.array.languages_values)
-
-                    val currentLocales = AppCompatDelegate.getApplicationLocales()
-                    val currentLanguageTag = if (currentLocales.isEmpty) {
-                        null
-                    } else {
-                        currentLocales.get(0)?.toLanguageTag()
-                    }
-
-                    val initialIndex = if (currentLanguageTag == null) {
-                        0
-                    } else {
-                        val index = languagesValues.indexOf(currentLanguageTag)
-                        if (index >= 0) index else 0
-                    }
-
-                    var selectedIndex by remember { mutableStateOf(initialIndex) }
-
-                    SuperDropdown(
-                        title = stringResource(R.string.settings_app_language),
-                        items = languages.toList(),
-                        selectedIndex = selectedIndex,
-                        onSelectedIndexChange = { newIndex ->
-                            selectedIndex = newIndex
-                            if (newIndex == 0) {
-                                AppCompatDelegate.setApplicationLocales(
-                                    LocaleListCompat.getEmptyLocaleList()
-                                )
-                            } else {
-                                AppCompatDelegate.setApplicationLocales(
-                                    LocaleListCompat.forLanguageTags(
-                                        languagesValues[newIndex]
-                                    )
-                                )
-                            }
-                        }
-                    )
-
-                    // Navigation Layout Settings
-                    SuperArrow(
-                        title = stringResource(id = R.string.settings_nav_layout_title),
-                        summary = stringResource(id = R.string.settings_nav_layout_summary),
-                        onClick = {
-                            navigator.navigate(NavigationLayoutScreenDestination)
-                        }
-                    )
-
-                    // App DPI
-                    val dpiItems = listOf(
-                        stringResource(id = R.string.dpi_preset_system_default),
-                        stringResource(id = R.string.dpi_preset_small),
-                        stringResource(id = R.string.dpi_preset_medium),
-                        stringResource(id = R.string.dpi_preset_large),
-                        stringResource(id = R.string.dpi_preset_xlarge)
-                    )
-                    val dpiValues = listOf(-1, 320, 400, 480, 560)
-                    var dpiIndex by rememberSaveable {
-                        mutableStateOf(dpiValues.indexOf(currentDpi).coerceAtLeast(0))
-                    }
-
-                    SuperDropdown(
-                        title = stringResource(id = R.string.settings_app_dpi),
-                        items = dpiItems,
-                        selectedIndex = dpiIndex,
-                        onSelectedIndexChange = { index ->
-                            DPIUtils.setDpi(context, dpiValues[index])
-                            prefs.edit { putInt("app_dpi", dpiValues[index]) }
-                            currentDpi = dpiValues[index]
-                            dpiIndex = index
-                            // Recreate activity to apply DPI change
-                            (context as? Activity)?.recreate()
-                        }
-                    )
-
-                    // log
+            // --- Section: Logs ---
+            item {
+                SmallTitle(text = stringResource(R.string.settings_section_about))
+            }
+            item {
+                    Card(modifier = Modifier.fillMaxWidth()) {
                     SuperArrow(
                         title = stringResource(R.string.send_log),
+                        leftAction = {
+                            Icon(
+                                Icons.Rounded.Send,
+                                null,
+                                modifier = Modifier.padding(end = 6.dp)
+                            )
+                        },
                         onClick = {
                             showLogBottomSheet.value = true
                         }
                     )
                 }
+            }
+
+            item {
+                Spacer(Modifier.height(12.dp))
             }
         }
     }

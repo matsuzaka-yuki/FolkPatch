@@ -309,4 +309,9 @@
     <string name="settings_floating_bottom_bar_summary">Use a floating capsule-style navigation bar</string>
     <string name="settings_enable_liquid_glass">Liquid glass</string>
     <string name="settings_enable_liquid_glass_summary">Glass effects for floating bottom bar</string>
+    <string name="settings_section_kernel">Kernel Patch</string>
+    <string name="settings_section_module">Functions</string>
+    <string name="settings_section_customization">Customization</string>
+    <string name="settings_section_app">App</string>
+    <string name="settings_section_about">Logs</string>
 </resources>
