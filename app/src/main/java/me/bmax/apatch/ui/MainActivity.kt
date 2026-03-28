@@ -410,41 +410,57 @@ class MainActivity : AppCompatActivity() {
                         drawContent()
                     }
 
-                    Box(modifier = Modifier.fillMaxSize()) {
-                        Scaffold(
-                            containerColor = MiuixTheme.colorScheme.surface,
-                            bottomBar = {
-                                if (showBottomBar && !enableFloatingBottomBar) {
+                    Scaffold(
+                        containerColor = MiuixTheme.colorScheme.surface,
+                        bottomBar = {
+                            if (showBottomBar && enableFloatingBottomBar) {
+                                AnimatedVisibility(
+                                    visible = true,
+                                    enter = slideInVertically(initialOffsetY = { it }) + fadeIn(),
+                                    exit = slideOutVertically(targetOffsetY = { it }) + fadeOut()
+                                ) {
                                     BottomBar(
                                         mainPagerState = mainPagerState,
                                         enableBlur = enableBlur,
-                                        enableFloatingBottomBar = false,
-                                        enableLiquidGlass = false,
+                                        enableFloatingBottomBar = true,
+                                        enableLiquidGlass = enableLiquidGlass,
                                         hazeState = hazeState,
                                         hazeStyle = hazeStyle,
                                         backdrop = backdrop,
+                                        onUserInteraction = { resetBottomBarAutoHide() },
                                     )
                                 }
+                            } else if (showBottomBar && !enableFloatingBottomBar) {
+                                BottomBar(
+                                    mainPagerState = mainPagerState,
+                                    enableBlur = enableBlur,
+                                    enableFloatingBottomBar = false,
+                                    enableLiquidGlass = false,
+                                    hazeState = hazeState,
+                                    hazeStyle = hazeStyle,
+                                    backdrop = backdrop,
+                                )
                             }
-                        ) {
-                            DestinationsNavHost(
-                                modifier = Modifier
-                                    .then(
-                                        if (enableFloatingBottomBar) Modifier.nestedScroll(scrollConnection)
-                                        else Modifier
-                                    )
-                                    .padding(bottom = if (showBottomBar) {
-                                        if (enableFloatingBottomBar) 0.dp else 65.dp
-                                    } else 0.dp)
-                                    .then(
-                                        if (enableBlur && showBottomBar) Modifier.hazeSource(state = hazeState)
-                                        else Modifier
-                                    )
-                                    .then(
-                                        if (enableFloatingBottomBar && enableBlur && showBottomBar)
-                                            Modifier.layerBackdrop(backdrop)
-                                        else Modifier
-                                    ),
+                        }
+                    ) {
+                        DestinationsNavHost(
+                            modifier = Modifier
+                                .then(
+                                    if (enableFloatingBottomBar) Modifier.nestedScroll(scrollConnection)
+                                    else Modifier
+                                )
+                                .padding(bottom = if (showBottomBar) {
+                                    if (enableFloatingBottomBar) 0.dp else 65.dp
+                                } else 0.dp)
+                                .then(
+                                    if (enableBlur && showBottomBar) Modifier.hazeSource(state = hazeState)
+                                    else Modifier
+                                )
+                                .then(
+                                    if (enableFloatingBottomBar && enableBlur && showBottomBar)
+                                        Modifier.layerBackdrop(backdrop)
+                                    else Modifier
+                                ),
                             navGraph = NavGraphs.root,
                             navController = navController,
                             engine = rememberNavHostEngine(navHostContentAlignment = Alignment.TopCenter),
@@ -483,24 +499,6 @@ class MainActivity : AppCompatActivity() {
                             }
                         )
                     } // end Scaffold content
-
-                    AnimatedVisibility(
-                        visible = showBottomBar && enableFloatingBottomBar,
-                        enter = slideInVertically(initialOffsetY = { it }) + fadeIn(),
-                        exit = slideOutVertically(targetOffsetY = { it }) + fadeOut()
-                    ) {
-                        BottomBar(
-                            mainPagerState = mainPagerState,
-                            enableBlur = enableBlur,
-                            enableFloatingBottomBar = true,
-                            enableLiquidGlass = enableLiquidGlass,
-                            hazeState = hazeState,
-                            hazeStyle = hazeStyle,
-                            backdrop = backdrop,
-                            onUserInteraction = { resetBottomBarAutoHide() },
-                        )
-                    }
-                    } // end outer Box
 
                 // Signature verify dialog
                 if (!APApplication.isSignatureValid) {
