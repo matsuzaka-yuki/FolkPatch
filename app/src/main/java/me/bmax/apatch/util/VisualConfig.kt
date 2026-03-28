@@ -29,7 +29,7 @@ object VisualConfig {
         }
 
     var enableFloatingBottomBar: Boolean
-        get() = prefs.getBoolean(KEY_ENABLE_FLOATING_BOTTOM_BAR, false)
+        get() = prefs.getBoolean(KEY_ENABLE_FLOATING_BOTTOM_BAR, true)
         set(value) {
             prefs.edit { putBoolean(KEY_ENABLE_FLOATING_BOTTOM_BAR, value) }
         }
@@ -39,7 +39,7 @@ object VisualConfig {
         set(value) = prefs.edit { putBoolean(KEY_FLOATING_BOTTOM_BAR_AUTO_HIDE, value) }
 
     var enableLiquidGlass: Boolean
-        get() = prefs.getBoolean(KEY_ENABLE_LIQUID_GLASS, false)
+        get() = prefs.getBoolean(KEY_ENABLE_LIQUID_GLASS, true)
         set(value) {
             if (value && !enableBlur) {
                 enableBlur = true
