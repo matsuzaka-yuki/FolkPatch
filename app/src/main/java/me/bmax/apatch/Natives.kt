@@ -7,9 +7,21 @@ import androidx.compose.runtime.Immutable
 import dalvik.annotation.optimization.FastNative
 import kotlinx.parcelize.Parcelize
 
+@Keep
 object Natives {
-    init {
-        System.loadLibrary("apjni")
+    @Volatile
+    @JvmField
+    var isNativeAvailable = false
+
+    @Keep
+    @JvmStatic
+    fun tryLoadNativeLibrary() {
+        try {
+            System.loadLibrary("apjni")
+            isNativeAvailable = true
+        } catch (_: Throwable) {
+            isNativeAvailable = false
+        }
     }
 
     @Immutable

@@ -24,3 +24,9 @@
 -allowaccessmodification
 -overloadaggressively
 -renamesourcefileattribute SourceFile
+
+-keepclassmembers class me.bmax.apatch.Natives {
+    public static volatile boolean isNativeAvailable;
+    public static void tryLoadNativeLibrary();
+}
+-keep class me.bmax.apatch.Natives { *; }

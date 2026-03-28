@@ -290,6 +290,8 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler {
         super.onCreate()
         apApp = this
 
+        Natives.tryLoadNativeLibrary()
+
         val isArm64 = Build.SUPPORTED_ABIS.any { it == "arm64-v8a" }
         if (!isArm64) {
             Toast.makeText(applicationContext, "Unsupported architecture!", Toast.LENGTH_LONG)
