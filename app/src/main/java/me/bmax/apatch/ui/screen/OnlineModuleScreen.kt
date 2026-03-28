@@ -129,7 +129,8 @@ fun OnlineModuleScreen(
                         items(viewModel.modules) { module ->
                             OnlineModuleItem(
                                 module = module,
-                                context = context
+                                context = context,
+                                showArgs = moduleType == "kpm"
                             )
                         }
                     }
@@ -149,7 +150,8 @@ fun OnlineModuleScreen(
 @Composable
 fun OnlineModuleItem(
     module: OnlineModuleViewModel.OnlineModule,
-    context: Context
+    context: Context,
+    showArgs: Boolean = false
 ) {
     val downloadStartText = stringResource(R.string.online_module_download_start, module.name)
     val downloadNotificationText = stringResource(R.string.online_module_download_notification, module.name)
@@ -176,6 +178,17 @@ fun OnlineModuleItem(
                     text = "Version: ${module.version}",
                     style = MiuixTheme.textStyles.body2
                 )
+                if (showArgs && module.parameter.isNotEmpty()) {
+                    val parameterText = when (module.parameter) {
+                        "1" -> "Control"
+                        "0" -> "NoControl"
+                        else -> module.parameter
+                    }
+                    Text(
+                        text = "Args: $parameterText",
+                        style = MiuixTheme.textStyles.body2
+                    )
+                }
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
                     text = module.description,

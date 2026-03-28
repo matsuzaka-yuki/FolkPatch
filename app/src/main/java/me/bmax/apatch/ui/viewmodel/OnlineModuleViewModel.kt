@@ -26,7 +26,8 @@ class OnlineModuleViewModel(
         val name: String,
         val version: String,
         val url: String,
-        val description: String
+        val description: String,
+        val parameter: String = ""
     )
 
     var modules by mutableStateOf<List<OnlineModule>>(emptyList())
@@ -85,7 +86,8 @@ class OnlineModuleViewModel(
                                 name = obj.optString("name"),
                                 version = obj.optString("version"),
                                 url = obj.optString("url"),
-                                description = finalDesc
+                                description = finalDesc,
+                                parameter = obj.optString("parameter")
                             )
                         )
                     }
