@@ -28,12 +28,12 @@ fun migrateColorModeIfNeeded(context: Context) {
 
     val oldMode = prefs.getInt("color_mode", 0)
     val newMode = when (oldMode) {
-        0 -> 3  // MonetSystem
-        1 -> 4  // MonetLight
-        2 -> 5  // MonetDark
-        3 -> 0  // System
-        4 -> 1  // Light
-        5 -> 2  // Dark
+        0 -> 0  // MonetSystem -> MonetSystem
+        1 -> 1  // MonetLight -> MonetLight
+        2 -> 2  // MonetDark -> MonetDark
+        3 -> 3  // System -> System
+        4 -> 4  // Light -> Light
+        5 -> 5  // Dark -> Dark
         else -> oldMode
     }
     prefs.edit().putInt("color_mode", newMode).putBoolean(PREF_MIGRATED_V2, true).apply()
@@ -47,23 +47,23 @@ fun APatchTheme(
 ) {
     val isDark = isSystemInDarkTheme()
     val controller = when (colorMode) {
-        0 -> ThemeController(ColorSchemeMode.System)
-        1 -> ThemeController(ColorSchemeMode.Light)
-        2 -> ThemeController(ColorSchemeMode.Dark)
-        3 -> ThemeController(
+        0 -> ThemeController(
             ColorSchemeMode.MonetSystem,
             keyColor = keyColor,
             isDark = isDark
         )
-        4 -> ThemeController(
+        1 -> ThemeController(
             ColorSchemeMode.MonetLight,
             keyColor = keyColor,
         )
-        5 -> ThemeController(
+        2 -> ThemeController(
             ColorSchemeMode.MonetDark,
             keyColor = keyColor,
         )
-        else -> ThemeController(ColorSchemeMode.System)
+        3 -> ThemeController(ColorSchemeMode.System)
+        4 -> ThemeController(ColorSchemeMode.Light)
+        5 -> ThemeController(ColorSchemeMode.Dark)
+        else -> ThemeController(ColorSchemeMode.MonetSystem)
     }
     return MiuixTheme(
         controller = controller,
@@ -78,8 +78,8 @@ fun APatchTheme(
 @ReadOnlyComposable
 fun isInDarkTheme(themeMode: Int): Boolean {
     return when (themeMode) {
-        1, 4 -> false  // Light, MonetLight
-        2, 5 -> true   // Dark, MonetDark
-        else -> isSystemInDarkTheme()  // System (0) or MonetSystem (3)
+        1, 4 -> false  // MonetLight, Light
+        2, 5 -> true   // MonetDark, Dark
+        else -> isSystemInDarkTheme()  // MonetSystem (0) or System (3)
     }
 }

@@ -265,7 +265,7 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                         }
                     )
 
-                    AnimatedVisibility(visible = themeMode in 3..5) {
+                    AnimatedVisibility(visible = themeMode in 0..2) {
                         val colorItems = listOf(
                             stringResource(id = R.string.settings_key_color_default),
                             stringResource(id = R.string.color_red),

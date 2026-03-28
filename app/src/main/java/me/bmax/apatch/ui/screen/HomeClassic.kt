@@ -144,7 +144,7 @@ private fun ClassicWorkCard(
 
     val prefs = APApplication.sharedPreferences
     val colorMode = prefs.getInt("color_mode", 0)
-    val isMonet = colorMode >= 3
+    val isMonet = colorMode < 3
     val isDark = isInDarkTheme(colorMode)
 
     val cardBg = when (kpState) {
