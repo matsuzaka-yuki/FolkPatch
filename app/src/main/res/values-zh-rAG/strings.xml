@@ -94,6 +94,7 @@
     <string name="apm_desc">描述哒</string>
     <string name="apm_new_version_available">有新版本 %s 了喵，戳人家升级吧</string>
     <string name="apm_update">更新喵！</string>
+    <string name="apm_updated">更新完喵！</string>
     <string name="apm_author">作者哒</string>
     <string name="module_update_prompt_with_name">将会更新下面的模块喵: %1$s</string>
     <string name="module_parse_failed">处理模块信息失败喵，模块可能坏了: %s</string>

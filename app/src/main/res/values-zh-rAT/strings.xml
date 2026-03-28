@@ -167,6 +167,7 @@
     <string name="apm_reboot_to_apply">神翼再生后生效</string>
     <string name="apm_changelog">圣光更新记录</string>
     <string name="apm_update">更新神恩</string>
+    <string name="apm_updated">已賜新恩</string>
     <string name="apm_downloading">正在下载圣光阵: %s</string>
     <string name="apm_start_downloading">开始下载: %s</string>
     <string name="apm_new_version_available">发现新版本%s圣光阵，点击升级。</string>

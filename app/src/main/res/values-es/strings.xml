@@ -89,6 +89,7 @@
     <string name="apm_new_version_available">Hay una nueva versión (%s) disponible. Toca para actualizar.</string>
     <string name="apm_empty">No hay ningún módulo instalado</string>
     <string name="apm_update">Actualizar</string>
+    <string name="apm_updated">Actualizado</string>
     <string name="kpm">KPModule</string>
     <string name="apm_author">Autor</string>
     <string name="clear_super_key">Borrar superclave</string>

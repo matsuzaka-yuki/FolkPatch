@@ -88,6 +88,7 @@
     <string name="apm_magisk_conflict">Os módulos estão indisponíveis devido a um conflito com Magisk!</string>
     <string name="apm_changelog">Registro de alterações</string>
     <string name="apm_update">Atualizar</string>
+    <string name="apm_updated">Atualizado</string>
     <string name="apm_downloading">Baixando módulo %s</string>
     <string name="apm_start_downloading">Começando a baixar %s</string>
     <string name="apm_new_version_available">Nova versão %s está disponível, clique para atualizar.</string>

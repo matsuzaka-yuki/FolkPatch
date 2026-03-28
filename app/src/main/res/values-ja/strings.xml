@@ -182,6 +182,7 @@
     <string name="apm_changelog">更新履歴</string>
     <string name="apm_changelog_failed">更新履歴の取得に失敗しました。</string>
     <string name="apm_update">更新</string>
+    <string name="apm_updated">更新済み</string>
     <string name="apm_downloading">モジュールをダウンロード中: %s</string>
     <string name="apm_start_downloading">ダウンロードを開始中: %s</string>
     <string name="apm_new_version_available">新しいバージョンの %s が利用可能です。タップしてアップグレードしてください。</string>

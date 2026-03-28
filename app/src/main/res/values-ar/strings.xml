@@ -91,6 +91,7 @@
     <string name="apm_author">المؤلف</string>
     <string name="apm_changelog">سجل التغييرات</string>
     <string name="apm_update">تحديث</string>
+    <string name="apm_updated">تم التحديث</string>
     <string name="apm_remove">إزالة</string>
     <string name="apm_version">الاصدار</string>
     <string name="apm_start_downloading">بدء التنزيل %s</string>

@@ -204,6 +204,7 @@
     <string name="apm_changelog">Changelog</string>
     <string name="apm_changelog_failed">Failed to get changelog</string>
     <string name="apm_update">Update</string>
+    <string name="apm_updated">Updated</string>
     <string name="apm_downloading">Downloading module: %s</string>
     <string name="apm_start_downloading">Start downloading: %s</string>
     <string name="apm_new_version_available">New version %s is available, click to upgrade.</string>

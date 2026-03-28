@@ -67,6 +67,7 @@
     <string name="apm_reboot_to_apply">Khởi động lại để có hiệu lực</string>
     <string name="apm_changelog">Nhật ký thay đổi</string>
     <string name="apm_update">Cập nhật</string>
+    <string name="apm_updated">Đã cập nhật</string>
     <string name="apm_downloading">Đang tải xuống module %s…</string>
     <string name="apm_start_downloading">Bắt đầu tải xuống %s</string>
     <string name="apm_new_version_available">Đã có phiên %s bản mới, nhấn để nâng cấp phiên bản mới.</string>

@@ -168,6 +168,7 @@
     <string name="apm_reboot_to_apply">重新觉醒后生效</string>
     <string name="apm_changelog">魔法更新记录</string>
     <string name="apm_update">更新魔法</string>
+    <string name="apm_updated">魔法升級済</string>
     <string name="apm_downloading">正在下载魔法阵: %s</string>
     <string name="apm_start_downloading">开始下载: %s</string>
     <string name="apm_new_version_available">发现新版本%s魔法阵，点击升级。</string>

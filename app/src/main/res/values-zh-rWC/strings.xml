@@ -166,6 +166,7 @@
     <string name="apm_reboot_to_apply">重铸仙躯乃显符效</string>
     <string name="apm_changelog">仙法易新录</string>
     <string name="apm_update">渡劫升符</string>
+    <string name="apm_updated">已升符</string>
     <string name="apm_downloading">纳新仙符中：%s</string>
     <string name="apm_start_downloading">启纳仙符：%s</string>
     <string name="apm_new_version_available">新符篇%s已现世，点触渡劫升符。</string>

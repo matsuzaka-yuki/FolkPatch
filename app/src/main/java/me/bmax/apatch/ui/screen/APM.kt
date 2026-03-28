@@ -52,6 +52,7 @@ import com.ramcosta.composedestinations.generated.destinations.OnlineAPMModuleSc
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
@@ -59,6 +60,7 @@ import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.offset
@@ -75,6 +77,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
 import androidx.compose.ui.zIndex
 import androidx.core.net.toUri
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -90,6 +94,7 @@ import me.bmax.apatch.apApp
 import me.bmax.apatch.ui.WebUIActivity
 import me.bmax.apatch.ui.component.ConfirmResult
 import me.bmax.apatch.ui.component.IconTextButton
+import me.bmax.apatch.ui.component.ModuleLabel
 import me.bmax.apatch.ui.component.ModuleStateIndicator
 import me.bmax.apatch.ui.component.rememberConfirmDialog
 import me.bmax.apatch.ui.component.rememberLoadingDialog
@@ -167,9 +172,7 @@ fun APModuleScreen(navigator: DestinationsNavigator) {
 
     LaunchedEffect(Unit) {
         viewModel.isApmSortEnabled = APApplication.sharedPreferences.getBoolean("apm_sort_enabled", true)
-        if (viewModel.moduleList.isEmpty() || viewModel.isNeedRefresh) {
-            viewModel.fetchModuleList()
-        }
+        viewModel.fetchModuleList()
     }
     val webUILauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.StartActivityForResult()
@@ -908,6 +911,26 @@ private fun ModuleItem(
                                 overflow = TextOverflow.Ellipsis,
                                 modifier = Modifier.weight(1f, fill = false)
                             )
+                            if (module.update) {
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Box(
+                                    modifier = Modifier
+                                        .background(
+                                            color = MiuixTheme.colorScheme.primary,
+                                            shape = RoundedCornerShape(4.dp)
+                                        )
+                                        .padding(horizontal = 6.dp, vertical = 2.dp)
+                                ) {
+                                    Text(
+                                        text = stringResource(R.string.apm_updated),
+                                        style = MiuixTheme.textStyles.body2.copy(
+                                            color = MiuixTheme.colorScheme.onPrimary,
+                                            fontSize = 10.sp,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    )
+                                }
+                            }
                             if (module.isMetamodule) {
                                 Spacer(modifier = Modifier.width(8.dp))
                                 Box(
@@ -987,7 +1010,7 @@ private fun ModuleItem(
 
                     Spacer(modifier = Modifier.weight(1f))
 
-                    if (updateUrl.isNotEmpty() && !module.remove) {
+                    if (updateUrl.isNotEmpty() && !module.remove && !module.update) {
                         IconTextButton(
                             imageVector = Icons.Default.InstallMobile,
                             onClick = { onUpdate(module) }
