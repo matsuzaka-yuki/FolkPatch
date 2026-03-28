@@ -56,6 +56,9 @@
     <string name="apm_uninstall_confirm">Gỡ cài đặt mô-đun %s?</string>
     <string name="apm_uninstall_success">%s đã được gỡ cài đặt</string>
     <string name="apm_uninstall_failed">Không thể gỡ cài đặt %s</string>
+    <string name="apm_undo">Hoàn tác</string>
+    <string name="apm_undo_uninstall_success">%s đã được khôi phục</string>
+    <string name="apm_undo_uninstall_failed">Khôi phục thất bại: %s</string>
     <string name="apm_version">Phiên bản</string>
     <string name="apm_author">Tác giả</string>
     <string name="apm_desc">Mô tả</string>

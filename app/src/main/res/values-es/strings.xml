@@ -77,6 +77,9 @@
     <string name="home_apatch_version">Versión de FolkPatch</string>
     <string name="apm_changelog">Notas de cambios</string>
     <string name="apm_uninstall_failed">No se pudo desinstalar %s</string>
+    <string name="apm_undo">Deshacer</string>
+    <string name="apm_undo_uninstall_success">%s restaurado correctamente</string>
+    <string name="apm_undo_uninstall_failed">Error al restaurar: %s</string>
     <string name="apm_failed_to_enable">No se pudo activar el módulo «%s»</string>
     <string name="apm_downloading">Descargando el módulo «%s»…</string>
     <string name="su_hide_system_apps">Ocultar aplicaciones del sistema</string>

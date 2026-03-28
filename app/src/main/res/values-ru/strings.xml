@@ -44,6 +44,9 @@
     <string name="apm_uninstall_confirm">Удалить модуль \"%s\"?</string>
     <string name="apm_uninstall_success">%s удален</string>
     <string name="apm_uninstall_failed">Не удалось удалить %s</string>
+    <string name="apm_undo">Отменить</string>
+    <string name="apm_undo_uninstall_success">%s успешно восстановлен</string>
+    <string name="apm_undo_uninstall_failed">Не удалось восстановить: %s</string>
     <string name="apm_version">Версия</string>
     <string name="apm_author">Автор</string>
     <string name="apm_desc">Описание</string>

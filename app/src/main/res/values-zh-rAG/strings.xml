@@ -85,6 +85,9 @@
     <string name="apm_overlay_fs_not_available">内核把 OverlayFS 关掉了，模块用不了喵！</string>
     <string name="apm_changelog">更新日志喵</string>
     <string name="apm_uninstall_failed">卸载失败了喵 %s</string>
+    <string name="apm_undo">撤销喵</string>
+    <string name="apm_undo_uninstall_success">%s 已经还原了喵</string>
+    <string name="apm_undo_uninstall_failed">还原失败了喵: %s</string>
     <string name="apm_downloading">正在下模块喵：\"%s\"</string>
     <string name="apm_magisk_conflict">跟 Magisk 冲突了喵，模块用不了啦</string>
     <string name="apm_desc">描述哒</string>

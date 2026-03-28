@@ -36,6 +36,7 @@ import androidx.compose.material.icons.filled.InstallMobile
 import androidx.compose.material.icons.filled.OpenInBrowser
 import androidx.compose.material.icons.filled.CloudDownload
 import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.Restore
 import androidx.compose.material.icons.outlined.Delete
 import com.ramcosta.composedestinations.generated.destinations.OnlineAPMModuleScreenDestination
 import androidx.compose.runtime.Composable
@@ -53,6 +54,7 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
@@ -90,6 +92,7 @@ import me.bmax.apatch.util.download
 import me.bmax.apatch.util.hasMagisk
 import me.bmax.apatch.util.toggleModule
 import me.bmax.apatch.util.uninstallModule
+import me.bmax.apatch.util.undoUninstallModule
 import top.yukonga.miuix.kmp.basic.Card
 import top.yukonga.miuix.kmp.basic.Icon
 import top.yukonga.miuix.kmp.basic.IconButton
@@ -433,6 +436,25 @@ private fun ModuleList(
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
     }
 
+    suspend fun onModuleUndoUninstall(module: APModuleViewModel.ModuleInfo) {
+        val success = loadingDialog.withLoading {
+            withContext(Dispatchers.IO) {
+                undoUninstallModule(module.id)
+            }
+        }
+
+        if (success) {
+            viewModel.fetchModuleList()
+        }
+        val message = if (success) {
+            context.getString(R.string.apm_undo_uninstall_success).format(module.name)
+        } else {
+            context.getString(R.string.apm_undo_uninstall_failed).format(module.name)
+        }
+
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+    }
+
     PullToRefresh(
         modifier = modifier,
         isRefreshing = viewModel.isRefreshing,
@@ -541,6 +563,9 @@ private fun ModuleList(
                             onUninstall = {
                                 scope.launch { onModuleUninstall(module) }
                             },
+                            onUndoUninstall = {
+                                scope.launch { onModuleUndoUninstall(module) }
+                            },
                             onCheckChanged = {
                                 scope.launch {
                                     val success = loadingDialog.withLoading {
@@ -589,17 +614,17 @@ private fun ModuleItem(
     module: APModuleViewModel.ModuleInfo,
     updateUrl: String,
     onUninstall: (APModuleViewModel.ModuleInfo) -> Unit,
+    onUndoUninstall: (APModuleViewModel.ModuleInfo) -> Unit,
     onCheckChanged: (Boolean) -> Unit,
     onUpdate: (APModuleViewModel.ModuleInfo) -> Unit,
     onClick: (APModuleViewModel.ModuleInfo) -> Unit,
     modifier: Modifier = Modifier,
-    alpha: Float = 1f,
 ) {
     val decoration = if (!module.remove) TextDecoration.None else TextDecoration.LineThrough
     val moduleVersion = stringResource(id = R.string.apm_version)
     val moduleAuthor = stringResource(id = R.string.apm_author)
     val viewModel = viewModel<APModuleViewModel>()
-    Card(modifier = modifier)
+    Card(modifier = modifier.graphicsLayer { alpha = if (module.remove) 0.5f else 1f })
     {
         Box(
             modifier = Modifier
@@ -621,7 +646,6 @@ private fun ModuleItem(
                 ) {
                     Column(
                         modifier = Modifier
-                            .alpha(alpha = alpha)
                             .weight(1f),
                         verticalArrangement = Arrangement.spacedBy(2.dp)
                     ) {
@@ -664,16 +688,14 @@ private fun ModuleItem(
                     }
 
                     Switch(
-                        enabled = !module.update,
+                        enabled = !module.update && !module.remove,
                         checked = module.enabled,
                         onCheckedChange = onCheckChanged
                     )
                 }
 
                 Text(
-                    modifier = Modifier
-                        .alpha(alpha = alpha)
-                        .padding(horizontal = 16.dp),
+                    modifier = Modifier.padding(horizontal = 16.dp),
                     text = module.description,
                     style = MiuixTheme.textStyles.body2,
                     textDecoration = decoration
@@ -694,7 +716,7 @@ private fun ModuleItem(
                         )
                         .fillMaxWidth()
                 ) {
-                    if (module.hasActionScript) {
+                    if (module.hasActionScript && !module.remove) {
                         IconTextButton(
                             imageVector = Icons.Default.PlayArrow,
                             onClick = {
@@ -705,7 +727,7 @@ private fun ModuleItem(
                         Spacer(modifier = Modifier.width(12.dp))
                     }
 
-                    if (module.hasWebUi) {
+                    if (module.hasWebUi && !module.remove) {
                         IconTextButton(
                             imageVector = Icons.Default.OpenInBrowser,
                             onClick = { onClick(module) }
@@ -715,7 +737,7 @@ private fun ModuleItem(
 
                     Spacer(modifier = Modifier.weight(1f))
 
-                    if (updateUrl.isNotEmpty()) {
+                    if (updateUrl.isNotEmpty() && !module.remove) {
                         IconTextButton(
                             imageVector = Icons.Default.InstallMobile,
                             onClick = { onUpdate(module) }
@@ -727,6 +749,11 @@ private fun ModuleItem(
                         IconTextButton(
                             imageVector = Icons.Default.Delete,
                             onClick = { onUninstall(module) }
+                        )
+                    } else {
+                        IconTextButton(
+                            imageVector = Icons.Default.Restore,
+                            onClick = { onUndoUninstall(module) }
                         )
                     }
                 }

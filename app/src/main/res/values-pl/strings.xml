@@ -50,6 +50,9 @@
     <string name="apm_overlay_fs_not_available">Moduły są niedostępne, ponieważ OverlayFS jest wyłączony przez jądro!</string>
     <string name="apm_failed_to_disable">Nie udało się wyłączyć modułu \"%s\"</string>
     <string name="apm_uninstall_failed">Nie udało się odinstalować modułu %s</string>
+    <string name="apm_undo">Cofnij</string>
+    <string name="apm_undo_uninstall_success">%s przywrócony pomyślnie</string>
+    <string name="apm_undo_uninstall_failed">Nie udało się przywrócić: %s</string>
     <string name="apm_failed_to_enable">Nie udało się włączyć modułu: \"%s\"</string>
     <string name="apm_magisk_conflict">Moduły są niedostępne, ponieważ istnieje konflikt z Magiskiem!</string>
     <string name="apm_author">Autor</string>

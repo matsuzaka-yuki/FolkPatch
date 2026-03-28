@@ -159,6 +159,9 @@
     <string name="apm_uninstall_confirm">解除%s魔法阵契约？</string>
     <string name="apm_uninstall_success">%s已解除契约</string>
     <string name="apm_uninstall_failed">解除契约失败: %s</string>
+    <string name="apm_undo">撤回</string>
+    <string name="apm_undo_uninstall_success">%s 已恢复</string>
+    <string name="apm_undo_uninstall_failed">恢复失败: %s</string>
     <string name="apm_version">魔法等级</string>
     <string name="apm_author">创造者</string>
     <string name="apm_desc">魔法描述</string>

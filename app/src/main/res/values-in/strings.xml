@@ -48,6 +48,9 @@
     <string name="apm_version">Versi</string>
     <string name="apm_overlay_fs_not_available">Modul tidak tersedia karena OverlayFS dinonaktifkan oleh kernel!</string>
     <string name="apm_uninstall_failed">Gagal menghapus %s</string>
+    <string name="apm_undo">Batalkan</string>
+    <string name="apm_undo_uninstall_success">%s berhasil dipulihkan</string>
+    <string name="apm_undo_uninstall_failed">Gagal memulihkan: %s</string>
     <string name="apm_magisk_conflict">Modul tidak tersedia karena ada konflik dengan Magisk!</string>
     <string name="apm_desc">Ket.</string>
     <string name="apm_empty">Tidak ada modul terinstal</string>

@@ -155,6 +155,9 @@
     <string name="apm_uninstall_confirm">「%s」のモジュールをアンインストールしますか？</string>
     <string name="apm_uninstall_success">「%s」をアンインストールしました。</string>
     <string name="apm_uninstall_failed">アンインストールに失敗: %s</string>
+    <string name="apm_undo">元に戻す</string>
+    <string name="apm_undo_uninstall_success">%s を復元しました</string>
+    <string name="apm_undo_uninstall_failed">%s の復元に失敗しました</string>
     <string name="apm_version">バージョン</string>
     <string name="apm_author">作者</string>
     <string name="module_parse_failed">モジュール情報の解析エラー、モジュールが破損している可能性があります: %s</string>

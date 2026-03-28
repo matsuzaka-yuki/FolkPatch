@@ -77,6 +77,9 @@
     <string name="apm_uninstall_confirm">Desinstalar o módulo %s?</string>
     <string name="apm_uninstall_success">%s desinstalado</string>
     <string name="apm_uninstall_failed">Não foi possível desinstalar %s</string>
+    <string name="apm_undo">Desfazer</string>
+    <string name="apm_undo_uninstall_success">%s restaurado com sucesso</string>
+    <string name="apm_undo_uninstall_failed">Falha ao restaurar: %s</string>
     <string name="apm_version">Versão</string>
     <string name="apm_author">Autor</string>
     <string name="apm_desc">Descrição</string>

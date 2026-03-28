@@ -49,6 +49,9 @@
     <string name="home_selinux_status">SELinux 狀態</string>
     <string name="apm_changelog">《更新紀錄》</string>
     <string name="apm_uninstall_failed">無法解除安裝 %s</string>
+    <string name="apm_undo">撤銷</string>
+    <string name="apm_undo_uninstall_success">%s 已還原</string>
+    <string name="apm_undo_uninstall_failed">還原失敗: %s</string>
     <string name="kpm_author">作者</string>
     <string name="apm_failed_to_enable">無法啟用「%s」模組</string>
     <string name="apm_downloading">正在下載「%s」模組……</string>

@@ -177,6 +177,9 @@
     <string name="apm_uninstall_confirm">Uninstall the %s module?</string>
     <string name="apm_uninstall_success">%s uninstalled</string>
     <string name="apm_uninstall_failed">Failed to uninstall: %s</string>
+    <string name="apm_undo">Undo</string>
+    <string name="apm_undo_uninstall_success">%s restored successfully</string>
+    <string name="apm_undo_uninstall_failed">Failed to restore: %s</string>
     <string name="apm_version">Version</string>
     <string name="apm_author">Author</string>
     <string name="module_parse_failed">Failed to parse module information, module may be corrupted: %s</string>
