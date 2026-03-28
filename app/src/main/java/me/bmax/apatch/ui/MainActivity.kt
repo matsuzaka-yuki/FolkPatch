@@ -396,8 +396,10 @@ class MainActivity : AppCompatActivity() {
                     bottomBarVisibleState.value = showBottomBar
 
                     // Haze state for standard blur mode
-                    val hazeState = remember { HazeState() }
-                    val hazeStyle = if (enableBlur) {
+                    val hazeState = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                        remember { HazeState() }
+                    } else null
+                    val hazeStyle = if (enableBlur && hazeState != null) {
                         HazeStyle(
                             backgroundColor = MiuixTheme.colorScheme.surface,
                             tint = HazeTint(MiuixTheme.colorScheme.surface.copy(0.8f))
@@ -406,17 +408,18 @@ class MainActivity : AppCompatActivity() {
                         HazeStyle.Unspecified
                     }
 
-                    // Backdrop layer for floating bottom bar
-                    val surfaceColorState = rememberUpdatedState(MiuixTheme.colorScheme.surface)
-                    val backdrop = rememberLayerBackdrop {
-                        drawRect(surfaceColorState.value)
-                        drawContent()
-                    }
+                    val backdrop = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                        val surfaceColorState = rememberUpdatedState(MiuixTheme.colorScheme.surface)
+                        rememberLayerBackdrop {
+                            drawRect(surfaceColorState.value)
+                            drawContent()
+                        }
+                    } else null
 
                     Scaffold(
                         containerColor = MiuixTheme.colorScheme.surface,
                         bottomBar = {
-                            if (enableFloatingBottomBar) {
+                            if (enableFloatingBottomBar && backdrop != null) {
                                 val animatedOffsetY by animateDpAsState(
                                     targetValue = if (showBottomBar) 0.dp else 200.dp,
                                     animationSpec = tween(durationMillis = 300),
@@ -457,11 +460,11 @@ class MainActivity : AppCompatActivity() {
                                     if (enableFloatingBottomBar) 0.dp else 65.dp
                                 } else 0.dp)
                                 .then(
-                                    if (enableBlur && showBottomBar) Modifier.hazeSource(state = hazeState)
+                                    if (enableBlur && showBottomBar && hazeState != null) Modifier.hazeSource(state = hazeState)
                                     else Modifier
                                 )
                                 .then(
-                                    if (enableFloatingBottomBar && enableBlur && showBottomBar)
+                                    if (enableFloatingBottomBar && enableBlur && showBottomBar && backdrop != null)
                                         Modifier.layerBackdrop(backdrop)
                                     else Modifier
                                 ),
@@ -570,9 +573,9 @@ private fun BottomBar(
     enableBlur: Boolean,
     enableFloatingBottomBar: Boolean,
     enableLiquidGlass: Boolean,
-    hazeState: HazeState,
+    hazeState: HazeState?,
     hazeStyle: HazeStyle,
-    backdrop: com.kyant.backdrop.Backdrop,
+    backdrop: com.kyant.backdrop.Backdrop?,
     onUserInteraction: (() -> Unit)? = null,
 ) {
     val state by APApplication.apStateLiveData.observeAsState(APApplication.State.UNKNOWN_STATE)
@@ -626,7 +629,8 @@ private fun BottomBar(
             }
         }
 
-        if (enableFloatingBottomBar) {
+        if (enableFloatingBottomBar && backdrop != null) {
+            val safeBackdrop = backdrop
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -646,7 +650,7 @@ private fun BottomBar(
                         ),
                     selectedIndex = { selectedIndex },
                     onSelected = navigateToPage,
-                    backdrop = backdrop,
+                    backdrop = safeBackdrop,
                     tabsCount = visibleDestinations.size,
                     isBackdropBlurEnabled = enableBlur,
                     isLiquidGlassEnabled = enableBlur && enableLiquidGlass,
@@ -679,7 +683,7 @@ private fun BottomBar(
             }
         } else {
             NavigationBar(
-                modifier = if (enableBlur) {
+                modifier = if (enableBlur && hazeState != null) {
                     Modifier.defaultHazeEffect(hazeState, hazeStyle)
                 } else Modifier,
                 color = if (enableBlur) Color.Transparent else MiuixTheme.colorScheme.surface,
