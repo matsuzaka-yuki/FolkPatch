@@ -100,6 +100,8 @@
     <string name="dpi_preset_medium">Trung bình (400 DPI)</string>
     <string name="dpi_preset_large">Lớn (480 DPI)</string>
     <string name="dpi_preset_xlarge">Rất lớn (560 DPI)</string>
+    <string name="settings_alt_icon">Biểu tượng thay thế</string>
+    <string name="settings_alt_icon_summary">Sử dụng biểu tượng ứng dụng thay thế</string>
     <string name="settings_nav_layout_title">Bố cục điều hướng</string>
     <string name="settings_nav_layout_summary">Tùy chỉnh các nút thanh điều hướng</string>
     <string name="settings_show_apm">Hiển thị APM</string>

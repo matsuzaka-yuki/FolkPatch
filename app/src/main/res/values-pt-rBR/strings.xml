@@ -101,6 +101,8 @@
     <string name="dpi_preset_medium">Médio (400 DPI)</string>
     <string name="dpi_preset_large">Grande (480 DPI)</string>
     <string name="dpi_preset_xlarge">Muito grande (560 DPI)</string>
+    <string name="settings_alt_icon">Ícone alternativo</string>
+    <string name="settings_alt_icon_summary">Usar ícone alternativo do aplicativo</string>
     <string name="settings_nav_layout_title">Layout de Navegação</string>
     <string name="settings_nav_layout_summary">Personalizar botões da barra de navegação</string>
     <string name="settings_show_apm">Mostrar APM</string>

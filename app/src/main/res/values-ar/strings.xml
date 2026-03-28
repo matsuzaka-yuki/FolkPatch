@@ -84,6 +84,8 @@
     <string name="dpi_preset_medium">متوسط (400 DPI)</string>
     <string name="dpi_preset_large">كبير (480 DPI)</string>
     <string name="dpi_preset_xlarge">كبير جداً (560 DPI)</string>
+    <string name="settings_alt_icon">أيقونة بديلة</string>
+    <string name="settings_alt_icon_summary">استخدام أيقونة التطبيق البديلة</string>
     <string name="settings_nav_layout_title">تنسيق التنقل</string>
     <string name="settings_nav_layout_summary">تخصيص أزرار شريط التنقل</string>
     <string name="settings_show_apm">إظهار APM</string>

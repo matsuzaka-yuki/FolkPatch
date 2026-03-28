@@ -38,6 +38,7 @@ import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.material.icons.rounded.OpenInNew
 import androidx.compose.material.icons.rounded.Palette
 import androidx.compose.material.icons.rounded.Restore
+import androidx.compose.material.icons.rounded.SwapHoriz
 import androidx.compose.material.icons.rounded.Send
 import androidx.compose.material.icons.rounded.Sort
 import androidx.compose.material.icons.rounded.SystemUpdate
@@ -84,6 +85,7 @@ import me.bmax.apatch.ui.component.rememberLoadingDialog
 import me.bmax.apatch.ui.theme.LocalEnableFloatingBottomBar
 import me.bmax.apatch.util.APatchKeyHelper
 import me.bmax.apatch.util.DPIUtils
+import me.bmax.apatch.util.LauncherIconUtils
 import me.bmax.apatch.util.getBugreportFile
 import me.bmax.apatch.util.isGlobalNamespaceEnabled
 import me.bmax.apatch.util.isHideServiceEnabled
@@ -476,6 +478,27 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                                     )
                                 )
                             }
+                        }
+                    )
+
+                    var useAltIcon by rememberSaveable {
+                        mutableStateOf(prefs.getBoolean("use_alt_icon", false))
+                    }
+                    SuperSwitch(
+                        title = stringResource(id = R.string.settings_alt_icon),
+                        summary = stringResource(id = R.string.settings_alt_icon_summary),
+                        checked = useAltIcon,
+                        leftAction = {
+                            Icon(
+                                Icons.Rounded.SwapHoriz,
+                                null,
+                                modifier = Modifier.padding(end = 6.dp)
+                            )
+                        },
+                        onCheckedChange = {
+                            prefs.edit { putBoolean("use_alt_icon", it) }
+                            LauncherIconUtils.updateLauncherState(context)
+                            useAltIcon = it
                         }
                     )
                 }

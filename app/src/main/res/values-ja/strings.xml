@@ -25,6 +25,8 @@
     <string name="dpi_preset_medium">中 (400 DPI)</string>
     <string name="dpi_preset_large">大 (480 DPI)</string>
     <string name="dpi_preset_xlarge">特大 (560 DPI)</string>
+    <string name="settings_alt_icon">代替アイコン</string>
+    <string name="settings_alt_icon_summary">代替アプリアイコンを使用</string>
     <string name="settings_nav_layout_title">ナビゲーションレイアウト</string>
     <string name="settings_nav_layout_summary">ナビゲーションバーのボタンをカスタマイズします</string>
     <string name="settings_show_apm">APM を表示</string>

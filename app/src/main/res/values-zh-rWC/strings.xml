@@ -27,6 +27,8 @@
     <string name="dpi_preset_medium">中庸视界 (400 DPI)</string>
     <string name="dpi_preset_large">须弥视界 (480 DPI)</string>
     <string name="dpi_preset_xlarge">无极视界 (560 DPI)</string>
+    <string name="settings_alt_icon">备选图标</string>
+    <string name="settings_alt_icon_summary">使用备选应用图标</string>
     <string name="settings_nav_layout_title">仙域导航</string>
     <string name="settings_nav_layout_summary">定制仙域导航阵法</string>
     <string name="settings_show_apm">显示天道符箓</string>

@@ -121,6 +121,8 @@
     <string name="dpi_preset_medium">中 (400 DPI)</string>
     <string name="dpi_preset_large">大 (480 DPI)</string>
     <string name="dpi_preset_xlarge">超大 (560 DPI)</string>
+    <string name="settings_alt_icon">备选图标</string>
+    <string name="settings_alt_icon_summary">使用备选应用图标</string>
     <string name="settings_nav_layout_title">导航布局</string>
     <string name="settings_nav_layout_summary">自定义导航栏按钮</string>
     <string name="settings_show_apm">显示系统模块</string>
