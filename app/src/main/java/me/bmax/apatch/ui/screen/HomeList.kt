@@ -99,7 +99,7 @@ import top.yukonga.miuix.kmp.theme.MiuixTheme
 import top.yukonga.miuix.kmp.basic.ButtonDefaults
 import top.yukonga.miuix.kmp.utils.overScrollVertical
 
-private val managerVersion = getManagerVersion()
+internal val listScreenManagerVersion = getManagerVersion()
 
 @Composable
 fun ListHomeScreen(navigator: DestinationsNavigator) {
@@ -165,7 +165,7 @@ fun ListHomeScreen(navigator: DestinationsNavigator) {
 }
 
 @Composable
-private fun AuthFailedTipDialogList(showDialog: MutableState<Boolean>) {
+internal fun AuthFailedTipDialogList(showDialog: MutableState<Boolean>) {
     SuperDialog(
         title = stringResource(R.string.home_dialog_auth_fail_title),
         summary = stringResource(R.string.home_dialog_auth_fail_content),
@@ -190,7 +190,7 @@ private val checkSuperKeyValidationList: (superKey: String) -> Boolean = { super
 }
 
 @Composable
-private fun AuthSuperKeyList(showDialog: MutableState<Boolean>, showFailedDialog: MutableState<Boolean>) {
+internal fun AuthSuperKeyList(showDialog: MutableState<Boolean>, showFailedDialog: MutableState<Boolean>) {
     var key by remember { mutableStateOf("") }
     var keyVisible by remember { mutableStateOf(false) }
     var enable by remember { mutableStateOf(false) }
@@ -263,7 +263,7 @@ private fun AuthSuperKeyList(showDialog: MutableState<Boolean>, showFailedDialog
 }
 
 @Composable
-private fun TopBarList(
+internal fun TopBarList(
     onInstallClick: () -> Unit,
     navigator: DestinationsNavigator,
     kpState: APApplication.State,
@@ -487,7 +487,7 @@ private fun KStatusCardList(
                     if (kpState != APApplication.State.UNKNOWN_STATE && kpState != APApplication.State.KERNELPATCH_NEED_UPDATE && kpState != APApplication.State.KERNELPATCH_NEED_REBOOT) {
                         Spacer(Modifier.height(4.dp))
                         Text(
-                            text = "${Version.installedKPVString()} (${managerVersion.second}) - " + if (apState != APApplication.State.ANDROIDPATCH_NOT_INSTALLED) "Full" else "KernelPatch",
+                            text = "${Version.installedKPVString()} (${listScreenManagerVersion.second}) - " + if (apState != APApplication.State.ANDROIDPATCH_NOT_INSTALLED) "Full" else "KernelPatch",
                             style = MiuixTheme.textStyles.body2,
                             color = MiuixTheme.colorScheme.onPrimary
                         )
@@ -569,7 +569,7 @@ private fun KStatusCardList(
 }
 
 @Composable
-private fun AStatusCardList(apState: APApplication.State) {
+internal fun AStatusCardList(apState: APApplication.State) {
     Card {
         Column(
             modifier = Modifier
@@ -652,7 +652,7 @@ private fun AStatusCardList(apState: APApplication.State) {
                                 text = stringResource(
                                     R.string.apatch_version_update,
                                     Version.installedApdVString,
-                                    managerVersion.second
+                                    listScreenManagerVersion.second
                                 ), style = MiuixTheme.textStyles.body1
                             )
                         }
@@ -713,7 +713,7 @@ private fun AStatusCardList(apState: APApplication.State) {
 
 
 @Composable
-private fun BackupWarningCardList() {
+internal fun BackupWarningCardList() {
     val show = rememberSaveable { mutableStateOf(apApp.getBackupWarningState()) }
     if (show.value) {
         Card(
@@ -782,7 +782,7 @@ private fun getDeviceInfoList(): String {
 }
 
 @Composable
-private fun InfoCardList(kpState: APApplication.State, apState: APApplication.State) {
+internal fun InfoCardList(kpState: APApplication.State, apState: APApplication.State) {
     Card {
         Column(
             modifier = Modifier
@@ -812,7 +812,7 @@ private fun InfoCardList(kpState: APApplication.State, apState: APApplication.St
 
             if (apState != APApplication.State.UNKNOWN_STATE && apState != APApplication.State.ANDROIDPATCH_NOT_INSTALLED) {
                 InfoCardItem(
-                    stringResource(R.string.home_apatch_version), managerVersion.second.toString()
+                    stringResource(R.string.home_apatch_version), listScreenManagerVersion.second.toString()
                 )
                 Spacer(Modifier.height(16.dp))
             }
@@ -836,7 +836,7 @@ private fun InfoCardList(kpState: APApplication.State, apState: APApplication.St
 }
 
 @Composable
-private fun WarningCardList(
+internal fun WarningCardList(
     message: String, color: Color = MiuixTheme.colorScheme.error, onClick: (() -> Unit)? = null
 ) {
     Card(
@@ -855,14 +855,14 @@ private fun WarningCardList(
 }
 
 @Composable
-private fun UpdateCardList() {
+internal fun UpdateCardList() {
     val latestVersionInfo = LatestVersionInfo()
     val newVersion by produceState(initialValue = latestVersionInfo) {
         value = withContext(Dispatchers.IO) {
             checkNewVersion()
         }
     }
-    val currentVersionCode = managerVersion.second
+    val currentVersionCode = listScreenManagerVersion.second
     val newVersionCode = newVersion.versionCode
     val newVersionUrl = newVersion.downloadUrl
     val changelog = newVersion.changelog
@@ -893,7 +893,7 @@ private fun UpdateCardList() {
 }
 
 @Composable
-private fun LearnMoreCardList() {
+internal fun LearnMoreCardList() {
     val uriHandler = LocalUriHandler.current
 
     Card {

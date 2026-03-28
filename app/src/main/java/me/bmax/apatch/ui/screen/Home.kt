@@ -135,10 +135,10 @@ fun HomeScreen(navigator: DestinationsNavigator) {
         onDispose { prefs.unregisterOnSharedPreferenceChangeListener(listener) }
     }
 
-    if (homeLayout == "list") {
-        ListHomeScreen(navigator)
-    } else {
-        MainHomeScreen(navigator)
+    when (homeLayout) {
+        "list" -> ListHomeScreen(navigator)
+        "classic" -> ClassicHomeScreen(navigator)
+        else -> MainHomeScreen(navigator)
     }
 }
 
