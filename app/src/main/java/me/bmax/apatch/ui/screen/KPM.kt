@@ -139,7 +139,6 @@ fun KPModuleScreen(navigator: DestinationsNavigator) {
 
     Scaffold(
         topBar = { TopBar(navigator) },
-        popupHost = { },
         floatingActionButton = {
             val scope = rememberCoroutineScope()
             val context = LocalContext.current
@@ -212,7 +211,7 @@ fun KPModuleScreen(navigator: DestinationsNavigator) {
                     SuperListPopup(
                         show = expanded.value,
                         popupPositionProvider = ListPopupDefaults.ContextMenuPositionProvider,
-                        alignment = PopupPositionProvider.Align.TopEnd,
+                        alignment = PopupPositionProvider.Align.BottomEnd,
                         onDismissRequest = { expanded.value = false }
                     ) {
 
