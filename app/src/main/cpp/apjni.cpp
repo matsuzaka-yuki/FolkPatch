@@ -16,6 +16,75 @@
 // Forward declaration to ensure visibility
 extern jstring nativeGetApiToken(JNIEnv *env, jobject thiz, jobject context);
 
+static jstring SafeNewStringUTF(JNIEnv *env, const char *str) {
+    if (!str || !str[0]) return env->NewStringUTF("");
+
+    const unsigned char *p = (const unsigned char *)str;
+    bool valid = true;
+    while (*p) {
+        if (*p < 0x80) {
+            p++;
+        } else if ((*p & 0xE0) == 0xC0) {
+            if ((p[1] & 0xC0) != 0x80) { valid = false; break; }
+            p += 2;
+        } else if ((*p & 0xF0) == 0xE0) {
+            if ((p[1] & 0xC0) != 0x80 || (p[2] & 0xC0) != 0x80) { valid = false; break; }
+            p += 3;
+        } else if ((*p & 0xF8) == 0xF0) {
+            if ((p[1] & 0xC0) != 0x80 || (p[2] & 0xC0) != 0x80 || (p[3] & 0xC0) != 0x80) { valid = false; break; }
+            p += 4;
+        } else {
+            valid = false; break;
+        }
+    }
+
+    if (valid) return env->NewStringUTF(str);
+
+    std::string sanitized;
+    p = (const unsigned char *)str;
+    while (*p) {
+        if (*p < 0x80) {
+            sanitized += (char)*p;
+            p++;
+        } else if ((*p & 0xE0) == 0xC0) {
+            if ((p[1] & 0xC0) == 0x80) {
+                sanitized += (char)*p;
+                sanitized += (char)p[1];
+                p += 2;
+            } else {
+                sanitized += '?';
+                p++;
+            }
+        } else if ((*p & 0xF0) == 0xE0) {
+            if ((p[1] & 0xC0) == 0x80 && (p[2] & 0xC0) == 0x80) {
+                sanitized += (char)*p;
+                sanitized += (char)p[1];
+                sanitized += (char)p[2];
+                p += 3;
+            } else {
+                sanitized += '?';
+                p++;
+            }
+        } else if ((*p & 0xF8) == 0xF0) {
+            if ((p[1] & 0xC0) == 0x80 && (p[2] & 0xC0) == 0x80 && (p[3] & 0xC0) == 0x80) {
+                sanitized += (char)*p;
+                sanitized += (char)p[1];
+                sanitized += (char)p[2];
+                sanitized += (char)p[3];
+                p += 4;
+            } else {
+                sanitized += '?';
+                p++;
+            }
+        } else {
+            sanitized += '?';
+            p++;
+        }
+    }
+
+    return env->NewStringUTF(sanitized.c_str());
+}
+
 jboolean nativeReady(JNIEnv *env, jobject /* this */, jstring super_key_jstr) {
     ensureSuperKeyNonNull(super_key_jstr);
 
@@ -38,7 +107,7 @@ jstring nativeKernelPatchBuildTime(JNIEnv *env, jobject /* this */, jstring supe
     char buf[4096] = { '\0' };
 
     sc_get_build_time(super_key.get(), buf, sizeof(buf));
-    return env->NewStringUTF(buf);
+    return SafeNewStringUTF(env, buf);
 }
 
 jlong nativeSu(JNIEnv *env, jobject /* this */, jstring super_key_jstr, jint to_uid, jstring selinux_context_jstr) {
@@ -115,7 +184,7 @@ jobject nativeSuProfile(JNIEnv *env, jobject /* this */, jstring super_key_jstr,
     jobject obj = env->NewObject(cls, constructor);
     env->SetIntField(obj, uidField, (int) profile.uid);
     env->SetIntField(obj, toUidField, (int) profile.to_uid);
-    env->SetObjectField(obj, scontextFild, env->NewStringUTF(profile.scontext));
+    env->SetObjectField(obj, scontextFild, SafeNewStringUTF(env, profile.scontext));
 
     return obj;
 }
@@ -154,7 +223,7 @@ jobject nativeControlKernelPatchModule(JNIEnv *env, jobject /* this */, jstring 
 
     jobject obj = env->NewObject(cls, constructor);
     env->SetLongField(obj, rcField, rc);
-    env->SetObjectField(obj, outMsg, env->NewStringUTF(buf));
+    env->SetObjectField(obj, outMsg, SafeNewStringUTF(env, buf));
 
     return obj;
 }
@@ -195,7 +264,7 @@ jstring nativeKernelPatchModuleList(JNIEnv *env, jobject /* this */, jstring sup
         LOGE("nativeKernelPatchModuleList error: %ld", rc);
     }
 
-    return env->NewStringUTF(buf);
+    return SafeNewStringUTF(env, buf);
 }
 
 jstring nativeKernelPatchModuleInfo(JNIEnv *env, jobject /* this */, jstring super_key_jstr, jstring module_name_jstr) {
@@ -209,7 +278,7 @@ jstring nativeKernelPatchModuleInfo(JNIEnv *env, jobject /* this */, jstring sup
         LOGE("nativeKernelPatchModuleInfo error: %ld", rc);
     }
 
-    return env->NewStringUTF(buf);
+    return SafeNewStringUTF(env, buf);
 }
 
 jlong nativeGrantSu(JNIEnv *env, jobject /* this */, jstring super_key_jstr, jint uid, jint to_uid, jstring selinux_context_jstr) {
@@ -241,7 +310,7 @@ jstring nativeSuPath(JNIEnv *env, jobject /* this */, jstring super_key_jstr) {
         LOGE("nativeSuPath error: %ld", rc);
     }
 
-    return env->NewStringUTF(buf);
+    return SafeNewStringUTF(env, buf);
 }
 
 jboolean nativeResetSuPath(JNIEnv *env, jobject /* this */, jstring super_key_jstr, jstring su_path_jstr) {
