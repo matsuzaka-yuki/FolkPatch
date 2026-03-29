@@ -154,23 +154,25 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler {
             _apStateLiveData.value = State.ANDROIDPATCH_INSTALLING
             val nativeDir = apApp.applicationInfo.nativeLibraryDir
 
-            Natives.resetSuPath(LEGACY_SU_PATH)
-
             val cmds = arrayOf(
                 "mkdir -p $APATCH_BIN_FOLDER",
                 "mkdir -p $APATCH_LOG_FOLDER",
 
                 "cp -f ${nativeDir}/libapd.so $APD_PATH",
                 "chmod +x $APD_PATH",
-                "ln -s $APD_PATH $APD_LINK_PATH",
+                "ln -sf $APD_PATH $APD_LINK_PATH",
                 "restorecon $APD_PATH",
 
+                "rm -f $MAGISKPOLICY_BIN_PATH",
                 "cp -f ${nativeDir}/libmagiskpolicy.so $MAGISKPOLICY_BIN_PATH",
                 "chmod +x $MAGISKPOLICY_BIN_PATH",
+                "rm -f $RESETPROP_BIN_PATH",
                 "cp -f ${nativeDir}/libresetprop.so $RESETPROP_BIN_PATH",
                 "chmod +x $RESETPROP_BIN_PATH",
+                "rm -f $BUSYBOX_BIN_PATH",
                 "cp -f ${nativeDir}/libbusybox.so $BUSYBOX_BIN_PATH",
                 "chmod +x $BUSYBOX_BIN_PATH",
+                "rm -f $MAGISKBOOT_BIN_PATH",
                 "cp -f ${nativeDir}/libmagiskboot.so $MAGISKBOOT_BIN_PATH",
                 "chmod +x $MAGISKBOOT_BIN_PATH",
 
@@ -186,6 +188,9 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler {
 
             val shell = getRootShell()
             shell.newJob().add(*cmds).to(logCallback, logCallback).exec()
+
+            Natives.resetSuPath(DEFAULT_SU_PATH)
+            Natives.resetSuPath(LEGACY_SU_PATH)
 
             // clear shell cache
             APatchCli.refresh()
