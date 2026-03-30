@@ -62,6 +62,12 @@ fun HomeScreenCircle(
         kpState
     }
 
+    val apState = if (apState == APApplication.State.ANDROIDPATCH_NEED_UPDATE && apApp.isAndroidPatchUpdateBlocked()) {
+        APApplication.State.ANDROIDPATCH_INSTALLED
+    } else {
+        apState
+    }
+
     val showUninstallDialog = remember { mutableStateOf(false) }
     val showAuthFailedTipDialog = remember { mutableStateOf(false) }
     val showAuthKeyDialog = remember { mutableStateOf(false) }

@@ -59,6 +59,12 @@ fun HomeScreenV3(
         kpState
     }
     
+    val apState = if (apState == APApplication.State.ANDROIDPATCH_NEED_UPDATE && apApp.isAndroidPatchUpdateBlocked()) {
+        APApplication.State.ANDROIDPATCH_INSTALLED
+    } else {
+        apState
+    }
+    
     val context = LocalContext.current
     // Only enable wallpaper mode (no card shadow) if custom background is actually enabled
     val isWallpaperMode = BackgroundConfig.isCustomBackgroundEnabled && (BackgroundConfig.customBackgroundUri != null || BackgroundConfig.isMultiBackgroundEnabled)

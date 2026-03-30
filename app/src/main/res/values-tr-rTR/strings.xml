@@ -30,6 +30,8 @@
     <string name="settings_show_superuser">SuperUser Göster</string>
     <string name="settings_block_kernelpatch_update">KernelPatch Güncellemesini Engelle</string>
     <string name="settings_block_kernelpatch_update_summary">KernelPatch güncelleme bildirimlerini gösterme</string>
+    <string name="settings_block_androidpatch_update">Sistem Yaması Güncellemesini Engelle</string>
+    <string name="settings_block_androidpatch_update_summary">Sistem yaması (APD) güncelleme bildirimlerini gösterme</string>
 
     <string name="reboot">Yeniden Başlat</string>
     <string name="settings">Ayarlar</string>

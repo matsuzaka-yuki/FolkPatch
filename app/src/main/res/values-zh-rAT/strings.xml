@@ -30,6 +30,8 @@
     <string name="settings_show_superuser">现圣光使者</string>
     <string name="settings_block_kernelpatch_update">封印灵魂之力更新神谕</string>
     <string name="settings_block_kernelpatch_update_summary">拒绝接收来自灵魂之力的神谕更新</string>
+    <string name="settings_block_androidpatch_update">封印圣光阵法更新神谕</string>
+    <string name="settings_block_androidpatch_update_summary">拒绝接收来自圣光阵法的更新神谕</string>
     <string name="settings_disable_module_update_check">禁用圣光阵更新检查</string>
     <string name="settings_disable_module_update_check_summary">禁用星辰圣光阵的自动更新检查</string>
 

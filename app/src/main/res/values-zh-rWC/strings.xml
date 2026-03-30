@@ -29,6 +29,8 @@
     <string name="settings_show_superuser">现登仙至尊</string>
     <string name="settings_block_kernelpatch_update">屏蔽道核符箓更新神识</string>
     <string name="settings_block_kernelpatch_update_summary">不再以此俗事扰乱道心</string>
+    <string name="settings_block_androidpatch_update">屏蔽护法灵符更新神识</string>
+    <string name="settings_block_androidpatch_update_summary">不再以此等杂务扰乱道心</string>
     <string name="settings_disable_module_update_check">禁诸仙符更新之查</string>
     <string name="settings_disable_module_update_check_summary">禁诸天道仙符自动更新之查</string>
 

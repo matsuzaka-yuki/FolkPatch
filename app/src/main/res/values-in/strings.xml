@@ -33,6 +33,8 @@
     <string name="settings_show_superuser">Tampilkan SuperUser</string>
     <string name="settings_block_kernelpatch_update">Blokir Pembaruan KernelPatch</string>
     <string name="settings_block_kernelpatch_update_summary">Jangan tampilkan notifikasi pembaruan KernelPatch</string>
+    <string name="settings_block_androidpatch_update">Blokir Pembaruan Patch Sistem</string>
+    <string name="settings_block_androidpatch_update_summary">Jangan tampilkan notifikasi pembaruan patch sistem (APD)</string>
     <string name="settings_disable_module_update_check">Nonaktifkan pemeriksaan pembaruan modul</string>
     <string name="settings_disable_module_update_check_summary">Nonaktifkan pemeriksaan pembaruan otomatis untuk modul sistem</string>
 

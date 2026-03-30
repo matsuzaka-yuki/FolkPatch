@@ -778,6 +778,12 @@ private fun KStatusCard(
         kpState
     }
     
+    val apState = if (apState == APApplication.State.ANDROIDPATCH_NEED_UPDATE && apApp.isAndroidPatchUpdateBlocked()) {
+        APApplication.State.ANDROIDPATCH_INSTALLED
+    } else {
+        apState
+    }
+    
     val darkThemeFollowSys = prefs.getBoolean("night_mode_follow_sys", false)
     val nightModeEnabled = prefs.getBoolean("night_mode_enabled", true)
     val isDarkTheme = if (darkThemeFollowSys) {

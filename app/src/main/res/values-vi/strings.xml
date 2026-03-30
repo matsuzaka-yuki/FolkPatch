@@ -30,6 +30,8 @@
     <string name="settings_show_superuser">Hiển thị SuperUser</string>
     <string name="settings_block_kernelpatch_update">Chặn cập nhật KernelPatch</string>
     <string name="settings_block_kernelpatch_update_summary">Không hiển thị thông báo cập nhật KernelPatch</string>
+    <string name="settings_block_androidpatch_update">Chặn cập nhật bản vá hệ thống</string>
+    <string name="settings_block_androidpatch_update_summary">Không hiển thị thông báo cập nhật bản vá hệ thống (APD)</string>
     <string name="settings_disable_module_update_check">Vô hiệu hóa kiểm tra cập nhật module</string>
     <string name="settings_disable_module_update_check_summary">Vô hiệu hóa kiểm tra cập nhật tự động cho module hệ thống</string>
 

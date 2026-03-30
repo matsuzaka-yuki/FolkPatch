@@ -30,6 +30,8 @@
     <string name="settings_show_superuser">Mostrar SuperUser</string>
     <string name="settings_block_kernelpatch_update">Bloquear atualização do KernelPatch</string>
     <string name="settings_block_kernelpatch_update_summary">Não mostrar notificações de atualização do KernelPatch</string>
+    <string name="settings_block_androidpatch_update">Bloquear atualização do patch do sistema</string>
+    <string name="settings_block_androidpatch_update_summary">Não mostrar notificações de atualização do patch do sistema (APD)</string>
     <string name="settings_disable_module_update_check">Desativar verificação de atualização de módulos</string>
     <string name="settings_disable_module_update_check_summary">Desativar verificação automática de atualizações para módulos do sistema</string>
 

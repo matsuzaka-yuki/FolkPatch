@@ -30,6 +30,8 @@
     <string name="settings_show_superuser">Show SuperUser</string>
     <string name="settings_block_kernelpatch_update">Block KernelPatch Update</string>
     <string name="settings_block_kernelpatch_update_summary">Do not show KernelPatch update notifications</string>
+    <string name="settings_block_androidpatch_update">Block System Patch Update</string>
+    <string name="settings_block_androidpatch_update_summary">Do not show system patch (APD) update notifications</string>
 
     <string name="reboot">Reboot</string>
     <string name="settings">Settings</string>

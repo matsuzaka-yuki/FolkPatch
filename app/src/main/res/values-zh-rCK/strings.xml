@@ -30,6 +30,8 @@
     <string name="settings_show_superuser">摆出来首席大厨</string>
     <string name="settings_block_kernelpatch_update">别嚷嚷秘酱料更新</string>
     <string name="settings_block_kernelpatch_update_summary">专心做菜，别老提示秘酱料换口味</string>
+    <string name="settings_block_androidpatch_update">别嚷嚷招牌菜更新</string>
+    <string name="settings_block_androidpatch_update_summary">专心做菜，别老提示招牌菜换配方</string>
 
     <string name="reboot">重新起火</string>
     <string name="settings">烹饪秘籍</string>

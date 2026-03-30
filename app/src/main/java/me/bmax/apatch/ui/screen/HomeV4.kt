@@ -149,6 +149,12 @@ fun HomeScreenV4(
         kpState
     }
 
+    val apStateResolved = if (apState == APApplication.State.ANDROIDPATCH_NEED_UPDATE && apApp.isAndroidPatchUpdateBlocked()) {
+        APApplication.State.ANDROIDPATCH_INSTALLED
+    } else {
+        apState
+    }
+
     // 对话框状态
     val showUninstallDialog = remember { mutableStateOf(false) }
     val showAuthFailedTipDialog = remember { mutableStateOf(false) }
@@ -169,7 +175,7 @@ fun HomeScreenV4(
         InstallProgressDialog(
             showDialog = showInstallDialog,
             kpState = kpStateResolved,
-            apState = apState
+            apState = apStateResolved
         )
     }
 
@@ -231,7 +237,7 @@ fun HomeScreenV4(
         // Hero状态卡
         HeroStatusCard(
             kpState = kpStateResolved,
-            apState = apState,
+            apState = apStateResolved,
             navigator = navigator,
             showAuthKeyDialog = showAuthKeyDialog,
             showUninstallDialog = showUninstallDialog,
@@ -256,12 +262,12 @@ fun HomeScreenV4(
         // Android补丁状态卡片（Half模式时显示）
         AnimatedVisibility(
             visible = kpStateResolved != APApplication.State.UNKNOWN_STATE && 
-                apState != APApplication.State.ANDROIDPATCH_INSTALLED,
+                apStateResolved != APApplication.State.ANDROIDPATCH_INSTALLED,
             enter = fadeIn(),
             exit = fadeOut()
         ) {
             AndroidPatchCard(
-                apState = apState,
+                apState = apStateResolved,
                 kpState = kpStateResolved,
                 showInstallDialog = showInstallDialog,
                 isWallpaperMode = isWallpaperMode
@@ -276,7 +282,7 @@ fun HomeScreenV4(
             ) {
                 SystemInfoCard(
                     kpState = kpStateResolved,
-                    apState = apState,
+                    apState = apStateResolved,
                     zygiskImplement = zygiskImplement,
                     mountImplement = mountImplement,
                     modifier = Modifier.weight(1f)
@@ -296,7 +302,7 @@ fun HomeScreenV4(
         } else {
             SystemInfoCard(
                 kpState = kpStateResolved,
-                apState = apState,
+                apState = apStateResolved,
                 zygiskImplement = zygiskImplement,
                 mountImplement = mountImplement
             )

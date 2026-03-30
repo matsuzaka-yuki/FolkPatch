@@ -30,6 +30,8 @@
     <string name="settings_show_superuser">显示超级用户</string>
     <string name="settings_block_kernelpatch_update">屏蔽内核补丁更新提示</string>
     <string name="settings_block_kernelpatch_update_summary">不显示内核补丁的更新通知</string>
+    <string name="settings_block_androidpatch_update">屏蔽系统补丁更新提示</string>
+    <string name="settings_block_androidpatch_update_summary">不显示系统补丁(APD)的更新通知</string>
 
     <string name="reboot">重启</string>
     <string name="settings">设置</string>

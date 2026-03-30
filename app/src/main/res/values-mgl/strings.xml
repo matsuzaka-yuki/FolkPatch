@@ -30,6 +30,8 @@
     <string name="settings_show_superuser">显示魔法使</string>
     <string name="settings_block_kernelpatch_update">封印心之契约更新感应</string>
     <string name="settings_block_kernelpatch_update_summary">不再接收来自心之契约的更新讯号</string>
+    <string name="settings_block_androidpatch_update">封印魔法阵法更新感应</string>
+    <string name="settings_block_androidpatch_update_summary">不再接收来自魔法阵法的更新讯号</string>
     <string name="settings_disable_module_update_check">禁用魔法阵更新检查</string>
     <string name="settings_disable_module_update_check_summary">禁用星之魔法阵的自动更新检查</string>
 

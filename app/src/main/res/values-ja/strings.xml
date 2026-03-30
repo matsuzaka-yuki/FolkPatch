@@ -23,6 +23,8 @@
     <string name="settings_show_superuser">スーパーユーザーを表示</string>
     <string name="settings_block_kernelpatch_update">KernelPatch の更新をブロック</string>
     <string name="settings_block_kernelpatch_update_summary">KernelPatch の更新通知を表示しないようにします。</string>
+    <string name="settings_block_androidpatch_update">システムパッチの更新をブロック</string>
+    <string name="settings_block_androidpatch_update_summary">システムパッチ(APD)の更新通知を表示しないようにします。</string>
     <string name="reboot">再起動</string>
     <string name="settings">設定</string>
     <string name="reboot_recovery">リカバリーで再起動</string>

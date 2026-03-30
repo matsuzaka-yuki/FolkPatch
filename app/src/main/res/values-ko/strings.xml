@@ -30,6 +30,8 @@
     <string name="settings_show_superuser">Superuser 표시</string>
     <string name="settings_block_kernelpatch_update">KernelPatch 업데이트 알림 차단</string>
     <string name="settings_block_kernelpatch_update_summary">KernelPatch 업데이트 알림을 표시하지 않습니다.</string>
+    <string name="settings_block_androidpatch_update">시스템 패치 업데이트 알림 차단</string>
+    <string name="settings_block_androidpatch_update_summary">시스템 패치(APD) 업데이트 알림을 표시하지 않습니다.</string>
 
     <string name="reboot">다시 시작</string>
     <string name="settings">설정</string>

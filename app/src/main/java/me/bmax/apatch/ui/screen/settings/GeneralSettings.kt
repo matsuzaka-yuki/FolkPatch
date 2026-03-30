@@ -240,6 +240,25 @@ fun GeneralSettings(
                     }
                 )
             }
+
+            // Block AndroidPatch Update
+            val blockApUpdateTitle = stringResource(id = R.string.settings_block_androidpatch_update)
+            val blockApUpdateSummary = stringResource(id = R.string.settings_block_androidpatch_update_summary)
+            val showBlockApUpdate = matchGeneral || shouldShow(searchText, blockApUpdateTitle, blockApUpdateSummary)
+
+            if (showBlockApUpdate) {
+                var blockApUpdateChecked by remember { mutableStateOf(prefs.getBoolean(APApplication.PREF_BLOCK_ANDROIDPATCH_UPDATE, false)) }
+                SwitchItem(
+                    icon = Icons.Filled.AppBlocking,
+                    title = blockApUpdateTitle,
+                    summary = blockApUpdateSummary,
+                    checked = blockApUpdateChecked,
+                    onCheckedChange = {
+                        blockApUpdateChecked = it
+                        prefs.edit { putBoolean(APApplication.PREF_BLOCK_ANDROIDPATCH_UPDATE, it) }
+                    }
+                )
+            }
             
             // FolkX Engine
             if (showFolkXEngine) {

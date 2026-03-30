@@ -30,6 +30,8 @@
     <string name="settings_show_superuser">显示超级用户喵</string>
     <string name="settings_block_kernelpatch_update">不要提示内核补丁更新啦喵</string>
     <string name="settings_block_kernelpatch_update_summary">烦死啦，人家才不要看更新提示呢喵！</string>
+    <string name="settings_block_androidpatch_update">不要提示系统补丁更新啦喵</string>
+    <string name="settings_block_androidpatch_update_summary">才不要看系统补丁的更新提示呢，烦死了喵！</string>
 
     <string name="reboot">要重启一下哦喵！</string>
     <string name="settings">设置</string>

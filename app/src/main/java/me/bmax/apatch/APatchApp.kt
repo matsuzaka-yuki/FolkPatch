@@ -104,6 +104,7 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler, ImageLoade
 
         const val SP_NAME = "config"
         const val PREF_BLOCK_KERNELPATCH_UPDATE = "block_kernelpatch_update"
+        const val PREF_BLOCK_ANDROIDPATCH_UPDATE = "block_androidpatch_update"
         private const val SHOW_BACKUP_WARN = "show_backup_warning"
         lateinit var sharedPreferences: SharedPreferences
         var isSignatureValid = true
@@ -263,12 +264,17 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler, ImageLoade
                     val installedApdVInt = Version.installedApdVUInt()
                     Log.d(TAG, "manager version: $mgv, installed apd version: $installedApdVInt")
 
+                    val isApBlocked = apApp.isAndroidPatchUpdateBlocked()
+
                     if (BuildConfig.DEBUG_FAKE_ROOT || Version.installedApdVInt > 0) {
-                        // Check if version matches manager version
                         if (Version.installedApdVInt == mgv.toInt()) {
                             _apStateLiveData.postValue(State.ANDROIDPATCH_INSTALLED)
                         } else {
-                            _apStateLiveData.postValue(State.ANDROIDPATCH_NEED_UPDATE)
+                            if (isApBlocked) {
+                                _apStateLiveData.postValue(State.ANDROIDPATCH_INSTALLED)
+                            } else {
+                                _apStateLiveData.postValue(State.ANDROIDPATCH_NEED_UPDATE)
+                            }
                         }
                     } else {
                         _apStateLiveData.postValue(State.ANDROIDPATCH_NOT_INSTALLED)
@@ -383,6 +389,10 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler, ImageLoade
 
     fun isKernelPatchUpdateBlocked(): Boolean {
         return sharedPreferences.getBoolean(PREF_BLOCK_KERNELPATCH_UPDATE, false)
+    }
+
+    fun isAndroidPatchUpdateBlocked(): Boolean {
+        return sharedPreferences.getBoolean(PREF_BLOCK_ANDROIDPATCH_UPDATE, false)
     }
 
     fun updateBackupWarningState(state: Boolean) {
