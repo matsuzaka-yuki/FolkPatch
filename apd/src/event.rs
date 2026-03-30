@@ -1,4 +1,4 @@
-use crate::mpolicy::get_policy_main;
+use crate::sepolicy::get_policy_main;
 use anyhow::{Context, Result};
 use libc::SIGPWR;
 use log::{info, warn};
@@ -21,7 +21,7 @@ use std::{
 
 use crate::{
     assets, defs, lua, metamodule, module, restorecon, supercall,
-    supercall::{init_load_package_uid_config, init_load_su_path, refresh_ap_package_list},
+    supercall::{init_load_su_path, refresh_ap_package_list},
     utils::{self, switch_cgroups},
 };
 
@@ -51,9 +51,6 @@ pub fn on_post_data_fs(superkey: Option<String>) -> Result<()> {
             .with_context(|| "Failed to set permissions for /data/adb/fp")?;
         info!("Created directory: /data/adb/fp");
     }
-
-    #[cfg(unix)]
-    init_load_package_uid_config(&superkey);
 
     init_load_su_path(&superkey);
 
