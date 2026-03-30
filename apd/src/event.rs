@@ -42,14 +42,17 @@ pub fn on_post_data_fs(superkey: Option<String>) -> Result<()> {
     report_kernel(superkey.clone(), "post-fs-data", "before")?;
     use std::process::Stdio;
 
-    // Create /data/adb/fp directory for hide and umount binaries
+    // Create /data/adb/fp/bin directory for fpd binary
     let fp_dir = Path::new("/data/adb/fp");
-    if !fp_dir.exists() {
-        fs::create_dir_all(fp_dir).with_context(|| "Failed to create /data/adb/fp directory")?;
+    let fp_bin_dir = Path::new("/data/adb/fp/bin");
+    if !fp_bin_dir.exists() {
+        fs::create_dir_all(fp_bin_dir).with_context(|| "Failed to create /data/adb/fp/bin directory")?;
         let permissions = fs::Permissions::from_mode(0o755);
-        fs::set_permissions(fp_dir, permissions)
+        fs::set_permissions(fp_dir, permissions.clone())
             .with_context(|| "Failed to set permissions for /data/adb/fp")?;
-        info!("Created directory: /data/adb/fp");
+        fs::set_permissions(fp_bin_dir, permissions)
+            .with_context(|| "Failed to set permissions for /data/adb/fp/bin")?;
+        info!("Created directory: /data/adb/fp/bin");
     }
 
     init_load_su_path(&superkey);
@@ -198,24 +201,24 @@ pub fn on_post_data_fs(superkey: Option<String>) -> Result<()> {
 
     // Execute Hide Service if enabled
     if Path::new(defs::HIDE_SERVICE_FILE).exists() {
-        info!("Hide Service enabled, executing hide binary...");
+        info!("Hide Service enabled, executing fpd -hide...");
         if Path::new(defs::HIDE_BINARY_PATH).exists() {
-            let result = Command::new(defs::HIDE_BINARY_PATH).status();
+            let result = Command::new(defs::HIDE_BINARY_PATH).arg("-hide").status();
             match result {
                 Ok(status) => {
                     if status.success() {
-                        info!("Hide binary executed successfully");
+                        info!("fpd -hide executed successfully");
                     } else {
-                        warn!("Hide binary exited with status: {:?}", status.code());
+                        warn!("fpd -hide exited with status: {:?}", status.code());
                     }
                 }
                 Err(e) => {
-                    warn!("Failed to execute hide binary: {}", e);
+                    warn!("Failed to execute fpd -hide: {}", e);
                 }
             }
         } else {
             warn!(
-                "Hide binary not found at {}, please copy it manually",
+                "fpd binary not found at {}, please copy it manually",
                 defs::HIDE_BINARY_PATH
             );
         }
@@ -225,24 +228,24 @@ pub fn on_post_data_fs(superkey: Option<String>) -> Result<()> {
 
     // Execute Umount Service if enabled
     if Path::new(defs::UMOUNT_SERVICE_FILE).exists() {
-        info!("Umount Service enabled, executing umount binary...");
+        info!("Umount Service enabled, executing fpd -umount...");
         if Path::new(defs::UMOUNT_BINARY_PATH).exists() {
-            let result = Command::new(defs::UMOUNT_BINARY_PATH).status();
+            let result = Command::new(defs::UMOUNT_BINARY_PATH).arg("-umount").status();
             match result {
                 Ok(status) => {
                     if status.success() {
-                        info!("Umount binary executed successfully");
+                        info!("fpd -umount executed successfully");
                     } else {
-                        warn!("Umount binary exited with status: {:?}", status.code());
+                        warn!("fpd -umount exited with status: {:?}", status.code());
                     }
                 }
                 Err(e) => {
-                    warn!("Failed to execute umount binary: {}", e);
+                    warn!("Failed to execute fpd -umount: {}", e);
                 }
             }
         } else {
             warn!(
-                "Umount binary not found at {}, please copy it manually",
+                "fpd binary not found at {}, please copy it manually",
                 defs::UMOUNT_BINARY_PATH
             );
         }

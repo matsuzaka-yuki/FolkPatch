@@ -9,9 +9,9 @@ pub const AP_RC_PATH: &str = concatcp!(WORKING_DIR, ".aprc");
 pub const GLOBAL_NAMESPACE_FILE: &str = concatcp!(ADB_DIR, ".global_namespace_enable");
 pub const MAGIC_MOUNT_FILE: &str = concatcp!(ADB_DIR, ".magic_mount_enable");
 pub const HIDE_SERVICE_FILE: &str = concatcp!(ADB_DIR, ".hide_service_enable");
-pub const HIDE_BINARY_PATH: &str = concatcp!(ADB_DIR, "fp/hide");
+pub const HIDE_BINARY_PATH: &str = concatcp!(ADB_DIR, "fp/bin/fpd");
 pub const UMOUNT_SERVICE_FILE: &str = concatcp!(ADB_DIR, ".umount_service_enable");
-pub const UMOUNT_BINARY_PATH: &str = concatcp!(ADB_DIR, "fp/umount");
+pub const UMOUNT_BINARY_PATH: &str = concatcp!(ADB_DIR, "fp/bin/fpd");
 pub const DAEMON_PATH: &str = concatcp!(ADB_DIR, "apd");
 
 pub const MODULE_DIR: &str = concatcp!(ADB_DIR, "modules/");
