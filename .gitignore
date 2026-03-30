@@ -23,7 +23,8 @@ private
 
 # Built native binaries
 app/src/main/assets/Service/
-FolkS/build/
+fpd/target/
+fpd/.cargo/
 
 # demo project
 demo
