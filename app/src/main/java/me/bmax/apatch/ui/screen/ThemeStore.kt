@@ -17,6 +17,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.*
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.window.DialogProperties
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -379,6 +380,7 @@ fun ThemeStoreScreen(
 /**
  * 主题下载对话框
  */
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun ThemeDownloadDialog(
     theme: ThemeStoreViewModel.RemoteTheme,
@@ -431,8 +433,13 @@ fun ThemeDownloadDialog(
                     style = MaterialTheme.typography.bodyMedium
                 )
                 Spacer(modifier = Modifier.height(8.dp))
-                LinearProgressIndicator(
-                    progress = { progress.overallProgress },
+                val animatedProgress by animateFloatAsState(
+                    targetValue = progress.overallProgress,
+                    animationSpec = ProgressIndicatorDefaults.ProgressAnimationSpec,
+                    label = "DownloadProgress"
+                )
+                LinearWavyProgressIndicator(
+                    progress = { animatedProgress },
                     modifier = Modifier.fillMaxWidth()
                 )
                 
