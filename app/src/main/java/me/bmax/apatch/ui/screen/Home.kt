@@ -556,7 +556,7 @@ fun AuthSuperKey(showDialog: MutableState<Boolean>, showFailedDialog: MutableSta
 }
 
 private data class RebootOption(
-    @StringRes val titleRes: Int,
+    @param:StringRes val titleRes: Int,
     val reason: String,
     val icon: ImageVector
 )

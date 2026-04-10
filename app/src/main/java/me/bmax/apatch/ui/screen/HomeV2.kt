@@ -180,7 +180,7 @@ fun HomeScreenV2(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun StatusCardBig(
+fun StatusCardBig(
     modifier: Modifier = Modifier,
     kpState: APApplication.State,
     apState: APApplication.State,

@@ -25,6 +25,10 @@
     <string name="settings_floating_auto_hide_summary">3秒間操作がないとフローティングバーを自動的に非表示</string>
     <string name="settings_floating_swipe_hide">スワイプで非表示</string>
     <string name="settings_floating_swipe_hide_summary">下にスワイプで非表示、上にスワイプで表示</string>
+    <string name="settings_stats_top_layout">上部レイアウト</string>
+    <string name="settings_stats_top_layout_summary">上部情報カードのスタイルを選択</string>
+    <string name="settings_stats_top_layout_list">リスト</string>
+    <string name="settings_stats_top_layout_grid">グリッド</string>
     <string name="settings_block_kernelpatch_update">KernelPatch の更新をブロック</string>
     <string name="settings_block_kernelpatch_update_summary">KernelPatch の更新通知を表示しないようにします。</string>
     <string name="settings_block_androidpatch_update">システムパッチの更新をブロック</string>

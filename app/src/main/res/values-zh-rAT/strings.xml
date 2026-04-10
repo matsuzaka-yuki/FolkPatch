@@ -32,6 +32,10 @@
     <string name="settings_floating_auto_hide_summary">3秒无圣光操作后底栏自动隐匿</string>
     <string name="settings_floating_swipe_hide">圣光底栏滑动隐匿</string>
     <string name="settings_floating_swipe_hide_summary">向下滑动隐匿底栏，向上滑动现出底栏</string>
+    <string name="settings_stats_top_layout">顶部圣光阵</string>
+    <string name="settings_stats_top_layout_summary">选择顶部信息圣卡样式</string>
+    <string name="settings_stats_top_layout_list">列表圣卡</string>
+    <string name="settings_stats_top_layout_grid">网格圣卡</string>
     <string name="settings_block_kernelpatch_update">封印灵魂之力更新神谕</string>
     <string name="settings_block_kernelpatch_update_summary">拒绝接收来自灵魂之力的神谕更新</string>
     <string name="settings_block_androidpatch_update">封印圣光阵法更新神谕</string>

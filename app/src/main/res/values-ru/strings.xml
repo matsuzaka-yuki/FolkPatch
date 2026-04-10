@@ -35,6 +35,10 @@
     <string name="settings_floating_auto_hide_summary">Автоматически скрывать плавающую панель через 3 секунды</string>
     <string name="settings_floating_swipe_hide">Скрытие при прокрутке</string>
     <string name="settings_floating_swipe_hide_summary">Скрывать панель при прокрутке вниз, показывать при прокрутке вверх</string>
+    <string name="settings_stats_top_layout">Верхняя карточка</string>
+    <string name="settings_stats_top_layout_summary">Выберите стиль верхней информационной карточки</string>
+    <string name="settings_stats_top_layout_list">Список</string>
+    <string name="settings_stats_top_layout_grid">Сетка</string>
     <string name="settings_block_kernelpatch_update">Блокировать обновление KernelPatch</string>
     <string name="settings_block_kernelpatch_update_summary">Не показывать уведомления об обновлении KernelPatch</string>
     <string name="settings_block_androidpatch_update">Блокировать обновление системного патча</string>

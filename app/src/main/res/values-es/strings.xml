@@ -32,6 +32,10 @@
     <string name="settings_floating_auto_hide_summary">Ocultar automáticamente la barra flotante tras 3 segundos de inactividad</string>
     <string name="settings_floating_swipe_hide">Ocultar al deslizar</string>
     <string name="settings_floating_swipe_hide_summary">Ocultar la barra al deslizar hacia abajo, mostrar al deslizar hacia arriba</string>
+    <string name="settings_stats_top_layout">Diseño superior</string>
+    <string name="settings_stats_top_layout_summary">Elegir el estilo de tarjeta de información superior</string>
+    <string name="settings_stats_top_layout_list">Lista</string>
+    <string name="settings_stats_top_layout_grid">Cuadrícula</string>
     <string name="settings_block_kernelpatch_update">Bloquear actualización de KernelPatch</string>
     <string name="settings_block_kernelpatch_update_summary">No mostrar notificaciones de actualización de KernelPatch</string>
     <string name="settings_block_androidpatch_update">Bloquear actualización del parche del sistema</string>

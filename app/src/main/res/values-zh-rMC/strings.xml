@@ -32,6 +32,10 @@
     <string name="settings_floating_auto_hide_summary">3秒没操作就把底栏藏起来（就像物品栏自动收起）</string>
     <string name="settings_floating_swipe_hide">滑动隐藏底栏（滑动收起快捷栏）</string>
     <string name="settings_floating_swipe_hide_summary">往下滑藏起来，往上滑亮出来（像切换物品栏一样）</string>
+    <string name="settings_stats_top_layout">顶部布局（顶部快捷栏样式）</string>
+    <string name="settings_stats_top_layout_summary">选择顶部信息卡片样式（快捷栏摆法）</string>
+    <string name="settings_stats_top_layout_list">列表样式</string>
+    <string name="settings_stats_top_layout_grid">网格样式</string>
     <string name="settings_block_kernelpatch_update">屏蔽基岩补丁更新</string>
     <string name="settings_block_kernelpatch_update_summary">别再弹基岩补丁的更新提示了，烦得像苦力怕一样</string>
     <string name="settings_block_androidpatch_update">屏蔽红石系统更新</string>

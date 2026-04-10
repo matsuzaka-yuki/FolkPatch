@@ -254,6 +254,17 @@ fun AppearanceSettings(
     val homeLayoutValue = stringResource(homeLayoutStyleToString(currentStyle.toString()))
     val showHomeLayout = matchLayout || shouldShow(searchText, homeLayoutTitle, homeLayoutValue)
 
+    // StatsUI Top Layout
+    val isStatsLayout = currentStyle == "stats"
+    val statsTopLayoutTitle = stringResource(id = R.string.settings_stats_top_layout)
+    val statsTopLayoutSummary = stringResource(id = R.string.settings_stats_top_layout_summary)
+    val statsTopLayoutListLabel = stringResource(id = R.string.settings_stats_top_layout_list)
+    val statsTopLayoutGridLabel = stringResource(id = R.string.settings_stats_top_layout_grid)
+    var statsTopLayout by remember { mutableStateOf(prefs.getString("stats_top_layout", "list") ?: "list") }
+    val statsTopLayoutValue = if (statsTopLayout == "grid") statsTopLayoutGridLabel else statsTopLayoutListLabel
+    val showStatsTopLayout = isStatsLayout && (matchLayout || shouldShow(searchText, statsTopLayoutTitle, statsTopLayoutSummary, statsTopLayoutListLabel, statsTopLayoutGridLabel))
+    var showStatsTopLayoutDialog by remember { mutableStateOf(false) }
+
     // Navigation Layout Settings
     val navLayoutTitle = stringResource(id = R.string.settings_nav_layout_title)
     val navLayoutSummary = stringResource(id = R.string.settings_nav_layout_summary)
@@ -623,6 +634,23 @@ fun AppearanceSettings(
                         )
                     },
                     leadingContent = { Icon(Icons.Filled.Dashboard, null) }
+                )
+            }
+
+            // StatsUI Top Layout
+            if (showStatsTopLayout) {
+                ListItem(
+                    colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+                    headlineContent = { Text(text = statsTopLayoutTitle) },
+                    modifier = Modifier.clickable { showStatsTopLayoutDialog = true },
+                    supportingContent = {
+                        Text(
+                            text = statsTopLayoutValue,
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.outline
+                        )
+                    },
+                    leadingContent = { Icon(Icons.Filled.Widgets, null) }
                 )
             }
 
@@ -1800,6 +1828,19 @@ fun AppearanceSettings(
         )
     }
 
+    if (showStatsTopLayoutDialog) {
+        StatsTopLayoutChooseDialog(
+            showDialog = remember { mutableStateOf(true) }.apply { value = showStatsTopLayoutDialog },
+            currentMode = statsTopLayout,
+            onModeSelected = { mode ->
+                statsTopLayout = mode
+                prefs.edit().putString("stats_top_layout", mode).apply()
+                showStatsTopLayoutDialog = false
+            },
+            onDismiss = { showStatsTopLayoutDialog = false }
+        )
+    }
+
     if (showExportDialog.value) {
         ThemeExportDialog(
             showDialog = showExportDialog,
@@ -2360,12 +2401,7 @@ fun NavModeChooseDialog(
     onModeSelected: (String) -> Unit,
     onDismiss: () -> Unit
 ) {
-    val modes = listOf(
-        "floating" to R.string.settings_nav_mode_floating,
-        "auto" to R.string.settings_nav_mode_auto,
-        "bottom" to R.string.settings_nav_mode_bottom,
-        "rail" to R.string.settings_nav_mode_rail
-    )
+    val prefs = APApplication.sharedPreferences
 
     BasicAlertDialog(
         onDismissRequest = onDismiss,
@@ -2382,23 +2418,140 @@ fun NavModeChooseDialog(
             tonalElevation = AlertDialogDefaults.TonalElevation,
             color = AlertDialogDefaults.containerColor,
         ) {
-            Column {
-                modes.forEach { (mode, labelRes) ->
-                    ListItem(
-                        headlineContent = { Text(text = stringResource(labelRes)) },
-                        modifier = Modifier.clickable {
-                            onModeSelected(mode)
-                        },
-                        trailingContent = {
-                            if (mode == currentMode) {
-                                Icon(
-                                    imageVector = Icons.Filled.Check,
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.primary
+            Column(modifier = Modifier.padding(24.dp)) {
+                Text(
+                    text = stringResource(R.string.settings_nav_scheme),
+                    style = MaterialTheme.typography.headlineSmall,
+                    modifier = Modifier.padding(bottom = 16.dp)
+                )
+
+                Surface(
+                    shape = RoundedCornerShape(12.dp),
+                    color = AlertDialogDefaults.containerColor,
+                    tonalElevation = 2.dp
+                ) {
+                    Column {
+                        ListItem(
+                            headlineContent = { Text(stringResource(R.string.settings_nav_mode_floating)) },
+                            leadingContent = {
+                                RadioButton(
+                                    selected = currentMode == "floating",
+                                    onClick = null
                                 )
+                            },
+                            modifier = Modifier.clickable {
+                                onModeSelected("floating")
                             }
-                        }
-                    )
+                        )
+                        ListItem(
+                            headlineContent = { Text(stringResource(R.string.settings_nav_mode_auto)) },
+                            leadingContent = {
+                                RadioButton(
+                                    selected = currentMode == "auto",
+                                    onClick = null
+                                )
+                            },
+                            modifier = Modifier.clickable {
+                                onModeSelected("auto")
+                            }
+                        )
+                        ListItem(
+                            headlineContent = { Text(stringResource(R.string.settings_nav_mode_bottom)) },
+                            leadingContent = {
+                                RadioButton(
+                                    selected = currentMode == "bottom",
+                                    onClick = null
+                                )
+                            },
+                            modifier = Modifier.clickable {
+                                onModeSelected("bottom")
+                            }
+                        )
+                        ListItem(
+                            headlineContent = { Text(stringResource(R.string.settings_nav_mode_rail)) },
+                            leadingContent = {
+                                RadioButton(
+                                    selected = currentMode == "rail",
+                                    onClick = null
+                                )
+                            },
+                            modifier = Modifier.clickable {
+                                onModeSelected("rail")
+                            }
+                        )
+                    }
+                }
+            }
+
+            val dialogWindowProvider = LocalView.current.parent as DialogWindowProvider
+            APDialogBlurBehindUtils.setupWindowBlurListener(dialogWindowProvider.window)
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun StatsTopLayoutChooseDialog(
+    showDialog: MutableState<Boolean>,
+    currentMode: String,
+    onModeSelected: (String) -> Unit,
+    onDismiss: () -> Unit
+) {
+    val prefs = APApplication.sharedPreferences
+
+    BasicAlertDialog(
+        onDismissRequest = onDismiss,
+        properties = DialogProperties(
+            decorFitsSystemWindows = true,
+            usePlatformDefaultWidth = false,
+        )
+    ) {
+        Surface(
+            modifier = Modifier
+                .width(310.dp)
+                .wrapContentHeight(),
+            shape = RoundedCornerShape(30.dp),
+            tonalElevation = AlertDialogDefaults.TonalElevation,
+            color = AlertDialogDefaults.containerColor,
+        ) {
+            Column(modifier = Modifier.padding(24.dp)) {
+                Text(
+                    text = stringResource(R.string.settings_stats_top_layout),
+                    style = MaterialTheme.typography.headlineSmall,
+                    modifier = Modifier.padding(bottom = 16.dp)
+                )
+
+                Surface(
+                    shape = RoundedCornerShape(12.dp),
+                    color = AlertDialogDefaults.containerColor,
+                    tonalElevation = 2.dp
+                ) {
+                    Column {
+                        ListItem(
+                            headlineContent = { Text(stringResource(R.string.settings_stats_top_layout_list)) },
+                            leadingContent = {
+                                RadioButton(
+                                    selected = currentMode == "list",
+                                    onClick = null
+                                )
+                            },
+                            modifier = Modifier.clickable {
+                                onModeSelected("list")
+                            }
+                        )
+                        ListItem(
+                            headlineContent = { Text(stringResource(R.string.settings_stats_top_layout_grid)) },
+                            leadingContent = {
+                                RadioButton(
+                                    selected = currentMode == "grid",
+                                    onClick = null
+                                )
+                            },
+                            modifier = Modifier.clickable {
+                                onModeSelected("grid")
+                            }
+                        )
+                    }
                 }
             }
 

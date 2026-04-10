@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.LifecycleStartEffect
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import com.ramcosta.composedestinations.generated.destinations.InstallModeSelectScreenDestination
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import me.bmax.apatch.APApplication
@@ -27,10 +28,12 @@ import me.bmax.apatch.ui.component.chart.ModulePieChart
 import me.bmax.apatch.ui.component.chart.rememberPieSliceDataFromCounts
 import me.bmax.apatch.ui.component.chart.SystemAreaChart
 import me.bmax.apatch.ui.component.chart.SystemLineChart
+import me.bmax.apatch.util.Version
+import me.bmax.apatch.util.Version.getManagerVersion
 import me.bmax.apatch.ui.viewmodel.DashboardViewModel
-import me.bmax.apatch.ui.viewmodel.ModuleStatsState
 import me.bmax.apatch.ui.viewmodel.SystemMonitorState
 import me.bmax.apatch.ui.viewmodel.TimeSeriesData
+import me.bmax.apatch.util.AppData
 import kotlin.math.roundToInt
 
 @Composable
@@ -43,6 +46,16 @@ fun HomeScreenStats(
     val viewModel: DashboardViewModel = viewModel()
     val uiState by viewModel.dashboardUiState.collectAsState()
     val timeSeries by viewModel.timeSeriesData.collectAsState()
+
+    val showCoreCards = kpState != APApplication.State.UNKNOWN_STATE
+    if (showCoreCards) {
+        LaunchedEffect(Unit) {
+            AppData.DataRefreshManager.ensureCountsLoaded()
+        }
+    }
+    val superuserCount by AppData.DataRefreshManager.superuserCount.collectAsState()
+    val apmModuleCount by AppData.DataRefreshManager.apmModuleCount.collectAsState()
+    val kernelModuleCount by AppData.DataRefreshManager.kernelModuleCount.collectAsState()
 
     LifecycleStartEffect(Unit) {
         viewModel.startPeriodicPolling()
@@ -66,6 +79,8 @@ fun HomeScreenStats(
 
     val hideApatchCard = APApplication.sharedPreferences.getBoolean("hide_apatch_card", false)
     val isInstalled = kpState != APApplication.State.UNKNOWN_STATE
+    val statsTopLayout = APApplication.sharedPreferences.getString("stats_top_layout", "list") ?: "list"
+    val useGridTop = statsTopLayout == "grid"
 
     var zygiskImplement by remember { mutableStateOf("None") }
     var mountImplement by remember { mutableStateOf("None") }
@@ -101,9 +116,13 @@ fun HomeScreenStats(
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(16.dp)) {
-                StatusCardCircle(kpState, apState, navigator, showUninstallDialog, showAuthKeyDialog)
-                if (kpState != APApplication.State.UNKNOWN_STATE && apState != APApplication.State.ANDROIDPATCH_INSTALLED) {
-                    AStatusCardCircle(apState)
+                if (useGridTop) {
+                    StatsGridTopSection(kpState, apState, navigator, showUninstallDialog, showAuthKeyDialog)
+                } else {
+                    StatusCardCircle(kpState, apState, navigator, showUninstallDialog, showAuthKeyDialog)
+                    if (kpState != APApplication.State.UNKNOWN_STATE && apState != APApplication.State.ANDROIDPATCH_INSTALLED) {
+                        AStatusCardCircle(apState)
+                    }
                 }
                 if (isInstalled) {
                     SystemMonitoringSection(uiState.systemMonitor, timeSeries)
@@ -111,7 +130,7 @@ fun HomeScreenStats(
             }
             Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(16.dp)) {
                 if (isInstalled) {
-                    ModuleStatisticsSection(uiState.moduleStats)
+                    ModuleStatisticsSection(superuserCount, apmModuleCount, kernelModuleCount)
                 }
                 SystemInfoCard(kpState, apState, zygiskImplement, mountImplement)
                 if (!hideApatchCard) {
@@ -127,13 +146,17 @@ fun HomeScreenStats(
                 .padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            StatusCardCircle(kpState, apState, navigator, showUninstallDialog, showAuthKeyDialog)
-            if (kpState != APApplication.State.UNKNOWN_STATE && apState != APApplication.State.ANDROIDPATCH_INSTALLED) {
-                AStatusCardCircle(apState)
+            if (useGridTop) {
+                StatsGridTopSection(kpState, apState, navigator, showUninstallDialog, showAuthKeyDialog)
+            } else {
+                StatusCardCircle(kpState, apState, navigator, showUninstallDialog, showAuthKeyDialog)
+                if (kpState != APApplication.State.UNKNOWN_STATE && apState != APApplication.State.ANDROIDPATCH_INSTALLED) {
+                    AStatusCardCircle(apState)
+                }
             }
             if (isInstalled) {
                 SystemMonitoringSection(uiState.systemMonitor, timeSeries)
-                ModuleStatisticsSection(uiState.moduleStats)
+                ModuleStatisticsSection(superuserCount, apmModuleCount, kernelModuleCount)
             }
             SystemInfoCard(kpState, apState, zygiskImplement, mountImplement)
             if (!hideApatchCard) {
@@ -444,7 +467,9 @@ private fun SystemMonitoringSection(
 
 @Composable
 private fun ModuleStatisticsSection(
-    moduleStats: ModuleStatsState,
+    superuserCount: Int,
+    apmModuleCount: Int,
+    kernelModuleCount: Int,
     modifier: Modifier = Modifier
 ) {
     TonalCard(modifier = modifier) {
@@ -454,12 +479,12 @@ private fun ModuleStatisticsSection(
                 .padding(16.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            val totalCount = moduleStats.kernelModuleCount + moduleStats.apmModuleCount + moduleStats.superuserCount
+            val totalCount = kernelModuleCount + apmModuleCount + superuserCount
             ModulePieChart(
                 data = rememberPieSliceDataFromCounts(
-                    kernelModules = moduleStats.kernelModuleCount,
-                    apmModules = moduleStats.apmModuleCount,
-                    superusers = moduleStats.superuserCount
+                    kernelModules = kernelModuleCount,
+                    apmModules = apmModuleCount,
+                    superusers = superuserCount
                 ),
                 centerLabel = if (totalCount > 0) totalCount.toString() else "--",
                 modifier = Modifier.size(140.dp)
@@ -471,17 +496,17 @@ private fun ModuleStatisticsSection(
             ) {
                 StatRow(
                     label = stringResource(R.string.home_stats_kernel_modules),
-                    value = moduleStats.kernelModuleCount.toString(),
+                    value = kernelModuleCount.toString(),
                     icon = Icons.Outlined.DeveloperBoard
                 )
                 StatRow(
                     label = stringResource(R.string.home_stats_apm_modules),
-                    value = moduleStats.apmModuleCount.toString(),
+                    value = apmModuleCount.toString(),
                     icon = Icons.Outlined.Extension
                 )
                 StatRow(
                     label = stringResource(R.string.home_stats_superusers),
-                    value = moduleStats.superuserCount.toString(),
+                    value = superuserCount.toString(),
                     icon = Icons.Outlined.Shield
                 )
             }
@@ -614,5 +639,81 @@ private fun formatFreq(khz: Long): String {
         khz >= 1_000_000 -> String.format("%.2fGHz", khz / 1_000_000.0)
         khz >= 1000 -> String.format("%.0fMHz", khz / 1000.0)
         else -> "${khz}KHz"
+    }
+}
+
+@Composable
+private fun StatsGridTopSection(
+    kpState: APApplication.State,
+    apState: APApplication.State,
+    navigator: DestinationsNavigator,
+    showUninstallDialog: MutableState<Boolean>,
+    showAuthKeyDialog: MutableState<Boolean>
+) {
+    val managerVersion = Version.getManagerVersion()
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(IntrinsicSize.Min),
+        horizontalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        StatusCardBig(
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxHeight(),
+            kpState = kpState,
+            apState = apState,
+            onClick = {
+                when (kpState) {
+                    APApplication.State.UNKNOWN_STATE -> showAuthKeyDialog.value = true
+                    APApplication.State.KERNELPATCH_NEED_UPDATE -> navigator.navigate(InstallModeSelectScreenDestination)
+                    APApplication.State.KERNELPATCH_INSTALLED -> {}
+                    else -> navigator.navigate(InstallModeSelectScreenDestination)
+                }
+            }
+        )
+
+        Column(
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxHeight(),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            SmallInfoCard(
+                modifier = Modifier.weight(1f),
+                title = stringResource(R.string.kernel_patch),
+                value = if (kpState != APApplication.State.UNKNOWN_STATE) "${Version.installedKPVString()} (${managerVersion.second})" else "N/A",
+                icon = Icons.Outlined.Extension,
+                onClick = {
+                    if (kpState == APApplication.State.KERNELPATCH_NEED_UPDATE) {
+                        navigator.navigate(InstallModeSelectScreenDestination)
+                    }
+                }
+            )
+
+            SmallInfoCard(
+                modifier = Modifier.weight(1f),
+                title = stringResource(R.string.android_patch),
+                value = when (apState) {
+                    APApplication.State.ANDROIDPATCH_INSTALLED -> "Active"
+                    APApplication.State.ANDROIDPATCH_NEED_UPDATE -> "Update"
+                    APApplication.State.ANDROIDPATCH_INSTALLING -> "..."
+                    else -> "Inactive"
+                },
+                icon = Icons.Outlined.Android,
+                onClick = {
+                    if (apState == APApplication.State.ANDROIDPATCH_INSTALLED) {
+                        showUninstallDialog.value = true
+                    } else if (apState != APApplication.State.ANDROIDPATCH_NOT_INSTALLED && kpState == APApplication.State.KERNELPATCH_INSTALLED) {
+                        APApplication.installApatch()
+                    }
+                }
+            )
+        }
+    }
+
+    if (kpState != APApplication.State.UNKNOWN_STATE && apState != APApplication.State.ANDROIDPATCH_INSTALLED) {
+        AStatusCard(apState)
     }
 }

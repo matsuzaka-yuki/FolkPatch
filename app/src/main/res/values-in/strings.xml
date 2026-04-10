@@ -35,6 +35,10 @@
     <string name="settings_floating_auto_hide_summary">Sembunyikan bilah mengambang secara otomatis setelah 3 detik tanpa aktivitas</string>
     <string name="settings_floating_swipe_hide">Sembunyikan dengan Geser</string>
     <string name="settings_floating_swipe_hide_summary">Sembunyikan saat geser ke bawah, tampilkan saat geser ke atas</string>
+    <string name="settings_stats_top_layout">Tata Letak Atas</string>
+    <string name="settings_stats_top_layout_summary">Pilih gaya kartu info atas</string>
+    <string name="settings_stats_top_layout_list">Daftar</string>
+    <string name="settings_stats_top_layout_grid">Grid</string>
     <string name="settings_block_kernelpatch_update">Blokir Pembaruan KernelPatch</string>
     <string name="settings_block_kernelpatch_update_summary">Jangan tampilkan notifikasi pembaruan KernelPatch</string>
     <string name="settings_block_androidpatch_update">Blokir Pembaruan Patch Sistem</string>

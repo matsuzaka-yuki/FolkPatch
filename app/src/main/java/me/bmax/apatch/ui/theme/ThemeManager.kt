@@ -58,6 +58,7 @@ object ThemeManager {
         val isFontEnabled: Boolean,
         val customColor: String,
         val homeLayoutStyle: String,
+        val statsTopLayout: String = "list",
         val nightModeEnabled: Boolean,
         val nightModeFollowSys: Boolean,
         val useSystemDynamicColor: Boolean,
@@ -124,6 +125,7 @@ object ThemeManager {
                     isFontEnabled = FontConfig.isCustomFontEnabled,
                     customColor = prefs.getString("custom_color", "indigo") ?: "indigo",
                     homeLayoutStyle = prefs.getString("home_layout_style", "stats") ?: "stats",
+                    statsTopLayout = prefs.getString("stats_top_layout", "list") ?: "list",
                     nightModeEnabled = prefs.getBoolean("night_mode_enabled", true),
                     nightModeFollowSys = prefs.getBoolean("night_mode_follow_sys", false),
                     useSystemDynamicColor = prefs.getBoolean("use_system_color_theme", false),
@@ -169,6 +171,7 @@ object ThemeManager {
                     put("isFontEnabled", config.isFontEnabled)
                     put("customColor", config.customColor)
                     put("homeLayoutStyle", config.homeLayoutStyle)
+                    put("statsTopLayout", config.statsTopLayout)
                     put("nightModeEnabled", config.nightModeEnabled)
                     put("nightModeFollowSys", config.nightModeFollowSys)
                     put("useSystemDynamicColor", config.useSystemDynamicColor)
@@ -461,6 +464,7 @@ object ThemeManager {
                 val isFontEnabled = json.optBoolean("isFontEnabled", false)
                 val customColor = json.optString("customColor", "indigo")
                 val homeLayoutStyle = json.optString("homeLayoutStyle", "sign")
+                val statsTopLayout = json.optString("statsTopLayout", "list")
                 val nightModeEnabled = json.optBoolean("nightModeEnabled", true)
                 val nightModeFollowSys = json.optBoolean("nightModeFollowSys", true)
                 val useSystemDynamicColor = json.optBoolean("useSystemDynamicColor", true)
@@ -767,6 +771,7 @@ object ThemeManager {
                 APApplication.sharedPreferences.edit()
                     .putString("custom_color", customColor)
                     .putString("home_layout_style", homeLayoutStyle)
+                    .putString("stats_top_layout", statsTopLayout)
                     .putBoolean("night_mode_enabled", nightModeEnabled)
                     .putBoolean("night_mode_follow_sys", nightModeFollowSys)
                     .putBoolean("use_system_color_theme", useSystemDynamicColor)
@@ -810,7 +815,8 @@ object ThemeManager {
                     .putBoolean("night_mode_follow_sys", true)
                     .putBoolean("use_system_color_theme", true)
                     .putString("custom_color", "indigo")
-                    .putString("home_layout_style", "circle")
+                    .putString("home_layout_style", "stats")
+                    .putString("stats_top_layout", "list")
                     .remove("appLanguage")
                     .apply()
 

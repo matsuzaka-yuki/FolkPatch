@@ -32,6 +32,10 @@
     <string name="settings_floating_auto_hide_summary">إخفاء الشريط العائم تلقائيًا بعد 3 ثوانٍ بدون تفاعل</string>
     <string name="settings_floating_swipe_hide">إخفاء بالتمرير</string>
     <string name="settings_floating_swipe_hide_summary">إخفاء الشريط عند التمرير لأسفل، إظهاره عند التمرير لأعلى</string>
+    <string name="settings_stats_top_layout">تخطيط علوي</string>
+    <string name="settings_stats_top_layout_summary">اختيار نمط بطاقة المعلومات العلوية</string>
+    <string name="settings_stats_top_layout_list">قائمة</string>
+    <string name="settings_stats_top_layout_grid">شبكة</string>
     <string name="settings_block_kernelpatch_update">حظر تحديث KernelPatch</string>
     <string name="settings_block_kernelpatch_update_summary">عدم إظهار إشعارات تحديث KernelPatch</string>
     <string name="settings_block_androidpatch_update">حظر تحديث تصحيح النظام</string>

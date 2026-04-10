@@ -31,6 +31,10 @@
     <string name="settings_floating_auto_hide_summary">3秒无仙法操作后底栏自动隐遁</string>
     <string name="settings_floating_swipe_hide">仙法底栏滑动隐遁</string>
     <string name="settings_floating_swipe_hide_summary">向下划动隐遁底栏，向上划动现出底栏</string>
+    <string name="settings_stats_top_layout">顶部仙法阵</string>
+    <string name="settings_stats_top_layout_summary">选择顶部信息仙卡样式</string>
+    <string name="settings_stats_top_layout_list">列表仙卡</string>
+    <string name="settings_stats_top_layout_grid">网格仙卡</string>
     <string name="settings_block_kernelpatch_update">屏蔽道核符箓更新神识</string>
     <string name="settings_block_kernelpatch_update_summary">不再以此俗事扰乱道心</string>
     <string name="settings_block_androidpatch_update">屏蔽护法灵符更新神识</string>

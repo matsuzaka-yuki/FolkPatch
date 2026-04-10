@@ -32,6 +32,10 @@
     <string name="settings_floating_auto_hide_summary">3秒无魔法操作后底栏自动隐遁</string>
     <string name="settings_floating_swipe_hide">魔法底栏滑动隐遁</string>
     <string name="settings_floating_swipe_hide_summary">向下划动隐遁底栏，向上划动现出底栏</string>
+    <string name="settings_stats_top_layout">顶部魔法阵</string>
+    <string name="settings_stats_top_layout_summary">选择顶部信息魔法卡样式</string>
+    <string name="settings_stats_top_layout_list">列表魔法卡</string>
+    <string name="settings_stats_top_layout_grid">网格魔法卡</string>
     <string name="settings_block_kernelpatch_update">封印心之契约更新感应</string>
     <string name="settings_block_kernelpatch_update_summary">不再接收来自心之契约的更新讯号</string>
     <string name="settings_block_androidpatch_update">封印魔法阵法更新感应</string>

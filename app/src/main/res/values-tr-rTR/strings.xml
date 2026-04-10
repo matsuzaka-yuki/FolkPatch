@@ -32,6 +32,10 @@
     <string name="settings_floating_auto_hide_summary">3 saniye işlem yapılmadığında kayan çubuğu otomatik gizle</string>
     <string name="settings_floating_swipe_hide">Kaydırarak Gizle</string>
     <string name="settings_floating_swipe_hide_summary">Aşağı kaydırmada gizle, yukarı kaydırmada göster</string>
+    <string name="settings_stats_top_layout">Üst Yerleşim</string>
+    <string name="settings_stats_top_layout_summary">Üst bilgi kartı stilini seçin</string>
+    <string name="settings_stats_top_layout_list">Liste</string>
+    <string name="settings_stats_top_layout_grid">Izgara</string>
     <string name="settings_block_kernelpatch_update">KernelPatch Güncellemesini Engelle</string>
     <string name="settings_block_kernelpatch_update_summary">KernelPatch güncelleme bildirimlerini gösterme</string>
     <string name="settings_block_androidpatch_update">Sistem Yaması Güncellemesini Engelle</string>

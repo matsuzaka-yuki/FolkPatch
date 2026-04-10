@@ -673,14 +673,7 @@ private fun MagiskStyleCard(
     modifier: Modifier = Modifier,
     content: @Composable ColumnScope.() -> Unit
 ) {
-    Card(
-        modifier = modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp),
-            contentColor = MaterialTheme.colorScheme.onSurface
-        )
-    ) {
+    TonalCard(modifier = modifier) {
         Column(
             modifier = Modifier.padding(16.dp)
         ) {
@@ -842,12 +835,15 @@ private fun CountCard(
     count: Int,
     onClick: () -> Unit
 ) {
+    val containerColor = if (BackgroundConfig.isCustomBackgroundEnabled) {
+        MaterialTheme.colorScheme.surface.copy(alpha = BackgroundConfig.customBackgroundOpacity)
+    } else {
+        MaterialTheme.colorScheme.surfaceColorAtElevation(2.dp)
+    }
     Card(
         modifier = modifier,
         shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceColorAtElevation(2.dp)
-        ),
+        colors = CardDefaults.cardColors(containerColor = containerColor),
         onClick = onClick
     ) {
         Column(
@@ -1061,13 +1057,7 @@ internal fun SystemInfoCard(
     var hideZygisk by remember { mutableStateOf(prefs.getBoolean("hide_zygisk", false)) }
     var hideMount by remember { mutableStateOf(prefs.getBoolean("hide_mount", false)) }
 
-    Card(
-        modifier = modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp)
-        )
-    ) {
+    TonalCard(modifier = modifier) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -1195,13 +1185,7 @@ private fun StorageInfoCard(modifier: Modifier = Modifier) {
         }
     }
 
-    Card(
-        modifier = modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp)
-        )
-    ) {
+    TonalCard(modifier = modifier) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -1302,13 +1286,10 @@ private fun StorageProgressBar(
 internal fun LearnMoreCardV4() {
     val uriHandler = androidx.compose.ui.platform.LocalUriHandler.current
 
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp)
-        ),
-        onClick = { uriHandler.openUri("https://fp.mysqil.com/") }
+    TonalCard(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { uriHandler.openUri("https://fp.mysqil.com/") }
     ) {
         Row(
             modifier = Modifier

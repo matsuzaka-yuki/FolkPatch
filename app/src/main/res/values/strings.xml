@@ -32,6 +32,10 @@
     <string name="settings_floating_auto_hide_summary">Automatically hide the floating bar after 3 seconds of inactivity</string>
     <string name="settings_floating_swipe_hide">Swipe to Hide Floating Bar</string>
     <string name="settings_floating_swipe_hide_summary">Hide the floating bar when scrolling down, show when scrolling up</string>
+    <string name="settings_stats_top_layout">Top Layout</string>
+    <string name="settings_stats_top_layout_summary">Choose the top info card style</string>
+    <string name="settings_stats_top_layout_list">ListUI</string>
+    <string name="settings_stats_top_layout_grid">GridUI</string>
     <string name="settings_block_kernelpatch_update">Block KernelPatch Update</string>
     <string name="settings_block_kernelpatch_update_summary">Do not show KernelPatch update notifications</string>
     <string name="settings_block_androidpatch_update">Block System Patch Update</string>

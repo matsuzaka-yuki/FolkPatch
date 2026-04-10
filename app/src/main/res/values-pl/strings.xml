@@ -27,6 +27,10 @@
     <string name="settings_floating_auto_hide_summary">Automatycznie ukrywaj pływający pasek po 3 sekundach bezczynności</string>
     <string name="settings_floating_swipe_hide">Ukrywanie przy przewijaniu</string>
     <string name="settings_floating_swipe_hide_summary">Ukrywaj pasek przy przewijaniu w dół, pokazuj przy przewijaniu w górę</string>
+    <string name="settings_stats_top_layout">Górny układ</string>
+    <string name="settings_stats_top_layout_summary">Wybierz styl górnej karty informacyjnej</string>
+    <string name="settings_stats_top_layout_list">Lista</string>
+    <string name="settings_stats_top_layout_grid">Siatka</string>
     <string name="settings_block_kernelpatch_update">Zablokuj aktualizację KernelPatch</string>
     <string name="settings_block_kernelpatch_update_summary">Nie pokazuj powiadomień o aktualizacji KernelPatch</string>
     <string name="settings_block_androidpatch_update">Zablokuj aktualizację łatki systemowej</string>

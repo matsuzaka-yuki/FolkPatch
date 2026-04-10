@@ -32,6 +32,10 @@
     <string name="settings_floating_auto_hide_summary">Tự động ẩn thanh nổi sau 3 giây không hoạt động</string>
     <string name="settings_floating_swipe_hide">Vuốt để ẩn thanh nổi</string>
     <string name="settings_floating_swipe_hide_summary">Ẩn thanh khi vuốt xuống, hiện khi vuốt lên</string>
+    <string name="settings_stats_top_layout">Bố cục trên</string>
+    <string name="settings_stats_top_layout_summary">Chọn kiểu thẻ thông tin trên</string>
+    <string name="settings_stats_top_layout_list">Danh sách</string>
+    <string name="settings_stats_top_layout_grid">Lưới</string>
     <string name="settings_block_kernelpatch_update">Chặn cập nhật KernelPatch</string>
     <string name="settings_block_kernelpatch_update_summary">Không hiển thị thông báo cập nhật KernelPatch</string>
     <string name="settings_block_androidpatch_update">Chặn cập nhật bản vá hệ thống</string>

@@ -32,6 +32,10 @@
     <string name="settings_floating_auto_hide_summary">3秒没操作就把底栏藏起来</string>
     <string name="settings_floating_swipe_hide">滑动收起底栏</string>
     <string name="settings_floating_swipe_hide_summary">往下滑的时候藏底栏，往上滑的时候亮出来</string>
+    <string name="settings_stats_top_layout">顶部摆盘</string>
+    <string name="settings_stats_top_layout_summary">选择顶部信息卡片摆盘样式</string>
+    <string name="settings_stats_top_layout_list">列表摆盘</string>
+    <string name="settings_stats_top_layout_grid">网格摆盘</string>
     <string name="settings_block_kernelpatch_update">别嚷嚷秘酱料更新</string>
     <string name="settings_block_kernelpatch_update_summary">专心做菜，别老提示秘酱料换口味</string>
     <string name="settings_block_androidpatch_update">别嚷嚷招牌菜更新</string>

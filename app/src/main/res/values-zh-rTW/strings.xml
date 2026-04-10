@@ -35,6 +35,10 @@
     <string name="settings_floating_auto_hide_summary">無操作3秒後自動隱藏懸浮底欄</string>
     <string name="settings_floating_swipe_hide">滑動隱藏懸浮底欄</string>
     <string name="settings_floating_swipe_hide_summary">向下滑動時隱藏底欄，向上滑動時顯示底欄</string>
+    <string name="settings_stats_top_layout">頂部佈局</string>
+    <string name="settings_stats_top_layout_summary">選擇頂部資訊卡片樣式</string>
+    <string name="settings_stats_top_layout_list">列表樣式</string>
+    <string name="settings_stats_top_layout_grid">網格樣式</string>
     <string name="settings_block_kernelpatch_update">屏蔽核心修補更新提示</string>
     <string name="settings_block_kernelpatch_update_summary">不顯示核心修補的更新通知</string>
     <string name="settings_block_androidpatch_update">屏蔽系統修補更新提示</string>
