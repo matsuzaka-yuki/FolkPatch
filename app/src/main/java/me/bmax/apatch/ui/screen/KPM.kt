@@ -1099,7 +1099,7 @@ private fun KPModuleItem(
                                     contentColor = MaterialTheme.colorScheme.onPrimaryContainer
                                  )
                                  
-                                 if (module.args.isNotEmpty()) {
+                                 if (module.args.isNotBlank()) {
                                      KPModuleLabel(
                                         text = "Args",
                                         containerColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = labelOpacity),
@@ -1129,7 +1129,7 @@ private fun KPModuleItem(
                             textDecoration = decoration
                         )
                         
-                        if (showMoreModuleInfo && module.args.isNotEmpty()) {
+                        if (showMoreModuleInfo && module.args.isNotBlank()) {
                              Text(
                                 text = "$moduleArgs: ${module.args}",
                                 style = MaterialTheme.typography.bodySmall,
