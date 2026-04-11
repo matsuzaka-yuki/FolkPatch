@@ -3,14 +3,10 @@ name: CI Upload to Telegram
 on:
   workflow_call:
     inputs:
-      artifact_name:
+      artifact_names:
         required: true
         type: string
-        description: 'Artifact name to download'
-      file_name:
-        required: true
-        type: string
-        description: 'File name for Telegram message'
+        description: 'Comma-separated artifact names to download (supports single or multiple)'
       message:
         required: false
         type: string
@@ -26,17 +22,20 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Download artifact
+      - name: Download artifacts
         uses: actions/download-artifact@v4
         with:
-          name: ${{ inputs.artifact_name }}
+          pattern: ${{ inputs.artifact_names }}
           path: artifacts
+          merge-multiple: true
 
       - name: Send to Telegram
         run: |
-          FILE=$(find artifacts -type f | head -1)
-          if [ -z "$FILE" ]; then
-            echo "::error::No file found in artifacts"
+          FILES=$(find artifacts -type f | sort)
+          FILE_COUNT=$(echo "$FILES" | grep -c .)
+          
+          if [ "$FILE_COUNT" -eq 0 ]; then
+            echo "::error::No files found in artifacts"
             exit 1
           fi
           
@@ -45,8 +44,32 @@ jobs:
           Commit: ${{ github.sha }}
           Run: [${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
           
-          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendDocument" \
-            -F "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
-            -F "document=@${FILE}" \
-            -F "caption=${CAPTION}" \
-            -F "parse_mode=Markdown"
+          if [ "$FILE_COUNT" -eq 1 ]; then
+            curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendDocument" \
+              -F "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
+              -F "document=@$FILES" \
+              -F "caption=${CAPTION}" \
+              -F "parse_mode=Markdown"
+          else
+            MEDIA_JSON="["
+            FIRST=true
+            while IFS= read -r f; do
+              if [ "$FIRST" = true ]; then
+                MEDIA_JSON+="{\"type\":\"document\",\"media\":\"attach://$(basename $f)\",\"caption\":\"${CAPTION}\",\"parse_mode\":\"Markdown\"}"
+                FIRST=false
+              else
+                MEDIA_JSON+=",{\"type\":\"document\",\"media\":\"attach://$(basename $f)\"}"
+              fi
+            done <<< "$FILES"
+            MEDIA_JSON+="]"
+            
+            CURL_CMD="curl -s -X POST \"https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMediaGroup\" \
+              -F \"chat_id=${{ secrets.TELEGRAM_CHAT_ID }}\" \
+              -F \"media=${MEDIA_JSON}\""
+            
+            while IFS= read -r f; do
+              CURL_CMD+=" -F \"$(basename $f)=@$f\""
+            done <<< "$FILES"
+            
+            eval "$CURL_CMD"
+          fi
