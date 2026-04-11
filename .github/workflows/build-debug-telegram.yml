@@ -19,6 +19,8 @@ jobs:
   build:
     name: Build Debug APK
     runs-on: ubuntu-latest
+    outputs:
+      commit_msg: ${{ steps.msg.outputs.text }}
 
     steps:
       - name: Checkout repository
@@ -66,6 +68,17 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
+      - name: Get commit message
+        id: msg
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            echo "text=${{ github.event.head_commit.message }}" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "text=PR: ${{ github.event.pull_request.title }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "text=📦 FolkPatch Debug Build" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Build Debug APK
         run: |
           ./gradlew assembleDebug --no-daemon
@@ -95,5 +108,5 @@ jobs:
     with:
       artifact_name: folkpatch-debug-${{ github.sha }}
       file_name: FolkPatch-Debug.apk
-      message: '📦 FolkPatch Debug Build'
+      message: ${{ needs.build.outputs.commit_msg }}
     secrets: inherit
