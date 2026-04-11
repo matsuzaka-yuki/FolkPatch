@@ -94,18 +94,12 @@ fun SuperUserScreen(navigator: DestinationsNavigator) {
     val prefs = APApplication.sharedPreferences
     val useLegacySuPage = prefs.getBoolean("use_legacy_su_page", false)
 
-    if (useLegacySuPage) {
-        // Legacy APatch-style single-screen UI (not yet implemented)
-        SuperUserScreenModern(navigator)
-    } else {
-        // Current FolkPatch-style multi-screen UI
-        SuperUserScreenModern(navigator)
-    }
+    SuperUserScreenModern(navigator, useLegacySuPage)
 }
 
 @OptIn(ExperimentalMaterialApi::class, ExperimentalMaterial3Api::class)
 @Composable
-private fun SuperUserScreenModern(navigator: DestinationsNavigator) {
+private fun SuperUserScreenModern(navigator: DestinationsNavigator, useLegacySuPage: Boolean) {
     val viewModel = viewModel<SuperUserViewModel>()
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
@@ -288,7 +282,20 @@ private fun SuperUserScreenModern(navigator: DestinationsNavigator) {
         ) {
             LazyColumn(Modifier.fillMaxSize()) {
                 items(viewModel.appList.filter { it.packageName != apApp.packageName }, key = { it.packageName + it.uid }) { app ->
-                    AppItemLegacy(app)
+                    if (useLegacySuPage) {
+                        AppItemLegacy(app)
+                    } else {
+                        AppItem(
+                            app = app,
+                            onClick = {
+                                navigator.navigate(AppProfileScreenDestination(app.packageName, app.uid))
+                            },
+                            onLongClick = {
+                                selectedApp = app
+                                showAppActionDialog = true
+                            }
+                        )
+                    }
                 }
             }
         }
