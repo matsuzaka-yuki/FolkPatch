@@ -1,0 +1,248 @@
+name: Build FolkPatch
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'app/**'
+      - 'fpd/**'
+      - '.github/workflows/build.yml'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'app/**'
+      - 'fpd/**'
+      - '.github/workflows/build.yml'
+  workflow_dispatch:
+    inputs:
+      build_type:
+        description: 'Build type'
+        required: true
+        default: 'both'
+        type: choice
+        options:
+          - both
+          - debug
+          - release
+
+jobs:
+  prepare:
+    name: Prepare build targets
+    runs-on: ubuntu-latest
+    outputs:
+      build_debug: ${{ steps.set.outputs.build_debug }}
+      build_release: ${{ steps.set.outputs.build_release }}
+      commit_msg: ${{ steps.msg.outputs.text }}
+
+    steps:
+      - name: Set build targets
+        id: set
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            TYPE="${{ inputs.build_type }}"
+          else
+            TYPE="both"
+          fi
+          
+          if [ "$TYPE" = "both" ] || [ "$TYPE" = "debug" ]; then
+            echo "build_debug=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "build_debug=false" >> "$GITHUB_OUTPUT"
+          fi
+          
+          if [ "$TYPE" = "both" ] || [ "$TYPE" = "release" ]; then
+            echo "build_release=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "build_release=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Get commit message
+        id: msg
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            echo "text=${{ github.event.head_commit.message }}" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "text=PR: ${{ github.event.pull_request.title }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "text=FolkPatch Build" >> "$GITHUB_OUTPUT"
+          fi
+
+  build-debug:
+    name: Build Debug APK
+    needs: prepare
+    if: needs.prepare.outputs.build_debug == 'true'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup Java JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Setup Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          target: aarch64-linux-android
+          override: true
+
+      - name: Install cargo-ndk
+        run: cargo install cargo-ndk
+
+      - name: Setup Zig
+        uses: goto-bus-stop/setup-zig@v2
+        with:
+          version: master
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Cache Gradle packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Build Debug APK
+        run: |
+          ./gradlew assembleDebug --no-daemon
+        env:
+          KEYSTORE_FILE: debug.keystore
+          KEYSTORE_PASSWORD: android
+          KEY_ALIAS: androiddebugkey
+          KEY_PASSWORD: android
+          ZIG_EXE: /opt/hostedtoolcache/zig/master/x64/zig
+
+      - name: Copy Debug APK
+        run: |
+          mkdir -p artifacts
+          cp app/build/outputs/apk/debug/*.apk artifacts/FolkPatch-Debug.apk
+
+      - name: Upload Debug APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: folkpatch-debug-${{ github.sha }}
+          path: artifacts/FolkPatch-Debug.apk
+          retention-days: 30
+
+  build-release:
+    name: Build Release APK
+    needs: prepare
+    if: needs.prepare.outputs.build_release == 'true'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup Java JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Setup Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          target: aarch64-linux-android
+          override: true
+
+      - name: Install cargo-ndk
+        run: cargo install cargo-ndk
+
+      - name: Setup Zig
+        uses: goto-bus-stop/setup-zig@v2
+        with:
+          version: master
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Cache Gradle packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Build Release APK
+        run: |
+          ./gradlew assembleRelease --no-daemon
+        env:
+          KEYSTORE_FILE: debug.keystore
+          KEYSTORE_PASSWORD: android
+          KEY_ALIAS: androiddebugkey
+          KEY_PASSWORD: android
+          ZIG_EXE: /opt/hostedtoolcache/zig/master/x64/zig
+
+      - name: Copy Release APK
+        run: |
+          mkdir -p artifacts
+          cp app/build/outputs/apk/release/*.apk artifacts/FolkPatch-Release.apk
+
+      - name: Upload Release APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: folkpatch-release-${{ github.sha }}
+          path: artifacts/FolkPatch-Release.apk
+          retention-days: 30
+
+      - name: Create Release (if tagged)
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: artifacts/FolkPatch-Release.apk
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  upload:
+    name: Upload to Telegram
+    needs: [prepare, build-debug, build-release]
+    if: always() && needs.prepare.result == 'success' && (needs.build-debug.result == 'success' || needs.build-release.result == 'success')
+    uses: ./.github/workflows/CI_up.yml
+    with:
+      artifact_names: >-
+        ${{
+          needs.prepare.outputs.build_debug == 'true' &&
+          needs.build-debug.result == 'success' &&
+          needs.prepare.outputs.build_release == 'true' &&
+          needs.build-release.result == 'success'
+          && format('folkpatch-debug-{0},folkpatch-{1}', github.sha, github.sha)
+          ||
+          needs.prepare.outputs.build_debug == 'true' &&
+          needs.build-debug.result == 'success'
+          && format('folkpatch-debug-{0}', github.sha)
+          ||
+          format('folkpatch-{0}', github.sha)
+        }}
+      message: ${{ needs.prepare.outputs.commit_msg }}
+    secrets: inherit
