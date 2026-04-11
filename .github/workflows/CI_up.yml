@@ -1,0 +1,90 @@
+name: CI Upload to Telegram
+
+on:
+  workflow_call:
+    inputs:
+      artifact_names:
+        required: true
+        type: string
+        description: 'Comma-separated artifact names to download'
+      message:
+        required: false
+        type: string
+        default: 'FolkPatch Build'
+        description: 'Telegram message caption'
+
+jobs:
+  upload:
+    name: Upload to Telegram
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Download artifacts
+        run: |
+          mkdir -p artifacts
+          IFS=',' read -ra NAMES <<< "${{ inputs.artifact_names }}"
+          for NAME in "${NAMES[@]}"; do
+            echo "Downloading artifact: $NAME"
+            gh run download "$RUN_ID" --name "$NAME" --dir artifacts 2>/dev/null || \
+            echo "::warning::Artifact $NAME not found"
+          done
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_ID: ${{ github.run_id }}
+
+      - name: Send to Telegram
+        run: |
+          mkdir -p artifacts
+          FILES=$(find artifacts -type f 2>/dev/null | sort)
+          FILE_COUNT=$(echo "$FILES" | grep -c . || true)
+          
+          if [ "$FILE_COUNT" -eq 0 ]; then
+            echo "::error::No files found in artifacts"
+            exit 1
+          fi
+          
+          CAPTION="${{ inputs.message }}
+          Branch: ${{ github.ref_name }}
+          Commit: ${{ github.sha }}
+          Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          
+          if [ "$FILE_COUNT" -eq 1 ]; then
+            curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendDocument" \
+              -F "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
+              -F "document=@$FILES" \
+              -F "caption=${CAPTION}"
+          else
+            FILE_ARR=()
+            while IFS= read -r f; do
+              FILE_ARR+=("$f")
+            done <<< "$FILES"
+            
+            TOTAL=${#FILE_ARR[@]}
+            MEDIA_JSON="["
+            for i in "${!FILE_ARR[@]}"; do
+              FNAME=$(basename "${FILE_ARR[$i]}")
+              if [ $i -gt 0 ]; then
+                MEDIA_JSON+=","
+              fi
+              if [ $((i + 1)) -eq $TOTAL ]; then
+                MEDIA_JSON+="{\"type\":\"document\",\"media\":\"attach://$FNAME\",\"caption\":\"${CAPTION}\"}"
+              else
+                MEDIA_JSON+="{\"type\":\"document\",\"media\":\"attach://$FNAME\"}"
+              fi
+            done
+            MEDIA_JSON+="]"
+            
+            ARGS=(-X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMediaGroup")
+            ARGS+=(-F "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}")
+            ARGS+=(-F "media=${MEDIA_JSON}")
+            
+            while IFS= read -r f; do
+              FNAME=$(basename "$f")
+              ARGS+=(-F "$FNAME=@$f")
+            done <<< "$FILES"
+            
+            curl -s "${ARGS[@]}"
+          fi

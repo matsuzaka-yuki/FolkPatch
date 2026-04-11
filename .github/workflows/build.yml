@@ -1,0 +1,176 @@
+name: Build FolkPatch
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths: [ 'app/**', 'fpd/**', '.github/workflows/build.yml' ]
+  pull_request:
+    branches: [ main, develop ]
+    paths: [ 'app/**', 'fpd/**', '.github/workflows/build.yml' ]
+  workflow_dispatch:
+    inputs:
+      build_type:
+        description: 'Build type'
+        required: true
+        default: 'both'
+        type: choice
+        options: [ both, debug, release ]
+
+env:
+  KEYSTORE_FILE: debug.keystore
+  KEYSTORE_PASSWORD: android
+  KEY_ALIAS: androiddebugkey
+  KEY_PASSWORD: android
+  ZIG_EXE: /opt/hostedtoolcache/zig/master/x64/zig
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      build_debug: ${{ steps.set.outputs.debug }}
+      build_release: ${{ steps.set.outputs.release }}
+      commit_msg: ${{ steps.msg.outputs.text }}
+      artifact_list: ${{ steps.set.outputs.artifact_list }}
+
+    steps:
+      - id: set
+        run: |
+          TYPE="${{ inputs.build_type }}"
+          [ "${{ github.event_name }}" != "workflow_dispatch" ] && TYPE="both"
+
+          DEBUG="false"; RELEASE="false"; LIST=""
+          [ "$TYPE" = "both" -o "$TYPE" = "debug" ] && { DEBUG="true"; LIST="folkpatch-debug-${{ github.sha }}"; }
+          [ "$TYPE" = "both" -o "$TYPE" = "release" ] && {
+            RELEASE="true"
+            [ -n "$LIST" ] && LIST="$LIST," || true
+            LIST="${LIST}folkpatch-release-${{ github.sha }}"
+          }
+
+          echo "debug=$DEBUG" >> "$GITHUB_OUTPUT"
+          echo "release=$RELEASE" >> "$GITHUB_OUTPUT"
+          echo "artifact_list=$LIST" >> "$GITHUB_OUTPUT"
+
+      - id: msg
+        run: |
+          case "${{ github.event_name }}" in
+            push)         TEXT="${{ github.event.head_commit.message }}" ;;
+            pull_request) TEXT="PR: ${{ github.event.pull_request.title }}" ;;
+            *)            TEXT="FolkPatch Build" ;;
+          esac
+          echo "text=$TEXT" >> "$GITHUB_OUTPUT"
+
+  build-debug:
+    needs: prepare
+    if: needs.prepare.outputs.build_debug == 'true'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          submodules: recursive
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - uses: android-actions/setup-android@v3
+
+      - uses: gradle/actions/setup-gradle@v3
+
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          target: aarch64-linux-android
+          override: true
+
+      - run: cargo install cargo-ndk
+
+      - uses: goto-bus-stop/setup-zig@v2
+        with:
+          version: master
+
+      - run: chmod +x gradlew
+
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: ${{ runner.os }}-gradle-
+
+      - run: ./gradlew assembleDebug --no-daemon
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: folkpatch-debug-${{ github.sha }}
+          path: app/build/outputs/apk/debug/*.apk
+          retention-days: 30
+
+  build-release:
+    needs: prepare
+    if: needs.prepare.outputs.build_release == 'true'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          submodules: recursive
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - uses: android-actions/setup-android@v3
+
+      - uses: gradle/actions/setup-gradle@v3
+
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          target: aarch64-linux-android
+          override: true
+
+      - run: cargo install cargo-ndk
+
+      - uses: goto-bus-stop/setup-zig@v2
+        with:
+          version: master
+
+      - run: chmod +x gradlew
+
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: ${{ runner.os }}-gradle-
+
+      - run: ./gradlew assembleRelease --no-daemon
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: folkpatch-release-${{ github.sha }}
+          path: app/build/outputs/apk/release/*.apk
+          retention-days: 30
+
+      - name: Create Release (if tagged)
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: app/build/outputs/apk/release/*.apk
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  upload:
+    needs: [prepare, build-debug, build-release]
+    if: always() && needs.prepare.result == 'success' && (needs.build-debug.result == 'success' || needs.build-release.result == 'success') && github.actor != 'dependabot[bot]'
+    uses: ./.github/workflows/CI_up.yml
+    with:
+      artifact_names: ${{ needs.prepare.outputs.artifact_list }}
+      message: ${{ needs.prepare.outputs.commit_msg }}
+    secrets: inherit
